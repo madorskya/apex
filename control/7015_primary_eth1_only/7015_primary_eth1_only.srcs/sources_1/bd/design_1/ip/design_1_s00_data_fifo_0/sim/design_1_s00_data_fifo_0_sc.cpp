@@ -46,6 +46,7 @@
 // 
 // DO NOT MODIFY THIS FILE.
 
+
 #include "design_1_s00_data_fifo_0_sc.h"
 
 #include "axi_data_fifo.h"
@@ -59,24 +60,25 @@ design_1_s00_data_fifo_0_sc::design_1_s00_data_fifo_0_sc(const sc_core::sc_modul
   xsc::utils::xsc_sim_manager::addInstance("design_1_s00_data_fifo_0", this);
 
   // initialize module
-  xsc::common_cpp::properties model_param_props;
-  model_param_props.addLong("C_AXI_PROTOCOL", "2");
-  model_param_props.addLong("C_AXI_ID_WIDTH", "1");
-  model_param_props.addLong("C_AXI_ADDR_WIDTH", "32");
-  model_param_props.addLong("C_AXI_DATA_WIDTH", "32");
-  model_param_props.addLong("C_AXI_SUPPORTS_USER_SIGNALS", "0");
-  model_param_props.addLong("C_AXI_AWUSER_WIDTH", "1");
-  model_param_props.addLong("C_AXI_ARUSER_WIDTH", "1");
-  model_param_props.addLong("C_AXI_WUSER_WIDTH", "1");
-  model_param_props.addLong("C_AXI_RUSER_WIDTH", "1");
-  model_param_props.addLong("C_AXI_BUSER_WIDTH", "1");
-  model_param_props.addLong("C_AXI_WRITE_FIFO_DEPTH", "512");
-  model_param_props.addLong("C_AXI_WRITE_FIFO_DELAY", "1");
-  model_param_props.addLong("C_AXI_READ_FIFO_DEPTH", "512");
-  model_param_props.addLong("C_AXI_READ_FIFO_DELAY", "1");
-  model_param_props.addString("C_FAMILY", "zynq");
-  model_param_props.addString("C_AXI_WRITE_FIFO_TYPE", "bram");
-  model_param_props.addString("C_AXI_READ_FIFO_TYPE", "bram");
+    xsc::common_cpp::properties model_param_props;
+    model_param_props.addLong("C_AXI_PROTOCOL", "2");
+    model_param_props.addLong("C_AXI_ID_WIDTH", "1");
+    model_param_props.addLong("C_AXI_ADDR_WIDTH", "32");
+    model_param_props.addLong("C_AXI_DATA_WIDTH", "32");
+    model_param_props.addLong("C_AXI_SUPPORTS_USER_SIGNALS", "0");
+    model_param_props.addLong("C_AXI_AWUSER_WIDTH", "1");
+    model_param_props.addLong("C_AXI_ARUSER_WIDTH", "1");
+    model_param_props.addLong("C_AXI_WUSER_WIDTH", "1");
+    model_param_props.addLong("C_AXI_RUSER_WIDTH", "1");
+    model_param_props.addLong("C_AXI_BUSER_WIDTH", "1");
+    model_param_props.addLong("C_AXI_WRITE_FIFO_DEPTH", "512");
+    model_param_props.addLong("C_AXI_WRITE_FIFO_DELAY", "1");
+    model_param_props.addLong("C_AXI_READ_FIFO_DEPTH", "512");
+    model_param_props.addLong("C_AXI_READ_FIFO_DELAY", "1");
+    model_param_props.addString("C_FAMILY", "zynq");
+    model_param_props.addString("C_AXI_WRITE_FIFO_TYPE", "bram");
+    model_param_props.addString("C_AXI_READ_FIFO_TYPE", "bram");
+
   mp_impl = new axi_data_fifo("inst", model_param_props);
 
   // initialize sockets

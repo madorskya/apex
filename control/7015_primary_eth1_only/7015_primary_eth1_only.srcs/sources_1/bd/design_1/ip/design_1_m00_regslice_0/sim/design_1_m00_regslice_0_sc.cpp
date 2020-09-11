@@ -46,6 +46,7 @@
 // 
 // DO NOT MODIFY THIS FILE.
 
+
 #include "design_1_m00_regslice_0_sc.h"
 
 #include "axi_register_slice.h"
@@ -59,39 +60,41 @@ design_1_m00_regslice_0_sc::design_1_m00_regslice_0_sc(const sc_core::sc_module_
   xsc::utils::xsc_sim_manager::addInstance("design_1_m00_regslice_0", this);
 
   // initialize module
-  xsc::common_cpp::properties model_param_props;
-  model_param_props.addLong("C_AXI_PROTOCOL", "2");
-  model_param_props.addLong("C_AXI_ID_WIDTH", "1");
-  model_param_props.addLong("C_AXI_ADDR_WIDTH", "9");
-  model_param_props.addLong("C_AXI_DATA_WIDTH", "32");
-  model_param_props.addLong("C_AXI_SUPPORTS_USER_SIGNALS", "0");
-  model_param_props.addLong("C_AXI_AWUSER_WIDTH", "1");
-  model_param_props.addLong("C_AXI_ARUSER_WIDTH", "1");
-  model_param_props.addLong("C_AXI_WUSER_WIDTH", "1");
-  model_param_props.addLong("C_AXI_RUSER_WIDTH", "1");
-  model_param_props.addLong("C_AXI_BUSER_WIDTH", "1");
-  model_param_props.addLong("C_REG_CONFIG_AW", "7");
-  model_param_props.addLong("C_REG_CONFIG_W", "7");
-  model_param_props.addLong("C_REG_CONFIG_B", "7");
-  model_param_props.addLong("C_REG_CONFIG_AR", "7");
-  model_param_props.addLong("C_REG_CONFIG_R", "7");
-  model_param_props.addLong("C_NUM_SLR_CROSSINGS", "0");
-  model_param_props.addLong("C_PIPELINES_MASTER_AW", "0");
-  model_param_props.addLong("C_PIPELINES_MASTER_W", "0");
-  model_param_props.addLong("C_PIPELINES_MASTER_B", "0");
-  model_param_props.addLong("C_PIPELINES_MASTER_AR", "0");
-  model_param_props.addLong("C_PIPELINES_MASTER_R", "0");
-  model_param_props.addLong("C_PIPELINES_SLAVE_AW", "0");
-  model_param_props.addLong("C_PIPELINES_SLAVE_W", "0");
-  model_param_props.addLong("C_PIPELINES_SLAVE_B", "0");
-  model_param_props.addLong("C_PIPELINES_SLAVE_AR", "0");
-  model_param_props.addLong("C_PIPELINES_SLAVE_R", "0");
-  model_param_props.addLong("C_PIPELINES_MIDDLE_AW", "0");
-  model_param_props.addLong("C_PIPELINES_MIDDLE_W", "0");
-  model_param_props.addLong("C_PIPELINES_MIDDLE_B", "0");
-  model_param_props.addLong("C_PIPELINES_MIDDLE_AR", "0");
-  model_param_props.addLong("C_PIPELINES_MIDDLE_R", "0");
-  model_param_props.addString("C_FAMILY", "zynq");
+    xsc::common_cpp::properties model_param_props;
+    model_param_props.addLong("C_AXI_PROTOCOL", "2");
+    model_param_props.addLong("C_AXI_ID_WIDTH", "1");
+    model_param_props.addLong("C_AXI_ADDR_WIDTH", "9");
+    model_param_props.addLong("C_AXI_DATA_WIDTH", "32");
+    model_param_props.addLong("C_AXI_SUPPORTS_USER_SIGNALS", "0");
+    model_param_props.addLong("C_AXI_AWUSER_WIDTH", "1");
+    model_param_props.addLong("C_AXI_ARUSER_WIDTH", "1");
+    model_param_props.addLong("C_AXI_WUSER_WIDTH", "1");
+    model_param_props.addLong("C_AXI_RUSER_WIDTH", "1");
+    model_param_props.addLong("C_AXI_BUSER_WIDTH", "1");
+    model_param_props.addLong("C_REG_CONFIG_AW", "7");
+    model_param_props.addLong("C_REG_CONFIG_W", "7");
+    model_param_props.addLong("C_REG_CONFIG_B", "7");
+    model_param_props.addLong("C_REG_CONFIG_AR", "7");
+    model_param_props.addLong("C_REG_CONFIG_R", "7");
+    model_param_props.addLong("C_RESERVE_MODE", "0");
+    model_param_props.addLong("C_NUM_SLR_CROSSINGS", "0");
+    model_param_props.addLong("C_PIPELINES_MASTER_AW", "0");
+    model_param_props.addLong("C_PIPELINES_MASTER_W", "0");
+    model_param_props.addLong("C_PIPELINES_MASTER_B", "0");
+    model_param_props.addLong("C_PIPELINES_MASTER_AR", "0");
+    model_param_props.addLong("C_PIPELINES_MASTER_R", "0");
+    model_param_props.addLong("C_PIPELINES_SLAVE_AW", "0");
+    model_param_props.addLong("C_PIPELINES_SLAVE_W", "0");
+    model_param_props.addLong("C_PIPELINES_SLAVE_B", "0");
+    model_param_props.addLong("C_PIPELINES_SLAVE_AR", "0");
+    model_param_props.addLong("C_PIPELINES_SLAVE_R", "0");
+    model_param_props.addLong("C_PIPELINES_MIDDLE_AW", "0");
+    model_param_props.addLong("C_PIPELINES_MIDDLE_W", "0");
+    model_param_props.addLong("C_PIPELINES_MIDDLE_B", "0");
+    model_param_props.addLong("C_PIPELINES_MIDDLE_AR", "0");
+    model_param_props.addLong("C_PIPELINES_MIDDLE_R", "0");
+    model_param_props.addString("C_FAMILY", "zynq");
+
   mp_impl = new axi_register_slice("inst", model_param_props);
 
   // initialize sockets

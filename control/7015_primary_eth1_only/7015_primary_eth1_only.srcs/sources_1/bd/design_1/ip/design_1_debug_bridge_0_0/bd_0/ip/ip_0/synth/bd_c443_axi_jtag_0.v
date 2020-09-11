@@ -50,9 +50,9 @@
 // IP VLNV: xilinx.com:ip:axi_jtag:1.0
 // IP Revision: 0
 
-(* X_CORE_INFO = "axi_jtag_v1_0_0_axi_jtag,Vivado 2019.1.3" *)
+(* X_CORE_INFO = "axi_jtag_v1_0_0_axi_jtag,Vivado 2020.1" *)
 (* CHECK_LICENSE_TYPE = "bd_c443_axi_jtag_0,axi_jtag_v1_0_0_axi_jtag,{}" *)
-(* CORE_GENERATION_INFO = "bd_c443_axi_jtag_0,axi_jtag_v1_0_0_axi_jtag,{x_ipProduct=Vivado 2019.1.3,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_jtag,x_ipVersion=1.0,x_ipCoreRevision=0,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_S_AXI_DATA_WIDTH=32,C_S_AXI_ADDR_WIDTH=5,C_TCK_CLOCK_RATIO=8,C_USE_MUX_STATUS=0}" *)
+(* CORE_GENERATION_INFO = "bd_c443_axi_jtag_0,axi_jtag_v1_0_0_axi_jtag,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_jtag,x_ipVersion=1.0,x_ipCoreRevision=0,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_S_AXI_DATA_WIDTH=32,C_S_AXI_ADDR_WIDTH=5,C_TCK_CLOCK_RATIO=8,C_USE_MUX_STATUS=0}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module bd_c443_axi_jtag_0 (
   s_axi_aclk,
@@ -82,7 +82,7 @@ module bd_c443_axi_jtag_0 (
   tdo
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axi_signal_clock, ASSOCIATED_BUSIF s_axi, ASSOCIATED_RESET s_axi_aresetn, FREQ_HZ 100000000, PHASE 0.000, CLK_DOMAIN design_1_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axi_signal_clock, ASSOCIATED_BUSIF s_axi, ASSOCIATED_RESET s_axi_aresetn, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN design_1_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 s_axi_signal_clock CLK" *)
 input wire s_axi_aclk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME s_axi_signal_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
