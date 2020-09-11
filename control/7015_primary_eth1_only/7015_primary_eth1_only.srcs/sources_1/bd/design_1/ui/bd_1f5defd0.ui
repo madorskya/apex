@@ -1,0 +1,58 @@
+{
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0.19  2019-03-26 bk=1.5019 VDI=41 GEI=35 GUI=JA:9.0 TLS
+#  -string -flagsOSRD
+preplace port DDR -pg 1 -lvl 6 -x 1950 -y -200 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 6 -x 1950 -y -170 -defaultsOSRD
+preplace port mdio_phy -pg 1 -lvl 6 -x 1950 -y 880 -defaultsOSRD
+preplace port rgmii -pg 1 -lvl 6 -x 1950 -y 900 -defaultsOSRD
+preplace portBus phy_rst -pg 1 -lvl 6 -x 1950 -y 960 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 1 -x 280 -y 200 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 1 -x 280 -y -50 -defaultsOSRD
+preplace inst proc_sys_reset_0 -pg 1 -lvl 1 -x 280 -y -350 -defaultsOSRD
+preplace inst axi_gpio_0 -pg 1 -lvl 3 -x 920 -y 710 -defaultsOSRD
+preplace inst ps7_0_axi_periph -pg 1 -lvl 1 -x 280 -y 580 -defaultsOSRD
+preplace inst xlconcat_0 -pg 1 -lvl 3 -x 920 -y 510 -defaultsOSRD
+preplace inst debug_bridge_0 -pg 1 -lvl 1 -x 280 -y 820 -defaultsOSRD
+preplace inst debug_bridge_1 -pg 1 -lvl 2 -x 660 -y 810 -defaultsOSRD
+preplace inst axi_ethernet_0 -pg 1 -lvl 4 -x 1370 -y 920 -defaultsOSRD
+preplace inst axi_ethernet_0_dma -pg 1 -lvl 4 -x 1370 -y 380 -defaultsOSRD
+preplace inst axi_smc -pg 1 -lvl 5 -x 1780 -y 300 -defaultsOSRD
+preplace netloc xlconstant_0_dout 1 1 1 520 -50n
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 5 20 -130 550 710 780 790 1110 180 1630
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 2 40 -140 530
+preplace netloc proc_sys_reset_0_peripheral_aresetn 1 0 5 30 -110 570J 120 770 160 1100J 160 1640
+preplace netloc xlconcat_0_dout 1 3 1 1060 510n
+preplace netloc axi_ethernet_0_dma_mm2s_prmry_reset_out_n 1 3 2 1140 140 1590
+preplace netloc axi_ethernet_0_dma_mm2s_cntrl_reset_out_n 1 3 2 1120 130 1620
+preplace netloc axi_ethernet_0_dma_s2mm_prmry_reset_out_n 1 3 2 1150 170 1580
+preplace netloc axi_ethernet_0_dma_s2mm_sts_reset_out_n 1 3 2 1130 150 1610
+preplace netloc axi_ethernet_0_phy_rst_n 1 4 2 NJ 960 N
+preplace netloc processing_system7_0_FCLK_CLK1 1 1 3 NJ 300 NJ 300 1080
+preplace netloc processing_system7_0_FCLK_CLK2 1 1 3 540J 380 NJ 380 1070
+preplace netloc ps7_0_axi_periph_M01_AXI 1 0 2 40 900 520
+preplace netloc processing_system7_0_M_AXI_GP0 1 0 2 40 400 520
+preplace netloc processing_system7_0_DDR 1 1 5 NJ 80 N 80 N 80 N 80 1920
+preplace netloc debug_bridge_0_m0_bscan 1 1 1 530 800n
+preplace netloc processing_system7_0_FIXED_IO 1 1 5 NJ 100 N 100 N 100 N 100 1930
+preplace netloc ps7_0_axi_periph_M00_AXI 1 1 2 N 550 760
+preplace netloc axi_ethernet_0_dma_M_AXI_SG 1 4 1 N 280
+preplace netloc ps7_0_axi_periph_M03_AXI 1 1 3 570J 370 NJ 370 1090
+preplace netloc ps7_0_axi_periph_M02_AXI 1 1 3 NJ 590 750J 800 1090
+preplace netloc axi_smc_M00_AXI 1 0 6 40 -120 560J 110 NJ 110 NJ 110 NJ 110 1920
+preplace netloc axi_ethernet_0_m_axis_rxd 1 3 2 1190 220 1570
+preplace netloc axi_ethernet_0_mdio 1 4 2 NJ 880 N
+preplace netloc axi_ethernet_0_dma_M_AXIS_CNTRL 1 3 2 1160 200 1560
+preplace netloc axi_ethernet_0_m_axis_rxs 1 3 2 1170 190 1600
+preplace netloc axi_ethernet_0_dma_M_AXIS_MM2S 1 3 2 1180 210 1550
+preplace netloc axi_ethernet_0_rgmii 1 4 2 NJ 900 N
+levelinfo -pg 1 0 280 660 920 1370 1780 1950
+pagesize -pg 1 -db -bbox -sgen 0 -750 2090 1790
+"
+}
+{
+   "da_aeth_cnt":"2",
+   "da_axi4_cnt":"10",
+   "da_board_cnt":"14",
+   "da_clkrst_cnt":"6"
+}
