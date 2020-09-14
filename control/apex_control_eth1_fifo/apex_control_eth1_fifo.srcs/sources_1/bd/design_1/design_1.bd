@@ -6,7 +6,7 @@
       "name": "design_1",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "None",
-      "tool_version": "2020.1",
+      "tool_version": "2020.1.1",
       "validated": "true"
     },
     "design_tree": {
@@ -1955,7 +1955,7 @@
                   "width": "16",
                   "usage": "register",
                   "bank_blocks": {
-                    "REG;/axi_jtag/s_axi/reg0;xilinx.com:ip:axi_jtag:1.0;/axi_jtag;s_axi;NONE;NONE": {
+                    "REG;reg0;xilinx.com:ip:axi_jtag:1.0;axi_jtag;s_axi;NONE;NONE": {
                       "base_address": "0x0000",
                       "range": "64K",
                       "width": "16",
@@ -2369,16 +2369,16 @@
               }
             },
             "interface_nets": {
-              "m00_couplers_to_m00_regslice": {
-                "interface_ports": [
-                  "S_AXI",
-                  "m00_regslice/S_AXI"
-                ]
-              },
               "m00_regslice_to_m00_couplers": {
                 "interface_ports": [
                   "M_AXI",
                   "m00_regslice/M_AXI"
+                ]
+              },
+              "m00_couplers_to_m00_regslice": {
+                "interface_ports": [
+                  "S_AXI",
+                  "m00_regslice/S_AXI"
                 ]
               }
             },
@@ -2459,16 +2459,16 @@
               }
             },
             "interface_nets": {
-              "m01_regslice_to_m01_couplers": {
-                "interface_ports": [
-                  "M_AXI",
-                  "m01_regslice/M_AXI"
-                ]
-              },
               "m01_couplers_to_m01_regslice": {
                 "interface_ports": [
                   "S_AXI",
                   "m01_regslice/S_AXI"
+                ]
+              },
+              "m01_regslice_to_m01_couplers": {
+                "interface_ports": [
+                  "M_AXI",
+                  "m01_regslice/M_AXI"
                 ]
               }
             },
@@ -2585,16 +2585,16 @@
               "m02_couplers/M_AXI"
             ]
           },
-          "xbar_to_m02_couplers": {
-            "interface_ports": [
-              "xbar/M02_AXI",
-              "m02_couplers/S_AXI"
-            ]
-          },
           "s00_couplers_to_xbar": {
             "interface_ports": [
               "s00_couplers/M_AXI",
               "xbar/S00_AXI"
+            ]
+          },
+          "xbar_to_m02_couplers": {
+            "interface_ports": [
+              "xbar/M02_AXI",
+              "m02_couplers/S_AXI"
             ]
           },
           "ps7_0_axi_periph_to_s00_couplers": {
@@ -2603,10 +2603,10 @@
               "s00_couplers/S_AXI"
             ]
           },
-          "xbar_to_m00_couplers": {
+          "xbar_to_m01_couplers": {
             "interface_ports": [
-              "xbar/M00_AXI",
-              "m00_couplers/S_AXI"
+              "xbar/M01_AXI",
+              "m01_couplers/S_AXI"
             ]
           },
           "m00_couplers_to_ps7_0_axi_periph": {
@@ -2621,10 +2621,10 @@
               "m01_couplers/M_AXI"
             ]
           },
-          "xbar_to_m01_couplers": {
+          "xbar_to_m00_couplers": {
             "interface_ports": [
-              "xbar/M01_AXI",
-              "m01_couplers/S_AXI"
+              "xbar/M00_AXI",
+              "m00_couplers/S_AXI"
             ]
           }
         },
@@ -2735,7 +2735,7 @@
                   "width": "18",
                   "usage": "register",
                   "bank_blocks": {
-                    "SEG_eth_buf_REG;/eth_buf/S_AXI/Reg;xilinx.com:ip:axi_ethernet_buffer:2.0;/eth_buf;S_AXI;NONE;NONE": {
+                    "SEG_eth_buf_REG;Reg;xilinx.com:ip:axi_ethernet_buffer:2.0;eth_buf;S_AXI;NONE;NONE": {
                       "base_address": "0",
                       "range": "256K",
                       "width": "18",
@@ -2792,16 +2792,16 @@
       }
     },
     "interface_nets": {
-      "ps7_0_axi_periph_M01_AXI": {
-        "interface_ports": [
-          "ps7_0_axi_periph/M01_AXI",
-          "debug_bridge_0/S_AXI"
-        ]
-      },
       "processing_system7_0_DDR": {
         "interface_ports": [
           "DDR",
           "processing_system7_0/DDR"
+        ]
+      },
+      "ps7_0_axi_periph_M01_AXI": {
+        "interface_ports": [
+          "ps7_0_axi_periph/M01_AXI",
+          "debug_bridge_0/S_AXI"
         ]
       },
       "debug_bridge_0_m0_bscan": {
@@ -2816,10 +2816,28 @@
           "processing_system7_0/FIXED_IO"
         ]
       },
+      "axi_ethernet_0_mdio": {
+        "interface_ports": [
+          "mdio_phy",
+          "axi_ethernet_0/mdio"
+        ]
+      },
+      "axi_ethernet_0_fifo_AXI_STR_TXC": {
+        "interface_ports": [
+          "axi_ethernet_0_fifo/AXI_STR_TXC",
+          "axi_ethernet_0/s_axis_txc"
+        ]
+      },
       "processing_system7_0_M_AXI_GP0": {
         "interface_ports": [
           "processing_system7_0/M_AXI_GP0",
           "ps7_0_axi_periph/S00_AXI"
+        ]
+      },
+      "axi_ethernet_0_rgmii": {
+        "interface_ports": [
+          "rgmii",
+          "axi_ethernet_0/rgmii"
         ]
       },
       "ps7_0_axi_periph_M00_AXI": {
@@ -2834,34 +2852,16 @@
           "axi_ethernet_0_fifo/S_AXI"
         ]
       },
-      "axi_ethernet_0_fifo_AXI_STR_TXD": {
-        "interface_ports": [
-          "axi_ethernet_0_fifo/AXI_STR_TXD",
-          "axi_ethernet_0/s_axis_txd"
-        ]
-      },
       "axi_ethernet_0_m_axis_rxd": {
         "interface_ports": [
           "axi_ethernet_0_fifo/AXI_STR_RXD",
           "axi_ethernet_0/m_axis_rxd"
         ]
       },
-      "axi_ethernet_0_fifo_AXI_STR_TXC": {
+      "axi_ethernet_0_fifo_AXI_STR_TXD": {
         "interface_ports": [
-          "axi_ethernet_0_fifo/AXI_STR_TXC",
-          "axi_ethernet_0/s_axis_txc"
-        ]
-      },
-      "axi_ethernet_0_rgmii": {
-        "interface_ports": [
-          "rgmii",
-          "axi_ethernet_0/rgmii"
-        ]
-      },
-      "axi_ethernet_0_mdio": {
-        "interface_ports": [
-          "mdio_phy",
-          "axi_ethernet_0/mdio"
+          "axi_ethernet_0_fifo/AXI_STR_TXD",
+          "axi_ethernet_0/s_axis_txd"
         ]
       }
     },

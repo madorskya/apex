@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="bd_0482" CanBeSetAsTop="true" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1600117497"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1600117497"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1600117497"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1600117497"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1600121344"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1600121344"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1600121344"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1600121344"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\ip_0\bd_0482_xsdbm_0.xci" Type="IP">
         <Instance HierarchyPath="xsdbm"/>
@@ -34,11 +34,6 @@
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="sim\bd_0482.protoinst">
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="bd_0482_ooc.xdc" Type="XDC">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
@@ -60,6 +55,11 @@
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="HW_HANDOFF"/>
+      </File>
+      <File Name="sim\bd_0482.protoinst">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SIMULATION"/>
       </File>
     </FileCollection>
   </CompositeFile>
