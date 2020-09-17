@@ -1,14 +1,14 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x274A002EC1510397",
+      "boundary_crc": "0x274A002EF53886AD",
       "design_src": "SBD",
       "device": "xc7z015clg485-1",
       "name": "bd_525a",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "scoped": "true",
       "synth_flow_mode": "None",
-      "tool_version": "2020.1",
+      "tool_version": "2020.1.1",
       "validated": "true"
     },
     "design_tree": {
@@ -190,7 +190,7 @@
             "value_src": "constant"
           },
           "FREQ_HZ": {
-            "value": "100000000",
+            "value": "125000000",
             "value_src": "user_prop"
           },
           "PHASE": {
@@ -198,7 +198,7 @@
             "value_src": "ip"
           },
           "CLK_DOMAIN": {
-            "value": "design_1_processing_system7_0_0_FCLK_CLK0",
+            "value": "design_1_processing_system7_0_0_FCLK_CLK2",
             "value_src": "ip"
           },
           "LAYERED_METADATA": {
@@ -248,7 +248,7 @@
             "value_src": "constant"
           },
           "FREQ_HZ": {
-            "value": "100000000",
+            "value": "125000000",
             "value_src": "user_prop"
           },
           "PHASE": {
@@ -256,7 +256,7 @@
             "value_src": "ip"
           },
           "CLK_DOMAIN": {
-            "value": "design_1_processing_system7_0_0_FCLK_CLK0",
+            "value": "design_1_processing_system7_0_0_FCLK_CLK2",
             "value_src": "ip"
           },
           "LAYERED_METADATA": {
@@ -306,7 +306,7 @@
             "value_src": "constant"
           },
           "FREQ_HZ": {
-            "value": "100000000",
+            "value": "125000000",
             "value_src": "user_prop"
           },
           "PHASE": {
@@ -314,7 +314,7 @@
             "value_src": "ip"
           },
           "CLK_DOMAIN": {
-            "value": "design_1_processing_system7_0_0_FCLK_CLK0",
+            "value": "design_1_processing_system7_0_0_FCLK_CLK2",
             "value_src": "ip"
           },
           "LAYERED_METADATA": {
@@ -364,7 +364,7 @@
             "value_src": "constant"
           },
           "FREQ_HZ": {
-            "value": "100000000",
+            "value": "125000000",
             "value_src": "user_prop"
           },
           "PHASE": {
@@ -372,7 +372,7 @@
             "value_src": "ip"
           },
           "CLK_DOMAIN": {
-            "value": "design_1_processing_system7_0_0_FCLK_CLK0",
+            "value": "design_1_processing_system7_0_0_FCLK_CLK2",
             "value_src": "ip"
           },
           "LAYERED_METADATA": {
@@ -474,11 +474,11 @@
             "value": "axi_rxd_arstn:axi_rxs_arstn:axi_txc_arstn:axi_txd_arstn"
           },
           "CLK_DOMAIN": {
-            "value": "design_1_processing_system7_0_0_FCLK_CLK0",
+            "value": "design_1_processing_system7_0_0_FCLK_CLK2",
             "value_src": "default_prop"
           },
           "FREQ_HZ": {
-            "value": "100000000",
+            "value": "125000000",
             "value_src": "user_prop"
           },
           "FREQ_TOLERANCE_HZ": {
@@ -906,6 +906,24 @@
       }
     },
     "interface_nets": {
+      "mac_rgmii": {
+        "interface_ports": [
+          "rgmii",
+          "mac/rgmii"
+        ]
+      },
+      "eth_buf_AXI_STR_RXS": {
+        "interface_ports": [
+          "m_axis_rxs",
+          "eth_buf/AXI_STR_RXS"
+        ]
+      },
+      "eth_buf_S_AXI_2TEMAC": {
+        "interface_ports": [
+          "eth_buf/S_AXI_2TEMAC",
+          "mac/s_axi"
+        ]
+      },
       "eth_buf_TX_AXIS_MAC": {
         "interface_ports": [
           "eth_buf/TX_AXIS_MAC",
@@ -918,36 +936,6 @@
           "mac/mdio_internal"
         ]
       },
-      "eth_buf_AXI_STR_RXS": {
-        "interface_ports": [
-          "m_axis_rxs",
-          "eth_buf/AXI_STR_RXS"
-        ]
-      },
-      "mac_rgmii": {
-        "interface_ports": [
-          "rgmii",
-          "mac/rgmii"
-        ]
-      },
-      "eth_buf_S_AXI_2TEMAC": {
-        "interface_ports": [
-          "eth_buf/S_AXI_2TEMAC",
-          "mac/s_axi"
-        ]
-      },
-      "mac_m_axis_rx": {
-        "interface_ports": [
-          "eth_buf/RX_AXIS_MAC",
-          "mac/m_axis_rx"
-        ]
-      },
-      "s_axis_txd_1": {
-        "interface_ports": [
-          "s_axis_txd",
-          "eth_buf/AXI_STR_TXD"
-        ]
-      },
       "s_axi_1": {
         "interface_ports": [
           "s_axi",
@@ -958,6 +946,18 @@
         "interface_ports": [
           "s_axis_txc",
           "eth_buf/AXI_STR_TXC"
+        ]
+      },
+      "s_axis_txd_1": {
+        "interface_ports": [
+          "s_axis_txd",
+          "eth_buf/AXI_STR_TXD"
+        ]
+      },
+      "mac_m_axis_rx": {
+        "interface_ports": [
+          "eth_buf/RX_AXIS_MAC",
+          "mac/m_axis_rx"
         ]
       },
       "eth_buf_AXI_STR_RXD": {

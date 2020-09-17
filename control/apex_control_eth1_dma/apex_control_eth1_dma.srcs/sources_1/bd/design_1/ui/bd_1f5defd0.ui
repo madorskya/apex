@@ -1,63 +1,123 @@
 {
-   "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.796357",
-   "Default View_TopLeft":"-30,-397",
+   "ActiveEmotionalView":"Color Coded",
+   "Color Coded_ExpandedHierarchyInLayout":"",
+   "Color Coded_Layout":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port DDR -pg 1 -lvl 8 -x 2530 -y 170 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 8 -x 2530 -y 200 -defaultsOSRD
+preplace port mdio_phy -pg 1 -lvl 8 -x 2530 -y 620 -defaultsOSRD
+preplace port rgmii -pg 1 -lvl 8 -x 2530 -y 650 -defaultsOSRD
+preplace portBus phy_rst -pg 1 -lvl 8 -x 2530 -y 680 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 2 -x 470 -y 530 -defaultsOSRD
+preplace inst proc_sys_reset_0 -pg 1 -lvl 2 -x 470 -y 130 -defaultsOSRD
+preplace inst debug_bridge_0 -pg 1 -lvl 2 -x 470 -y 1150 -defaultsOSRD
+preplace inst debug_bridge_1 -pg 1 -lvl 3 -x 850 -y 1160 -defaultsOSRD
+preplace inst ps7_0_axi_periph -pg 1 -lvl 2 -x 470 -y 910 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 2 -x 470 -y 290 -defaultsOSRD
+preplace inst axi_ethernet_0 -pg 1 -lvl 5 -x 1580 -y 1100 -defaultsOSRD
+preplace inst xlconcat_0 -pg 1 -lvl 1 -x 110 -y 650 -defaultsOSRD
+preplace inst axi_ethernet_0_dma -pg 1 -lvl 6 -x 1960 -y 1080 -defaultsOSRD
+preplace inst axi_mem_intercon -pg 1 -lvl 7 -x 2360 -y 1090 -defaultsOSRD
+preplace inst proc_sys_reset_1 -pg 1 -lvl 4 -x 1140 -y 730 -defaultsOSRD
+preplace netloc xlconstant_0_dout 1 2 1 690 290n
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 3 240 730 700 710 N
+preplace netloc Net 1 1 6 210 740 710 900 N 900 1360 900 1770 900 2190
+preplace netloc proc_sys_reset_0_peripheral_aresetn 1 1 6 220 230 710 440 N 440 1340 1270 1800 1240 2220
+preplace netloc xlconcat_0_dout 1 1 1 200 570n
+preplace netloc axi_ethernet_0_dma_mm2s_prmry_reset_out_n 1 4 3 1350 1300 NJ 1300 2160
+preplace netloc axi_ethernet_0_dma_mm2s_cntrl_reset_out_n 1 4 3 1380 1290 NJ 1290 2130
+preplace netloc axi_ethernet_0_dma_s2mm_prmry_reset_out_n 1 4 3 1360 1320 NJ 1320 2150
+preplace netloc axi_ethernet_0_dma_s2mm_sts_reset_out_n 1 4 3 1370 1330 NJ 1330 2140
+preplace netloc processing_system7_0_FCLK_CLK2 1 2 5 NJ 650 940 830 1310 1280 1790 1250 2210
+preplace netloc processing_system7_0_FCLK_CLK1 1 2 3 NJ 630 N 630 1330
+preplace netloc axi_ethernet_0_phy_rst_n 1 5 3 1780 680 N 680 N
+preplace netloc axi_ethernet_0_mac_irq 1 0 6 10 30 NJ 30 NJ 30 NJ 30 N 30 1710
+preplace netloc axi_ethernet_0_interrupt 1 0 6 -10 20 NJ 20 NJ 20 NJ 20 N 20 1720
+preplace netloc axi_ethernet_0_dma_mm2s_introut 1 0 7 0 10 NJ 10 NJ 10 NJ 10 N 10 N 10 2170
+preplace netloc axi_ethernet_0_dma_s2mm_introut 1 0 7 0 1310 NJ 1310 NJ 1310 NJ 1310 N 1310 N 1310 2120
+preplace netloc S00_ARESETN_1 1 4 3 NJ 770 NJ 770 2200
+preplace netloc ARESETN_1 1 2 5 NJ 150 NJ 150 NJ 150 NJ 150 2220
+preplace netloc ps7_0_axi_periph_M01_AXI 1 1 2 240 1070 690
+preplace netloc processing_system7_0_DDR 1 2 6 NJ 410 N 410 N 410 N 410 N 410 2500
+preplace netloc debug_bridge_0_m0_bscan 1 2 1 N 1150
+preplace netloc processing_system7_0_FIXED_IO 1 2 6 NJ 430 N 430 N 430 N 430 N 430 2510
+preplace netloc processing_system7_0_M_AXI_GP0 1 1 2 240 750 690
+preplace netloc ps7_0_axi_periph_M00_AXI 1 2 3 NJ 890 N 890 1320
+preplace netloc axi_ethernet_0_dma_M_AXIS_MM2S 1 4 3 1380 920 NJ 920 2120
+preplace netloc axi_ethernet_0_dma_M_AXIS_CNTRL 1 4 3 1370 910 NJ 910 2130
+preplace netloc axi_ethernet_0_m_axis_rxs 1 5 1 1740 1040n
+preplace netloc axi_ethernet_0_m_axis_rxd 1 5 1 1760 1020n
+preplace netloc axi_ethernet_0_rgmii 1 5 3 1750 650 N 650 N
+preplace netloc ps7_0_axi_periph_M02_AXI 1 2 4 N 930 NJ 930 N 930 1790
+preplace netloc axi_ethernet_0_dma_M_AXI_SG 1 6 1 2180 970n
+preplace netloc axi_mem_intercon_M00_AXI 1 1 7 230 1340 NJ 1340 NJ 1340 N 1340 NJ 1340 N 1340 2500
+preplace netloc axi_ethernet_0_mdio 1 5 3 1730 620 N 620 N
+preplace netloc axi_ethernet_0_dma_M_AXI_MM2S 1 6 1 2180 990n
+preplace netloc axi_ethernet_0_dma_M_AXI_S2MM 1 6 1 2210 1010n
+levelinfo -pg 1 -30 110 470 850 1140 1580 1960 2360 2530
+pagesize -pg 1 -db -bbox -sgen -30 0 2660 1800
+",
+   "Color Coded_ScaleFactor":"0.707107",
+   "Color Coded_TopLeft":"-13,769",
+   "Default View_ScaleFactor":"1.12622",
+   "Default View_TopLeft":"606,330",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
 #  -string -flagsOSRD
-preplace port DDR -pg 1 -lvl 5 -x 2000 -y -200 -defaultsOSRD
-preplace port FIXED_IO -pg 1 -lvl 5 -x 2000 -y -170 -defaultsOSRD
-preplace port mdio_phy -pg 1 -lvl 5 -x 2000 -y 870 -defaultsOSRD
-preplace port rgmii -pg 1 -lvl 5 -x 2000 -y 900 -defaultsOSRD
-preplace portBus phy_rst -pg 1 -lvl 5 -x 2000 -y 960 -defaultsOSRD
+preplace port DDR -pg 1 -lvl 6 -x 2010 -y -200 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 6 -x 2010 -y -170 -defaultsOSRD
+preplace port mdio_phy -pg 1 -lvl 6 -x 2010 -y 870 -defaultsOSRD
+preplace port rgmii -pg 1 -lvl 6 -x 2010 -y 900 -defaultsOSRD
+preplace portBus phy_rst -pg 1 -lvl 6 -x 2010 -y 960 -defaultsOSRD
 preplace inst processing_system7_0 -pg 1 -lvl 2 -x 420 -y 270 -defaultsOSRD
 preplace inst proc_sys_reset_0 -pg 1 -lvl 2 -x 420 -y -130 -defaultsOSRD
 preplace inst debug_bridge_0 -pg 1 -lvl 2 -x 420 -y 890 -defaultsOSRD
 preplace inst debug_bridge_1 -pg 1 -lvl 3 -x 790 -y 810 -defaultsOSRD
 preplace inst ps7_0_axi_periph -pg 1 -lvl 2 -x 420 -y 650 -defaultsOSRD
 preplace inst xlconstant_0 -pg 1 -lvl 2 -x 420 -y 30 -defaultsOSRD
-preplace inst axi_ethernet_0 -pg 1 -lvl 4 -x 1170 -y 800 -defaultsOSRD
+preplace inst axi_ethernet_0 -pg 1 -lvl 4 -x 1180 -y 800 -defaultsOSRD
 preplace inst xlconcat_0 -pg 1 -lvl 1 -x 70 -y 330 -defaultsOSRD
-preplace inst axi_ethernet_0_dma -pg 1 -lvl 4 -x 1170 -y 320 -defaultsOSRD
-preplace inst axi_mem_intercon -pg 1 -lvl 4 -x 1170 -y -90 -defaultsOSRD
+preplace inst axi_ethernet_0_dma -pg 1 -lvl 4 -x 1180 -y 320 -defaultsOSRD
+preplace inst axi_mem_intercon -pg 1 -lvl 4 -x 1180 -y -90 -defaultsOSRD
+preplace inst system_ila_0 -pg 1 -lvl 5 -x 1760 -y 810 -defaultsOSRD
 preplace netloc xlconstant_0_dout 1 2 1 640 30n
-preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 2 190 -230 650
-preplace netloc Net 1 1 3 170 470 680 350 910
-preplace netloc proc_sys_reset_0_peripheral_aresetn 1 1 3 180 490 660 180 920
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 2 200 -230 650
+preplace netloc Net 1 1 4 190 480 670 350 910 580 1440
+preplace netloc proc_sys_reset_0_peripheral_aresetn 1 1 4 170 -240 680 160 930 630 1420
 preplace netloc xlconcat_0_dout 1 1 1 160 310n
-preplace netloc axi_ethernet_0_dma_mm2s_prmry_reset_out_n 1 3 2 950 140 1340J
-preplace netloc axi_ethernet_0_dma_mm2s_cntrl_reset_out_n 1 3 2 930 130 1370J
-preplace netloc axi_ethernet_0_dma_s2mm_prmry_reset_out_n 1 3 2 960 160 1330J
-preplace netloc axi_ethernet_0_dma_s2mm_sts_reset_out_n 1 3 2 940 150 1360J
+preplace netloc axi_ethernet_0_dma_mm2s_prmry_reset_out_n 1 3 2 1000 600 1470J
+preplace netloc axi_ethernet_0_dma_mm2s_cntrl_reset_out_n 1 3 2 950 590 1450J
+preplace netloc axi_ethernet_0_dma_s2mm_prmry_reset_out_n 1 3 2 980 610 1430J
+preplace netloc axi_ethernet_0_dma_s2mm_sts_reset_out_n 1 3 2 990 620 1400J
 preplace netloc processing_system7_0_FCLK_CLK2 1 2 2 NJ 390 880
 preplace netloc processing_system7_0_FCLK_CLK1 1 2 2 NJ 370 890
-preplace netloc axi_ethernet_0_phy_rst_n 1 4 1 1380 840n
-preplace netloc axi_ethernet_0_mac_irq 1 0 5 -20 -30 NJ -30 670J 190 900J 120 1420
-preplace netloc axi_ethernet_0_interrupt 1 0 5 -50 -250 NJ -250 NJ -250 NJ -250 1430
-preplace netloc axi_ethernet_0_dma_mm2s_introut 1 0 5 -40 -270 NJ -270 NJ -270 NJ -270 1410
-preplace netloc axi_ethernet_0_dma_s2mm_introut 1 0 5 -30 -260 NJ -260 NJ -260 NJ -260 1400
-preplace netloc processing_system7_0_M_AXI_GP0 1 1 2 190 480 640
-preplace netloc debug_bridge_0_m0_bscan 1 2 1 690 800n
-preplace netloc processing_system7_0_FIXED_IO 1 2 3 NJ 170 890 -220 1440
-preplace netloc ps7_0_axi_periph_M01_AXI 1 1 2 190 810 640
-preplace netloc processing_system7_0_DDR 1 2 3 NJ 150 880 -230 1450
-preplace netloc axi_ethernet_0_dma_M_AXIS_MM2S 1 3 2 1000 490 1380J
-preplace netloc axi_ethernet_0_dma_M_AXIS_CNTRL 1 3 2 970 480 1350J
-preplace netloc axi_ethernet_0_m_axis_rxs 1 3 2 990 510 1330
-preplace netloc axi_ethernet_0_m_axis_rxd 1 3 2 980 500 1340
-preplace netloc ps7_0_axi_periph_M00_AXI 1 2 2 NJ 630 900
-preplace netloc ps7_0_axi_periph_M02_AXI 1 2 2 670 250 NJ
-preplace netloc axi_ethernet_0_dma_M_AXI_SG 1 3 2 900 -210 1380
-preplace netloc axi_mem_intercon_M00_AXI 1 1 4 180 -240 NJ -240 NJ -240 1390J
-preplace netloc axi_ethernet_0_mdio 1 4 1 1450 760n
-preplace netloc axi_ethernet_0_rgmii 1 4 1 1440 780n
-levelinfo -pg 1 -70 70 420 790 1170 2000
-pagesize -pg 1 -db -bbox -sgen -70 -750 2130 1790
+preplace netloc axi_ethernet_0_phy_rst_n 1 4 2 1360 1490 1990
+preplace netloc axi_ethernet_0_mac_irq 1 0 5 -60 980 NJ 980 NJ 980 NJ 980 1350
+preplace netloc axi_ethernet_0_interrupt 1 0 5 -40 970 NJ 970 NJ 970 NJ 970 1340
+preplace netloc axi_ethernet_0_dma_mm2s_introut 1 0 5 -60 -30 NJ -30 670J 170 900J 150 1460
+preplace netloc axi_ethernet_0_dma_s2mm_introut 1 0 5 -50 470 NJ 470 NJ 470 900J 500 1390
+preplace netloc ps7_0_axi_periph_M01_AXI 1 1 2 200 810 640
+preplace netloc processing_system7_0_DDR 1 2 4 NJ 150 890 -210 N -210 1970
+preplace netloc debug_bridge_0_m0_bscan 1 2 1 680 800n
+preplace netloc processing_system7_0_FIXED_IO 1 2 4 660J 140 880 -220 N -220 1990
+preplace netloc processing_system7_0_M_AXI_GP0 1 1 4 200 490 660 490 N 490 1410
+preplace netloc ps7_0_axi_periph_M00_AXI 1 2 3 NJ 630 920 550 1440
+preplace netloc axi_ethernet_0_dma_M_AXIS_MM2S 1 3 2 960 510 1370J
+preplace netloc axi_ethernet_0_dma_M_AXIS_CNTRL 1 3 2 970 530 1360J
+preplace netloc axi_ethernet_0_m_axis_rxs 1 3 2 950 540 1340
+preplace netloc axi_ethernet_0_m_axis_rxd 1 3 2 940 520 1350
+preplace netloc axi_ethernet_0_rgmii 1 4 2 1370 1480 1980
+preplace netloc ps7_0_axi_periph_M02_AXI 1 2 3 680 480 920J 480 1420
+preplace netloc axi_ethernet_0_dma_M_AXI_SG 1 3 2 950 160 1440
+preplace netloc axi_mem_intercon_M00_AXI 1 1 4 180 -250 NJ -250 NJ -250 1470J
+preplace netloc axi_ethernet_0_mdio 1 4 2 1380 1470 1970
+levelinfo -pg 1 -80 70 420 790 1180 1760 2010
+pagesize -pg 1 -db -bbox -sgen -80 -750 2140 1910
 "
 }
 {
    "da_aeth_cnt":"7",
-   "da_axi4_cnt":"29",
+   "da_axi4_cnt":"31",
    "da_board_cnt":"31",
    "da_clkrst_cnt":"14"
 }
