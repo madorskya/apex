@@ -3,80 +3,104 @@
    "Color Coded_ExpandedHierarchyInLayout":"",
    "Color Coded_Layout":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
 #  -string -flagsOSRD
-preplace port DDR -pg 1 -lvl 3 -x 1040 -y 290 -defaultsOSRD
-preplace port FIXED_IO -pg 1 -lvl 3 -x 1040 -y 320 -defaultsOSRD
-preplace port mdio_phy -pg 1 -lvl 3 -x 1040 -y 680 -defaultsOSRD
-preplace port rgmii -pg 1 -lvl 3 -x 1040 -y 590 -defaultsOSRD
-preplace port TDI_1 -pg 1 -lvl 3 -x 1040 -y 560 -defaultsOSRD
-preplace port TMS_1 -pg 1 -lvl 3 -x 1040 -y 530 -defaultsOSRD
-preplace port TCK_1 -pg 1 -lvl 3 -x 1040 -y 500 -defaultsOSRD
-preplace port TDO_0 -pg 1 -lvl 0 -x -120 -y 190 -defaultsOSRD
-preplace port TDI_0 -pg 1 -lvl 3 -x 1040 -y 470 -defaultsOSRD
-preplace port TMS_0 -pg 1 -lvl 3 -x 1040 -y 440 -defaultsOSRD
-preplace port TCK_0 -pg 1 -lvl 3 -x 1040 -y 410 -defaultsOSRD
-preplace port TDO_1 -pg 1 -lvl 0 -x -120 -y 220 -defaultsOSRD
-preplace port ipmc_sda_0 -pg 1 -lvl 3 -x 1040 -y 380 -defaultsOSRD
-preplace port ipmc_scl_0 -pg 1 -lvl 3 -x 1040 -y 350 -defaultsOSRD
-preplace port ipmc_scl_1 -pg 1 -lvl 3 -x 1040 -y 620 -defaultsOSRD
-preplace port ipmc_sda_1 -pg 1 -lvl 3 -x 1040 -y 650 -defaultsOSRD
-preplace portBus phy_rst -pg 1 -lvl 3 -x 1040 -y 780 -defaultsOSRD
-preplace inst eth1 -pg 1 -lvl 2 -x 785 -y 750 -defaultsOSRD
-preplace inst jtag -pg 1 -lvl 2 -x 785 -y 490 -defaultsOSRD
-preplace inst ipmc -pg 1 -lvl 2 -x 785 -y 160 -defaultsOSRD
-preplace inst cpu -pg 1 -lvl 1 -x 220 -y 550 -defaultsOSRD
-preplace inst dbg -pg 1 -lvl 2 -x 785 -y 930 -defaultsOSRD
-preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 1 380 720n
-preplace netloc Net 1 1 1 620 240n
-preplace netloc proc_sys_reset_0_peripheral_aresetn 1 1 1 420 260n
-preplace netloc processing_system7_0_FCLK_CLK2 1 1 1 430 700n
-preplace netloc processing_system7_0_FCLK_CLK1 1 1 1 440 680n
-preplace netloc axi_ethernet_0_phy_rst_n 1 2 1 N 780
-preplace netloc axi_ethernet_0_mac_irq 1 0 3 -30 240 530 620 910
-preplace netloc axi_ethernet_0_interrupt 1 0 3 -70 230 560 610 920
-preplace netloc axi_ethernet_0_dma_mm2s_introut 1 0 3 -50 210 600 590 950
-preplace netloc axi_ethernet_0_dma_s2mm_introut 1 0 3 -40 220 580 600 940
-preplace netloc ARESETN_1 1 1 1 370J 740n
-preplace netloc ipmc_jtag_TDI_1 1 2 1 950J 540n
-preplace netloc ipmc_jtag_TMS_1 1 2 1 980J 520n
+preplace port DDR -pg 1 -lvl 3 -x 1250 -y 290 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 3 -x 1250 -y 320 -defaultsOSRD
+preplace port mdio_phy -pg 1 -lvl 3 -x 1250 -y 680 -defaultsOSRD
+preplace port rgmii -pg 1 -lvl 3 -x 1250 -y 590 -defaultsOSRD
+preplace port scf_i2c_0 -pg 1 -lvl 3 -x 1250 -y 1020 -defaultsOSRD
+preplace port scf_i2c_1 -pg 1 -lvl 3 -x 1250 -y 940 -defaultsOSRD
+preplace port scf_i2c_2 -pg 1 -lvl 3 -x 1250 -y 990 -defaultsOSRD
+preplace port scf_tdi_1 -pg 1 -lvl 3 -x 1250 -y 560 -defaultsOSRD
+preplace port scf_tms_1 -pg 1 -lvl 3 -x 1250 -y 530 -defaultsOSRD
+preplace port scf_tck_1 -pg 1 -lvl 3 -x 1250 -y 500 -defaultsOSRD
+preplace port scf_tdo_0 -pg 1 -lvl 0 -x -10 -y 190 -defaultsOSRD
+preplace port scf_tdi_0 -pg 1 -lvl 3 -x 1250 -y 470 -defaultsOSRD
+preplace port scf_tms_0 -pg 1 -lvl 3 -x 1250 -y 440 -defaultsOSRD
+preplace port scf_tck_0 -pg 1 -lvl 3 -x 1250 -y 410 -defaultsOSRD
+preplace port scf_tdo_1 -pg 1 -lvl 0 -x -10 -y 220 -defaultsOSRD
+preplace port ipmc_sda_0 -pg 1 -lvl 3 -x 1250 -y 380 -defaultsOSRD
+preplace port ipmc_scl_0 -pg 1 -lvl 3 -x 1250 -y 350 -defaultsOSRD
+preplace port ipmc_scl_1 -pg 1 -lvl 3 -x 1250 -y 620 -defaultsOSRD
+preplace port ipmc_sda_1 -pg 1 -lvl 3 -x 1250 -y 650 -defaultsOSRD
+preplace portBus phy_rst -pg 1 -lvl 3 -x 1250 -y 780 -defaultsOSRD
+preplace portBus en_ipmb_zynq -pg 1 -lvl 3 -x 1250 -y 1190 -defaultsOSRD
+preplace portBus id -pg 1 -lvl 3 -x 1250 -y 1160 -defaultsOSRD
+preplace portBus ready_ipmb_zynq -pg 1 -lvl 0 -x -10 -y 1120 -defaultsOSRD
+preplace portBus los_10g -pg 1 -lvl 0 -x -10 -y 1150 -defaultsOSRD
+preplace portBus ha -pg 1 -lvl 0 -x -10 -y 1180 -defaultsOSRD
+preplace portBus pim_alarm -pg 1 -lvl 0 -x -10 -y 1210 -defaultsOSRD
+preplace inst eth1 -pg 1 -lvl 2 -x 970 -y 742 -defaultsOSRD
+preplace inst jtag -pg 1 -lvl 2 -x 970 -y 490 -defaultsOSRD
+preplace inst ipmc -pg 1 -lvl 2 -x 970 -y 160 -defaultsOSRD
+preplace inst cpu -pg 1 -lvl 1 -x 430 -y 550 -defaultsOSRD
+preplace inst dbg -pg 1 -lvl 1 -x 430 -y 930 -defaultsOSRD
+preplace inst i2c -pg 1 -lvl 2 -x 970 -y 980 -defaultsOSRD
+preplace inst reg_bank -pg 1 -lvl 2 -x 970 -y 1190 -defaultsOSRD
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 1 620 760n
+preplace netloc Net 1 0 2 100 1000 690
+preplace netloc proc_sys_reset_0_peripheral_aresetn 1 0 2 110 1010 740
+preplace netloc processing_system7_0_FCLK_CLK2 1 1 1 660 740n
+preplace netloc processing_system7_0_FCLK_CLK1 1 1 1 670 720n
+preplace netloc axi_ethernet_0_phy_rst_n 1 2 1 1150 772n
+preplace netloc axi_ethernet_0_mac_irq 1 0 3 100 220 700 330 1100
+preplace netloc axi_ethernet_0_interrupt 1 0 3 30 -50 N -50 1140
+preplace netloc axi_ethernet_0_dma_mm2s_introut 1 0 3 90 850 580 862 1100
+preplace netloc axi_ethernet_0_dma_s2mm_introut 1 0 3 60 1070 N 1070 1090
+preplace netloc ARESETN_1 1 1 1 610J 780n
+preplace netloc ipmc_jtag_TDI_1 1 2 1 1150J 540n
+preplace netloc ipmc_jtag_TMS_1 1 2 1 1180J 520n
 preplace netloc ipmc_jtag_TCK_1 1 2 1 NJ 500
-preplace netloc TDO_0_0_1 1 0 2 -100J 180 490
-preplace netloc ipmc_jtag_TDI_0 1 2 1 1010J 470n
-preplace netloc ipmc_jtag_TMS_0 1 2 1 1010J 440n
-preplace netloc ipmc_jtag_TCK_0 1 2 1 1000J 410n
-preplace netloc TDO_1_0_1 1 0 2 -100J 200 520
-preplace netloc Net1 1 2 1 1000J 100n
-preplace netloc Net2 1 2 1 1010 80n
-preplace netloc Net3 1 2 1 990J 180n
-preplace netloc Net4 1 2 1 970J 200n
-preplace netloc ipmc_jtag_irq 1 0 3 -80 170 650J 320 930
-preplace netloc ipmc_jtag_iic2intc_irpt 1 0 3 -60 250 630J 310 910
-preplace netloc ipmc_jtag_irq1 1 0 3 -90 190 640J 330 920
-preplace netloc ipmc_jtag_s0_o 1 0 3 -10 270 590J 350 950
-preplace netloc ipmc_jtag_s0_o1 1 0 3 -20 260 390J 370 940
-preplace netloc s0_i_1 1 1 1 540 160n
-preplace netloc s0_t_1 1 1 1 570 200n
-preplace netloc s0_i1_1 1 1 1 510 180n
-preplace netloc s0_t1_1 1 1 1 610 220n
-preplace netloc ps7_0_axi_periph_M01_AXI 1 1 1 390 400n
-preplace netloc processing_system7_0_DDR 1 1 2 N 340 960
-preplace netloc processing_system7_0_FIXED_IO 1 1 2 N 360 980
-preplace netloc ps7_0_axi_periph_M00_AXI 1 1 1 460 380n
-preplace netloc axi_ethernet_0_rgmii 1 2 1 1010 590n
-preplace netloc ps7_0_axi_periph_M02_AXI 1 1 1 450J 420n
-preplace netloc axi_mem_intercon_M00_AXI 1 0 3 0 280 550 380 930J
-preplace netloc axi_ethernet_0_mdio 1 2 1 N 680
-preplace netloc s_axi_1 1 1 1 N 440
-preplace netloc s_axi1_1 1 1 1 N 460
-preplace netloc S_AXI2_1 1 1 1 400 60n
-preplace netloc S_AXI3_1 1 1 1 410 80n
-preplace netloc S_AXI4_1 1 1 1 470 100n
-preplace netloc S_AXI5_1 1 1 1 480 120n
-preplace netloc S_AXI6_1 1 1 1 500 140n
-levelinfo -pg 1 -120 220 785 1040
-pagesize -pg 1 -db -bbox -sgen -220 0 1170 1590
+preplace netloc TDO_0_0_1 1 0 2 NJ 190 780
+preplace netloc ipmc_jtag_TDI_0 1 2 1 1150J 470n
+preplace netloc ipmc_jtag_TMS_0 1 2 1 1160J 440n
+preplace netloc ipmc_jtag_TCK_0 1 2 1 1150J 410n
+preplace netloc TDO_1_0_1 1 0 2 10J 210 760
+preplace netloc Net1 1 2 1 1200J 100n
+preplace netloc Net2 1 2 1 1210 80n
+preplace netloc Net3 1 2 1 1190J 180n
+preplace netloc Net4 1 2 1 1170J 200n
+preplace netloc ipmc_jtag_irq 1 0 3 50 -30 NJ -30 1110
+preplace netloc ipmc_jtag_iic2intc_irpt 1 0 3 20 -40 NJ -40 1130
+preplace netloc ipmc_jtag_irq1 1 0 3 40 -20 NJ -20 1120
+preplace netloc ipmc_jtag_s0_o 1 0 3 80 -10 NJ -10 1100
+preplace netloc ipmc_jtag_s0_o1 1 0 3 90 0 NJ 0 1090
+preplace netloc s0_i_1 1 1 1 660 160n
+preplace netloc s0_t_1 1 1 1 680 200n
+preplace netloc s0_i1_1 1 1 1 670 180n
+preplace netloc s0_t1_1 1 1 1 710 220n
+preplace netloc xlslice_1_Dout 1 2 1 1150 1190n
+preplace netloc xlslice_0_Dout 1 2 1 1150 1160n
+preplace netloc In0_0_1 1 0 2 NJ 1120 590
+preplace netloc In1_0_1 1 0 2 NJ 1150 580
+preplace netloc In2_0_1 1 0 2 NJ 1180 590
+preplace netloc In3_0_1 1 0 2 NJ 1210 N
+preplace netloc axi_ethernet_0_mdio 1 2 1 1160 672n
+preplace netloc processing_system7_0_DDR 1 1 2 790 310 1160
+preplace netloc ps7_0_axi_periph_M01_AXI 1 0 2 70 240 580
+preplace netloc ps7_0_axi_periph_M00_AXI 1 1 1 730 340n
+preplace netloc processing_system7_0_FIXED_IO 1 1 2 N 320 N
+preplace netloc axi_ethernet_0_rgmii 1 2 1 1180 590n
+preplace netloc ps7_0_axi_periph_M02_AXI 1 1 1 700J 380n
+preplace netloc axi_mem_intercon_M00_AXI 1 0 3 110 230 770 380 1090J
+preplace netloc s_axi_1 1 1 1 750 400n
+preplace netloc s_axi1_1 1 1 1 720 420n
+preplace netloc S_AXI5_1 1 1 1 630 120n
+preplace netloc S_AXI2_1 1 1 1 590 60n
+preplace netloc S_AXI4_1 1 1 1 620 100n
+preplace netloc S_AXI6_1 1 1 1 640 140n
+preplace netloc S_AXI3_1 1 1 1 600 80n
+preplace netloc axi_iic_0_IIC 1 2 1 1150 1000n
+preplace netloc cpu_M10_AXI 1 1 1 640 540n
+preplace netloc axi_iic_1_IIC 1 2 1 1150 940n
+preplace netloc cpu_M11_AXI 1 1 1 650 560n
+preplace netloc axi_iic_2_IIC 1 2 1 1160 980n
+preplace netloc cpu_M12_AXI 1 1 1 630 580n
+preplace netloc cpu_M13_AXI 1 1 1 600 600n
+levelinfo -pg 1 -10 430 970 1250
+pagesize -pg 1 -db -bbox -sgen -200 -70 1420 1590
 ",
-   "Color Coded_ScaleFactor":"1.2198",
-   "Color Coded_TopLeft":"-211,-15",
+   "Color Coded_ScaleFactor":"1.0",
+   "Color Coded_TopLeft":"84,746",
    "Default View_ScaleFactor":"1.12622",
    "Default View_TopLeft":"606,330",
    "ExpandedHierarchyInLayout":"",
@@ -135,7 +159,7 @@ pagesize -pg 1 -db -bbox -sgen -80 -750 2140 1910
 }
 {
    "da_aeth_cnt":"7",
-   "da_axi4_cnt":"31",
-   "da_board_cnt":"31",
+   "da_axi4_cnt":"35",
+   "da_board_cnt":"35",
    "da_clkrst_cnt":"21"
 }

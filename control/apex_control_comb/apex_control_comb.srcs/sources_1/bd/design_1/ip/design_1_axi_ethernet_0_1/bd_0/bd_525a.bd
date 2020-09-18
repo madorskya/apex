@@ -912,12 +912,6 @@
           "mac/rgmii"
         ]
       },
-      "eth_buf_AXI_STR_RXS": {
-        "interface_ports": [
-          "m_axis_rxs",
-          "eth_buf/AXI_STR_RXS"
-        ]
-      },
       "eth_buf_S_AXI_2TEMAC": {
         "interface_ports": [
           "eth_buf/S_AXI_2TEMAC",
@@ -942,10 +936,16 @@
           "eth_buf/S_AXI"
         ]
       },
-      "s_axis_txc_1": {
+      "eth_buf_AXI_STR_RXS": {
         "interface_ports": [
-          "s_axis_txc",
-          "eth_buf/AXI_STR_TXC"
+          "m_axis_rxs",
+          "eth_buf/AXI_STR_RXS"
+        ]
+      },
+      "eth_buf_AXI_STR_RXD": {
+        "interface_ports": [
+          "m_axis_rxd",
+          "eth_buf/AXI_STR_RXD"
         ]
       },
       "s_axis_txd_1": {
@@ -960,10 +960,10 @@
           "mac/m_axis_rx"
         ]
       },
-      "eth_buf_AXI_STR_RXD": {
+      "s_axis_txc_1": {
         "interface_ports": [
-          "m_axis_rxd",
-          "eth_buf/AXI_STR_RXD"
+          "s_axis_txc",
+          "eth_buf/AXI_STR_TXC"
         ]
       }
     },

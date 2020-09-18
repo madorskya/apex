@@ -576,7 +576,7 @@
       bit  IRQ_P2F_SPI1;
       bit  IRQ_P2F_UART1;
       bit  IRQ_P2F_CAN1;
-      bit  [3 : 0] IRQ_F2P;
+      bit  [6 : 0] IRQ_F2P;
       bit  Core0_nFIQ;
       bit  Core0_nIRQ;
       bit  Core1_nFIQ;
@@ -687,6 +687,12 @@
   ENET0_PTP_SYNC_FRAME_TX,
   ENET0_SOF_RX,
   ENET0_SOF_TX,
+  I2C1_SDA_I,
+  I2C1_SDA_O,
+  I2C1_SDA_T,
+  I2C1_SCL_I,
+  I2C1_SCL_O,
+  I2C1_SCL_T,
   SDIO0_CDN,
   SDIO0_WP,
   SDIO1_CDN,
@@ -839,7 +845,7 @@
       parameter C_S_AXI_HP3_DATA_WIDTH = 64;
       parameter C_M_AXI_GP0_THREAD_ID_WIDTH = 6;
       parameter C_M_AXI_GP1_THREAD_ID_WIDTH = 12;
-      parameter C_NUM_F2P_INTR_INPUTS = 4;
+      parameter C_NUM_F2P_INTR_INPUTS = 7;
       parameter C_IRQ_F2P_MODE = "DIRECT";
       parameter C_DQ_WIDTH = 32;
       parameter C_DQS_WIDTH = 4;
@@ -877,6 +883,12 @@
       output  ENET0_PTP_SYNC_FRAME_TX;
       output  ENET0_SOF_RX;
       output  ENET0_SOF_TX;
+      input  I2C1_SDA_I;
+      output  I2C1_SDA_O;
+      output  I2C1_SDA_T;
+      input  I2C1_SCL_I;
+      output  I2C1_SCL_O;
+      output  I2C1_SCL_T;
       input  SDIO0_CDN;
       input  SDIO0_WP;
       input  SDIO1_CDN;
@@ -968,7 +980,7 @@
       input  [5 : 0] S_AXI_HP0_WID;
       input  [63 : 0] S_AXI_HP0_WDATA;
       input  [7 : 0] S_AXI_HP0_WSTRB;
-      input  [3 : 0] IRQ_F2P;
+      input  [6 : 0] IRQ_F2P;
       output  FCLK_CLK0;
       output  FCLK_CLK1;
       output  FCLK_CLK2;
@@ -1007,6 +1019,10 @@
       reg ENET0_PTP_SYNC_FRAME_TX;
       reg ENET0_SOF_RX;
       reg ENET0_SOF_TX;
+      reg I2C1_SDA_O;
+      reg I2C1_SDA_T;
+      reg I2C1_SCL_O;
+      reg I2C1_SCL_T;
       reg [1 : 0] USB0_PORT_INDCTL;
       reg USB0_VBUS_PWRSELECT;
       reg M_AXI_GP0_ARVALID;
@@ -1326,6 +1342,30 @@ end
 always@(negedge IRQ_F2P[3])
 begin
     ps7_set_input_IRQ_F2P(3,0);
+end
+always@(posedge IRQ_F2P[4])
+begin
+    ps7_set_input_IRQ_F2P(4,1);
+end
+always@(negedge IRQ_F2P[4])
+begin
+    ps7_set_input_IRQ_F2P(4,0);
+end
+always@(posedge IRQ_F2P[5])
+begin
+    ps7_set_input_IRQ_F2P(5,1);
+end
+always@(negedge IRQ_F2P[5])
+begin
+    ps7_set_input_IRQ_F2P(5,0);
+end
+always@(posedge IRQ_F2P[6])
+begin
+    ps7_set_input_IRQ_F2P(6,1);
+end
+always@(negedge IRQ_F2P[6])
+begin
+    ps7_set_input_IRQ_F2P(6,0);
 end
 
 always@(posedge M_AXI_GP0_ACLK)

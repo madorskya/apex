@@ -50,30 +50,90 @@ set_power_opt -exclude_cells [get_cells -hierarchical -filter { PRIMITIVE_TYPE =
 # 4. go to pin assignment table document
 # 5. find that pin by number, find the ball number from table. Pin labels are WRONG in that table
 #J14
-set_property PACKAGE_PIN AA11 [get_ports TCK_0]; # pin 2
-set_property PACKAGE_PIN AB11 [get_ports TMS_0]; # pin 4
-set_property PACKAGE_PIN R17  [get_ports TDI_0]; # pin 6
-set_property PACKAGE_PIN T17  [get_ports TDO_0]; # pin 8
 
-# pinout of J15 connector reworked for apex adapter
-set_property PACKAGE_PIN W11 [get_ports TCK_1]; # pin 1
-set_property PACKAGE_PIN V11 [get_ports TMS_1]; # pin 3
-set_property PACKAGE_PIN U12 [get_ports TDI_1]; # pin 5
-set_property PACKAGE_PIN U11 [get_ports TDO_1]; # pin 7
+set_property IOSTANDARD LVCMOS33 [get_ports scf_*]
 
-set_property PACKAGE_PIN U19  [get_ports ipmc_scl_0]; # J13 pin 1
-set_property PACKAGE_PIN V19  [get_ports ipmc_sda_0]; # J13 pin 3
-set_property PACKAGE_PIN AB16 [get_ports ipmc_scl_1]; # J13 pin 5
-set_property PACKAGE_PIN AB17 [get_ports ipmc_sda_1]; # J13 pin 7
-
-set_property IOSTANDARD LVCMOS33 [get_ports TCK_*]
-set_property IOSTANDARD LVCMOS33 [get_ports TMS_*]
-set_property IOSTANDARD LVCMOS33 [get_ports TDI_*]
-set_property IOSTANDARD LVCMOS33 [get_ports TDO_*]
-
-set_property PULLUP true [get_ports TCK_*]
-set_property PULLUP true [get_ports TMS_*]
-set_property PULLUP true [get_ports TDI_*]
+set_property PULLUP true [get_ports scf_tck_*]
+set_property PULLUP true [get_ports scf_tms_*]
+set_property PULLUP true [get_ports scf_tdi_*]
+set_property PULLUP true [get_ports scf_i2c_*]
 
 set_property IOSTANDARD LVCMOS33 [get_ports ipmc_*]
 set_property PULLUP true         [get_ports ipmc_*]
+
+set_property IOSTANDARD LVCMOS33 [get_ports en_ipmb_zynq*]
+set_property IOSTANDARD LVCMOS33 [get_ports ready_ipmb_zynq*]
+set_property IOSTANDARD LVCMOS33 [get_ports ha*]
+set_property IOSTANDARD LVCMOS33 [get_ports id*]
+set_property IOSTANDARD LVCMOS33 [get_ports los_10g]
+set_property IOSTANDARD LVCMOS33 [get_ports pim_alarm*]
+
+
+#-------------------- from excel file -------------------------
+set_property PACKAGE_PIN G6  [get_ports en_ipmb_zynq[0]]; # J1 pin 39
+set_property PACKAGE_PIN B7  [get_ports en_ipmb_zynq[1]]; # J1 pin 49
+
+set_property PACKAGE_PIN A4  [get_ports ready_ipmb_zynq[0]]; # J1 pin 47
+set_property PACKAGE_PIN C5  [get_ports ready_ipmb_zynq[1]]; # J1 pin 57
+
+set_property PACKAGE_PIN C3  [get_ports scl_10g]; # J1 pin 54
+set_property PACKAGE_PIN F5  [get_ports sda_10g]; # J1 pin 56
+
+# scl_zynq[1:0] and sda_zynq[1:0] on schematics
+set_property PACKAGE_PIN F6  [get_ports ipmc_scl_0]; # J1 pin 41
+set_property PACKAGE_PIN B6  [get_ports ipmc_scl_1]; # J1 pin 51
+set_property PACKAGE_PIN A5  [get_ports ipmc_sda_0]; # J1 pin 45
+set_property PACKAGE_PIN C6  [get_ports ipmc_sda_1]; # J1 pin 55
+
+set_property PACKAGE_PIN W13  [get_ports los_10g]; # J2 pin 103
+set_property PACKAGE_PIN AA9  [get_ports axi_rx_p[0]]; # J2 pin 117
+set_property PACKAGE_PIN AA7  [get_ports axi_rx_p[1]]; # J2 pin 129
+set_property PACKAGE_PIN W8  [get_ports axi_rx_p[2]]; # J2 pin 120
+set_property PACKAGE_PIN W6  [get_ports axi_rx_p[3]]; # J2 pin 132
+set_property PACKAGE_PIN Y4  [get_ports axi_tx_p[0]]; # J2 pin 116
+set_property PACKAGE_PIN Y2  [get_ports axi_tx_p[1]]; # J2 pin 128
+set_property PACKAGE_PIN AB5  [get_ports axi_tx_p[2]]; # J2 pin 113
+set_property PACKAGE_PIN AB3  [get_ports axi_tx_p[3]]; # J2 pin 125
+
+set_property PACKAGE_PIN J7  [get_ports ha[0]]; # J2 pin 18
+set_property PACKAGE_PIN J6  [get_ports ha[1]]; # J2 pin 20
+set_property PACKAGE_PIN J5  [get_ports ha[2]]; # J2 pin 24
+set_property PACKAGE_PIN K5  [get_ports ha[3]]; # J2 pin 26
+set_property PACKAGE_PIN M8  [get_ports ha[4]]; # J2 pin 28
+set_property PACKAGE_PIN M7  [get_ports ha[5]]; # J2 pin 30
+set_property PACKAGE_PIN N8  [get_ports ha[6]]; # J2 pin 32
+set_property PACKAGE_PIN P8  [get_ports ha[7]]; # J2 pin 34
+set_property PACKAGE_PIN Y18  [get_ports id[0]]; # J2 pin 68
+set_property PACKAGE_PIN Y19  [get_ports id[1]]; # J2 pin 70
+set_property PACKAGE_PIN V18  [get_ports id[2]]; # J2 pin 72
+
+set_property PACKAGE_PIN AA20  [get_ports pim_alarm]; # J2 pin 77
+#set_property PACKAGE_PIN W12  [get_ports qbv_on_off]; # J2 pin 101 ??
+
+set_property PACKAGE_PIN N1  [get_ports scf_i2c_0_scl_io]; # J2 pin 9 
+set_property PACKAGE_PIN N6  [get_ports scf_i2c_1_scl_io]; # J2 pin 13
+set_property PACKAGE_PIN K4  [get_ports scf_i2c_2_scl_io]; # J2 pin 27
+set_property PACKAGE_PIN R8  [get_ports scf_i2c_0_sda_io]; # J2 pin 7
+set_property PACKAGE_PIN P1  [get_ports scf_i2c_1_sda_io]; # J2 pin 11
+set_property PACKAGE_PIN P2  [get_ports scf_i2c_2_sda_io]; # J2 pin 25
+
+set_property PACKAGE_PIN L7  [get_ports scf_tck_0]; # J2 pin 16
+set_property PACKAGE_PIN P3  [get_ports scf_tck_1]; # J2 pin 23
+set_property PACKAGE_PIN J8  [get_ports scf_tdi_0]; # J2 pin 10
+set_property PACKAGE_PIN N5  [get_ports scf_tdi_1]; # J2 pin 15
+set_property PACKAGE_PIN K8  [get_ports scf_tdo_0]; # J2 pin 12
+set_property PACKAGE_PIN L5  [get_ports scf_tdo_1]; # J2 pin 17
+set_property PACKAGE_PIN K7  [get_ports scf_tms_0]; # J2 pin 14
+set_property PACKAGE_PIN L4  [get_ports scf_tms_1]; # J2 pin 19
+
+# payload I2C from Elma chip
+#set_property PACKAGE_PIN R2  [get_ports scl_zynq[2]]; # J2 pin 56
+#set_property PACKAGE_PIN R3  [get_ports sda_zynq[2]]; # J2 pin 54
+# local I2C from Elma chip (talking to its slaves)
+#set_property PACKAGE_PIN P5  [get_ports scl_zynq[3]]; # J2 pin 50
+#set_property PACKAGE_PIN P6  [get_ports sda_zynq[3]]; # J2 pin 48
+# DAC I2C for spoofing Elma chip sensors
+#set_property PACKAGE_PIN W11  [get_ports scl_zynq[4]]; # J2 pin 110
+#set_property PACKAGE_PIN V11  [get_ports sda_zynq[4]]; # J2 pin 108
+
+set_property PACKAGE_PIN T16  [get_ports tach]; # J2 pin 84

@@ -66,6 +66,12 @@ ENET0_PTP_SYNC_FRAME_RX,
 ENET0_PTP_SYNC_FRAME_TX, 
 ENET0_SOF_RX, 
 ENET0_SOF_TX, 
+I2C1_SDA_I, 
+I2C1_SDA_O, 
+I2C1_SDA_T, 
+I2C1_SCL_I, 
+I2C1_SCL_O, 
+I2C1_SCL_T, 
 SDIO0_CDN, 
 SDIO0_WP, 
 SDIO1_CDN, 
@@ -194,6 +200,12 @@ output ENET0_PTP_SYNC_FRAME_RX;
 output ENET0_PTP_SYNC_FRAME_TX;
 output ENET0_SOF_RX;
 output ENET0_SOF_TX;
+input I2C1_SDA_I;
+output I2C1_SDA_O;
+output I2C1_SDA_T;
+input I2C1_SCL_I;
+output I2C1_SCL_O;
+output I2C1_SCL_T;
 input SDIO0_CDN;
 input SDIO0_WP;
 input SDIO1_CDN;
@@ -285,7 +297,7 @@ input [5 : 0] S_AXI_HP0_AWID;
 input [5 : 0] S_AXI_HP0_WID;
 input [63 : 0] S_AXI_HP0_WDATA;
 input [7 : 0] S_AXI_HP0_WSTRB;
-input [3 : 0] IRQ_F2P;
+input [6 : 0] IRQ_F2P;
 output FCLK_CLK0;
 output FCLK_CLK1;
 output FCLK_CLK2;

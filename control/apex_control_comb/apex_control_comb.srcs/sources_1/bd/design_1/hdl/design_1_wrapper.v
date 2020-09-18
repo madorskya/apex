@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Thu Sep 17 05:07:25 2020
+//Date        : Fri Sep 18 04:17:09 2020
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -31,15 +31,39 @@ module design_1_wrapper
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
+    en_ipmb_zynq,
+    ha,
+    id,
+    ipmc_scl_0,
+    ipmc_scl_1,
+    ipmc_sda_0,
+    ipmc_sda_1,
+    los_10g,
     mdio_phy_mdc,
     mdio_phy_mdio_io,
     phy_rst,
+    pim_alarm,
+    ready_ipmb_zynq,
     rgmii_rd,
     rgmii_rx_ctl,
     rgmii_rxc,
     rgmii_td,
     rgmii_tx_ctl,
-    rgmii_txc);
+    rgmii_txc,
+    scf_i2c_0_scl_io,
+    scf_i2c_0_sda_io,
+    scf_i2c_1_scl_io,
+    scf_i2c_1_sda_io,
+    scf_i2c_2_scl_io,
+    scf_i2c_2_sda_io,
+    scf_tck_0,
+    scf_tck_1,
+    scf_tdi_0,
+    scf_tdi_1,
+    scf_tdo_0,
+    scf_tdo_1,
+    scf_tms_0,
+    scf_tms_1);
   inout [14:0]DDR_addr;
   inout [2:0]DDR_ba;
   inout DDR_cas_n;
@@ -61,15 +85,39 @@ module design_1_wrapper
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
+  output [1:0]en_ipmb_zynq;
+  input [7:0]ha;
+  output [2:0]id;
+  inout ipmc_scl_0;
+  inout ipmc_scl_1;
+  inout ipmc_sda_0;
+  inout ipmc_sda_1;
+  input [0:0]los_10g;
   output mdio_phy_mdc;
   inout mdio_phy_mdio_io;
   output [0:0]phy_rst;
+  input [0:0]pim_alarm;
+  input [1:0]ready_ipmb_zynq;
   input [3:0]rgmii_rd;
   input rgmii_rx_ctl;
   input rgmii_rxc;
   output [3:0]rgmii_td;
   output rgmii_tx_ctl;
   output rgmii_txc;
+  inout scf_i2c_0_scl_io;
+  inout scf_i2c_0_sda_io;
+  inout scf_i2c_1_scl_io;
+  inout scf_i2c_1_sda_io;
+  inout scf_i2c_2_scl_io;
+  inout scf_i2c_2_sda_io;
+  output scf_tck_0;
+  output scf_tck_1;
+  output scf_tdi_0;
+  output scf_tdi_1;
+  input scf_tdo_0;
+  input scf_tdo_1;
+  output scf_tms_0;
+  output scf_tms_1;
 
   wire [14:0]DDR_addr;
   wire [2:0]DDR_ba;
@@ -92,18 +140,60 @@ module design_1_wrapper
   wire FIXED_IO_ps_clk;
   wire FIXED_IO_ps_porb;
   wire FIXED_IO_ps_srstb;
+  wire [1:0]en_ipmb_zynq;
+  wire [7:0]ha;
+  wire [2:0]id;
+  wire ipmc_scl_0;
+  wire ipmc_scl_1;
+  wire ipmc_sda_0;
+  wire ipmc_sda_1;
+  wire [0:0]los_10g;
   wire mdio_phy_mdc;
   wire mdio_phy_mdio_i;
   wire mdio_phy_mdio_io;
   wire mdio_phy_mdio_o;
   wire mdio_phy_mdio_t;
   wire [0:0]phy_rst;
+  wire [0:0]pim_alarm;
+  wire [1:0]ready_ipmb_zynq;
   wire [3:0]rgmii_rd;
   wire rgmii_rx_ctl;
   wire rgmii_rxc;
   wire [3:0]rgmii_td;
   wire rgmii_tx_ctl;
   wire rgmii_txc;
+  wire scf_i2c_0_scl_i;
+  wire scf_i2c_0_scl_io;
+  wire scf_i2c_0_scl_o;
+  wire scf_i2c_0_scl_t;
+  wire scf_i2c_0_sda_i;
+  wire scf_i2c_0_sda_io;
+  wire scf_i2c_0_sda_o;
+  wire scf_i2c_0_sda_t;
+  wire scf_i2c_1_scl_i;
+  wire scf_i2c_1_scl_io;
+  wire scf_i2c_1_scl_o;
+  wire scf_i2c_1_scl_t;
+  wire scf_i2c_1_sda_i;
+  wire scf_i2c_1_sda_io;
+  wire scf_i2c_1_sda_o;
+  wire scf_i2c_1_sda_t;
+  wire scf_i2c_2_scl_i;
+  wire scf_i2c_2_scl_io;
+  wire scf_i2c_2_scl_o;
+  wire scf_i2c_2_scl_t;
+  wire scf_i2c_2_sda_i;
+  wire scf_i2c_2_sda_io;
+  wire scf_i2c_2_sda_o;
+  wire scf_i2c_2_sda_t;
+  wire scf_tck_0;
+  wire scf_tck_1;
+  wire scf_tdi_0;
+  wire scf_tdi_1;
+  wire scf_tdo_0;
+  wire scf_tdo_1;
+  wire scf_tms_0;
+  wire scf_tms_1;
 
   design_1 design_1_i
        (.DDR_addr(DDR_addr),
@@ -127,20 +217,86 @@ module design_1_wrapper
         .FIXED_IO_ps_clk(FIXED_IO_ps_clk),
         .FIXED_IO_ps_porb(FIXED_IO_ps_porb),
         .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
+        .en_ipmb_zynq(en_ipmb_zynq),
+        .ha(ha),
+        .id(id),
+        .ipmc_scl_0(ipmc_scl_0),
+        .ipmc_scl_1(ipmc_scl_1),
+        .ipmc_sda_0(ipmc_sda_0),
+        .ipmc_sda_1(ipmc_sda_1),
+        .los_10g(los_10g),
         .mdio_phy_mdc(mdio_phy_mdc),
         .mdio_phy_mdio_i(mdio_phy_mdio_i),
         .mdio_phy_mdio_o(mdio_phy_mdio_o),
         .mdio_phy_mdio_t(mdio_phy_mdio_t),
         .phy_rst(phy_rst),
+        .pim_alarm(pim_alarm),
+        .ready_ipmb_zynq(ready_ipmb_zynq),
         .rgmii_rd(rgmii_rd),
         .rgmii_rx_ctl(rgmii_rx_ctl),
         .rgmii_rxc(rgmii_rxc),
         .rgmii_td(rgmii_td),
         .rgmii_tx_ctl(rgmii_tx_ctl),
-        .rgmii_txc(rgmii_txc));
+        .rgmii_txc(rgmii_txc),
+        .scf_i2c_0_scl_i(scf_i2c_0_scl_i),
+        .scf_i2c_0_scl_o(scf_i2c_0_scl_o),
+        .scf_i2c_0_scl_t(scf_i2c_0_scl_t),
+        .scf_i2c_0_sda_i(scf_i2c_0_sda_i),
+        .scf_i2c_0_sda_o(scf_i2c_0_sda_o),
+        .scf_i2c_0_sda_t(scf_i2c_0_sda_t),
+        .scf_i2c_1_scl_i(scf_i2c_1_scl_i),
+        .scf_i2c_1_scl_o(scf_i2c_1_scl_o),
+        .scf_i2c_1_scl_t(scf_i2c_1_scl_t),
+        .scf_i2c_1_sda_i(scf_i2c_1_sda_i),
+        .scf_i2c_1_sda_o(scf_i2c_1_sda_o),
+        .scf_i2c_1_sda_t(scf_i2c_1_sda_t),
+        .scf_i2c_2_scl_i(scf_i2c_2_scl_i),
+        .scf_i2c_2_scl_o(scf_i2c_2_scl_o),
+        .scf_i2c_2_scl_t(scf_i2c_2_scl_t),
+        .scf_i2c_2_sda_i(scf_i2c_2_sda_i),
+        .scf_i2c_2_sda_o(scf_i2c_2_sda_o),
+        .scf_i2c_2_sda_t(scf_i2c_2_sda_t),
+        .scf_tck_0(scf_tck_0),
+        .scf_tck_1(scf_tck_1),
+        .scf_tdi_0(scf_tdi_0),
+        .scf_tdi_1(scf_tdi_1),
+        .scf_tdo_0(scf_tdo_0),
+        .scf_tdo_1(scf_tdo_1),
+        .scf_tms_0(scf_tms_0),
+        .scf_tms_1(scf_tms_1));
   IOBUF mdio_phy_mdio_iobuf
        (.I(mdio_phy_mdio_o),
         .IO(mdio_phy_mdio_io),
         .O(mdio_phy_mdio_i),
         .T(mdio_phy_mdio_t));
+  IOBUF scf_i2c_0_scl_iobuf
+       (.I(scf_i2c_0_scl_o),
+        .IO(scf_i2c_0_scl_io),
+        .O(scf_i2c_0_scl_i),
+        .T(scf_i2c_0_scl_t));
+  IOBUF scf_i2c_0_sda_iobuf
+       (.I(scf_i2c_0_sda_o),
+        .IO(scf_i2c_0_sda_io),
+        .O(scf_i2c_0_sda_i),
+        .T(scf_i2c_0_sda_t));
+  IOBUF scf_i2c_1_scl_iobuf
+       (.I(scf_i2c_1_scl_o),
+        .IO(scf_i2c_1_scl_io),
+        .O(scf_i2c_1_scl_i),
+        .T(scf_i2c_1_scl_t));
+  IOBUF scf_i2c_1_sda_iobuf
+       (.I(scf_i2c_1_sda_o),
+        .IO(scf_i2c_1_sda_io),
+        .O(scf_i2c_1_sda_i),
+        .T(scf_i2c_1_sda_t));
+  IOBUF scf_i2c_2_scl_iobuf
+       (.I(scf_i2c_2_scl_o),
+        .IO(scf_i2c_2_scl_io),
+        .O(scf_i2c_2_scl_i),
+        .T(scf_i2c_2_scl_t));
+  IOBUF scf_i2c_2_sda_iobuf
+       (.I(scf_i2c_2_sda_o),
+        .IO(scf_i2c_2_sda_io),
+        .O(scf_i2c_2_sda_i),
+        .T(scf_i2c_2_sda_t));
 endmodule
