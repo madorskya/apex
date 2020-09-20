@@ -65,8 +65,10 @@ set_property IOSTANDARD LVCMOS33 [get_ports en_ipmb_zynq*]
 set_property IOSTANDARD LVCMOS33 [get_ports ready_ipmb_zynq*]
 set_property IOSTANDARD LVCMOS33 [get_ports ha*]
 set_property IOSTANDARD LVCMOS33 [get_ports id*]
-set_property IOSTANDARD LVCMOS33 [get_ports los_10g]
+set_property IOSTANDARD LVCMOS33 [get_ports los_10g*]
 set_property IOSTANDARD LVCMOS33 [get_ports pim_alarm*]
+set_property IOSTANDARD LVCMOS33 [get_ports i2c_10g_*]
+set_property IOSTANDARD LVCMOS33 [get_ports qbv_on_off*]
 
 
 #-------------------- from excel file -------------------------
@@ -76,8 +78,8 @@ set_property PACKAGE_PIN B7  [get_ports en_ipmb_zynq[1]]; # J1 pin 49
 set_property PACKAGE_PIN A4  [get_ports ready_ipmb_zynq[0]]; # J1 pin 47
 set_property PACKAGE_PIN C5  [get_ports ready_ipmb_zynq[1]]; # J1 pin 57
 
-set_property PACKAGE_PIN C3  [get_ports scl_10g]; # J1 pin 54
-set_property PACKAGE_PIN F5  [get_ports sda_10g]; # J1 pin 56
+set_property PACKAGE_PIN C3  [get_ports i2c_10g_scl_io]; # J1 pin 54 i2c_10g_scl_io
+set_property PACKAGE_PIN F5  [get_ports i2c_10g_sda_io]; # J1 pin 56
 
 # scl_zynq[1:0] and sda_zynq[1:0] on schematics
 set_property PACKAGE_PIN F6  [get_ports ipmc_scl_0]; # J1 pin 41
@@ -86,14 +88,19 @@ set_property PACKAGE_PIN A5  [get_ports ipmc_sda_0]; # J1 pin 45
 set_property PACKAGE_PIN C6  [get_ports ipmc_sda_1]; # J1 pin 55
 
 set_property PACKAGE_PIN W13  [get_ports los_10g]; # J2 pin 103
-set_property PACKAGE_PIN AA9  [get_ports axi_rx_p[0]]; # J2 pin 117
-set_property PACKAGE_PIN AA7  [get_ports axi_rx_p[1]]; # J2 pin 129
-set_property PACKAGE_PIN W8  [get_ports axi_rx_p[2]]; # J2 pin 120
-set_property PACKAGE_PIN W6  [get_ports axi_rx_p[3]]; # J2 pin 132
-set_property PACKAGE_PIN Y4  [get_ports axi_tx_p[0]]; # J2 pin 116
-set_property PACKAGE_PIN Y2  [get_ports axi_tx_p[1]]; # J2 pin 128
-set_property PACKAGE_PIN AB5  [get_ports axi_tx_p[2]]; # J2 pin 113
-set_property PACKAGE_PIN AB3  [get_ports axi_tx_p[3]]; # J2 pin 125
+
+set_property PACKAGE_PIN U9  [get_ports mgtrefclk_clk_p]; # J2 pin 135
+
+set_property PACKAGE_PIN AA9  [get_ports c2c_rx_0_rxp[0]]; # J2 pin 117
+set_property PACKAGE_PIN AA7  [get_ports c2c_rx_1_rxp[0]]; # J2 pin 129
+set_property PACKAGE_PIN W8   [get_ports c2c_rx_0_rxp[1]]; # J2 pin 120
+set_property PACKAGE_PIN W6   [get_ports c2c_rx_1_rxp[1]]; # J2 pin 132
+
+set_property PACKAGE_PIN AA5  [get_ports c2c_tx_0_txp[0]]; # J2 pin 111
+set_property PACKAGE_PIN AA3  [get_ports c2c_tx_1_txp[0]]; # J2 pin 123
+set_property PACKAGE_PIN W4   [get_ports c2c_tx_0_txp[1]]; # J2 pin 114
+set_property PACKAGE_PIN W2   [get_ports c2c_tx_1_txp[1]]; # J2 pin 126
+
 
 set_property PACKAGE_PIN J7  [get_ports ha[0]]; # J2 pin 18
 set_property PACKAGE_PIN J6  [get_ports ha[1]]; # J2 pin 20
@@ -108,7 +115,7 @@ set_property PACKAGE_PIN Y19  [get_ports id[1]]; # J2 pin 70
 set_property PACKAGE_PIN V18  [get_ports id[2]]; # J2 pin 72
 
 set_property PACKAGE_PIN AA20  [get_ports pim_alarm]; # J2 pin 77
-#set_property PACKAGE_PIN W12  [get_ports qbv_on_off]; # J2 pin 101 ??
+set_property PACKAGE_PIN W12  [get_ports qbv_on_off]; # J2 pin 101 12V DC-DC control 0 = enable
 
 set_property PACKAGE_PIN N1  [get_ports scf_i2c_0_scl_io]; # J2 pin 9 
 set_property PACKAGE_PIN N6  [get_ports scf_i2c_1_scl_io]; # J2 pin 13

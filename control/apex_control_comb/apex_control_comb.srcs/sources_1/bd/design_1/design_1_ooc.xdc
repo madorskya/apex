@@ -7,6 +7,7 @@
 # of Vivado)
 ################################################################################
 create_clock -name rgmii_rxc -period 10 [get_ports rgmii_rxc]
+create_clock -name mgtrefclk_clk_p -period 4 [get_ports mgtrefclk_clk_p]
 create_clock -name cpu_processing_system7_0_FCLK_CLK0 -period 10 [get_pins cpu/processing_system7_0/FCLK_CLK0]
 create_clock -name cpu_processing_system7_0_FCLK_CLK1 -period 5 [get_pins cpu/processing_system7_0/FCLK_CLK1]
 create_clock -name cpu_processing_system7_0_FCLK_CLK2 -period 8 [get_pins cpu/processing_system7_0/FCLK_CLK2]

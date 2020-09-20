@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Fri Sep 18 04:17:09 2020
+//Date        : Sun Sep 20 01:00:43 2020
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -31,8 +31,18 @@ module design_1_wrapper
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
+    c2c_rx_0_rxn,
+    c2c_rx_0_rxp,
+    c2c_rx_1_rxn,
+    c2c_rx_1_rxp,
+    c2c_tx_0_txn,
+    c2c_tx_0_txp,
+    c2c_tx_1_txn,
+    c2c_tx_1_txp,
     en_ipmb_zynq,
     ha,
+    i2c_10g_scl_io,
+    i2c_10g_sda_io,
     id,
     ipmc_scl_0,
     ipmc_scl_1,
@@ -41,8 +51,11 @@ module design_1_wrapper
     los_10g,
     mdio_phy_mdc,
     mdio_phy_mdio_io,
+    mgtrefclk_clk_n,
+    mgtrefclk_clk_p,
     phy_rst,
     pim_alarm,
+    qbv_on_off,
     ready_ipmb_zynq,
     rgmii_rd,
     rgmii_rx_ctl,
@@ -85,8 +98,18 @@ module design_1_wrapper
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
+  input [0:1]c2c_rx_0_rxn;
+  input [0:1]c2c_rx_0_rxp;
+  input [0:1]c2c_rx_1_rxn;
+  input [0:1]c2c_rx_1_rxp;
+  output [0:1]c2c_tx_0_txn;
+  output [0:1]c2c_tx_0_txp;
+  output [0:1]c2c_tx_1_txn;
+  output [0:1]c2c_tx_1_txp;
   output [1:0]en_ipmb_zynq;
   input [7:0]ha;
+  inout i2c_10g_scl_io;
+  inout i2c_10g_sda_io;
   output [2:0]id;
   inout ipmc_scl_0;
   inout ipmc_scl_1;
@@ -95,8 +118,11 @@ module design_1_wrapper
   input [0:0]los_10g;
   output mdio_phy_mdc;
   inout mdio_phy_mdio_io;
+  input [0:0]mgtrefclk_clk_n;
+  input [0:0]mgtrefclk_clk_p;
   output [0:0]phy_rst;
   input [0:0]pim_alarm;
+  output [0:0]qbv_on_off;
   input [1:0]ready_ipmb_zynq;
   input [3:0]rgmii_rd;
   input rgmii_rx_ctl;
@@ -140,8 +166,24 @@ module design_1_wrapper
   wire FIXED_IO_ps_clk;
   wire FIXED_IO_ps_porb;
   wire FIXED_IO_ps_srstb;
+  wire [0:1]c2c_rx_0_rxn;
+  wire [0:1]c2c_rx_0_rxp;
+  wire [0:1]c2c_rx_1_rxn;
+  wire [0:1]c2c_rx_1_rxp;
+  wire [0:1]c2c_tx_0_txn;
+  wire [0:1]c2c_tx_0_txp;
+  wire [0:1]c2c_tx_1_txn;
+  wire [0:1]c2c_tx_1_txp;
   wire [1:0]en_ipmb_zynq;
   wire [7:0]ha;
+  wire i2c_10g_scl_i;
+  wire i2c_10g_scl_io;
+  wire i2c_10g_scl_o;
+  wire i2c_10g_scl_t;
+  wire i2c_10g_sda_i;
+  wire i2c_10g_sda_io;
+  wire i2c_10g_sda_o;
+  wire i2c_10g_sda_t;
   wire [2:0]id;
   wire ipmc_scl_0;
   wire ipmc_scl_1;
@@ -153,8 +195,11 @@ module design_1_wrapper
   wire mdio_phy_mdio_io;
   wire mdio_phy_mdio_o;
   wire mdio_phy_mdio_t;
+  wire [0:0]mgtrefclk_clk_n;
+  wire [0:0]mgtrefclk_clk_p;
   wire [0:0]phy_rst;
   wire [0:0]pim_alarm;
+  wire [0:0]qbv_on_off;
   wire [1:0]ready_ipmb_zynq;
   wire [3:0]rgmii_rd;
   wire rgmii_rx_ctl;
@@ -217,8 +262,22 @@ module design_1_wrapper
         .FIXED_IO_ps_clk(FIXED_IO_ps_clk),
         .FIXED_IO_ps_porb(FIXED_IO_ps_porb),
         .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
+        .c2c_rx_0_rxn(c2c_rx_0_rxn),
+        .c2c_rx_0_rxp(c2c_rx_0_rxp),
+        .c2c_rx_1_rxn(c2c_rx_1_rxn),
+        .c2c_rx_1_rxp(c2c_rx_1_rxp),
+        .c2c_tx_0_txn(c2c_tx_0_txn),
+        .c2c_tx_0_txp(c2c_tx_0_txp),
+        .c2c_tx_1_txn(c2c_tx_1_txn),
+        .c2c_tx_1_txp(c2c_tx_1_txp),
         .en_ipmb_zynq(en_ipmb_zynq),
         .ha(ha),
+        .i2c_10g_scl_i(i2c_10g_scl_i),
+        .i2c_10g_scl_o(i2c_10g_scl_o),
+        .i2c_10g_scl_t(i2c_10g_scl_t),
+        .i2c_10g_sda_i(i2c_10g_sda_i),
+        .i2c_10g_sda_o(i2c_10g_sda_o),
+        .i2c_10g_sda_t(i2c_10g_sda_t),
         .id(id),
         .ipmc_scl_0(ipmc_scl_0),
         .ipmc_scl_1(ipmc_scl_1),
@@ -229,8 +288,11 @@ module design_1_wrapper
         .mdio_phy_mdio_i(mdio_phy_mdio_i),
         .mdio_phy_mdio_o(mdio_phy_mdio_o),
         .mdio_phy_mdio_t(mdio_phy_mdio_t),
+        .mgtrefclk_clk_n(mgtrefclk_clk_n),
+        .mgtrefclk_clk_p(mgtrefclk_clk_p),
         .phy_rst(phy_rst),
         .pim_alarm(pim_alarm),
+        .qbv_on_off(qbv_on_off),
         .ready_ipmb_zynq(ready_ipmb_zynq),
         .rgmii_rd(rgmii_rd),
         .rgmii_rx_ctl(rgmii_rx_ctl),
@@ -264,6 +326,16 @@ module design_1_wrapper
         .scf_tdo_1(scf_tdo_1),
         .scf_tms_0(scf_tms_0),
         .scf_tms_1(scf_tms_1));
+  IOBUF i2c_10g_scl_iobuf
+       (.I(i2c_10g_scl_o),
+        .IO(i2c_10g_scl_io),
+        .O(i2c_10g_scl_i),
+        .T(i2c_10g_scl_t));
+  IOBUF i2c_10g_sda_iobuf
+       (.I(i2c_10g_sda_o),
+        .IO(i2c_10g_sda_io),
+        .O(i2c_10g_sda_i),
+        .T(i2c_10g_sda_t));
   IOBUF mdio_phy_mdio_iobuf
        (.I(mdio_phy_mdio_o),
         .IO(mdio_phy_mdio_io),
