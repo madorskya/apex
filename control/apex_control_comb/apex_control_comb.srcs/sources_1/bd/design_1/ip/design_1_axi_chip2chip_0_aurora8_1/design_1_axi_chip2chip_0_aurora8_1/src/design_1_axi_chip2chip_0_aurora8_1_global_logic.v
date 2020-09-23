@@ -54,7 +54,7 @@
 //  Description: The GLOBAL_LOGIC module handles channel bonding, channel
 //               verification, channel error manangement and idle generation.
 //
-//               This module supports 2 4-byte lane designs
+//               This module supports 1 4-byte lane designs
 //
 
 `timescale 1 ns / 1 ps
@@ -100,24 +100,24 @@ module design_1_axi_chip2chip_0_aurora8_1_GLOBAL_LOGIC
 //***********************************Port Declarations*******************************
 
     // GTP Interface
-input   [0:1]      CH_BOND_DONE;
+input              CH_BOND_DONE;
 
 output             EN_CHAN_SYNC;
 
 
     // Aurora Lane Interface
-input   [0:3]      SOFT_ERR;
-input   [0:1]      LANE_UP;
-input   [0:1]      HARD_ERR;
-input   [0:1]      CHANNEL_BOND_LOAD;
-input   [0:7]      GOT_A;
-input   [0:1]      GOT_V;
+input   [0:1]      SOFT_ERR;
+input              LANE_UP;
+input              HARD_ERR;
+input              CHANNEL_BOND_LOAD;
+input   [0:3]      GOT_A;
+input              GOT_V;
 
-output  [0:1]      GEN_A;
-output  [0:7]      GEN_K;
-output  [0:7]      GEN_R;
-output  [0:7]      GEN_V;
-output  [0:1]      RESET_LANES;
+output             GEN_A;
+output  [0:3]      GEN_K;
+output  [0:3]      GEN_R;
+output  [0:3]      GEN_V;
+output             RESET_LANES;
 output             GTRXRESET_OUT;
 
     // System Interface

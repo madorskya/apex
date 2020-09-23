@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Sun Sep 20 01:00:43 2020
+//Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
+//Date        : Tue Sep 22 18:24:01 2020
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -98,14 +98,14 @@ module design_1_wrapper
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
-  input [0:1]c2c_rx_0_rxn;
-  input [0:1]c2c_rx_0_rxp;
-  input [0:1]c2c_rx_1_rxn;
-  input [0:1]c2c_rx_1_rxp;
-  output [0:1]c2c_tx_0_txn;
-  output [0:1]c2c_tx_0_txp;
-  output [0:1]c2c_tx_1_txn;
-  output [0:1]c2c_tx_1_txp;
+  input [0:0]c2c_rx_0_rxn;
+  input [0:0]c2c_rx_0_rxp;
+  input [0:0]c2c_rx_1_rxn;
+  input [0:0]c2c_rx_1_rxp;
+  output [0:0]c2c_tx_0_txn;
+  output [0:0]c2c_tx_0_txp;
+  output [0:0]c2c_tx_1_txn;
+  output [0:0]c2c_tx_1_txp;
   output [1:0]en_ipmb_zynq;
   input [7:0]ha;
   inout i2c_10g_scl_io;
@@ -166,14 +166,14 @@ module design_1_wrapper
   wire FIXED_IO_ps_clk;
   wire FIXED_IO_ps_porb;
   wire FIXED_IO_ps_srstb;
-  wire [0:1]c2c_rx_0_rxn;
-  wire [0:1]c2c_rx_0_rxp;
-  wire [0:1]c2c_rx_1_rxn;
-  wire [0:1]c2c_rx_1_rxp;
-  wire [0:1]c2c_tx_0_txn;
-  wire [0:1]c2c_tx_0_txp;
-  wire [0:1]c2c_tx_1_txn;
-  wire [0:1]c2c_tx_1_txp;
+  wire [0:0]c2c_rx_0_rxn;
+  wire [0:0]c2c_rx_0_rxp;
+  wire [0:0]c2c_rx_1_rxn;
+  wire [0:0]c2c_rx_1_rxp;
+  wire [0:0]c2c_tx_0_txn;
+  wire [0:0]c2c_tx_0_txp;
+  wire [0:0]c2c_tx_1_txn;
+  wire [0:0]c2c_tx_1_txp;
   wire [1:0]en_ipmb_zynq;
   wire [7:0]ha;
   wire i2c_10g_scl_i;

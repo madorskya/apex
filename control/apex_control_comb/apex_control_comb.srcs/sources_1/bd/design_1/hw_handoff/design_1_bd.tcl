@@ -2046,20 +2046,20 @@ proc create_hier_cell_chip2chip_1 { parentCell nameHier } {
   # Create instance: axi_chip2chip_0, and set properties
   set axi_chip2chip_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_chip2chip:5.0 axi_chip2chip_0 ]
   set_property -dict [ list \
-   CONFIG.C_AURORA_WIDTH {2} \
-   CONFIG.C_ECC_ENABLE {true} \
-   CONFIG.C_INTERFACE_MODE {0} \
+   CONFIG.C_AURORA_WIDTH {1} \
+   CONFIG.C_ECC_ENABLE {false} \
+   CONFIG.C_INTERFACE_MODE {1} \
    CONFIG.C_INTERFACE_TYPE {3} \
  ] $axi_chip2chip_0
 
   # Create instance: axi_chip2chip_0_aurora8, and set properties
   set axi_chip2chip_0_aurora8 [ create_bd_cell -type ip -vlnv xilinx.com:ip:aurora_8b10b:11.1 axi_chip2chip_0_aurora8 ]
   set_property -dict [ list \
-   CONFIG.C_AURORA_LANES {2} \
+   CONFIG.C_AURORA_LANES {1} \
    CONFIG.C_DRP_IF {false} \
    CONFIG.C_GT_CLOCK_1 {GTPQ0} \
    CONFIG.C_GT_LOC_1 {X} \
-   CONFIG.C_GT_LOC_2 {2} \
+   CONFIG.C_GT_LOC_2 {X} \
    CONFIG.C_GT_LOC_3 {1} \
    CONFIG.C_GT_LOC_4 {X} \
    CONFIG.C_LANE_WIDTH {4} \
@@ -2160,19 +2160,19 @@ proc create_hier_cell_chip2chip_0 { parentCell nameHier } {
   # Create instance: axi_chip2chip_0, and set properties
   set axi_chip2chip_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_chip2chip:5.0 axi_chip2chip_0 ]
   set_property -dict [ list \
-   CONFIG.C_AURORA_WIDTH {2} \
-   CONFIG.C_ECC_ENABLE {true} \
-   CONFIG.C_INTERFACE_MODE {0} \
+   CONFIG.C_AURORA_WIDTH {1} \
+   CONFIG.C_ECC_ENABLE {false} \
+   CONFIG.C_INTERFACE_MODE {1} \
    CONFIG.C_INTERFACE_TYPE {3} \
  ] $axi_chip2chip_0
 
   # Create instance: axi_chip2chip_0_aurora8, and set properties
   set axi_chip2chip_0_aurora8 [ create_bd_cell -type ip -vlnv xilinx.com:ip:aurora_8b10b:11.1 axi_chip2chip_0_aurora8 ]
   set_property -dict [ list \
-   CONFIG.C_AURORA_LANES {2} \
+   CONFIG.C_AURORA_LANES {1} \
    CONFIG.C_DRP_IF {false} \
    CONFIG.C_GT_LOC_3 {X} \
-   CONFIG.C_GT_LOC_4 {2} \
+   CONFIG.C_GT_LOC_4 {X} \
    CONFIG.C_LANE_WIDTH {4} \
    CONFIG.C_LINE_RATE {3.75} \
    CONFIG.C_REFCLK_FREQUENCY {250.000} \

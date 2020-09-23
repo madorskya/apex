@@ -52,13 +52,13 @@
 //  design_1_axi_chip2chip_0_aurora8_1
 //
 //
-//  Description: This is the top level module for a 2 4-byte lane Aurora
+//  Description: This is the top level module for a 1 4-byte lane Aurora
 //               reference design module with streaming interface.
 //
 
 
 `timescale 1 ns / 1 ps
-(* core_generation_info = "design_1_axi_chip2chip_0_aurora8_1,aurora_8b10b_v11_1_9,{user_interface=AXI_4_Streaming,backchannel_mode=Sidebands,c_aurora_lanes=2,c_column_used=None,c_gt_clock_1=GTPQ0,c_gt_clock_2=None,c_gt_loc_1=X,c_gt_loc_10=X,c_gt_loc_11=X,c_gt_loc_12=X,c_gt_loc_13=X,c_gt_loc_14=X,c_gt_loc_15=X,c_gt_loc_16=X,c_gt_loc_17=X,c_gt_loc_18=X,c_gt_loc_19=X,c_gt_loc_2=2,c_gt_loc_20=X,c_gt_loc_21=X,c_gt_loc_22=X,c_gt_loc_23=X,c_gt_loc_24=X,c_gt_loc_25=X,c_gt_loc_26=X,c_gt_loc_27=X,c_gt_loc_28=X,c_gt_loc_29=X,c_gt_loc_3=1,c_gt_loc_30=X,c_gt_loc_31=X,c_gt_loc_32=X,c_gt_loc_33=X,c_gt_loc_34=X,c_gt_loc_35=X,c_gt_loc_36=X,c_gt_loc_37=X,c_gt_loc_38=X,c_gt_loc_39=X,c_gt_loc_4=X,c_gt_loc_40=X,c_gt_loc_41=X,c_gt_loc_42=X,c_gt_loc_43=X,c_gt_loc_44=X,c_gt_loc_45=X,c_gt_loc_46=X,c_gt_loc_47=X,c_gt_loc_48=X,c_gt_loc_5=X,c_gt_loc_6=X,c_gt_loc_7=X,c_gt_loc_8=X,c_gt_loc_9=X,c_lane_width=4,c_line_rate=37500,c_nfc=false,c_nfc_mode=IMM,c_refclk_frequency=250000,c_simplex=false,c_simplex_mode=TX,c_stream=true,c_ufc=false,flow_mode=None,interface_mode=Streaming,dataflow_config=Duplex}" *)
+(* core_generation_info = "design_1_axi_chip2chip_0_aurora8_1,aurora_8b10b_v11_1_9,{user_interface=AXI_4_Streaming,backchannel_mode=Sidebands,c_aurora_lanes=1,c_column_used=None,c_gt_clock_1=GTPQ0,c_gt_clock_2=None,c_gt_loc_1=X,c_gt_loc_10=X,c_gt_loc_11=X,c_gt_loc_12=X,c_gt_loc_13=X,c_gt_loc_14=X,c_gt_loc_15=X,c_gt_loc_16=X,c_gt_loc_17=X,c_gt_loc_18=X,c_gt_loc_19=X,c_gt_loc_2=X,c_gt_loc_20=X,c_gt_loc_21=X,c_gt_loc_22=X,c_gt_loc_23=X,c_gt_loc_24=X,c_gt_loc_25=X,c_gt_loc_26=X,c_gt_loc_27=X,c_gt_loc_28=X,c_gt_loc_29=X,c_gt_loc_3=1,c_gt_loc_30=X,c_gt_loc_31=X,c_gt_loc_32=X,c_gt_loc_33=X,c_gt_loc_34=X,c_gt_loc_35=X,c_gt_loc_36=X,c_gt_loc_37=X,c_gt_loc_38=X,c_gt_loc_39=X,c_gt_loc_4=X,c_gt_loc_40=X,c_gt_loc_41=X,c_gt_loc_42=X,c_gt_loc_43=X,c_gt_loc_44=X,c_gt_loc_45=X,c_gt_loc_46=X,c_gt_loc_47=X,c_gt_loc_48=X,c_gt_loc_5=X,c_gt_loc_6=X,c_gt_loc_7=X,c_gt_loc_8=X,c_gt_loc_9=X,c_lane_width=4,c_line_rate=37500,c_nfc=false,c_nfc_mode=IMM,c_refclk_frequency=250000,c_simplex=false,c_simplex_mode=TX,c_stream=true,c_ufc=false,flow_mode=None,interface_mode=Streaming,dataflow_config=Duplex}" *)
 module design_1_axi_chip2chip_0_aurora8_1_core #
 (
      parameter   SIM_GTRESET_SPEEDUP=   "FALSE",     // Set to 'TRUE' to speed up sim reset
@@ -111,12 +111,6 @@ drpclk_in,
     drpen_in,
     drprdy_out,
     drpwe_in,
-    drpaddr_in_lane1,
-    drpdi_in_lane1,
-    drpdo_out_lane1,
-    drpen_in_lane1,
-    drprdy_out_lane1,
-    drpwe_in_lane1,
     tx_out_clk,
 
 //------------------{
@@ -156,7 +150,7 @@ input           gt0_pll1outrefclk_in;
 
     // AXI TX Interface
  
-input   [0:63]     s_axi_tx_tdata;
+input   [0:31]     s_axi_tx_tdata;
  
 input              s_axi_tx_tvalid;
 
@@ -164,16 +158,16 @@ output             s_axi_tx_tready;
 
     // AXI RX Interface
  
-output  [0:63]     m_axi_rx_tdata;
+output  [0:31]     m_axi_rx_tdata;
  
 output             m_axi_rx_tvalid;
 
    
     //GT Serial I/O
-input   [0:1]      rxp;
-input   [0:1]      rxn;
-output  [0:1]      txp;
-output  [0:1]      txn;
+input              rxp;
+input              rxn;
+output             txp;
+output             txn;
 
     //GT Reference Clock Interface
 input              gt_refclk1;
@@ -185,7 +179,7 @@ output             soft_err;
 
     //Status
 output             channel_up;
-output  [0:1]      lane_up;
+output             lane_up;
 
     //System Interface
 input              user_clk;
@@ -212,105 +206,96 @@ input             drpclk_in;
     output            drprdy_out;  
     output  [15:0]    drpdo_out;  
     input             drpwe_in;  
-    input   [8:0]     drpaddr_in_lane1;  
-    input             drpen_in_lane1;  
-    input   [15:0]    drpdi_in_lane1;  
-    output            drprdy_out_lane1;  
-    output  [15:0]    drpdo_out_lane1;  
-    input             drpwe_in_lane1;  
 
 output             tx_lock;
 
 //*********************************Wire Declarations**********************************
 
-wire    [0:1]      TX1N_OUT_unused;
-wire    [0:1]      TX1P_OUT_unused;
-wire    [0:1]      RX1N_IN_unused;
-wire    [0:1]      RX1P_IN_unused;
-wire    [1:0]      rx_buf_err_i_unused;
-wire    [7:0]      rx_char_is_comma_i_unused;
-wire    [7:0]      rx_char_is_k_i_unused;
-wire    [63:0]     rx_data_i_unused;
-wire    [7:0]      rx_disp_err_i_unused;
-wire    [7:0]      rx_not_in_table_i_unused;
-wire    [1:0]      rx_realign_i_unused;
-wire    [1:0]      tx_buf_err_i_unused;
-wire    [1:0]      ch_bond_done_i_unused;
+wire               TX1N_OUT_unused;
+wire               TX1P_OUT_unused;
+wire               RX1N_IN_unused;
+wire               RX1P_IN_unused;
+wire               rx_buf_err_i_unused;
+wire    [3:0]      rx_char_is_comma_i_unused;
+wire    [3:0]      rx_char_is_k_i_unused;
+wire    [31:0]     rx_data_i_unused;
+wire    [3:0]      rx_disp_err_i_unused;
+wire    [3:0]      rx_not_in_table_i_unused;
+wire               rx_realign_i_unused;
+wire               tx_buf_err_i_unused;
+wire               ch_bond_done_i_unused;
 
-wire    [1:0]      ch_bond_done_i;
-reg     [1:0]      ch_bond_done_r1;
-reg     [1:0]      ch_bond_done_r2;
-wire    [9:0]      rx_status_float_i;    
+wire               ch_bond_done_i;
+reg                ch_bond_done_r1;
+reg                ch_bond_done_r2;
+wire    [4:0]      rx_status_float_i;    
 wire               channel_up_i;
 wire               en_chan_sync_i;
-wire    [1:0]      ena_comma_align_i;
-wire    [0:1]      gen_a_i;
+wire               ena_comma_align_i;
+wire               gen_a_i;
 wire               gen_cc_i;
 wire               gen_ecp_i;
 wire    [0:1]      gen_ecp_striped_i;
-wire    [0:7]      gen_k_i;
-wire    [0:3]      gen_pad_i;
-wire    [0:3]      gen_pad_striped_i;
-wire    [0:7]      gen_r_i;
+wire    [0:3]      gen_k_i;
+wire    [0:1]      gen_pad_i;
+wire    [0:1]      gen_pad_striped_i;
+wire    [0:3]      gen_r_i;
 wire               gen_scp_i;
 wire    [0:1]      gen_scp_striped_i;
-wire    [0:7]      gen_v_i;
-wire    [0:7]      got_a_i;
-wire    [0:1]      got_v_i;
-wire    [0:1]      hard_err_i;
-wire    [0:1]      lane_up_i;
-wire    [1:0]      pma_rx_lock_i;
-wire    [0:1]      raw_tx_out_clk_i;
-wire    [0:1]      reset_lanes_i;
-wire    [1:0]      rx_buf_err_i;
-wire    [7:0]      rx_char_is_comma_i;
-wire    [7:0]      rx_char_is_k_i;
-wire    [5:0]      rx_clk_cor_cnt_i;
-wire    [63:0]     rx_data_i;
-wire    [7:0]      rx_disp_err_i;
-wire    [0:3]      rx_ecp_i;
-wire    [0:3]      rx_ecp_striped_i;
-wire    [7:0]      rx_not_in_table_i;
-wire    [0:3]      rx_pad_i;
-wire    [0:3]      rx_pad_striped_i;
-wire    [0:63]     rx_pe_data_i;
-wire    [0:63]     rx_pe_data_striped_i;
-wire    [0:3]      rx_pe_data_v_i;
-wire    [0:3]      rx_pe_data_v_striped_i;
-wire    [1:0]      rx_polarity_i;
-wire    [1:0]      rx_realign_i;
-wire    [1:0]      rx_reset_i;
-wire    [0:3]      rx_scp_i;
-wire    [0:3]      rx_scp_striped_i;
-wire    [0:3]      soft_err_i;
-wire    [0:1]      all_soft_err_i;
+wire    [0:3]      gen_v_i;
+wire    [0:3]      got_a_i;
+wire               got_v_i;
+wire               hard_err_i;
+wire               lane_up_i;
+wire               pma_rx_lock_i;
+wire               raw_tx_out_clk_i;
+wire               reset_lanes_i;
+wire               rx_buf_err_i;
+wire    [3:0]      rx_char_is_comma_i;
+wire    [3:0]      rx_char_is_k_i;
+wire    [2:0]      rx_clk_cor_cnt_i;
+wire    [31:0]     rx_data_i;
+wire    [3:0]      rx_disp_err_i;
+wire    [0:1]      rx_ecp_i;
+wire    [0:1]      rx_ecp_striped_i;
+wire    [3:0]      rx_not_in_table_i;
+wire    [0:1]      rx_pad_i;
+wire    [0:1]      rx_pad_striped_i;
+wire    [0:31]     rx_pe_data_i;
+wire    [0:31]     rx_pe_data_striped_i;
+wire    [0:1]      rx_pe_data_v_i;
+wire    [0:1]      rx_pe_data_v_striped_i;
+wire               rx_polarity_i;
+wire               rx_realign_i;
+wire               rx_reset_i;
+wire    [0:1]      rx_scp_i;
+wire    [0:1]      rx_scp_striped_i;
+wire    [0:1]      soft_err_i;
+wire               all_soft_err_i;
 wire               start_rx_i;
 wire               tied_to_ground_i;
 wire    [31:0]     tied_to_ground_vec_i;
 wire               tied_to_vcc_i;
-wire    [1:0]      tx_buf_err_i;
-wire    [7:0]      tx_char_is_k_i;
-wire    [63:0]     tx_data_i;
-wire    [1:0]      tx_lock_i;
-wire    [0:1]      tx_out_clk_i;
-wire    [0:63]     tx_pe_data_i;
-wire    [0:63]     tx_pe_data_striped_i;
-wire    [0:3]      tx_pe_data_v_i;
-wire    [0:3]      tx_pe_data_v_striped_i;
-wire    [1:0]      tx_reset_i;
-reg     [0:1]      ch_bond_load_pulse_i;
-reg     [0:1]      ch_bond_done_dly_i;
+wire               tx_buf_err_i;
+wire    [3:0]      tx_char_is_k_i;
+wire    [31:0]     tx_data_i;
+wire               tx_lock_i;
+wire               tx_out_clk_i;
+wire    [0:31]     tx_pe_data_i;
+wire    [0:31]     tx_pe_data_striped_i;
+wire    [0:1]      tx_pe_data_v_i;
+wire    [0:1]      tx_pe_data_v_striped_i;
+wire               tx_reset_i;
 
     // TX AXI PDU I/F wires
-wire    [0:63]     tx_data;
+wire    [0:31]     tx_data;
 wire               tx_src_rdy;
 wire               tx_dst_rdy;
 
     // RX AXI PDU I/F wires
-wire    [0:63]     rx_data;
+wire    [0:31]     rx_data;
 wire               rx_src_rdy;
     wire          link_reset_lane0_i;
-    wire          link_reset_lane1_i;
     wire          link_reset_i;
 
 wire   gtrxreset_i;
@@ -334,12 +319,11 @@ wire warn_cc;
     assign          tied_to_ground_i        = 1'b0;
     assign          tied_to_vcc_i           = 1'b1;
 
-    assign          all_soft_err_i[0] =  soft_err_i[0] | soft_err_i[1]  ;
-    assign          all_soft_err_i[1] =  soft_err_i[2] | soft_err_i[3]  ;
-    assign  link_reset_i   =  link_reset_lane0_i || link_reset_lane1_i ;
+    assign          all_soft_err_i        = soft_err_i[0] | soft_err_i[1];
+    assign  link_reset_i   = link_reset_lane0_i ;
 
     always @ (posedge user_clk)
-      rxfsm_data_valid_r  <= `DLY &lane_up_i;
+      rxfsm_data_valid_r  <= `DLY lane_up_i;
 
     assign  link_reset_out = link_reset_i;
    
@@ -351,7 +335,7 @@ wire warn_cc;
     assign          sys_reset_out    =  system_reset_i;
 
  
-    assign  tx_out_clk  =   raw_tx_out_clk_i [0];
+    assign  tx_out_clk  =   raw_tx_out_clk_i;
     assign  tx_lock_comb_i          = &tx_lock_i;
    
   design_1_axi_chip2chip_0_aurora8_1_cdc_sync
@@ -439,7 +423,7 @@ assign hpcnt_reset_i = gt_reset_sync_init_clk | reset_sync_init_clk;
 
 
 
-assign          lane_up [0] =   lane_up_i [0];
+assign          lane_up =   lane_up_i;
 
     //Aurora lane striping rules require each 4-byte lane to carry 2 bytes from the first
     //half of the overall word, and 2 bytes from the second half. This ensures that the
@@ -447,14 +431,15 @@ assign          lane_up [0] =   lane_up_i [0];
     //required concatenation
    
     assign  gen_scp_striped_i       =   {gen_scp_i,1'b0};
-    assign  gen_pad_striped_i[0:1]  =  {gen_pad_i[0],gen_pad_i[2]};
-    assign  tx_pe_data_striped_i[0:31]   =   {tx_pe_data_i[0:15],tx_pe_data_i[32:47]};
-    assign  tx_pe_data_v_striped_i[0:1]  =   {tx_pe_data_v_i[0],tx_pe_data_v_i[2]};
-    assign  {rx_pad_i[0],rx_pad_i[2]}    =   rx_pad_striped_i[0:1];
-    assign  {rx_pe_data_i[0:15],rx_pe_data_i[32:47]}   =   rx_pe_data_striped_i[0:31];
-    assign  {rx_pe_data_v_i[0],rx_pe_data_v_i[2]}  = rx_pe_data_v_striped_i[0:1];
-    assign  {rx_scp_i[0],rx_scp_i[2]}  =   rx_scp_striped_i[0:1];
-    assign  {rx_ecp_i[0],rx_ecp_i[2]}  =   rx_ecp_striped_i[0:1];
+    assign  gen_ecp_striped_i       =   {1'b0,gen_ecp_i};
+    assign  gen_pad_striped_i[0:1]  =  {gen_pad_i[0],gen_pad_i[1]};
+    assign  tx_pe_data_striped_i[0:31]   =   {tx_pe_data_i[0:15],tx_pe_data_i[16:31]};
+    assign  tx_pe_data_v_striped_i[0:1]  =   {tx_pe_data_v_i[0],tx_pe_data_v_i[1]};
+    assign  {rx_pad_i[0],rx_pad_i[1]}    =   rx_pad_striped_i[0:1];
+    assign  {rx_pe_data_i[0:15],rx_pe_data_i[16:31]}   =   rx_pe_data_striped_i[0:31];
+    assign  {rx_pe_data_v_i[0],rx_pe_data_v_i[1]}  = rx_pe_data_v_striped_i[0:1];
+    assign  {rx_scp_i[0],rx_scp_i[1]}  =   rx_scp_striped_i[0:1];
+    assign  {rx_ecp_i[0],rx_ecp_i[1]}  =   rx_ecp_striped_i[0:1];
    
    
    
@@ -472,25 +457,25 @@ assign          lane_up [0] =   lane_up_i [0];
         .RX_CHAR_IS_K(rx_char_is_k_i[3:0]),
         .RX_CHAR_IS_COMMA(rx_char_is_comma_i[3:0]),
         .RX_STATUS(tied_to_ground_vec_i[5:0]),
-        .TX_BUF_ERR(tx_buf_err_i [0]),
-        .RX_BUF_ERR(rx_buf_err_i [0]),
-        .RX_REALIGN(rx_realign_i [0]),
-        .RX_POLARITY(rx_polarity_i [0]),
-        .RX_RESET(rx_reset_i [0]),
+        .TX_BUF_ERR(tx_buf_err_i),
+        .RX_BUF_ERR(rx_buf_err_i),
+        .RX_REALIGN(rx_realign_i),
+        .RX_POLARITY(rx_polarity_i),
+        .RX_RESET(rx_reset_i),
         .TX_CHAR_IS_K(tx_char_is_k_i[3:0]),
         .TX_DATA(tx_data_i[31:0]),
-        .TX_RESET(tx_reset_i [0]),
+        .TX_RESET(tx_reset_i),
         .INIT_CLK(init_clk_in),
         .LINK_RESET_OUT(link_reset_lane0_i),
         .HPCNT_RESET(hpcnt_reset_i),
        
         //Comma Detect Phase Align Interface
-        .ENA_COMMA_ALIGN(ena_comma_align_i [0]),
+        .ENA_COMMA_ALIGN(ena_comma_align_i),
 
 
         //TX_LL Interface
         .GEN_SCP(gen_scp_striped_i),
-        .GEN_ECP(tied_to_ground_vec_i[1:0]),
+        .GEN_ECP(gen_ecp_striped_i),
         .GEN_PAD(gen_pad_striped_i[0:1]),
         .TX_PE_DATA(tx_pe_data_striped_i[0:31]),
         .TX_PE_DATA_V(tx_pe_data_v_striped_i[0:1]),
@@ -506,113 +491,23 @@ assign          lane_up [0] =   lane_up_i [0];
 
 
         //Global Logic Interface
-        .GEN_A(gen_a_i [0]),
+        .GEN_A(gen_a_i),
         .GEN_K(gen_k_i[0:3]),
         .GEN_R(gen_r_i[0:3]),
         .GEN_V(gen_v_i[0:3]),
-        .LANE_UP(lane_up_i [0]),
+        .LANE_UP(lane_up_i),
         .SOFT_ERR(soft_err_i[0:1]),
-        .HARD_ERR(hard_err_i [0]),
+        .HARD_ERR(hard_err_i),
         .CHANNEL_BOND_LOAD(),
         .GOT_A(got_a_i[0:3]),
-        .GOT_V(got_v_i [0]),
+        .GOT_V(got_v_i),
         .CHANNEL_UP(channel_up_i),
 
 
         //System Interface
         .USER_CLK(user_clk),
         .RESET_SYMGEN(system_reset_i),
-        .RESET(reset_lanes_i [0])
-    );
-
-    //_________________________Instantiate Lane 1______________________________
-
-
-
-
-assign          lane_up [1] =   lane_up_i [1];
-
-    //Aurora lane striping rules require each 4-byte lane to carry 2 bytes from the first
-    //half of the overall word, and 2 bytes from the second half. This ensures that the
-    //data will be ordered correctly if it is send to a 2-byte lane. Here we perform the
-    //required concatenation
-    assign  gen_ecp_striped_i       =   {1'b0,gen_ecp_i};
-    assign  gen_pad_striped_i[2:3]  =  {gen_pad_i[1],gen_pad_i[3]};
-    assign  tx_pe_data_striped_i[32:63]   =   {tx_pe_data_i[16:31],tx_pe_data_i[48:63]};
-    assign  tx_pe_data_v_striped_i[2:3]  =   {tx_pe_data_v_i[1],tx_pe_data_v_i[3]};
-    assign  {rx_pad_i[1],rx_pad_i[3]}    =   rx_pad_striped_i[2:3];
-    assign  {rx_pe_data_i[16:31],rx_pe_data_i[48:63]}   =   rx_pe_data_striped_i[32:63];
-    assign  {rx_pe_data_v_i[1],rx_pe_data_v_i[3]}  = rx_pe_data_v_striped_i[2:3];
-    assign  {rx_scp_i[1],rx_scp_i[3]}  =   rx_scp_striped_i[2:3];
-    assign  {rx_ecp_i[1],rx_ecp_i[3]}  =   rx_ecp_striped_i[2:3];
-   
-   
-   
-
-    design_1_axi_chip2chip_0_aurora8_1_AURORA_LANE_4BYTE #
-    (   
-        .EXAMPLE_SIMULATION (EXAMPLE_SIMULATION)
-    )
-    design_1_axi_chip2chip_0_aurora8_1_aurora_lane_4byte_1_i
-    (
-        //GT Interface
-        .RX_DATA(rx_data_i[63:32]),
-        .RX_NOT_IN_TABLE(rx_not_in_table_i[7:4]),
-        .RX_DISP_ERR(rx_disp_err_i[7:4]),
-        .RX_CHAR_IS_K(rx_char_is_k_i[7:4]),
-        .RX_CHAR_IS_COMMA(rx_char_is_comma_i[7:4]),
-        .RX_STATUS(tied_to_ground_vec_i[5:0]),
-        .TX_BUF_ERR(tx_buf_err_i [1]),
-        .RX_BUF_ERR(rx_buf_err_i [1]),
-        .RX_REALIGN(rx_realign_i [1]),
-        .RX_POLARITY(rx_polarity_i [1]),
-        .RX_RESET(rx_reset_i [1]),
-        .TX_CHAR_IS_K(tx_char_is_k_i[7:4]),
-        .TX_DATA(tx_data_i[63:32]),
-        .TX_RESET(tx_reset_i [1]),
-        .INIT_CLK(init_clk_in),
-        .LINK_RESET_OUT(link_reset_lane1_i),
-        .HPCNT_RESET(hpcnt_reset_i),
-       
-        //Comma Detect Phase Align Interface
-        .ENA_COMMA_ALIGN(ena_comma_align_i [1]),
-
-
-        //TX_LL Interface
-        .GEN_SCP(tied_to_ground_vec_i[1:0]),
-        .GEN_ECP(gen_ecp_striped_i),
-        .GEN_PAD(gen_pad_striped_i[2:3]),
-        .TX_PE_DATA(tx_pe_data_striped_i[32:63]),
-        .TX_PE_DATA_V(tx_pe_data_v_striped_i[2:3]),
-        .GEN_CC(gen_cc_i),
-
-
-        //RX_LL Interface
-        .RX_PAD(rx_pad_striped_i[2:3]),
-        .RX_PE_DATA(rx_pe_data_striped_i[32:63]),
-        .RX_PE_DATA_V(rx_pe_data_v_striped_i[2:3]),
-        .RX_SCP(rx_scp_striped_i[2:3]),
-        .RX_ECP(rx_ecp_striped_i[2:3]),
-
-
-        //Global Logic Interface
-        .GEN_A(gen_a_i [1]),
-        .GEN_K(gen_k_i[4:7]),
-        .GEN_R(gen_r_i[4:7]),
-        .GEN_V(gen_v_i[4:7]),
-        .LANE_UP(lane_up_i [1]),
-        .SOFT_ERR(soft_err_i[2:3]),
-        .HARD_ERR(hard_err_i [1]),
-        .CHANNEL_BOND_LOAD(),
-        .GOT_A(got_a_i[4:7]),
-        .GOT_V(got_v_i [1]),
-        .CHANNEL_UP(channel_up_i),
-
-
-        //System Interface
-        .USER_CLK(user_clk),
-        .RESET_SYMGEN(system_reset_i),
-        .RESET(reset_lanes_i [1])
+        .RESET(reset_lanes_i)
     );
 
 
@@ -637,11 +532,6 @@ assign          lane_up [1] =   lane_up_i [1];
         .gt0_rxpmaresetdone_out             (),
         .gt0_txbufstatus_out                (),
         .gt0_rxbufstatus_out                (),
-        .gt1_txresetdone_out                (),
-        .gt1_rxresetdone_out                (),
-        .gt1_rxpmaresetdone_out             (),
-        .gt1_txbufstatus_out                (),
-        .gt1_rxbufstatus_out                (),
         // DRP I/F
 .DRPADDR_IN                     (drpaddr_in),
 .DRPCLK_IN                      (drpclk_in),
@@ -650,13 +540,6 @@ assign          lane_up [1] =   lane_up_i [1];
 .DRPEN_IN                       (drpen_in),
 .DRPRDY_OUT                     (drprdy_out),
 .DRPWE_IN                       (drpwe_in),
-.DRPADDR_IN_LANE1                     (drpaddr_in_lane1),
-.DRPCLK_IN_LANE1                      (drpclk_in),
-.DRPDI_IN_LANE1                       (drpdi_in_lane1),
-.DRPDO_OUT_LANE1                      (drpdo_out_lane1),
-.DRPEN_IN_LANE1                       (drpen_in_lane1),
-.DRPRDY_OUT_LANE1                     (drprdy_out_lane1),
-.DRPWE_IN_LANE1                       (drpwe_in_lane1),
 
         .INIT_CLK_IN                    (init_clk_in),   
 	.PLL_NOT_LOCKED                 (pll_not_locked),
@@ -664,32 +547,19 @@ assign          lane_up [1] =   lane_up_i [1];
 	.RX_RESETDONE_OUT               (rx_resetdone_i),
 
         //Aurora Lane Interface
-.RXPOLARITY_IN(rx_polarity_i [0]),
-.RXPOLARITY_IN_LANE1(rx_polarity_i [1]),
-.RXRESET_IN(rx_reset_i [0]),
-.RXRESET_IN_LANE1(rx_reset_i [1]),
+.RXPOLARITY_IN(rx_polarity_i),
+.RXRESET_IN(rx_reset_i),
 .TXCHARISK_IN(tx_char_is_k_i[3:0]),
-.TXCHARISK_IN_LANE1(tx_char_is_k_i[7:4]),
 .TXDATA_IN(tx_data_i[31:0]),
-.TXDATA_IN_LANE1(tx_data_i[63:32]),
-.TXRESET_IN(tx_reset_i [0]),
-.TXRESET_IN_LANE1(tx_reset_i [1]),
+.TXRESET_IN(tx_reset_i),
 .RXDATA_OUT(rx_data_i[31:0]),
-.RXDATA_OUT_LANE1(rx_data_i[63:32]),
 .RXNOTINTABLE_OUT(rx_not_in_table_i[3:0]),
-.RXNOTINTABLE_OUT_LANE1(rx_not_in_table_i[7:4]),
 .RXDISPERR_OUT(rx_disp_err_i[3:0]),
-.RXDISPERR_OUT_LANE1(rx_disp_err_i[7:4]),
 .RXCHARISK_OUT(rx_char_is_k_i[3:0]),
-.RXCHARISK_OUT_LANE1(rx_char_is_k_i[7:4]),
 .RXCHARISCOMMA_OUT(rx_char_is_comma_i[3:0]),
-.RXCHARISCOMMA_OUT_LANE1(rx_char_is_comma_i[7:4]),
-.RXREALIGN_OUT(rx_realign_i [0]),
-.RXREALIGN_OUT_LANE1(rx_realign_i [1]),
-.RXBUFERR_OUT(rx_buf_err_i [0]),
-.RXBUFERR_OUT_LANE1(rx_buf_err_i [1]),
-.TXBUFERR_OUT(tx_buf_err_i [0]),
-.TXBUFERR_OUT_LANE1(tx_buf_err_i [1]),
+.RXREALIGN_OUT(rx_realign_i),
+.RXBUFERR_OUT(rx_buf_err_i),
+.TXBUFERR_OUT(tx_buf_err_i),
 
         // Reset due to channel initialization watchdog timer expiry  
         .GTRXRESET_IN(gtrxreset_i),
@@ -698,26 +568,18 @@ assign          lane_up [1] =   lane_up_i [1];
         .LINK_RESET_IN(link_reset_i),
 
       // Phase Align Interface
-.ENMCOMMAALIGN_IN(ena_comma_align_i [0]),
-.ENMCOMMAALIGN_IN_LANE1(ena_comma_align_i [1]),
-.ENPCOMMAALIGN_IN(ena_comma_align_i [0]),
-.ENPCOMMAALIGN_IN_LANE1(ena_comma_align_i [1]),
+.ENMCOMMAALIGN_IN(ena_comma_align_i),
+.ENPCOMMAALIGN_IN(ena_comma_align_i),
         
         //Global Logic Interface
 .ENCHANSYNC_IN(en_chan_sync_i),
-.ENCHANSYNC_IN_LANE1(tied_to_vcc_i),
-.CHBONDDONE_OUT(ch_bond_done_i [0]),
-.CHBONDDONE_OUT_LANE1(ch_bond_done_i [1]),
+.CHBONDDONE_OUT(ch_bond_done_i),
 
         //Serial IO
-.RX1N_IN(rxn [0]),
-.RX1N_IN_LANE1(rxn [1]),
-.RX1P_IN(rxp [0]),
-.RX1P_IN_LANE1(rxp [1]),
-.TX1N_OUT(txn [0]),
-.TX1N_OUT_LANE1(txn [1]),
-.TX1P_OUT(txp [0]),
-.TX1P_OUT_LANE1(txp [1]),
+.RX1N_IN(rxn),
+.RX1P_IN(rxp),
+.TX1N_OUT(txn),
+.TX1P_OUT(txp),
 
         // Clocks and Clock Status
         .RXUSRCLK_IN(sync_clk),
@@ -726,10 +588,8 @@ assign          lane_up [1] =   lane_up_i [1];
         .TXUSRCLK2_IN(user_clk),
         .REFCLK(gt_refclk1),
 
-.TXOUTCLK1_OUT(raw_tx_out_clk_i [0]),
-.TXOUTCLK1_OUT_LANE1(raw_tx_out_clk_i [1]),
-.PLLLKDET_OUT(tx_lock_i [0]),
-.PLLLKDET_OUT_LANE1(tx_lock_i [1]),
+.TXOUTCLK1_OUT(raw_tx_out_clk_i),
+.PLLLKDET_OUT(tx_lock_i),
 
         //System Interface
         .GTRESET_IN(gt_reset_sync_init_clk),
@@ -753,29 +613,6 @@ assign          lane_up [1] =   lane_up_i [1];
 
     //__________Instantiate Global Logic to combine Lanes into a Channel______
 
-  // FF stages added for timing closure
-  always @(posedge user_clk)
-        ch_bond_done_r1  <=  `DLY    ch_bond_done_i;
-
-  always @(posedge user_clk)
-        ch_bond_done_r2  <=  `DLY    ch_bond_done_r1;
-
-  always @(posedge user_clk)
-       if (system_reset_i)
-         ch_bond_done_dly_i <= 2'b0;
-       else if (en_chan_sync_i)
-         ch_bond_done_dly_i <= ch_bond_done_r2;
-       else
-         ch_bond_done_dly_i <= 2'b0;
-
-  always @(posedge user_clk)
-      if (system_reset_i)
-        ch_bond_load_pulse_i <= 2'b0;
-      else if(en_chan_sync_i)
-        ch_bond_load_pulse_i <= ch_bond_done_r2 & ~ch_bond_done_dly_i;
-      else
-        ch_bond_load_pulse_i <= 2'b0;
-
     design_1_axi_chip2chip_0_aurora8_1_GLOBAL_LOGIC    design_1_axi_chip2chip_0_aurora8_1_global_logic_i
     (
         //GT Interface
@@ -787,7 +624,7 @@ assign          lane_up [1] =   lane_up_i [1];
         .LANE_UP(lane_up_i),
         .SOFT_ERR(soft_err_i),
         .HARD_ERR(hard_err_i),
-        .CHANNEL_BOND_LOAD(ch_bond_load_pulse_i),
+        .CHANNEL_BOND_LOAD(ch_bond_done_i),
         .GOT_A(got_a_i),
         .GOT_V(got_v_i),
         .GEN_A(gen_a_i),
@@ -811,10 +648,10 @@ assign          lane_up [1] =   lane_up_i [1];
     //_____________________________ TX AXI SHIM _______________________________
     design_1_axi_chip2chip_0_aurora8_1_AXI_TO_LL #
     (
-       .DATA_WIDTH(64),
-       .STRB_WIDTH(8),
+       .DATA_WIDTH(32),
+       .STRB_WIDTH(4),
        .USE_4_NFC (0),
-       .REM_WIDTH (3)
+       .REM_WIDTH (2)
     )
 
     axi_to_ll_pdu_i
@@ -822,7 +659,7 @@ assign          lane_up [1] =   lane_up_i [1];
      .AXI4_S_IP_TX_TVALID(s_axi_tx_tvalid),
      .AXI4_S_IP_TX_TREADY(s_axi_tx_tready),
      .AXI4_S_IP_TX_TDATA(s_axi_tx_tdata),
-     .AXI4_S_IP_TX_TKEEP(8'd0),
+     .AXI4_S_IP_TX_TKEEP(4'd0),
      .AXI4_S_IP_TX_TLAST(1'b0),
 
      .LL_OP_DATA(tx_data),
@@ -886,9 +723,9 @@ assign          lane_up [1] =   lane_up_i [1];
     //_____________________________ RX AXI SHIM _______________________________
     design_1_axi_chip2chip_0_aurora8_1_LL_TO_AXI #
     (
-       .DATA_WIDTH(64),
-       .STRB_WIDTH(8),
-       .REM_WIDTH (3)
+       .DATA_WIDTH(32),
+       .STRB_WIDTH(4),
+       .REM_WIDTH (2)
     )
 
     ll_to_axi_pdu_i
@@ -896,7 +733,7 @@ assign          lane_up [1] =   lane_up_i [1];
      .LL_IP_DATA(rx_data),
      .LL_IP_SOF_N(),
      .LL_IP_EOF_N(1'b0),
-     .LL_IP_REM(3'd0),
+     .LL_IP_REM(2'd0),
      .LL_IP_SRC_RDY_N(rx_src_rdy),
      .LL_OP_DST_RDY_N(),
 

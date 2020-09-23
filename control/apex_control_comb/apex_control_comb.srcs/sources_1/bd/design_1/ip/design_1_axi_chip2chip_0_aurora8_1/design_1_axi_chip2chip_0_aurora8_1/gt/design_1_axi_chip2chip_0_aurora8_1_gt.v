@@ -48,7 +48,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 `timescale 1ns / 1ps
-(* core_generation_info = "design_1_axi_chip2chip_0_aurora8_1,aurora_8b10b_v11_1_9,{user_interface=AXI_4_Streaming,backchannel_mode=Sidebands,c_aurora_lanes=2,c_column_used=None,c_gt_clock_1=GTPQ0,c_gt_clock_2=None,c_gt_loc_1=X,c_gt_loc_10=X,c_gt_loc_11=X,c_gt_loc_12=X,c_gt_loc_13=X,c_gt_loc_14=X,c_gt_loc_15=X,c_gt_loc_16=X,c_gt_loc_17=X,c_gt_loc_18=X,c_gt_loc_19=X,c_gt_loc_2=2,c_gt_loc_20=X,c_gt_loc_21=X,c_gt_loc_22=X,c_gt_loc_23=X,c_gt_loc_24=X,c_gt_loc_25=X,c_gt_loc_26=X,c_gt_loc_27=X,c_gt_loc_28=X,c_gt_loc_29=X,c_gt_loc_3=1,c_gt_loc_30=X,c_gt_loc_31=X,c_gt_loc_32=X,c_gt_loc_33=X,c_gt_loc_34=X,c_gt_loc_35=X,c_gt_loc_36=X,c_gt_loc_37=X,c_gt_loc_38=X,c_gt_loc_39=X,c_gt_loc_4=X,c_gt_loc_40=X,c_gt_loc_41=X,c_gt_loc_42=X,c_gt_loc_43=X,c_gt_loc_44=X,c_gt_loc_45=X,c_gt_loc_46=X,c_gt_loc_47=X,c_gt_loc_48=X,c_gt_loc_5=X,c_gt_loc_6=X,c_gt_loc_7=X,c_gt_loc_8=X,c_gt_loc_9=X,c_lane_width=4,c_line_rate=37500,c_nfc=false,c_nfc_mode=IMM,c_refclk_frequency=250000,c_simplex=false,c_simplex_mode=TX,c_stream=true,c_ufc=false,flow_mode=None,interface_mode=Streaming,dataflow_config=Duplex}" *)
+(* core_generation_info = "design_1_axi_chip2chip_0_aurora8_1,aurora_8b10b_v11_1_9,{user_interface=AXI_4_Streaming,backchannel_mode=Sidebands,c_aurora_lanes=1,c_column_used=None,c_gt_clock_1=GTPQ0,c_gt_clock_2=None,c_gt_loc_1=X,c_gt_loc_10=X,c_gt_loc_11=X,c_gt_loc_12=X,c_gt_loc_13=X,c_gt_loc_14=X,c_gt_loc_15=X,c_gt_loc_16=X,c_gt_loc_17=X,c_gt_loc_18=X,c_gt_loc_19=X,c_gt_loc_2=X,c_gt_loc_20=X,c_gt_loc_21=X,c_gt_loc_22=X,c_gt_loc_23=X,c_gt_loc_24=X,c_gt_loc_25=X,c_gt_loc_26=X,c_gt_loc_27=X,c_gt_loc_28=X,c_gt_loc_29=X,c_gt_loc_3=1,c_gt_loc_30=X,c_gt_loc_31=X,c_gt_loc_32=X,c_gt_loc_33=X,c_gt_loc_34=X,c_gt_loc_35=X,c_gt_loc_36=X,c_gt_loc_37=X,c_gt_loc_38=X,c_gt_loc_39=X,c_gt_loc_4=X,c_gt_loc_40=X,c_gt_loc_41=X,c_gt_loc_42=X,c_gt_loc_43=X,c_gt_loc_44=X,c_gt_loc_45=X,c_gt_loc_46=X,c_gt_loc_47=X,c_gt_loc_48=X,c_gt_loc_5=X,c_gt_loc_6=X,c_gt_loc_7=X,c_gt_loc_8=X,c_gt_loc_9=X,c_lane_width=4,c_line_rate=37500,c_nfc=false,c_nfc_mode=IMM,c_refclk_frequency=250000,c_simplex=false,c_simplex_mode=TX,c_stream=true,c_ufc=false,flow_mode=None,interface_mode=Streaming,dataflow_config=Duplex}" *)
 
 //***************************** Entity Declaration ****************************
 
@@ -99,17 +99,6 @@ module design_1_axi_chip2chip_0_aurora8_1_gt #
     //----------------------- Receive Ports - AFE Ports ------------------------
     input           gtprxn_in,
     input           gtprxp_in,
-    //----------------- Receive Ports - Channel Bonding Ports ------------------
-    output          rxchanbondseq_out,
-    input           rxchbonden_in,
-    input   [3:0]   rxchbondi_in,
-    input   [2:0]   rxchbondlevel_in,
-    input           rxchbondmaster_in,
-    output  [3:0]   rxchbondo_out,
-    input           rxchbondslave_in,
-    //----------------- Receive Ports - Channel Bonding Ports  -----------------
-    output          rxchanisaligned_out,
-    output          rxchanrealign_out,
     //----------------- Receive Ports - Clock Correction Ports -----------------
     output  [1:0]   rxclkcorcnt_out,
     //------------- Receive Ports - Comma Detection and Alignment --------------
@@ -284,8 +273,8 @@ module design_1_axi_chip2chip_0_aurora8_1_gt #
             .CBCC_DATA_SOURCE_SEL                   ("DECODED"),
             .CLK_COR_SEQ_2_USE                      ("FALSE"),
             .CLK_COR_KEEP_IDLE                      ("FALSE"),
-.CLK_COR_MAX_LAT                        (35),
-.CLK_COR_MIN_LAT                        (28),
+.CLK_COR_MAX_LAT                        (31),
+.CLK_COR_MIN_LAT                        (24),
             .CLK_COR_PRECEDENCE                     ("TRUE"),
             .CLK_COR_REPEAT_WAIT                    (0),
             .CLK_COR_SEQ_LEN                        (4),
@@ -558,7 +547,7 @@ module design_1_axi_chip2chip_0_aurora8_1_gt #
             .TXOOB_CFG                              (1'b0),
 
            //----------------RX Buffer Attributes---------------
-            .RXSYNC_MULTILANE                       (1'b1),
+            .RXSYNC_MULTILANE                       (1'b0),
             .RXSYNC_OVRD                            (1'b0),
             .RXSYNC_SKIP_DA                         (1'b0),
 
@@ -634,16 +623,16 @@ module design_1_axi_chip2chip_0_aurora8_1_gt #
         .PMARSVDOUT0                    (),
         .PMARSVDOUT1                    (),
         //----------------- Receive Ports - Channel Bonding Ports ------------------
-        .RXCHANBONDSEQ                  (rxchanbondseq_out),
-        .RXCHBONDEN                     (rxchbonden_in),
-        .RXCHBONDI                      (rxchbondi_in),
-        .RXCHBONDLEVEL                  (rxchbondlevel_in),
-        .RXCHBONDMASTER                 (rxchbondmaster_in),
-        .RXCHBONDO                      (rxchbondo_out),
-        .RXCHBONDSLAVE                  (rxchbondslave_in),
+        .RXCHANBONDSEQ                  (),
+        .RXCHBONDEN                     (tied_to_ground_i),
+        .RXCHBONDI                      (4'b0000),
+        .RXCHBONDLEVEL                  (tied_to_ground_vec_i[2:0]),
+        .RXCHBONDMASTER                 (tied_to_ground_i),
+        .RXCHBONDO                      (),
+        .RXCHBONDSLAVE                  (tied_to_ground_i),
         //----------------- Receive Ports - Channel Bonding Ports  -----------------
-        .RXCHANISALIGNED                (rxchanisaligned_out),
-        .RXCHANREALIGN                  (rxchanrealign_out),
+        .RXCHANISALIGNED                (),
+        .RXCHANREALIGN                  (),
         //----------------- Receive Ports - Clock Correction Ports -----------------
         .RXCLKCORCNT                    (rxclkcorcnt_out),
         //------------- Receive Ports - Comma Detection and Alignment --------------

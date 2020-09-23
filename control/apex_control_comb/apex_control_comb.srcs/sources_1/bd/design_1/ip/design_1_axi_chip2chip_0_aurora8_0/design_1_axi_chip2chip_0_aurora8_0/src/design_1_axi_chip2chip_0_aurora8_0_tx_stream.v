@@ -56,7 +56,7 @@
 //               To perform streaming with Aurora, it starts an infinite frame after
 //               channel up and performs opporunistic clock correction automatically
 //
-//               This module supports 4 4-byte lane designs
+//               This module supports 2 4-byte lane designs
 //
 
 `timescale 1 ns / 1 ps
@@ -100,7 +100,7 @@ module design_1_axi_chip2chip_0_aurora8_0_TX_STREAM
 
 
     // LocalLink PDU Interface
-input   [0:63]     TX_D;
+input   [0:31]     TX_D;
 input              TX_SRC_RDY_N;
 
 output             TX_DST_RDY_N;
@@ -118,9 +118,9 @@ input              WARN_CC;
     // Aurora Lane Interface
 output             GEN_SCP;
 output             GEN_ECP;
-output  [0:3]      TX_PE_DATA_V;
-output  [0:3]      GEN_PAD;
-output  [0:63]     TX_PE_DATA;
+output  [0:1]      TX_PE_DATA_V;
+output  [0:1]      GEN_PAD;
+output  [0:31]     TX_PE_DATA;
 output             GEN_CC;
 
 
@@ -181,7 +181,7 @@ wire               next_run_c;
    
     // Never send ECPs or PADs
     assign  GEN_ECP         =   1'b0;
-    assign  GEN_PAD         =   4'd0;
+    assign  GEN_PAD         =   2'd0;
 
    
    
@@ -193,8 +193,6 @@ wire               next_run_c;
     // The data is valid if it is written when the channel is ready and TX_SRC_RDY_N is asserted
 assign  TX_PE_DATA_V [0]    =   !tx_dst_rdy_n_r && !TX_SRC_RDY_N;
 assign  TX_PE_DATA_V [1]    =   !tx_dst_rdy_n_r && !TX_SRC_RDY_N;
-assign  TX_PE_DATA_V [2]    =   !tx_dst_rdy_n_r && !TX_SRC_RDY_N;
-assign  TX_PE_DATA_V [3]    =   !tx_dst_rdy_n_r && !TX_SRC_RDY_N;
 
 
 

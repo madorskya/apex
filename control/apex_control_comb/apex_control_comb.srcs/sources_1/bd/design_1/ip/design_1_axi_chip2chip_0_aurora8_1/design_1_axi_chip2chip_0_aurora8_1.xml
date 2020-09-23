@@ -57,7 +57,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>TDATA_NUM_BYTES</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.USER_DATA_S_AXI_TX.TDATA_NUM_BYTES">8</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.USER_DATA_S_AXI_TX.TDATA_NUM_BYTES">4</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -225,7 +225,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>TDATA_NUM_BYTES</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.TDATA_NUM_BYTES">8</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.TDATA_NUM_BYTES">4</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -1749,7 +1749,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.INIT_CLK_IN.FREQ_HZ">100000000</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.INIT_CLK_IN.FREQ_HZ">1e+08</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -11744,7 +11744,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:caa8624e</spirit:value>
+            <spirit:value>9:ab6a0acf</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -11759,11 +11759,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Sep 18 18:03:53 UTC 2020</spirit:value>
+            <spirit:value>Tue Sep 22 15:47:18 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:452628cb</spirit:value>
+            <spirit:value>9:5b0f7374</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -11774,7 +11774,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:452628cb</spirit:value>
+            <spirit:value>9:5b0f7374</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -11790,11 +11790,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Sep 18 18:03:53 UTC 2020</spirit:value>
+            <spirit:value>Tue Sep 22 15:47:18 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:452628cb</spirit:value>
+            <spirit:value>9:5b0f7374</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -11809,11 +11809,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Sep 18 18:03:53 UTC 2020</spirit:value>
+            <spirit:value>Tue Sep 22 15:47:17 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:1f84440b</spirit:value>
+            <spirit:value>9:7ec78e3f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -11829,11 +11829,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Sep 18 18:03:53 UTC 2020</spirit:value>
+            <spirit:value>Tue Sep 22 15:47:18 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:1f84440b</spirit:value>
+            <spirit:value>9:7ec78e3f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -11845,7 +11845,7 @@
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
             <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_BYTESWAP&apos;)))*(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))*8)-1))">0</spirit:left>
-            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="((1-spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_BYTESWAP&apos;)))*(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))*8)-1))">63</spirit:right>
+            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="((1-spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_BYTESWAP&apos;)))*(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))*8)-1))">31</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
@@ -11872,7 +11872,7 @@
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
             <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_BYTESWAP&apos;)))*((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))-1))">0</spirit:left>
-            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="((1-spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_BYTESWAP&apos;)))*((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))-1))">7</spirit:right>
+            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="((1-spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_BYTESWAP&apos;)))*((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))-1))">3</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
@@ -12105,7 +12105,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
             <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_BYTESWAP&apos;)))*(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))*8)-1))">0</spirit:left>
-            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="((1-spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_BYTESWAP&apos;)))*(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))*8)-1))">63</spirit:right>
+            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="((1-spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_BYTESWAP&apos;)))*(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))*8)-1))">31</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
@@ -12129,7 +12129,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
             <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_BYTESWAP&apos;)))*((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))-1))">0</spirit:left>
-            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="((1-spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_BYTESWAP&apos;)))*((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))-1))">7</spirit:right>
+            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="((1-spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_BYTESWAP&apos;)))*((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))) * (spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))-1))">3</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
@@ -12193,7 +12193,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
             <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_BYTESWAP&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_UFCBUSWIDTHSELECT&apos;))-1))">0</spirit:left>
-            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="((1-spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_BYTESWAP&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_UFCBUSWIDTHSELECT&apos;))-1))">63</spirit:right>
+            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="((1-spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_BYTESWAP&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_UFCBUSWIDTHSELECT&apos;))-1))">31</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
@@ -12217,7 +12217,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
             <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_BYTESWAP&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_UFCSTRBBUSWIDTHSELECT&apos;))-1))">0</spirit:left>
-            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="((1-spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_BYTESWAP&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_UFCSTRBBUSWIDTHSELECT&apos;))-1))">7</spirit:right>
+            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="((1-spirit:decode(id(&apos;MODELPARAM_VALUE.C_USE_BYTESWAP&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_UFCSTRBBUSWIDTHSELECT&apos;))-1))">3</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
@@ -12441,7 +12441,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
             <spirit:left spirit:format="long" spirit:resolve="dependent">0</spirit:left>
-            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:right>
+            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
@@ -12465,7 +12465,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
             <spirit:left spirit:format="long" spirit:resolve="dependent">0</spirit:left>
-            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:right>
+            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
@@ -12489,7 +12489,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
             <spirit:left spirit:format="long" spirit:resolve="dependent">0</spirit:left>
-            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:right>
+            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
@@ -12513,7 +12513,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
             <spirit:left spirit:format="long" spirit:resolve="dependent">0</spirit:left>
-            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:right>
+            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
@@ -12537,7 +12537,7 @@
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
             <spirit:left spirit:format="long" spirit:resolve="dependent">0</spirit:left>
-            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:right>
+            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
@@ -12753,7 +12753,7 @@
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
             <spirit:left spirit:format="long" spirit:resolve="dependent">0</spirit:left>
-            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:right>
+            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
@@ -12780,7 +12780,7 @@
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
             <spirit:left spirit:format="long" spirit:resolve="dependent">0</spirit:left>
-            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:right>
+            <spirit:right spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
             <spirit:wireTypeDef>
@@ -37795,7 +37795,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -37819,7 +37819,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -37846,7 +37846,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -37873,7 +37873,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -37900,7 +37900,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -37927,7 +37927,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -37954,7 +37954,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -37978,7 +37978,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38005,7 +38005,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*3)-1)">5</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*3)-1)">2</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38032,7 +38032,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38056,7 +38056,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;))))-1)">7</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;))))-1)">3</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38080,7 +38080,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;))))-1)">7</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;))))-1)">3</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38104,7 +38104,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38128,7 +38128,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*4)-1)">7</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*4)-1)">3</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38155,7 +38155,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38182,7 +38182,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38209,7 +38209,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38236,7 +38236,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38263,7 +38263,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38287,7 +38287,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*3)-1)">5</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*3)-1)">2</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38311,7 +38311,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*1)-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*1)-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38335,7 +38335,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((((spirit:decode(id(&apos;MODELPARAM_VALUE.USDMON_WIDTH&apos;)))+1)*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">33</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((((spirit:decode(id(&apos;MODELPARAM_VALUE.USDMON_WIDTH&apos;)))+1)*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">16</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38359,7 +38359,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38383,7 +38383,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*2)-1)">3</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*2)-1)">1</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38407,7 +38407,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38434,7 +38434,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*4)-1)">7</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*4)-1)">3</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38461,7 +38461,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38488,7 +38488,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38515,7 +38515,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)*16)-1)">31</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)*16)-1)">15</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38542,7 +38542,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38569,7 +38569,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*5)-1)">9</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*5)-1)">4</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38596,7 +38596,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*5)-1)">9</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*5)-1)">4</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38623,7 +38623,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((((spirit:decode(id(&apos;MODELPARAM_VALUE.TXDIFFCTRL_WIDTH&apos;)))+1)*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">7</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((((spirit:decode(id(&apos;MODELPARAM_VALUE.TXDIFFCTRL_WIDTH&apos;)))+1)*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">3</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38650,7 +38650,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38677,7 +38677,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38747,7 +38747,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))*8)-1)">63</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))*8)-1)">31</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38774,7 +38774,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))*1)-1)">7</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))*1)-1)">3</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38801,7 +38801,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))*1)-1)">7</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))*1)-1)">3</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38828,7 +38828,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))*1)-1)">7</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))*1)-1)">3</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38855,7 +38855,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))*1)-1)">7</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))*1)-1)">3</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38882,7 +38882,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38909,7 +38909,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38936,7 +38936,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38963,7 +38963,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -38990,7 +38990,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -39017,7 +39017,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -39064,7 +39064,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -39088,7 +39088,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -39112,7 +39112,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))*1)-1)">7</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))*1)-1)">3</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -39136,7 +39136,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))*8)-1)">63</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;)))*(spirit:decode(id(&apos;MODELPARAM_VALUE.C_LANE_WIDTH&apos;)))*8)-1)">31</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -39160,7 +39160,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -39204,7 +39204,7 @@
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">1</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(((spirit:decode(id(&apos;MODELPARAM_VALUE.C_AURORA_LANES&apos;))))-1)">0</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -39291,7 +39291,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>c_aurora_lanes</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.c_aurora_lanes">2</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.c_aurora_lanes">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>c_lane_width</spirit:name>
@@ -39391,7 +39391,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="string">
         <spirit:name>c_gt_loc_2</spirit:name>
-        <spirit:value spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.c_gt_loc_2">2</spirit:value>
+        <spirit:value spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.c_gt_loc_2">X</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="string">
         <spirit:name>c_gt_loc_3</spirit:name>
@@ -39595,7 +39595,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="boolean">
         <spirit:name>c_drp_if</spirit:name>
-        <spirit:value spirit:format="bool" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.c_drp_if">false</spirit:value>
+        <spirit:value spirit:format="bool" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.c_drp_if">true</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="boolean">
         <spirit:name>transceivercontrol</spirit:name>
@@ -39639,19 +39639,19 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>c_ufcbuswidthselect</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.c_ufcbuswidthselect">64</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.c_ufcbuswidthselect">32</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>c_ufcrembuswidthselect</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.c_ufcrembuswidthselect">3</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.c_ufcrembuswidthselect">2</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>c_ufcstrbbuswidthselect</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.c_ufcstrbbuswidthselect">8</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.c_ufcstrbbuswidthselect">4</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>c_rembuswidthselect</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.c_rembuswidthselect">3</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.c_rembuswidthselect">2</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="boolean">
         <spirit:name>isv7gth</spirit:name>
@@ -39780,10 +39780,9 @@
       <spirit:enumeration>X0Y0</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
-      <spirit:name>choice_list_a6b9be91</spirit:name>
+      <spirit:name>choice_list_9bee990d</spirit:name>
       <spirit:enumeration>X</spirit:enumeration>
       <spirit:enumeration>1</spirit:enumeration>
-      <spirit:enumeration>2</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
       <spirit:name>choice_list_a9e60492</spirit:name>
@@ -39814,12 +39813,6 @@
     </spirit:choice>
     <spirit:choice>
       <spirit:name>choice_list_ddf7a1a5</spirit:name>
-      <spirit:enumeration>X</spirit:enumeration>
-    </spirit:choice>
-    <spirit:choice>
-      <spirit:name>choice_list_e38f872e</spirit:name>
-      <spirit:enumeration>1</spirit:enumeration>
-      <spirit:enumeration>2</spirit:enumeration>
       <spirit:enumeration>X</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
@@ -40126,7 +40119,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_AURORA_LANES</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_AURORA_LANES" spirit:choiceRef="choice_list_aa031417" spirit:order="2">2</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_AURORA_LANES" spirit:choiceRef="choice_list_aa031417" spirit:order="2">1</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40271,7 +40264,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_48</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_48" spirit:choiceRef="choice_list_a6b9be91" spirit:order="59">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_48" spirit:choiceRef="choice_list_9bee990d" spirit:order="59">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40282,7 +40275,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_47</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_47" spirit:choiceRef="choice_list_a6b9be91" spirit:order="58">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_47" spirit:choiceRef="choice_list_9bee990d" spirit:order="58">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40293,7 +40286,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_46</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_46" spirit:choiceRef="choice_list_a6b9be91" spirit:order="57">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_46" spirit:choiceRef="choice_list_9bee990d" spirit:order="57">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40304,7 +40297,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_45</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_45" spirit:choiceRef="choice_list_a6b9be91" spirit:order="56">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_45" spirit:choiceRef="choice_list_9bee990d" spirit:order="56">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40315,7 +40308,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_44</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_44" spirit:choiceRef="choice_list_a6b9be91" spirit:order="55">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_44" spirit:choiceRef="choice_list_9bee990d" spirit:order="55">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40326,7 +40319,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_43</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_43" spirit:choiceRef="choice_list_a6b9be91" spirit:order="54">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_43" spirit:choiceRef="choice_list_9bee990d" spirit:order="54">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40337,7 +40330,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_42</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_42" spirit:choiceRef="choice_list_a6b9be91" spirit:order="53">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_42" spirit:choiceRef="choice_list_9bee990d" spirit:order="53">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40348,7 +40341,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_41</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_41" spirit:choiceRef="choice_list_a6b9be91" spirit:order="52">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_41" spirit:choiceRef="choice_list_9bee990d" spirit:order="52">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40359,7 +40352,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_40</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_40" spirit:choiceRef="choice_list_a6b9be91" spirit:order="51">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_40" spirit:choiceRef="choice_list_9bee990d" spirit:order="51">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40370,7 +40363,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_39</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_39" spirit:choiceRef="choice_list_a6b9be91" spirit:order="50">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_39" spirit:choiceRef="choice_list_9bee990d" spirit:order="50">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40381,7 +40374,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_38</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_38" spirit:choiceRef="choice_list_a6b9be91" spirit:order="49">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_38" spirit:choiceRef="choice_list_9bee990d" spirit:order="49">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40392,7 +40385,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_37</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_37" spirit:choiceRef="choice_list_a6b9be91" spirit:order="48">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_37" spirit:choiceRef="choice_list_9bee990d" spirit:order="48">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40403,7 +40396,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_36</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_36" spirit:choiceRef="choice_list_a6b9be91" spirit:order="47">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_36" spirit:choiceRef="choice_list_9bee990d" spirit:order="47">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40414,7 +40407,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_35</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_35" spirit:choiceRef="choice_list_a6b9be91" spirit:order="46">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_35" spirit:choiceRef="choice_list_9bee990d" spirit:order="46">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40425,7 +40418,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_34</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_34" spirit:choiceRef="choice_list_a6b9be91" spirit:order="45">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_34" spirit:choiceRef="choice_list_9bee990d" spirit:order="45">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40436,7 +40429,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_33</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_33" spirit:choiceRef="choice_list_a6b9be91" spirit:order="44">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_33" spirit:choiceRef="choice_list_9bee990d" spirit:order="44">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40447,7 +40440,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_32</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_32" spirit:choiceRef="choice_list_a6b9be91" spirit:order="43">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_32" spirit:choiceRef="choice_list_9bee990d" spirit:order="43">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40458,7 +40451,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_31</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_31" spirit:choiceRef="choice_list_a6b9be91" spirit:order="42">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_31" spirit:choiceRef="choice_list_9bee990d" spirit:order="42">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40469,7 +40462,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_30</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_30" spirit:choiceRef="choice_list_a6b9be91" spirit:order="41">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_30" spirit:choiceRef="choice_list_9bee990d" spirit:order="41">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40480,7 +40473,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_29</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_29" spirit:choiceRef="choice_list_a6b9be91" spirit:order="40">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_29" spirit:choiceRef="choice_list_9bee990d" spirit:order="40">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40491,7 +40484,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_28</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_28" spirit:choiceRef="choice_list_a6b9be91" spirit:order="39">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_28" spirit:choiceRef="choice_list_9bee990d" spirit:order="39">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40502,7 +40495,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_27</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_27" spirit:choiceRef="choice_list_a6b9be91" spirit:order="38">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_27" spirit:choiceRef="choice_list_9bee990d" spirit:order="38">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40513,7 +40506,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_26</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_26" spirit:choiceRef="choice_list_a6b9be91" spirit:order="37">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_26" spirit:choiceRef="choice_list_9bee990d" spirit:order="37">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40524,7 +40517,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_25</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_25" spirit:choiceRef="choice_list_a6b9be91" spirit:order="36">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_25" spirit:choiceRef="choice_list_9bee990d" spirit:order="36">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40535,7 +40528,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_24</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_24" spirit:choiceRef="choice_list_a6b9be91" spirit:order="35">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_24" spirit:choiceRef="choice_list_9bee990d" spirit:order="35">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40546,7 +40539,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_23</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_23" spirit:choiceRef="choice_list_a6b9be91" spirit:order="34">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_23" spirit:choiceRef="choice_list_9bee990d" spirit:order="34">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40557,7 +40550,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_22</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_22" spirit:choiceRef="choice_list_a6b9be91" spirit:order="33">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_22" spirit:choiceRef="choice_list_9bee990d" spirit:order="33">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40568,7 +40561,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_21</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_21" spirit:choiceRef="choice_list_a6b9be91" spirit:order="32">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_21" spirit:choiceRef="choice_list_9bee990d" spirit:order="32">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40579,7 +40572,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_20</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_20" spirit:choiceRef="choice_list_a6b9be91" spirit:order="31">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_20" spirit:choiceRef="choice_list_9bee990d" spirit:order="31">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40590,7 +40583,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_19</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_19" spirit:choiceRef="choice_list_a6b9be91" spirit:order="30">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_19" spirit:choiceRef="choice_list_9bee990d" spirit:order="30">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40601,7 +40594,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_18</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_18" spirit:choiceRef="choice_list_a6b9be91" spirit:order="29">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_18" spirit:choiceRef="choice_list_9bee990d" spirit:order="29">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40612,7 +40605,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_17</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_17" spirit:choiceRef="choice_list_a6b9be91" spirit:order="28">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_17" spirit:choiceRef="choice_list_9bee990d" spirit:order="28">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40623,7 +40616,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_16</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_16" spirit:choiceRef="choice_list_a6b9be91" spirit:order="27">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_16" spirit:choiceRef="choice_list_9bee990d" spirit:order="27">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40634,7 +40627,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_15</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_15" spirit:choiceRef="choice_list_a6b9be91" spirit:order="26">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_15" spirit:choiceRef="choice_list_9bee990d" spirit:order="26">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40645,7 +40638,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_14</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_14" spirit:choiceRef="choice_list_a6b9be91" spirit:order="25">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_14" spirit:choiceRef="choice_list_9bee990d" spirit:order="25">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40656,7 +40649,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_13</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_13" spirit:choiceRef="choice_list_a6b9be91" spirit:order="24">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_13" spirit:choiceRef="choice_list_9bee990d" spirit:order="24">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40667,7 +40660,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_12</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_12" spirit:choiceRef="choice_list_a6b9be91" spirit:order="23">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_12" spirit:choiceRef="choice_list_9bee990d" spirit:order="23">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40678,7 +40671,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_11</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_11" spirit:choiceRef="choice_list_a6b9be91" spirit:order="22">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_11" spirit:choiceRef="choice_list_9bee990d" spirit:order="22">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40689,7 +40682,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_10</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_10" spirit:choiceRef="choice_list_a6b9be91" spirit:order="21">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_10" spirit:choiceRef="choice_list_9bee990d" spirit:order="21">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40700,7 +40693,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_9</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_9" spirit:choiceRef="choice_list_a6b9be91" spirit:order="20">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_9" spirit:choiceRef="choice_list_9bee990d" spirit:order="20">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40711,7 +40704,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_8</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_8" spirit:choiceRef="choice_list_a6b9be91" spirit:order="19">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_8" spirit:choiceRef="choice_list_9bee990d" spirit:order="19">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40722,7 +40715,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_7</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_7" spirit:choiceRef="choice_list_a6b9be91" spirit:order="18">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_7" spirit:choiceRef="choice_list_9bee990d" spirit:order="18">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40733,7 +40726,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_6</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_6" spirit:choiceRef="choice_list_a6b9be91" spirit:order="17">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_6" spirit:choiceRef="choice_list_9bee990d" spirit:order="17">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40744,7 +40737,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_5</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_5" spirit:choiceRef="choice_list_a6b9be91" spirit:order="16">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_5" spirit:choiceRef="choice_list_9bee990d" spirit:order="16">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40777,7 +40770,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_2</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_2" spirit:choiceRef="choice_list_e38f872e" spirit:order="13">2</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_2" spirit:choiceRef="choice_list_628aac54" spirit:order="13">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40788,7 +40781,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_1</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_1" spirit:choiceRef="choice_list_a6b9be91" spirit:order="12">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_1" spirit:choiceRef="choice_list_9bee990d" spirit:order="12">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -41088,44 +41081,44 @@
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.SYNC_CLK.ASSOCIATED_BUSIF" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.SYNC_CLK.ASSOCIATED_RESET" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.SYNC_CLK.CLK_DOMAIN" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.SYNC_CLK.FREQ_HZ" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.SYNC_CLK.FREQ_HZ" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.SYNC_CLK.FREQ_TOLERANCE_HZ" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.SYNC_CLK.PHASE" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.SYNC_CLK.PHASE" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.SYS_RESET_OUT.POLARITY" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TX_OUT_CLK.ASSOCIATED_BUSIF" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TX_OUT_CLK.ASSOCIATED_RESET" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TX_OUT_CLK.CLK_DOMAIN" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TX_OUT_CLK.FREQ_HZ" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TX_OUT_CLK.FREQ_HZ" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TX_OUT_CLK.FREQ_TOLERANCE_HZ" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TX_OUT_CLK.PHASE" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.TX_OUT_CLK.PHASE" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_CLK.ASSOCIATED_BUSIF" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_CLK.ASSOCIATED_RESET" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_CLK.CLK_DOMAIN" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_CLK.FREQ_HZ" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_CLK.FREQ_HZ" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_CLK.FREQ_TOLERANCE_HZ" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_CLK.PHASE" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_CLK.PHASE" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_CLK_OUT.ASSOCIATED_BUSIF" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_CLK_OUT.ASSOCIATED_RESET" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.CLK_DOMAIN" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.FREQ_HZ" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.FREQ_HZ" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.HAS_TKEEP" xilinx:valueSource="auto" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.HAS_TLAST" xilinx:valueSource="auto" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.HAS_TREADY" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.HAS_TSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.LAYERED_METADATA" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.PHASE" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.PHASE" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.TDATA_NUM_BYTES" xilinx:valueSource="auto" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.TUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_S_AXI_TX.CLK_DOMAIN" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_S_AXI_TX.FREQ_HZ" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_S_AXI_TX.FREQ_HZ" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_S_AXI_TX.HAS_TKEEP" xilinx:valueSource="constant_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_S_AXI_TX.HAS_TLAST" xilinx:valueSource="constant_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_S_AXI_TX.HAS_TREADY" xilinx:valueSource="auto_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_S_AXI_TX.HAS_TSTRB" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_S_AXI_TX.LAYERED_METADATA" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_S_AXI_TX.PHASE" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_S_AXI_TX.PHASE" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_S_AXI_TX.TDATA_NUM_BYTES" xilinx:valueSource="auto_prop" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_S_AXI_TX.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_S_AXI_TX.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>

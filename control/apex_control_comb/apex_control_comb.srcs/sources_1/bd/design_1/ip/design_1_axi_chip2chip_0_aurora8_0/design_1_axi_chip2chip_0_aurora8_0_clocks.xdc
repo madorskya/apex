@@ -73,5 +73,4 @@
 
 ############################### GT LOC (For use in top level design) ###################################
 # set_property LOC GTPE2_CHANNEL_X0Y0 [get_cells aurora_module_i/inst/design_1_axi_chip2chip_0_aurora8_0_core_i/gt_wrapper_i/design_1_axi_chip2chip_0_aurora8_0_multi_gt_i/gt0_design_1_axi_chip2chip_0_aurora8_0_i/gtpe2_i]
-# set_property LOC GTPE2_CHANNEL_X0Y3 [get_cells aurora_module_i/inst/design_1_axi_chip2chip_0_aurora8_0_core_i/gt_wrapper_i/design_1_axi_chip2chip_0_aurora8_0_multi_gt_i/gt1_design_1_axi_chip2chip_0_aurora8_0_i/gtpe2_i]
 

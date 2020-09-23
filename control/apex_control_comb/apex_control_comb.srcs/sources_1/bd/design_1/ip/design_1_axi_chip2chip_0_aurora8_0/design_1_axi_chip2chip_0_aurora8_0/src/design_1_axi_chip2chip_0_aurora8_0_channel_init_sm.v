@@ -71,7 +71,7 @@
 //               reset only if one of the lanes goes down, a hard error is detected, or
 //               a general reset is requested.
 //
-//               This module supports 2 4-byte lane designs
+//               This module supports 1 4-byte lane designs
 //
 
 `timescale 1 ns / 1 ps
@@ -120,15 +120,15 @@ module design_1_axi_chip2chip_0_aurora8_0_CHANNEL_INIT_SM #
 //***********************************Port Declarations*******************************
 
     // GTP Interface
-input   [0:1]      CH_BOND_DONE;
+input              CH_BOND_DONE;
 
     output             EN_CHAN_SYNC;
 
     // Aurora Lane Interface
-input   [0:1]      CHANNEL_BOND_LOAD;
-input   [0:7]      GOT_A;
-input   [0:1]      GOT_V;
-output  [0:1]      RESET_LANES;
+input              CHANNEL_BOND_LOAD;
+input   [0:3]      GOT_A;
+input              GOT_V;
+output             RESET_LANES;
 
     // System Interface
     input              USER_CLK;
@@ -158,15 +158,6 @@ output  [0:1]      RESET_LANES;
 
     reg     [0:WATCHDOG_TIMEOUT-1]   free_count_r;
     reg     [0:15]  verify_watchdog_r;
-    reg     [0:15]  bonding_watchdog_r;
-    reg             all_ch_bond_done_r;
-    reg             all_channel_bond_load_r;
-    reg             bond_passed_r;
-    reg             good_as_r;
-    reg             bad_as_r;
-    reg     [0:2]   a_count_r;
-    reg     [0:1]  ch_bond_done_r;
-    reg     [0:1]  channel_bond_load_r;
     reg             all_lanes_v_r;
     reg             got_first_v_r;
     reg     [0:15]  v_count_r;
@@ -177,8 +168,6 @@ output  [0:1]      RESET_LANES;
 
     // State registers
     reg             wait_for_lane_up_r;
-    reg             channel_bond_r;
-    reg             check_bond_r;
     reg             verify_r;
     reg             ready_r;
     reg             CHANNEL_UP;
@@ -200,18 +189,9 @@ output  [0:1]      RESET_LANES;
     wire            reset_lanes_c;
     wire            free_count_done_w;
 
-    wire            all_ch_bond_done_c;
-    wire            all_channel_bond_load_c;
-    wire    [0:3]   all_as_c;
-    wire    [0:3]   any_as_c;
-    wire            four_as_r;
-    wire            bonding_watchdog_done_r;
-    wire            all_lanes_v_c;
 
 
     // Next state signals
-    wire            next_channel_bond_c;
-    wire            next_check_bond_c;
     wire            next_verify_c;
     wire            next_ready_c;
 
@@ -227,16 +207,12 @@ output  [0:1]      RESET_LANES;
         if(RESET|RESET_CHANNEL)
         begin
             wait_for_lane_up_r <=  `DLY    1'b1;
-            channel_bond_r     <=  `DLY    1'b0;
-            check_bond_r       <=  `DLY    1'b0;
             verify_r           <=  `DLY    1'b0;
             ready_r            <=  `DLY    1'b0;
         end
         else
         begin
             wait_for_lane_up_r <=  `DLY    1'b0;
-            channel_bond_r     <=  `DLY    next_channel_bond_c;
-            check_bond_r       <=  `DLY    next_check_bond_c;
             verify_r           <=  `DLY    next_verify_c;
             ready_r            <=  `DLY    next_ready_c;
         end
@@ -244,16 +220,7 @@ output  [0:1]      RESET_LANES;
 
 
     // Next state logic
-    assign  next_channel_bond_c =   wait_for_lane_up_r |
-                                    (channel_bond_r & !bond_passed_r)|
-                                    (check_bond_r & bad_as_r);
-
-
-    assign  next_check_bond_c   =   (channel_bond_r & bond_passed_r )|
-                                    (check_bond_r & !four_as_r & !bad_as_r);
-
-
-    assign  next_verify_c       =   (check_bond_r & four_as_r & !bad_as_r)|
+    assign  next_verify_c       =   wait_for_lane_up_r |
                                     (verify_r & (!rxver_3d_done_r|!txver_8d_done_r));
 
 
@@ -293,35 +260,22 @@ output  [0:1]      RESET_LANES;
     // signal.
     assign reset_lanes_c =              (verify_r & verify_watchdog_done_r)|
                                         (verify_r & bad_v_r & !rxver_3d_done_r)|
-                                        (channel_bond_r & bonding_watchdog_done_r)|
-                                        (check_bond_r & bonding_watchdog_done_r)|
                                         (RESET_CHANNEL & !wait_for_lane_up_r)|
                                         RESET;
 
-
-    FD #(.INIT(1'b1)) reset_lanes_flop_0_i
+    FD #(.INIT(1'b1)) reset_lanes_flop_i
     (
         .D(reset_lanes_c),
         .C(USER_CLK),
-        .Q(RESET_LANES[0])
-
-    );
-
-    FD #(.INIT(1'b1)) reset_lanes_flop_1_i
-    (
-        .D(reset_lanes_c),
-        .C(USER_CLK),
-        .Q(RESET_LANES[1])
+        .Q(RESET_LANES)
 
     );
 
 
 
       assign gtreset_c =              (verify_r & verify_watchdog_done_r)|
-                                      (verify_r & bad_v_r & !rxver_3d_done_r)|
-                                      (channel_bond_r & bonding_watchdog_done_r)|
-                                      (check_bond_r & bonding_watchdog_done_r);
-  
+                                      (verify_r & bad_v_r & !rxver_3d_done_r);
+
 
     FD #(.INIT(1'b1)) gtreset_flop_0_i
     (
@@ -361,118 +315,12 @@ always @ (posedge USER_CLK)
 
     assign  verify_watchdog_done_r  =   verify_watchdog_r[15];
 
-    // The channel bonding watchdog is triggered when the channel_bond_load
-    // signal has been asserted 16 times in the channel_bonding state without
-    // continuing or resetting.  If this happens, we reset the lanes.
-
-    always @(posedge USER_CLK)
-        if(!(channel_bond_r || check_bond_r) || all_channel_bond_load_r || free_count_done_w)
-            bonding_watchdog_r <= `DLY {(channel_bond_r || check_bond_r),bonding_watchdog_r[0:14]};
-
-    assign  bonding_watchdog_done_r =   bonding_watchdog_r[15];
 
     //_____________________________Channel Bonding_______________________________
 
-
-
-    // We send the EN_CHAN_SYNC signal to the master lane.
-
-    FD #(.INIT(1'b0)) en_chan_sync_flop_i
-    (
-        .D(channel_bond_r),
-        .C(USER_CLK),
-        .Q(EN_CHAN_SYNC)
-    );
-
-
-
-
-    // This first wide AND gate collects the CH_BOND_DONE signals.  We register the
-    // output of the AND gate.  Note that register is a one shot that is reset
-    // only when the state changes.
-
-    //This FF stage added for timing closure
-    always @(posedge USER_CLK)
-        ch_bond_done_r  <=  `DLY    CH_BOND_DONE;
-
-
-    assign all_ch_bond_done_c = ch_bond_done_r[0] &
-                                ch_bond_done_r[1];
-
-    always @(posedge USER_CLK)
-        if(!channel_bond_r)             all_ch_bond_done_r  <=  `DLY    1'b0;
-        else                            all_ch_bond_done_r  <=  `DLY    all_ch_bond_done_c;
-
-    //This FF stage added for timing closure
-    always @ (posedge USER_CLK)
-      channel_bond_load_r <= `DLY CHANNEL_BOND_LOAD;
-
-    // This wide AND gate collects the CHANNEL_BOND_LOAD signals from each lane.
-    // We register the output of the AND gate.
-
-    assign all_channel_bond_load_c = channel_bond_load_r[0] &
-                                     channel_bond_load_r[1];
-
-    always @(posedge USER_CLK)
-        all_channel_bond_load_r      <=  `DLY    all_channel_bond_load_c;
-
-
-
-    // Assert bond_passed_r if all_ch_bond_done_r high.
-    always @(posedge USER_CLK)
-        bond_passed_r   <=  `DLY    all_ch_bond_done_r;
-
-
-
-
-
-    // Good_as_r is asserted as long as no bad As are detected.  Bad As are As that do
-    // not arrive with the rest of the As in the channel.
-    assign all_as_c[0] = GOT_A[0] &
-                         GOT_A[4];
-
-    assign all_as_c[1] = GOT_A[1] &
-                         GOT_A[5];
-
-    assign all_as_c[2] = GOT_A[2] &
-                         GOT_A[6];
-
-    assign all_as_c[3] = GOT_A[3] &
-                         GOT_A[7];
-
-
-
-    assign any_as_c[0] = GOT_A[0] |
-                         GOT_A[4];
-
-    assign any_as_c[1] = GOT_A[1] |
-                         GOT_A[5];
-
-    assign any_as_c[2] = GOT_A[2] |
-                         GOT_A[6];
-
-    assign any_as_c[3] = GOT_A[3] |
-                         GOT_A[7];
-
-
-
-    always @(posedge USER_CLK)
-        good_as_r   <=  `DLY    all_as_c[0] | all_as_c[1] | all_as_c[2] | all_as_c[3];
-
-
-    always @(posedge USER_CLK)
-        bad_as_r    <=  `DLY    (any_as_c & ~all_as_c) != 4'b0000;
-
-
-
-
-    // Four_as_r is asserted when you get 4 consecutive good As in check_bond state.
-    always @(posedge USER_CLK)
-        if(!check_bond_r)   a_count_r   <=  `DLY    3'b000;
-        else if(good_as_r)  a_count_r   <=  `DLY    a_count_r + 3'b001;
-
-
-    assign  four_as_r   =   a_count_r[0];
+    // We don't use channel bonding for the single lane case, so we tie the
+    // EN_CHAN_SYNC signal low.
+    assign   EN_CHAN_SYNC    =   1'b0;
 
 
 
@@ -480,12 +328,8 @@ always @ (posedge USER_CLK)
 
 
     // Vs need to appear on all lanes simultaneously.
-    assign all_lanes_v_c = GOT_V[0] &
-                           GOT_V[1];
-
-
     always @(posedge USER_CLK)
-        all_lanes_v_r <=  `DLY  all_lanes_v_c;
+        all_lanes_v_r <=  `DLY  GOT_V;
 
 
     // Vs need to be decoded by the aurora lane and then checked by the

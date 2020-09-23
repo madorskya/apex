@@ -174,7 +174,7 @@ module design_1_axi_chip2chip_0_aurora8_0_tx_startup_fsm  #
   reg       run_phase_alignment_int = 1'b0;
   wire      run_phase_alignment_int_s2;
   reg       run_phase_alignment_int_s3 = 1'b0;
-  localparam integer MAX_WAIT_BYPASS      = 91648;
+  localparam integer MAX_WAIT_BYPASS      = 45824;
  
   reg [16:0] wait_bypass_count = 0;
   reg       time_out_wait_bypass    = 1'b0;

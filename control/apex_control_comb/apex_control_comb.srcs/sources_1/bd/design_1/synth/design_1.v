@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2020.1.1 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Sun Sep 20 01:00:41 2020
+//Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
+//Date        : Tue Sep 22 18:23:59 2020
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -56,12 +56,12 @@ module chip2chip_0_imp_UFBEBD
     s_axi_wvalid,
     sync_clk_out,
     user_clk_out);
-  output [0:1]GT_SERIAL_TX_txn;
-  output [0:1]GT_SERIAL_TX_txp;
+  output [0:0]GT_SERIAL_TX_txn;
+  output [0:0]GT_SERIAL_TX_txp;
   input aurora_init_clk;
   input aurora_pma_init_in;
-  input [0:1]c2c_0_rxn;
-  input [0:1]c2c_0_rxp;
+  input [0:0]c2c_0_rxn;
+  input [0:0]c2c_0_rxp;
   output gt0_pll0outclk_out;
   output gt0_pll0outrefclk_out;
   output gt0_pll0refclklost_out;
@@ -103,15 +103,15 @@ module chip2chip_0_imp_UFBEBD
   output sync_clk_out;
   output user_clk_out;
 
-  wire [0:1]GT_SERIAL_RX_1_RXN;
-  wire [0:1]GT_SERIAL_RX_1_RXP;
+  wire [0:0]GT_SERIAL_RX_1_RXN;
+  wire [0:0]GT_SERIAL_RX_1_RXP;
   wire Net;
-  wire [63:0]axi_chip2chip_0_AXIS_TX_TDATA;
+  wire [31:0]axi_chip2chip_0_AXIS_TX_TDATA;
   wire axi_chip2chip_0_AXIS_TX_TREADY;
   wire axi_chip2chip_0_AXIS_TX_TVALID;
-  wire [0:1]axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXN;
-  wire [0:1]axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXP;
-  wire [0:63]axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA;
+  wire [0:0]axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXN;
+  wire [0:0]axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXP;
+  wire [0:31]axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA;
   wire axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TVALID;
   wire axi_chip2chip_0_aurora8_channel_up;
   wire axi_chip2chip_0_aurora8_gt0_pll0outclk_out;
@@ -158,10 +158,10 @@ module chip2chip_0_imp_UFBEBD
   wire proc_sys_reset_0_peripheral_aresetn;
   wire util_ds_buf_0_IBUF_OUT;
 
-  assign GT_SERIAL_RX_1_RXN = c2c_0_rxn[0:1];
-  assign GT_SERIAL_RX_1_RXP = c2c_0_rxp[0:1];
-  assign GT_SERIAL_TX_txn[0:1] = axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXN;
-  assign GT_SERIAL_TX_txp[0:1] = axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXP;
+  assign GT_SERIAL_RX_1_RXN = c2c_0_rxn[0];
+  assign GT_SERIAL_RX_1_RXP = c2c_0_rxp[0];
+  assign GT_SERIAL_TX_txn[0] = axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXN;
+  assign GT_SERIAL_TX_txp[0] = axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXP;
   assign Net = aurora_init_clk;
   assign cpu_M14_AXI_ARADDR = s_axi_araddr[31:0];
   assign cpu_M14_AXI_ARBURST = s_axi_arburst[1:0];
@@ -211,7 +211,7 @@ module chip2chip_0_imp_UFBEBD
         .aurora_pma_init_out(axi_chip2chip_0_aurora_pma_init_out),
         .aurora_reset_pb(axi_chip2chip_0_aurora_reset_pb),
         .axi_c2c_aurora_channel_up(axi_chip2chip_0_aurora8_channel_up),
-        .axi_c2c_aurora_rx_tdata({axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[0],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[1],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[2],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[3],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[4],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[5],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[6],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[7],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[8],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[9],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[10],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[11],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[12],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[13],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[14],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[15],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[16],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[17],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[18],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[19],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[20],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[21],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[22],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[23],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[24],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[25],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[26],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[27],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[28],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[29],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[30],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[31],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[32],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[33],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[34],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[35],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[36],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[37],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[38],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[39],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[40],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[41],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[42],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[43],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[44],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[45],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[46],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[47],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[48],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[49],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[50],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[51],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[52],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[53],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[54],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[55],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[56],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[57],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[58],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[59],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[60],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[61],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[62],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[63]}),
+        .axi_c2c_aurora_rx_tdata({axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[0],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[1],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[2],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[3],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[4],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[5],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[6],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[7],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[8],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[9],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[10],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[11],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[12],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[13],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[14],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[15],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[16],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[17],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[18],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[19],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[20],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[21],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[22],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[23],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[24],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[25],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[26],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[27],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[28],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[29],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[30],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[31]}),
         .axi_c2c_aurora_rx_tvalid(axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TVALID),
         .axi_c2c_aurora_tx_tdata(axi_chip2chip_0_AXIS_TX_TDATA),
         .axi_c2c_aurora_tx_tready(axi_chip2chip_0_AXIS_TX_TREADY),
@@ -269,7 +269,7 @@ module chip2chip_0_imp_UFBEBD
         .reset(axi_chip2chip_0_aurora_reset_pb),
         .rxn(GT_SERIAL_RX_1_RXN),
         .rxp(GT_SERIAL_RX_1_RXP),
-        .s_axi_tx_tdata({axi_chip2chip_0_AXIS_TX_TDATA[63],axi_chip2chip_0_AXIS_TX_TDATA[62],axi_chip2chip_0_AXIS_TX_TDATA[61],axi_chip2chip_0_AXIS_TX_TDATA[60],axi_chip2chip_0_AXIS_TX_TDATA[59],axi_chip2chip_0_AXIS_TX_TDATA[58],axi_chip2chip_0_AXIS_TX_TDATA[57],axi_chip2chip_0_AXIS_TX_TDATA[56],axi_chip2chip_0_AXIS_TX_TDATA[55],axi_chip2chip_0_AXIS_TX_TDATA[54],axi_chip2chip_0_AXIS_TX_TDATA[53],axi_chip2chip_0_AXIS_TX_TDATA[52],axi_chip2chip_0_AXIS_TX_TDATA[51],axi_chip2chip_0_AXIS_TX_TDATA[50],axi_chip2chip_0_AXIS_TX_TDATA[49],axi_chip2chip_0_AXIS_TX_TDATA[48],axi_chip2chip_0_AXIS_TX_TDATA[47],axi_chip2chip_0_AXIS_TX_TDATA[46],axi_chip2chip_0_AXIS_TX_TDATA[45],axi_chip2chip_0_AXIS_TX_TDATA[44],axi_chip2chip_0_AXIS_TX_TDATA[43],axi_chip2chip_0_AXIS_TX_TDATA[42],axi_chip2chip_0_AXIS_TX_TDATA[41],axi_chip2chip_0_AXIS_TX_TDATA[40],axi_chip2chip_0_AXIS_TX_TDATA[39],axi_chip2chip_0_AXIS_TX_TDATA[38],axi_chip2chip_0_AXIS_TX_TDATA[37],axi_chip2chip_0_AXIS_TX_TDATA[36],axi_chip2chip_0_AXIS_TX_TDATA[35],axi_chip2chip_0_AXIS_TX_TDATA[34],axi_chip2chip_0_AXIS_TX_TDATA[33],axi_chip2chip_0_AXIS_TX_TDATA[32],axi_chip2chip_0_AXIS_TX_TDATA[31],axi_chip2chip_0_AXIS_TX_TDATA[30],axi_chip2chip_0_AXIS_TX_TDATA[29],axi_chip2chip_0_AXIS_TX_TDATA[28],axi_chip2chip_0_AXIS_TX_TDATA[27],axi_chip2chip_0_AXIS_TX_TDATA[26],axi_chip2chip_0_AXIS_TX_TDATA[25],axi_chip2chip_0_AXIS_TX_TDATA[24],axi_chip2chip_0_AXIS_TX_TDATA[23],axi_chip2chip_0_AXIS_TX_TDATA[22],axi_chip2chip_0_AXIS_TX_TDATA[21],axi_chip2chip_0_AXIS_TX_TDATA[20],axi_chip2chip_0_AXIS_TX_TDATA[19],axi_chip2chip_0_AXIS_TX_TDATA[18],axi_chip2chip_0_AXIS_TX_TDATA[17],axi_chip2chip_0_AXIS_TX_TDATA[16],axi_chip2chip_0_AXIS_TX_TDATA[15],axi_chip2chip_0_AXIS_TX_TDATA[14],axi_chip2chip_0_AXIS_TX_TDATA[13],axi_chip2chip_0_AXIS_TX_TDATA[12],axi_chip2chip_0_AXIS_TX_TDATA[11],axi_chip2chip_0_AXIS_TX_TDATA[10],axi_chip2chip_0_AXIS_TX_TDATA[9],axi_chip2chip_0_AXIS_TX_TDATA[8],axi_chip2chip_0_AXIS_TX_TDATA[7],axi_chip2chip_0_AXIS_TX_TDATA[6],axi_chip2chip_0_AXIS_TX_TDATA[5],axi_chip2chip_0_AXIS_TX_TDATA[4],axi_chip2chip_0_AXIS_TX_TDATA[3],axi_chip2chip_0_AXIS_TX_TDATA[2],axi_chip2chip_0_AXIS_TX_TDATA[1],axi_chip2chip_0_AXIS_TX_TDATA[0]}),
+        .s_axi_tx_tdata({axi_chip2chip_0_AXIS_TX_TDATA[31],axi_chip2chip_0_AXIS_TX_TDATA[30],axi_chip2chip_0_AXIS_TX_TDATA[29],axi_chip2chip_0_AXIS_TX_TDATA[28],axi_chip2chip_0_AXIS_TX_TDATA[27],axi_chip2chip_0_AXIS_TX_TDATA[26],axi_chip2chip_0_AXIS_TX_TDATA[25],axi_chip2chip_0_AXIS_TX_TDATA[24],axi_chip2chip_0_AXIS_TX_TDATA[23],axi_chip2chip_0_AXIS_TX_TDATA[22],axi_chip2chip_0_AXIS_TX_TDATA[21],axi_chip2chip_0_AXIS_TX_TDATA[20],axi_chip2chip_0_AXIS_TX_TDATA[19],axi_chip2chip_0_AXIS_TX_TDATA[18],axi_chip2chip_0_AXIS_TX_TDATA[17],axi_chip2chip_0_AXIS_TX_TDATA[16],axi_chip2chip_0_AXIS_TX_TDATA[15],axi_chip2chip_0_AXIS_TX_TDATA[14],axi_chip2chip_0_AXIS_TX_TDATA[13],axi_chip2chip_0_AXIS_TX_TDATA[12],axi_chip2chip_0_AXIS_TX_TDATA[11],axi_chip2chip_0_AXIS_TX_TDATA[10],axi_chip2chip_0_AXIS_TX_TDATA[9],axi_chip2chip_0_AXIS_TX_TDATA[8],axi_chip2chip_0_AXIS_TX_TDATA[7],axi_chip2chip_0_AXIS_TX_TDATA[6],axi_chip2chip_0_AXIS_TX_TDATA[5],axi_chip2chip_0_AXIS_TX_TDATA[4],axi_chip2chip_0_AXIS_TX_TDATA[3],axi_chip2chip_0_AXIS_TX_TDATA[2],axi_chip2chip_0_AXIS_TX_TDATA[1],axi_chip2chip_0_AXIS_TX_TDATA[0]}),
         .s_axi_tx_tready(axi_chip2chip_0_AXIS_TX_TREADY),
         .s_axi_tx_tvalid(axi_chip2chip_0_AXIS_TX_TVALID),
         .sync_clk_out(axi_chip2chip_0_aurora8_sync_clk_out),
@@ -325,13 +325,13 @@ module chip2chip_1_imp_Y38MT6
     s_axi_wvalid,
     sync_clk,
     user_clk);
-  output [0:1]GT_SERIAL_TX_txn;
-  output [0:1]GT_SERIAL_TX_txp;
+  output [0:0]GT_SERIAL_TX_txn;
+  output [0:0]GT_SERIAL_TX_txp;
   input aurora_init_clk;
   input aurora_mmcm_not_locked;
   input aurora_pma_init_in;
-  input [0:1]c2c_0_rxn;
-  input [0:1]c2c_0_rxp;
+  input [0:0]c2c_0_rxn;
+  input [0:0]c2c_0_rxp;
   input gt0_pll0outclk_in;
   input gt0_pll0outrefclk_in;
   input gt0_pll0refclklost_in;
@@ -372,16 +372,16 @@ module chip2chip_1_imp_Y38MT6
   input sync_clk;
   input user_clk;
 
-  wire [0:1]GT_SERIAL_RX_1_RXN;
-  wire [0:1]GT_SERIAL_RX_1_RXP;
+  wire [0:0]GT_SERIAL_RX_1_RXN;
+  wire [0:0]GT_SERIAL_RX_1_RXP;
   wire Net;
   wire aurora_mmcm_not_locked_1;
-  wire [63:0]axi_chip2chip_0_AXIS_TX_TDATA;
+  wire [31:0]axi_chip2chip_0_AXIS_TX_TDATA;
   wire axi_chip2chip_0_AXIS_TX_TREADY;
   wire axi_chip2chip_0_AXIS_TX_TVALID;
-  wire [0:1]axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXN;
-  wire [0:1]axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXP;
-  wire [0:63]axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA;
+  wire [0:0]axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXN;
+  wire [0:0]axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXP;
+  wire [0:31]axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA;
   wire axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TVALID;
   wire axi_chip2chip_0_aurora8_channel_up;
   wire axi_chip2chip_0_aurora_pma_init_out;
@@ -427,10 +427,10 @@ module chip2chip_1_imp_Y38MT6
   wire user_clk_1;
   wire util_ds_buf_0_IBUF_OUT;
 
-  assign GT_SERIAL_RX_1_RXN = c2c_0_rxn[0:1];
-  assign GT_SERIAL_RX_1_RXP = c2c_0_rxp[0:1];
-  assign GT_SERIAL_TX_txn[0:1] = axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXN;
-  assign GT_SERIAL_TX_txp[0:1] = axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXP;
+  assign GT_SERIAL_RX_1_RXN = c2c_0_rxn[0];
+  assign GT_SERIAL_RX_1_RXP = c2c_0_rxp[0];
+  assign GT_SERIAL_TX_txn[0] = axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXN;
+  assign GT_SERIAL_TX_txp[0] = axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXP;
   assign Net = aurora_init_clk;
   assign aurora_mmcm_not_locked_1 = aurora_mmcm_not_locked;
   assign cpu_M14_AXI_ARADDR = s_axi_araddr[31:0];
@@ -480,7 +480,7 @@ module chip2chip_1_imp_Y38MT6
         .aurora_pma_init_out(axi_chip2chip_0_aurora_pma_init_out),
         .aurora_reset_pb(axi_chip2chip_0_aurora_reset_pb),
         .axi_c2c_aurora_channel_up(axi_chip2chip_0_aurora8_channel_up),
-        .axi_c2c_aurora_rx_tdata({axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[0],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[1],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[2],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[3],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[4],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[5],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[6],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[7],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[8],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[9],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[10],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[11],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[12],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[13],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[14],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[15],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[16],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[17],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[18],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[19],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[20],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[21],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[22],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[23],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[24],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[25],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[26],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[27],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[28],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[29],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[30],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[31],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[32],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[33],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[34],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[35],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[36],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[37],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[38],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[39],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[40],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[41],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[42],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[43],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[44],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[45],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[46],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[47],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[48],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[49],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[50],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[51],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[52],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[53],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[54],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[55],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[56],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[57],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[58],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[59],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[60],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[61],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[62],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[63]}),
+        .axi_c2c_aurora_rx_tdata({axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[0],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[1],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[2],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[3],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[4],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[5],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[6],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[7],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[8],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[9],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[10],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[11],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[12],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[13],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[14],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[15],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[16],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[17],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[18],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[19],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[20],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[21],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[22],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[23],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[24],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[25],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[26],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[27],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[28],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[29],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[30],axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA[31]}),
         .axi_c2c_aurora_rx_tvalid(axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TVALID),
         .axi_c2c_aurora_tx_tdata(axi_chip2chip_0_AXIS_TX_TDATA),
         .axi_c2c_aurora_tx_tready(axi_chip2chip_0_AXIS_TX_TREADY),
@@ -538,7 +538,7 @@ module chip2chip_1_imp_Y38MT6
         .reset(axi_chip2chip_0_aurora_reset_pb),
         .rxn(GT_SERIAL_RX_1_RXN),
         .rxp(GT_SERIAL_RX_1_RXP),
-        .s_axi_tx_tdata({axi_chip2chip_0_AXIS_TX_TDATA[63],axi_chip2chip_0_AXIS_TX_TDATA[62],axi_chip2chip_0_AXIS_TX_TDATA[61],axi_chip2chip_0_AXIS_TX_TDATA[60],axi_chip2chip_0_AXIS_TX_TDATA[59],axi_chip2chip_0_AXIS_TX_TDATA[58],axi_chip2chip_0_AXIS_TX_TDATA[57],axi_chip2chip_0_AXIS_TX_TDATA[56],axi_chip2chip_0_AXIS_TX_TDATA[55],axi_chip2chip_0_AXIS_TX_TDATA[54],axi_chip2chip_0_AXIS_TX_TDATA[53],axi_chip2chip_0_AXIS_TX_TDATA[52],axi_chip2chip_0_AXIS_TX_TDATA[51],axi_chip2chip_0_AXIS_TX_TDATA[50],axi_chip2chip_0_AXIS_TX_TDATA[49],axi_chip2chip_0_AXIS_TX_TDATA[48],axi_chip2chip_0_AXIS_TX_TDATA[47],axi_chip2chip_0_AXIS_TX_TDATA[46],axi_chip2chip_0_AXIS_TX_TDATA[45],axi_chip2chip_0_AXIS_TX_TDATA[44],axi_chip2chip_0_AXIS_TX_TDATA[43],axi_chip2chip_0_AXIS_TX_TDATA[42],axi_chip2chip_0_AXIS_TX_TDATA[41],axi_chip2chip_0_AXIS_TX_TDATA[40],axi_chip2chip_0_AXIS_TX_TDATA[39],axi_chip2chip_0_AXIS_TX_TDATA[38],axi_chip2chip_0_AXIS_TX_TDATA[37],axi_chip2chip_0_AXIS_TX_TDATA[36],axi_chip2chip_0_AXIS_TX_TDATA[35],axi_chip2chip_0_AXIS_TX_TDATA[34],axi_chip2chip_0_AXIS_TX_TDATA[33],axi_chip2chip_0_AXIS_TX_TDATA[32],axi_chip2chip_0_AXIS_TX_TDATA[31],axi_chip2chip_0_AXIS_TX_TDATA[30],axi_chip2chip_0_AXIS_TX_TDATA[29],axi_chip2chip_0_AXIS_TX_TDATA[28],axi_chip2chip_0_AXIS_TX_TDATA[27],axi_chip2chip_0_AXIS_TX_TDATA[26],axi_chip2chip_0_AXIS_TX_TDATA[25],axi_chip2chip_0_AXIS_TX_TDATA[24],axi_chip2chip_0_AXIS_TX_TDATA[23],axi_chip2chip_0_AXIS_TX_TDATA[22],axi_chip2chip_0_AXIS_TX_TDATA[21],axi_chip2chip_0_AXIS_TX_TDATA[20],axi_chip2chip_0_AXIS_TX_TDATA[19],axi_chip2chip_0_AXIS_TX_TDATA[18],axi_chip2chip_0_AXIS_TX_TDATA[17],axi_chip2chip_0_AXIS_TX_TDATA[16],axi_chip2chip_0_AXIS_TX_TDATA[15],axi_chip2chip_0_AXIS_TX_TDATA[14],axi_chip2chip_0_AXIS_TX_TDATA[13],axi_chip2chip_0_AXIS_TX_TDATA[12],axi_chip2chip_0_AXIS_TX_TDATA[11],axi_chip2chip_0_AXIS_TX_TDATA[10],axi_chip2chip_0_AXIS_TX_TDATA[9],axi_chip2chip_0_AXIS_TX_TDATA[8],axi_chip2chip_0_AXIS_TX_TDATA[7],axi_chip2chip_0_AXIS_TX_TDATA[6],axi_chip2chip_0_AXIS_TX_TDATA[5],axi_chip2chip_0_AXIS_TX_TDATA[4],axi_chip2chip_0_AXIS_TX_TDATA[3],axi_chip2chip_0_AXIS_TX_TDATA[2],axi_chip2chip_0_AXIS_TX_TDATA[1],axi_chip2chip_0_AXIS_TX_TDATA[0]}),
+        .s_axi_tx_tdata({axi_chip2chip_0_AXIS_TX_TDATA[31],axi_chip2chip_0_AXIS_TX_TDATA[30],axi_chip2chip_0_AXIS_TX_TDATA[29],axi_chip2chip_0_AXIS_TX_TDATA[28],axi_chip2chip_0_AXIS_TX_TDATA[27],axi_chip2chip_0_AXIS_TX_TDATA[26],axi_chip2chip_0_AXIS_TX_TDATA[25],axi_chip2chip_0_AXIS_TX_TDATA[24],axi_chip2chip_0_AXIS_TX_TDATA[23],axi_chip2chip_0_AXIS_TX_TDATA[22],axi_chip2chip_0_AXIS_TX_TDATA[21],axi_chip2chip_0_AXIS_TX_TDATA[20],axi_chip2chip_0_AXIS_TX_TDATA[19],axi_chip2chip_0_AXIS_TX_TDATA[18],axi_chip2chip_0_AXIS_TX_TDATA[17],axi_chip2chip_0_AXIS_TX_TDATA[16],axi_chip2chip_0_AXIS_TX_TDATA[15],axi_chip2chip_0_AXIS_TX_TDATA[14],axi_chip2chip_0_AXIS_TX_TDATA[13],axi_chip2chip_0_AXIS_TX_TDATA[12],axi_chip2chip_0_AXIS_TX_TDATA[11],axi_chip2chip_0_AXIS_TX_TDATA[10],axi_chip2chip_0_AXIS_TX_TDATA[9],axi_chip2chip_0_AXIS_TX_TDATA[8],axi_chip2chip_0_AXIS_TX_TDATA[7],axi_chip2chip_0_AXIS_TX_TDATA[6],axi_chip2chip_0_AXIS_TX_TDATA[5],axi_chip2chip_0_AXIS_TX_TDATA[4],axi_chip2chip_0_AXIS_TX_TDATA[3],axi_chip2chip_0_AXIS_TX_TDATA[2],axi_chip2chip_0_AXIS_TX_TDATA[1],axi_chip2chip_0_AXIS_TX_TDATA[0]}),
         .s_axi_tx_tready(axi_chip2chip_0_AXIS_TX_TREADY),
         .s_axi_tx_tvalid(axi_chip2chip_0_AXIS_TX_TVALID),
         .sync_clk(sync_clk_1),
@@ -3149,22 +3149,22 @@ module design_1
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_CLK" *) inout FIXED_IO_ps_clk;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_PORB" *) inout FIXED_IO_ps_porb;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB" *) inout FIXED_IO_ps_srstb;
-  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_RX:1.0 c2c_rx_0 " *) input [0:1]c2c_rx_0_rxn;
-  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_RX:1.0 c2c_rx_0 " *) input [0:1]c2c_rx_0_rxp;
-  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_RX:1.0 c2c_rx_1 " *) input [0:1]c2c_rx_1_rxn;
-  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_RX:1.0 c2c_rx_1 " *) input [0:1]c2c_rx_1_rxp;
-  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_TX:1.0 c2c_tx_0 " *) output [0:1]c2c_tx_0_txn;
-  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_TX:1.0 c2c_tx_0 " *) output [0:1]c2c_tx_0_txp;
-  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_TX:1.0 c2c_tx_1 " *) output [0:1]c2c_tx_1_txn;
-  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_TX:1.0 c2c_tx_1 " *) output [0:1]c2c_tx_1_txp;
+  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_RX:1.0 c2c_rx_0 RXN" *) input [0:0]c2c_rx_0_rxn;
+  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_RX:1.0 c2c_rx_0 RXP" *) input [0:0]c2c_rx_0_rxp;
+  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_RX:1.0 c2c_rx_1 RXN" *) input [0:0]c2c_rx_1_rxn;
+  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_RX:1.0 c2c_rx_1 RXP" *) input [0:0]c2c_rx_1_rxp;
+  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_TX:1.0 c2c_tx_0 TXN" *) output [0:0]c2c_tx_0_txn;
+  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_TX:1.0 c2c_tx_0 TXP" *) output [0:0]c2c_tx_0_txp;
+  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_TX:1.0 c2c_tx_1 TXN" *) output [0:0]c2c_tx_1_txn;
+  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_TX:1.0 c2c_tx_1 TXP" *) output [0:0]c2c_tx_1_txp;
   output [1:0]en_ipmb_zynq;
   input [7:0]ha;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 i2c_10g " *) input i2c_10g_scl_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 i2c_10g " *) output i2c_10g_scl_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 i2c_10g " *) output i2c_10g_scl_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 i2c_10g " *) input i2c_10g_sda_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 i2c_10g " *) output i2c_10g_sda_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 i2c_10g " *) output i2c_10g_sda_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 i2c_10g SCL_I" *) input i2c_10g_scl_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 i2c_10g SCL_O" *) output i2c_10g_scl_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 i2c_10g SCL_T" *) output i2c_10g_scl_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 i2c_10g SDA_I" *) input i2c_10g_sda_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 i2c_10g SDA_O" *) output i2c_10g_sda_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 i2c_10g SDA_T" *) output i2c_10g_sda_t;
   output [2:0]id;
   inout ipmc_scl_0;
   inout ipmc_scl_1;
@@ -3175,8 +3175,8 @@ module design_1
   (* X_INTERFACE_INFO = "xilinx.com:interface:mdio:1.0 mdio_phy MDIO_I" *) input mdio_phy_mdio_i;
   (* X_INTERFACE_INFO = "xilinx.com:interface:mdio:1.0 mdio_phy MDIO_O" *) output mdio_phy_mdio_o;
   (* X_INTERFACE_INFO = "xilinx.com:interface:mdio:1.0 mdio_phy MDIO_T" *) output mdio_phy_mdio_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 mgtrefclk " *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME mgtrefclk, CAN_DEBUG false, FREQ_HZ 250000000" *) input [0:0]mgtrefclk_clk_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 mgtrefclk " *) input [0:0]mgtrefclk_clk_p;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 mgtrefclk CLK_N" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME mgtrefclk, CAN_DEBUG false, FREQ_HZ 250000000" *) input [0:0]mgtrefclk_clk_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 mgtrefclk CLK_P" *) input [0:0]mgtrefclk_clk_p;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.PHY_RST RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.PHY_RST, INSERT_VIP 0, POLARITY ACTIVE_LOW" *) output [0:0]phy_rst;
   input [0:0]pim_alarm;
   output [0:0]qbv_on_off;
@@ -3187,24 +3187,24 @@ module design_1
   (* X_INTERFACE_INFO = "xilinx.com:interface:rgmii:1.0 rgmii TD" *) output [3:0]rgmii_td;
   (* X_INTERFACE_INFO = "xilinx.com:interface:rgmii:1.0 rgmii TX_CTL" *) output rgmii_tx_ctl;
   (* X_INTERFACE_INFO = "xilinx.com:interface:rgmii:1.0 rgmii TXC" *) output rgmii_txc;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_0 " *) input scf_i2c_0_scl_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_0 " *) output scf_i2c_0_scl_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_0 " *) output scf_i2c_0_scl_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_0 " *) input scf_i2c_0_sda_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_0 " *) output scf_i2c_0_sda_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_0 " *) output scf_i2c_0_sda_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_1 " *) input scf_i2c_1_scl_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_1 " *) output scf_i2c_1_scl_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_1 " *) output scf_i2c_1_scl_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_1 " *) input scf_i2c_1_sda_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_1 " *) output scf_i2c_1_sda_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_1 " *) output scf_i2c_1_sda_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_2 " *) input scf_i2c_2_scl_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_2 " *) output scf_i2c_2_scl_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_2 " *) output scf_i2c_2_scl_t;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_2 " *) input scf_i2c_2_sda_i;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_2 " *) output scf_i2c_2_sda_o;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_2 " *) output scf_i2c_2_sda_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_0 SCL_I" *) input scf_i2c_0_scl_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_0 SCL_O" *) output scf_i2c_0_scl_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_0 SCL_T" *) output scf_i2c_0_scl_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_0 SDA_I" *) input scf_i2c_0_sda_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_0 SDA_O" *) output scf_i2c_0_sda_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_0 SDA_T" *) output scf_i2c_0_sda_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_1 SCL_I" *) input scf_i2c_1_scl_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_1 SCL_O" *) output scf_i2c_1_scl_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_1 SCL_T" *) output scf_i2c_1_scl_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_1 SDA_I" *) input scf_i2c_1_sda_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_1 SDA_O" *) output scf_i2c_1_sda_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_1 SDA_T" *) output scf_i2c_1_sda_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_2 SCL_I" *) input scf_i2c_2_scl_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_2 SCL_O" *) output scf_i2c_2_scl_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_2 SCL_T" *) output scf_i2c_2_scl_t;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_2 SDA_I" *) input scf_i2c_2_sda_i;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_2 SDA_O" *) output scf_i2c_2_sda_o;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_2 SDA_T" *) output scf_i2c_2_sda_t;
   output scf_tck_0;
   output scf_tck_1;
   output scf_tdi_0;
@@ -3217,8 +3217,8 @@ module design_1
   wire [0:0]ARESETN_1;
   wire [0:0]CLK_IN_D_0_1_CLK_N;
   wire [0:0]CLK_IN_D_0_1_CLK_P;
-  wire [0:1]GT_SERIAL_RX_1_RXN;
-  wire [0:1]GT_SERIAL_RX_1_RXP;
+  wire [0:0]GT_SERIAL_RX_1_RXN;
+  wire [0:0]GT_SERIAL_RX_1_RXP;
   wire [1:0]In0_0_1;
   wire [0:0]In1_0_1;
   wire [7:0]In2_0_1;
@@ -3352,8 +3352,8 @@ module design_1
   wire TDO_0_0_1;
   wire TDO_1_0_1;
   wire aurora_mmcm_not_locked_1;
-  wire [0:1]axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXN;
-  wire [0:1]axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXP;
+  wire [0:0]axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXN;
+  wire [0:0]axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXP;
   wire axi_ethernet_0_dma_mm2s_introut;
   wire axi_ethernet_0_dma_s2mm_introut;
   wire axi_ethernet_0_interrupt;
@@ -3425,11 +3425,11 @@ module design_1
   wire axi_mem_intercon_M00_AXI_WREADY;
   wire [7:0]axi_mem_intercon_M00_AXI_WSTRB;
   wire axi_mem_intercon_M00_AXI_WVALID;
-  wire [0:1]c2c_0_0_1_RXN;
-  wire [0:1]c2c_0_0_1_RXP;
+  wire [0:0]c2c_0_0_1_RXN;
+  wire [0:0]c2c_0_0_1_RXP;
   wire chip2chip_0_sync_clk_out;
-  wire [0:1]chip2chip_1_GT_SERIAL_TX_TXN;
-  wire [0:1]chip2chip_1_GT_SERIAL_TX_TXP;
+  wire [0:0]chip2chip_1_GT_SERIAL_TX_TXN;
+  wire [0:0]chip2chip_1_GT_SERIAL_TX_TXP;
   wire [31:0]cpu_M10_AXI_ARADDR;
   wire cpu_M10_AXI_ARREADY;
   wire cpu_M10_AXI_ARVALID;
@@ -3728,8 +3728,8 @@ module design_1
 
   assign CLK_IN_D_0_1_CLK_N = mgtrefclk_clk_n[0];
   assign CLK_IN_D_0_1_CLK_P = mgtrefclk_clk_p[0];
-  assign GT_SERIAL_RX_1_RXN = c2c_rx_0_rxn[0:1];
-  assign GT_SERIAL_RX_1_RXP = c2c_rx_0_rxp[0:1];
+  assign GT_SERIAL_RX_1_RXN = c2c_rx_0_rxn[0];
+  assign GT_SERIAL_RX_1_RXP = c2c_rx_0_rxp[0];
   assign In0_0_1 = ready_ipmb_zynq[1:0];
   assign In1_0_1 = los_10g[0];
   assign In2_0_1 = ha[7:0];
@@ -3746,12 +3746,12 @@ module design_1
   assign axi_iic_1_IIC_SDA_I = scf_i2c_1_sda_i;
   assign axi_iic_2_IIC_SCL_I = scf_i2c_2_scl_i;
   assign axi_iic_2_IIC_SDA_I = scf_i2c_2_sda_i;
-  assign c2c_0_0_1_RXN = c2c_rx_1_rxn[0:1];
-  assign c2c_0_0_1_RXP = c2c_rx_1_rxp[0:1];
-  assign c2c_tx_0_txn[0:1] = axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXN;
-  assign c2c_tx_0_txp[0:1] = axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXP;
-  assign c2c_tx_1_txn[0:1] = chip2chip_1_GT_SERIAL_TX_TXN;
-  assign c2c_tx_1_txp[0:1] = chip2chip_1_GT_SERIAL_TX_TXP;
+  assign c2c_0_0_1_RXN = c2c_rx_1_rxn[0];
+  assign c2c_0_0_1_RXP = c2c_rx_1_rxp[0];
+  assign c2c_tx_0_txn[0] = axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXN;
+  assign c2c_tx_0_txp[0] = axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXP;
+  assign c2c_tx_1_txn[0] = chip2chip_1_GT_SERIAL_TX_TXN;
+  assign c2c_tx_1_txp[0] = chip2chip_1_GT_SERIAL_TX_TXP;
   assign en_ipmb_zynq[1:0] = xlslice_1_Dout;
   assign i2c_10g_scl_o = i2c_iic_rtl_3_SCL_O;
   assign i2c_10g_scl_t = i2c_iic_rtl_3_SCL_T;

@@ -52,17 +52,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 `timescale 1ns / 1ps
-(* core_generation_info = "design_1_axi_chip2chip_0_aurora8_0,aurora_8b10b_v11_1_9,{user_interface=AXI_4_Streaming,backchannel_mode=Sidebands,c_aurora_lanes=2,c_column_used=None,c_gt_clock_1=GTPQ0,c_gt_clock_2=None,c_gt_loc_1=1,c_gt_loc_10=X,c_gt_loc_11=X,c_gt_loc_12=X,c_gt_loc_13=X,c_gt_loc_14=X,c_gt_loc_15=X,c_gt_loc_16=X,c_gt_loc_17=X,c_gt_loc_18=X,c_gt_loc_19=X,c_gt_loc_2=X,c_gt_loc_20=X,c_gt_loc_21=X,c_gt_loc_22=X,c_gt_loc_23=X,c_gt_loc_24=X,c_gt_loc_25=X,c_gt_loc_26=X,c_gt_loc_27=X,c_gt_loc_28=X,c_gt_loc_29=X,c_gt_loc_3=X,c_gt_loc_30=X,c_gt_loc_31=X,c_gt_loc_32=X,c_gt_loc_33=X,c_gt_loc_34=X,c_gt_loc_35=X,c_gt_loc_36=X,c_gt_loc_37=X,c_gt_loc_38=X,c_gt_loc_39=X,c_gt_loc_4=2,c_gt_loc_40=X,c_gt_loc_41=X,c_gt_loc_42=X,c_gt_loc_43=X,c_gt_loc_44=X,c_gt_loc_45=X,c_gt_loc_46=X,c_gt_loc_47=X,c_gt_loc_48=X,c_gt_loc_5=X,c_gt_loc_6=X,c_gt_loc_7=X,c_gt_loc_8=X,c_gt_loc_9=X,c_lane_width=4,c_line_rate=37500,c_nfc=false,c_nfc_mode=IMM,c_refclk_frequency=250000,c_simplex=false,c_simplex_mode=TX,c_stream=true,c_ufc=false,flow_mode=None,interface_mode=Streaming,dataflow_config=Duplex}" *)
+(* core_generation_info = "design_1_axi_chip2chip_0_aurora8_0,aurora_8b10b_v11_1_9,{user_interface=AXI_4_Streaming,backchannel_mode=Sidebands,c_aurora_lanes=1,c_column_used=None,c_gt_clock_1=GTPQ0,c_gt_clock_2=None,c_gt_loc_1=1,c_gt_loc_10=X,c_gt_loc_11=X,c_gt_loc_12=X,c_gt_loc_13=X,c_gt_loc_14=X,c_gt_loc_15=X,c_gt_loc_16=X,c_gt_loc_17=X,c_gt_loc_18=X,c_gt_loc_19=X,c_gt_loc_2=X,c_gt_loc_20=X,c_gt_loc_21=X,c_gt_loc_22=X,c_gt_loc_23=X,c_gt_loc_24=X,c_gt_loc_25=X,c_gt_loc_26=X,c_gt_loc_27=X,c_gt_loc_28=X,c_gt_loc_29=X,c_gt_loc_3=X,c_gt_loc_30=X,c_gt_loc_31=X,c_gt_loc_32=X,c_gt_loc_33=X,c_gt_loc_34=X,c_gt_loc_35=X,c_gt_loc_36=X,c_gt_loc_37=X,c_gt_loc_38=X,c_gt_loc_39=X,c_gt_loc_4=X,c_gt_loc_40=X,c_gt_loc_41=X,c_gt_loc_42=X,c_gt_loc_43=X,c_gt_loc_44=X,c_gt_loc_45=X,c_gt_loc_46=X,c_gt_loc_47=X,c_gt_loc_48=X,c_gt_loc_5=X,c_gt_loc_6=X,c_gt_loc_7=X,c_gt_loc_8=X,c_gt_loc_9=X,c_lane_width=4,c_line_rate=37500,c_nfc=false,c_nfc_mode=IMM,c_refclk_frequency=250000,c_simplex=false,c_simplex_mode=TX,c_stream=true,c_ufc=false,flow_mode=None,interface_mode=Streaming,dataflow_config=Duplex}" *)
 (* DowngradeIPIdentifiedWarnings="yes" *)
 module design_1_axi_chip2chip_0_aurora8_0_GT_WRAPPER #
 (
-    // Channel bond MASTER/SLAVE connection
-    parameter CHAN_BOND_MASTER = 1'b1,
-    parameter CHAN_BOND_SLAVE = 1'b0,
-    parameter CHAN_BOND_LEVEL = 3'd1,
-    parameter CHAN_BOND_MASTER_LANE1 = 1'b0,
-    parameter CHAN_BOND_SLAVE_LANE1 = 1'b1,
-    parameter CHAN_BOND_LEVEL_LANE1 = 3'd0,
 
  // Simulation attributes
      parameter   EXAMPLE_SIMULATION =   0,      // Set to 1 to speed up sim reset
@@ -75,81 +68,53 @@ module design_1_axi_chip2chip_0_aurora8_0_GT_WRAPPER #
     LOOPBACK_IN,
 //--------------------- Receive Ports - 8b10b Decoder ----------------------
 RXCHARISCOMMA_OUT,
-RXCHARISCOMMA_OUT_LANE1,
 RXCHARISK_OUT,
-RXCHARISK_OUT_LANE1,
 RXDISPERR_OUT,
-RXDISPERR_OUT_LANE1,
 RXNOTINTABLE_OUT,
-RXNOTINTABLE_OUT_LANE1,
 //----------------- Receive Ports - Channel Bonding Ports -----------------
 ENCHANSYNC_IN,
-ENCHANSYNC_IN_LANE1,
 CHBONDDONE_OUT,
-CHBONDDONE_OUT_LANE1,
 //----------------- Receive Ports - Clock Correction Ports -----------------
 RXBUFERR_OUT,
-RXBUFERR_OUT_LANE1,
 //------------- Receive Ports - Comma Detection and Alignment --------------
 RXREALIGN_OUT,
-RXREALIGN_OUT_LANE1,
 ENMCOMMAALIGN_IN,
-ENMCOMMAALIGN_IN_LANE1,
 ENPCOMMAALIGN_IN,
-ENPCOMMAALIGN_IN_LANE1,
 //----------------- Receive Ports - RX Data Path interface -----------------
 RXDATA_OUT,
-RXDATA_OUT_LANE1,
 RXRESET_IN,
-RXRESET_IN_LANE1,
     RXUSRCLK_IN,
     RXUSRCLK2_IN,
 //----- Receive Ports - RX Driver,OOB signalling,Coupling and Eq.,CDR ------
 RX1N_IN,
-RX1N_IN_LANE1,
 RX1P_IN,
-RX1P_IN_LANE1,
 //--------------- Receive Ports - RX Polarity Control Ports ----------------
 RXPOLARITY_IN,
-RXPOLARITY_IN_LANE1,
 //------------------- Shared Ports - Tile and PLL Ports --------------------
     REFCLK,
     INIT_CLK_IN,
     PLL_NOT_LOCKED,
     GTRESET_IN,
 PLLLKDET_OUT,
-PLLLKDET_OUT_LANE1,
     gt0_txresetdone_out,
     gt0_rxresetdone_out,
     gt0_rxpmaresetdone_out,
     gt0_txbufstatus_out,
     gt0_rxbufstatus_out,
-    gt1_txresetdone_out,
-    gt1_rxresetdone_out,
-    gt1_rxpmaresetdone_out,
-    gt1_txbufstatus_out,
-    gt1_rxbufstatus_out,
     TX_RESETDONE_OUT,
     RX_RESETDONE_OUT,
 //-------------- Transmit Ports - 8b10b Encoder Control Ports --------------
 TXCHARISK_IN,
-TXCHARISK_IN_LANE1,
 //---------------- Transmit Ports - TX Data Path interface -----------------
 TXDATA_IN,
-TXDATA_IN_LANE1,
 TXOUTCLK1_OUT,
-TXOUTCLK1_OUT_LANE1,
 TXRESET_IN,
-TXRESET_IN_LANE1,
     TXUSRCLK_IN,
     TXUSRCLK2_IN,
 TXBUFERR_OUT,
-TXBUFERR_OUT_LANE1,
 //------------- Transmit Ports - TX Driver and OOB signalling --------------
 TX1N_OUT,
-TX1N_OUT_LANE1,
 TX1P_OUT,
-TX1P_OUT_LANE1,
     //-------------- Channel - Dynamic Reconfiguration Port (DRP) --------------
 DRPADDR_IN,
 DRPCLK_IN,
@@ -158,13 +123,6 @@ DRPDO_OUT,
 DRPEN_IN,
 DRPRDY_OUT,
 DRPWE_IN,
-DRPADDR_IN_LANE1,
-DRPCLK_IN_LANE1,
-DRPDI_IN_LANE1,
-DRPDO_OUT_LANE1,
-DRPEN_IN_LANE1,
-DRPRDY_OUT_LANE1,
-DRPWE_IN_LANE1,
 gt_common_reset_out,
 //____________________________COMMON PORTS_______________________________{
 gt0_pll0refclklost_in,
@@ -190,10 +148,6 @@ output  [3:0]  RXCHARISCOMMA_OUT;
 output  [3:0]  RXCHARISK_OUT;
 output  [3:0]  RXDISPERR_OUT;
 output  [3:0]  RXNOTINTABLE_OUT;
-output  [3:0]  RXCHARISCOMMA_OUT_LANE1;
-output  [3:0]  RXCHARISK_OUT_LANE1;
-output  [3:0]  RXDISPERR_OUT_LANE1;
-output  [3:0]  RXNOTINTABLE_OUT_LANE1;
 //----------------- Receive Ports - Channel Bonding Ports -----------------
 input             ENCHANSYNC_IN;
 output            CHBONDDONE_OUT;
@@ -206,17 +160,6 @@ input             ENPCOMMAALIGN_IN;
 //----------------- Receive Ports - RX Data Path interface -----------------
 output  [31:0]   RXDATA_OUT;
 input             RXRESET_IN;
-input             ENCHANSYNC_IN_LANE1;
-output            CHBONDDONE_OUT_LANE1;
-//----------------- Receive Ports - Clock Correction Ports -----------------
-output            RXBUFERR_OUT_LANE1;
-//------------- Receive Ports - Comma Detection and Alignment --------------
-output            RXREALIGN_OUT_LANE1;
-input             ENMCOMMAALIGN_IN_LANE1;
-input             ENPCOMMAALIGN_IN_LANE1;
-//----------------- Receive Ports - RX Data Path interface -----------------
-output  [31:0]   RXDATA_OUT_LANE1;
-input             RXRESET_IN_LANE1;
  input             RXUSRCLK_IN;
  input             RXUSRCLK2_IN;
 //----- Receive Ports - RX Driver,OOB signalling,Coupling and Eq.,CDR ------
@@ -224,27 +167,17 @@ input             RX1N_IN;
 input             RX1P_IN;
 //--------------- Receive Ports - RX Polarity Control Ports ----------------
 input             RXPOLARITY_IN;
-input             RX1N_IN_LANE1;
-input             RX1P_IN_LANE1;
-//--------------- Receive Ports - RX Polarity Control Ports ----------------
-input             RXPOLARITY_IN_LANE1;
 //------------------- Shared Ports - Tile and PLL Ports --------------------
  input             REFCLK;
  input             INIT_CLK_IN;
  input             PLL_NOT_LOCKED;
  input             GTRESET_IN;
 output            PLLLKDET_OUT;
-output            PLLLKDET_OUT_LANE1;
  output            gt0_txresetdone_out;
  output            gt0_rxresetdone_out;
  output            gt0_rxpmaresetdone_out;
  output   [1:0]    gt0_txbufstatus_out;
  output   [2:0]    gt0_rxbufstatus_out;
- output            gt1_txresetdone_out;
- output            gt1_rxresetdone_out;
- output            gt1_rxpmaresetdone_out;
- output   [1:0]    gt1_txbufstatus_out;
- output   [2:0]    gt1_rxbufstatus_out;
  output            TX_RESETDONE_OUT;
  output            RX_RESETDONE_OUT;
  input             POWERDOWN_IN;
@@ -270,19 +203,11 @@ input    [31:0]  TXDATA_IN;
 output            TXOUTCLK1_OUT;
 input             TXRESET_IN;
 output            TXBUFERR_OUT;
-input    [3:0]  TXCHARISK_IN_LANE1;
-//---------------- Transmit Ports - TX Data Path interface -----------------
-input    [31:0]  TXDATA_IN_LANE1;
-output            TXOUTCLK1_OUT_LANE1;
-input             TXRESET_IN_LANE1;
-output            TXBUFERR_OUT_LANE1;
  input             TXUSRCLK_IN;
  input             TXUSRCLK2_IN;
 //------------- Transmit Ports - TX Driver and OOB signalling --------------
 output            TX1N_OUT;
 output            TX1P_OUT;
-output            TX1N_OUT_LANE1;
-output            TX1P_OUT_LANE1;
 //-------------- Channel - Dynamic Reconfiguration Port (DRP) --------------
 input   [8:0]   DRPADDR_IN;
 input           DRPCLK_IN;
@@ -291,13 +216,6 @@ output  [15:0]  DRPDO_OUT;
 input           DRPEN_IN;
 output          DRPRDY_OUT;
 input           DRPWE_IN;
-input   [8:0]   DRPADDR_IN_LANE1;
-input           DRPCLK_IN_LANE1;
-input   [15:0]  DRPDI_IN_LANE1;
-output  [15:0]  DRPDO_OUT_LANE1;
-input           DRPEN_IN_LANE1;
-output          DRPRDY_OUT_LANE1;
-input           DRPWE_IN_LANE1;
     parameter STABLE_CLOCK_PERIOD  = 10 ; //Period of the stable clock driving this state-machine, unit is [ns]
     //Typical CDRLOCK Time is 50,000UI, as per DS181
     parameter RX_CDRLOCK_TIME      = (EXAMPLE_SIMULATION == 1) ? 1000 : 50000/3.75;
@@ -317,20 +235,12 @@ reg               gt_rx_reset_i;
  reg              gt0_rxresetdone_r;
  reg              gt0_rxresetdone_r2;
  reg              gt0_rxresetdone_r3;
- reg              gt1_txresetdone_r;
- reg              gt1_txresetdone_r2;
- reg              gt1_txresetdone_r3;
- reg              gt1_rxresetdone_r;
- reg              gt1_rxresetdone_r2;
- reg              gt1_rxresetdone_r3;
 
 
 wire    gt_pll0refclklost_i;
 wire    gt_pll_lock_i;
 wire              gt0_txresetdone_i;
 wire              gt0_rxresetdone_i;
-wire              gt1_txresetdone_i;
-wire              gt1_rxresetdone_i;
 
 wire   txfsm_txresetdone_i;
 wire   rxfsm_rxresetdone_i;
@@ -362,14 +272,10 @@ wire   mmcm_reset_i;
 // floating input port connection signals
 wire    [1:0]      open_rxbufstatus_i;
 wire               open_txbufstatus_i;
-wire    [1:0]      open_rxbufstatus_lane1_i;
-wire               open_txbufstatus_lane1_i;
 
 // Channel Bonding
 wire     [3:0]    chbondi;
 wire     [3:0]    chbondo;
-wire     [3:0]    chbondi_LANE1;
-wire     [3:0]    chbondo_LANE1;
 
  wire     [3:0]    chbondi_unused_i;
  wire              common_reset_i;
@@ -386,9 +292,7 @@ wire     [3:0]    chbondo_LANE1;
  assign chbondi_unused_i  = 4'b0000;
 
  assign  chbondi = chbondi_unused_i;
- assign  chbondi_LANE1 = chbondo;
-
- assign PLLLKDET_OUT_LANE1  = tied_to_vcc_i;
+ assign  CHBONDDONE_OUT = 1'b1;
 
 assign  gt_pll0refclklost_i = gt0_pll0refclklost_in;
 
@@ -401,10 +305,6 @@ assign gt_pll_lock_i = quad1_common_lock_in;
     assign    gt0_rxresetdone_out  =   gt0_rxresetdone_i;
     assign    gt0_txbufstatus_out  =   {TXBUFERR_OUT, open_txbufstatus_i};
     assign    gt0_rxbufstatus_out  =   {RXBUFERR_OUT, open_rxbufstatus_i};
-    assign    gt1_txresetdone_out  =   gt1_txresetdone_i;
-    assign    gt1_rxresetdone_out  =   gt1_rxresetdone_i;
-    assign    gt1_txbufstatus_out  =   {TXBUFERR_OUT_LANE1, open_txbufstatus_lane1_i};
-    assign    gt1_rxbufstatus_out  =   {RXBUFERR_OUT_LANE1, open_rxbufstatus_lane1_i};
 
       //TXRESETDONE for lane0
       always @ (posedge TXUSRCLK2_IN)
@@ -412,14 +312,6 @@ assign gt_pll_lock_i = quad1_common_lock_in;
         gt0_txresetdone_r    <=  `DLY gt0_txresetdone_i;
         gt0_txresetdone_r2   <=  `DLY gt0_txresetdone_r;
         gt0_txresetdone_r3   <=  `DLY gt0_txresetdone_r2;
-      end
-
-      //TXRESETDONE for lane1
-      always @ (posedge TXUSRCLK2_IN)
-      begin
-        gt1_txresetdone_r    <=  `DLY gt1_txresetdone_i;
-        gt1_txresetdone_r2   <=  `DLY gt1_txresetdone_r;
-        gt1_txresetdone_r3   <=  `DLY gt1_txresetdone_r2;
       end
 
 
@@ -431,19 +323,11 @@ assign gt_pll_lock_i = quad1_common_lock_in;
         gt0_rxresetdone_r3   <=  `DLY gt0_rxresetdone_r2;
       end
 
-      //RXRESETDONE for lane1
-      always @ (posedge RXUSRCLK2_IN)
-      begin
-        gt1_rxresetdone_r    <=  `DLY gt1_rxresetdone_i;
-        gt1_rxresetdone_r2   <=  `DLY gt1_rxresetdone_r;
-        gt1_rxresetdone_r3   <=  `DLY gt1_rxresetdone_r2;
-      end
-
 
    assign gt_txpmaresetdone_i = 1'b0;
 
-      assign txfsm_txresetdone_i  = gt0_txresetdone_r3 && gt1_txresetdone_r3 ;
-      assign rxfsm_rxresetdone_i  = gt0_rxresetdone_r3 && gt1_rxresetdone_r3 ;
+      assign txfsm_txresetdone_i  = gt0_txresetdone_r3;
+      assign rxfsm_rxresetdone_i  = gt0_rxresetdone_r3;
 
       always @ (posedge TXUSRCLK2_IN)
       begin
@@ -642,17 +526,6 @@ design_1_axi_chip2chip_0_aurora8_0_multi_gt_i
     //----------------------- Receive Ports - AFE Ports ------------------------
 .gt0_gtprxn_in          (RX1N_IN),
 .gt0_gtprxp_in          (RX1P_IN),
-    //----------------- Receive Ports - Channel Bonding Ports ------------------
-    .gt0_rxchanbondseq_out      (),
-.gt0_rxchbonden_in          (ENCHANSYNC_IN),
-.gt0_rxchbondi_in           (chbondi),
-.gt0_rxchbondlevel_in       (CHAN_BOND_LEVEL),
-.gt0_rxchbondmaster_in      (CHAN_BOND_MASTER),
-.gt0_rxchbondo_out          (chbondo),
-.gt0_rxchbondslave_in       (CHAN_BOND_SLAVE),
-    //----------------- Receive Ports - Channel Bonding Ports  -----------------
-.gt0_rxchanisaligned_out    (CHBONDDONE_OUT),
-    .gt0_rxchanrealign_out      (),
     //----------------- Receive Ports - Clock Correction Ports -----------------
     .gt0_rxclkcorcnt_out          (),
     //------------- Receive Ports - Comma Detection and Alignment --------------
@@ -736,128 +609,6 @@ design_1_axi_chip2chip_0_aurora8_0_multi_gt_i
         .gt0_txpcsreset_in                  (tied_to_ground_i),
         .gt0_txinhibit_in                   (tied_to_ground_i),
         .gt0_txpmareset_in                  (tied_to_ground_i),
-
-    //_________________________________________________________________________
-    //_________________________________________________________________________
-    //GT1
-    //____________________________CHANNEL PORTS________________________________
-    .gt1_drp_busy_out  (),
-    //-------------- Channel - Dynamic Reconfiguration Port (DRP) --------------
-.gt1_drpaddr_in          (DRPADDR_IN_LANE1),
-.gt1_drpclk_in           (DRPCLK_IN_LANE1),
-.gt1_drpdi_in            (DRPDI_IN_LANE1),
-.gt1_drpdo_out           (DRPDO_OUT_LANE1),
-.gt1_drpen_in            (DRPEN_IN_LANE1),
-.gt1_drprdy_out          (DRPRDY_OUT_LANE1),
-.gt1_drpwe_in            (DRPWE_IN_LANE1),
-    //---------------------- Loopback and Powerdown Ports ----------------------
-    .gt1_loopback_in          (LOOPBACK_IN),
-    .gt1_rxpd_in          ({2{POWERDOWN_IN}}),
-    .gt1_txpd_in          ({2{POWERDOWN_IN}}),
-    //----------------------------- Receive Ports ------------------------------
-    .gt1_rxuserrdy_in          (gt_rxuserrdy_i),
-    //--------------------- Receive Ports - 8b10b Decoder ----------------------
-.gt1_rxchariscomma_out          (RXCHARISCOMMA_OUT_LANE1),
-.gt1_rxcharisk_out          (RXCHARISK_OUT_LANE1),
-.gt1_rxdisperr_out          (RXDISPERR_OUT_LANE1),
-.gt1_rxnotintable_out          (RXNOTINTABLE_OUT_LANE1),
-    //----------------------- Receive Ports - AFE Ports ------------------------
-.gt1_gtprxn_in          (RX1N_IN_LANE1),
-.gt1_gtprxp_in          (RX1P_IN_LANE1),
-    //----------------- Receive Ports - Channel Bonding Ports ------------------
-    .gt1_rxchanbondseq_out      (),
-.gt1_rxchbonden_in          (ENCHANSYNC_IN_LANE1),
-.gt1_rxchbondi_in           (chbondi_LANE1),
-.gt1_rxchbondlevel_in       (CHAN_BOND_LEVEL_LANE1),
-.gt1_rxchbondmaster_in      (CHAN_BOND_MASTER_LANE1),
-.gt1_rxchbondo_out          (chbondo_LANE1),
-.gt1_rxchbondslave_in       (CHAN_BOND_SLAVE_LANE1),
-    //----------------- Receive Ports - Channel Bonding Ports  -----------------
-.gt1_rxchanisaligned_out    (CHBONDDONE_OUT_LANE1),
-    .gt1_rxchanrealign_out      (),
-    //----------------- Receive Ports - Clock Correction Ports -----------------
-    .gt1_rxclkcorcnt_out          (),
-    //------------- Receive Ports - Comma Detection and Alignment --------------
-.gt1_rxbyterealign_out          (RXREALIGN_OUT_LANE1),
-.gt1_rxmcommaalignen_in          (ENMCOMMAALIGN_IN_LANE1),
-.gt1_rxpcommaalignen_in          (ENPCOMMAALIGN_IN_LANE1),
-    //----------------- Receive Ports - RX Data Path interface -----------------
-    .gt1_gtrxreset_in          (gt_rx_reset_i),
-.gt1_rxdata_out          (RXDATA_OUT_LANE1),
-    .gt1_rxoutclk_out          (),
-    .gt1_rxusrclk_in          (RXUSRCLK_IN),
-    .gt1_rxusrclk2_in          (RXUSRCLK2_IN),
-    //----- Receive Ports - RX Driver,OOB signalling,Coupling and Eq.,CDR ------
-    .gt1_rxcdrlock_out          (),
-    //------ Receive Ports - RX Elastic Buffer and Phase Alignment Ports -------
-.gt1_rxbufstatus_out          ({RXBUFERR_OUT_LANE1, open_rxbufstatus_lane1_i}),
-    //---------------------- Receive Ports - RX PLL Ports ----------------------
-    .gt1_rxresetdone_out          (gt1_rxresetdone_i),
-        .gt1_rxpmaresetdone_out             (gt1_rxpmaresetdone_out),
-    //--------------- Receive Ports - RX Polarity Control Ports ----------------
-.gt1_rxpolarity_in          (RXPOLARITY_IN_LANE1),
-    //----------------------------- Transmit Ports -----------------------------
-    .gt1_txuserrdy_in          (gt_txuserrdy_i),
-    //-------------- Transmit Ports - 8b10b Encoder Control Ports --------------
-.gt1_txcharisk_in          (TXCHARISK_IN_LANE1),
-    //---------- Transmit Ports - TX Buffer and Phase Alignment Ports ----------
-.gt1_txbufstatus_out          ({TXBUFERR_OUT_LANE1, open_txbufstatus_lane1_i}),
-    //---------------- Transmit Ports - TX Data Path interface -----------------
-    .gt1_gttxreset_in          (gt_tx_reset_i),
-.gt1_txdata_in          (TXDATA_IN_LANE1),
-.gt1_txoutclk_out          (TXOUTCLK1_OUT_LANE1),
-    .gt1_txoutclkfabric_out          (),
-    .gt1_txoutclkpcs_out          (),
-    .gt1_txusrclk_in          (TXUSRCLK_IN),
-    .gt1_txusrclk2_in          (TXUSRCLK2_IN),
-    //-------------- Transmit Ports - TX Driver and OOB signaling --------------
-.gt1_gtptxn_out          (TX1N_OUT_LANE1),
-.gt1_gtptxp_out          (TX1P_OUT_LANE1),
-    //--------------------- Transmit Ports - TX PLL Ports ----------------------
-    .gt1_txresetdone_out          (gt1_txresetdone_i),
-    //------------------- Transmit Ports - PCI Express Ports -------------------
-    .gt1_txelecidle_in            (POWERDOWN_IN),
-
-        .gt1_rxlpmhfhold_in          (tied_to_ground_i),
-        .gt1_rxlpmlfhold_in          (tied_to_ground_i),
-        .gt1_eyescanreset_in                (tied_to_ground_i),
-        //------------------------ RX Margin Analysis Ports ------------------------
-        .gt1_eyescandataerror_out           (),
-        .gt1_eyescantrigger_in              (tied_to_ground_i),
-        .gt1_rxbyteisaligned_out            (),
-        .gt1_rxcommadet_out                 (),
-        //---------------------- TX Configurable Driver Ports ----------------------
-        .gt1_txpostcursor_in                (5'b00000),
-        .gt1_txprecursor_in                 (5'b00000),
-        //---------------- Transmit Ports - TX 8B/10B Encoder Ports ----------------
-        .gt1_txchardispmode_in              (4'b0000),
-        .gt1_txchardispval_in               (4'b0000),
-        .gt1_txdiffctrl_in                  (4'b1000),
-        .gt1_txmaincursor_in                (7'b0000000),
-        //--------------- Transmit Ports - TX Polarity Control Ports ---------------
-        .gt1_txpolarity_in                  (tied_to_ground_i),
-        //----------------- Receive Ports - Pattern Checker Ports ------------------
-        .gt1_rxprbserr_out                  (),
-        .gt1_rxprbssel_in                   (3'b000),
-        //----------------- Receive Ports - Pattern Checker ports ------------------
-        .gt1_rxprbscntreset_in              (tied_to_ground_i),
-        //----------------- Receive Ports - RX Data Path interface -----------------
-        .gt1_rxpcsreset_in                  (tied_to_ground_i),
-        .gt1_rxpmareset_in                  (tied_to_ground_i),
-        .gt1_rxlpmreset_in                  (tied_to_ground_i),
-        //----- Receive Ports - RX Driver,OOB signalling,Coupling and Eq.,CDR ------
-        .gt1_rxlpmhfovrden_in               (tied_to_ground_i),
-        .gt1_rxcdrhold_in                   (tied_to_ground_i),
-        .gt1_dmonitorout_out                (),
-        //------ Receive Ports - RX Elastic Buffer and Phase Alignment Ports -------
-        .gt1_rxbufreset_in                  (tied_to_ground_i),
-        //---------------- Transmit Ports - Pattern Generator Ports ----------------
-        .gt1_txprbsforceerr_in              (tied_to_ground_i),
-        .gt1_txprbssel_in                   (3'b000),
-        //----------------- Transmit Ports - TX Data Path interface -----------------
-        .gt1_txpcsreset_in                  (tied_to_ground_i),
-        .gt1_txinhibit_in                   (tied_to_ground_i),
-        .gt1_txpmareset_in                  (tied_to_ground_i),
 
     //____________________________COMMON PORTS________________________________
     //-------------------------- Common Block - Ports --------------------------

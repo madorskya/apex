@@ -52,7 +52,7 @@
 
 //***************************** Entity Declaration ****************************
 
-(* core_generation_info = "design_1_axi_chip2chip_0_aurora8_0,aurora_8b10b_v11_1_9,{user_interface=AXI_4_Streaming,backchannel_mode=Sidebands,c_aurora_lanes=2,c_column_used=None,c_gt_clock_1=GTPQ0,c_gt_clock_2=None,c_gt_loc_1=1,c_gt_loc_10=X,c_gt_loc_11=X,c_gt_loc_12=X,c_gt_loc_13=X,c_gt_loc_14=X,c_gt_loc_15=X,c_gt_loc_16=X,c_gt_loc_17=X,c_gt_loc_18=X,c_gt_loc_19=X,c_gt_loc_2=X,c_gt_loc_20=X,c_gt_loc_21=X,c_gt_loc_22=X,c_gt_loc_23=X,c_gt_loc_24=X,c_gt_loc_25=X,c_gt_loc_26=X,c_gt_loc_27=X,c_gt_loc_28=X,c_gt_loc_29=X,c_gt_loc_3=X,c_gt_loc_30=X,c_gt_loc_31=X,c_gt_loc_32=X,c_gt_loc_33=X,c_gt_loc_34=X,c_gt_loc_35=X,c_gt_loc_36=X,c_gt_loc_37=X,c_gt_loc_38=X,c_gt_loc_39=X,c_gt_loc_4=2,c_gt_loc_40=X,c_gt_loc_41=X,c_gt_loc_42=X,c_gt_loc_43=X,c_gt_loc_44=X,c_gt_loc_45=X,c_gt_loc_46=X,c_gt_loc_47=X,c_gt_loc_48=X,c_gt_loc_5=X,c_gt_loc_6=X,c_gt_loc_7=X,c_gt_loc_8=X,c_gt_loc_9=X,c_lane_width=4,c_line_rate=37500,c_nfc=false,c_nfc_mode=IMM,c_refclk_frequency=250000,c_simplex=false,c_simplex_mode=TX,c_stream=true,c_ufc=false,flow_mode=None,interface_mode=Streaming,dataflow_config=Duplex}" *)
+(* core_generation_info = "design_1_axi_chip2chip_0_aurora8_0,aurora_8b10b_v11_1_9,{user_interface=AXI_4_Streaming,backchannel_mode=Sidebands,c_aurora_lanes=1,c_column_used=None,c_gt_clock_1=GTPQ0,c_gt_clock_2=None,c_gt_loc_1=1,c_gt_loc_10=X,c_gt_loc_11=X,c_gt_loc_12=X,c_gt_loc_13=X,c_gt_loc_14=X,c_gt_loc_15=X,c_gt_loc_16=X,c_gt_loc_17=X,c_gt_loc_18=X,c_gt_loc_19=X,c_gt_loc_2=X,c_gt_loc_20=X,c_gt_loc_21=X,c_gt_loc_22=X,c_gt_loc_23=X,c_gt_loc_24=X,c_gt_loc_25=X,c_gt_loc_26=X,c_gt_loc_27=X,c_gt_loc_28=X,c_gt_loc_29=X,c_gt_loc_3=X,c_gt_loc_30=X,c_gt_loc_31=X,c_gt_loc_32=X,c_gt_loc_33=X,c_gt_loc_34=X,c_gt_loc_35=X,c_gt_loc_36=X,c_gt_loc_37=X,c_gt_loc_38=X,c_gt_loc_39=X,c_gt_loc_4=X,c_gt_loc_40=X,c_gt_loc_41=X,c_gt_loc_42=X,c_gt_loc_43=X,c_gt_loc_44=X,c_gt_loc_45=X,c_gt_loc_46=X,c_gt_loc_47=X,c_gt_loc_48=X,c_gt_loc_5=X,c_gt_loc_6=X,c_gt_loc_7=X,c_gt_loc_8=X,c_gt_loc_9=X,c_lane_width=4,c_line_rate=37500,c_nfc=false,c_nfc_mode=IMM,c_refclk_frequency=250000,c_simplex=false,c_simplex_mode=TX,c_stream=true,c_ufc=false,flow_mode=None,interface_mode=Streaming,dataflow_config=Duplex}" *)
 module design_1_axi_chip2chip_0_aurora8_0_multi_gt #
 (
     // Simulation attributes
@@ -96,17 +96,6 @@ module design_1_axi_chip2chip_0_aurora8_0_multi_gt #
     //----------------------- Receive Ports - AFE Ports ------------------------
     input           gt0_gtprxn_in,
     input           gt0_gtprxp_in,
-    //----------------- Receive Ports - Channel Bonding Ports ------------------
-    output          gt0_rxchanbondseq_out,
-    input           gt0_rxchbonden_in,
-    input   [3:0]   gt0_rxchbondi_in,
-    input   [2:0]   gt0_rxchbondlevel_in,
-    input           gt0_rxchbondmaster_in,
-    output  [3:0]   gt0_rxchbondo_out,
-    input           gt0_rxchbondslave_in,
-    //----------------- Receive Ports - Channel Bonding Ports  -----------------
-    output          gt0_rxchanisaligned_out,
-    output          gt0_rxchanrealign_out,
     //----------------- Receive Ports - Clock Correction Ports -----------------
     output  [1:0]   gt0_rxclkcorcnt_out,
     //------------- Receive Ports - Comma Detection and Alignment --------------
@@ -177,123 +166,6 @@ module design_1_axi_chip2chip_0_aurora8_0_multi_gt #
     //--------------- Transmit Ports - TX Polarity Control Ports ---------------
     input           gt0_txpolarity_in,
 
-    //_________________________________________________________________________
-    //_________________________________________________________________________
-    //GT1
-    //____________________________CHANNEL PORTS________________________________
-    output          gt1_drp_busy_out,
-    //-------------- Channel - Dynamic Reconfiguration Port (DRP) --------------
-    input   [8:0]   gt1_drpaddr_in,
-    input           gt1_drpclk_in,
-    input   [15:0]  gt1_drpdi_in,
-    output  [15:0]  gt1_drpdo_out,
-    input           gt1_drpen_in,
-    output          gt1_drprdy_out,
-    input           gt1_drpwe_in,
-    //----------------------------- Eye Scan Ports -----------------------------
-    input           gt1_eyescantrigger_in,
-    output          gt1_eyescandataerror_out,
-    //---------------------- Loopback and Powerdown Ports ----------------------
-    input   [2:0]   gt1_loopback_in,
-    input   [1:0]   gt1_rxpd_in,
-    input   [1:0]   gt1_txpd_in,
-    //----------------------------- Receive Ports ------------------------------
-    input           gt1_eyescanreset_in,
-    input           gt1_rxuserrdy_in,
-    //----------------- Receive Ports - Pattern Checker Ports ------------------
-    output          gt1_rxprbserr_out,
-    input   [2:0]   gt1_rxprbssel_in,
-    //----------------- Receive Ports - Pattern Checker ports ------------------
-    input           gt1_rxprbscntreset_in,
-    //--------------------- Receive Ports - 8b10b Decoder ----------------------
-    output  [3:0]   gt1_rxchariscomma_out,
-    output  [3:0]   gt1_rxcharisk_out,
-    output  [3:0]   gt1_rxdisperr_out,
-    output  [3:0]   gt1_rxnotintable_out,
-    //----------------------- Receive Ports - AFE Ports ------------------------
-    input           gt1_gtprxn_in,
-    input           gt1_gtprxp_in,
-    //----------------- Receive Ports - Channel Bonding Ports ------------------
-    output          gt1_rxchanbondseq_out,
-    input           gt1_rxchbonden_in,
-    input   [3:0]   gt1_rxchbondi_in,
-    input   [2:0]   gt1_rxchbondlevel_in,
-    input           gt1_rxchbondmaster_in,
-    output  [3:0]   gt1_rxchbondo_out,
-    input           gt1_rxchbondslave_in,
-    //----------------- Receive Ports - Channel Bonding Ports  -----------------
-    output          gt1_rxchanisaligned_out,
-    output          gt1_rxchanrealign_out,
-    //----------------- Receive Ports - Clock Correction Ports -----------------
-    output  [1:0]   gt1_rxclkcorcnt_out,
-    //------------- Receive Ports - Comma Detection and Alignment --------------
-    output          gt1_rxbyteisaligned_out,
-    output          gt1_rxbyterealign_out,
-    output          gt1_rxcommadet_out,
-    input           gt1_rxmcommaalignen_in,
-    input           gt1_rxpcommaalignen_in,
-    //----------------- Receive Ports - RX Data Path interface -----------------
-    input           gt1_gtrxreset_in,
-    input           gt1_rxpcsreset_in,
-    input           gt1_rxpmareset_in,
-    input           gt1_rxlpmreset_in,
-    output  [31:0]  gt1_rxdata_out,
-    output          gt1_rxoutclk_out,
-    input           gt1_rxusrclk_in,
-    input           gt1_rxusrclk2_in,
-    //----- Receive Ports - RX Driver,OOB signalling,Coupling and Eq.,CDR ------
-    output          gt1_rxcdrlock_out,
-    input           gt1_rxlpmhfhold_in,
-    input           gt1_rxlpmlfhold_in,
-    input           gt1_rxlpmhfovrden_in,
-    input           gt1_rxcdrhold_in,
-    output  [14:0]  gt1_dmonitorout_out,
-    //------ Receive Ports - RX Elastic Buffer and Phase Alignment Ports -------
-    input           gt1_rxbufreset_in,
-    output  [2:0]   gt1_rxbufstatus_out,
-    //---------------------- Receive Ports - RX PLL Ports ----------------------
-    output          gt1_rxresetdone_out,
-    output          gt1_rxpmaresetdone_out,
-    //---------------------- TX Configurable Driver Ports ----------------------
-    input   [4:0]   gt1_txpostcursor_in,
-    input   [4:0]   gt1_txprecursor_in,
-    //--------------- Receive Ports - RX Polarity Control Ports ----------------
-    input           gt1_rxpolarity_in,
-    //----------------------------- Transmit Ports -----------------------------
-    input           gt1_txuserrdy_in,
-    //-------------- Transmit Ports - 8b10b Encoder Control Ports --------------
-    input   [3:0]   gt1_txchardispmode_in,
-    input   [3:0]   gt1_txchardispval_in,
-    input   [3:0]   gt1_txcharisk_in,
-    //---------- Transmit Ports - TX Buffer and Phase Alignment Ports ----------
-    output  [1:0]   gt1_txbufstatus_out,
-    //---------------- Transmit Ports - TX Data Path interface -----------------
-    input           gt1_gttxreset_in,
-    input   [31:0]  gt1_txdata_in,
-    output          gt1_txoutclk_out,
-    output          gt1_txoutclkfabric_out,
-    output          gt1_txoutclkpcs_out,
-    input           gt1_txusrclk_in,
-    input           gt1_txusrclk2_in,
-    //------------------- Transmit Ports - PCI Express Ports -------------------
-    input           gt1_txelecidle_in,
-    //---------------- Transmit Ports - Pattern Generator Ports ----------------
-    input           gt1_txprbsforceerr_in,
-    //-------------- Transmit Ports - TX Driver and OOB signaling --------------
-    output          gt1_gtptxn_out,
-    output          gt1_gtptxp_out,
-    input   [3:0]   gt1_txdiffctrl_in,
-    input   [6:0]   gt1_txmaincursor_in,
-    //--------------------- Transmit Ports - TX PLL Ports ----------------------
-    input           gt1_txpcsreset_in,
-    input           gt1_txinhibit_in,
-    input           gt1_txpmareset_in,
-    output          gt1_txresetdone_out,
-    //---------------- Transmit Ports - pattern Generator Ports ----------------
-    input   [2:0]   gt1_txprbssel_in,
-    //--------------- Transmit Ports - TX Polarity Control Ports ---------------
-    input           gt1_txpolarity_in,
-
     //____________________________COMMON PORTS_______________________________{
     //----------------------- Channel - Ref Clock Ports ------------------------
     input           gt0_pll0outclk_i,
@@ -313,11 +185,6 @@ module design_1_axi_chip2chip_0_aurora8_0_multi_gt #
     wire            gt0_pll1clk_i;
     wire            gt0_pll1refclk_i;
     wire            gt0_rst_i;
-    wire            gt1_pll0clk_i;
-    wire            gt1_pll0refclk_i;
-    wire            gt1_pll1clk_i;
-    wire            gt1_pll1refclk_i;
-    wire            gt1_rst_i;
        
 
 
@@ -326,11 +193,6 @@ module design_1_axi_chip2chip_0_aurora8_0_multi_gt #
     assign  gt0_pll1clk_i    = gt0_pll1outclk_i;
     assign  gt0_pll1refclk_i = gt0_pll1outrefclk_i;
     assign  gt0_rst_i        = gt0_pll0reset_in;  
-    assign  gt1_pll0clk_i    = gt0_pll0outclk_i;
-    assign  gt1_pll0refclk_i = gt0_pll0outrefclk_i;
-    assign  gt1_pll1clk_i    = gt0_pll1outclk_i;
-    assign  gt1_pll1refclk_i = gt0_pll1outrefclk_i;
-    assign  gt1_rst_i        = gt0_pll0reset_in;  
     
     
 //------------------------- GT Instances  -------------------------------
@@ -386,17 +248,6 @@ module design_1_axi_chip2chip_0_aurora8_0_multi_gt #
         //----------------------- Receive Ports - AFE Ports ------------------------
         .gtprxn_in                      (gt0_gtprxn_in),
         .gtprxp_in                      (gt0_gtprxp_in),
-        //----------------- Receive Ports - Channel Bonding Ports ------------------
-        .rxchanbondseq_out              (gt0_rxchanbondseq_out),
-        .rxchbonden_in                  (gt0_rxchbonden_in),
-        .rxchbondi_in                   (gt0_rxchbondi_in),
-        .rxchbondlevel_in               (gt0_rxchbondlevel_in),
-        .rxchbondmaster_in              (gt0_rxchbondmaster_in),
-        .rxchbondo_out                  (gt0_rxchbondo_out),
-        .rxchbondslave_in               (gt0_rxchbondslave_in),
-        //----------------- Receive Ports - Channel Bonding Ports  -----------------
-        .rxchanisaligned_out            (gt0_rxchanisaligned_out),
-        .rxchanrealign_out              (gt0_rxchanrealign_out),
         //----------------- Receive Ports - Clock Correction Ports -----------------
         .rxclkcorcnt_out                (gt0_rxclkcorcnt_out),
         //------------- Receive Ports - Comma Detection and Alignment --------------
@@ -466,141 +317,6 @@ module design_1_axi_chip2chip_0_aurora8_0_multi_gt #
         .txprbssel_in                   (gt0_txprbssel_in),
         //--------------- Transmit Ports - TX Polarity Control Ports ---------------
         .txpolarity_in                  (gt0_txpolarity_in)
-
-    );
-
-    //_________________________________________________________________________
-    //_________________________________________________________________________
-    //GT1
-    design_1_axi_chip2chip_0_aurora8_0_gt #
-    (
-        // Simulation attributes
-        .GT_SIM_GTRESET_SPEEDUP   (WRAPPER_SIM_GTRESET_SPEEDUP),
-        .TXSYNC_OVRD_IN           (1'b0),
-        .TXSYNC_MULTILANE_IN      (1'b0)
-    )
-    gt1_design_1_axi_chip2chip_0_aurora8_0_i
-    (
-        .STABLE_CLOCK                   (STABLE_CLOCK),
-        .rst_in                         (gt1_rst_i),
-        .drp_busy_out                   (gt1_drp_busy_out),	    
-      
-        //-------------------------- Channel - DRP Ports  --------------------------
-        .drpaddr_in                     (gt1_drpaddr_in),
-        .drpclk_in                      (gt1_drpclk_in),
-        .drpdi_in                       (gt1_drpdi_in),
-        .drpdo_out                      (gt1_drpdo_out),
-        .drpen_in                       (gt1_drpen_in),
-        .drprdy_out                     (gt1_drprdy_out),
-        .drpwe_in                       (gt1_drpwe_in),
-        //----------------------------- Clocking Ports -----------------------------
-        .pll0clk_in                     (gt1_pll0clk_i),
-        .pll0refclk_in                  (gt1_pll0refclk_i),
-        .pll1clk_in                     (gt1_pll1clk_i),
-        .pll1refclk_in                  (gt1_pll1refclk_i),
-        //---------------------- Loopback and Powerdown Ports ----------------------
-        .loopback_in                    (gt1_loopback_in),
-        .rxpd_in                        (gt1_rxpd_in),
-        .txpd_in                        (gt1_txpd_in),
-        //----------------------------- Receive Ports ------------------------------
-        .eyescanreset_in                (gt1_eyescanreset_in),
-        .rxuserrdy_in                   (gt1_rxuserrdy_in),
-        //----------------- Receive Ports - Pattern Checker Ports ------------------
-        .rxprbserr_out                  (gt1_rxprbserr_out),
-        .rxprbssel_in                   (gt1_rxprbssel_in),
-        //----------------- Receive Ports - Pattern Checker ports ------------------
-        .rxprbscntreset_in              (gt1_rxprbscntreset_in),
-        //------------------------ RX Margin Analysis Ports ------------------------
-        .eyescandataerror_out           (gt1_eyescandataerror_out),
-        .eyescantrigger_in              (gt1_eyescantrigger_in),
-        //--------------------- Receive Ports - 8b10b Decoder ----------------------
-        .rxchariscomma_out              (gt1_rxchariscomma_out),
-        .rxcharisk_out                  (gt1_rxcharisk_out),
-        .rxdisperr_out                  (gt1_rxdisperr_out),
-        .rxnotintable_out               (gt1_rxnotintable_out),
-        //----------------------- Receive Ports - AFE Ports ------------------------
-        .gtprxn_in                      (gt1_gtprxn_in),
-        .gtprxp_in                      (gt1_gtprxp_in),
-        //----------------- Receive Ports - Channel Bonding Ports ------------------
-        .rxchanbondseq_out              (gt1_rxchanbondseq_out),
-        .rxchbonden_in                  (gt1_rxchbonden_in),
-        .rxchbondi_in                   (gt1_rxchbondi_in),
-        .rxchbondlevel_in               (gt1_rxchbondlevel_in),
-        .rxchbondmaster_in              (gt1_rxchbondmaster_in),
-        .rxchbondo_out                  (gt1_rxchbondo_out),
-        .rxchbondslave_in               (gt1_rxchbondslave_in),
-        //----------------- Receive Ports - Channel Bonding Ports  -----------------
-        .rxchanisaligned_out            (gt1_rxchanisaligned_out),
-        .rxchanrealign_out              (gt1_rxchanrealign_out),
-        //----------------- Receive Ports - Clock Correction Ports -----------------
-        .rxclkcorcnt_out                (gt1_rxclkcorcnt_out),
-        //------------- Receive Ports - Comma Detection and Alignment --------------
-        .rxbyteisaligned_out            (gt1_rxbyteisaligned_out),
-        .rxbyterealign_out              (gt1_rxbyterealign_out),
-        .rxcommadet_out                 (gt1_rxcommadet_out),
-        .rxmcommaalignen_in             (gt1_rxmcommaalignen_in),
-        .rxpcommaalignen_in             (gt1_rxpcommaalignen_in),
-        //----------------- Receive Ports - RX Data Path interface -----------------
-        .gtrxreset_in                   (gt1_gtrxreset_in),
-        .rxpcsreset_in                  (gt1_rxpcsreset_in),
-        .rxpmareset_in                  (gt1_rxpmareset_in),
-        .rxlpmreset_in                  (gt1_rxlpmreset_in),
-        .rxdata_out                     (gt1_rxdata_out),
-        .rxoutclk_out                   (gt1_rxoutclk_out),
-        .rxusrclk_in                    (gt1_rxusrclk_in),
-        .rxusrclk2_in                   (gt1_rxusrclk2_in),
-        //----- Receive Ports - RX Driver,OOB signalling,Coupling and Eq.,CDR ------
-        .rxcdrlock_out                  (gt1_rxcdrlock_out),
-        .rxlpmhfhold_in                 (gt1_rxlpmhfhold_in),
-        .rxlpmlfhold_in                 (gt1_rxlpmlfhold_in),
-        .rxlpmhfovrden_in               (gt1_rxlpmhfovrden_in),
-        .rxcdrhold_in                   (gt1_rxcdrhold_in),
-        .dmonitorout_out                (gt1_dmonitorout_out),
-        //------ Receive Ports - RX Elastic Buffer and Phase Alignment Ports -------
-        .rxbufreset_in                  (gt1_rxbufreset_in),
-        .rxbufstatus_out                (gt1_rxbufstatus_out),
-        //---------------------- Receive Ports - RX PLL Ports ----------------------
-        .rxresetdone_out                (gt1_rxresetdone_out),
-        .rxpmaresetdone_out             (gt1_rxpmaresetdone_out),
-        //---------------------- TX Configurable Driver Ports ----------------------
-        .txpostcursor_in                (gt1_txpostcursor_in),
-        .txprecursor_in                 (gt1_txprecursor_in),
-        //--------------- Receive Ports - RX Polarity Control Ports ----------------
-        .rxpolarity_in                  (gt1_rxpolarity_in),
-        //----------------------------- Transmit Ports -----------------------------
-        .txuserrdy_in                   (gt1_txuserrdy_in),
-        //-------------- Transmit Ports - 8b10b Encoder Control Ports --------------
-        .txchardispmode_in              (gt1_txchardispmode_in),
-        .txchardispval_in               (gt1_txchardispval_in),
-        .txcharisk_in                   (gt1_txcharisk_in),
-        //---------- Transmit Ports - TX Buffer and Phase Alignment Ports ----------
-        .txbufstatus_out                (gt1_txbufstatus_out),
-        //---------------- Transmit Ports - TX Data Path interface -----------------
-        .gttxreset_in                   (gt1_gttxreset_in),
-        .txdata_in                      (gt1_txdata_in),
-        .txoutclk_out                   (gt1_txoutclk_out),
-        .txoutclkfabric_out             (gt1_txoutclkfabric_out),
-        .txoutclkpcs_out                (gt1_txoutclkpcs_out),
-        .txusrclk_in                    (gt1_txusrclk_in),
-        .txusrclk2_in                   (gt1_txusrclk2_in),
-        //------------------- Transmit Ports - PCI Express Ports -------------------
-        .txelecidle_in                  (gt1_txelecidle_in),
-        //---------------- Transmit Ports - Pattern Generator Ports ----------------
-        .txprbsforceerr_in              (gt1_txprbsforceerr_in),
-        //-------------- Transmit Ports - TX Driver and OOB signaling --------------
-        .gtptxn_out                     (gt1_gtptxn_out),
-        .gtptxp_out                     (gt1_gtptxp_out),
-        .txdiffctrl_in                  (gt1_txdiffctrl_in),
-        .txmaincursor_in                (gt1_txmaincursor_in),
-        //--------------------- Transmit Ports - TX PLL Ports ----------------------
-        .txpcsreset_in                  (gt1_txpcsreset_in),
-        .txinhibit_in                   (gt1_txinhibit_in),
-        .txpmareset_in                  (gt1_txpmareset_in),
-        .txresetdone_out                (gt1_txresetdone_out),
-        //---------------- Transmit Ports - pattern Generator Ports ----------------
-        .txprbssel_in                   (gt1_txprbssel_in),
-        //--------------- Transmit Ports - TX Polarity Control Ports ---------------
-        .txpolarity_in                  (gt1_txpolarity_in)
 
     );
 

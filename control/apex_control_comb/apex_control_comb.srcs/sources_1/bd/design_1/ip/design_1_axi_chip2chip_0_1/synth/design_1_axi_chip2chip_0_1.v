@@ -48,12 +48,12 @@
 
 
 // IP VLNV: xilinx.com:ip:axi_chip2chip:5.0
-// IP Revision: 8
+// IP Revision: 5
 
-(* X_CORE_INFO = "axi_chip2chip_v5_0_8,Vivado 2020.1.1" *)
-(* CHECK_LICENSE_TYPE = "design_1_axi_chip2chip_0_1,axi_chip2chip_v5_0_8,{}" *)
-(* CORE_GENERATION_INFO = "design_1_axi_chip2chip_0_1,axi_chip2chip_v5_0_8,{x_ipProduct=Vivado 2020.1.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_chip2chip,x_ipVersion=5.0,x_ipCoreRevision=8,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_FAMILY=zynq,C_INSTANCE=axi_c2c,C_SIMULATION=0,C_MASTER_FPGA=1,C_AXI_BUS_TYPE=0,C_EN_AXI_LINK_HNDLR=0,C_COMMON_CLK=0,C_INTERFACE_TYPE=3,C_INTERFACE_MODE=0,C_NUM_OF_IO=20,C_SELECTIO_PHY_CLK=100,C_INCLUDE_AXILITE=0,C_AXI_DATA_WIDTH=32,C_AXI_ID_WIDTH=6,C_AXI_WUSER_WIDTH=1,C_DISABLE_DESK\
-EW=0,C_DISABLE_CLK_SHIFT=0,C_USE_DIFF_CLK=0,C_USE_DIFF_IO=0,C_AURORA_WIDTH=64,C_ECC_ENABLE=1,C_AXI_STB_WIDTH=4,C_AXI_ADDR_WIDTH=32,C_AXI_LEN_WIDTH=8,C_AXI_SIZE_WIDTH=3,C_AXI_BRST_WIDTH=2,C_AXI_RESP_WIDTH=2,C_INTERRUPT_WIDTH=4,C_EN_LEGACY_MODE=0,C_AXI_LITE_ADDR_WIDTH=32,C_AXI_LITE_PROT_WIDTH=2,C_AXI_LITE_DATA_WIDTH=32,C_AXI_LITE_STB_WIDTH=4,C_AXI_LITE_RESP_WIDTH=2}" *)
+(* X_CORE_INFO = "axi_chip2chip_v5_0_5,Vivado 2020.1.1_AR73018" *)
+(* CHECK_LICENSE_TYPE = "design_1_axi_chip2chip_0_1,axi_chip2chip_v5_0_5,{}" *)
+(* CORE_GENERATION_INFO = "design_1_axi_chip2chip_0_1,axi_chip2chip_v5_0_5,{x_ipProduct=Vivado 2020.1.1_AR73018,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=axi_chip2chip,x_ipVersion=5.0,x_ipCoreRevision=5,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_FAMILY=zynq,C_INSTANCE=axi_c2c,C_SIMULATION=0,C_MASTER_FPGA=1,C_AXI_BUS_TYPE=0,C_EN_AXI_LINK_HNDLR=0,C_COMMON_CLK=0,C_INTERFACE_TYPE=3,C_INTERFACE_MODE=1,C_NUM_OF_IO=20,C_SELECTIO_PHY_CLK=100,C_INCLUDE_AXILITE=0,C_AXI_DATA_WIDTH=32,C_AXI_ID_WIDTH=6,C_AXI_WUSER_WIDTH=1,C_DISA\
+BLE_DESKEW=0,C_DISABLE_CLK_SHIFT=0,C_USE_DIFF_CLK=0,C_USE_DIFF_IO=0,C_AURORA_WIDTH=32,C_ECC_ENABLE=0,C_AXI_STB_WIDTH=4,C_AXI_ADDR_WIDTH=32,C_AXI_LEN_WIDTH=8,C_AXI_SIZE_WIDTH=3,C_AXI_BRST_WIDTH=2,C_AXI_RESP_WIDTH=2,C_INTERRUPT_WIDTH=4,C_EN_LEGACY_MODE=0,C_AXI_LITE_ADDR_WIDTH=32,C_AXI_LITE_PROT_WIDTH=2,C_AXI_LITE_DATA_WIDTH=32,C_AXI_LITE_STB_WIDTH=4,C_AXI_LITE_RESP_WIDTH=2}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module design_1_axi_chip2chip_0_1 (
   s_aclk,
@@ -183,13 +183,13 @@ input wire axi_c2c_aurora_channel_up;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 AXIS_TX TREADY" *)
 input wire axi_c2c_aurora_tx_tready;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 AXIS_TX TDATA" *)
-output wire [63 : 0] axi_c2c_aurora_tx_tdata;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME AXIS_TX, TDATA_NUM_BYTES 8, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 187500000, PHASE 0, CLK_DOMAIN design_1_axi_chip2chip_0_aurora8_0_user_clk_out, LAYERED_METADATA undef, INSERT_VIP 0" *)
+output wire [31 : 0] axi_c2c_aurora_tx_tdata;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME AXIS_TX, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 187500000, PHASE 0, CLK_DOMAIN design_1_axi_chip2chip_0_aurora8_0_user_clk_out, LAYERED_METADATA undef, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 AXIS_TX TVALID" *)
 output wire axi_c2c_aurora_tx_tvalid;
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 AXIS_RX TDATA" *)
-input wire [63 : 0] axi_c2c_aurora_rx_tdata;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME AXIS_RX, TDATA_NUM_BYTES 8, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 187500000, PHASE 0, CLK_DOMAIN design_1_axi_chip2chip_0_aurora8_0_user_clk_out, LAYERED_METADATA undef, INSERT_VIP 0" *)
+input wire [31 : 0] axi_c2c_aurora_rx_tdata;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME AXIS_RX, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 187500000, PHASE 0, CLK_DOMAIN design_1_axi_chip2chip_0_aurora8_0_user_clk_out, LAYERED_METADATA undef, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 AXIS_RX TVALID" *)
 input wire axi_c2c_aurora_rx_tvalid;
 output wire aurora_do_cc;
@@ -213,7 +213,7 @@ output wire axi_c2c_link_status_out;
 output wire axi_c2c_multi_bit_error_out;
 output wire axi_c2c_link_error_out;
 
-  axi_chip2chip_v5_0_8 #(
+  axi_chip2chip_v5_0_5 #(
     .C_FAMILY("zynq"),
     .C_INSTANCE("axi_c2c"),
     .C_SIMULATION(0),
@@ -222,7 +222,7 @@ output wire axi_c2c_link_error_out;
     .C_EN_AXI_LINK_HNDLR(0),
     .C_COMMON_CLK(0),
     .C_INTERFACE_TYPE(3),
-    .C_INTERFACE_MODE(0),
+    .C_INTERFACE_MODE(1),
     .C_NUM_OF_IO(20),
     .C_SELECTIO_PHY_CLK(100),
     .C_INCLUDE_AXILITE(0),
@@ -233,8 +233,8 @@ output wire axi_c2c_link_error_out;
     .C_DISABLE_CLK_SHIFT(0),
     .C_USE_DIFF_CLK(0),
     .C_USE_DIFF_IO(0),
-    .C_AURORA_WIDTH(64),
-    .C_ECC_ENABLE(1),
+    .C_AURORA_WIDTH(32),
+    .C_ECC_ENABLE(0),
     .C_AXI_STB_WIDTH(4),
     .C_AXI_ADDR_WIDTH(32),
     .C_AXI_LEN_WIDTH(8),

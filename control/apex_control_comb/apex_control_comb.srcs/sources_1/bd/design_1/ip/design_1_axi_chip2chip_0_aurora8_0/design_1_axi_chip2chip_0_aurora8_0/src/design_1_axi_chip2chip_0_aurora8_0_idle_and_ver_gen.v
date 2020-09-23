@@ -57,7 +57,7 @@
 //               to make the sequence Aurora compliant.  If the gen_ver signal is high,
 //               verification symbols are added to the mix at appropriate intervals
 //
-//               This module supports 2 4-byte lane designs
+//               This module supports 1 4-byte lane designs
 //
 
 `timescale 1 ns / 1 ps
@@ -95,10 +95,10 @@ module design_1_axi_chip2chip_0_aurora8_0_IDLE_AND_VER_GEN
 
 
     //Aurora Lane Interface
-output  [0:1]      GEN_A;
-    output  [0:7]      GEN_K;
-    output  [0:7]      GEN_R;
-    output  [0:7]      GEN_V;
+output             GEN_A;
+    output  [0:3]      GEN_K;
+    output  [0:3]      GEN_R;
+    output  [0:3]      GEN_V;
 
 
     //System Interface
@@ -248,7 +248,6 @@ output  [0:1]      GEN_A;
     // Global logic to communicate with all lanes without causing timing problems.
 
     assign  GEN_V[0] = 1'b0;
-    assign  GEN_V[4] = 1'b0;
 
 
     FD #(.INIT(1'b0)) gen_v_flop_1_i
@@ -256,13 +255,6 @@ output  [0:1]      GEN_A;
         .D(recycle_gen_ver_c),
         .C(USER_CLK),
         .Q(GEN_V[1])
-    );
-
-    FD #(.INIT(1'b0)) gen_v_flop_5_i
-    (
-        .D(recycle_gen_ver_c),
-        .C(USER_CLK),
-        .Q(GEN_V[5])
     );
 
 
@@ -273,27 +265,12 @@ output  [0:1]      GEN_A;
         .Q(GEN_V[2])
     );
 
-    FD #(.INIT(1'b0)) gen_v_flop_6_i
-    (
-        .D(recycle_gen_ver_c),
-        .C(USER_CLK),
-        .Q(GEN_V[6])
-    );
-
 
     FD #(.INIT(1'b0)) gen_v_flop_3_i
     (
         .D(recycle_gen_ver_c),
         .C(USER_CLK),
         .Q(GEN_V[3])
-    );
-
-
-    FD #(.INIT(1'b0)) gen_v_flop_7_i
-    (
-        .D(recycle_gen_ver_c),
-        .C(USER_CLK),
-        .Q(GEN_V[7])
     );
 
 
@@ -312,15 +289,7 @@ output  [0:1]      GEN_A;
     (
         .D(gen_a_flop_c),
         .C(USER_CLK),
-        .Q(GEN_A[0])
-    );
-
-
-    FD #(.INIT(1'b0)) gen_a_flop_1_i
-    (
-        .D(gen_a_flop_c),
-        .C(USER_CLK),
-        .Q(GEN_A[1])
+        .Q(GEN_A)
     );
 
     // Assert GEN_K in the MSByte when the lfsr dictates. Turn off the assertion if an
@@ -341,14 +310,6 @@ output  [0:1]      GEN_A;
         .Q(GEN_K[0])
     );
 
-
-    FD #(.INIT(1'b0)) gen_k_flop_4_i
-    (
-        .D(gen_k_flop_c[0]),
-        .C(USER_CLK),
-        .Q(GEN_K[4])
-    );
-
     assign gen_k_flop_c[1] = gen_k_c[1];
 
 
@@ -357,14 +318,6 @@ output  [0:1]      GEN_A;
         .D(gen_k_flop_c[1]),
         .C(USER_CLK),
         .Q(GEN_K[1])
-    );
-
-
-    FD #(.INIT(1'b0)) gen_k_flop_5_i
-    (
-        .D(gen_k_flop_c[1]),
-        .C(USER_CLK),
-        .Q(GEN_K[5])
     );
 
     assign gen_k_flop_c[2] = gen_k_c[2];
@@ -377,14 +330,6 @@ output  [0:1]      GEN_A;
         .Q(GEN_K[2])
     );
 
-
-    FD #(.INIT(1'b0)) gen_k_flop_6_i
-    (
-        .D(gen_k_flop_c[2]),
-        .C(USER_CLK),
-        .Q(GEN_K[6])
-    );
-
     assign gen_k_flop_c[3] = gen_k_c[3];
 
 
@@ -393,14 +338,6 @@ output  [0:1]      GEN_A;
         .D(gen_k_flop_c[3]),
         .C(USER_CLK),
         .Q(GEN_K[3])
-    );
-
-
-    FD #(.INIT(1'b0)) gen_k_flop_7_i
-    (
-        .D(gen_k_flop_c[3]),
-        .C(USER_CLK),
-        .Q(GEN_K[7])
     );
 
 
@@ -419,14 +356,6 @@ output  [0:1]      GEN_A;
         .Q(GEN_R[0])
     );
 
-
-    FD #(.INIT(1'b0)) gen_r_flop_4_i
-    (
-        .D(gen_r_flop_c[0]),
-        .C(USER_CLK),
-        .Q(GEN_R[4])
-    );
-
     assign gen_r_flop_c[1] = gen_r_c[1];
 
 
@@ -435,14 +364,6 @@ output  [0:1]      GEN_A;
         .D(gen_r_flop_c[1]),
         .C(USER_CLK),
         .Q(GEN_R[1])
-    );
-
-
-    FD #(.INIT(1'b0)) gen_r_flop_5_i
-    (
-        .D(gen_r_flop_c[1]),
-        .C(USER_CLK),
-        .Q(GEN_R[5])
     );
 
     assign gen_r_flop_c[2] = gen_r_c[2];
@@ -455,14 +376,6 @@ output  [0:1]      GEN_A;
         .Q(GEN_R[2])
     );
 
-
-    FD #(.INIT(1'b0)) gen_r_flop_6_i
-    (
-        .D(gen_r_flop_c[2]),
-        .C(USER_CLK),
-        .Q(GEN_R[6])
-    );
-
     assign gen_r_flop_c[3] = gen_r_c[3];
 
 
@@ -471,14 +384,6 @@ output  [0:1]      GEN_A;
         .D(gen_r_flop_c[3]),
         .C(USER_CLK),
         .Q(GEN_R[3])
-    );
-
-
-    FD #(.INIT(1'b0)) gen_r_flop_7_i
-    (
-        .D(gen_r_flop_c[3]),
-        .C(USER_CLK),
-        .Q(GEN_R[7])
     );
 
 endmodule

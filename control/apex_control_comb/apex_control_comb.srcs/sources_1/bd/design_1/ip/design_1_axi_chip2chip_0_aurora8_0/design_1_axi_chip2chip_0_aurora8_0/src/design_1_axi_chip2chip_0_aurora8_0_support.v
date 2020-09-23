@@ -49,28 +49,28 @@
 
  `timescale 1 ns / 10 ps
 
-(* core_generation_info = "design_1_axi_chip2chip_0_aurora8_0,aurora_8b10b_v11_1_9,{user_interface=AXI_4_Streaming,backchannel_mode=Sidebands,c_aurora_lanes=2,c_column_used=None,c_gt_clock_1=GTPQ0,c_gt_clock_2=None,c_gt_loc_1=1,c_gt_loc_10=X,c_gt_loc_11=X,c_gt_loc_12=X,c_gt_loc_13=X,c_gt_loc_14=X,c_gt_loc_15=X,c_gt_loc_16=X,c_gt_loc_17=X,c_gt_loc_18=X,c_gt_loc_19=X,c_gt_loc_2=X,c_gt_loc_20=X,c_gt_loc_21=X,c_gt_loc_22=X,c_gt_loc_23=X,c_gt_loc_24=X,c_gt_loc_25=X,c_gt_loc_26=X,c_gt_loc_27=X,c_gt_loc_28=X,c_gt_loc_29=X,c_gt_loc_3=X,c_gt_loc_30=X,c_gt_loc_31=X,c_gt_loc_32=X,c_gt_loc_33=X,c_gt_loc_34=X,c_gt_loc_35=X,c_gt_loc_36=X,c_gt_loc_37=X,c_gt_loc_38=X,c_gt_loc_39=X,c_gt_loc_4=2,c_gt_loc_40=X,c_gt_loc_41=X,c_gt_loc_42=X,c_gt_loc_43=X,c_gt_loc_44=X,c_gt_loc_45=X,c_gt_loc_46=X,c_gt_loc_47=X,c_gt_loc_48=X,c_gt_loc_5=X,c_gt_loc_6=X,c_gt_loc_7=X,c_gt_loc_8=X,c_gt_loc_9=X,c_lane_width=4,c_line_rate=37500,c_nfc=false,c_nfc_mode=IMM,c_refclk_frequency=250000,c_simplex=false,c_simplex_mode=TX,c_stream=true,c_ufc=false,flow_mode=None,interface_mode=Streaming,dataflow_config=Duplex}" *)
+(* core_generation_info = "design_1_axi_chip2chip_0_aurora8_0,aurora_8b10b_v11_1_9,{user_interface=AXI_4_Streaming,backchannel_mode=Sidebands,c_aurora_lanes=1,c_column_used=None,c_gt_clock_1=GTPQ0,c_gt_clock_2=None,c_gt_loc_1=1,c_gt_loc_10=X,c_gt_loc_11=X,c_gt_loc_12=X,c_gt_loc_13=X,c_gt_loc_14=X,c_gt_loc_15=X,c_gt_loc_16=X,c_gt_loc_17=X,c_gt_loc_18=X,c_gt_loc_19=X,c_gt_loc_2=X,c_gt_loc_20=X,c_gt_loc_21=X,c_gt_loc_22=X,c_gt_loc_23=X,c_gt_loc_24=X,c_gt_loc_25=X,c_gt_loc_26=X,c_gt_loc_27=X,c_gt_loc_28=X,c_gt_loc_29=X,c_gt_loc_3=X,c_gt_loc_30=X,c_gt_loc_31=X,c_gt_loc_32=X,c_gt_loc_33=X,c_gt_loc_34=X,c_gt_loc_35=X,c_gt_loc_36=X,c_gt_loc_37=X,c_gt_loc_38=X,c_gt_loc_39=X,c_gt_loc_4=X,c_gt_loc_40=X,c_gt_loc_41=X,c_gt_loc_42=X,c_gt_loc_43=X,c_gt_loc_44=X,c_gt_loc_45=X,c_gt_loc_46=X,c_gt_loc_47=X,c_gt_loc_48=X,c_gt_loc_5=X,c_gt_loc_6=X,c_gt_loc_7=X,c_gt_loc_8=X,c_gt_loc_9=X,c_lane_width=4,c_line_rate=37500,c_nfc=false,c_nfc_mode=IMM,c_refclk_frequency=250000,c_simplex=false,c_simplex_mode=TX,c_stream=true,c_ufc=false,flow_mode=None,interface_mode=Streaming,dataflow_config=Duplex}" *)
 module design_1_axi_chip2chip_0_aurora8_0_support
  (
  
-input   [0:63]     s_axi_tx_tdata,
+input   [0:31]     s_axi_tx_tdata,
  
 input              s_axi_tx_tvalid,
 output             s_axi_tx_tready,
 
  
-output  [0:63]     m_axi_rx_tdata,
+output  [0:31]     m_axi_rx_tdata,
  
 output             m_axi_rx_tvalid,
 
 
 
     // GT Serial I/O
-input   [0:1]      rxp,
-input   [0:1]      rxn,
+input              rxp,
+input              rxn,
 
-output  [0:1]      txp,
-output  [0:1]      txn,
+output             txp,
+output             txn,
 
     // GT Reference Clock Interface
 input              gt_refclk1,
@@ -80,7 +80,7 @@ input              gt_refclk1,
 output             hard_err,
 output             soft_err,
     // Status
-output  [0:1]      lane_up,
+output             lane_up,
 output             channel_up,
 
 
@@ -111,12 +111,6 @@ input   [15:0]     drpdi_in,
 output             drprdy_out, 
 output  [15:0]     drpdo_out, 
 input              drpwe_in, 
-input   [8:0]      drpaddr_in_lane1, 
-input              drpen_in_lane1, 
-input   [15:0]     drpdi_in_lane1, 
-output             drprdy_out_lane1, 
-output  [15:0]     drpdo_out_lane1, 
-input              drpwe_in_lane1, 
 
 //____________________________COMMON PORTS_______________________________{
  output            gt0_pll0refclklost_out ,
@@ -337,12 +331,6 @@ design_1_axi_chip2chip_0_aurora8_0_core design_1_axi_chip2chip_0_aurora8_0_core_
        .drprdy_out                   (drprdy_out),
        .drpdo_out                    (drpdo_out),
        .drpwe_in                     (drpwe_in),
-       .drpaddr_in_lane1                   (drpaddr_in_lane1),
-       .drpen_in_lane1                     (drpen_in_lane1),
-       .drpdi_in_lane1                     (drpdi_in_lane1),
-       .drprdy_out_lane1                   (drprdy_out_lane1),
-       .drpdo_out_lane1                    (drpdo_out_lane1),
-       .drpwe_in_lane1                     (drpwe_in_lane1),
 //------------------{
 .gt_common_reset_out (common_reset_i),
 //____________________________COMMON PORTS_______________________________{

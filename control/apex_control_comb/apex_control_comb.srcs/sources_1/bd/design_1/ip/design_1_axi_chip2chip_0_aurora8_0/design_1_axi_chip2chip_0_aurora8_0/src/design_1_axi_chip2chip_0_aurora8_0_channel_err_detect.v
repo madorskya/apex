@@ -57,7 +57,7 @@
 //               a hard error is detected, it sends a message to the channel
 //               initialization state machine to reset the channel.
 //
-//               This module supports 2 4-byte lane designs
+//               This module supports 1 4-byte lane designs
 //
 
 `timescale 1 ns / 1 ps
@@ -88,9 +88,9 @@ module design_1_axi_chip2chip_0_aurora8_0_CHANNEL_ERR_DETECT
 //***********************************Port Declarations*******************************
 
     //Aurora Lane Interface
-input   [0:3]      SOFT_ERR;
-input   [0:1]      HARD_ERR;
-input   [0:1]      LANE_UP;
+input   [0:1]      SOFT_ERR;
+input              HARD_ERR;
+input              LANE_UP;
 
 
     //System Interface
@@ -114,9 +114,9 @@ input   [0:1]      LANE_UP;
 
 //***************************Internal Register Declarations***************************
 
-reg     [0:3]      soft_err_r;
-reg     [0:1]      hard_err_r;
-reg     [0:1]      lane_up_r;
+reg     [0:1]      soft_err_r;
+reg                hard_err_r;
+reg                lane_up_r;
 
 
 //*********************************Wire Declarations**********************************
@@ -143,9 +143,7 @@ reg     [0:1]      lane_up_r;
         CHANNEL_SOFT_ERR = 1'b1;
 
     assign channel_soft_err_c = soft_err_r[0] |
-                                  soft_err_r[1] |
-                                  soft_err_r[2] |
-                                  soft_err_r[3];
+                                  soft_err_r[1];
 
     always @(posedge USER_CLK)
         CHANNEL_SOFT_ERR  <=  `DLY    channel_soft_err_c;
@@ -156,8 +154,7 @@ reg     [0:1]      lane_up_r;
     initial
         CHANNEL_HARD_ERR = 1'b1;
 
-    assign channel_hard_err_c = hard_err_r[0] |
-                                  hard_err_r[1];
+    assign channel_hard_err_c = hard_err_r;
 
     always @(posedge USER_CLK)
         CHANNEL_HARD_ERR  <=  `DLY    channel_hard_err_c;
@@ -170,8 +167,7 @@ reg     [0:1]      lane_up_r;
     initial
         RESET_CHANNEL   =  1'b1;
 
-    assign reset_channel_c = !lane_up_r[0] |
-                             !lane_up_r[1];
+    assign reset_channel_c = !lane_up_r;
 
     always @(posedge USER_CLK)
         RESET_CHANNEL    <=  `DLY    reset_channel_c | POWER_DOWN;

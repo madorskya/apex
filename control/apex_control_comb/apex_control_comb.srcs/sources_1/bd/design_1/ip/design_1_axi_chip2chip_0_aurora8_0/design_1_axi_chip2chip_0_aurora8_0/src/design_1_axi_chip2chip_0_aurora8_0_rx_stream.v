@@ -56,7 +56,7 @@
 //               all data to be carried in a single, infinite frame, and it
 //               expects the data data in lanes to be all valid or all invalid
 //
-//               This module supports 4 4-byte lane designs.
+//               This module supports 2 4-byte lane designs.
 //
 //
 
@@ -94,7 +94,7 @@ module design_1_axi_chip2chip_0_aurora8_0_RX_STREAM
 
 
     // LocalLink PDU Interface
-output  [0:63]     RX_D;
+output  [0:31]     RX_D;
 output             RX_SRC_RDY_N;
 
 
@@ -103,11 +103,11 @@ input              START_RX;
 
 
     // Aurora Lane Interface
-input   [0:3]      RX_PAD;
-input   [0:63]     RX_PE_DATA;
-input   [0:3]      RX_PE_DATA_V;
-input   [0:3]      RX_SCP;
-input   [0:3]      RX_ECP;
+input   [0:1]      RX_PAD;
+input   [0:31]     RX_PE_DATA;
+input   [0:1]      RX_PE_DATA_V;
+input   [0:1]      RX_SCP;
+input   [0:1]      RX_ECP;
 
 
     // System Interface
@@ -129,7 +129,7 @@ reg                infinite_frame_started_r;
     always @(posedge USER_CLK)
         if(!START_RX)
             infinite_frame_started_r    <=  `DLY 1'b0;
-        else if(RX_SCP > 4'd0)
+        else if(RX_SCP > 2'd0)
             infinite_frame_started_r    <=  `DLY 1'b1;
        
        
