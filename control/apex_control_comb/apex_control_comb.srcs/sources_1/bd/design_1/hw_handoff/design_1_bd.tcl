@@ -439,6 +439,7 @@ proc create_hier_cell_reg_bank { parentCell nameHier } {
 
 
   # Create pins
+  create_bd_pin -dir O -from 2 -to 0 Dout
   create_bd_pin -dir O -from 1 -to 0 Dout_0
   create_bd_pin -dir O -from 2 -to 0 Dout_1
   create_bd_pin -dir O -from 0 -to 0 Dout_2
@@ -446,6 +447,10 @@ proc create_hier_cell_reg_bank { parentCell nameHier } {
   create_bd_pin -dir I -from 0 -to 0 In1_0
   create_bd_pin -dir I -from 7 -to 0 In2_0
   create_bd_pin -dir I -from 0 -to 0 In3_0
+  create_bd_pin -dir I In4
+  create_bd_pin -dir I -from 0 -to 0 In5
+  create_bd_pin -dir I In6
+  create_bd_pin -dir I -from 0 -to 0 In7
   create_bd_pin -dir I -type clk s_axi_aclk
   create_bd_pin -dir I -type rst s_axi_aresetn
 
@@ -454,8 +459,8 @@ proc create_hier_cell_reg_bank { parentCell nameHier } {
   set_property -dict [ list \
    CONFIG.C_ALL_INPUTS_2 {1} \
    CONFIG.C_ALL_OUTPUTS {1} \
-   CONFIG.C_GPIO2_WIDTH {12} \
-   CONFIG.C_GPIO_WIDTH {6} \
+   CONFIG.C_GPIO2_WIDTH {16} \
+   CONFIG.C_GPIO_WIDTH {9} \
    CONFIG.C_IS_DUAL {1} \
  ] $axi_gpio_0
 
@@ -466,7 +471,7 @@ proc create_hier_cell_reg_bank { parentCell nameHier } {
    CONFIG.IN1_WIDTH {1} \
    CONFIG.IN2_WIDTH {8} \
    CONFIG.IN3_WIDTH {1} \
-   CONFIG.NUM_PORTS {4} \
+   CONFIG.NUM_PORTS {8} \
  ] $xlconcat_0
 
   # Create instance: xlslice_0, and set properties
@@ -496,6 +501,15 @@ proc create_hier_cell_reg_bank { parentCell nameHier } {
    CONFIG.DOUT_WIDTH {1} \
  ] $xlslice_2
 
+  # Create instance: xlslice_3, and set properties
+  set xlslice_3 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_3 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {8} \
+   CONFIG.DIN_TO {6} \
+   CONFIG.DIN_WIDTH {9} \
+   CONFIG.DOUT_WIDTH {3} \
+ ] $xlslice_3
+
   # Create interface connections
   connect_bd_intf_net -intf_net cpu_M13_AXI [get_bd_intf_pins S_AXI] [get_bd_intf_pins axi_gpio_0/S_AXI]
 
@@ -504,13 +518,18 @@ proc create_hier_cell_reg_bank { parentCell nameHier } {
   connect_bd_net -net In1_0_1 [get_bd_pins In1_0] [get_bd_pins xlconcat_0/In1]
   connect_bd_net -net In2_0_1 [get_bd_pins In2_0] [get_bd_pins xlconcat_0/In2]
   connect_bd_net -net In3_0_1 [get_bd_pins In3_0] [get_bd_pins xlconcat_0/In3]
+  connect_bd_net -net In4_1 [get_bd_pins In4] [get_bd_pins xlconcat_0/In4]
+  connect_bd_net -net In5_1 [get_bd_pins In5] [get_bd_pins xlconcat_0/In5]
+  connect_bd_net -net In6_1 [get_bd_pins In6] [get_bd_pins xlconcat_0/In6]
+  connect_bd_net -net In7_1 [get_bd_pins In7] [get_bd_pins xlconcat_0/In7]
   connect_bd_net -net Net [get_bd_pins s_axi_aclk] [get_bd_pins axi_gpio_0/s_axi_aclk]
-  connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_pins axi_gpio_0/gpio_io_o] [get_bd_pins xlslice_0/Din] [get_bd_pins xlslice_1/Din] [get_bd_pins xlslice_2/Din]
+  connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_pins axi_gpio_0/gpio_io_o] [get_bd_pins xlslice_0/Din] [get_bd_pins xlslice_1/Din] [get_bd_pins xlslice_2/Din] [get_bd_pins xlslice_3/Din]
   connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins s_axi_aresetn] [get_bd_pins axi_gpio_0/s_axi_aresetn]
   connect_bd_net -net xlconcat_0_dout [get_bd_pins axi_gpio_0/gpio2_io_i] [get_bd_pins xlconcat_0/dout]
   connect_bd_net -net xlslice_0_Dout [get_bd_pins Dout_1] [get_bd_pins xlslice_0/Dout]
   connect_bd_net -net xlslice_1_Dout [get_bd_pins Dout_0] [get_bd_pins xlslice_1/Dout]
   connect_bd_net -net xlslice_2_Dout [get_bd_pins Dout_2] [get_bd_pins xlslice_2/Dout]
+  connect_bd_net -net xlslice_3_Dout [get_bd_pins Dout] [get_bd_pins xlslice_3/Dout]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -2032,11 +2051,16 @@ proc create_hier_cell_chip2chip_1 { parentCell nameHier } {
   create_bd_pin -dir I -type clk aurora_init_clk
   create_bd_pin -dir I -type rst aurora_mmcm_not_locked
   create_bd_pin -dir I -type rst aurora_pma_init_in
+  create_bd_pin -dir O axi_c2c_link_status_out
+  create_bd_pin -dir O -from 0 -to 0 channel_up
   create_bd_pin -dir I gt0_pll0outclk_in
   create_bd_pin -dir I gt0_pll0outrefclk_in
   create_bd_pin -dir I gt0_pll0refclklost_in
   create_bd_pin -dir I gt0_pll1outclk_in
   create_bd_pin -dir I gt0_pll1outrefclk_in
+  create_bd_pin -dir O gt0_rxcommadet_out
+  create_bd_pin -dir O gt0_rxprbserr_out
+  create_bd_pin -dir I -from 2 -to 0 gt0_rxprbssel_in
   create_bd_pin -dir I -type clk gt_refclk1
   create_bd_pin -dir I quad1_common_lock_in
   create_bd_pin -dir I -type rst s_aresetn
@@ -2069,7 +2093,11 @@ proc create_hier_cell_chip2chip_1 { parentCell nameHier } {
    CONFIG.SINGLEEND_GTREFCLK {false} \
    CONFIG.SINGLEEND_INITCLK {false} \
    CONFIG.SupportLevel {0} \
+   CONFIG.TransceiverControl {true} \
  ] $axi_chip2chip_0_aurora8
+
+  # Create instance: xlconstant_0, and set properties
+  set xlconstant_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0 ]
 
   # Create interface connections
   connect_bd_intf_net -intf_net GT_SERIAL_RX_1 [get_bd_intf_pins c2c_0] [get_bd_intf_pins axi_chip2chip_0_aurora8/GT_SERIAL_RX]
@@ -2080,10 +2108,14 @@ proc create_hier_cell_chip2chip_1 { parentCell nameHier } {
 
   # Create port connections
   connect_bd_net -net Net [get_bd_pins aurora_init_clk] [get_bd_pins axi_chip2chip_0/aurora_init_clk] [get_bd_pins axi_chip2chip_0/s_aclk] [get_bd_pins axi_chip2chip_0_aurora8/drpclk_in] [get_bd_pins axi_chip2chip_0_aurora8/init_clk_in]
+  connect_bd_net -net Net1 [get_bd_pins gt0_rxprbssel_in] [get_bd_pins axi_chip2chip_0_aurora8/gt0_rxprbssel_in] [get_bd_pins axi_chip2chip_0_aurora8/gt0_txprbssel_in]
   connect_bd_net -net aurora_mmcm_not_locked_1 [get_bd_pins aurora_mmcm_not_locked] [get_bd_pins axi_chip2chip_0/aurora_mmcm_not_locked]
-  connect_bd_net -net axi_chip2chip_0_aurora8_channel_up [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_channel_up] [get_bd_pins axi_chip2chip_0_aurora8/channel_up]
+  connect_bd_net -net axi_chip2chip_0_aurora8_channel_up [get_bd_pins channel_up] [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_channel_up] [get_bd_pins axi_chip2chip_0_aurora8/channel_up]
+  connect_bd_net -net axi_chip2chip_0_aurora8_gt0_rxcommadet_out [get_bd_pins gt0_rxcommadet_out] [get_bd_pins axi_chip2chip_0_aurora8/gt0_rxcommadet_out]
+  connect_bd_net -net axi_chip2chip_0_aurora8_gt0_rxprbserr_out [get_bd_pins gt0_rxprbserr_out] [get_bd_pins axi_chip2chip_0_aurora8/gt0_rxprbserr_out]
   connect_bd_net -net axi_chip2chip_0_aurora_pma_init_out [get_bd_pins axi_chip2chip_0/aurora_pma_init_out] [get_bd_pins axi_chip2chip_0_aurora8/gt_reset]
   connect_bd_net -net axi_chip2chip_0_aurora_reset_pb [get_bd_pins axi_chip2chip_0/aurora_reset_pb] [get_bd_pins axi_chip2chip_0_aurora8/reset]
+  connect_bd_net -net axi_chip2chip_0_axi_c2c_link_status_out [get_bd_pins axi_c2c_link_status_out] [get_bd_pins axi_chip2chip_0/axi_c2c_link_status_out]
   connect_bd_net -net cpu_peripheral_reset [get_bd_pins aurora_pma_init_in] [get_bd_pins axi_chip2chip_0/aurora_pma_init_in]
   connect_bd_net -net gt0_pll0outclk_in_1 [get_bd_pins gt0_pll0outclk_in] [get_bd_pins axi_chip2chip_0_aurora8/gt0_pll0outclk_in]
   connect_bd_net -net gt0_pll0outrefclk_in_1 [get_bd_pins gt0_pll0outrefclk_in] [get_bd_pins axi_chip2chip_0_aurora8/gt0_pll0outrefclk_in]
@@ -2095,6 +2127,7 @@ proc create_hier_cell_chip2chip_1 { parentCell nameHier } {
   connect_bd_net -net sync_clk_1 [get_bd_pins sync_clk] [get_bd_pins axi_chip2chip_0_aurora8/sync_clk]
   connect_bd_net -net user_clk_1 [get_bd_pins user_clk] [get_bd_pins axi_chip2chip_0/axi_c2c_phy_clk] [get_bd_pins axi_chip2chip_0_aurora8/user_clk]
   connect_bd_net -net util_ds_buf_0_IBUF_OUT [get_bd_pins gt_refclk1] [get_bd_pins axi_chip2chip_0_aurora8/gt_refclk1]
+  connect_bd_net -net xlconstant_0_dout [get_bd_pins axi_chip2chip_0_aurora8/gt0_txpolarity_in] [get_bd_pins xlconstant_0/dout]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -2145,11 +2178,16 @@ proc create_hier_cell_chip2chip_0 { parentCell nameHier } {
   # Create pins
   create_bd_pin -dir I -type clk aurora_init_clk
   create_bd_pin -dir I -type rst aurora_pma_init_in
+  create_bd_pin -dir O axi_c2c_link_status_out
+  create_bd_pin -dir O -from 0 -to 0 channel_up
   create_bd_pin -dir O gt0_pll0outclk_out
   create_bd_pin -dir O gt0_pll0outrefclk_out
   create_bd_pin -dir O gt0_pll0refclklost_out
   create_bd_pin -dir O gt0_pll1outclk_out
   create_bd_pin -dir O gt0_pll1outrefclk_out
+  create_bd_pin -dir O gt0_rxcommadet_out
+  create_bd_pin -dir O gt0_rxprbserr_out
+  create_bd_pin -dir I -from 2 -to 0 gt0_txprbssel_in
   create_bd_pin -dir I -type clk gt_refclk1
   create_bd_pin -dir O -type rst pll_not_locked_out
   create_bd_pin -dir O quad1_common_lock_out
@@ -2180,7 +2218,11 @@ proc create_hier_cell_chip2chip_0 { parentCell nameHier } {
    CONFIG.SINGLEEND_GTREFCLK {true} \
    CONFIG.SINGLEEND_INITCLK {true} \
    CONFIG.SupportLevel {1} \
+   CONFIG.TransceiverControl {true} \
  ] $axi_chip2chip_0_aurora8
+
+  # Create instance: xlconstant_0, and set properties
+  set xlconstant_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0 ]
 
   # Create interface connections
   connect_bd_intf_net -intf_net GT_SERIAL_RX_1 [get_bd_intf_pins c2c_0] [get_bd_intf_pins axi_chip2chip_0_aurora8/GT_SERIAL_RX]
@@ -2191,21 +2233,26 @@ proc create_hier_cell_chip2chip_0 { parentCell nameHier } {
 
   # Create port connections
   connect_bd_net -net Net [get_bd_pins aurora_init_clk] [get_bd_pins axi_chip2chip_0/aurora_init_clk] [get_bd_pins axi_chip2chip_0/s_aclk] [get_bd_pins axi_chip2chip_0_aurora8/drpclk_in] [get_bd_pins axi_chip2chip_0_aurora8/init_clk_in]
-  connect_bd_net -net axi_chip2chip_0_aurora8_channel_up [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_channel_up] [get_bd_pins axi_chip2chip_0_aurora8/channel_up]
+  connect_bd_net -net Net1 [get_bd_pins gt0_txprbssel_in] [get_bd_pins axi_chip2chip_0_aurora8/gt0_rxprbssel_in] [get_bd_pins axi_chip2chip_0_aurora8/gt0_txprbssel_in]
+  connect_bd_net -net axi_chip2chip_0_aurora8_channel_up [get_bd_pins channel_up] [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_channel_up] [get_bd_pins axi_chip2chip_0_aurora8/channel_up]
   connect_bd_net -net axi_chip2chip_0_aurora8_gt0_pll0outclk_out [get_bd_pins gt0_pll0outclk_out] [get_bd_pins axi_chip2chip_0_aurora8/gt0_pll0outclk_out]
   connect_bd_net -net axi_chip2chip_0_aurora8_gt0_pll0outrefclk_out [get_bd_pins gt0_pll0outrefclk_out] [get_bd_pins axi_chip2chip_0_aurora8/gt0_pll0outrefclk_out]
   connect_bd_net -net axi_chip2chip_0_aurora8_gt0_pll0refclklost_out [get_bd_pins gt0_pll0refclklost_out] [get_bd_pins axi_chip2chip_0_aurora8/gt0_pll0refclklost_out]
   connect_bd_net -net axi_chip2chip_0_aurora8_gt0_pll1outclk_out [get_bd_pins gt0_pll1outclk_out] [get_bd_pins axi_chip2chip_0_aurora8/gt0_pll1outclk_out]
   connect_bd_net -net axi_chip2chip_0_aurora8_gt0_pll1outrefclk_out [get_bd_pins gt0_pll1outrefclk_out] [get_bd_pins axi_chip2chip_0_aurora8/gt0_pll1outrefclk_out]
+  connect_bd_net -net axi_chip2chip_0_aurora8_gt0_rxcommadet_out [get_bd_pins gt0_rxcommadet_out] [get_bd_pins axi_chip2chip_0_aurora8/gt0_rxcommadet_out]
+  connect_bd_net -net axi_chip2chip_0_aurora8_gt0_rxprbserr_out [get_bd_pins gt0_rxprbserr_out] [get_bd_pins axi_chip2chip_0_aurora8/gt0_rxprbserr_out]
   connect_bd_net -net axi_chip2chip_0_aurora8_pll_not_locked_out [get_bd_pins pll_not_locked_out] [get_bd_pins axi_chip2chip_0/aurora_mmcm_not_locked] [get_bd_pins axi_chip2chip_0_aurora8/pll_not_locked_out]
   connect_bd_net -net axi_chip2chip_0_aurora8_quad1_common_lock_out [get_bd_pins quad1_common_lock_out] [get_bd_pins axi_chip2chip_0_aurora8/quad1_common_lock_out]
   connect_bd_net -net axi_chip2chip_0_aurora8_sync_clk_out [get_bd_pins sync_clk_out] [get_bd_pins axi_chip2chip_0_aurora8/sync_clk_out]
   connect_bd_net -net axi_chip2chip_0_aurora8_user_clk_out [get_bd_pins user_clk_out] [get_bd_pins axi_chip2chip_0/axi_c2c_phy_clk] [get_bd_pins axi_chip2chip_0_aurora8/user_clk_out]
   connect_bd_net -net axi_chip2chip_0_aurora_pma_init_out [get_bd_pins axi_chip2chip_0/aurora_pma_init_out] [get_bd_pins axi_chip2chip_0_aurora8/gt_reset]
   connect_bd_net -net axi_chip2chip_0_aurora_reset_pb [get_bd_pins axi_chip2chip_0/aurora_reset_pb] [get_bd_pins axi_chip2chip_0_aurora8/reset]
+  connect_bd_net -net axi_chip2chip_0_axi_c2c_link_status_out [get_bd_pins axi_c2c_link_status_out] [get_bd_pins axi_chip2chip_0/axi_c2c_link_status_out]
   connect_bd_net -net cpu_peripheral_reset [get_bd_pins aurora_pma_init_in] [get_bd_pins axi_chip2chip_0/aurora_pma_init_in]
   connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins s_aresetn] [get_bd_pins axi_chip2chip_0/s_aresetn]
   connect_bd_net -net util_ds_buf_0_IBUF_OUT [get_bd_pins gt_refclk1] [get_bd_pins axi_chip2chip_0_aurora8/gt_refclk1]
+  connect_bd_net -net xlconstant_0_dout [get_bd_pins axi_chip2chip_0_aurora8/gt0_txpolarity_in] [get_bd_pins xlconstant_0/dout]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -2318,6 +2365,14 @@ proc create_root_design { parentCell } {
   # Create instance: i2c
   create_hier_cell_i2c [current_bd_instance .] i2c
 
+  # Create instance: ila_0, and set properties
+  set ila_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:ila:6.2 ila_0 ]
+  set_property -dict [ list \
+   CONFIG.C_ENABLE_ILA_AXI_MON {false} \
+   CONFIG.C_MONITOR_TYPE {Native} \
+   CONFIG.C_NUM_OF_PROBES {4} \
+ ] $ila_0
+
   # Create instance: ipmc
   create_hier_cell_ipmc [current_bd_instance .] ipmc
 
@@ -2372,6 +2427,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net In1_0_1 [get_bd_ports los_10g] [get_bd_pins reg_bank/In1_0]
   connect_bd_net -net In2_0_1 [get_bd_ports ha] [get_bd_pins reg_bank/In2_0]
   connect_bd_net -net In3_0_1 [get_bd_ports pim_alarm] [get_bd_pins reg_bank/In3_0]
+  connect_bd_net -net In5_1 [get_bd_pins chip2chip_0/channel_up] [get_bd_pins reg_bank/In5]
+  connect_bd_net -net In7_1 [get_bd_pins chip2chip_1/channel_up] [get_bd_pins reg_bank/In7]
   connect_bd_net -net Net [get_bd_pins chip2chip_0/aurora_init_clk] [get_bd_pins chip2chip_1/aurora_init_clk] [get_bd_pins cpu/FCLK_CLK0] [get_bd_pins dbg/clk] [get_bd_pins eth1/s_axi_lite_aclk] [get_bd_pins i2c/s_axi_aclk] [get_bd_pins ipmc/s_axi_aclk] [get_bd_pins jtag/s_axi_aclk] [get_bd_pins reg_bank/s_axi_aclk]
   connect_bd_net -net Net1 [get_bd_ports ipmc_sda_0] [get_bd_pins ipmc/ipmc_sda_0]
   connect_bd_net -net Net2 [get_bd_ports ipmc_scl_0] [get_bd_pins ipmc/ipmc_scl_0]
@@ -2385,7 +2442,13 @@ proc create_root_design { parentCell } {
   connect_bd_net -net axi_ethernet_0_interrupt [get_bd_pins cpu/In3] [get_bd_pins eth1/interrupt]
   connect_bd_net -net axi_ethernet_0_mac_irq [get_bd_pins cpu/In2] [get_bd_pins eth1/mac_irq]
   connect_bd_net -net axi_ethernet_0_phy_rst_n [get_bd_ports phy_rst] [get_bd_pins eth1/phy_rst]
+  connect_bd_net -net chip2chip_0_axi_c2c_link_status_out [get_bd_pins chip2chip_0/axi_c2c_link_status_out] [get_bd_pins reg_bank/In4]
+  connect_bd_net -net chip2chip_0_gt0_rxcommadet_out [get_bd_pins chip2chip_0/gt0_rxcommadet_out] [get_bd_pins ila_0/probe0]
+  connect_bd_net -net chip2chip_0_gt0_rxprbserr_out [get_bd_pins chip2chip_0/gt0_rxprbserr_out] [get_bd_pins ila_0/probe1]
   connect_bd_net -net chip2chip_0_sync_clk_out [get_bd_pins chip2chip_0/sync_clk_out] [get_bd_pins chip2chip_1/sync_clk]
+  connect_bd_net -net chip2chip_1_axi_c2c_link_status_out [get_bd_pins chip2chip_1/axi_c2c_link_status_out] [get_bd_pins reg_bank/In6]
+  connect_bd_net -net chip2chip_1_gt0_rxcommadet_out [get_bd_pins chip2chip_1/gt0_rxcommadet_out] [get_bd_pins ila_0/probe2]
+  connect_bd_net -net chip2chip_1_gt0_rxprbserr_out [get_bd_pins chip2chip_1/gt0_rxprbserr_out] [get_bd_pins ila_0/probe3]
   connect_bd_net -net cpu_peripheral_reset [get_bd_pins chip2chip_0/aurora_pma_init_in] [get_bd_pins chip2chip_1/aurora_pma_init_in] [get_bd_pins cpu/peripheral_reset]
   connect_bd_net -net gt0_pll0outclk_in_1 [get_bd_pins chip2chip_0/gt0_pll0outclk_out] [get_bd_pins chip2chip_1/gt0_pll0outclk_in]
   connect_bd_net -net gt0_pll0outrefclk_in_1 [get_bd_pins chip2chip_0/gt0_pll0outrefclk_out] [get_bd_pins chip2chip_1/gt0_pll0outrefclk_in]
@@ -2412,12 +2475,13 @@ proc create_root_design { parentCell } {
   connect_bd_net -net processing_system7_0_FCLK_CLK2 [get_bd_pins cpu/FCLK_CLK2] [get_bd_pins eth1/gtx_clk]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins cpu/ext_reset_in] [get_bd_pins eth1/ext_reset_in]
   connect_bd_net -net quad1_common_lock_in_1 [get_bd_pins chip2chip_0/quad1_common_lock_out] [get_bd_pins chip2chip_1/quad1_common_lock_in]
+  connect_bd_net -net reg_bank_Dout [get_bd_pins chip2chip_0/gt0_txprbssel_in] [get_bd_pins chip2chip_1/gt0_rxprbssel_in] [get_bd_pins reg_bank/Dout]
   connect_bd_net -net reg_bank_Dout_2 [get_bd_ports qbv_on_off] [get_bd_pins reg_bank/Dout_2]
   connect_bd_net -net s0_i1_1 [get_bd_pins cpu/I2C1_SCL_O] [get_bd_pins ipmc/s0_i1]
   connect_bd_net -net s0_i_1 [get_bd_pins cpu/I2C1_SDA_O] [get_bd_pins ipmc/s0_i]
   connect_bd_net -net s0_t1_1 [get_bd_pins cpu/I2C1_SCL_T] [get_bd_pins ipmc/s0_t1]
   connect_bd_net -net s0_t_1 [get_bd_pins cpu/I2C1_SDA_T] [get_bd_pins ipmc/s0_t]
-  connect_bd_net -net user_clk_1 [get_bd_pins chip2chip_0/user_clk_out] [get_bd_pins chip2chip_1/user_clk]
+  connect_bd_net -net user_clk_1 [get_bd_pins chip2chip_0/user_clk_out] [get_bd_pins chip2chip_1/user_clk] [get_bd_pins ila_0/clk]
   connect_bd_net -net util_ds_buf_0_IBUF_OUT [get_bd_pins chip2chip_0/gt_refclk1] [get_bd_pins chip2chip_1/gt_refclk1] [get_bd_pins util_ds_buf_0/IBUF_OUT]
   connect_bd_net -net xlslice_0_Dout [get_bd_ports id] [get_bd_pins reg_bank/Dout_1]
   connect_bd_net -net xlslice_1_Dout [get_bd_ports en_ipmb_zynq] [get_bd_pins reg_bank/Dout_0]
