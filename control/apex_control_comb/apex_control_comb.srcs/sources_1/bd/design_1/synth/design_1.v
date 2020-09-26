@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Tue Sep 22 18:23:59 2020
+//Date        : Fri Sep 25 02:19:17 2020
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -14,13 +14,18 @@ module chip2chip_0_imp_UFBEBD
     GT_SERIAL_TX_txp,
     aurora_init_clk,
     aurora_pma_init_in,
+    axi_c2c_link_status_out,
     c2c_0_rxn,
     c2c_0_rxp,
+    channel_up,
     gt0_pll0outclk_out,
     gt0_pll0outrefclk_out,
     gt0_pll0refclklost_out,
     gt0_pll1outclk_out,
     gt0_pll1outrefclk_out,
+    gt0_rxcommadet_out,
+    gt0_rxprbserr_out,
+    gt0_txprbssel_in,
     gt_refclk1,
     pll_not_locked_out,
     quad1_common_lock_out,
@@ -60,13 +65,18 @@ module chip2chip_0_imp_UFBEBD
   output [0:0]GT_SERIAL_TX_txp;
   input aurora_init_clk;
   input aurora_pma_init_in;
+  output axi_c2c_link_status_out;
   input [0:0]c2c_0_rxn;
   input [0:0]c2c_0_rxp;
+  output [0:0]channel_up;
   output gt0_pll0outclk_out;
   output gt0_pll0outrefclk_out;
   output gt0_pll0refclklost_out;
   output gt0_pll1outclk_out;
   output gt0_pll1outrefclk_out;
+  output gt0_rxcommadet_out;
+  output gt0_rxprbserr_out;
+  input [2:0]gt0_txprbssel_in;
   input gt_refclk1;
   output pll_not_locked_out;
   output quad1_common_lock_out;
@@ -106,6 +116,7 @@ module chip2chip_0_imp_UFBEBD
   wire [0:0]GT_SERIAL_RX_1_RXN;
   wire [0:0]GT_SERIAL_RX_1_RXP;
   wire Net;
+  wire [2:0]Net1;
   wire [31:0]axi_chip2chip_0_AXIS_TX_TDATA;
   wire axi_chip2chip_0_AXIS_TX_TREADY;
   wire axi_chip2chip_0_AXIS_TX_TVALID;
@@ -119,12 +130,15 @@ module chip2chip_0_imp_UFBEBD
   wire axi_chip2chip_0_aurora8_gt0_pll0refclklost_out;
   wire axi_chip2chip_0_aurora8_gt0_pll1outclk_out;
   wire axi_chip2chip_0_aurora8_gt0_pll1outrefclk_out;
+  wire axi_chip2chip_0_aurora8_gt0_rxcommadet_out;
+  wire axi_chip2chip_0_aurora8_gt0_rxprbserr_out;
   wire axi_chip2chip_0_aurora8_pll_not_locked_out;
   wire axi_chip2chip_0_aurora8_quad1_common_lock_out;
   wire axi_chip2chip_0_aurora8_sync_clk_out;
   wire axi_chip2chip_0_aurora8_user_clk_out;
   wire axi_chip2chip_0_aurora_pma_init_out;
   wire axi_chip2chip_0_aurora_reset_pb;
+  wire axi_chip2chip_0_axi_c2c_link_status_out;
   wire [31:0]cpu_M14_AXI_ARADDR;
   wire [1:0]cpu_M14_AXI_ARBURST;
   wire [5:0]cpu_M14_AXI_ARID;
@@ -157,12 +171,16 @@ module chip2chip_0_imp_UFBEBD
   wire cpu_peripheral_reset;
   wire proc_sys_reset_0_peripheral_aresetn;
   wire util_ds_buf_0_IBUF_OUT;
+  wire [0:0]xlconstant_0_dout;
 
   assign GT_SERIAL_RX_1_RXN = c2c_0_rxn[0];
   assign GT_SERIAL_RX_1_RXP = c2c_0_rxp[0];
   assign GT_SERIAL_TX_txn[0] = axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXN;
   assign GT_SERIAL_TX_txp[0] = axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXP;
   assign Net = aurora_init_clk;
+  assign Net1 = gt0_txprbssel_in[2:0];
+  assign axi_c2c_link_status_out = axi_chip2chip_0_axi_c2c_link_status_out;
+  assign channel_up[0] = axi_chip2chip_0_aurora8_channel_up;
   assign cpu_M14_AXI_ARADDR = s_axi_araddr[31:0];
   assign cpu_M14_AXI_ARBURST = s_axi_arburst[1:0];
   assign cpu_M14_AXI_ARID = s_axi_arid[5:0];
@@ -187,6 +205,8 @@ module chip2chip_0_imp_UFBEBD
   assign gt0_pll0refclklost_out = axi_chip2chip_0_aurora8_gt0_pll0refclklost_out;
   assign gt0_pll1outclk_out = axi_chip2chip_0_aurora8_gt0_pll1outclk_out;
   assign gt0_pll1outrefclk_out = axi_chip2chip_0_aurora8_gt0_pll1outrefclk_out;
+  assign gt0_rxcommadet_out = axi_chip2chip_0_aurora8_gt0_rxcommadet_out;
+  assign gt0_rxprbserr_out = axi_chip2chip_0_aurora8_gt0_rxprbserr_out;
   assign pll_not_locked_out = axi_chip2chip_0_aurora8_pll_not_locked_out;
   assign proc_sys_reset_0_peripheral_aresetn = s_aresetn;
   assign quad1_common_lock_out = axi_chip2chip_0_aurora8_quad1_common_lock_out;
@@ -216,6 +236,7 @@ module chip2chip_0_imp_UFBEBD
         .axi_c2c_aurora_tx_tdata(axi_chip2chip_0_AXIS_TX_TDATA),
         .axi_c2c_aurora_tx_tready(axi_chip2chip_0_AXIS_TX_TREADY),
         .axi_c2c_aurora_tx_tvalid(axi_chip2chip_0_AXIS_TX_TVALID),
+        .axi_c2c_link_status_out(axi_chip2chip_0_axi_c2c_link_status_out),
         .axi_c2c_m2s_intr_in({1'b0,1'b0,1'b0,1'b0}),
         .axi_c2c_phy_clk(axi_chip2chip_0_aurora8_user_clk_out),
         .s_aclk(Net),
@@ -252,11 +273,37 @@ module chip2chip_0_imp_UFBEBD
   design_1_axi_chip2chip_0_aurora8_0 axi_chip2chip_0_aurora8
        (.channel_up(axi_chip2chip_0_aurora8_channel_up),
         .drpclk_in(Net),
+        .gt0_eyescanreset_in(1'b0),
+        .gt0_eyescantrigger_in(1'b0),
         .gt0_pll0outclk_out(axi_chip2chip_0_aurora8_gt0_pll0outclk_out),
         .gt0_pll0outrefclk_out(axi_chip2chip_0_aurora8_gt0_pll0outrefclk_out),
         .gt0_pll0refclklost_out(axi_chip2chip_0_aurora8_gt0_pll0refclklost_out),
         .gt0_pll1outclk_out(axi_chip2chip_0_aurora8_gt0_pll1outclk_out),
         .gt0_pll1outrefclk_out(axi_chip2chip_0_aurora8_gt0_pll1outrefclk_out),
+        .gt0_rxbufreset_in(1'b0),
+        .gt0_rxcdrhold_in(1'b0),
+        .gt0_rxcommadet_out(axi_chip2chip_0_aurora8_gt0_rxcommadet_out),
+        .gt0_rxlpmhfhold_in(1'b0),
+        .gt0_rxlpmhfovrden_in(1'b0),
+        .gt0_rxlpmlfhold_in(1'b0),
+        .gt0_rxlpmreset_in(1'b0),
+        .gt0_rxpcsreset_in(1'b0),
+        .gt0_rxpmareset_in(1'b0),
+        .gt0_rxprbscntreset_in(1'b0),
+        .gt0_rxprbserr_out(axi_chip2chip_0_aurora8_gt0_rxprbserr_out),
+        .gt0_rxprbssel_in(Net1),
+        .gt0_txchardispmode_in({1'b0,1'b0,1'b0,1'b0}),
+        .gt0_txchardispval_in({1'b0,1'b0,1'b0,1'b0}),
+        .gt0_txdiffctrl_in({1'b1,1'b0,1'b0,1'b0}),
+        .gt0_txinhibit_in(1'b0),
+        .gt0_txmaincursor_in({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .gt0_txpcsreset_in(1'b0),
+        .gt0_txpmareset_in(1'b0),
+        .gt0_txpolarity_in(xlconstant_0_dout),
+        .gt0_txpostcursor_in({1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .gt0_txprbsforceerr_in(1'b0),
+        .gt0_txprbssel_in(Net1),
+        .gt0_txprecursor_in({1'b0,1'b0,1'b0,1'b0,1'b0}),
         .gt_refclk1(util_ds_buf_0_IBUF_OUT),
         .gt_reset(axi_chip2chip_0_aurora_pma_init_out),
         .init_clk_in(Net),
@@ -276,6 +323,8 @@ module chip2chip_0_imp_UFBEBD
         .txn(axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXN),
         .txp(axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXP),
         .user_clk_out(axi_chip2chip_0_aurora8_user_clk_out));
+  design_1_xlconstant_0_3 xlconstant_0
+       (.dout(xlconstant_0_dout));
 endmodule
 
 module chip2chip_1_imp_Y38MT6
@@ -284,13 +333,18 @@ module chip2chip_1_imp_Y38MT6
     aurora_init_clk,
     aurora_mmcm_not_locked,
     aurora_pma_init_in,
+    axi_c2c_link_status_out,
     c2c_0_rxn,
     c2c_0_rxp,
+    channel_up,
     gt0_pll0outclk_in,
     gt0_pll0outrefclk_in,
     gt0_pll0refclklost_in,
     gt0_pll1outclk_in,
     gt0_pll1outrefclk_in,
+    gt0_rxcommadet_out,
+    gt0_rxprbserr_out,
+    gt0_rxprbssel_in,
     gt_refclk1,
     quad1_common_lock_in,
     s_aresetn,
@@ -330,13 +384,18 @@ module chip2chip_1_imp_Y38MT6
   input aurora_init_clk;
   input aurora_mmcm_not_locked;
   input aurora_pma_init_in;
+  output axi_c2c_link_status_out;
   input [0:0]c2c_0_rxn;
   input [0:0]c2c_0_rxp;
+  output [0:0]channel_up;
   input gt0_pll0outclk_in;
   input gt0_pll0outrefclk_in;
   input gt0_pll0refclklost_in;
   input gt0_pll1outclk_in;
   input gt0_pll1outrefclk_in;
+  output gt0_rxcommadet_out;
+  output gt0_rxprbserr_out;
+  input [2:0]gt0_rxprbssel_in;
   input gt_refclk1;
   input quad1_common_lock_in;
   input s_aresetn;
@@ -375,6 +434,7 @@ module chip2chip_1_imp_Y38MT6
   wire [0:0]GT_SERIAL_RX_1_RXN;
   wire [0:0]GT_SERIAL_RX_1_RXP;
   wire Net;
+  wire [2:0]Net1;
   wire aurora_mmcm_not_locked_1;
   wire [31:0]axi_chip2chip_0_AXIS_TX_TDATA;
   wire axi_chip2chip_0_AXIS_TX_TREADY;
@@ -384,8 +444,11 @@ module chip2chip_1_imp_Y38MT6
   wire [0:31]axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TDATA;
   wire axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX_TVALID;
   wire axi_chip2chip_0_aurora8_channel_up;
+  wire axi_chip2chip_0_aurora8_gt0_rxcommadet_out;
+  wire axi_chip2chip_0_aurora8_gt0_rxprbserr_out;
   wire axi_chip2chip_0_aurora_pma_init_out;
   wire axi_chip2chip_0_aurora_reset_pb;
+  wire axi_chip2chip_0_axi_c2c_link_status_out;
   wire [31:0]cpu_M14_AXI_ARADDR;
   wire [1:0]cpu_M14_AXI_ARBURST;
   wire [5:0]cpu_M14_AXI_ARID;
@@ -426,13 +489,17 @@ module chip2chip_1_imp_Y38MT6
   wire sync_clk_1;
   wire user_clk_1;
   wire util_ds_buf_0_IBUF_OUT;
+  wire [0:0]xlconstant_0_dout;
 
   assign GT_SERIAL_RX_1_RXN = c2c_0_rxn[0];
   assign GT_SERIAL_RX_1_RXP = c2c_0_rxp[0];
   assign GT_SERIAL_TX_txn[0] = axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXN;
   assign GT_SERIAL_TX_txp[0] = axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXP;
   assign Net = aurora_init_clk;
+  assign Net1 = gt0_rxprbssel_in[2:0];
   assign aurora_mmcm_not_locked_1 = aurora_mmcm_not_locked;
+  assign axi_c2c_link_status_out = axi_chip2chip_0_axi_c2c_link_status_out;
+  assign channel_up[0] = axi_chip2chip_0_aurora8_channel_up;
   assign cpu_M14_AXI_ARADDR = s_axi_araddr[31:0];
   assign cpu_M14_AXI_ARBURST = s_axi_arburst[1:0];
   assign cpu_M14_AXI_ARID = s_axi_arid[5:0];
@@ -457,6 +524,8 @@ module chip2chip_1_imp_Y38MT6
   assign gt0_pll0refclklost_in_1 = gt0_pll0refclklost_in;
   assign gt0_pll1outclk_in_1 = gt0_pll1outclk_in;
   assign gt0_pll1outrefclk_in_1 = gt0_pll1outrefclk_in;
+  assign gt0_rxcommadet_out = axi_chip2chip_0_aurora8_gt0_rxcommadet_out;
+  assign gt0_rxprbserr_out = axi_chip2chip_0_aurora8_gt0_rxprbserr_out;
   assign proc_sys_reset_0_peripheral_aresetn = s_aresetn;
   assign quad1_common_lock_in_1 = quad1_common_lock_in;
   assign s_axi_arready = cpu_M14_AXI_ARREADY;
@@ -485,6 +554,7 @@ module chip2chip_1_imp_Y38MT6
         .axi_c2c_aurora_tx_tdata(axi_chip2chip_0_AXIS_TX_TDATA),
         .axi_c2c_aurora_tx_tready(axi_chip2chip_0_AXIS_TX_TREADY),
         .axi_c2c_aurora_tx_tvalid(axi_chip2chip_0_AXIS_TX_TVALID),
+        .axi_c2c_link_status_out(axi_chip2chip_0_axi_c2c_link_status_out),
         .axi_c2c_m2s_intr_in({1'b0,1'b0,1'b0,1'b0}),
         .axi_c2c_phy_clk(user_clk_1),
         .s_aclk(Net),
@@ -521,11 +591,37 @@ module chip2chip_1_imp_Y38MT6
   design_1_axi_chip2chip_0_aurora8_1 axi_chip2chip_0_aurora8
        (.channel_up(axi_chip2chip_0_aurora8_channel_up),
         .drpclk_in(Net),
+        .gt0_eyescanreset_in(1'b0),
+        .gt0_eyescantrigger_in(1'b0),
         .gt0_pll0outclk_in(gt0_pll0outclk_in_1),
         .gt0_pll0outrefclk_in(gt0_pll0outrefclk_in_1),
         .gt0_pll0refclklost_in(gt0_pll0refclklost_in_1),
         .gt0_pll1outclk_in(gt0_pll1outclk_in_1),
         .gt0_pll1outrefclk_in(gt0_pll1outrefclk_in_1),
+        .gt0_rxbufreset_in(1'b0),
+        .gt0_rxcdrhold_in(1'b0),
+        .gt0_rxcommadet_out(axi_chip2chip_0_aurora8_gt0_rxcommadet_out),
+        .gt0_rxlpmhfhold_in(1'b0),
+        .gt0_rxlpmhfovrden_in(1'b0),
+        .gt0_rxlpmlfhold_in(1'b0),
+        .gt0_rxlpmreset_in(1'b0),
+        .gt0_rxpcsreset_in(1'b0),
+        .gt0_rxpmareset_in(1'b0),
+        .gt0_rxprbscntreset_in(1'b0),
+        .gt0_rxprbserr_out(axi_chip2chip_0_aurora8_gt0_rxprbserr_out),
+        .gt0_rxprbssel_in(Net1),
+        .gt0_txchardispmode_in({1'b0,1'b0,1'b0,1'b0}),
+        .gt0_txchardispval_in({1'b0,1'b0,1'b0,1'b0}),
+        .gt0_txdiffctrl_in({1'b1,1'b0,1'b0,1'b0}),
+        .gt0_txinhibit_in(1'b0),
+        .gt0_txmaincursor_in({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .gt0_txpcsreset_in(1'b0),
+        .gt0_txpmareset_in(1'b0),
+        .gt0_txpolarity_in(xlconstant_0_dout),
+        .gt0_txpostcursor_in({1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .gt0_txprbsforceerr_in(1'b0),
+        .gt0_txprbssel_in(Net1),
+        .gt0_txprecursor_in({1'b0,1'b0,1'b0,1'b0,1'b0}),
         .gt_refclk1(util_ds_buf_0_IBUF_OUT),
         .gt_reset(axi_chip2chip_0_aurora_pma_init_out),
         .init_clk_in(Net),
@@ -545,6 +641,8 @@ module chip2chip_1_imp_Y38MT6
         .txn(axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXN),
         .txp(axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXP),
         .user_clk(user_clk_1));
+  design_1_xlconstant_0_4 xlconstant_0
+       (.dout(xlconstant_0_dout));
 endmodule
 
 module cpu_imp_11Y6JLO
@@ -3041,7 +3139,7 @@ module dbg_imp_5R9Y5
         .clk(Net));
 endmodule
 
-(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=108,numReposBlks=70,numNonXlnxBlks=2,numHierBlks=38,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=6,numPkgbdBlks=0,bdsource=USER,da_aeth_cnt=7,da_axi4_cnt=38,da_axi_chip2chip_cnt=1,da_board_cnt=36,da_clkrst_cnt=23,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=112,numReposBlks=74,numNonXlnxBlks=2,numHierBlks=38,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=6,numPkgbdBlks=0,bdsource=USER,da_aeth_cnt=7,da_axi4_cnt=38,da_axi_chip2chip_cnt=1,da_board_cnt=36,da_clkrst_cnt=23,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
    (DDR_addr,
     DDR_ba,
@@ -3223,6 +3321,8 @@ module design_1
   wire [0:0]In1_0_1;
   wire [7:0]In2_0_1;
   wire [0:0]In3_0_1;
+  wire [0:0]In5_1;
+  wire [0:0]In7_1;
   wire Net;
   wire Net1;
   wire Net2;
@@ -3427,9 +3527,15 @@ module design_1
   wire axi_mem_intercon_M00_AXI_WVALID;
   wire [0:0]c2c_0_0_1_RXN;
   wire [0:0]c2c_0_0_1_RXP;
+  wire chip2chip_0_axi_c2c_link_status_out;
+  wire chip2chip_0_gt0_rxcommadet_out;
+  wire chip2chip_0_gt0_rxprbserr_out;
   wire chip2chip_0_sync_clk_out;
   wire [0:0]chip2chip_1_GT_SERIAL_TX_TXN;
   wire [0:0]chip2chip_1_GT_SERIAL_TX_TXP;
+  wire chip2chip_1_axi_c2c_link_status_out;
+  wire chip2chip_1_gt0_rxcommadet_out;
+  wire chip2chip_1_gt0_rxprbserr_out;
   wire [31:0]cpu_M10_AXI_ARADDR;
   wire cpu_M10_AXI_ARREADY;
   wire cpu_M10_AXI_ARVALID;
@@ -3649,6 +3755,7 @@ module design_1
   wire ps7_0_axi_periph_M02_AXI_WREADY;
   wire ps7_0_axi_periph_M02_AXI_WVALID;
   wire quad1_common_lock_in_1;
+  wire [2:0]reg_bank_Dout;
   wire [0:0]reg_bank_Dout_2;
   wire s0_i1_1;
   wire s0_i_1;
@@ -3791,13 +3898,18 @@ module design_1
         .GT_SERIAL_TX_txp(axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXP),
         .aurora_init_clk(Net),
         .aurora_pma_init_in(cpu_peripheral_reset),
+        .axi_c2c_link_status_out(chip2chip_0_axi_c2c_link_status_out),
         .c2c_0_rxn(GT_SERIAL_RX_1_RXN),
         .c2c_0_rxp(GT_SERIAL_RX_1_RXP),
+        .channel_up(In5_1),
         .gt0_pll0outclk_out(gt0_pll0outclk_in_1),
         .gt0_pll0outrefclk_out(gt0_pll0outrefclk_in_1),
         .gt0_pll0refclklost_out(gt0_pll0refclklost_in_1),
         .gt0_pll1outclk_out(gt0_pll1outclk_in_1),
         .gt0_pll1outrefclk_out(gt0_pll1outrefclk_in_1),
+        .gt0_rxcommadet_out(chip2chip_0_gt0_rxcommadet_out),
+        .gt0_rxprbserr_out(chip2chip_0_gt0_rxprbserr_out),
+        .gt0_txprbssel_in(reg_bank_Dout),
         .gt_refclk1(util_ds_buf_0_IBUF_OUT),
         .pll_not_locked_out(aurora_mmcm_not_locked_1),
         .quad1_common_lock_out(quad1_common_lock_in_1),
@@ -3839,13 +3951,18 @@ module design_1
         .aurora_init_clk(Net),
         .aurora_mmcm_not_locked(aurora_mmcm_not_locked_1),
         .aurora_pma_init_in(cpu_peripheral_reset),
+        .axi_c2c_link_status_out(chip2chip_1_axi_c2c_link_status_out),
         .c2c_0_rxn(c2c_0_0_1_RXN),
         .c2c_0_rxp(c2c_0_0_1_RXP),
+        .channel_up(In7_1),
         .gt0_pll0outclk_in(gt0_pll0outclk_in_1),
         .gt0_pll0outrefclk_in(gt0_pll0outrefclk_in_1),
         .gt0_pll0refclklost_in(gt0_pll0refclklost_in_1),
         .gt0_pll1outclk_in(gt0_pll1outclk_in_1),
         .gt0_pll1outrefclk_in(gt0_pll1outrefclk_in_1),
+        .gt0_rxcommadet_out(chip2chip_1_gt0_rxcommadet_out),
+        .gt0_rxprbserr_out(chip2chip_1_gt0_rxprbserr_out),
+        .gt0_rxprbssel_in(reg_bank_Dout),
         .gt_refclk1(util_ds_buf_0_IBUF_OUT),
         .quad1_common_lock_in(quad1_common_lock_in_1),
         .s_aresetn(proc_sys_reset_0_peripheral_aresetn),
@@ -4532,6 +4649,12 @@ module design_1
         .iic_rtl_3_sda_t(i2c_iic_rtl_3_SDA_T),
         .s_axi_aclk(Net),
         .s_axi_aresetn(proc_sys_reset_0_peripheral_aresetn));
+  design_1_ila_0_0 ila_0
+       (.clk(user_clk_1),
+        .probe0(chip2chip_0_gt0_rxcommadet_out),
+        .probe1(chip2chip_0_gt0_rxprbserr_out),
+        .probe2(chip2chip_1_gt0_rxcommadet_out),
+        .probe3(chip2chip_1_gt0_rxprbserr_out));
   ipmc_imp_13B1Q7C ipmc
        (.S_AXI1_araddr(S_AXI4_1_ARADDR),
         .S_AXI1_arburst(S_AXI4_1_ARBURST),
@@ -4719,13 +4842,18 @@ module design_1
         .s_axi_wstrb(s_axi_1_WSTRB),
         .s_axi_wvalid(s_axi_1_WVALID));
   reg_bank_imp_161U6JD reg_bank
-       (.Dout_0(xlslice_1_Dout),
+       (.Dout(reg_bank_Dout),
+        .Dout_0(xlslice_1_Dout),
         .Dout_1(xlslice_0_Dout),
         .Dout_2(reg_bank_Dout_2),
         .In0_0(In0_0_1),
         .In1_0(In1_0_1),
         .In2_0(In2_0_1),
         .In3_0(In3_0_1),
+        .In4(chip2chip_0_axi_c2c_link_status_out),
+        .In5(In5_1),
+        .In6(chip2chip_1_axi_c2c_link_status_out),
+        .In7(In7_1),
         .S_AXI_araddr(cpu_M13_AXI_ARADDR),
         .S_AXI_arready(cpu_M13_AXI_ARREADY),
         .S_AXI_arvalid(cpu_M13_AXI_ARVALID),
@@ -19200,13 +19328,18 @@ module m16_couplers_imp_1GP9A16
 endmodule
 
 module reg_bank_imp_161U6JD
-   (Dout_0,
+   (Dout,
+    Dout_0,
     Dout_1,
     Dout_2,
     In0_0,
     In1_0,
     In2_0,
     In3_0,
+    In4,
+    In5,
+    In6,
+    In7,
     S_AXI_araddr,
     S_AXI_arready,
     S_AXI_arvalid,
@@ -19226,6 +19359,7 @@ module reg_bank_imp_161U6JD
     S_AXI_wvalid,
     s_axi_aclk,
     s_axi_aresetn);
+  output [2:0]Dout;
   output [1:0]Dout_0;
   output [2:0]Dout_1;
   output [0:0]Dout_2;
@@ -19233,6 +19367,10 @@ module reg_bank_imp_161U6JD
   input [0:0]In1_0;
   input [7:0]In2_0;
   input [0:0]In3_0;
+  input In4;
+  input [0:0]In5;
+  input In6;
+  input [0:0]In7;
   input [31:0]S_AXI_araddr;
   output S_AXI_arready;
   input S_AXI_arvalid;
@@ -19257,8 +19395,12 @@ module reg_bank_imp_161U6JD
   wire [0:0]In1_0_1;
   wire [7:0]In2_0_1;
   wire [0:0]In3_0_1;
+  wire In4_1;
+  wire [0:0]In5_1;
+  wire In6_1;
+  wire [0:0]In7_1;
   wire Net;
-  wire [5:0]axi_gpio_0_gpio_io_o;
+  wire [8:0]axi_gpio_0_gpio_io_o;
   wire [31:0]cpu_M13_AXI_ARADDR;
   wire cpu_M13_AXI_ARREADY;
   wire cpu_M13_AXI_ARVALID;
@@ -19277,11 +19419,13 @@ module reg_bank_imp_161U6JD
   wire [3:0]cpu_M13_AXI_WSTRB;
   wire cpu_M13_AXI_WVALID;
   wire proc_sys_reset_0_peripheral_aresetn;
-  wire [11:0]xlconcat_0_dout;
+  wire [15:0]xlconcat_0_dout;
   wire [2:0]xlslice_0_Dout;
   wire [1:0]xlslice_1_Dout;
   wire [0:0]xlslice_2_Dout;
+  wire [2:0]xlslice_3_Dout;
 
+  assign Dout[2:0] = xlslice_3_Dout;
   assign Dout_0[1:0] = xlslice_1_Dout;
   assign Dout_1[2:0] = xlslice_0_Dout;
   assign Dout_2[0] = xlslice_2_Dout;
@@ -19289,6 +19433,10 @@ module reg_bank_imp_161U6JD
   assign In1_0_1 = In1_0[0];
   assign In2_0_1 = In2_0[7:0];
   assign In3_0_1 = In3_0[0];
+  assign In4_1 = In4;
+  assign In5_1 = In5[0];
+  assign In6_1 = In6;
+  assign In7_1 = In7[0];
   assign Net = s_axi_aclk;
   assign S_AXI_arready = cpu_M13_AXI_ARREADY;
   assign S_AXI_awready = cpu_M13_AXI_AWREADY;
@@ -19335,16 +19483,23 @@ module reg_bank_imp_161U6JD
         .In1(In1_0_1),
         .In2(In2_0_1),
         .In3(In3_0_1),
+        .In4(In4_1),
+        .In5(In5_1),
+        .In6(In6_1),
+        .In7(In7_1),
         .dout(xlconcat_0_dout));
   design_1_xlslice_0_0 xlslice_0
-       (.Din(axi_gpio_0_gpio_io_o),
+       (.Din(axi_gpio_0_gpio_io_o[5:0]),
         .Dout(xlslice_0_Dout));
   design_1_xlslice_0_1 xlslice_1
-       (.Din(axi_gpio_0_gpio_io_o),
+       (.Din(axi_gpio_0_gpio_io_o[5:0]),
         .Dout(xlslice_1_Dout));
   design_1_xlslice_1_0 xlslice_2
-       (.Din(axi_gpio_0_gpio_io_o),
+       (.Din(axi_gpio_0_gpio_io_o[5:0]),
         .Dout(xlslice_2_Dout));
+  design_1_xlslice_2_0 xlslice_3
+       (.Din(axi_gpio_0_gpio_io_o),
+        .Dout(xlslice_3_Dout));
 endmodule
 
 module s00_couplers_imp_17NDAC5

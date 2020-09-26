@@ -1749,7 +1749,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.INIT_CLK_IN.FREQ_HZ">1e+08</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.INIT_CLK_IN.FREQ_HZ">100000000</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -5303,7 +5303,7 @@
       <spirit:vendorExtensions>
         <xilinx:busInterfaceInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.TRANSCEIVER_DEBUG0" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true)">false</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.TRANSCEIVER_DEBUG0" xilinx:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true)">true</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:busInterfaceInfo>
       </spirit:vendorExtensions>
@@ -11744,7 +11744,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:ab6a0acf</spirit:value>
+            <spirit:value>9:7b0a610c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -11759,11 +11759,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Sep 22 15:47:18 UTC 2020</spirit:value>
+            <spirit:value>Wed Sep 23 20:04:24 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:5b0f7374</spirit:value>
+            <spirit:value>9:83a6aa8e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -11774,7 +11774,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:5b0f7374</spirit:value>
+            <spirit:value>9:83a6aa8e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -11790,11 +11790,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Sep 22 15:47:18 UTC 2020</spirit:value>
+            <spirit:value>Wed Sep 23 20:04:24 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:5b0f7374</spirit:value>
+            <spirit:value>9:83a6aa8e</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -11809,11 +11809,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Sep 22 15:47:17 UTC 2020</spirit:value>
+            <spirit:value>Wed Sep 23 20:04:24 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:7ec78e3f</spirit:value>
+            <spirit:value>9:1a9e1bb8</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -11829,11 +11829,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Sep 22 15:47:18 UTC 2020</spirit:value>
+            <spirit:value>Wed Sep 23 20:04:24 UTC 2020</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:7ec78e3f</spirit:value>
+            <spirit:value>9:1a9e1bb8</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -19724,7 +19724,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxlpmhfhold_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;artix7&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;artix7l&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;qartix7&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;aartix7&quot;) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;zynq&quot;) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z012s&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z015&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z015i&quot;)))))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxlpmhfhold_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;artix7&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;artix7l&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;qartix7&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;aartix7&quot;) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;zynq&quot;) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z012s&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z015&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z015i&quot;)))))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -19747,7 +19747,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxlpmlfhold_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;artix7&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;artix7l&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;qartix7&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;aartix7&quot;) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;zynq&quot;) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z012s&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z015&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z015i&quot;)))))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxlpmlfhold_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;artix7&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;artix7l&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;qartix7&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;aartix7&quot;) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;zynq&quot;) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z012s&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z015&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z015i&quot;)))))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -19890,7 +19890,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_eyescanreset_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_eyescanreset_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -19910,7 +19910,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_eyescandataerror_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_eyescandataerror_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -19930,7 +19930,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxbyteisaligned_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxbyteisaligned_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -19950,7 +19950,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxcommadet_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxcommadet_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -19970,7 +19970,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rx_realign_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rx_realign_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -19990,7 +19990,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rx_buf_err_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rx_buf_err_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -20014,7 +20014,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rx_disp_err_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rx_disp_err_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -20038,7 +20038,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rx_not_in_table_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rx_not_in_table_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -20058,7 +20058,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_tx_buf_err_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_tx_buf_err_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -20081,7 +20081,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txpolarity_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txpolarity_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -20108,7 +20108,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txchardispmode_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txchardispmode_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -20135,7 +20135,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txchardispval_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txchardispval_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -20162,7 +20162,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txpostcursor_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txpostcursor_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -20189,7 +20189,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txprecursor_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txprecursor_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -20216,7 +20216,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txdiffctrl_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txdiffctrl_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -20243,7 +20243,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txmaincursor_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txmaincursor_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -29696,7 +29696,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_eyescantrigger_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_eyescantrigger_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -30164,7 +30164,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txprbsforceerr_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txprbsforceerr_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -30191,7 +30191,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txprbssel_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txprbssel_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -30214,7 +30214,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txpcsreset_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txpcsreset_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -30237,7 +30237,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txpmareset_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txpmareset_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -30260,7 +30260,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txinhibit_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txinhibit_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -30280,7 +30280,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txresetdone_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txresetdone_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -30300,7 +30300,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxresetdone_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxresetdone_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -30323,7 +30323,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxlpmhfovrden_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;artix7&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;artix7l&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;qartix7&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;aartix7&quot;) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;zynq&quot;) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z012s&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z015&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z015i&quot;)))))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxlpmhfovrden_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;artix7&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;artix7l&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;qartix7&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;aartix7&quot;) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;zynq&quot;) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z012s&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z015&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z015i&quot;)))))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -30346,7 +30346,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxlpmreset_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;artix7&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;artix7l&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;qartix7&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;aartix7&quot;) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;zynq&quot;) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z012s&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z015&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z015i&quot;)))))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxlpmreset_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;artix7&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;artix7l&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;qartix7&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;aartix7&quot;) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;zynq&quot;) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z012s&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z015&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z015i&quot;)))))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -30369,7 +30369,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxcdrhold_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxcdrhold_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -30389,7 +30389,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxprbserr_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxprbserr_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -30416,7 +30416,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxprbssel_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxprbssel_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -30439,7 +30439,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxprbscntreset_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxprbscntreset_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -30462,7 +30462,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxpcsreset_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxpcsreset_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -30485,7 +30485,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxpmareset_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxpmareset_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -30508,7 +30508,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxbufreset_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxbufreset_in" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -36337,7 +36337,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_dmonitorout_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_dmonitorout_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -36721,7 +36721,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txbufstatus_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_txbufstatus_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -37105,7 +37105,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxbufstatus_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxbufstatus_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.is_7series&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -37485,7 +37485,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxpmaresetdone_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.isv7gth&apos;))=true) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;artix7&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;artix7l&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;qartix7&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;aartix7&quot;) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;zynq&quot;) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z012s&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z015&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z015i&quot;))))))">false</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.gt0_rxpmaresetdone_out" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.TransceiverControl&apos;))=true) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;TX-only_Simplex&quot;) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.isv7gth&apos;))=true) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;artix7&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;artix7l&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;qartix7&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;aartix7&quot;) or ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_FAMILY&apos;))=&quot;zynq&quot;) and ((spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z012s&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z015&quot;) or (spirit:decode(id(&apos;MODELPARAM_VALUE.C_DEVICE&apos;))=&quot;xc7z015i&quot;))))))">true</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -39599,7 +39599,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="boolean">
         <spirit:name>transceivercontrol</spirit:name>
-        <spirit:value spirit:format="bool" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.transceivercontrol">false</spirit:value>
+        <spirit:value spirit:format="bool" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.transceivercontrol">true</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="boolean">
         <spirit:name>c_use_crc</spirit:name>
@@ -40919,7 +40919,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>TransceiverControl</spirit:name>
-      <spirit:value spirit:format="bool" spirit:resolve="user" spirit:id="PARAM_VALUE.TransceiverControl" spirit:order="66">false</spirit:value>
+      <spirit:value spirit:format="bool" spirit:resolve="user" spirit:id="PARAM_VALUE.TransceiverControl" spirit:order="66">true</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -41139,6 +41139,7 @@
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.SINGLEEND_GTREFCLK" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.SINGLEEND_INITCLK" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.SupportLevel" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.TransceiverControl" xilinx:valueSource="user"/>
       </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
