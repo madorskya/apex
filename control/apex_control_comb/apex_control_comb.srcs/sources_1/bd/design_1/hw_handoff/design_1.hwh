@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Sep 25 02:19:31 2020" VIVADOVERSION="2020.1.1_AR73018">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Sep 28 02:46:52 2020" VIVADOVERSION="2020.1.1_AR73018">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z015" NAME="design_1" PACKAGE="clg485" SPEEDGRADE="-1"/>
 
@@ -81,17 +81,17 @@
     </PORT>
     <PORT DIR="I" LEFT="1" NAME="ready_ipmb_zynq" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_ready_ipmb_zynq">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="reg_bank_xlconcat_0" PORT="In0"/>
+        <CONNECTION INSTANCE="reg_bank_xlconcat_0" PORT="In1"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="0" NAME="los_10g" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_los_10g">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="reg_bank_xlconcat_0" PORT="In1"/>
+        <CONNECTION INSTANCE="reg_bank_xlconcat_0" PORT="In2"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="7" NAME="ha" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_ha">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="reg_bank_xlconcat_0" PORT="In2"/>
+        <CONNECTION INSTANCE="reg_bank_xlconcat_0" PORT="In0"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="0" NAME="pim_alarm" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_pim_alarm">
@@ -816,9 +816,9 @@
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="aurora_do_cc" SIGIS="undef"/>
-        <PORT DIR="I" NAME="aurora_pma_init_in" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="cpu_proc_sys_reset_0_peripheral_reset">
+        <PORT DIR="I" NAME="aurora_pma_init_in" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="reg_bank_xlslice_4_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="cpu_proc_sys_reset_0" PORT="peripheral_reset"/>
+            <CONNECTION INSTANCE="reg_bank_xlslice_4" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="aurora_init_clk" SIGIS="clk" SIGNAME="cpu_processing_system7_0_FCLK_CLK0">
@@ -1744,9 +1744,9 @@
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="aurora_do_cc" SIGIS="undef"/>
-        <PORT DIR="I" NAME="aurora_pma_init_in" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="cpu_proc_sys_reset_0_peripheral_reset">
+        <PORT DIR="I" NAME="aurora_pma_init_in" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="reg_bank_xlslice_4_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="cpu_proc_sys_reset_0" PORT="peripheral_reset"/>
+            <CONNECTION INSTANCE="reg_bank_xlslice_4" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="aurora_init_clk" SIGIS="clk" SIGNAME="cpu_processing_system7_0_FCLK_CLK0">
@@ -2452,12 +2452,7 @@
         <PORT DIR="I" NAME="dcm_locked" SIGIS="undef"/>
         <PORT DIR="O" NAME="mb_reset" POLARITY="ACTIVE_HIGH" SIGIS="rst"/>
         <PORT DIR="O" LEFT="0" NAME="bus_struct_reset" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="rst"/>
-        <PORT DIR="O" LEFT="0" NAME="peripheral_reset" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="rst" SIGNAME="cpu_proc_sys_reset_0_peripheral_reset">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="chip2chip_0_axi_chip2chip_0" PORT="aurora_pma_init_in"/>
-            <CONNECTION INSTANCE="chip2chip_1_axi_chip2chip_0" PORT="aurora_pma_init_in"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="peripheral_reset" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="rst"/>
         <PORT DIR="O" LEFT="0" NAME="interconnect_aresetn" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="rst" SIGNAME="cpu_proc_sys_reset_0_interconnect_aresetn">
           <CONNECTIONS>
             <CONNECTION INSTANCE="eth1_axi_mem_intercon" PORT="ARESETN"/>
@@ -26883,7 +26878,7 @@
             <REGISTER NAME="GPIO_DATA">
               <PROPERTY NAME="DESCRIPTION" VALUE="Channel-1 AXI GPIO Data register"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x0"/>
-              <PROPERTY NAME="SIZE" VALUE="9"/>
+              <PROPERTY NAME="SIZE" VALUE="10"/>
               <PROPERTY NAME="ACCESS" VALUE="read-write"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
@@ -26896,14 +26891,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="9"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="10"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="GPIO_TRI">
               <PROPERTY NAME="DESCRIPTION" VALUE="Channel-1 AXI GPIO 3-State Control register"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x4"/>
-              <PROPERTY NAME="SIZE" VALUE="9"/>
+              <PROPERTY NAME="SIZE" VALUE="10"/>
               <PROPERTY NAME="ACCESS" VALUE="read-write"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
@@ -26916,7 +26911,7 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="9"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="10"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
@@ -27047,7 +27042,7 @@
         <PARAMETER NAME="C_FAMILY" VALUE="zynq"/>
         <PARAMETER NAME="C_S_AXI_ADDR_WIDTH" VALUE="9"/>
         <PARAMETER NAME="C_S_AXI_DATA_WIDTH" VALUE="32"/>
-        <PARAMETER NAME="C_GPIO_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="C_GPIO_WIDTH" VALUE="10"/>
         <PARAMETER NAME="C_GPIO2_WIDTH" VALUE="16"/>
         <PARAMETER NAME="C_ALL_INPUTS" VALUE="0"/>
         <PARAMETER NAME="C_ALL_INPUTS_2" VALUE="1"/>
@@ -27163,12 +27158,13 @@
             <CONNECTION INSTANCE="cpu_ps7_0_axi_periph" PORT="M13_AXI_rready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="8" NAME="gpio_io_o" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_axi_gpio_0_gpio_io_o">
+        <PORT DIR="O" LEFT="9" NAME="gpio_io_o" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_axi_gpio_0_gpio_io_o">
           <CONNECTIONS>
             <CONNECTION INSTANCE="reg_bank_xlslice_1" PORT="Din"/>
             <CONNECTION INSTANCE="reg_bank_xlslice_0" PORT="Din"/>
             <CONNECTION INSTANCE="reg_bank_xlslice_2" PORT="Din"/>
             <CONNECTION INSTANCE="reg_bank_xlslice_3" PORT="Din"/>
+            <CONNECTION INSTANCE="reg_bank_xlslice_4" PORT="Din"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="15" NAME="gpio2_io_i" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_xlconcat_0_dout">
@@ -27245,9 +27241,9 @@
     <MODULE COREREVISION="3" FULLNAME="/reg_bank/xlconcat_0" HWVERSION="2.1" INSTANCE="reg_bank_xlconcat_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="IN0_WIDTH" VALUE="2"/>
-        <PARAMETER NAME="IN1_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN2_WIDTH" VALUE="8"/>
+        <PARAMETER NAME="IN0_WIDTH" VALUE="8"/>
+        <PARAMETER NAME="IN1_WIDTH" VALUE="2"/>
+        <PARAMETER NAME="IN2_WIDTH" VALUE="1"/>
         <PARAMETER NAME="IN3_WIDTH" VALUE="1"/>
         <PARAMETER NAME="IN4_WIDTH" VALUE="1"/>
         <PARAMETER NAME="IN5_WIDTH" VALUE="1"/>
@@ -27283,19 +27279,19 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="1" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_ready_ipmb_zynq">
+        <PORT DIR="I" LEFT="7" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_ha">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="ha"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_ready_ipmb_zynq">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="ready_ipmb_zynq"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_los_10g">
+        <PORT DIR="I" LEFT="0" NAME="In2" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_los_10g">
           <CONNECTIONS>
             <CONNECTION INSTANCE="External_Ports" PORT="los_10g"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="7" NAME="In2" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_ha">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="ha"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="0" NAME="In3" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_pim_alarm">
@@ -27334,7 +27330,7 @@
     <MODULE COREREVISION="2" FULLNAME="/reg_bank/xlslice_0" HWVERSION="1.0" INSTANCE="reg_bank_xlslice_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="DIN_WIDTH" VALUE="6"/>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="10"/>
         <PARAMETER NAME="DIN_FROM" VALUE="4"/>
         <PARAMETER NAME="DIN_TO" VALUE="2"/>
         <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_0_0"/>
@@ -27342,7 +27338,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="5" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_axi_gpio_0_gpio_io_o">
+        <PORT DIR="I" LEFT="9" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_axi_gpio_0_gpio_io_o">
           <CONNECTIONS>
             <CONNECTION INSTANCE="reg_bank_axi_gpio_0" PORT="gpio_io_o"/>
           </CONNECTIONS>
@@ -27358,7 +27354,7 @@
     <MODULE COREREVISION="2" FULLNAME="/reg_bank/xlslice_1" HWVERSION="1.0" INSTANCE="reg_bank_xlslice_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="DIN_WIDTH" VALUE="6"/>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="10"/>
         <PARAMETER NAME="DIN_FROM" VALUE="1"/>
         <PARAMETER NAME="DIN_TO" VALUE="0"/>
         <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_0_1"/>
@@ -27366,7 +27362,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="5" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_axi_gpio_0_gpio_io_o">
+        <PORT DIR="I" LEFT="9" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_axi_gpio_0_gpio_io_o">
           <CONNECTIONS>
             <CONNECTION INSTANCE="reg_bank_axi_gpio_0" PORT="gpio_io_o"/>
           </CONNECTIONS>
@@ -27382,7 +27378,7 @@
     <MODULE COREREVISION="2" FULLNAME="/reg_bank/xlslice_2" HWVERSION="1.0" INSTANCE="reg_bank_xlslice_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="DIN_WIDTH" VALUE="6"/>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="10"/>
         <PARAMETER NAME="DIN_FROM" VALUE="5"/>
         <PARAMETER NAME="DIN_TO" VALUE="5"/>
         <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_1_0"/>
@@ -27390,7 +27386,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="5" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_axi_gpio_0_gpio_io_o">
+        <PORT DIR="I" LEFT="9" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_axi_gpio_0_gpio_io_o">
           <CONNECTIONS>
             <CONNECTION INSTANCE="reg_bank_axi_gpio_0" PORT="gpio_io_o"/>
           </CONNECTIONS>
@@ -27406,7 +27402,7 @@
     <MODULE COREREVISION="2" FULLNAME="/reg_bank/xlslice_3" HWVERSION="1.0" INSTANCE="reg_bank_xlslice_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="10"/>
         <PARAMETER NAME="DIN_FROM" VALUE="8"/>
         <PARAMETER NAME="DIN_TO" VALUE="6"/>
         <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_2_0"/>
@@ -27414,7 +27410,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_axi_gpio_0_gpio_io_o">
+        <PORT DIR="I" LEFT="9" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_axi_gpio_0_gpio_io_o">
           <CONNECTIONS>
             <CONNECTION INSTANCE="reg_bank_axi_gpio_0" PORT="gpio_io_o"/>
           </CONNECTIONS>
@@ -27425,6 +27421,31 @@
             <CONNECTION INSTANCE="chip2chip_1_axi_chip2chip_0_aurora8" PORT="gt0_txprbssel_in"/>
             <CONNECTION INSTANCE="chip2chip_0_axi_chip2chip_0_aurora8" PORT="gt0_rxprbssel_in"/>
             <CONNECTION INSTANCE="chip2chip_0_axi_chip2chip_0_aurora8" PORT="gt0_txprbssel_in"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="2" FULLNAME="/reg_bank/xlslice_4" HWVERSION="1.0" INSTANCE="reg_bank_xlslice_4" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="10"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="9"/>
+        <PARAMETER NAME="DIN_TO" VALUE="9"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlslice_3_0"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="9" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_axi_gpio_0_gpio_io_o">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="reg_bank_axi_gpio_0" PORT="gpio_io_o"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_xlslice_4_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="chip2chip_0_axi_chip2chip_0" PORT="aurora_pma_init_in"/>
+            <CONNECTION INSTANCE="chip2chip_1_axi_chip2chip_0" PORT="aurora_pma_init_in"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

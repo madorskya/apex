@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Fri Sep 25 02:19:17 2020
+//Date        : Mon Sep 28 02:46:40 2020
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -3139,7 +3139,7 @@ module dbg_imp_5R9Y5
         .clk(Net));
 endmodule
 
-(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=112,numReposBlks=74,numNonXlnxBlks=2,numHierBlks=38,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=6,numPkgbdBlks=0,bdsource=USER,da_aeth_cnt=7,da_axi4_cnt=38,da_axi_chip2chip_cnt=1,da_board_cnt=36,da_clkrst_cnt=23,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=113,numReposBlks=75,numNonXlnxBlks=2,numHierBlks=38,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=6,numPkgbdBlks=0,bdsource=USER,da_aeth_cnt=7,da_axi4_cnt=38,da_axi_chip2chip_cnt=1,da_board_cnt=36,da_clkrst_cnt=23,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
    (DDR_addr,
     DDR_ba,
@@ -4433,8 +4433,7 @@ module design_1
         .S_AXI_HP0_wstrb(axi_mem_intercon_M00_AXI_WSTRB),
         .S_AXI_HP0_wvalid(axi_mem_intercon_M00_AXI_WVALID),
         .ext_reset_in(processing_system7_0_FCLK_RESET0_N),
-        .interconnect_aresetn(ARESETN_1),
-        .peripheral_reset(cpu_peripheral_reset));
+        .interconnect_aresetn(ARESETN_1));
   dbg_imp_5R9Y5 dbg
        (.S_AXI_araddr(ps7_0_axi_periph_M01_AXI_ARADDR),
         .S_AXI_arprot(ps7_0_axi_periph_M01_AXI_ARPROT),
@@ -4843,6 +4842,7 @@ module design_1
         .s_axi_wvalid(s_axi_1_WVALID));
   reg_bank_imp_161U6JD reg_bank
        (.Dout(reg_bank_Dout),
+        .Dout1(cpu_peripheral_reset),
         .Dout_0(xlslice_1_Dout),
         .Dout_1(xlslice_0_Dout),
         .Dout_2(reg_bank_Dout_2),
@@ -19329,6 +19329,7 @@ endmodule
 
 module reg_bank_imp_161U6JD
    (Dout,
+    Dout1,
     Dout_0,
     Dout_1,
     Dout_2,
@@ -19360,6 +19361,7 @@ module reg_bank_imp_161U6JD
     s_axi_aclk,
     s_axi_aresetn);
   output [2:0]Dout;
+  output [0:0]Dout1;
   output [1:0]Dout_0;
   output [2:0]Dout_1;
   output [0:0]Dout_2;
@@ -19400,7 +19402,7 @@ module reg_bank_imp_161U6JD
   wire In6_1;
   wire [0:0]In7_1;
   wire Net;
-  wire [8:0]axi_gpio_0_gpio_io_o;
+  wire [9:0]axi_gpio_0_gpio_io_o;
   wire [31:0]cpu_M13_AXI_ARADDR;
   wire cpu_M13_AXI_ARREADY;
   wire cpu_M13_AXI_ARVALID;
@@ -19424,8 +19426,10 @@ module reg_bank_imp_161U6JD
   wire [1:0]xlslice_1_Dout;
   wire [0:0]xlslice_2_Dout;
   wire [2:0]xlslice_3_Dout;
+  wire [0:0]xlslice_4_Dout;
 
   assign Dout[2:0] = xlslice_3_Dout;
+  assign Dout1[0] = xlslice_4_Dout;
   assign Dout_0[1:0] = xlslice_1_Dout;
   assign Dout_1[2:0] = xlslice_0_Dout;
   assign Dout_2[0] = xlslice_2_Dout;
@@ -19479,9 +19483,9 @@ module reg_bank_imp_161U6JD
         .s_axi_wstrb(cpu_M13_AXI_WSTRB),
         .s_axi_wvalid(cpu_M13_AXI_WVALID));
   design_1_xlconcat_0_1 xlconcat_0
-       (.In0(In0_0_1),
-        .In1(In1_0_1),
-        .In2(In2_0_1),
+       (.In0(In2_0_1),
+        .In1(In0_0_1),
+        .In2(In1_0_1),
         .In3(In3_0_1),
         .In4(In4_1),
         .In5(In5_1),
@@ -19489,17 +19493,20 @@ module reg_bank_imp_161U6JD
         .In7(In7_1),
         .dout(xlconcat_0_dout));
   design_1_xlslice_0_0 xlslice_0
-       (.Din(axi_gpio_0_gpio_io_o[5:0]),
+       (.Din(axi_gpio_0_gpio_io_o),
         .Dout(xlslice_0_Dout));
   design_1_xlslice_0_1 xlslice_1
-       (.Din(axi_gpio_0_gpio_io_o[5:0]),
+       (.Din(axi_gpio_0_gpio_io_o),
         .Dout(xlslice_1_Dout));
   design_1_xlslice_1_0 xlslice_2
-       (.Din(axi_gpio_0_gpio_io_o[5:0]),
+       (.Din(axi_gpio_0_gpio_io_o),
         .Dout(xlslice_2_Dout));
   design_1_xlslice_2_0 xlslice_3
        (.Din(axi_gpio_0_gpio_io_o),
         .Dout(xlslice_3_Dout));
+  design_1_xlslice_3_0 xlslice_4
+       (.Din(axi_gpio_0_gpio_io_o),
+        .Dout(xlslice_4_Dout));
 endmodule
 
 module s00_couplers_imp_17NDAC5
