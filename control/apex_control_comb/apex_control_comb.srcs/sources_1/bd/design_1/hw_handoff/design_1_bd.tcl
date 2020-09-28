@@ -440,6 +440,7 @@ proc create_hier_cell_reg_bank { parentCell nameHier } {
 
   # Create pins
   create_bd_pin -dir O -from 2 -to 0 Dout
+  create_bd_pin -dir O -from 0 -to 0 Dout1
   create_bd_pin -dir O -from 1 -to 0 Dout_0
   create_bd_pin -dir O -from 2 -to 0 Dout_1
   create_bd_pin -dir O -from 0 -to 0 Dout_2
@@ -460,17 +461,13 @@ proc create_hier_cell_reg_bank { parentCell nameHier } {
    CONFIG.C_ALL_INPUTS_2 {1} \
    CONFIG.C_ALL_OUTPUTS {1} \
    CONFIG.C_GPIO2_WIDTH {16} \
-   CONFIG.C_GPIO_WIDTH {9} \
+   CONFIG.C_GPIO_WIDTH {10} \
    CONFIG.C_IS_DUAL {1} \
  ] $axi_gpio_0
 
   # Create instance: xlconcat_0, and set properties
   set xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0 ]
   set_property -dict [ list \
-   CONFIG.IN0_WIDTH {2} \
-   CONFIG.IN1_WIDTH {1} \
-   CONFIG.IN2_WIDTH {8} \
-   CONFIG.IN3_WIDTH {1} \
    CONFIG.NUM_PORTS {8} \
  ] $xlconcat_0
 
@@ -479,7 +476,7 @@ proc create_hier_cell_reg_bank { parentCell nameHier } {
   set_property -dict [ list \
    CONFIG.DIN_FROM {4} \
    CONFIG.DIN_TO {2} \
-   CONFIG.DIN_WIDTH {6} \
+   CONFIG.DIN_WIDTH {10} \
    CONFIG.DOUT_WIDTH {3} \
  ] $xlslice_0
 
@@ -488,7 +485,7 @@ proc create_hier_cell_reg_bank { parentCell nameHier } {
   set_property -dict [ list \
    CONFIG.DIN_FROM {1} \
    CONFIG.DIN_TO {0} \
-   CONFIG.DIN_WIDTH {6} \
+   CONFIG.DIN_WIDTH {10} \
    CONFIG.DOUT_WIDTH {2} \
  ] $xlslice_1
 
@@ -497,7 +494,7 @@ proc create_hier_cell_reg_bank { parentCell nameHier } {
   set_property -dict [ list \
    CONFIG.DIN_FROM {5} \
    CONFIG.DIN_TO {5} \
-   CONFIG.DIN_WIDTH {6} \
+   CONFIG.DIN_WIDTH {10} \
    CONFIG.DOUT_WIDTH {1} \
  ] $xlslice_2
 
@@ -506,30 +503,40 @@ proc create_hier_cell_reg_bank { parentCell nameHier } {
   set_property -dict [ list \
    CONFIG.DIN_FROM {8} \
    CONFIG.DIN_TO {6} \
-   CONFIG.DIN_WIDTH {9} \
+   CONFIG.DIN_WIDTH {10} \
    CONFIG.DOUT_WIDTH {3} \
  ] $xlslice_3
+
+  # Create instance: xlslice_4, and set properties
+  set xlslice_4 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_4 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {9} \
+   CONFIG.DIN_TO {9} \
+   CONFIG.DIN_WIDTH {10} \
+   CONFIG.DOUT_WIDTH {1} \
+ ] $xlslice_4
 
   # Create interface connections
   connect_bd_intf_net -intf_net cpu_M13_AXI [get_bd_intf_pins S_AXI] [get_bd_intf_pins axi_gpio_0/S_AXI]
 
   # Create port connections
-  connect_bd_net -net In0_0_1 [get_bd_pins In0_0] [get_bd_pins xlconcat_0/In0]
-  connect_bd_net -net In1_0_1 [get_bd_pins In1_0] [get_bd_pins xlconcat_0/In1]
-  connect_bd_net -net In2_0_1 [get_bd_pins In2_0] [get_bd_pins xlconcat_0/In2]
+  connect_bd_net -net In0_0_1 [get_bd_pins In0_0] [get_bd_pins xlconcat_0/In1]
+  connect_bd_net -net In1_0_1 [get_bd_pins In1_0] [get_bd_pins xlconcat_0/In2]
+  connect_bd_net -net In2_0_1 [get_bd_pins In2_0] [get_bd_pins xlconcat_0/In0]
   connect_bd_net -net In3_0_1 [get_bd_pins In3_0] [get_bd_pins xlconcat_0/In3]
   connect_bd_net -net In4_1 [get_bd_pins In4] [get_bd_pins xlconcat_0/In4]
   connect_bd_net -net In5_1 [get_bd_pins In5] [get_bd_pins xlconcat_0/In5]
   connect_bd_net -net In6_1 [get_bd_pins In6] [get_bd_pins xlconcat_0/In6]
   connect_bd_net -net In7_1 [get_bd_pins In7] [get_bd_pins xlconcat_0/In7]
   connect_bd_net -net Net [get_bd_pins s_axi_aclk] [get_bd_pins axi_gpio_0/s_axi_aclk]
-  connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_pins axi_gpio_0/gpio_io_o] [get_bd_pins xlslice_0/Din] [get_bd_pins xlslice_1/Din] [get_bd_pins xlslice_2/Din] [get_bd_pins xlslice_3/Din]
+  connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_pins axi_gpio_0/gpio_io_o] [get_bd_pins xlslice_0/Din] [get_bd_pins xlslice_1/Din] [get_bd_pins xlslice_2/Din] [get_bd_pins xlslice_3/Din] [get_bd_pins xlslice_4/Din]
   connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins s_axi_aresetn] [get_bd_pins axi_gpio_0/s_axi_aresetn]
   connect_bd_net -net xlconcat_0_dout [get_bd_pins axi_gpio_0/gpio2_io_i] [get_bd_pins xlconcat_0/dout]
   connect_bd_net -net xlslice_0_Dout [get_bd_pins Dout_1] [get_bd_pins xlslice_0/Dout]
   connect_bd_net -net xlslice_1_Dout [get_bd_pins Dout_0] [get_bd_pins xlslice_1/Dout]
   connect_bd_net -net xlslice_2_Dout [get_bd_pins Dout_2] [get_bd_pins xlslice_2/Dout]
   connect_bd_net -net xlslice_3_Dout [get_bd_pins Dout] [get_bd_pins xlslice_3/Dout]
+  connect_bd_net -net xlslice_4_Dout [get_bd_pins Dout1] [get_bd_pins xlslice_4/Dout]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -2449,7 +2456,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net chip2chip_1_axi_c2c_link_status_out [get_bd_pins chip2chip_1/axi_c2c_link_status_out] [get_bd_pins reg_bank/In6]
   connect_bd_net -net chip2chip_1_gt0_rxcommadet_out [get_bd_pins chip2chip_1/gt0_rxcommadet_out] [get_bd_pins ila_0/probe2]
   connect_bd_net -net chip2chip_1_gt0_rxprbserr_out [get_bd_pins chip2chip_1/gt0_rxprbserr_out] [get_bd_pins ila_0/probe3]
-  connect_bd_net -net cpu_peripheral_reset [get_bd_pins chip2chip_0/aurora_pma_init_in] [get_bd_pins chip2chip_1/aurora_pma_init_in] [get_bd_pins cpu/peripheral_reset]
+  connect_bd_net -net cpu_peripheral_reset [get_bd_pins chip2chip_0/aurora_pma_init_in] [get_bd_pins chip2chip_1/aurora_pma_init_in] [get_bd_pins reg_bank/Dout1]
   connect_bd_net -net gt0_pll0outclk_in_1 [get_bd_pins chip2chip_0/gt0_pll0outclk_out] [get_bd_pins chip2chip_1/gt0_pll0outclk_in]
   connect_bd_net -net gt0_pll0outrefclk_in_1 [get_bd_pins chip2chip_0/gt0_pll0outrefclk_out] [get_bd_pins chip2chip_1/gt0_pll0outrefclk_in]
   connect_bd_net -net gt0_pll0refclklost_in_1 [get_bd_pins chip2chip_0/gt0_pll0refclklost_out] [get_bd_pins chip2chip_1/gt0_pll0refclklost_in]

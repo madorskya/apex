@@ -92,14 +92,14 @@ set_property PACKAGE_PIN W13  [get_ports los_10g]; # J2 pin 103
 set_property PACKAGE_PIN U9  [get_ports mgtrefclk_clk_p]; # J2 pin 135
 
 #set_property PACKAGE_PIN AA9  [get_ports c2c_rx_0_rxp[0]]; # J2 pin 117
-set_property PACKAGE_PIN AA7  [get_ports c2c_rx_1_rxp[0]]; # J2 pin 129
+#set_property PACKAGE_PIN AA7  [get_ports c2c_rx_1_rxp[0]]; # J2 pin 129
 set_property PACKAGE_PIN W8   [get_ports c2c_rx_0_rxp[0]]; # J2 pin 120
-#set_property PACKAGE_PIN W6   [get_ports c2c_rx_1_rxp[1]]; # J2 pin 132
+set_property PACKAGE_PIN W6   [get_ports c2c_rx_1_rxp[0]]; # J2 pin 132
 
 #set_property PACKAGE_PIN AA5  [get_ports c2c_tx_0_txp[0]]; # J2 pin 111 inverted
-set_property PACKAGE_PIN AA3  [get_ports c2c_tx_1_txp[0]]; # J2 pin 123 inverted
+#set_property PACKAGE_PIN AA3  [get_ports c2c_tx_1_txp[0]]; # J2 pin 123 inverted
 set_property PACKAGE_PIN W4   [get_ports c2c_tx_0_txp[0]]; # J2 pin 114 inverted
-#set_property PACKAGE_PIN W2   [get_ports c2c_tx_1_txp[1]]; # J2 pin 126 inverted
+set_property PACKAGE_PIN W2   [get_ports c2c_tx_1_txp[0]]; # J2 pin 126 inverted
 
 
 set_property PACKAGE_PIN J7  [get_ports ha[0]]; # J2 pin 18
