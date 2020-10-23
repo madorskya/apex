@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Sat Sep 26 15:48:06 2020
+//Date        : Sun Sep 27 10:39:45 2020
 //Host        : endcap-tf1.phys.ufl.edu running 64-bit CentOS Linux release 7.8.2003 (Core)
 //Command     : generate_target apex_blk.bd
 //Design      : apex_blk
@@ -17,12 +17,12 @@ module apex_blk
     c2c_tx_txp,
     clk_250_clk_n,
     clk_250_clk_p);
-  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_RX:1.0 c2c_rx " *) input [0:0]c2c_rx_rxn;
-  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_RX:1.0 c2c_rx " *) input [0:0]c2c_rx_rxp;
-  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_TX:1.0 c2c_tx " *) output [0:0]c2c_tx_txn;
-  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_TX:1.0 c2c_tx " *) output [0:0]c2c_tx_txp;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 clk_250 " *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk_250, CAN_DEBUG false, FREQ_HZ 250000000" *) input [0:0]clk_250_clk_n;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 clk_250 " *) input [0:0]clk_250_clk_p;
+  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_RX:1.0 c2c_rx RXN" *) input [0:0]c2c_rx_rxn;
+  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_RX:1.0 c2c_rx RXP" *) input [0:0]c2c_rx_rxp;
+  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_TX:1.0 c2c_tx TXN" *) output [0:0]c2c_tx_txn;
+  (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_TX:1.0 c2c_tx TXP" *) output [0:0]c2c_tx_txp;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 clk_250 CLK_N" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk_250, CAN_DEBUG false, FREQ_HZ 250000000" *) input [0:0]clk_250_clk_n;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 clk_250 CLK_P" *) input [0:0]clk_250_clk_p;
 
   wire [0:0]CLK_IN_D_0_1_CLK_N;
   wire [0:0]CLK_IN_D_0_1_CLK_P;
@@ -56,7 +56,7 @@ module apex_blk
   wire S00_AXI_1_WREADY;
   wire [3:0]S00_AXI_1_WSTRB;
   wire S00_AXI_1_WVALID;
-  wire [15:0]axi_bram_ctrl_0_BRAM_PORTA_ADDR;
+  wire [16:0]axi_bram_ctrl_0_BRAM_PORTA_ADDR;
   wire axi_bram_ctrl_0_BRAM_PORTA_CLK;
   wire [31:0]axi_bram_ctrl_0_BRAM_PORTA_DIN;
   wire [31:0]axi_bram_ctrl_0_BRAM_PORTA_DOUT;
@@ -141,7 +141,7 @@ module apex_blk
         .bram_we_a(axi_bram_ctrl_0_BRAM_PORTA_WE),
         .bram_wrdata_a(axi_bram_ctrl_0_BRAM_PORTA_DIN),
         .s_axi_aclk(clk_wiz_clk_out1),
-        .s_axi_araddr(axi_interconnect_0_M00_AXI_ARADDR[15:0]),
+        .s_axi_araddr(axi_interconnect_0_M00_AXI_ARADDR[16:0]),
         .s_axi_arburst(axi_interconnect_0_M00_AXI_ARBURST),
         .s_axi_arcache({1'b0,1'b0,1'b1,1'b1}),
         .s_axi_aresetn(rst_clk_wiz_100M_peripheral_aresetn),
@@ -152,7 +152,7 @@ module apex_blk
         .s_axi_arready(axi_interconnect_0_M00_AXI_ARREADY),
         .s_axi_arsize(axi_interconnect_0_M00_AXI_ARSIZE),
         .s_axi_arvalid(axi_interconnect_0_M00_AXI_ARVALID),
-        .s_axi_awaddr(axi_interconnect_0_M00_AXI_AWADDR[15:0]),
+        .s_axi_awaddr(axi_interconnect_0_M00_AXI_AWADDR[16:0]),
         .s_axi_awburst(axi_interconnect_0_M00_AXI_AWBURST),
         .s_axi_awcache({1'b0,1'b0,1'b1,1'b1}),
         .s_axi_awid(axi_interconnect_0_M00_AXI_AWID),
@@ -178,7 +178,7 @@ module apex_blk
         .s_axi_wstrb(axi_interconnect_0_M00_AXI_WSTRB),
         .s_axi_wvalid(axi_interconnect_0_M00_AXI_WVALID));
   apex_blk_axi_bram_ctrl_0_bram_0 axi_bram_ctrl_0_bram
-       (.addra({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,axi_bram_ctrl_0_BRAM_PORTA_ADDR}),
+       (.addra({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,axi_bram_ctrl_0_BRAM_PORTA_ADDR}),
         .clka(axi_bram_ctrl_0_BRAM_PORTA_CLK),
         .dina(axi_bram_ctrl_0_BRAM_PORTA_DIN),
         .douta(axi_bram_ctrl_0_BRAM_PORTA_DOUT),
