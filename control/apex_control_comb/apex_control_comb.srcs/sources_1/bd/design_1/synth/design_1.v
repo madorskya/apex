@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Mon Sep 28 02:46:40 2020
+//Date        : Fri Oct 23 19:54:43 2020
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -3139,7 +3139,7 @@ module dbg_imp_5R9Y5
         .clk(Net));
 endmodule
 
-(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=113,numReposBlks=75,numNonXlnxBlks=2,numHierBlks=38,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=6,numPkgbdBlks=0,bdsource=USER,da_aeth_cnt=7,da_axi4_cnt=38,da_axi_chip2chip_cnt=1,da_board_cnt=36,da_clkrst_cnt=23,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=115,numReposBlks=77,numNonXlnxBlks=2,numHierBlks=38,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=6,numPkgbdBlks=0,bdsource=USER,da_aeth_cnt=7,da_axi4_cnt=38,da_axi_chip2chip_cnt=1,da_board_cnt=36,da_clkrst_cnt=23,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
    (DDR_addr,
     DDR_ba,
@@ -3172,6 +3172,7 @@ module design_1
     c2c_tx_1_txp,
     en_ipmb_zynq,
     ha,
+    hot_swap_sw,
     i2c_10g_scl_i,
     i2c_10g_scl_o,
     i2c_10g_scl_t,
@@ -3257,6 +3258,7 @@ module design_1
   (* X_INTERFACE_INFO = "xilinx.com:display_aurora:GT_Serial_Transceiver_Pins_TX:1.0 c2c_tx_1 TXP" *) output [0:0]c2c_tx_1_txp;
   output [1:0]en_ipmb_zynq;
   input [7:0]ha;
+  input [0:0]hot_swap_sw;
   (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 i2c_10g SCL_I" *) input i2c_10g_scl_i;
   (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 i2c_10g SCL_O" *) output i2c_10g_scl_o;
   (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 i2c_10g SCL_T" *) output i2c_10g_scl_t;
@@ -3323,6 +3325,7 @@ module design_1
   wire [0:0]In3_0_1;
   wire [0:0]In5_1;
   wire [0:0]In7_1;
+  wire [0:0]In8_0_1;
   wire Net;
   wire Net1;
   wire Net2;
@@ -3666,6 +3669,8 @@ module design_1
   wire i2c_iic_rtl_3_SDA_I;
   wire i2c_iic_rtl_3_SDA_O;
   wire i2c_iic_rtl_3_SDA_T;
+  wire [6:0]ipmc_i2c_addr_received;
+  wire [6:0]ipmc_i2c_addr_received1;
   wire ipmc_jtag_TCK_0;
   wire ipmc_jtag_TCK_1;
   wire ipmc_jtag_TDI_0;
@@ -3756,7 +3761,8 @@ module design_1
   wire ps7_0_axi_periph_M02_AXI_WVALID;
   wire quad1_common_lock_in_1;
   wire [2:0]reg_bank_Dout;
-  wire [0:0]reg_bank_Dout_2;
+  wire [1:0]reg_bank_en_ipmb_zynq;
+  wire [0:0]reg_bank_qbv_on_off;
   wire s0_i1_1;
   wire s0_i_1;
   wire s0_t1_1;
@@ -3831,7 +3837,6 @@ module design_1
   wire user_clk_1;
   wire [0:0]util_ds_buf_0_IBUF_OUT;
   wire [2:0]xlslice_0_Dout;
-  wire [1:0]xlslice_1_Dout;
 
   assign CLK_IN_D_0_1_CLK_N = mgtrefclk_clk_n[0];
   assign CLK_IN_D_0_1_CLK_P = mgtrefclk_clk_p[0];
@@ -3841,6 +3846,7 @@ module design_1
   assign In1_0_1 = los_10g[0];
   assign In2_0_1 = ha[7:0];
   assign In3_0_1 = pim_alarm[0];
+  assign In8_0_1 = hot_swap_sw[0];
   assign TDO_0_0_1 = scf_tdo_0;
   assign TDO_1_0_1 = scf_tdo_1;
   assign axi_ethernet_0_mdio_MDIO_I = mdio_phy_mdio_i;
@@ -3859,7 +3865,7 @@ module design_1
   assign c2c_tx_0_txp[0] = axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXP;
   assign c2c_tx_1_txn[0] = chip2chip_1_GT_SERIAL_TX_TXN;
   assign c2c_tx_1_txp[0] = chip2chip_1_GT_SERIAL_TX_TXP;
-  assign en_ipmb_zynq[1:0] = xlslice_1_Dout;
+  assign en_ipmb_zynq[1:0] = reg_bank_en_ipmb_zynq;
   assign i2c_10g_scl_o = i2c_iic_rtl_3_SCL_O;
   assign i2c_10g_scl_t = i2c_iic_rtl_3_SCL_T;
   assign i2c_10g_sda_o = i2c_iic_rtl_3_SDA_O;
@@ -3871,7 +3877,7 @@ module design_1
   assign mdio_phy_mdio_o = axi_ethernet_0_mdio_MDIO_O;
   assign mdio_phy_mdio_t = axi_ethernet_0_mdio_MDIO_T;
   assign phy_rst[0] = axi_ethernet_0_phy_rst_n;
-  assign qbv_on_off[0] = reg_bank_Dout_2;
+  assign qbv_on_off[0] = reg_bank_qbv_on_off;
   assign rgmii_td[3:0] = axi_ethernet_0_rgmii_TD;
   assign rgmii_tx_ctl = axi_ethernet_0_rgmii_TX_CTL;
   assign rgmii_txc = axi_ethernet_0_rgmii_TXC;
@@ -4653,7 +4659,9 @@ module design_1
         .probe0(chip2chip_0_gt0_rxcommadet_out),
         .probe1(chip2chip_0_gt0_rxprbserr_out),
         .probe2(chip2chip_1_gt0_rxcommadet_out),
-        .probe3(chip2chip_1_gt0_rxprbserr_out));
+        .probe3(chip2chip_1_gt0_rxprbserr_out),
+        .probe4(ipmc_i2c_addr_received),
+        .probe5(ipmc_i2c_addr_received1));
   ipmc_imp_13B1Q7C ipmc
        (.S_AXI1_araddr(S_AXI4_1_ARADDR),
         .S_AXI1_arburst(S_AXI4_1_ARBURST),
@@ -4776,6 +4784,9 @@ module design_1
         .S_AXI_wready(S_AXI2_1_WREADY),
         .S_AXI_wstrb(S_AXI2_1_WSTRB),
         .S_AXI_wvalid(S_AXI2_1_WVALID),
+        .ha(In2_0_1),
+        .i2c_addr_received(ipmc_i2c_addr_received),
+        .i2c_addr_received1(ipmc_i2c_addr_received1),
         .iic2intc_irpt(ipmc_jtag_iic2intc_irpt),
         .ipmc_scl_0(ipmc_scl_0),
         .ipmc_scl_1(ipmc_scl_1),
@@ -4843,9 +4854,7 @@ module design_1
   reg_bank_imp_161U6JD reg_bank
        (.Dout(reg_bank_Dout),
         .Dout1(cpu_peripheral_reset),
-        .Dout_0(xlslice_1_Dout),
         .Dout_1(xlslice_0_Dout),
-        .Dout_2(reg_bank_Dout_2),
         .In0_0(In0_0_1),
         .In1_0(In1_0_1),
         .In2_0(In2_0_1),
@@ -4854,6 +4863,7 @@ module design_1
         .In5(In5_1),
         .In6(chip2chip_1_axi_c2c_link_status_out),
         .In7(In7_1),
+        .In8_0(In8_0_1),
         .S_AXI_araddr(cpu_M13_AXI_ARADDR),
         .S_AXI_arready(cpu_M13_AXI_ARREADY),
         .S_AXI_arvalid(cpu_M13_AXI_ARVALID),
@@ -4871,6 +4881,8 @@ module design_1
         .S_AXI_wready(cpu_M13_AXI_WREADY),
         .S_AXI_wstrb(cpu_M13_AXI_WSTRB),
         .S_AXI_wvalid(cpu_M13_AXI_WVALID),
+        .en_ipmb_zynq(reg_bank_en_ipmb_zynq),
+        .qbv_on_off(reg_bank_qbv_on_off),
         .s_axi_aclk(Net),
         .s_axi_aresetn(proc_sys_reset_0_peripheral_aresetn));
   design_1_util_ds_buf_0_0 util_ds_buf_0
@@ -12091,8 +12103,10 @@ module ipmc_i2c_0_imp_LA8XA0
     S_AXI_wready,
     S_AXI_wstrb,
     S_AXI_wvalid,
+    ha,
     i2c1_scl,
     i2c1_sda,
+    i2c_addr_received,
     irq,
     s0_i,
     s0_i1,
@@ -12154,8 +12168,10 @@ module ipmc_i2c_0_imp_LA8XA0
   output [0:0]S_AXI_wready;
   input [3:0]S_AXI_wstrb;
   input [0:0]S_AXI_wvalid;
+  input [7:0]ha;
   inout i2c1_scl;
   inout i2c1_sda;
+  output [6:0]i2c_addr_received;
   output irq;
   input s0_i;
   input s0_i1;
@@ -12227,7 +12243,9 @@ module ipmc_i2c_0_imp_LA8XA0
   wire axi_interconnect_0_M02_AXI_WREADY;
   wire [3:0]axi_interconnect_0_M02_AXI_WSTRB;
   wire [0:0]axi_interconnect_0_M02_AXI_WVALID;
+  wire [7:0]ha_1;
   wire [31:0]i2cSlave_0_bram_rddata;
+  wire [6:0]i2cSlave_0_i2c_addr_received;
   wire i2cSlave_0_int;
   wire i2cSlave_0_sda_out;
   wire i2cSlave_0_sda_t;
@@ -12295,6 +12313,8 @@ module ipmc_i2c_0_imp_LA8XA0
   assign axi_interconnect_0_M02_AXI_WLAST = S_AXI_wlast[0];
   assign axi_interconnect_0_M02_AXI_WSTRB = S_AXI_wstrb[3:0];
   assign axi_interconnect_0_M02_AXI_WVALID = S_AXI_wvalid[0];
+  assign ha_1 = ha[7:0];
+  assign i2c_addr_received[6:0] = i2cSlave_0_i2c_addr_received;
   assign irq = i2cSlave_0_int;
   assign proc_sys_reset_0_peripheral_aresetn = s_axi_aresetn;
   assign processing_system7_0_FCLK_CLK0 = s_axi_aclk;
@@ -12380,6 +12400,8 @@ module ipmc_i2c_0_imp_LA8XA0
         .bram_we(axi_bram_ctrl_0_bram_we_a),
         .bram_wrdata(axi_bram_ctrl_0_bram_wrdata_a),
         .clk(processing_system7_0_FCLK_CLK0),
+        .hardware_address(ha_1),
+        .i2c_addr_received(i2cSlave_0_i2c_addr_received),
         .irq(i2cSlave_0_int),
         .rst(proc_sys_reset_0_peripheral_aresetn),
         .scl(i2c_switch_0_s1_o),
@@ -12478,8 +12500,10 @@ module ipmc_i2c_1_imp_PGZ2NV
     S_AXI_wready,
     S_AXI_wstrb,
     S_AXI_wvalid,
+    ha,
     i2c1_scl,
     i2c1_sda,
+    i2c_addr_received,
     iic2intc_irpt,
     irq,
     s_axi_aclk,
@@ -12553,8 +12577,10 @@ module ipmc_i2c_1_imp_PGZ2NV
   output [0:0]S_AXI_wready;
   input [3:0]S_AXI_wstrb;
   input [0:0]S_AXI_wvalid;
+  input [7:0]ha;
   inout i2c1_scl;
   inout i2c1_sda;
+  output [6:0]i2c_addr_received;
   output iic2intc_irpt;
   output irq;
   input s_axi_aclk;
@@ -12643,7 +12669,9 @@ module ipmc_i2c_1_imp_PGZ2NV
   wire axi_interconnect_0_M05_AXI_WREADY;
   wire [3:0]axi_interconnect_0_M05_AXI_WSTRB;
   wire axi_interconnect_0_M05_AXI_WVALID;
+  wire [7:0]ha_1;
   wire [31:0]i2cSlave_0_bram_rddata;
+  wire [6:0]i2cSlave_0_i2c_addr_received;
   wire i2cSlave_0_int;
   wire i2cSlave_0_sda_out;
   wire i2cSlave_0_sda_t;
@@ -12724,6 +12752,8 @@ module ipmc_i2c_1_imp_PGZ2NV
   assign axi_interconnect_0_M05_AXI_WDATA = S_AXI1_wdata[31:0];
   assign axi_interconnect_0_M05_AXI_WSTRB = S_AXI1_wstrb[3:0];
   assign axi_interconnect_0_M05_AXI_WVALID = S_AXI1_wvalid;
+  assign ha_1 = ha[7:0];
+  assign i2c_addr_received[6:0] = i2cSlave_0_i2c_addr_received;
   assign iic2intc_irpt = axi_iic_0_iic2intc_irpt;
   assign irq = i2cSlave_0_int;
   assign processing_system7_0_FCLK_CLK0 = s_axi_aclk;
@@ -12831,6 +12861,8 @@ module ipmc_i2c_1_imp_PGZ2NV
         .bram_we(axi_bram_ctrl_0_bram_we_a),
         .bram_wrdata(axi_bram_ctrl_0_bram_wrdata_a),
         .clk(processing_system7_0_FCLK_CLK0),
+        .hardware_address(ha_1),
+        .i2c_addr_received(i2cSlave_0_i2c_addr_received),
         .irq(i2cSlave_0_int),
         .rst(s_axi_aresetn_1),
         .scl(i2c_switch_0_s1_o),
@@ -12981,6 +13013,9 @@ module ipmc_imp_13B1Q7C
     S_AXI_wready,
     S_AXI_wstrb,
     S_AXI_wvalid,
+    ha,
+    i2c_addr_received,
+    i2c_addr_received1,
     iic2intc_irpt,
     ipmc_scl_0,
     ipmc_scl_1,
@@ -13117,6 +13152,9 @@ module ipmc_imp_13B1Q7C
   output [0:0]S_AXI_wready;
   input [3:0]S_AXI_wstrb;
   input [0:0]S_AXI_wvalid;
+  input [7:0]ha;
+  output [6:0]i2c_addr_received;
+  output [6:0]i2c_addr_received1;
   output iic2intc_irpt;
   inout ipmc_scl_0;
   inout ipmc_scl_1;
@@ -13259,6 +13297,9 @@ module ipmc_imp_13B1Q7C
   wire S_AXI6_1_WREADY;
   wire [3:0]S_AXI6_1_WSTRB;
   wire S_AXI6_1_WVALID;
+  wire [7:0]ha_1;
+  wire [6:0]ipmc_i2c_0_i2c_addr_received;
+  wire [6:0]ipmc_i2c_1_i2c_addr_received;
   wire ipmc_jtag_iic2intc_irpt;
   wire ipmc_jtag_irq;
   wire ipmc_jtag_irq1;
@@ -13392,6 +13433,9 @@ module ipmc_imp_13B1Q7C
   assign S_AXI_rresp[1:0] = S_AXI2_1_RRESP;
   assign S_AXI_rvalid[0] = S_AXI2_1_RVALID;
   assign S_AXI_wready[0] = S_AXI2_1_WREADY;
+  assign ha_1 = ha[7:0];
+  assign i2c_addr_received[6:0] = ipmc_i2c_0_i2c_addr_received;
+  assign i2c_addr_received1[6:0] = ipmc_i2c_1_i2c_addr_received;
   assign iic2intc_irpt = ipmc_jtag_iic2intc_irpt;
   assign irq = ipmc_jtag_irq;
   assign irq1 = ipmc_jtag_irq1;
@@ -13455,8 +13499,10 @@ module ipmc_imp_13B1Q7C
         .S_AXI_wready(S_AXI2_1_WREADY),
         .S_AXI_wstrb(S_AXI2_1_WSTRB),
         .S_AXI_wvalid(S_AXI2_1_WVALID),
+        .ha(ha_1),
         .i2c1_scl(ipmc_scl_0),
         .i2c1_sda(ipmc_sda_0),
+        .i2c_addr_received(ipmc_i2c_0_i2c_addr_received),
         .irq(ipmc_jtag_irq),
         .s0_i(s0_i_1),
         .s0_i1(s0_i1_1),
@@ -13536,8 +13582,10 @@ module ipmc_imp_13B1Q7C
         .S_AXI_wready(S_AXI4_1_WREADY),
         .S_AXI_wstrb(S_AXI4_1_WSTRB),
         .S_AXI_wvalid(S_AXI4_1_WVALID),
+        .ha(ha_1),
         .i2c1_scl(ipmc_scl_1),
         .i2c1_sda(ipmc_sda_1),
+        .i2c_addr_received(ipmc_i2c_1_i2c_addr_received),
         .iic2intc_irpt(ipmc_jtag_iic2intc_irpt),
         .irq(ipmc_jtag_irq1),
         .s_axi_aclk(Net),
@@ -19330,9 +19378,7 @@ endmodule
 module reg_bank_imp_161U6JD
    (Dout,
     Dout1,
-    Dout_0,
     Dout_1,
-    Dout_2,
     In0_0,
     In1_0,
     In2_0,
@@ -19341,6 +19387,7 @@ module reg_bank_imp_161U6JD
     In5,
     In6,
     In7,
+    In8_0,
     S_AXI_araddr,
     S_AXI_arready,
     S_AXI_arvalid,
@@ -19358,13 +19405,13 @@ module reg_bank_imp_161U6JD
     S_AXI_wready,
     S_AXI_wstrb,
     S_AXI_wvalid,
+    en_ipmb_zynq,
+    qbv_on_off,
     s_axi_aclk,
     s_axi_aresetn);
   output [2:0]Dout;
   output [0:0]Dout1;
-  output [1:0]Dout_0;
   output [2:0]Dout_1;
-  output [0:0]Dout_2;
   input [1:0]In0_0;
   input [0:0]In1_0;
   input [7:0]In2_0;
@@ -19373,6 +19420,7 @@ module reg_bank_imp_161U6JD
   input [0:0]In5;
   input In6;
   input [0:0]In7;
+  input [0:0]In8_0;
   input [31:0]S_AXI_araddr;
   output S_AXI_arready;
   input S_AXI_arvalid;
@@ -19390,6 +19438,8 @@ module reg_bank_imp_161U6JD
   output S_AXI_wready;
   input [3:0]S_AXI_wstrb;
   input S_AXI_wvalid;
+  output [1:0]en_ipmb_zynq;
+  output [0:0]qbv_on_off;
   input s_axi_aclk;
   input s_axi_aresetn;
 
@@ -19401,6 +19451,7 @@ module reg_bank_imp_161U6JD
   wire [0:0]In5_1;
   wire In6_1;
   wire [0:0]In7_1;
+  wire [0:0]In8_0_1;
   wire Net;
   wire [9:0]axi_gpio_0_gpio_io_o;
   wire [31:0]cpu_M13_AXI_ARADDR;
@@ -19421,7 +19472,9 @@ module reg_bank_imp_161U6JD
   wire [3:0]cpu_M13_AXI_WSTRB;
   wire cpu_M13_AXI_WVALID;
   wire proc_sys_reset_0_peripheral_aresetn;
-  wire [15:0]xlconcat_0_dout;
+  wire [1:0]util_vector_logic_0_Res;
+  wire [0:0]util_vector_logic_1_Res;
+  wire [16:0]xlconcat_0_dout;
   wire [2:0]xlslice_0_Dout;
   wire [1:0]xlslice_1_Dout;
   wire [0:0]xlslice_2_Dout;
@@ -19430,9 +19483,7 @@ module reg_bank_imp_161U6JD
 
   assign Dout[2:0] = xlslice_3_Dout;
   assign Dout1[0] = xlslice_4_Dout;
-  assign Dout_0[1:0] = xlslice_1_Dout;
   assign Dout_1[2:0] = xlslice_0_Dout;
-  assign Dout_2[0] = xlslice_2_Dout;
   assign In0_0_1 = In0_0[1:0];
   assign In1_0_1 = In1_0[0];
   assign In2_0_1 = In2_0[7:0];
@@ -19441,6 +19492,7 @@ module reg_bank_imp_161U6JD
   assign In5_1 = In5[0];
   assign In6_1 = In6;
   assign In7_1 = In7[0];
+  assign In8_0_1 = In8_0[0];
   assign Net = s_axi_aclk;
   assign S_AXI_arready = cpu_M13_AXI_ARREADY;
   assign S_AXI_awready = cpu_M13_AXI_AWREADY;
@@ -19459,7 +19511,9 @@ module reg_bank_imp_161U6JD
   assign cpu_M13_AXI_WDATA = S_AXI_wdata[31:0];
   assign cpu_M13_AXI_WSTRB = S_AXI_wstrb[3:0];
   assign cpu_M13_AXI_WVALID = S_AXI_wvalid;
+  assign en_ipmb_zynq[1:0] = util_vector_logic_0_Res;
   assign proc_sys_reset_0_peripheral_aresetn = s_axi_aresetn;
+  assign qbv_on_off[0] = util_vector_logic_1_Res;
   design_1_axi_gpio_0_2 axi_gpio_0
        (.gpio2_io_i(xlconcat_0_dout),
         .gpio_io_o(axi_gpio_0_gpio_io_o),
@@ -19482,6 +19536,12 @@ module reg_bank_imp_161U6JD
         .s_axi_wready(cpu_M13_AXI_WREADY),
         .s_axi_wstrb(cpu_M13_AXI_WSTRB),
         .s_axi_wvalid(cpu_M13_AXI_WVALID));
+  design_1_util_vector_logic_0_0 util_vector_logic_0
+       (.Op1(xlslice_1_Dout),
+        .Res(util_vector_logic_0_Res));
+  design_1_util_vector_logic_0_1 util_vector_logic_1
+       (.Op1(xlslice_2_Dout),
+        .Res(util_vector_logic_1_Res));
   design_1_xlconcat_0_1 xlconcat_0
        (.In0(In2_0_1),
         .In1(In0_0_1),
@@ -19491,6 +19551,7 @@ module reg_bank_imp_161U6JD
         .In5(In5_1),
         .In6(In6_1),
         .In7(In7_1),
+        .In8(In8_0_1),
         .dout(xlconcat_0_dout));
   design_1_xlslice_0_0 xlslice_0
        (.Din(axi_gpio_0_gpio_io_o),

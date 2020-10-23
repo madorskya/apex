@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Mon Sep 28 02:46:42 2020
+//Date        : Fri Oct 23 19:54:45 2020
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -41,6 +41,7 @@ module design_1_wrapper
     c2c_tx_1_txp,
     en_ipmb_zynq,
     ha,
+    hot_swap_sw,
     i2c_10g_scl_io,
     i2c_10g_sda_io,
     id,
@@ -108,6 +109,7 @@ module design_1_wrapper
   output [0:0]c2c_tx_1_txp;
   output [1:0]en_ipmb_zynq;
   input [7:0]ha;
+  input [0:0]hot_swap_sw;
   inout i2c_10g_scl_io;
   inout i2c_10g_sda_io;
   output [2:0]id;
@@ -176,6 +178,7 @@ module design_1_wrapper
   wire [0:0]c2c_tx_1_txp;
   wire [1:0]en_ipmb_zynq;
   wire [7:0]ha;
+  wire [0:0]hot_swap_sw;
   wire i2c_10g_scl_i;
   wire i2c_10g_scl_io;
   wire i2c_10g_scl_o;
@@ -272,6 +275,7 @@ module design_1_wrapper
         .c2c_tx_1_txp(c2c_tx_1_txp),
         .en_ipmb_zynq(en_ipmb_zynq),
         .ha(ha),
+        .hot_swap_sw(hot_swap_sw),
         .i2c_10g_scl_i(i2c_10g_scl_i),
         .i2c_10g_scl_o(i2c_10g_scl_o),
         .i2c_10g_scl_t(i2c_10g_scl_t),
