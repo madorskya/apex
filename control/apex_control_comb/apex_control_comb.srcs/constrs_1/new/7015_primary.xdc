@@ -62,14 +62,14 @@ set_property IOSTANDARD LVCMOS33 [get_ports ipmc_*]
 set_property PULLUP true         [get_ports ipmc_*]
 
 set_property IOSTANDARD LVCMOS33 [get_ports en_ipmb_zynq*]
-set_property IOSTANDARD LVCMOS33 [get_ports ready_ipmb_zynq*]
-set_property IOSTANDARD LVCMOS33 [get_ports ha*]
+set_property -dict {IOSTANDARD LVCMOS33 PULLUP true} [get_ports ready_ipmb_zynq*]
+set_property -dict {IOSTANDARD LVCMOS33 PULLUP true} [get_ports ha*]
 set_property IOSTANDARD LVCMOS33 [get_ports id*]
-set_property IOSTANDARD LVCMOS33 [get_ports los_10g*]
-set_property IOSTANDARD LVCMOS33 [get_ports pim_alarm*]
-set_property IOSTANDARD LVCMOS33 [get_ports i2c_10g_*]
+set_property -dict {IOSTANDARD LVCMOS33 PULLUP true} [get_ports los_10g*]
+set_property -dict {IOSTANDARD LVCMOS33 PULLUP true} [get_ports pim_alarm*]
+set_property -dict {IOSTANDARD LVCMOS33 PULLUP true} [get_ports i2c_10g_*]
 set_property IOSTANDARD LVCMOS33 [get_ports qbv_on_off*]
-
+set_property IOSTANDARD LVCMOS33 [get_ports hot_swap_sw]
 
 #-------------------- from excel file -------------------------
 set_property PACKAGE_PIN G6  [get_ports en_ipmb_zynq[0]]; # J1 pin 39
@@ -83,8 +83,9 @@ set_property PACKAGE_PIN F5  [get_ports i2c_10g_sda_io]; # J1 pin 56
 
 # scl_zynq[1:0] and sda_zynq[1:0] on schematics
 set_property PACKAGE_PIN F6  [get_ports ipmc_scl_0]; # J1 pin 41
-set_property PACKAGE_PIN B6  [get_ports ipmc_scl_1]; # J1 pin 51
 set_property PACKAGE_PIN A5  [get_ports ipmc_sda_0]; # J1 pin 45
+
+set_property PACKAGE_PIN B6  [get_ports ipmc_scl_1]; # J1 pin 51
 set_property PACKAGE_PIN C6  [get_ports ipmc_sda_1]; # J1 pin 55
 
 set_property PACKAGE_PIN W13  [get_ports los_10g]; # J2 pin 103
@@ -132,6 +133,8 @@ set_property PACKAGE_PIN K8  [get_ports scf_tdo_0]; # J2 pin 12
 set_property PACKAGE_PIN L5  [get_ports scf_tdo_1]; # J2 pin 17
 set_property PACKAGE_PIN K7  [get_ports scf_tms_0]; # J2 pin 14
 set_property PACKAGE_PIN L4  [get_ports scf_tms_1]; # J2 pin 19
+
+set_property PACKAGE_PIN AB19 [get_ports hot_swap_sw]; # J2 pin 73
 
 # payload I2C from Elma chip
 #set_property PACKAGE_PIN R2  [get_ports scl_zynq[2]]; # J2 pin 56

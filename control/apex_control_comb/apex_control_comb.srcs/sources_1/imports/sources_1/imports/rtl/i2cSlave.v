@@ -62,24 +62,12 @@ module i2cSlave
     input         bram_rst,
     input [3:0]   bram_we,
     
-    output irq
-    
-//output [7:0] addr_cnt_w,
-//output [1:0] wren_w,
-//output [7:0] data_in_w,
-//output data_valid_w,
-//output [7:0] r0 ,
-//output [7:0] r1 ,
-//output [7:0] r2 ,
-//output [7:0] r3 ,
-//output [7:0] r4 ,
-//output [7:0] r5 ,
-//output [7:0] r6 ,
-//output [7:0] r7 ,
-//output reset_reg_w
-    
+    output irq,
+    output [6:0] i2c_addr_received,
+    input [7:0] hardware_address
 );
 
+wire  [6:0] i2c_addr_crate = hardware_address[6:0];
 localparam max_reg = 64;
 
     wire reset_reg = bram_en == 1'b1 && bram_we == 4'b0; // reset irq at read operation
@@ -308,7 +296,9 @@ serialInterface u_serialInterface (
   .sdaOut(sdaOut), 
   .startStopDetState(startStopDetState),
   .clearStartStopDet(clearStartStopDet),
-  .data_valid (data_valid)
+  .data_valid (data_valid),
+  .i2c_addr_received (i2c_addr_received),
+  .i2c_addr_crate (i2c_addr_crate)
 );
 
 

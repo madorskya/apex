@@ -19,8 +19,8 @@
 // ------------- modify constants below this line -----------------
 // ----------------------------------------------------------------
 
-// i2c device address
-`define I2C_ADDRESS 7'h41 // slot 1 hardcoded. slots 1..16 = addresses 0x41..50
+// i2c device address comes from crate, hardware address pins
+//`define I2C_ADDRESS 7'h44 // slot 9 hardcoded. 
 
 // System clock frequency in MHz
 // If you are using a clock frequency below 24MHz, then the macro

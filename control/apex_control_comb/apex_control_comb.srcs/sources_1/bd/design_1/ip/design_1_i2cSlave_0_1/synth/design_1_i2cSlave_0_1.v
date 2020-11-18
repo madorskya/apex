@@ -50,9 +50,9 @@
 // IP VLNV: xilinx.com:module_ref:i2cSlave:1.0
 // IP Revision: 1
 
-(* X_CORE_INFO = "i2cSlave,Vivado 2020.1.1" *)
+(* X_CORE_INFO = "i2cSlave,Vivado 2020.1.1_AR73018" *)
 (* CHECK_LICENSE_TYPE = "design_1_i2cSlave_0_1,i2cSlave,{}" *)
-(* CORE_GENERATION_INFO = "design_1_i2cSlave_0_1,i2cSlave,{x_ipProduct=Vivado 2020.1.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=i2cSlave,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
+(* CORE_GENERATION_INFO = "design_1_i2cSlave_0_1,i2cSlave,{x_ipProduct=Vivado 2020.1.1_AR73018,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=i2cSlave,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module design_1_i2cSlave_0_1 (
@@ -69,7 +69,9 @@ module design_1_i2cSlave_0_1 (
   bram_en,
   bram_rst,
   bram_we,
-  irq
+  irq,
+  i2c_addr_received,
+  hardware_address
 );
 
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN design_1_processing_system7_0_0_FCLK_CLK0, INSERT_VIP 0" *)
@@ -96,6 +98,8 @@ input wire [3 : 0] bram_we;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME irq, SENSITIVITY LEVEL_HIGH, PortWidth 1" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 irq INTERRUPT" *)
 output wire irq;
+output wire [6 : 0] i2c_addr_received;
+input wire [7 : 0] hardware_address;
 
   i2cSlave inst (
     .clk(clk),
@@ -111,6 +115,8 @@ output wire irq;
     .bram_en(bram_en),
     .bram_rst(bram_rst),
     .bram_we(bram_we),
-    .irq(irq)
+    .irq(irq),
+    .i2c_addr_received(i2c_addr_received),
+    .hardware_address(hardware_address)
   );
 endmodule

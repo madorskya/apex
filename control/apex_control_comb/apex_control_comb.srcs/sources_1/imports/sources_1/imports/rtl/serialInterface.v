@@ -69,7 +69,10 @@ module serialInterface (
     startStopDetState, 
     writeEn,
     addr_detected,
-    data_valid);
+    data_valid,
+    i2c_addr_received,
+    i2c_addr_crate
+    );
 input   clk;
 input   [7:0]dataIn;
 input   rst;
@@ -84,6 +87,8 @@ output  sdaOut;
 output  writeEn;
 output reg addr_detected;
 output reg data_valid;
+output reg [6:0] i2c_addr_received;
+input [6:0] i2c_addr_crate;
 
 reg     clearStartStopDet, next_clearStartStopDet;
 wire    clk;
@@ -272,7 +277,7 @@ begin
         case (streamSt)
         `STREAM_IDLE: 
         begin
-            if (rxData[7:1] == `I2C_ADDRESS && startStopDetState == `START_DET) 
+            if (rxData[7:1] == i2c_addr_crate && startStopDetState == `START_DET) 
             begin
                 if (rxData[0] == 1'b1)
                     next_streamSt <= `STREAM_READ;
@@ -282,6 +287,12 @@ begin
             end
             else
                 next_sdaOut <= `I2C_NAK;
+                
+            // fix i2c address for debugging
+            if (startStopDetState == `START_DET)
+            begin
+                i2c_addr_received = rxData[7:1];
+            end
         end
         `STREAM_WRITE_ADDR: 
         begin

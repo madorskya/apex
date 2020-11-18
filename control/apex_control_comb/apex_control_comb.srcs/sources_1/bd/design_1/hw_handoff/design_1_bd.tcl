@@ -171,8 +171,10 @@ proc create_hier_cell_ipmc_i2c_1 { parentCell nameHier } {
 
 
   # Create pins
+  create_bd_pin -dir I -from 7 -to 0 ha
   create_bd_pin -dir IO i2c1_scl
   create_bd_pin -dir IO i2c1_sda
+  create_bd_pin -dir O -from 6 -to 0 i2c_addr_received
   create_bd_pin -dir O -type intr iic2intc_irpt
   create_bd_pin -dir O -type intr irq
   create_bd_pin -dir I -type clk s_axi_aclk
@@ -249,7 +251,9 @@ proc create_hier_cell_ipmc_i2c_1 { parentCell nameHier } {
   connect_bd_net -net axi_iic_0_scl_t [get_bd_pins axi_iic_0/scl_t] [get_bd_pins i2c_switch_0/s0_t]
   connect_bd_net -net axi_iic_0_sda_o [get_bd_pins axi_iic_0/sda_o] [get_bd_pins i2c_switch_1/s0_i]
   connect_bd_net -net axi_iic_0_sda_t [get_bd_pins axi_iic_0/sda_t] [get_bd_pins i2c_switch_1/s0_t]
+  connect_bd_net -net ha_1 [get_bd_pins ha] [get_bd_pins i2cSlave_0/hardware_address]
   connect_bd_net -net i2cSlave_0_bram_rddata [get_bd_pins axi_bram_ctrl_0/bram_rddata_a] [get_bd_pins i2cSlave_0/bram_rddata]
+  connect_bd_net -net i2cSlave_0_i2c_addr_received [get_bd_pins i2c_addr_received] [get_bd_pins i2cSlave_0/i2c_addr_received]
   connect_bd_net -net i2cSlave_0_int [get_bd_pins irq] [get_bd_pins i2cSlave_0/irq]
   connect_bd_net -net i2cSlave_0_sda_out [get_bd_pins i2cSlave_0/sda_out] [get_bd_pins i2c_switch_1/s1_i]
   connect_bd_net -net i2cSlave_0_sda_t [get_bd_pins i2cSlave_0/sda_t] [get_bd_pins i2c_switch_1/s1_t]
@@ -306,8 +310,10 @@ proc create_hier_cell_ipmc_i2c_0 { parentCell nameHier } {
 
 
   # Create pins
+  create_bd_pin -dir I -from 7 -to 0 ha
   create_bd_pin -dir IO i2c1_scl
   create_bd_pin -dir IO i2c1_sda
+  create_bd_pin -dir O -from 6 -to 0 i2c_addr_received
   create_bd_pin -dir O -type intr irq
   create_bd_pin -dir I s0_i
   create_bd_pin -dir I s0_i1
@@ -380,7 +386,9 @@ proc create_hier_cell_ipmc_i2c_0 { parentCell nameHier } {
   connect_bd_net -net axi_bram_ctrl_0_bram_we_a [get_bd_pins axi_bram_ctrl_0/bram_we_a] [get_bd_pins i2cSlave_0/bram_we]
   connect_bd_net -net axi_bram_ctrl_0_bram_wrdata_a [get_bd_pins axi_bram_ctrl_0/bram_wrdata_a] [get_bd_pins i2cSlave_0/bram_wrdata]
   connect_bd_net -net axi_gpio_0_gpio_io_o1 [get_bd_pins axi_gpio_0/gpio_io_o] [get_bd_pins i2c_switch_0/sel] [get_bd_pins i2c_switch_1/sel]
+  connect_bd_net -net ha_1 [get_bd_pins ha] [get_bd_pins i2cSlave_0/hardware_address]
   connect_bd_net -net i2cSlave_0_bram_rddata [get_bd_pins axi_bram_ctrl_0/bram_rddata_a] [get_bd_pins i2cSlave_0/bram_rddata]
+  connect_bd_net -net i2cSlave_0_i2c_addr_received [get_bd_pins i2c_addr_received] [get_bd_pins i2cSlave_0/i2c_addr_received]
   connect_bd_net -net i2cSlave_0_int [get_bd_pins irq] [get_bd_pins i2cSlave_0/irq]
   connect_bd_net -net i2cSlave_0_sda_out [get_bd_pins i2cSlave_0/sda_out] [get_bd_pins i2c_switch_1/s1_i]
   connect_bd_net -net i2cSlave_0_sda_t [get_bd_pins i2cSlave_0/sda_t] [get_bd_pins i2c_switch_1/s1_t]
@@ -441,9 +449,7 @@ proc create_hier_cell_reg_bank { parentCell nameHier } {
   # Create pins
   create_bd_pin -dir O -from 2 -to 0 Dout
   create_bd_pin -dir O -from 0 -to 0 Dout1
-  create_bd_pin -dir O -from 1 -to 0 Dout_0
   create_bd_pin -dir O -from 2 -to 0 Dout_1
-  create_bd_pin -dir O -from 0 -to 0 Dout_2
   create_bd_pin -dir I -from 1 -to 0 In0_0
   create_bd_pin -dir I -from 0 -to 0 In1_0
   create_bd_pin -dir I -from 7 -to 0 In2_0
@@ -452,6 +458,9 @@ proc create_hier_cell_reg_bank { parentCell nameHier } {
   create_bd_pin -dir I -from 0 -to 0 In5
   create_bd_pin -dir I In6
   create_bd_pin -dir I -from 0 -to 0 In7
+  create_bd_pin -dir I -from 0 -to 0 In8_0
+  create_bd_pin -dir O -from 1 -to 0 en_ipmb_zynq
+  create_bd_pin -dir O -from 0 -to 0 qbv_on_off
   create_bd_pin -dir I -type clk s_axi_aclk
   create_bd_pin -dir I -type rst s_axi_aresetn
 
@@ -460,15 +469,32 @@ proc create_hier_cell_reg_bank { parentCell nameHier } {
   set_property -dict [ list \
    CONFIG.C_ALL_INPUTS_2 {1} \
    CONFIG.C_ALL_OUTPUTS {1} \
-   CONFIG.C_GPIO2_WIDTH {16} \
+   CONFIG.C_DOUT_DEFAULT {0x00000000} \
+   CONFIG.C_GPIO2_WIDTH {17} \
    CONFIG.C_GPIO_WIDTH {10} \
    CONFIG.C_IS_DUAL {1} \
  ] $axi_gpio_0
 
+  # Create instance: util_vector_logic_0, and set properties
+  set util_vector_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_0 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {not} \
+   CONFIG.C_SIZE {2} \
+   CONFIG.LOGO_FILE {data/sym_notgate.png} \
+ ] $util_vector_logic_0
+
+  # Create instance: util_vector_logic_1, and set properties
+  set util_vector_logic_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_1 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {not} \
+   CONFIG.C_SIZE {1} \
+   CONFIG.LOGO_FILE {data/sym_notgate.png} \
+ ] $util_vector_logic_1
+
   # Create instance: xlconcat_0, and set properties
   set xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0 ]
   set_property -dict [ list \
-   CONFIG.NUM_PORTS {8} \
+   CONFIG.NUM_PORTS {9} \
  ] $xlconcat_0
 
   # Create instance: xlslice_0, and set properties
@@ -528,13 +554,16 @@ proc create_hier_cell_reg_bank { parentCell nameHier } {
   connect_bd_net -net In5_1 [get_bd_pins In5] [get_bd_pins xlconcat_0/In5]
   connect_bd_net -net In6_1 [get_bd_pins In6] [get_bd_pins xlconcat_0/In6]
   connect_bd_net -net In7_1 [get_bd_pins In7] [get_bd_pins xlconcat_0/In7]
+  connect_bd_net -net In8_0_1 [get_bd_pins In8_0] [get_bd_pins xlconcat_0/In8]
   connect_bd_net -net Net [get_bd_pins s_axi_aclk] [get_bd_pins axi_gpio_0/s_axi_aclk]
   connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_pins axi_gpio_0/gpio_io_o] [get_bd_pins xlslice_0/Din] [get_bd_pins xlslice_1/Din] [get_bd_pins xlslice_2/Din] [get_bd_pins xlslice_3/Din] [get_bd_pins xlslice_4/Din]
   connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins s_axi_aresetn] [get_bd_pins axi_gpio_0/s_axi_aresetn]
+  connect_bd_net -net util_vector_logic_0_Res [get_bd_pins en_ipmb_zynq] [get_bd_pins util_vector_logic_0/Res]
+  connect_bd_net -net util_vector_logic_1_Res [get_bd_pins qbv_on_off] [get_bd_pins util_vector_logic_1/Res]
   connect_bd_net -net xlconcat_0_dout [get_bd_pins axi_gpio_0/gpio2_io_i] [get_bd_pins xlconcat_0/dout]
   connect_bd_net -net xlslice_0_Dout [get_bd_pins Dout_1] [get_bd_pins xlslice_0/Dout]
-  connect_bd_net -net xlslice_1_Dout [get_bd_pins Dout_0] [get_bd_pins xlslice_1/Dout]
-  connect_bd_net -net xlslice_2_Dout [get_bd_pins Dout_2] [get_bd_pins xlslice_2/Dout]
+  connect_bd_net -net xlslice_1_Dout [get_bd_pins util_vector_logic_0/Op1] [get_bd_pins xlslice_1/Dout]
+  connect_bd_net -net xlslice_2_Dout [get_bd_pins util_vector_logic_1/Op1] [get_bd_pins xlslice_2/Dout]
   connect_bd_net -net xlslice_3_Dout [get_bd_pins Dout] [get_bd_pins xlslice_3/Dout]
   connect_bd_net -net xlslice_4_Dout [get_bd_pins Dout1] [get_bd_pins xlslice_4/Dout]
 
@@ -667,6 +696,9 @@ proc create_hier_cell_ipmc { parentCell nameHier } {
 
 
   # Create pins
+  create_bd_pin -dir I -from 7 -to 0 ha
+  create_bd_pin -dir O -from 6 -to 0 i2c_addr_received
+  create_bd_pin -dir O -from 6 -to 0 i2c_addr_received1
   create_bd_pin -dir O -type intr iic2intc_irpt
   create_bd_pin -dir IO ipmc_scl_0
   create_bd_pin -dir IO ipmc_scl_1
@@ -702,6 +734,9 @@ proc create_hier_cell_ipmc { parentCell nameHier } {
   connect_bd_net -net Net2 [get_bd_pins ipmc_scl_0] [get_bd_pins ipmc_i2c_0/i2c1_scl]
   connect_bd_net -net Net3 [get_bd_pins ipmc_scl_1] [get_bd_pins ipmc_i2c_1/i2c1_scl]
   connect_bd_net -net Net4 [get_bd_pins ipmc_sda_1] [get_bd_pins ipmc_i2c_1/i2c1_sda]
+  connect_bd_net -net ha_1 [get_bd_pins ha] [get_bd_pins ipmc_i2c_0/ha] [get_bd_pins ipmc_i2c_1/ha]
+  connect_bd_net -net ipmc_i2c_0_i2c_addr_received [get_bd_pins i2c_addr_received] [get_bd_pins ipmc_i2c_0/i2c_addr_received]
+  connect_bd_net -net ipmc_i2c_1_i2c_addr_received [get_bd_pins i2c_addr_received1] [get_bd_pins ipmc_i2c_1/i2c_addr_received]
   connect_bd_net -net ipmc_jtag_iic2intc_irpt [get_bd_pins iic2intc_irpt] [get_bd_pins ipmc_i2c_1/iic2intc_irpt]
   connect_bd_net -net ipmc_jtag_irq [get_bd_pins irq] [get_bd_pins ipmc_i2c_0/irq]
   connect_bd_net -net ipmc_jtag_irq1 [get_bd_pins irq1] [get_bd_pins ipmc_i2c_1/irq]
@@ -2332,6 +2367,7 @@ proc create_root_design { parentCell } {
   # Create ports
   set en_ipmb_zynq [ create_bd_port -dir O -from 1 -to 0 en_ipmb_zynq ]
   set ha [ create_bd_port -dir I -from 7 -to 0 ha ]
+  set hot_swap_sw [ create_bd_port -dir I -from 0 -to 0 hot_swap_sw ]
   set id [ create_bd_port -dir O -from 2 -to 0 id ]
   set ipmc_scl_0 [ create_bd_port -dir IO ipmc_scl_0 ]
   set ipmc_scl_1 [ create_bd_port -dir IO ipmc_scl_1 ]
@@ -2377,7 +2413,9 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.C_ENABLE_ILA_AXI_MON {false} \
    CONFIG.C_MONITOR_TYPE {Native} \
-   CONFIG.C_NUM_OF_PROBES {4} \
+   CONFIG.C_NUM_OF_PROBES {6} \
+   CONFIG.C_PROBE4_WIDTH {7} \
+   CONFIG.C_PROBE5_WIDTH {7} \
  ] $ila_0
 
   # Create instance: ipmc
@@ -2432,10 +2470,11 @@ proc create_root_design { parentCell } {
   connect_bd_net -net ARESETN_1 [get_bd_pins cpu/interconnect_aresetn] [get_bd_pins eth1/ARESETN]
   connect_bd_net -net In0_0_1 [get_bd_ports ready_ipmb_zynq] [get_bd_pins reg_bank/In0_0]
   connect_bd_net -net In1_0_1 [get_bd_ports los_10g] [get_bd_pins reg_bank/In1_0]
-  connect_bd_net -net In2_0_1 [get_bd_ports ha] [get_bd_pins reg_bank/In2_0]
+  connect_bd_net -net In2_0_1 [get_bd_ports ha] [get_bd_pins ipmc/ha] [get_bd_pins reg_bank/In2_0]
   connect_bd_net -net In3_0_1 [get_bd_ports pim_alarm] [get_bd_pins reg_bank/In3_0]
   connect_bd_net -net In5_1 [get_bd_pins chip2chip_0/channel_up] [get_bd_pins reg_bank/In5]
   connect_bd_net -net In7_1 [get_bd_pins chip2chip_1/channel_up] [get_bd_pins reg_bank/In7]
+  connect_bd_net -net In8_0_1 [get_bd_ports hot_swap_sw] [get_bd_pins reg_bank/In8_0]
   connect_bd_net -net Net [get_bd_pins chip2chip_0/aurora_init_clk] [get_bd_pins chip2chip_1/aurora_init_clk] [get_bd_pins cpu/FCLK_CLK0] [get_bd_pins dbg/clk] [get_bd_pins eth1/s_axi_lite_aclk] [get_bd_pins i2c/s_axi_aclk] [get_bd_pins ipmc/s_axi_aclk] [get_bd_pins jtag/s_axi_aclk] [get_bd_pins reg_bank/s_axi_aclk]
   connect_bd_net -net Net1 [get_bd_ports ipmc_sda_0] [get_bd_pins ipmc/ipmc_sda_0]
   connect_bd_net -net Net2 [get_bd_ports ipmc_scl_0] [get_bd_pins ipmc/ipmc_scl_0]
@@ -2466,6 +2505,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net i2c_iic2intc_irpt1 [get_bd_pins cpu/In8] [get_bd_pins i2c/iic2intc_irpt1]
   connect_bd_net -net i2c_iic2intc_irpt2 [get_bd_pins cpu/In9] [get_bd_pins i2c/iic2intc_irpt2]
   connect_bd_net -net i2c_iic2intc_irpt3 [get_bd_pins cpu/In10] [get_bd_pins i2c/iic2intc_irpt3]
+  connect_bd_net -net ipmc_i2c_addr_received [get_bd_pins ila_0/probe4] [get_bd_pins ipmc/i2c_addr_received]
+  connect_bd_net -net ipmc_i2c_addr_received1 [get_bd_pins ila_0/probe5] [get_bd_pins ipmc/i2c_addr_received1]
   connect_bd_net -net ipmc_jtag_TCK_0 [get_bd_ports scf_tck_0] [get_bd_pins jtag/TCK_0]
   connect_bd_net -net ipmc_jtag_TCK_1 [get_bd_ports scf_tck_1] [get_bd_pins jtag/TCK_1]
   connect_bd_net -net ipmc_jtag_TDI_0 [get_bd_ports scf_tdi_0] [get_bd_pins jtag/TDI_0]
@@ -2483,7 +2524,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins cpu/ext_reset_in] [get_bd_pins eth1/ext_reset_in]
   connect_bd_net -net quad1_common_lock_in_1 [get_bd_pins chip2chip_0/quad1_common_lock_out] [get_bd_pins chip2chip_1/quad1_common_lock_in]
   connect_bd_net -net reg_bank_Dout [get_bd_pins chip2chip_0/gt0_txprbssel_in] [get_bd_pins chip2chip_1/gt0_rxprbssel_in] [get_bd_pins reg_bank/Dout]
-  connect_bd_net -net reg_bank_Dout_2 [get_bd_ports qbv_on_off] [get_bd_pins reg_bank/Dout_2]
+  connect_bd_net -net reg_bank_en_ipmb_zynq [get_bd_ports en_ipmb_zynq] [get_bd_pins reg_bank/en_ipmb_zynq]
+  connect_bd_net -net reg_bank_qbv_on_off [get_bd_ports qbv_on_off] [get_bd_pins reg_bank/qbv_on_off]
   connect_bd_net -net s0_i1_1 [get_bd_pins cpu/I2C1_SCL_O] [get_bd_pins ipmc/s0_i1]
   connect_bd_net -net s0_i_1 [get_bd_pins cpu/I2C1_SDA_O] [get_bd_pins ipmc/s0_i]
   connect_bd_net -net s0_t1_1 [get_bd_pins cpu/I2C1_SCL_T] [get_bd_pins ipmc/s0_t1]
@@ -2491,7 +2533,6 @@ proc create_root_design { parentCell } {
   connect_bd_net -net user_clk_1 [get_bd_pins chip2chip_0/user_clk_out] [get_bd_pins chip2chip_1/user_clk] [get_bd_pins ila_0/clk]
   connect_bd_net -net util_ds_buf_0_IBUF_OUT [get_bd_pins chip2chip_0/gt_refclk1] [get_bd_pins chip2chip_1/gt_refclk1] [get_bd_pins util_ds_buf_0/IBUF_OUT]
   connect_bd_net -net xlslice_0_Dout [get_bd_ports id] [get_bd_pins reg_bank/Dout_1]
-  connect_bd_net -net xlslice_1_Dout [get_bd_ports en_ipmb_zynq] [get_bd_pins reg_bank/Dout_0]
 
   # Create address segments
   assign_bd_address -offset 0x40000000 -range 0x00002000 -target_address_space [get_bd_addr_spaces cpu/processing_system7_0/Data] [get_bd_addr_segs ipmc/ipmc_i2c_0/axi_bram_ctrl_0/S_AXI/Mem0] -force

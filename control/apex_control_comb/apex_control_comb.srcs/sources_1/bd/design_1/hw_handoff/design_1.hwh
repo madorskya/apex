@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Sep 28 02:46:52 2020" VIVADOVERSION="2020.1.1_AR73018">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Oct 23 19:54:57 2020" VIVADOVERSION="2020.1.1_AR73018">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z015" NAME="design_1" PACKAGE="clg485" SPEEDGRADE="-1"/>
 
@@ -69,9 +69,9 @@
         <CONNECTION INSTANCE="ipmc_ipmc_i2c_1_i2c_switch_1" PORT="s"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" LEFT="1" NAME="en_ipmb_zynq" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_xlslice_1_Dout">
+    <PORT DIR="O" LEFT="1" NAME="en_ipmb_zynq" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_util_vector_logic_0_Res">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="reg_bank_xlslice_1" PORT="Dout"/>
+        <CONNECTION INSTANCE="reg_bank_util_vector_logic_0" PORT="Res"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" LEFT="2" NAME="id" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_xlslice_0_Dout">
@@ -92,6 +92,8 @@
     <PORT DIR="I" LEFT="7" NAME="ha" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_ha">
       <CONNECTIONS>
         <CONNECTION INSTANCE="reg_bank_xlconcat_0" PORT="In0"/>
+        <CONNECTION INSTANCE="ipmc_ipmc_i2c_0_i2cSlave_0" PORT="hardware_address"/>
+        <CONNECTION INSTANCE="ipmc_ipmc_i2c_1_i2cSlave_0" PORT="hardware_address"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="0" NAME="pim_alarm" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_pim_alarm">
@@ -99,9 +101,9 @@
         <CONNECTION INSTANCE="reg_bank_xlconcat_0" PORT="In3"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" LEFT="0" NAME="qbv_on_off" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_xlslice_2_Dout">
+    <PORT DIR="O" LEFT="0" NAME="qbv_on_off" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_util_vector_logic_1_Res">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="reg_bank_xlslice_2" PORT="Dout"/>
+        <CONNECTION INSTANCE="reg_bank_util_vector_logic_1" PORT="Res"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" NAME="scf_i2c_0_scl_i" SIGIS="undef" SIGNAME="i2c_axi_iic_0_scl_i">
@@ -427,6 +429,11 @@
     <PORT CLKFREQUENCY="100000000" DIR="I" LEFT="0" NAME="mgtrefclk_clk_n" RIGHT="0" SIGIS="clk" SIGNAME="util_ds_buf_0_IBUF_DS_N">
       <CONNECTIONS>
         <CONNECTION INSTANCE="util_ds_buf_0" PORT="IBUF_DS_N"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="0" NAME="hot_swap_sw" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_hot_swap_sw">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="reg_bank_xlconcat_0" PORT="In8"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -19922,7 +19929,7 @@
         <PARAMETER NAME="C_SLOT_0_AXI_PROTOCOL" VALUE="AXI4"/>
         <PARAMETER NAME="C_NUM_MONITOR_SLOTS" VALUE="1"/>
         <PARAMETER NAME="C_ENABLE_ILA_AXI_MON" VALUE="0"/>
-        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="4"/>
+        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="6"/>
         <PARAMETER NAME="C_DATA_DEPTH" VALUE="1024"/>
         <PARAMETER NAME="C_MAJOR_VERSION" VALUE="2020"/>
         <PARAMETER NAME="C_MINOR_VERSION" VALUE="1"/>
@@ -19937,7 +19944,7 @@
         <PARAMETER NAME="C_RAM_STYLE" VALUE="SUBCORE"/>
         <PARAMETER NAME="C_TRIGOUT_EN" VALUE="0"/>
         <PARAMETER NAME="C_TRIGIN_EN" VALUE="0"/>
-        <PARAMETER NAME="C_SLOT_0_AXIS_TUSER_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_SLOT_0_AXIS_TUSER_WIDTH" VALUE="7"/>
         <PARAMETER NAME="C_SLOT_0_AXIS_TDEST_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXIS_TID_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_ID_WIDTH" VALUE="1"/>
@@ -19950,8 +19957,8 @@
         <PARAMETER NAME="C_PROBE1_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE2_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE3_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE4_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE5_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE4_WIDTH" VALUE="7"/>
+        <PARAMETER NAME="C_PROBE5_WIDTH" VALUE="7"/>
         <PARAMETER NAME="C_PROBE6_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE7_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE8_WIDTH" VALUE="1"/>
@@ -23067,6 +23074,16 @@
             <CONNECTION INSTANCE="chip2chip_1_axi_chip2chip_0_aurora8" PORT="gt0_rxprbserr_out"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" LEFT="6" NAME="probe4" RIGHT="0" SIGIS="undef" SIGNAME="ipmc_ipmc_i2c_0_i2cSlave_0_i2c_addr_received">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ipmc_ipmc_i2c_0_i2cSlave_0" PORT="i2c_addr_received"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="6" NAME="probe5" RIGHT="0" SIGIS="undef" SIGNAME="ipmc_ipmc_i2c_1_i2cSlave_0_i2c_addr_received">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ipmc_ipmc_i2c_1_i2cSlave_0" PORT="i2c_addr_received"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -24166,6 +24183,16 @@
         <PORT DIR="O" NAME="irq" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="ipmc_ipmc_i2c_0_i2cSlave_0_irq">
           <CONNECTIONS>
             <CONNECTION INSTANCE="cpu_xlconcat_0" PORT="In4"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="6" NAME="i2c_addr_received" RIGHT="0" SIGIS="undef" SIGNAME="ipmc_ipmc_i2c_0_i2cSlave_0_i2c_addr_received">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe4"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="hardware_address" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_ha">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="ha"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -26351,6 +26378,16 @@
             <CONNECTION INSTANCE="cpu_xlconcat_0" PORT="In6"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="O" LEFT="6" NAME="i2c_addr_received" RIGHT="0" SIGIS="undef" SIGNAME="ipmc_ipmc_i2c_1_i2cSlave_0_i2c_addr_received">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe5"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="hardware_address" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_ha">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="ha"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -26918,7 +26955,7 @@
             <REGISTER NAME="GPIO2_DATA">
               <PROPERTY NAME="DESCRIPTION" VALUE="Channel-2 AXI GPIO Data register"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x8"/>
-              <PROPERTY NAME="SIZE" VALUE="16"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="read-write"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
@@ -26931,14 +26968,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="16"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="GPIO2_TRI">
               <PROPERTY NAME="DESCRIPTION" VALUE="Channel-2 AXI GPIO 3-State Control register"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0xC"/>
-              <PROPERTY NAME="SIZE" VALUE="16"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="read-write"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
@@ -26951,7 +26988,7 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="16"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
@@ -27043,7 +27080,7 @@
         <PARAMETER NAME="C_S_AXI_ADDR_WIDTH" VALUE="9"/>
         <PARAMETER NAME="C_S_AXI_DATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_GPIO_WIDTH" VALUE="10"/>
-        <PARAMETER NAME="C_GPIO2_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="C_GPIO2_WIDTH" VALUE="17"/>
         <PARAMETER NAME="C_ALL_INPUTS" VALUE="0"/>
         <PARAMETER NAME="C_ALL_INPUTS_2" VALUE="1"/>
         <PARAMETER NAME="C_ALL_OUTPUTS" VALUE="1"/>
@@ -27167,7 +27204,7 @@
             <CONNECTION INSTANCE="reg_bank_xlslice_4" PORT="Din"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="15" NAME="gpio2_io_i" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_xlconcat_0_dout">
+        <PORT DIR="I" LEFT="16" NAME="gpio2_io_i" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_xlconcat_0_dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="reg_bank_xlconcat_0" PORT="dout"/>
           </CONNECTIONS>
@@ -27238,6 +27275,52 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/reg_bank/util_vector_logic_0" HWVERSION="2.0" INSTANCE="reg_bank_util_vector_logic_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="C_OPERATION" VALUE="not"/>
+        <PARAMETER NAME="C_SIZE" VALUE="2"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_util_vector_logic_0_0"/>
+        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_notgate.png"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="1" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_xlslice_1_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="reg_bank_xlslice_1" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_util_vector_logic_0_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="en_ipmb_zynq"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/reg_bank/util_vector_logic_1" HWVERSION="2.0" INSTANCE="reg_bank_util_vector_logic_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="C_OPERATION" VALUE="not"/>
+        <PARAMETER NAME="C_SIZE" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_util_vector_logic_0_1"/>
+        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_notgate.png"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_xlslice_2_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="reg_bank_xlslice_2" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_util_vector_logic_1_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="qbv_on_off"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
     <MODULE COREREVISION="3" FULLNAME="/reg_bank/xlconcat_0" HWVERSION="2.1" INSTANCE="reg_bank_xlconcat_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconcat" VLNV="xilinx.com:ip:xlconcat:2.1">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -27273,8 +27356,8 @@
         <PARAMETER NAME="IN29_WIDTH" VALUE="1"/>
         <PARAMETER NAME="IN30_WIDTH" VALUE="1"/>
         <PARAMETER NAME="IN31_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="dout_width" VALUE="16"/>
-        <PARAMETER NAME="NUM_PORTS" VALUE="8"/>
+        <PARAMETER NAME="dout_width" VALUE="17"/>
+        <PARAMETER NAME="NUM_PORTS" VALUE="9"/>
         <PARAMETER NAME="Component_Name" VALUE="design_1_xlconcat_0_1"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -27319,7 +27402,12 @@
             <CONNECTION INSTANCE="chip2chip_1_axi_chip2chip_0_aurora8" PORT="channel_up"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_xlconcat_0_dout">
+        <PORT DIR="I" LEFT="0" NAME="In8" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_hot_swap_sw">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="hot_swap_sw"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="16" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_xlconcat_0_dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="reg_bank_axi_gpio_0" PORT="gpio2_io_i"/>
           </CONNECTIONS>
@@ -27369,7 +27457,7 @@
         </PORT>
         <PORT DIR="O" LEFT="1" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_xlslice_1_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="en_ipmb_zynq"/>
+            <CONNECTION INSTANCE="reg_bank_util_vector_logic_0" PORT="Op1"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -27393,7 +27481,7 @@
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="reg_bank_xlslice_2_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="External_Ports" PORT="qbv_on_off"/>
+            <CONNECTION INSTANCE="reg_bank_util_vector_logic_1" PORT="Op1"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
