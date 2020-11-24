@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Fri Oct 23 19:54:45 2020
+//Date        : Tue Nov 24 18:14:16 2020
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -49,6 +49,8 @@ module design_1_wrapper
     ipmc_scl_1,
     ipmc_sda_0,
     ipmc_sda_1,
+    local_i2c_scl_io,
+    local_i2c_sda_io,
     los_10g,
     mdio_phy_mdc,
     mdio_phy_mdio_io,
@@ -117,6 +119,8 @@ module design_1_wrapper
   inout ipmc_scl_1;
   inout ipmc_sda_0;
   inout ipmc_sda_1;
+  inout local_i2c_scl_io;
+  inout local_i2c_sda_io;
   input [0:0]los_10g;
   output mdio_phy_mdc;
   inout mdio_phy_mdio_io;
@@ -192,6 +196,14 @@ module design_1_wrapper
   wire ipmc_scl_1;
   wire ipmc_sda_0;
   wire ipmc_sda_1;
+  wire local_i2c_scl_i;
+  wire local_i2c_scl_io;
+  wire local_i2c_scl_o;
+  wire local_i2c_scl_t;
+  wire local_i2c_sda_i;
+  wire local_i2c_sda_io;
+  wire local_i2c_sda_o;
+  wire local_i2c_sda_t;
   wire [0:0]los_10g;
   wire mdio_phy_mdc;
   wire mdio_phy_mdio_i;
@@ -287,6 +299,12 @@ module design_1_wrapper
         .ipmc_scl_1(ipmc_scl_1),
         .ipmc_sda_0(ipmc_sda_0),
         .ipmc_sda_1(ipmc_sda_1),
+        .local_i2c_scl_i(local_i2c_scl_i),
+        .local_i2c_scl_o(local_i2c_scl_o),
+        .local_i2c_scl_t(local_i2c_scl_t),
+        .local_i2c_sda_i(local_i2c_sda_i),
+        .local_i2c_sda_o(local_i2c_sda_o),
+        .local_i2c_sda_t(local_i2c_sda_t),
         .los_10g(los_10g),
         .mdio_phy_mdc(mdio_phy_mdc),
         .mdio_phy_mdio_i(mdio_phy_mdio_i),
@@ -340,6 +358,16 @@ module design_1_wrapper
         .IO(i2c_10g_sda_io),
         .O(i2c_10g_sda_i),
         .T(i2c_10g_sda_t));
+  IOBUF local_i2c_scl_iobuf
+       (.I(local_i2c_scl_o),
+        .IO(local_i2c_scl_io),
+        .O(local_i2c_scl_i),
+        .T(local_i2c_scl_t));
+  IOBUF local_i2c_sda_iobuf
+       (.I(local_i2c_sda_o),
+        .IO(local_i2c_sda_io),
+        .O(local_i2c_sda_i),
+        .T(local_i2c_sda_t));
   IOBUF mdio_phy_mdio_iobuf
        (.I(mdio_phy_mdio_o),
         .IO(mdio_phy_mdio_io),

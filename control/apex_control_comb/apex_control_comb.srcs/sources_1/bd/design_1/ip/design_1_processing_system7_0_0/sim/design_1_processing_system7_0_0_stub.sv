@@ -172,7 +172,7 @@ module design_1_processing_system7_0_0 (
   input bit [5 : 0] S_AXI_HP0_WID,
   input bit [63 : 0] S_AXI_HP0_WDATA,
   input bit [7 : 0] S_AXI_HP0_WSTRB,
-  input bit [10 : 0] IRQ_F2P,
+  input bit [11 : 0] IRQ_F2P,
   output bit_as_bool FCLK_CLK0,
   output bit_as_bool FCLK_CLK1,
   output bit_as_bool FCLK_CLK2,
@@ -314,7 +314,7 @@ module design_1_processing_system7_0_0 (ENET0_PTP_DELAY_REQ_RX,ENET0_PTP_DELAY_R
   input bit [5 : 0] S_AXI_HP0_WID;
   input bit [63 : 0] S_AXI_HP0_WDATA;
   input bit [7 : 0] S_AXI_HP0_WSTRB;
-  input bit [10 : 0] IRQ_F2P;
+  input bit [11 : 0] IRQ_F2P;
   output wire FCLK_CLK0;
   output wire FCLK_CLK1;
   output wire FCLK_CLK2;
@@ -453,7 +453,7 @@ module design_1_processing_system7_0_0 (ENET0_PTP_DELAY_REQ_RX,ENET0_PTP_DELAY_R
   input bit [5 : 0] S_AXI_HP0_WID;
   input bit [63 : 0] S_AXI_HP0_WDATA;
   input bit [7 : 0] S_AXI_HP0_WSTRB;
-  input bit [10 : 0] IRQ_F2P;
+  input bit [11 : 0] IRQ_F2P;
   output wire FCLK_CLK0;
   output wire FCLK_CLK1;
   output wire FCLK_CLK2;

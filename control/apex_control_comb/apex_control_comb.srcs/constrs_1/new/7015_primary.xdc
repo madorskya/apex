@@ -139,14 +139,20 @@ set_property PACKAGE_PIN AB19 [get_ports hot_swap_sw]; # J2 pin 73
 # payload I2C from Elma chip
 #set_property PACKAGE_PIN R2  [get_ports scl_zynq[2]]; # J2 pin 56
 #set_property PACKAGE_PIN R3  [get_ports sda_zynq[2]]; # J2 pin 54
+
 # local I2C from Elma chip (talking to its slaves)
-#set_property PACKAGE_PIN P5  [get_ports scl_zynq[3]]; # J2 pin 50
-#set_property PACKAGE_PIN P6  [get_ports sda_zynq[3]]; # J2 pin 48
+# used to access temp sensors
+# sda and scl_zynq[3] in schematics
+set_property PACKAGE_PIN P5  [get_ports local_i2c_scl_io]; # J2 pin 50
+set_property PACKAGE_PIN P6  [get_ports local_i2c_sda_io]; # J2 pin 48
+set_property IOSTANDARD LVCMOS33 [get_ports local_i2c_*]
+set_property PULLUP true         [get_ports local_i2c_*]
+
 # DAC I2C for spoofing Elma chip sensors
 #set_property PACKAGE_PIN W11  [get_ports scl_zynq[4]]; # J2 pin 110
 #set_property PACKAGE_PIN V11  [get_ports sda_zynq[4]]; # J2 pin 108
 
 set_property PACKAGE_PIN T16  [get_ports tach]; # J2 pin 84
 
-set_false_path -from [get_clocks clk_fpga_0] -to [get_clocks -of_objects [get_pins design_1_i/chip2chip_0/axi_chip2chip_0_aurora8/inst/clock_module_i/mmcm_adv_inst/CLKOUT0]]
-set_false_path -from [get_clocks -of_objects [get_pins design_1_i/chip2chip_0/axi_chip2chip_0_aurora8/inst/clock_module_i/mmcm_adv_inst/CLKOUT0]] -to [get_clocks clk_fpga_0] 
+set_false_path -from [get_clocks clk_fpga_0] -to [get_clocks -of_objects [get_pins design_1_i/chip2chip_*/axi_chip2chip_*_aurora8/inst/clock_module_i/mmcm_adv_inst/CLKOUT0]]
+set_false_path -from [get_clocks -of_objects [get_pins design_1_i/chip2chip_*/axi_chip2chip_*_aurora8/inst/clock_module_i/mmcm_adv_inst/CLKOUT0]] -to [get_clocks clk_fpga_0] 
