@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Tue Nov 24 18:14:14 2020
+//Date        : Wed Nov 25 17:43:33 2020
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -797,6 +797,7 @@ endmodule
 module chip2chip_top_ff_imp_8AXF8X
    (GT_SERIAL_TX_txn,
     GT_SERIAL_TX_txp,
+    M_AXI_ARESETN,
     S_AXI1_araddr,
     S_AXI1_arburst,
     S_AXI1_arcache,
@@ -849,6 +850,8 @@ module chip2chip_top_ff_imp_8AXF8X
     gt0_rxprbserr_out,
     gt0_txprbssel_in,
     gt_refclk1,
+    o_read_fault,
+    o_write_fault,
     pll_not_locked_out,
     quad1_common_lock_out,
     s_aresetn,
@@ -856,6 +859,7 @@ module chip2chip_top_ff_imp_8AXF8X
     user_clk_out);
   output [0:0]GT_SERIAL_TX_txn;
   output [0:0]GT_SERIAL_TX_txp;
+  output M_AXI_ARESETN;
   input [31:0]S_AXI1_araddr;
   input [1:0]S_AXI1_arburst;
   input [3:0]S_AXI1_arcache;
@@ -908,6 +912,8 @@ module chip2chip_top_ff_imp_8AXF8X
   output gt0_rxprbserr_out;
   input [2:0]gt0_txprbssel_in;
   input gt_refclk1;
+  output o_read_fault;
+  output o_write_fault;
   output pll_not_locked_out;
   output quad1_common_lock_out;
   input s_aresetn;
@@ -918,43 +924,43 @@ module chip2chip_top_ff_imp_8AXF8X
   wire [0:0]GT_SERIAL_RX_1_RXP;
   wire Net;
   wire [2:0]Net1;
-  wire [31:0]S_AXI1_1_ARADDR;
-  wire [1:0]S_AXI1_1_ARBURST;
-  wire [3:0]S_AXI1_1_ARCACHE;
-  wire [5:0]S_AXI1_1_ARID;
-  wire [7:0]S_AXI1_1_ARLEN;
-  wire S_AXI1_1_ARLOCK;
-  wire [2:0]S_AXI1_1_ARPROT;
-  wire [3:0]S_AXI1_1_ARQOS;
-  wire S_AXI1_1_ARREADY;
-  wire [2:0]S_AXI1_1_ARSIZE;
-  wire S_AXI1_1_ARVALID;
-  wire [31:0]S_AXI1_1_AWADDR;
-  wire [1:0]S_AXI1_1_AWBURST;
-  wire [3:0]S_AXI1_1_AWCACHE;
-  wire [5:0]S_AXI1_1_AWID;
-  wire [7:0]S_AXI1_1_AWLEN;
-  wire S_AXI1_1_AWLOCK;
-  wire [2:0]S_AXI1_1_AWPROT;
-  wire [3:0]S_AXI1_1_AWQOS;
-  wire S_AXI1_1_AWREADY;
-  wire [2:0]S_AXI1_1_AWSIZE;
-  wire S_AXI1_1_AWVALID;
-  wire [5:0]S_AXI1_1_BID;
-  wire S_AXI1_1_BREADY;
-  wire [1:0]S_AXI1_1_BRESP;
-  wire S_AXI1_1_BVALID;
-  wire [31:0]S_AXI1_1_RDATA;
-  wire [5:0]S_AXI1_1_RID;
-  wire S_AXI1_1_RLAST;
-  wire S_AXI1_1_RREADY;
-  wire [1:0]S_AXI1_1_RRESP;
-  wire S_AXI1_1_RVALID;
-  wire [31:0]S_AXI1_1_WDATA;
-  wire S_AXI1_1_WLAST;
-  wire S_AXI1_1_WREADY;
-  wire [3:0]S_AXI1_1_WSTRB;
-  wire S_AXI1_1_WVALID;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 ARADDR" *) (* DONT_TOUCH *) wire [31:0]S_AXI1_1_ARADDR;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 ARBURST" *) (* DONT_TOUCH *) wire [1:0]S_AXI1_1_ARBURST;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 ARCACHE" *) (* DONT_TOUCH *) wire [3:0]S_AXI1_1_ARCACHE;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 ARID" *) (* DONT_TOUCH *) wire [5:0]S_AXI1_1_ARID;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 ARLEN" *) (* DONT_TOUCH *) wire [7:0]S_AXI1_1_ARLEN;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 ARLOCK" *) (* DONT_TOUCH *) wire S_AXI1_1_ARLOCK;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 ARPROT" *) (* DONT_TOUCH *) wire [2:0]S_AXI1_1_ARPROT;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 ARQOS" *) (* DONT_TOUCH *) wire [3:0]S_AXI1_1_ARQOS;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 ARREADY" *) (* DONT_TOUCH *) wire S_AXI1_1_ARREADY;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 ARSIZE" *) (* DONT_TOUCH *) wire [2:0]S_AXI1_1_ARSIZE;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 ARVALID" *) (* DONT_TOUCH *) wire S_AXI1_1_ARVALID;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 AWADDR" *) (* DONT_TOUCH *) wire [31:0]S_AXI1_1_AWADDR;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 AWBURST" *) (* DONT_TOUCH *) wire [1:0]S_AXI1_1_AWBURST;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 AWCACHE" *) (* DONT_TOUCH *) wire [3:0]S_AXI1_1_AWCACHE;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 AWID" *) (* DONT_TOUCH *) wire [5:0]S_AXI1_1_AWID;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 AWLEN" *) (* DONT_TOUCH *) wire [7:0]S_AXI1_1_AWLEN;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 AWLOCK" *) (* DONT_TOUCH *) wire S_AXI1_1_AWLOCK;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 AWPROT" *) (* DONT_TOUCH *) wire [2:0]S_AXI1_1_AWPROT;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 AWQOS" *) (* DONT_TOUCH *) wire [3:0]S_AXI1_1_AWQOS;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 AWREADY" *) (* DONT_TOUCH *) wire S_AXI1_1_AWREADY;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 AWSIZE" *) (* DONT_TOUCH *) wire [2:0]S_AXI1_1_AWSIZE;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 AWVALID" *) (* DONT_TOUCH *) wire S_AXI1_1_AWVALID;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 BID" *) (* DONT_TOUCH *) wire [5:0]S_AXI1_1_BID;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 BREADY" *) (* DONT_TOUCH *) wire S_AXI1_1_BREADY;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 BRESP" *) (* DONT_TOUCH *) wire [1:0]S_AXI1_1_BRESP;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 BVALID" *) (* DONT_TOUCH *) wire S_AXI1_1_BVALID;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 RDATA" *) (* DONT_TOUCH *) wire [31:0]S_AXI1_1_RDATA;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 RID" *) (* DONT_TOUCH *) wire [5:0]S_AXI1_1_RID;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 RLAST" *) (* DONT_TOUCH *) wire S_AXI1_1_RLAST;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 RREADY" *) (* DONT_TOUCH *) wire S_AXI1_1_RREADY;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 RRESP" *) (* DONT_TOUCH *) wire [1:0]S_AXI1_1_RRESP;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 RVALID" *) (* DONT_TOUCH *) wire S_AXI1_1_RVALID;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 WDATA" *) (* DONT_TOUCH *) wire [31:0]S_AXI1_1_WDATA;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 WLAST" *) (* DONT_TOUCH *) wire S_AXI1_1_WLAST;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 WREADY" *) (* DONT_TOUCH *) wire S_AXI1_1_WREADY;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 WSTRB" *) (* DONT_TOUCH *) wire [3:0]S_AXI1_1_WSTRB;
+  (* CONN_BUS_INFO = "S_AXI1_1 xilinx.com:interface:aximm:1.0 AXI4 WVALID" *) (* DONT_TOUCH *) wire S_AXI1_1_WVALID;
   wire [31:0]axi_chip2chip_0_AXIS_TX_TDATA;
   wire axi_chip2chip_0_AXIS_TX_TREADY;
   wire axi_chip2chip_0_AXIS_TX_TVALID;
@@ -977,36 +983,46 @@ module chip2chip_top_ff_imp_8AXF8X
   wire axi_chip2chip_0_aurora_pma_init_out;
   wire axi_chip2chip_0_aurora_reset_pb;
   wire axi_chip2chip_0_axi_c2c_link_status_out;
-  wire [26:0]axisafety_1_M_AXI_ARADDR;
-  wire [1:0]axisafety_1_M_AXI_ARBURST;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 ARADDR" *) (* DONT_TOUCH *) wire [26:0]axisafety_1_M_AXI_ARADDR;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 ARBURST" *) (* DONT_TOUCH *) wire [1:0]axisafety_1_M_AXI_ARBURST;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 ARCACHE" *) (* DONT_TOUCH *) wire [3:0]axisafety_1_M_AXI_ARCACHE;
   wire axisafety_1_M_AXI_ARESETN;
-  wire [5:0]axisafety_1_M_AXI_ARID;
-  wire [7:0]axisafety_1_M_AXI_ARLEN;
-  wire axisafety_1_M_AXI_ARREADY;
-  wire [2:0]axisafety_1_M_AXI_ARSIZE;
-  wire axisafety_1_M_AXI_ARVALID;
-  wire [26:0]axisafety_1_M_AXI_AWADDR;
-  wire [1:0]axisafety_1_M_AXI_AWBURST;
-  wire [5:0]axisafety_1_M_AXI_AWID;
-  wire [7:0]axisafety_1_M_AXI_AWLEN;
-  wire axisafety_1_M_AXI_AWREADY;
-  wire [2:0]axisafety_1_M_AXI_AWSIZE;
-  wire axisafety_1_M_AXI_AWVALID;
-  wire [5:0]axisafety_1_M_AXI_BID;
-  wire axisafety_1_M_AXI_BREADY;
-  wire [1:0]axisafety_1_M_AXI_BRESP;
-  wire axisafety_1_M_AXI_BVALID;
-  wire [31:0]axisafety_1_M_AXI_RDATA;
-  wire [5:0]axisafety_1_M_AXI_RID;
-  wire axisafety_1_M_AXI_RLAST;
-  wire axisafety_1_M_AXI_RREADY;
-  wire [1:0]axisafety_1_M_AXI_RRESP;
-  wire axisafety_1_M_AXI_RVALID;
-  wire [31:0]axisafety_1_M_AXI_WDATA;
-  wire axisafety_1_M_AXI_WLAST;
-  wire axisafety_1_M_AXI_WREADY;
-  wire [3:0]axisafety_1_M_AXI_WSTRB;
-  wire axisafety_1_M_AXI_WVALID;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 ARID" *) (* DONT_TOUCH *) wire [5:0]axisafety_1_M_AXI_ARID;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 ARLEN" *) (* DONT_TOUCH *) wire [7:0]axisafety_1_M_AXI_ARLEN;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 ARLOCK" *) (* DONT_TOUCH *) wire axisafety_1_M_AXI_ARLOCK;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 ARPROT" *) (* DONT_TOUCH *) wire [2:0]axisafety_1_M_AXI_ARPROT;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 ARQOS" *) (* DONT_TOUCH *) wire [3:0]axisafety_1_M_AXI_ARQOS;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 ARREADY" *) (* DONT_TOUCH *) wire axisafety_1_M_AXI_ARREADY;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 ARSIZE" *) (* DONT_TOUCH *) wire [2:0]axisafety_1_M_AXI_ARSIZE;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 ARVALID" *) (* DONT_TOUCH *) wire axisafety_1_M_AXI_ARVALID;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 AWADDR" *) (* DONT_TOUCH *) wire [26:0]axisafety_1_M_AXI_AWADDR;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 AWBURST" *) (* DONT_TOUCH *) wire [1:0]axisafety_1_M_AXI_AWBURST;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 AWCACHE" *) (* DONT_TOUCH *) wire [3:0]axisafety_1_M_AXI_AWCACHE;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 AWID" *) (* DONT_TOUCH *) wire [5:0]axisafety_1_M_AXI_AWID;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 AWLEN" *) (* DONT_TOUCH *) wire [7:0]axisafety_1_M_AXI_AWLEN;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 AWLOCK" *) (* DONT_TOUCH *) wire axisafety_1_M_AXI_AWLOCK;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 AWPROT" *) (* DONT_TOUCH *) wire [2:0]axisafety_1_M_AXI_AWPROT;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 AWQOS" *) (* DONT_TOUCH *) wire [3:0]axisafety_1_M_AXI_AWQOS;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 AWREADY" *) (* DONT_TOUCH *) wire axisafety_1_M_AXI_AWREADY;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 AWSIZE" *) (* DONT_TOUCH *) wire [2:0]axisafety_1_M_AXI_AWSIZE;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 AWVALID" *) (* DONT_TOUCH *) wire axisafety_1_M_AXI_AWVALID;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 BID" *) (* DONT_TOUCH *) wire [5:0]axisafety_1_M_AXI_BID;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 BREADY" *) (* DONT_TOUCH *) wire axisafety_1_M_AXI_BREADY;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 BRESP" *) (* DONT_TOUCH *) wire [1:0]axisafety_1_M_AXI_BRESP;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 BVALID" *) (* DONT_TOUCH *) wire axisafety_1_M_AXI_BVALID;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 RDATA" *) (* DONT_TOUCH *) wire [31:0]axisafety_1_M_AXI_RDATA;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 RID" *) (* DONT_TOUCH *) wire [5:0]axisafety_1_M_AXI_RID;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 RLAST" *) (* DONT_TOUCH *) wire axisafety_1_M_AXI_RLAST;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 RREADY" *) (* DONT_TOUCH *) wire axisafety_1_M_AXI_RREADY;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 RRESP" *) (* DONT_TOUCH *) wire [1:0]axisafety_1_M_AXI_RRESP;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 RVALID" *) (* DONT_TOUCH *) wire axisafety_1_M_AXI_RVALID;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 WDATA" *) (* DONT_TOUCH *) wire [31:0]axisafety_1_M_AXI_WDATA;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 WLAST" *) (* DONT_TOUCH *) wire axisafety_1_M_AXI_WLAST;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 WREADY" *) (* DONT_TOUCH *) wire axisafety_1_M_AXI_WREADY;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 WSTRB" *) (* DONT_TOUCH *) wire [3:0]axisafety_1_M_AXI_WSTRB;
+  (* CONN_BUS_INFO = "axisafety_1_M_AXI xilinx.com:interface:aximm:1.0 AXI4 WVALID" *) (* DONT_TOUCH *) wire axisafety_1_M_AXI_WVALID;
+  wire axisafety_1_o_read_fault;
+  wire axisafety_1_o_write_fault;
   wire cpu_peripheral_reset;
   wire s_aresetn_1;
   wire util_ds_buf_0_IBUF_OUT;
@@ -1016,6 +1032,7 @@ module chip2chip_top_ff_imp_8AXF8X
   assign GT_SERIAL_RX_1_RXP = c2c_0_rxp[0];
   assign GT_SERIAL_TX_txn[0] = axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXN;
   assign GT_SERIAL_TX_txp[0] = axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXP;
+  assign M_AXI_ARESETN = axisafety_1_M_AXI_ARESETN;
   assign Net = aurora_init_clk;
   assign Net1 = gt0_txprbssel_in[2:0];
   assign S_AXI1_1_ARADDR = S_AXI1_araddr[31:0];
@@ -1065,6 +1082,8 @@ module chip2chip_top_ff_imp_8AXF8X
   assign gt0_pll1outrefclk_out = axi_chip2chip_0_aurora8_gt0_pll1outrefclk_out;
   assign gt0_rxcommadet_out = axi_chip2chip_0_aurora8_gt0_rxcommadet_out;
   assign gt0_rxprbserr_out = axi_chip2chip_0_aurora8_gt0_rxprbserr_out;
+  assign o_read_fault = axisafety_1_o_read_fault;
+  assign o_write_fault = axisafety_1_o_write_fault;
   assign pll_not_locked_out = axi_chip2chip_0_aurora8_pll_not_locked_out;
   assign quad1_common_lock_out = axi_chip2chip_0_aurora8_quad1_common_lock_out;
   assign s_aresetn_1 = s_aresetn;
@@ -1173,16 +1192,24 @@ module chip2chip_top_ff_imp_8AXF8X
   design_1_axisafety_0_1 axisafety_1
        (.M_AXI_ARADDR(axisafety_1_M_AXI_ARADDR),
         .M_AXI_ARBURST(axisafety_1_M_AXI_ARBURST),
+        .M_AXI_ARCACHE(axisafety_1_M_AXI_ARCACHE),
         .M_AXI_ARESETN(axisafety_1_M_AXI_ARESETN),
         .M_AXI_ARID(axisafety_1_M_AXI_ARID),
         .M_AXI_ARLEN(axisafety_1_M_AXI_ARLEN),
+        .M_AXI_ARLOCK(axisafety_1_M_AXI_ARLOCK),
+        .M_AXI_ARPROT(axisafety_1_M_AXI_ARPROT),
+        .M_AXI_ARQOS(axisafety_1_M_AXI_ARQOS),
         .M_AXI_ARREADY(axisafety_1_M_AXI_ARREADY),
         .M_AXI_ARSIZE(axisafety_1_M_AXI_ARSIZE),
         .M_AXI_ARVALID(axisafety_1_M_AXI_ARVALID),
         .M_AXI_AWADDR(axisafety_1_M_AXI_AWADDR),
         .M_AXI_AWBURST(axisafety_1_M_AXI_AWBURST),
+        .M_AXI_AWCACHE(axisafety_1_M_AXI_AWCACHE),
         .M_AXI_AWID(axisafety_1_M_AXI_AWID),
         .M_AXI_AWLEN(axisafety_1_M_AXI_AWLEN),
+        .M_AXI_AWLOCK(axisafety_1_M_AXI_AWLOCK),
+        .M_AXI_AWPROT(axisafety_1_M_AXI_AWPROT),
+        .M_AXI_AWQOS(axisafety_1_M_AXI_AWQOS),
         .M_AXI_AWREADY(axisafety_1_M_AXI_AWREADY),
         .M_AXI_AWSIZE(axisafety_1_M_AXI_AWSIZE),
         .M_AXI_AWVALID(axisafety_1_M_AXI_AWVALID),
@@ -1239,7 +1266,86 @@ module chip2chip_top_ff_imp_8AXF8X
         .S_AXI_WLAST(S_AXI1_1_WLAST),
         .S_AXI_WREADY(S_AXI1_1_WREADY),
         .S_AXI_WSTRB(S_AXI1_1_WSTRB),
-        .S_AXI_WVALID(S_AXI1_1_WVALID));
+        .S_AXI_WVALID(S_AXI1_1_WVALID),
+        .o_read_fault(axisafety_1_o_read_fault),
+        .o_write_fault(axisafety_1_o_write_fault));
+  design_1_system_ila_0_0 system_ila_0
+       (.SLOT_0_AXI_araddr(S_AXI1_1_ARADDR[26:0]),
+        .SLOT_0_AXI_arburst(S_AXI1_1_ARBURST),
+        .SLOT_0_AXI_arcache(S_AXI1_1_ARCACHE),
+        .SLOT_0_AXI_arid(S_AXI1_1_ARID),
+        .SLOT_0_AXI_arlen(S_AXI1_1_ARLEN),
+        .SLOT_0_AXI_arlock(S_AXI1_1_ARLOCK),
+        .SLOT_0_AXI_arprot(S_AXI1_1_ARPROT),
+        .SLOT_0_AXI_arqos(S_AXI1_1_ARQOS),
+        .SLOT_0_AXI_arready(S_AXI1_1_ARREADY),
+        .SLOT_0_AXI_arsize(S_AXI1_1_ARSIZE),
+        .SLOT_0_AXI_arvalid(S_AXI1_1_ARVALID),
+        .SLOT_0_AXI_awaddr(S_AXI1_1_AWADDR[26:0]),
+        .SLOT_0_AXI_awburst(S_AXI1_1_AWBURST),
+        .SLOT_0_AXI_awcache(S_AXI1_1_AWCACHE),
+        .SLOT_0_AXI_awid(S_AXI1_1_AWID),
+        .SLOT_0_AXI_awlen(S_AXI1_1_AWLEN),
+        .SLOT_0_AXI_awlock(S_AXI1_1_AWLOCK),
+        .SLOT_0_AXI_awprot(S_AXI1_1_AWPROT),
+        .SLOT_0_AXI_awqos(S_AXI1_1_AWQOS),
+        .SLOT_0_AXI_awready(S_AXI1_1_AWREADY),
+        .SLOT_0_AXI_awsize(S_AXI1_1_AWSIZE),
+        .SLOT_0_AXI_awvalid(S_AXI1_1_AWVALID),
+        .SLOT_0_AXI_bid(S_AXI1_1_BID),
+        .SLOT_0_AXI_bready(S_AXI1_1_BREADY),
+        .SLOT_0_AXI_bresp(S_AXI1_1_BRESP),
+        .SLOT_0_AXI_bvalid(S_AXI1_1_BVALID),
+        .SLOT_0_AXI_rdata(S_AXI1_1_RDATA),
+        .SLOT_0_AXI_rid(S_AXI1_1_RID),
+        .SLOT_0_AXI_rlast(S_AXI1_1_RLAST),
+        .SLOT_0_AXI_rready(S_AXI1_1_RREADY),
+        .SLOT_0_AXI_rresp(S_AXI1_1_RRESP),
+        .SLOT_0_AXI_rvalid(S_AXI1_1_RVALID),
+        .SLOT_0_AXI_wdata(S_AXI1_1_WDATA),
+        .SLOT_0_AXI_wlast(S_AXI1_1_WLAST),
+        .SLOT_0_AXI_wready(S_AXI1_1_WREADY),
+        .SLOT_0_AXI_wstrb(S_AXI1_1_WSTRB),
+        .SLOT_0_AXI_wvalid(S_AXI1_1_WVALID),
+        .SLOT_1_AXI_araddr(axisafety_1_M_AXI_ARADDR),
+        .SLOT_1_AXI_arburst(axisafety_1_M_AXI_ARBURST),
+        .SLOT_1_AXI_arcache(axisafety_1_M_AXI_ARCACHE),
+        .SLOT_1_AXI_arid(axisafety_1_M_AXI_ARID),
+        .SLOT_1_AXI_arlen(axisafety_1_M_AXI_ARLEN),
+        .SLOT_1_AXI_arlock(axisafety_1_M_AXI_ARLOCK),
+        .SLOT_1_AXI_arprot(axisafety_1_M_AXI_ARPROT),
+        .SLOT_1_AXI_arqos(axisafety_1_M_AXI_ARQOS),
+        .SLOT_1_AXI_arready(axisafety_1_M_AXI_ARREADY),
+        .SLOT_1_AXI_arsize(axisafety_1_M_AXI_ARSIZE),
+        .SLOT_1_AXI_arvalid(axisafety_1_M_AXI_ARVALID),
+        .SLOT_1_AXI_awaddr(axisafety_1_M_AXI_AWADDR),
+        .SLOT_1_AXI_awburst(axisafety_1_M_AXI_AWBURST),
+        .SLOT_1_AXI_awcache(axisafety_1_M_AXI_AWCACHE),
+        .SLOT_1_AXI_awid(axisafety_1_M_AXI_AWID),
+        .SLOT_1_AXI_awlen(axisafety_1_M_AXI_AWLEN),
+        .SLOT_1_AXI_awlock(axisafety_1_M_AXI_AWLOCK),
+        .SLOT_1_AXI_awprot(axisafety_1_M_AXI_AWPROT),
+        .SLOT_1_AXI_awqos(axisafety_1_M_AXI_AWQOS),
+        .SLOT_1_AXI_awready(axisafety_1_M_AXI_AWREADY),
+        .SLOT_1_AXI_awsize(axisafety_1_M_AXI_AWSIZE),
+        .SLOT_1_AXI_awvalid(axisafety_1_M_AXI_AWVALID),
+        .SLOT_1_AXI_bid(axisafety_1_M_AXI_BID),
+        .SLOT_1_AXI_bready(axisafety_1_M_AXI_BREADY),
+        .SLOT_1_AXI_bresp(axisafety_1_M_AXI_BRESP),
+        .SLOT_1_AXI_bvalid(axisafety_1_M_AXI_BVALID),
+        .SLOT_1_AXI_rdata(axisafety_1_M_AXI_RDATA),
+        .SLOT_1_AXI_rid(axisafety_1_M_AXI_RID),
+        .SLOT_1_AXI_rlast(axisafety_1_M_AXI_RLAST),
+        .SLOT_1_AXI_rready(axisafety_1_M_AXI_RREADY),
+        .SLOT_1_AXI_rresp(axisafety_1_M_AXI_RRESP),
+        .SLOT_1_AXI_rvalid(axisafety_1_M_AXI_RVALID),
+        .SLOT_1_AXI_wdata(axisafety_1_M_AXI_WDATA),
+        .SLOT_1_AXI_wlast(axisafety_1_M_AXI_WLAST),
+        .SLOT_1_AXI_wready(axisafety_1_M_AXI_WREADY),
+        .SLOT_1_AXI_wstrb(axisafety_1_M_AXI_WSTRB),
+        .SLOT_1_AXI_wvalid(axisafety_1_M_AXI_WVALID),
+        .clk(Net),
+        .resetn(s_aresetn_1));
   design_1_xlconstant_0_3 xlconstant_0
        (.dout(xlconstant_0_dout));
 endmodule
@@ -4099,7 +4205,7 @@ module dbg_imp_5R9Y5
         .clk(Net));
 endmodule
 
-(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=125,numReposBlks=84,numNonXlnxBlks=2,numHierBlks=41,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=9,numPkgbdBlks=0,bdsource=USER,da_aeth_cnt=7,da_axi4_cnt=40,da_axi_chip2chip_cnt=1,da_board_cnt=37,da_bram_cntlr_cnt=1,da_clkrst_cnt=25,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=126,numReposBlks=85,numNonXlnxBlks=2,numHierBlks=41,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=9,numPkgbdBlks=0,bdsource=USER,da_aeth_cnt=7,da_axi4_cnt=40,da_axi_chip2chip_cnt=1,da_board_cnt=37,da_bram_cntlr_cnt=1,da_clkrst_cnt=25,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
    (DDR_addr,
     DDR_ba,
@@ -4511,6 +4617,9 @@ module design_1
   wire chip2chip_1_axi_c2c_link_status_out;
   wire chip2chip_1_gt0_rxcommadet_out;
   wire chip2chip_1_gt0_rxprbserr_out;
+  wire chip2chip_top_ff_M_AXI_ARESETN;
+  wire chip2chip_top_ff_o_read_fault;
+  wire chip2chip_top_ff_o_write_fault;
   wire [31:0]cpu_M10_AXI_ARADDR;
   wire cpu_M10_AXI_ARREADY;
   wire cpu_M10_AXI_ARVALID;
@@ -5057,6 +5166,7 @@ module design_1
   chip2chip_top_ff_imp_8AXF8X chip2chip_top_ff
        (.GT_SERIAL_TX_txn(axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXN),
         .GT_SERIAL_TX_txp(axi_chip2chip_0_aurora8_GT_SERIAL_TX_TXP),
+        .M_AXI_ARESETN(chip2chip_top_ff_M_AXI_ARESETN),
         .S_AXI1_araddr(cpu_M14_AXI_ARADDR),
         .S_AXI1_arburst(cpu_M14_AXI_ARBURST),
         .S_AXI1_arcache(cpu_M14_AXI_ARCACHE),
@@ -5109,6 +5219,8 @@ module design_1
         .gt0_rxprbserr_out(chip2chip_0_gt0_rxprbserr_out),
         .gt0_txprbssel_in(reg_bank_Dout),
         .gt_refclk1(util_ds_buf_0_IBUF_OUT),
+        .o_read_fault(chip2chip_top_ff_o_read_fault),
+        .o_write_fault(chip2chip_top_ff_o_write_fault),
         .pll_not_locked_out(aurora_mmcm_not_locked_1),
         .quad1_common_lock_out(quad1_common_lock_in_1),
         .s_aresetn(proc_sys_reset_0_peripheral_aresetn),
@@ -5867,7 +5979,10 @@ module design_1
         .probe2(chip2chip_1_gt0_rxcommadet_out),
         .probe3(chip2chip_1_gt0_rxprbserr_out),
         .probe4(ipmc_i2c_addr_received),
-        .probe5(ipmc_i2c_addr_received1));
+        .probe5(ipmc_i2c_addr_received1),
+        .probe6(chip2chip_top_ff_o_read_fault),
+        .probe7(chip2chip_top_ff_o_write_fault),
+        .probe8(chip2chip_top_ff_M_AXI_ARESETN));
   ipmc_imp_13B1Q7C ipmc
        (.S_AXI1_araddr(S_AXI4_1_ARADDR),
         .S_AXI1_arburst(S_AXI4_1_ARBURST),

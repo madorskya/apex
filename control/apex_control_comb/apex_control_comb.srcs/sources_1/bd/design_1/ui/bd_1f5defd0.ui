@@ -3,227 +3,162 @@
    "Color Coded_ExpandedHierarchyInLayout":"",
    "Color Coded_Layout":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
 #  -string -flagsOSRD
-preplace port DDR -pg 1 -lvl 5 -x 3610 -y 1430 -defaultsOSRD
-preplace port FIXED_IO -pg 1 -lvl 5 -x 3610 -y 1890 -defaultsOSRD
-preplace port mdio_phy -pg 1 -lvl 5 -x 3610 -y 2130 -defaultsOSRD
-preplace port rgmii -pg 1 -lvl 5 -x 3610 -y 2160 -defaultsOSRD
-preplace port scf_i2c_0 -pg 1 -lvl 5 -x 3610 -y 2280 -defaultsOSRD
-preplace port scf_i2c_1 -pg 1 -lvl 5 -x 3610 -y 2220 -defaultsOSRD
-preplace port scf_i2c_2 -pg 1 -lvl 5 -x 3610 -y 2250 -defaultsOSRD
-preplace port c2c_tx_0 -pg 1 -lvl 5 -x 3610 -y 60 -defaultsOSRD
+preplace port DDR -pg 1 -lvl 5 -x 2630 -y 1430 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 5 -x 2630 -y 1890 -defaultsOSRD
+preplace port mdio_phy -pg 1 -lvl 5 -x 2630 -y 2130 -defaultsOSRD
+preplace port rgmii -pg 1 -lvl 5 -x 2630 -y 2160 -defaultsOSRD
+preplace port scf_i2c_0 -pg 1 -lvl 5 -x 2630 -y 2280 -defaultsOSRD
+preplace port scf_i2c_1 -pg 1 -lvl 5 -x 2630 -y 2220 -defaultsOSRD
+preplace port scf_i2c_2 -pg 1 -lvl 5 -x 2630 -y 2250 -defaultsOSRD
+preplace port c2c_tx_0 -pg 1 -lvl 5 -x 2630 -y 60 -defaultsOSRD
 preplace port c2c_rx_0 -pg 1 -lvl 0 -x 0 -y 130 -defaultsOSRD
 preplace port mgtrefclk -pg 1 -lvl 0 -x 0 -y 520 -defaultsOSRD
-preplace port c2c_tx_1 -pg 1 -lvl 5 -x 3610 -y 560 -defaultsOSRD
+preplace port c2c_tx_1 -pg 1 -lvl 5 -x 2630 -y 560 -defaultsOSRD
 preplace port c2c_rx_1 -pg 1 -lvl 0 -x 0 -y 450 -defaultsOSRD
-preplace port i2c_10g -pg 1 -lvl 5 -x 3610 -y 2310 -defaultsOSRD
-preplace port local_i2c -pg 1 -lvl 5 -x 3610 -y 2340 -defaultsOSRD
-preplace port scf_tdi_1 -pg 1 -lvl 5 -x 3610 -y 1400 -defaultsOSRD
-preplace port scf_tms_1 -pg 1 -lvl 5 -x 3610 -y 1370 -defaultsOSRD
-preplace port scf_tck_1 -pg 1 -lvl 5 -x 3610 -y 1340 -defaultsOSRD
+preplace port i2c_10g -pg 1 -lvl 5 -x 2630 -y 2310 -defaultsOSRD
+preplace port local_i2c -pg 1 -lvl 5 -x 2630 -y 2340 -defaultsOSRD
+preplace port scf_tdi_1 -pg 1 -lvl 5 -x 2630 -y 1400 -defaultsOSRD
+preplace port scf_tms_1 -pg 1 -lvl 5 -x 2630 -y 1370 -defaultsOSRD
+preplace port scf_tck_1 -pg 1 -lvl 5 -x 2630 -y 1340 -defaultsOSRD
 preplace port scf_tdo_0 -pg 1 -lvl 0 -x 0 -y 1340 -defaultsOSRD
-preplace port scf_tdi_0 -pg 1 -lvl 5 -x 3610 -y 1310 -defaultsOSRD
-preplace port scf_tms_0 -pg 1 -lvl 5 -x 3610 -y 1280 -defaultsOSRD
-preplace port scf_tck_0 -pg 1 -lvl 5 -x 3610 -y 1250 -defaultsOSRD
+preplace port scf_tdi_0 -pg 1 -lvl 5 -x 2630 -y 1310 -defaultsOSRD
+preplace port scf_tms_0 -pg 1 -lvl 5 -x 2630 -y 1280 -defaultsOSRD
+preplace port scf_tck_0 -pg 1 -lvl 5 -x 2630 -y 1250 -defaultsOSRD
 preplace port scf_tdo_1 -pg 1 -lvl 0 -x 0 -y 1370 -defaultsOSRD
-preplace port ipmc_sda_0 -pg 1 -lvl 5 -x 3610 -y 1660 -defaultsOSRD
-preplace port ipmc_scl_0 -pg 1 -lvl 5 -x 3610 -y 1630 -defaultsOSRD
-preplace port ipmc_scl_1 -pg 1 -lvl 5 -x 3610 -y 1720 -defaultsOSRD
-preplace port ipmc_sda_1 -pg 1 -lvl 5 -x 3610 -y 1750 -defaultsOSRD
-preplace portBus phy_rst -pg 1 -lvl 5 -x 3610 -y 2190 -defaultsOSRD
-preplace portBus en_ipmb_zynq -pg 1 -lvl 5 -x 3610 -y 1100 -defaultsOSRD
-preplace portBus id -pg 1 -lvl 5 -x 3610 -y 1040 -defaultsOSRD
+preplace port ipmc_sda_0 -pg 1 -lvl 5 -x 2630 -y 1660 -defaultsOSRD
+preplace port ipmc_scl_0 -pg 1 -lvl 5 -x 2630 -y 1630 -defaultsOSRD
+preplace port ipmc_scl_1 -pg 1 -lvl 5 -x 2630 -y 1720 -defaultsOSRD
+preplace port ipmc_sda_1 -pg 1 -lvl 5 -x 2630 -y 1750 -defaultsOSRD
+preplace portBus phy_rst -pg 1 -lvl 5 -x 2630 -y 2190 -defaultsOSRD
+preplace portBus en_ipmb_zynq -pg 1 -lvl 5 -x 2630 -y 1100 -defaultsOSRD
+preplace portBus id -pg 1 -lvl 5 -x 2630 -y 1040 -defaultsOSRD
 preplace portBus ready_ipmb_zynq -pg 1 -lvl 0 -x 0 -y 980 -defaultsOSRD
 preplace portBus los_10g -pg 1 -lvl 0 -x 0 -y 1010 -defaultsOSRD
 preplace portBus ha -pg 1 -lvl 0 -x 0 -y 1040 -defaultsOSRD
 preplace portBus pim_alarm -pg 1 -lvl 0 -x 0 -y 1070 -defaultsOSRD
-preplace portBus qbv_on_off -pg 1 -lvl 5 -x 3610 -y 1130 -defaultsOSRD
+preplace portBus qbv_on_off -pg 1 -lvl 5 -x 2630 -y 1130 -defaultsOSRD
 preplace portBus hot_swap_sw -pg 1 -lvl 0 -x 0 -y 1190 -defaultsOSRD
 preplace inst eth1 -pg 1 -lvl 1 -x 210 -y 2210 -defaultsOSRD
-preplace inst jtag -pg 1 -lvl 3 -x 1670 -y 2554 -defaultsOSRD
-preplace inst ipmc -pg 1 -lvl 3 -x 1670 -y 2954 -defaultsOSRD
-preplace inst cpu -pg 1 -lvl 2 -x 700 -y 1740 -defaultsOSRD
-preplace inst dbg -pg 1 -lvl 3 -x 1670 -y 2728 -defaultsOSRD
-preplace inst i2c -pg 1 -lvl 3 -x 1670 -y 3538 -defaultsOSRD
-preplace inst reg_bank -pg 1 -lvl 3 -x 1670 -y 2298 -defaultsOSRD
-preplace inst util_ds_buf_0 -pg 1 -lvl 2 -x 700 -y 520 -defaultsOSRD
-preplace inst chip2chip_top_ff -pg 1 -lvl 3 -x 1670 -y 192 -defaultsOSRD
-preplace inst chip2chip_bot_ff -pg 1 -lvl 3 -x 1670 -y 1316 -defaultsOSRD
-preplace inst ila_0 -pg 1 -lvl 4 -x 3480 -y 680 -defaultsOSRD
-preplace inst bram_loopback -pg 1 -lvl 3 -x 1670 -y 3298 -defaultsOSRD
-preplace inst chip2chip_top_ff|axi_chip2chip_0_aurora8 -pg 1 -lvl 3 -x 2520 -y 422 -defaultsOSRD
-preplace inst chip2chip_top_ff|axi_chip2chip_0 -pg 1 -lvl 2 -x 2110 -y 902 -defaultsOSRD
-preplace inst chip2chip_top_ff|xlconstant_0 -pg 1 -lvl 3 -x 2520 -y 92 -defaultsOSRD
-preplace inst chip2chip_top_ff|axisafety_1 -pg 1 -lvl 1 -x 1730 -y 842 -defaultsOSRD
-preplace inst chip2chip_bot_ff|axi_chip2chip_0_aurora8 -pg 1 -lvl 3 -x 2570 -y 1776 -defaultsOSRD
-preplace inst chip2chip_bot_ff|axi_chip2chip_0 -pg 1 -lvl 2 -x 2110 -y 1286 -defaultsOSRD
-preplace inst chip2chip_bot_ff|xlconstant_0 -pg 1 -lvl 3 -x 2570 -y 1526 -defaultsOSRD
-preplace inst chip2chip_bot_ff|axisafety_1 -pg 1 -lvl 1 -x 1720 -y 1226 -defaultsOSRD
-preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 3 20 2020 410J 2170 880
-preplace netloc Net 1 0 3 50 2040 350J 2180 1110
-preplace netloc proc_sys_reset_0_peripheral_aresetn 1 0 3 70 2050 330J 2190 1120
-preplace netloc processing_system7_0_FCLK_CLK2 1 0 3 30 2010 450J 2150 890
-preplace netloc processing_system7_0_FCLK_CLK1 1 0 3 60 2060 370J 2130 900
-preplace netloc axi_ethernet_0_phy_rst_n 1 1 4 NJ 2240 870J 2118 NJ 2118 3580J
-preplace netloc axi_ethernet_0_mac_irq 1 1 1 390 1700n
-preplace netloc axi_ethernet_0_interrupt 1 1 1 430 1720n
-preplace netloc axi_ethernet_0_dma_mm2s_introut 1 1 1 380 1660n
-preplace netloc axi_ethernet_0_dma_s2mm_introut 1 1 1 420 1680n
-preplace netloc ARESETN_1 1 0 3 40 2030 440J 2120 850
-preplace netloc ipmc_jtag_TDI_1 1 3 2 3260J 1400 NJ
-preplace netloc ipmc_jtag_TMS_1 1 3 2 3250J 1370 NJ
-preplace netloc ipmc_jtag_TCK_1 1 3 2 3220J 1340 NJ
-preplace netloc TDO_0_0_1 1 0 3 NJ 1340 NJ 1340 1180J
-preplace netloc ipmc_jtag_TDI_0 1 3 2 3200J 1310 NJ
-preplace netloc ipmc_jtag_TMS_0 1 3 2 3190J 1280 NJ
-preplace netloc ipmc_jtag_TCK_0 1 3 2 3180J 1250 NJ
-preplace netloc TDO_1_0_1 1 0 3 NJ 1370 NJ 1370 1170J
-preplace netloc Net1 1 3 2 3280J 1660 NJ
-preplace netloc Net2 1 3 2 3270J 1630 NJ
-preplace netloc Net3 1 3 2 3290J 1720 NJ
-preplace netloc Net4 1 3 2 3300J 1750 NJ
-preplace netloc ipmc_jtag_irq 1 1 3 480 3194 NJ 3194 3020
-preplace netloc ipmc_jtag_iic2intc_irpt 1 1 3 550 3184 NJ 3184 2970
-preplace netloc ipmc_jtag_irq1 1 1 3 530 3204 NJ 3204 2990
-preplace netloc ipmc_jtag_s0_o 1 1 3 460 3214 NJ 3214 3050
-preplace netloc ipmc_jtag_s0_o1 1 1 3 520 3174 NJ 3174 2980
-preplace netloc s0_i_1 1 2 1 1010 1850n
-preplace netloc s0_t_1 1 2 1 980 1870n
-preplace netloc s0_i1_1 1 2 1 970 1890n
-preplace netloc s0_t1_1 1 2 1 940 1910n
-preplace netloc xlslice_0_Dout 1 3 2 3150J 1040 NJ
-preplace netloc In0_0_1 1 0 3 NJ 980 NJ 980 1230J
-preplace netloc In1_0_1 1 0 3 NJ 1010 NJ 1010 1220J
-preplace netloc In2_0_1 1 0 3 NJ 1040 NJ 1040 1100
-preplace netloc In3_0_1 1 0 3 NJ 1070 NJ 1070 1210J
-preplace netloc util_ds_buf_0_IBUF_OUT 1 2 1 1240 510n
-preplace netloc cpu_peripheral_reset 1 2 2 1270 2098 2970
-preplace netloc gt0_pll0outclk_in_1 1 2 2 1300 2046 3070
-preplace netloc gt0_pll1outclk_in_1 1 2 2 1340 1090 3000
-preplace netloc gt0_pll0outrefclk_in_1 1 2 2 1340 2026 2990
-preplace netloc gt0_pll1outrefclk_in_1 1 2 2 1310 2066 3050
-preplace netloc gt0_pll0refclklost_in_1 1 2 2 1330 2056 3020
-preplace netloc quad1_common_lock_in_1 1 2 2 1320 2076 3030
-preplace netloc user_clk_1 1 2 2 1280 3164 3120
-preplace netloc aurora_mmcm_not_locked_1 1 2 2 1290 3124 3080
-preplace netloc chip2chip_0_sync_clk_out 1 2 2 1350 2036 2970
-preplace netloc i2c_iic2intc_irpt 1 1 3 490 3368 NJ 3368 2990
-preplace netloc i2c_iic2intc_irpt1 1 1 3 500 3378 NJ 3378 2980
-preplace netloc i2c_iic2intc_irpt2 1 1 3 510 3388 NJ 3388 2970
-preplace netloc i2c_iic2intc_irpt3 1 1 3 470 3688 NJ 3688 2980
-preplace netloc chip2chip_0_axi_c2c_link_status_out 1 2 2 1330 3134 3060
-preplace netloc In5_1 1 2 2 1350 3114 3010
-preplace netloc chip2chip_1_axi_c2c_link_status_out 1 2 2 1340 2088 2980
-preplace netloc In7_1 1 2 2 1340 3154 3040
-preplace netloc reg_bank_Dout 1 2 2 1260 3144 3000
-preplace netloc chip2chip_0_gt0_rxcommadet_out 1 3 1 3100 640n
-preplace netloc chip2chip_0_gt0_rxprbserr_out 1 3 1 3110 660n
-preplace netloc chip2chip_1_gt0_rxcommadet_out 1 3 1 3130 680n
-preplace netloc chip2chip_1_gt0_rxprbserr_out 1 3 1 3140 700n
-preplace netloc ipmc_i2c_addr_received 1 3 1 3210 720n
-preplace netloc ipmc_i2c_addr_received1 1 3 1 3240 740n
-preplace netloc In8_0_1 1 0 3 NJ 1190 NJ 1190 1190J
-preplace netloc reg_bank_en_ipmb_zynq 1 3 2 3160J 1116 3590J
-preplace netloc reg_bank_qbv_on_off 1 3 2 3170J 1130 NJ
-preplace netloc i2c_iic2intc_irpt4 1 1 3 540 3678 NJ 3678 2970
-preplace netloc axi_iic_0_IIC 1 3 2 3330J 2280 NJ
+preplace inst jtag -pg 1 -lvl 3 -x 1770 -y 1370 -defaultsOSRD
+preplace inst ipmc -pg 1 -lvl 3 -x 1770 -y 1766 -defaultsOSRD
+preplace inst cpu -pg 1 -lvl 2 -x 690 -y 1740 -defaultsOSRD
+preplace inst dbg -pg 1 -lvl 3 -x 1770 -y 1540 -defaultsOSRD
+preplace inst i2c -pg 1 -lvl 3 -x 1770 -y 2350 -defaultsOSRD
+preplace inst reg_bank -pg 1 -lvl 3 -x 1770 -y 1116 -defaultsOSRD
+preplace inst util_ds_buf_0 -pg 1 -lvl 2 -x 690 -y 520 -defaultsOSRD
+preplace inst chip2chip_top_ff -pg 1 -lvl 3 -x 1770 -y 186 -defaultsOSRD
+preplace inst chip2chip_bot_ff -pg 1 -lvl 3 -x 1770 -y 646 -defaultsOSRD
+preplace inst ila_0 -pg 1 -lvl 4 -x 2487 -y 680 -defaultsOSRD
+preplace inst bram_loopback -pg 1 -lvl 3 -x 1770 -y 2110 -defaultsOSRD
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 3 70 2350 NJ 2350 850
+preplace netloc Net 1 0 3 30 2370 NJ 2370 910
+preplace netloc proc_sys_reset_0_peripheral_aresetn 1 0 3 20 2380 NJ 2380 1100
+preplace netloc processing_system7_0_FCLK_CLK2 1 0 3 40 2340 NJ 2340 860
+preplace netloc processing_system7_0_FCLK_CLK1 1 0 3 60 2330 NJ 2330 870
+preplace netloc axi_ethernet_0_phy_rst_n 1 1 4 NJ 2240 1210J 2010 NJ 2010 2580J
+preplace netloc axi_ethernet_0_mac_irq 1 1 1 370 1700n
+preplace netloc axi_ethernet_0_interrupt 1 1 1 400 1720n
+preplace netloc axi_ethernet_0_dma_mm2s_introut 1 1 1 360 1660n
+preplace netloc axi_ethernet_0_dma_s2mm_introut 1 1 1 390 1680n
+preplace netloc ARESETN_1 1 0 3 50 2360 NJ 2360 840
+preplace netloc ipmc_jtag_TDI_1 1 3 2 2150J 1400 NJ
+preplace netloc ipmc_jtag_TMS_1 1 3 2 2140J 1370 NJ
+preplace netloc ipmc_jtag_TCK_1 1 3 2 2120J 1340 NJ
+preplace netloc TDO_0_0_1 1 0 3 NJ 1340 NJ 1340 880J
+preplace netloc ipmc_jtag_TDI_0 1 3 2 2070J 1310 NJ
+preplace netloc ipmc_jtag_TMS_0 1 3 2 2010J 1280 NJ
+preplace netloc ipmc_jtag_TCK_0 1 3 2 1960J 1250 NJ
+preplace netloc TDO_1_0_1 1 0 3 NJ 1370 NJ 1370 1210J
+preplace netloc Net1 1 3 2 2150J 1660 NJ
+preplace netloc Net2 1 3 2 2140J 1630 NJ
+preplace netloc Net3 1 3 2 2140J 1720 NJ
+preplace netloc Net4 1 3 2 2150J 1750 NJ
+preplace netloc ipmc_jtag_irq 1 1 3 420 2230 1160J 1950 1970
+preplace netloc ipmc_jtag_iic2intc_irpt 1 1 3 440 2210 1140J 1940 1950
+preplace netloc ipmc_jtag_irq1 1 1 3 490 2130 970J 1960 1960
+preplace netloc ipmc_jtag_s0_o 1 1 3 430 2160 1150J 1970 2020
+preplace netloc ipmc_jtag_s0_o1 1 1 3 460 2120 1130J 1980 1980
+preplace netloc s0_i_1 1 2 1 980 1756n
+preplace netloc s0_t_1 1 2 1 1000 1796n
+preplace netloc s0_i1_1 1 2 1 990 1776n
+preplace netloc s0_t1_1 1 2 1 1010 1816n
+preplace netloc xlslice_0_Dout 1 3 2 1990J 1040 NJ
+preplace netloc In0_0_1 1 0 3 NJ 980 NJ 980 1140J
+preplace netloc In1_0_1 1 0 3 NJ 1010 NJ 1010 1030J
+preplace netloc In2_0_1 1 0 3 NJ 1040 NJ 1040 1020
+preplace netloc In3_0_1 1 0 3 NJ 1070 NJ 1070 880J
+preplace netloc util_ds_buf_0_IBUF_OUT 1 2 1 940 186n
+preplace netloc cpu_peripheral_reset 1 2 2 1120 926 1950
+preplace netloc gt0_pll0outclk_in_1 1 2 2 1170 846 2040
+preplace netloc gt0_pll1outclk_in_1 1 2 2 1200 416 2010
+preplace netloc gt0_pll0outrefclk_in_1 1 2 2 1180 856 2030
+preplace netloc gt0_pll1outrefclk_in_1 1 2 2 1210 426 1990
+preplace netloc gt0_pll0refclklost_in_1 1 2 2 1160 406 1960
+preplace netloc quad1_common_lock_in_1 1 2 2 1190 436 1980
+preplace netloc user_clk_1 1 2 2 1210 866 2060
+preplace netloc aurora_mmcm_not_locked_1 1 2 2 1140 -34 2000
+preplace netloc chip2chip_0_sync_clk_out 1 2 2 1150 396 1950
+preplace netloc i2c_iic2intc_irpt 1 1 3 500 2140 1170J 2020 1950
+preplace netloc i2c_iic2intc_irpt1 1 1 3 450 2220 1190J 1990 2020
+preplace netloc i2c_iic2intc_irpt2 1 1 3 470 2170 1180J 2000 1980
+preplace netloc i2c_iic2intc_irpt3 1 1 3 480 2200 NJ 2200 1960
+preplace netloc chip2chip_0_axi_c2c_link_status_out 1 2 2 1210 896 2020
+preplace netloc In5_1 1 2 2 1190 876 1970
+preplace netloc chip2chip_1_axi_c2c_link_status_out 1 2 2 1200 906 1980
+preplace netloc In7_1 1 2 2 1180 886 1950
+preplace netloc reg_bank_Dout 1 2 2 1130 916 1960
+preplace netloc chip2chip_0_gt0_rxcommadet_out 1 3 1 2130 286n
+preplace netloc chip2chip_0_gt0_rxprbserr_out 1 3 1 2140 266n
+preplace netloc chip2chip_1_gt0_rxcommadet_out 1 3 1 2070 650n
+preplace netloc chip2chip_1_gt0_rxprbserr_out 1 3 1 2080 670n
+preplace netloc ipmc_i2c_addr_received 1 3 1 2110 690n
+preplace netloc ipmc_i2c_addr_received1 1 3 1 2130 710n
+preplace netloc In8_0_1 1 0 3 NJ 1190 NJ 1190 1160J
+preplace netloc reg_bank_en_ipmb_zynq 1 3 2 2000J 1100 NJ
+preplace netloc reg_bank_qbv_on_off 1 3 2 2060J 1130 NJ
+preplace netloc i2c_iic2intc_irpt4 1 1 3 510 2150 1200J 2030 1970
+preplace netloc chip2chip_top_ff_o_read_fault 1 3 1 2120 306n
+preplace netloc chip2chip_top_ff_o_write_fault 1 3 1 2100 326n
+preplace netloc chip2chip_top_ff_M_AXI_ARESETN 1 3 1 2090 346n
+preplace netloc axi_iic_0_IIC 1 3 2 2150J 2280 NJ
 preplace netloc cpu_M17_AXI 1 2 1 920 1810n
-preplace netloc ps7_0_axi_periph_M01_AXI 1 2 1 910 1490n
-preplace netloc cpu_M13_AXI 1 2 1 1140 1730n
-preplace netloc axi_iic_2_IIC 1 3 2 3320J 2250 NJ
-preplace netloc cpu_M10_AXI 1 2 1 1000 1670n
-preplace netloc axi_mem_intercon_M00_AXI 1 1 1 340 1600n
-preplace netloc chip2chip_1_GT_SERIAL_TX 1 3 2 3090J 560 NJ
-preplace netloc axi_chip2chip_0_aurora8_GT_SERIAL_TX 1 3 2 2970J 60 NJ
-preplace netloc i2c_iic_rtl_3 1 3 2 3340J 2310 NJ
-preplace netloc s_axi1_1 1 2 1 1160 1550n
-preplace netloc cpu_M11_AXI 1 2 1 1020 1690n
-preplace netloc ps7_0_axi_periph_M00_AXI 1 0 3 80 2070 400J 2100 870
-preplace netloc axi_ethernet_0_rgmii 1 1 4 NJ 2160 1150J 2128 NJ 2128 3570J
-preplace netloc cpu_M16_AXI 1 2 1 950 1790n
-preplace netloc S_AXI6_1 1 2 1 1030 1650n
-preplace netloc axi_iic_1_IIC 1 3 2 3310J 2220 NJ
-preplace netloc processing_system7_0_DDR 1 2 3 1080J 1106 NJ 1106 3570J
-preplace netloc c2c_0_0_1 1 0 3 NJ 450 NJ 450 1250J
-preplace netloc axi_ethernet_0_mdio 1 1 4 NJ 2140 1130J 2108 NJ 2108 3590J
-preplace netloc ps7_0_axi_periph_M02_AXI 1 0 3 90 2080 360J 2110 860
-preplace netloc S_AXI4_1 1 2 1 1060 1610n
-preplace netloc processing_system7_0_FIXED_IO 1 2 3 1200J 2016 3230J 1890 NJ
-preplace netloc GT_SERIAL_RX_1 1 0 3 NJ 130 NJ 130 1250J
-preplace netloc i2c_iic_rtl_4 1 3 2 3350J 2340 NJ
+preplace netloc ps7_0_axi_periph_M01_AXI 1 2 1 1200 1490n
+preplace netloc cpu_M13_AXI 1 2 1 1040 1006n
+preplace netloc axi_iic_2_IIC 1 3 2 2110J 2250 NJ
+preplace netloc cpu_M10_AXI 1 2 1 950 1670n
+preplace netloc axi_mem_intercon_M00_AXI 1 1 1 330 1600n
+preplace netloc chip2chip_1_GT_SERIAL_TX 1 3 2 2050J 530 2590J
+preplace netloc axi_chip2chip_0_aurora8_GT_SERIAL_TX 1 3 2 2060J 60 NJ
+preplace netloc i2c_iic_rtl_3 1 3 2 2130J 2310 NJ
+preplace netloc s_axi1_1 1 2 1 1090 1340n
+preplace netloc cpu_M11_AXI 1 2 1 960 1690n
+preplace netloc ps7_0_axi_periph_M00_AXI 1 0 3 20 2070 410J 2100 890
+preplace netloc axi_ethernet_0_rgmii 1 1 4 340J 2190 NJ 2190 2140J 2160 NJ
+preplace netloc cpu_M16_AXI 1 2 1 930 1790n
+preplace netloc S_AXI6_1 1 2 1 1050 1650n
+preplace netloc axi_iic_1_IIC 1 3 2 2060J 2220 NJ
+preplace netloc processing_system7_0_DDR 1 2 3 940J 936 NJ 936 2590J
+preplace netloc c2c_0_0_1 1 0 3 NJ 450 NJ 450 1110J
+preplace netloc axi_ethernet_0_mdio 1 1 4 350J 2180 NJ 2180 2100J 2130 NJ
+preplace netloc ps7_0_axi_periph_M02_AXI 1 0 3 70 2080 380J 2110 880
+preplace netloc S_AXI4_1 1 2 1 1070 1610n
+preplace netloc processing_system7_0_FIXED_IO 1 2 3 950J 946 NJ 946 2580J
+preplace netloc GT_SERIAL_RX_1 1 0 3 NJ 130 NJ 130 900J
+preplace netloc i2c_iic_rtl_4 1 3 2 NJ 2340 NJ
 preplace netloc S_AXI2_1 1 2 1 1090 1570n
-preplace netloc S_AXI5_1 1 2 1 1050 1630n
-preplace netloc s_axi_2 1 2 1 1080 1476n
+preplace netloc S_AXI5_1 1 2 1 1060 1630n
+preplace netloc s_axi_2 1 2 1 970 516n
 preplace netloc CLK_IN_D_0_1 1 0 2 NJ 520 NJ
-preplace netloc cpu_M12_AXI 1 2 1 990 1710n
-preplace netloc s_axi_1 1 2 1 930 1530n
-preplace netloc S_AXI3_1 1 2 1 1070 1590n
-preplace netloc cpu_M14_AXI 1 2 1 1040 822n
-preplace netloc cpu_M18_AXI 1 2 1 960 1830n
-preplace netloc chip2chip_top_ff|axi_chip2chip_0_aurora8_user_clk_out 1 1 3 1910 752 NJ 752 2730
-preplace netloc chip2chip_top_ff|axi_chip2chip_0_aurora8_pll_not_locked_out 1 1 3 1890 722 NJ 722 2740
-preplace netloc chip2chip_top_ff|Net 1 0 3 1560 932 1880 472 2330
-preplace netloc chip2chip_top_ff|cpu_peripheral_reset 1 0 2 NJ 952 N
-preplace netloc chip2chip_top_ff|axi_chip2chip_0_aurora8_gt0_pll0outrefclk_out 1 3 1 N 592
-preplace netloc chip2chip_top_ff|axi_chip2chip_0_aurora8_quad1_common_lock_out 1 3 1 2750 532n
-preplace netloc chip2chip_top_ff|util_ds_buf_0_IBUF_OUT 1 0 3 1550J 492 NJ 492 N
-preplace netloc chip2chip_top_ff|axi_chip2chip_0_aurora_reset_pb 1 2 1 2310 412n
-preplace netloc chip2chip_top_ff|axi_chip2chip_0_aurora8_gt0_pll1outrefclk_out 1 3 1 N 612
-preplace netloc chip2chip_top_ff|axi_chip2chip_0_aurora8_gt0_pll1outclk_out 1 3 1 N 572
-preplace netloc chip2chip_top_ff|axi_chip2chip_0_aurora8_gt0_pll0outclk_out 1 3 1 N 552
-preplace netloc chip2chip_top_ff|axi_chip2chip_0_aurora8_gt0_pll0refclklost_out 1 3 1 2780 512n
-preplace netloc chip2chip_top_ff|axi_chip2chip_0_aurora8_sync_clk_out 1 3 1 2760 472n
-preplace netloc chip2chip_top_ff|axi_chip2chip_0_aurora_pma_init_out 1 2 1 2320 432n
-preplace netloc chip2chip_top_ff|axi_chip2chip_0_aurora8_channel_up 1 1 3 1910 1052 NJ 1052 2770
-preplace netloc chip2chip_top_ff|axi_chip2chip_0_axi_c2c_link_status_out 1 2 2 N 942 NJ
-preplace netloc chip2chip_top_ff|xlconstant_0_dout 1 3 1 2730 92n
-preplace netloc chip2chip_top_ff|Net1 1 0 4 1570J 742 NJ 742 NJ 742 2710
-preplace netloc chip2chip_top_ff|axi_chip2chip_0_aurora8_gt0_rxprbserr_out 1 3 1 2790 252n
-preplace netloc chip2chip_top_ff|axi_chip2chip_0_aurora8_gt0_rxcommadet_out 1 3 1 2800 232n
-preplace netloc chip2chip_top_ff|s_aresetn_1 1 0 1 1580 862n
-preplace netloc chip2chip_top_ff|axisafety_1_M_AXI_ARESETN 1 1 1 N 872
-preplace netloc chip2chip_top_ff|axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX 1 1 3 1900 712 NJ 712 2720
-preplace netloc chip2chip_top_ff|axi_chip2chip_0_AXIS_TX 1 2 1 2300 352n
-preplace netloc chip2chip_top_ff|GT_SERIAL_RX_1 1 0 3 NJ 392 NJ 392 N
-preplace netloc chip2chip_top_ff|axi_chip2chip_0_aurora8_GT_SERIAL_TX 1 3 1 N 392
-preplace netloc chip2chip_top_ff|S_AXI1_1 1 0 1 N 822
-preplace netloc chip2chip_top_ff|axisafety_1_M_AXI 1 1 1 N 812
-preplace netloc chip2chip_bot_ff|Net 1 0 3 1530 1316 1870 1446 2300
-preplace netloc chip2chip_bot_ff|cpu_peripheral_reset 1 0 2 1560J 1336 N
-preplace netloc chip2chip_bot_ff|user_clk_1 1 0 3 NJ 1866 1880 1886 NJ
-preplace netloc chip2chip_bot_ff|aurora_mmcm_not_locked_1 1 0 2 1570J 1376 N
-preplace netloc chip2chip_bot_ff|util_ds_buf_0_IBUF_OUT 1 0 3 1520J 1926 NJ 1926 N
-preplace netloc chip2chip_bot_ff|sync_clk_1 1 0 3 NJ 1906 NJ 1906 N
-preplace netloc chip2chip_bot_ff|gt0_pll0outclk_in_1 1 0 3 NJ 1746 NJ 1746 N
-preplace netloc chip2chip_bot_ff|axi_chip2chip_0_aurora_pma_init_out 1 2 1 2330 1266n
-preplace netloc chip2chip_bot_ff|axi_chip2chip_0_aurora_reset_pb 1 2 1 2320 1286n
-preplace netloc chip2chip_bot_ff|axi_chip2chip_0_aurora8_channel_up 1 1 3 1900 1456 NJ 1456 2800
-preplace netloc chip2chip_bot_ff|quad1_common_lock_in_1 1 0 3 NJ 1846 NJ 1846 N
-preplace netloc chip2chip_bot_ff|gt0_pll1outclk_in_1 1 0 3 NJ 1766 NJ 1766 N
-preplace netloc chip2chip_bot_ff|gt0_pll0refclklost_in_1 1 0 3 NJ 1826 NJ 1826 N
-preplace netloc chip2chip_bot_ff|gt0_pll1outrefclk_in_1 1 0 3 NJ 1806 NJ 1806 N
-preplace netloc chip2chip_bot_ff|gt0_pll0outrefclk_in_1 1 0 3 NJ 1786 NJ 1786 N
-preplace netloc chip2chip_bot_ff|axi_chip2chip_0_axi_c2c_link_status_out 1 2 2 N 1326 2810J
-preplace netloc chip2chip_bot_ff|xlconstant_0_dout 1 3 1 2770 1526n
-preplace netloc chip2chip_bot_ff|Net1 1 0 4 NJ 1986 NJ 1986 NJ 1986 2760
-preplace netloc chip2chip_bot_ff|axi_chip2chip_0_aurora8_gt0_rxcommadet_out 1 3 1 2790 1686n
-preplace netloc chip2chip_bot_ff|axi_chip2chip_0_aurora8_gt0_rxprbserr_out 1 3 1 2780 1706n
-preplace netloc chip2chip_bot_ff|s_aresetn_1 1 0 1 1540 1246n
-preplace netloc chip2chip_bot_ff|axisafety_1_M_AXI_ARESETN 1 1 1 N 1256
-preplace netloc chip2chip_bot_ff|GT_SERIAL_RX_1 1 0 3 1550J 1466 NJ 1466 2310
-preplace netloc chip2chip_bot_ff|axi_chip2chip_0_aurora8_USER_DATA_M_AXI_RX 1 1 3 1890 1436 NJ 1436 2790
-preplace netloc chip2chip_bot_ff|axi_chip2chip_0_aurora8_GT_SERIAL_TX 1 3 1 N 1826
-preplace netloc chip2chip_bot_ff|axi_chip2chip_0_AXIS_TX 1 2 1 2340 1206n
-preplace netloc chip2chip_bot_ff|s_axi_1 1 0 1 1520 1206n
-preplace netloc chip2chip_bot_ff|axisafety_1_M_AXI 1 1 1 N 1196
-levelinfo -pg 1 0 210 700 1670 3480 3610
-levelinfo -hier chip2chip_top_ff * 1730 2110 2520 *
-levelinfo -hier chip2chip_bot_ff * 1720 2110 2570 *
-pagesize -pg 1 -db -bbox -sgen -190 0 3780 3720
-pagesize -hier chip2chip_top_ff -db -bbox -sgen 1520 32 2830 1062
-pagesize -hier chip2chip_bot_ff -db -bbox -sgen 1490 1136 2840 1996
+preplace netloc cpu_M12_AXI 1 2 1 940 1710n
+preplace netloc s_axi_1 1 2 1 1030 1320n
+preplace netloc S_AXI3_1 1 2 1 1080 1590n
+preplace netloc cpu_M14_AXI 1 2 1 900 146n
+preplace netloc cpu_M18_AXI 1 2 1 900 1830n
+levelinfo -pg 1 0 210 690 1770 2487 2630
+pagesize -pg 1 -db -bbox -sgen -190 -50 2800 3240
 ",
    "Color Coded_ScaleFactor":"0.776892",
-   "Color Coded_TopLeft":"1050,494",
+   "Color Coded_TopLeft":"932,0",
    "Default View_ScaleFactor":"1.12622",
    "Default View_TopLeft":"606,330",
    "ExpandedHierarchyInLayout":"",
