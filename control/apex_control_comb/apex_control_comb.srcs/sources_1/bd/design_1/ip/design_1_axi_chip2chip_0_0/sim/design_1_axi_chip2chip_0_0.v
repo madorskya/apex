@@ -85,6 +85,7 @@ module design_1_axi_chip2chip_0_0 (
   s_axi_rlast,
   s_axi_rvalid,
   s_axi_rready,
+  axi_c2c_lnk_hndlr_in_progress,
   axi_c2c_m2s_intr_in,
   axi_c2c_s2m_intr_out,
   axi_c2c_phy_clk,
@@ -172,6 +173,7 @@ output wire s_axi_rvalid;
  1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 s_axi RREADY" *)
 input wire s_axi_rready;
+output wire axi_c2c_lnk_hndlr_in_progress;
 input wire [3 : 0] axi_c2c_m2s_intr_in;
 output wire [3 : 0] axi_c2c_s2m_intr_out;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME axi_c2c_phy_clk, ASSOCIATED_BUSIF AXIS_TX:AXIS_RX, ASSOCIATED_RESET aurora_reset_pb, FREQ_HZ 187500000, FREQ_TOLERANCE_HZ 0, PHASE 0, CLK_DOMAIN design_1_axi_chip2chip_0_aurora8_0_user_clk_out, INSERT_VIP 0" *)
@@ -217,7 +219,7 @@ output wire axi_c2c_link_error_out;
     .C_SIMULATION(0),
     .C_MASTER_FPGA(1),
     .C_AXI_BUS_TYPE(0),
-    .C_EN_AXI_LINK_HNDLR(0),
+    .C_EN_AXI_LINK_HNDLR(1),
     .C_COMMON_CLK(0),
     .C_INTERFACE_TYPE(3),
     .C_INTERFACE_MODE(1),
@@ -279,7 +281,7 @@ output wire axi_c2c_link_error_out;
     .s_axi_rlast(s_axi_rlast),
     .s_axi_rvalid(s_axi_rvalid),
     .s_axi_rready(s_axi_rready),
-    .axi_c2c_lnk_hndlr_in_progress(),
+    .axi_c2c_lnk_hndlr_in_progress(axi_c2c_lnk_hndlr_in_progress),
     .axi_c2c_m2s_intr_in(axi_c2c_m2s_intr_in),
     .axi_c2c_s2m_intr_out(axi_c2c_s2m_intr_out),
     .m_aclk(1'B0),
