@@ -215,9 +215,9 @@
       bit  M_AXI_GP1_RREADY;
       bit  M_AXI_GP1_WLAST;
       bit  M_AXI_GP1_WVALID;
-      bit  [11 : 0] M_AXI_GP1_ARID;
-      bit  [11 : 0] M_AXI_GP1_AWID;
-      bit  [11 : 0] M_AXI_GP1_WID;
+      bit  [5 : 0] M_AXI_GP1_ARID;
+      bit  [5 : 0] M_AXI_GP1_AWID;
+      bit  [5 : 0] M_AXI_GP1_WID;
       bit  [1 : 0] M_AXI_GP1_ARBURST;
       bit  [1 : 0] M_AXI_GP1_ARLOCK;
       bit  [2 : 0] M_AXI_GP1_ARSIZE;
@@ -243,8 +243,8 @@
       bit  M_AXI_GP1_RLAST;
       bit  M_AXI_GP1_RVALID;
       bit  M_AXI_GP1_WREADY;
-      bit  [11 : 0] M_AXI_GP1_BID;
-      bit  [11 : 0] M_AXI_GP1_RID;
+      bit  [5 : 0] M_AXI_GP1_BID;
+      bit  [5 : 0] M_AXI_GP1_RID;
       bit  [1 : 0] M_AXI_GP1_BRESP;
       bit  [1 : 0] M_AXI_GP1_RRESP;
       bit  [31 : 0] M_AXI_GP1_RDATA;
@@ -831,7 +831,7 @@
       parameter C_M_AXI_GP0_ID_WIDTH = 12;
       parameter C_M_AXI_GP0_ENABLE_STATIC_REMAP = 1;
       parameter C_M_AXI_GP1_ID_WIDTH = 12;
-      parameter C_M_AXI_GP1_ENABLE_STATIC_REMAP = 0;
+      parameter C_M_AXI_GP1_ENABLE_STATIC_REMAP = 1;
       parameter C_S_AXI_GP0_ID_WIDTH = 6;
       parameter C_S_AXI_GP1_ID_WIDTH = 6;
       parameter C_S_AXI_ACP_ID_WIDTH = 3;
@@ -844,7 +844,7 @@
       parameter C_S_AXI_HP3_ID_WIDTH = 6;
       parameter C_S_AXI_HP3_DATA_WIDTH = 64;
       parameter C_M_AXI_GP0_THREAD_ID_WIDTH = 6;
-      parameter C_M_AXI_GP1_THREAD_ID_WIDTH = 12;
+      parameter C_M_AXI_GP1_THREAD_ID_WIDTH = 6;
       parameter C_NUM_F2P_INTR_INPUTS = 12;
       parameter C_IRQ_F2P_MODE = "DIRECT";
       parameter C_DQ_WIDTH = 32;

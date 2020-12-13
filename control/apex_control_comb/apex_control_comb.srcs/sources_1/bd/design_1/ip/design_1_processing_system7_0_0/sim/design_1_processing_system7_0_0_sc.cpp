@@ -78,7 +78,7 @@ design_1_processing_system7_0_0_sc::design_1_processing_system7_0_0_sc(const sc_
     model_param_props.addLong("C_M_AXI_GP0_ID_WIDTH", "12");
     model_param_props.addLong("C_M_AXI_GP0_ENABLE_STATIC_REMAP", "1");
     model_param_props.addLong("C_M_AXI_GP1_ID_WIDTH", "12");
-    model_param_props.addLong("C_M_AXI_GP1_ENABLE_STATIC_REMAP", "0");
+    model_param_props.addLong("C_M_AXI_GP1_ENABLE_STATIC_REMAP", "1");
     model_param_props.addLong("C_S_AXI_GP0_ID_WIDTH", "6");
     model_param_props.addLong("C_S_AXI_GP1_ID_WIDTH", "6");
     model_param_props.addLong("C_S_AXI_ACP_ID_WIDTH", "3");
@@ -91,7 +91,7 @@ design_1_processing_system7_0_0_sc::design_1_processing_system7_0_0_sc(const sc_
     model_param_props.addLong("C_S_AXI_HP3_ID_WIDTH", "6");
     model_param_props.addLong("C_S_AXI_HP3_DATA_WIDTH", "64");
     model_param_props.addLong("C_M_AXI_GP0_THREAD_ID_WIDTH", "6");
-    model_param_props.addLong("C_M_AXI_GP1_THREAD_ID_WIDTH", "12");
+    model_param_props.addLong("C_M_AXI_GP1_THREAD_ID_WIDTH", "6");
     model_param_props.addLong("C_NUM_F2P_INTR_INPUTS", "12");
     model_param_props.addLong("C_DQ_WIDTH", "32");
     model_param_props.addLong("C_DQS_WIDTH", "4");
