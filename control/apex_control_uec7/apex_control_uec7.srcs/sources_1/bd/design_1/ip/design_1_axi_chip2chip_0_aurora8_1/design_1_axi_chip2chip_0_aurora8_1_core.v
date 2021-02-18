@@ -62,12 +62,16 @@
 /////////////////////////////////////////////////////////////////////////////////////
 
 `timescale 1 ns / 1 ps
-(* core_generation_info = "design_1_axi_chip2chip_0_aurora8_1,aurora_8b10b_v11_1_9,{user_interface=AXI_4_Streaming,backchannel_mode=Sidebands,c_aurora_lanes=1,c_column_used=None,c_gt_clock_1=GTPQ0,c_gt_clock_2=None,c_gt_loc_1=X,c_gt_loc_10=X,c_gt_loc_11=X,c_gt_loc_12=X,c_gt_loc_13=X,c_gt_loc_14=X,c_gt_loc_15=X,c_gt_loc_16=X,c_gt_loc_17=X,c_gt_loc_18=X,c_gt_loc_19=X,c_gt_loc_2=X,c_gt_loc_20=X,c_gt_loc_21=X,c_gt_loc_22=X,c_gt_loc_23=X,c_gt_loc_24=X,c_gt_loc_25=X,c_gt_loc_26=X,c_gt_loc_27=X,c_gt_loc_28=X,c_gt_loc_29=X,c_gt_loc_3=1,c_gt_loc_30=X,c_gt_loc_31=X,c_gt_loc_32=X,c_gt_loc_33=X,c_gt_loc_34=X,c_gt_loc_35=X,c_gt_loc_36=X,c_gt_loc_37=X,c_gt_loc_38=X,c_gt_loc_39=X,c_gt_loc_4=X,c_gt_loc_40=X,c_gt_loc_41=X,c_gt_loc_42=X,c_gt_loc_43=X,c_gt_loc_44=X,c_gt_loc_45=X,c_gt_loc_46=X,c_gt_loc_47=X,c_gt_loc_48=X,c_gt_loc_5=X,c_gt_loc_6=X,c_gt_loc_7=X,c_gt_loc_8=X,c_gt_loc_9=X,c_lane_width=4,c_line_rate=37500,c_nfc=false,c_nfc_mode=IMM,c_refclk_frequency=250000,c_simplex=true,c_simplex_mode=TX,c_stream=true,c_ufc=false,flow_mode=None,interface_mode=Streaming,dataflow_config=TX-only_Simplex}" *)
+(* core_generation_info = "design_1_axi_chip2chip_0_aurora8_1,aurora_8b10b_v11_1_9,{user_interface=AXI_4_Streaming,backchannel_mode=Timer,c_aurora_lanes=1,c_column_used=None,c_gt_clock_1=GTPQ0,c_gt_clock_2=None,c_gt_loc_1=X,c_gt_loc_10=X,c_gt_loc_11=X,c_gt_loc_12=X,c_gt_loc_13=X,c_gt_loc_14=X,c_gt_loc_15=X,c_gt_loc_16=X,c_gt_loc_17=X,c_gt_loc_18=X,c_gt_loc_19=X,c_gt_loc_2=1,c_gt_loc_20=X,c_gt_loc_21=X,c_gt_loc_22=X,c_gt_loc_23=X,c_gt_loc_24=X,c_gt_loc_25=X,c_gt_loc_26=X,c_gt_loc_27=X,c_gt_loc_28=X,c_gt_loc_29=X,c_gt_loc_3=X,c_gt_loc_30=X,c_gt_loc_31=X,c_gt_loc_32=X,c_gt_loc_33=X,c_gt_loc_34=X,c_gt_loc_35=X,c_gt_loc_36=X,c_gt_loc_37=X,c_gt_loc_38=X,c_gt_loc_39=X,c_gt_loc_4=X,c_gt_loc_40=X,c_gt_loc_41=X,c_gt_loc_42=X,c_gt_loc_43=X,c_gt_loc_44=X,c_gt_loc_45=X,c_gt_loc_46=X,c_gt_loc_47=X,c_gt_loc_48=X,c_gt_loc_5=X,c_gt_loc_6=X,c_gt_loc_7=X,c_gt_loc_8=X,c_gt_loc_9=X,c_lane_width=4,c_line_rate=37500,c_nfc=false,c_nfc_mode=IMM,c_refclk_frequency=250000,c_simplex=true,c_simplex_mode=TX,c_stream=true,c_ufc=false,flow_mode=None,interface_mode=Streaming,dataflow_config=TX-only_Simplex}" *)
 module design_1_axi_chip2chip_0_aurora8_1_core #
  (
      parameter   WATCHDOG_TIMEOUT     =  14,
      parameter   SIM_GTRESET_SPEEDUP =   "FALSE",     // Set to 'TRUE' to speed up sim reset
      parameter CC_FREQ_FACTOR = 5'd12,
+     // Simplex timer parameters
+     parameter   C_SIMPLEX_TIMER      =  18,      // Simplex Timer 
+     parameter   C_ALIGNED_TIMER      =  158990,  // Timer to assert tx_aligned signal 
+     parameter   C_VERIFY_TIMER       =  C_ALIGNED_TIMER + 512,   // Timer to assert tx_verify signal 
      parameter   EXAMPLE_SIMULATION =   0      
 )
 (
@@ -91,11 +95,6 @@ module design_1_axi_chip2chip_0_aurora8_1_core #
     //Status
     tx_channel_up,
     tx_lane_up,
-
-    //Simplex Sideband Signals
-    tx_aligned,
-    tx_verify,
-    tx_reset,
 
 
     //System Interface
@@ -219,11 +218,6 @@ output             tx_hard_err;
 output             tx_channel_up;
 output             tx_lane_up;
 
-    //Simplex Sideband Signals
-input              tx_aligned;
-input              tx_verify;
-input              tx_reset;
-
 
     //System Interface
 input              user_clk;
@@ -317,6 +311,10 @@ wire    [0:1]      tx_pe_data_v_i;
 wire    [0:1]      tx_pe_data_v_striped_i;
 wire               tx_reset_lanes_i;
 wire               tx_system_reset_c;
+reg     [C_SIMPLEX_TIMER-1:0]  simplex_timer_r;
+reg                tx_reset_simplex_r;
+reg                tx_aligned_simplex_r;
+reg                tx_verify_simplex_r;
     wire    txpma_ready_0_i;
     wire    rxpma_ready_0_i;
 
@@ -343,6 +341,54 @@ wire warn_cc;
     assign          tied_to_ground_vec_i = 0;
 
 
+    always @(posedge user_clk)
+        if(system_reset_i || tx_hard_err)
+        begin
+            simplex_timer_r  <=  {C_SIMPLEX_TIMER{1'b0}};
+        end
+        else if(tx_verify_simplex_r)
+        begin
+            simplex_timer_r  <=  simplex_timer_r;
+        end
+        else
+        begin
+            simplex_timer_r  <=  simplex_timer_r + 1'b1;
+        end
+
+    always @(posedge user_clk)
+        if((~|simplex_timer_r) || system_reset_i || tx_hard_err)
+        begin
+            tx_reset_simplex_r  <=  1'b0;
+        end
+        else if (simplex_timer_r == 'd1)
+        begin
+            tx_reset_simplex_r  <=  1'b1;
+        end
+        else if (simplex_timer_r == 'd6)
+        begin
+            tx_reset_simplex_r  <=  1'b0;
+        end
+
+    always @(posedge user_clk)
+        if(tx_system_reset_c || tx_hard_err)
+        begin
+            tx_aligned_simplex_r  <=  1'b0;
+        end
+        else if(simplex_timer_r == C_ALIGNED_TIMER)
+        begin
+            tx_aligned_simplex_r  <=  1'b1;
+        end
+
+    always @(posedge user_clk)
+        if(tx_system_reset_c || tx_hard_err)
+        begin
+            tx_verify_simplex_r  <=  1'b0;
+        end
+        else if (simplex_timer_r == C_VERIFY_TIMER)
+        begin
+            tx_verify_simplex_r  <=  1'b1;
+        end
+
 
 
     assign          tx_lock     =   tx_lock_comb_i;
@@ -355,7 +401,7 @@ wire warn_cc;
     assign          tx_channel_up       =   tx_channel_up_i;
     assign          tx_resetdone_out =  tx_resetdone_i;
 
-    assign          tx_system_reset_c   =   system_reset_i || tx_reset ;
+    assign          tx_system_reset_c   =   system_reset_i || tx_reset_simplex_r;
 
 
     //Connect the TXOUTCLK of lane 0 to tx_out_clk
@@ -463,8 +509,7 @@ assign          tx_lane_up =   tx_lane_up_i;
         .TX_PE_DATA_V(tx_pe_data_v_striped_i[0:1]),
         .GEN_CC(gen_cc_i),
 
-        // Sideband Interface
-        .TX_ALIGNED(tx_aligned),
+        .TX_ALIGNED(tx_aligned_simplex_r),
 
         // Global Logic Interface
 .GEN_A(gen_a_i),
@@ -640,7 +685,7 @@ assign          tx_lane_up =   tx_lane_up_i;
         .RESET_LANES(tx_reset_lanes_i),
 
         // Sideband Signal
-        .TX_VERIFY(tx_verify),
+        .TX_VERIFY(tx_verify_simplex_r),
 
         // System Interface
         .USER_CLK(user_clk),

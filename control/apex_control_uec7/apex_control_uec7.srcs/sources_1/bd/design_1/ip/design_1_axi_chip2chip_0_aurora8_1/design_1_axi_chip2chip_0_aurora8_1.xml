@@ -225,7 +225,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>TDATA_NUM_BYTES</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.TDATA_NUM_BYTES">4</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.TDATA_NUM_BYTES">1</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -261,7 +261,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>HAS_TREADY</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.HAS_TREADY">0</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.HAS_TREADY">1</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -297,7 +297,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.FREQ_HZ">187500000</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.FREQ_HZ">100000000</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -306,7 +306,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>PHASE</spirit:name>
-          <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.PHASE">0</spirit:value>
+          <spirit:value spirit:format="float" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.PHASE">0.000</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -315,7 +315,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>CLK_DOMAIN</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.CLK_DOMAIN">design_1_axi_chip2chip_0_aurora8_0_user_clk_out</spirit:value>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.CLK_DOMAIN"/>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -11211,7 +11211,7 @@
       <spirit:vendorExtensions>
         <xilinx:busInterfaceInfo>
           <xilinx:enablement>
-            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.TX_SIDEBAND_SIGNALS" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;Duplex&quot;) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;) and (spirit:decode(id(&apos;MODELPARAM_VALUE.BACKCHANNEL_MODE&apos;))!=&quot;Timer&quot;))">true</xilinx:isEnabled>
+            <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="BUSIF_ENABLEMENT.TX_SIDEBAND_SIGNALS" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;Duplex&quot;) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;) and (spirit:decode(id(&apos;MODELPARAM_VALUE.BACKCHANNEL_MODE&apos;))!=&quot;Timer&quot;))">false</xilinx:isEnabled>
           </xilinx:enablement>
         </xilinx:busInterfaceInfo>
       </spirit:vendorExtensions>
@@ -11744,7 +11744,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:e1d43411</spirit:value>
+            <spirit:value>9:148ea5d7</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -11759,11 +11759,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Feb 12 21:58:30 UTC 2021</spirit:value>
+            <spirit:value>Wed Feb 17 19:54:36 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0d32b81e</spirit:value>
+            <spirit:value>9:58432f6f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -11774,7 +11774,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0d32b81e</spirit:value>
+            <spirit:value>9:58432f6f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -11790,11 +11790,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Feb 12 21:58:30 UTC 2021</spirit:value>
+            <spirit:value>Wed Feb 17 19:54:37 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:0d32b81e</spirit:value>
+            <spirit:value>9:58432f6f</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -11809,11 +11809,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Feb 12 21:58:29 UTC 2021</spirit:value>
+            <spirit:value>Wed Feb 17 19:54:36 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:b7b66d44</spirit:value>
+            <spirit:value>9:85baab14</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -11829,11 +11829,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Feb 12 21:58:30 UTC 2021</spirit:value>
+            <spirit:value>Wed Feb 17 19:54:37 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:b7b66d44</spirit:value>
+            <spirit:value>9:85baab14</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -12819,7 +12819,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.tx_aligned" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;Duplex&quot;) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;) and (spirit:decode(id(&apos;MODELPARAM_VALUE.BACKCHANNEL_MODE&apos;))!=&quot;Timer&quot;))">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.tx_aligned" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;Duplex&quot;) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;) and (spirit:decode(id(&apos;MODELPARAM_VALUE.BACKCHANNEL_MODE&apos;))!=&quot;Timer&quot;))">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -12865,7 +12865,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.tx_verify" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;Duplex&quot;) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;) and (spirit:decode(id(&apos;MODELPARAM_VALUE.BACKCHANNEL_MODE&apos;))!=&quot;Timer&quot;))">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.tx_verify" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;Duplex&quot;) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;) and (spirit:decode(id(&apos;MODELPARAM_VALUE.BACKCHANNEL_MODE&apos;))!=&quot;Timer&quot;))">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -12888,7 +12888,7 @@
         <spirit:vendorExtensions>
           <xilinx:portInfo>
             <xilinx:enablement>
-              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.tx_reset" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;Duplex&quot;) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;) and (spirit:decode(id(&apos;MODELPARAM_VALUE.BACKCHANNEL_MODE&apos;))!=&quot;Timer&quot;))">true</xilinx:isEnabled>
+              <xilinx:isEnabled xilinx:resolve="dependent" xilinx:id="PORT_ENABLEMENT.tx_reset" xilinx:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;Duplex&quot;) and (spirit:decode(id(&apos;MODELPARAM_VALUE.DATAFLOW_CONFIG&apos;))!=&quot;RX-only_Simplex&quot;) and (spirit:decode(id(&apos;MODELPARAM_VALUE.BACKCHANNEL_MODE&apos;))!=&quot;Timer&quot;))">false</xilinx:isEnabled>
             </xilinx:enablement>
           </xilinx:portInfo>
         </spirit:vendorExtensions>
@@ -39327,7 +39327,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="string">
         <spirit:name>backchannel_mode</spirit:name>
-        <spirit:value spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.backchannel_mode">Sidebands</spirit:value>
+        <spirit:value spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.backchannel_mode">Timer</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="boolean">
         <spirit:name>c_simplex</spirit:name>
@@ -39391,11 +39391,11 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="string">
         <spirit:name>c_gt_loc_2</spirit:name>
-        <spirit:value spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.c_gt_loc_2">X</spirit:value>
+        <spirit:value spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.c_gt_loc_2">1</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="string">
         <spirit:name>c_gt_loc_3</spirit:name>
-        <spirit:value spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.c_gt_loc_3">1</spirit:value>
+        <spirit:value spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.c_gt_loc_3">X</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="string">
         <spirit:name>c_gt_loc_4</spirit:name>
@@ -40188,7 +40188,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Backchannel_mode</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Backchannel_mode" spirit:choiceRef="choice_list_78a13d1a" spirit:order="9">Sidebands</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Backchannel_mode" spirit:choiceRef="choice_list_78a13d1a" spirit:order="9">Timer</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40727,7 +40727,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_3</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_3" spirit:choiceRef="choice_list_628aac54" spirit:order="14">1</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_3" spirit:choiceRef="choice_list_ddf7a1a5" spirit:order="14">X</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -40738,7 +40738,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>C_GT_LOC_2</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_2" spirit:choiceRef="choice_list_628aac54" spirit:order="13">X</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.C_GT_LOC_2" spirit:choiceRef="choice_list_628aac54" spirit:order="13">1</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -41075,18 +41075,6 @@
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_CLK.PHASE" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_CLK_OUT.ASSOCIATED_BUSIF" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_CLK_OUT.ASSOCIATED_RESET" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.CLK_DOMAIN" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.FREQ_HZ" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.HAS_TKEEP" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.HAS_TLAST" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.HAS_TREADY" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.HAS_TSTRB" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.LAYERED_METADATA" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.PHASE" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.TDATA_NUM_BYTES" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.TDEST_WIDTH" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.TID_WIDTH" xilinx:valuePermission="bd"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_M_AXI_RX.TUSER_WIDTH" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_S_AXI_TX.CLK_DOMAIN" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_S_AXI_TX.FREQ_HZ" xilinx:valueSource="user" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_S_AXI_TX.HAS_TKEEP" xilinx:valueSource="constant_prop" xilinx:valuePermission="bd"/>
@@ -41099,6 +41087,7 @@
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_S_AXI_TX.TDEST_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_S_AXI_TX.TID_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.USER_DATA_S_AXI_TX.TUSER_WIDTH" xilinx:valueSource="constant" xilinx:valuePermission="bd"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.Backchannel_mode" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_AURORA_LANES" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_DRP_IF" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_GT_CLOCK_1" xilinx:valueSource="user"/>

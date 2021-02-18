@@ -62,11 +62,15 @@
 /////////////////////////////////////////////////////////////////////////////////////
 
 `timescale 1 ns / 1 ps
-(* core_generation_info = "design_1_axi_chip2chip_0_aurora8_2,aurora_8b10b_v11_1_9,{user_interface=AXI_4_Streaming,backchannel_mode=Sidebands,c_aurora_lanes=1,c_column_used=None,c_gt_clock_1=GTPQ0,c_gt_clock_2=None,c_gt_loc_1=X,c_gt_loc_10=X,c_gt_loc_11=X,c_gt_loc_12=X,c_gt_loc_13=X,c_gt_loc_14=X,c_gt_loc_15=X,c_gt_loc_16=X,c_gt_loc_17=X,c_gt_loc_18=X,c_gt_loc_19=X,c_gt_loc_2=1,c_gt_loc_20=X,c_gt_loc_21=X,c_gt_loc_22=X,c_gt_loc_23=X,c_gt_loc_24=X,c_gt_loc_25=X,c_gt_loc_26=X,c_gt_loc_27=X,c_gt_loc_28=X,c_gt_loc_29=X,c_gt_loc_3=X,c_gt_loc_30=X,c_gt_loc_31=X,c_gt_loc_32=X,c_gt_loc_33=X,c_gt_loc_34=X,c_gt_loc_35=X,c_gt_loc_36=X,c_gt_loc_37=X,c_gt_loc_38=X,c_gt_loc_39=X,c_gt_loc_4=X,c_gt_loc_40=X,c_gt_loc_41=X,c_gt_loc_42=X,c_gt_loc_43=X,c_gt_loc_44=X,c_gt_loc_45=X,c_gt_loc_46=X,c_gt_loc_47=X,c_gt_loc_48=X,c_gt_loc_5=X,c_gt_loc_6=X,c_gt_loc_7=X,c_gt_loc_8=X,c_gt_loc_9=X,c_lane_width=4,c_line_rate=37500,c_nfc=false,c_nfc_mode=IMM,c_refclk_frequency=250000,c_simplex=true,c_simplex_mode=RX,c_stream=true,c_ufc=false,flow_mode=None,interface_mode=Streaming,dataflow_config=RX-only_Simplex}" *)
+(* core_generation_info = "design_1_axi_chip2chip_0_aurora8_2,aurora_8b10b_v11_1_9,{user_interface=AXI_4_Streaming,backchannel_mode=Timer,c_aurora_lanes=1,c_column_used=None,c_gt_clock_1=GTPQ0,c_gt_clock_2=None,c_gt_loc_1=X,c_gt_loc_10=X,c_gt_loc_11=X,c_gt_loc_12=X,c_gt_loc_13=X,c_gt_loc_14=X,c_gt_loc_15=X,c_gt_loc_16=X,c_gt_loc_17=X,c_gt_loc_18=X,c_gt_loc_19=X,c_gt_loc_2=1,c_gt_loc_20=X,c_gt_loc_21=X,c_gt_loc_22=X,c_gt_loc_23=X,c_gt_loc_24=X,c_gt_loc_25=X,c_gt_loc_26=X,c_gt_loc_27=X,c_gt_loc_28=X,c_gt_loc_29=X,c_gt_loc_3=X,c_gt_loc_30=X,c_gt_loc_31=X,c_gt_loc_32=X,c_gt_loc_33=X,c_gt_loc_34=X,c_gt_loc_35=X,c_gt_loc_36=X,c_gt_loc_37=X,c_gt_loc_38=X,c_gt_loc_39=X,c_gt_loc_4=X,c_gt_loc_40=X,c_gt_loc_41=X,c_gt_loc_42=X,c_gt_loc_43=X,c_gt_loc_44=X,c_gt_loc_45=X,c_gt_loc_46=X,c_gt_loc_47=X,c_gt_loc_48=X,c_gt_loc_5=X,c_gt_loc_6=X,c_gt_loc_7=X,c_gt_loc_8=X,c_gt_loc_9=X,c_lane_width=4,c_line_rate=37500,c_nfc=false,c_nfc_mode=IMM,c_refclk_frequency=250000,c_simplex=true,c_simplex_mode=RX,c_stream=true,c_ufc=false,flow_mode=None,interface_mode=Streaming,dataflow_config=RX-only_Simplex}" *)
 module design_1_axi_chip2chip_0_aurora8_2_core #
  (
      parameter   WATCHDOG_TIMEOUT     =  14,
      parameter   SIM_GTRESET_SPEEDUP =   "FALSE",     // Set to 'TRUE' to speed up sim reset
+     // Simplex timer parameters
+     parameter   C_SIMPLEX_TIMER      =  18,      // Simplex Timer 
+     parameter   C_ALIGNED_TIMER      =  158990,  // Timer to assert tx_aligned signal 
+     parameter   C_VERIFY_TIMER       =  C_ALIGNED_TIMER + 512,   // Timer to assert tx_verify signal 
      parameter   EXAMPLE_SIMULATION =   0      
 )
 (
@@ -92,11 +96,6 @@ module design_1_axi_chip2chip_0_aurora8_2_core #
     rx_channel_up,
     rx_lane_up,
 
-    //Simplex Sideband Signals
-
-    rx_aligned,
-    rx_verify,
-    rx_reset,
 
     //System Interface
     user_clk,
@@ -238,11 +237,6 @@ output             soft_err;
 output             rx_channel_up;
 output             rx_lane_up;
 
-    //Simplex Sideband Signals
-
-output             rx_aligned;
-output             rx_verify;
-output             rx_reset;
 
     //System Interface
 input              user_clk;
@@ -383,7 +377,6 @@ reg    rxfsm_data_valid_r;
     assign          rx_channel_up       =   rx_channel_up_i;
     assign          rx_resetdone_out =  rx_resetdone_i;
 
-assign          rx_reset            =   rx_reset_lanes_i;
 
     //Connect the TXOUTCLK of lane 0 to tx_out_clk
  
@@ -699,8 +692,8 @@ assign  gtx_tx_reset_i  =   1'b0;
         .GTRXRESET_OUT(gtrxreset_i),
 
         // Sideband Signal
-        .RX_ALIGNED(rx_aligned),
-        .RX_VERIFY(rx_verify),
+        .RX_ALIGNED(),
+        .RX_VERIFY(),
         // System Interface
         .USER_CLK(user_clk),
         .RESET(system_reset_i),

@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="design_1" CanBeSetAsTop="true" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1613168003"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1613168003"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1613168003"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1613168003"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1613591696"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1613591696"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1613591696"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1613591696"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\design_1_processing_system7_0_0\design_1_processing_system7_0_0.xci" Type="IP">
         <Instance HierarchyPath="cpu/processing_system7_0"/>
@@ -351,14 +351,6 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip\design_1_xlconstant_0_4\design_1_xlconstant_0_4.xci" Type="IP">
-        <Instance HierarchyPath="chip2chip_bot_ff/xlconstant_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="1607371878" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="ip\design_1_xlslice_2_0\design_1_xlslice_2_0.xci" Type="IP">
         <Instance HierarchyPath="reg_bank/xlslice_3"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="1607371878" IsTrackable="true" IsStatusTracked="true"/>
@@ -468,6 +460,14 @@
       </File>
       <File Name="ip\design_1_axi_chip2chip_0_aurora8_2\design_1_axi_chip2chip_0_aurora8_2.xci" Type="IP">
         <Instance HierarchyPath="chip2chip_bot_ff/axi_chip2chip_0_aurora9"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\design_1_xlslice_2_1\design_1_xlslice_2_1.xci" Type="IP">
+        <Instance HierarchyPath="reg_bank/xlslice_5"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
