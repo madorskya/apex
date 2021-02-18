@@ -26,7 +26,10 @@ module c2c_mgt_tux
     output [31:0] rxdata [3:0],
     output [ 3:0] rxvalid,
     
-    output [3:0] channel_up, 
+    output [3:0] channel_up,
+    input  [2:0] prbs_sel, 
+    output [3:0] prbs_err,
+    input  [3:0] tx_polarity,
     
     output usr_clk // single user clock for tx and rx
 );
@@ -149,7 +152,6 @@ wire            gt3_rxfsmresetdone_i;
     wire            gt0_txpolarity_i;
     //---------------- Transmit Ports - pattern Generator Ports ----------------
     wire    [2:0]   gt0_txprbssel_i;
-
     //________________________________________________________________________
     //________________________________________________________________________
     //GT1  (X0Y1)
@@ -632,6 +634,7 @@ wire            pll1pd_i;
   wire gt3_rxresetdone_ila ;
   wire gt3_txresetdone_ila ;
 
+    assign prbs_err = {gt3_rxprbserr_i, gt2_rxprbserr_i, gt1_rxprbserr_i, gt0_rxprbserr_i};
 
 //**************************** Main Body of Code *******************************
 
@@ -1136,25 +1139,25 @@ always @(posedge gt3_txusrclk2_i or negedge gt3_txfsmresetdone_i)
 
 //------------ optional Ports assignments --------------
 assign  gt0_rxprbscntreset_i                 =  tied_to_ground_i;
-assign  gt0_rxprbssel_i                      =  0;
+assign  gt0_rxprbssel_i                      =  prbs_sel;
 assign  gt0_rxpolarity_i                     =  tied_to_ground_i;
-assign  gt0_txpolarity_i                     =  tied_to_ground_i;
-assign  gt0_txprbssel_i                      =  0;
+assign  gt0_txpolarity_i                     =  tx_polarity [0];
+assign  gt0_txprbssel_i                      =  prbs_sel;
 assign  gt1_rxprbscntreset_i                 =  tied_to_ground_i;
-assign  gt1_rxprbssel_i                      =  0;
+assign  gt1_rxprbssel_i                      =  prbs_sel;
 assign  gt1_rxpolarity_i                     =  tied_to_ground_i;
-assign  gt1_txpolarity_i                     =  tied_to_ground_i;
-assign  gt1_txprbssel_i                      =  0;
+assign  gt1_txpolarity_i                     =  tx_polarity [1];
+assign  gt1_txprbssel_i                      =  prbs_sel;
 assign  gt2_rxprbscntreset_i                 =  tied_to_ground_i;
-assign  gt2_rxprbssel_i                      =  0;
+assign  gt2_rxprbssel_i                      =  prbs_sel;
 assign  gt2_rxpolarity_i                     =  tied_to_ground_i;
-assign  gt2_txpolarity_i                     =  tied_to_ground_i;
-assign  gt2_txprbssel_i                      =  0;
+assign  gt2_txpolarity_i                     =  tx_polarity [2];
+assign  gt2_txprbssel_i                      =  prbs_sel;
 assign  gt3_rxprbscntreset_i                 =  tied_to_ground_i;
-assign  gt3_rxprbssel_i                      =  0;
+assign  gt3_rxprbssel_i                      =  prbs_sel;
 assign  gt3_rxpolarity_i                     =  tied_to_ground_i;
-assign  gt3_txpolarity_i                     =  tied_to_ground_i;
-assign  gt3_txprbssel_i                      =  0;
+assign  gt3_txpolarity_i                     =  tx_polarity [3];
+assign  gt3_txprbssel_i                      =  prbs_sel;
 //------------------------------------------------------
 
 

@@ -116,6 +116,9 @@ module apex_control_mgt_top
     wire [ 3:0] rxvalid;
     
     wire [3:0] channel_up;
+    wire [2:0] prbs_sel;
+    wire [3:0] prbs_err;
+    wire [3:0] tx_polarity;
     
     wire usr_clk; // single user clock for tx and rx
     
@@ -159,6 +162,15 @@ module apex_control_mgt_top
         .c2c_top_tx_tready (txready [2]),
         .c2c_top_tx_tvalid (txvalid [2]),
         
+        .mgt_chup_bot   (channel_up[3]),
+        .mgt_chup_top   (channel_up[1]),
+        .mgt_locked_bot (channel_up[3]),
+        .mgt_locked_top (channel_up[1]),
+
+        .prbs_sel       (prbs_sel),
+        .prbs_err       (prbs_err),
+        .tx_polarity    (tx_polarity),
+
         .en_ipmb_zynq(en_ipmb_zynq),
         .ha(ha),
         .hot_swap_sw(hot_swap_sw),
@@ -184,12 +196,6 @@ module apex_control_mgt_top
         .mdio_phy_mdio_i(mdio_phy_mdio_i),
         .mdio_phy_mdio_o(mdio_phy_mdio_o),
         .mdio_phy_mdio_t(mdio_phy_mdio_t),
-        
-        .mgt_chup_bot   (channel_up[3]),
-        .mgt_chup_top   (channel_up[1]),
-        .mgt_locked_bot (channel_up[3]),
-        .mgt_locked_top (channel_up[1]),
-        
         .phy_rst(phy_rst),
         .pim_alarm(pim_alarm),
         .qbv_on_off(qbv_on_off),
@@ -305,6 +311,11 @@ module apex_control_mgt_top
         // interface for c2c RX
         .rxdata  (rxdata ),
         .rxvalid (rxvalid),
+        
+        .channel_up (channel_up),
+        .prbs_sel   (prbs_sel), 
+        .prbs_err   (prbs_err),
+        .tx_polarity    (tx_polarity),
         
         .usr_clk (usr_clk)// single user clock for tx and rx
     );

@@ -179,6 +179,7 @@
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
 						"ACLK": { "actual": "axi_c2c_phy_clk"},
+						"ARESET": { "actual": "aurora_reset_pb"},
 						"TDATA": { "actual": "AXIS_RX_0_tdata"},
 						"TVALID": { "actual": "AXIS_RX_0_tvalid"}
 					}
@@ -187,6 +188,7 @@
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
 						"ACLK": { "actual": "axi_c2c_phy_clk"},
+						"ARESET": { "actual": "aurora_reset_pb"},
 						"TDATA": { "actual": "AXIS_TX_0_tdata"},
 						"TREADY": { "actual": "AXIS_TX_0_tready"},
 						"TVALID": { "actual": "AXIS_TX_0_tvalid"}
@@ -381,6 +383,7 @@
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
 						"ACLK": { "actual": "axi_c2c_phy_clk_0"},
+						"ARESET": { "actual": "aurora_reset_pb"},
 						"TDATA": { "actual": "AXIS_RX_0_tdata"},
 						"TVALID": { "actual": "AXIS_RX_0_tvalid"}
 					}
@@ -389,6 +392,7 @@
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
 						"ACLK": { "actual": "axi_c2c_phy_clk_0"},
+						"ARESET": { "actual": "aurora_reset_pb"},
 						"TDATA": { "actual": "AXIS_TX_0_tdata"},
 						"TREADY": { "actual": "AXIS_TX_0_tready"},
 						"TVALID": { "actual": "AXIS_TX_0_tvalid"}

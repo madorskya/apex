@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Thu Feb 18 05:20:43 2021
+//Date        : Thu Feb 18 17:44:45 2021
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -63,6 +63,8 @@ module design_1_wrapper
     mgt_locked_top,
     phy_rst,
     pim_alarm,
+    prbs_err,
+    prbs_sel,
     qbv_on_off,
     ready_ipmb_zynq,
     rgmii_rd,
@@ -85,7 +87,8 @@ module design_1_wrapper
     scf_tdo_1,
     scf_tms_0,
     scf_tms_1,
-    soft_reset);
+    soft_reset,
+    tx_polarity);
   inout [14:0]DDR_addr;
   inout [2:0]DDR_ba;
   inout DDR_cas_n;
@@ -139,6 +142,8 @@ module design_1_wrapper
   input mgt_locked_top;
   output [0:0]phy_rst;
   input [0:0]pim_alarm;
+  input [3:0]prbs_err;
+  output [2:0]prbs_sel;
   output [0:0]qbv_on_off;
   input [1:0]ready_ipmb_zynq;
   input [3:0]rgmii_rd;
@@ -162,6 +167,7 @@ module design_1_wrapper
   output scf_tms_0;
   output scf_tms_1;
   output soft_reset;
+  output [3:0]tx_polarity;
 
   wire [14:0]DDR_addr;
   wire [2:0]DDR_ba;
@@ -231,6 +237,8 @@ module design_1_wrapper
   wire mgt_locked_top;
   wire [0:0]phy_rst;
   wire [0:0]pim_alarm;
+  wire [3:0]prbs_err;
+  wire [2:0]prbs_sel;
   wire [0:0]qbv_on_off;
   wire [1:0]ready_ipmb_zynq;
   wire [3:0]rgmii_rd;
@@ -272,6 +280,7 @@ module design_1_wrapper
   wire scf_tms_0;
   wire scf_tms_1;
   wire soft_reset;
+  wire [3:0]tx_polarity;
 
   design_1 design_1_i
        (.DDR_addr(DDR_addr),
@@ -337,6 +346,8 @@ module design_1_wrapper
         .mgt_locked_top(mgt_locked_top),
         .phy_rst(phy_rst),
         .pim_alarm(pim_alarm),
+        .prbs_err(prbs_err),
+        .prbs_sel(prbs_sel),
         .qbv_on_off(qbv_on_off),
         .ready_ipmb_zynq(ready_ipmb_zynq),
         .rgmii_rd(rgmii_rd),
@@ -371,7 +382,8 @@ module design_1_wrapper
         .scf_tdo_1(scf_tdo_1),
         .scf_tms_0(scf_tms_0),
         .scf_tms_1(scf_tms_1),
-        .soft_reset(soft_reset));
+        .soft_reset(soft_reset),
+        .tx_polarity(tx_polarity));
   IOBUF i2c_10g_scl_iobuf
        (.I(i2c_10g_scl_o),
         .IO(i2c_10g_scl_io),

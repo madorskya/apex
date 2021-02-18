@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Thu Feb 18 05:20:41 2021
+//Date        : Thu Feb 18 17:44:43 2021
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -350,12 +350,17 @@ module chip2chip_bot_ff_imp_ZOMF2S
     AXIS_TX_0_tdata,
     AXIS_TX_0_tready,
     AXIS_TX_0_tvalid,
+    aurora_do_cc,
     aurora_init_clk,
     aurora_mmcm_not_locked_1,
     aurora_pma_init_in,
     aurora_pma_init_out_0,
+    aurora_reset_pb,
     axi_c2c_aurora_channel_up_1,
+    axi_c2c_config_error_out,
+    axi_c2c_link_error_out,
     axi_c2c_link_status_out,
+    axi_c2c_multi_bit_error_out,
     axi_c2c_phy_clk,
     channel_up,
     s_aresetn,
@@ -401,12 +406,17 @@ module chip2chip_bot_ff_imp_ZOMF2S
   output [31:0]AXIS_TX_0_tdata;
   input AXIS_TX_0_tready;
   output AXIS_TX_0_tvalid;
+  output aurora_do_cc;
   input aurora_init_clk;
   input aurora_mmcm_not_locked_1;
   input aurora_pma_init_in;
   output aurora_pma_init_out_0;
+  output aurora_reset_pb;
   input axi_c2c_aurora_channel_up_1;
+  output axi_c2c_config_error_out;
+  output axi_c2c_link_error_out;
   output axi_c2c_link_status_out;
+  output axi_c2c_multi_bit_error_out;
   input axi_c2c_phy_clk;
   output [0:0]channel_up;
   input s_aresetn;
@@ -457,8 +467,13 @@ module chip2chip_bot_ff_imp_ZOMF2S
   wire aurora_mmcm_not_locked_1_1;
   wire axi_c2c_aurora_channel_up_1_1;
   wire axi_c2c_phy_clk_1;
+  wire axi_chip2chip_0_aurora_do_cc;
   wire axi_chip2chip_0_aurora_pma_init_out;
+  wire axi_chip2chip_0_aurora_reset_pb;
+  wire axi_chip2chip_0_axi_c2c_config_error_out;
+  wire axi_chip2chip_0_axi_c2c_link_error_out;
   wire axi_chip2chip_0_axi_c2c_link_status_out;
+  wire axi_chip2chip_0_axi_c2c_multi_bit_error_out;
   wire [26:0]axisafety_1_M_AXI_ARADDR;
   wire [1:0]axisafety_1_M_AXI_ARBURST;
   wire axisafety_1_M_AXI_ARESETN;
@@ -535,10 +550,15 @@ module chip2chip_bot_ff_imp_ZOMF2S
   assign Conn2_TDATA = AXIS_RX_0_tdata[31:0];
   assign Conn2_TVALID = AXIS_RX_0_tvalid;
   assign Net = aurora_init_clk;
+  assign aurora_do_cc = axi_chip2chip_0_aurora_do_cc;
   assign aurora_mmcm_not_locked_1_1 = aurora_mmcm_not_locked_1;
   assign aurora_pma_init_out_0 = axi_chip2chip_0_aurora_pma_init_out;
+  assign aurora_reset_pb = axi_chip2chip_0_aurora_reset_pb;
   assign axi_c2c_aurora_channel_up_1_1 = axi_c2c_aurora_channel_up_1;
+  assign axi_c2c_config_error_out = axi_chip2chip_0_axi_c2c_config_error_out;
+  assign axi_c2c_link_error_out = axi_chip2chip_0_axi_c2c_link_error_out;
   assign axi_c2c_link_status_out = axi_chip2chip_0_axi_c2c_link_status_out;
+  assign axi_c2c_multi_bit_error_out = axi_chip2chip_0_axi_c2c_multi_bit_error_out;
   assign axi_c2c_phy_clk_1 = axi_c2c_phy_clk;
   assign channel_up[0] = axi_c2c_aurora_channel_up_1_1;
   assign cpu_peripheral_reset = aurora_pma_init_in;
@@ -581,18 +601,23 @@ module chip2chip_bot_ff_imp_ZOMF2S
   assign s_axi_rvalid = s_axi_1_RVALID;
   assign s_axi_wready = s_axi_1_WREADY;
   design_1_axi_chip2chip_0_1 axi_chip2chip_0
-       (.aurora_init_clk(Net),
+       (.aurora_do_cc(axi_chip2chip_0_aurora_do_cc),
+        .aurora_init_clk(Net),
         .aurora_mmcm_not_locked(aurora_mmcm_not_locked_1_1),
         .aurora_pma_init_in(cpu_peripheral_reset),
         .aurora_pma_init_out(axi_chip2chip_0_aurora_pma_init_out),
+        .aurora_reset_pb(axi_chip2chip_0_aurora_reset_pb),
         .axi_c2c_aurora_channel_up(axi_c2c_aurora_channel_up_1_1),
         .axi_c2c_aurora_rx_tdata(Conn2_TDATA),
         .axi_c2c_aurora_rx_tvalid(Conn2_TVALID),
         .axi_c2c_aurora_tx_tdata(Conn1_TDATA),
         .axi_c2c_aurora_tx_tready(Conn1_TREADY),
         .axi_c2c_aurora_tx_tvalid(Conn1_TVALID),
+        .axi_c2c_config_error_out(axi_chip2chip_0_axi_c2c_config_error_out),
+        .axi_c2c_link_error_out(axi_chip2chip_0_axi_c2c_link_error_out),
         .axi_c2c_link_status_out(axi_chip2chip_0_axi_c2c_link_status_out),
         .axi_c2c_m2s_intr_in({1'b0,1'b0,1'b0,1'b0}),
+        .axi_c2c_multi_bit_error_out(axi_chip2chip_0_axi_c2c_multi_bit_error_out),
         .axi_c2c_phy_clk(axi_c2c_phy_clk_1),
         .s_aclk(Net),
         .s_aresetn(axisafety_1_M_AXI_ARESETN),
@@ -740,11 +765,17 @@ module chip2chip_top_ff_imp_8AXF8X
     S_AXI1_wready,
     S_AXI1_wstrb,
     S_AXI1_wvalid,
+    aurora_do_cc,
     aurora_init_clk,
     aurora_mmcm_not_locked_0,
     aurora_pma_init_in,
+    aurora_pma_init_out,
+    aurora_reset_pb,
     axi_c2c_aurora_channel_up_0,
+    axi_c2c_config_error_out,
+    axi_c2c_link_error_out,
     axi_c2c_link_status_out,
+    axi_c2c_multi_bit_error_out,
     axi_c2c_phy_clk_0,
     channel_up,
     s_aresetn);
@@ -790,11 +821,17 @@ module chip2chip_top_ff_imp_8AXF8X
   output S_AXI1_wready;
   input [3:0]S_AXI1_wstrb;
   input S_AXI1_wvalid;
+  output aurora_do_cc;
   input aurora_init_clk;
   input aurora_mmcm_not_locked_0;
   input aurora_pma_init_in;
+  output aurora_pma_init_out;
+  output aurora_reset_pb;
   input axi_c2c_aurora_channel_up_0;
+  output axi_c2c_config_error_out;
+  output axi_c2c_link_error_out;
   output axi_c2c_link_status_out;
+  output axi_c2c_multi_bit_error_out;
   input axi_c2c_phy_clk_0;
   output [0:0]channel_up;
   input s_aresetn;
@@ -845,7 +882,13 @@ module chip2chip_top_ff_imp_8AXF8X
   wire aurora_mmcm_not_locked_0_1;
   wire axi_c2c_aurora_channel_up_0_1;
   wire axi_c2c_phy_clk_0_1;
+  wire axi_chip2chip_0_aurora_do_cc;
+  wire axi_chip2chip_0_aurora_pma_init_out;
+  wire axi_chip2chip_0_aurora_reset_pb;
+  wire axi_chip2chip_0_axi_c2c_config_error_out;
+  wire axi_chip2chip_0_axi_c2c_link_error_out;
   wire axi_chip2chip_0_axi_c2c_link_status_out;
+  wire axi_chip2chip_0_axi_c2c_multi_bit_error_out;
   wire [26:0]axisafety_1_M_AXI_ARADDR;
   wire [1:0]axisafety_1_M_AXI_ARBURST;
   wire axisafety_1_M_AXI_ARESETN;
@@ -922,25 +965,37 @@ module chip2chip_top_ff_imp_8AXF8X
   assign S_AXI1_rresp[1:0] = S_AXI1_1_RRESP;
   assign S_AXI1_rvalid = S_AXI1_1_RVALID;
   assign S_AXI1_wready = S_AXI1_1_WREADY;
+  assign aurora_do_cc = axi_chip2chip_0_aurora_do_cc;
   assign aurora_mmcm_not_locked_0_1 = aurora_mmcm_not_locked_0;
+  assign aurora_pma_init_out = axi_chip2chip_0_aurora_pma_init_out;
+  assign aurora_reset_pb = axi_chip2chip_0_aurora_reset_pb;
   assign axi_c2c_aurora_channel_up_0_1 = axi_c2c_aurora_channel_up_0;
+  assign axi_c2c_config_error_out = axi_chip2chip_0_axi_c2c_config_error_out;
+  assign axi_c2c_link_error_out = axi_chip2chip_0_axi_c2c_link_error_out;
   assign axi_c2c_link_status_out = axi_chip2chip_0_axi_c2c_link_status_out;
+  assign axi_c2c_multi_bit_error_out = axi_chip2chip_0_axi_c2c_multi_bit_error_out;
   assign axi_c2c_phy_clk_0_1 = axi_c2c_phy_clk_0;
   assign channel_up[0] = axi_c2c_aurora_channel_up_0_1;
   assign cpu_peripheral_reset = aurora_pma_init_in;
   assign s_aresetn_1 = s_aresetn;
   design_1_axi_chip2chip_0_0 axi_chip2chip_0
-       (.aurora_init_clk(Net),
+       (.aurora_do_cc(axi_chip2chip_0_aurora_do_cc),
+        .aurora_init_clk(Net),
         .aurora_mmcm_not_locked(aurora_mmcm_not_locked_0_1),
         .aurora_pma_init_in(cpu_peripheral_reset),
+        .aurora_pma_init_out(axi_chip2chip_0_aurora_pma_init_out),
+        .aurora_reset_pb(axi_chip2chip_0_aurora_reset_pb),
         .axi_c2c_aurora_channel_up(axi_c2c_aurora_channel_up_0_1),
         .axi_c2c_aurora_rx_tdata(Conn2_TDATA),
         .axi_c2c_aurora_rx_tvalid(Conn2_TVALID),
         .axi_c2c_aurora_tx_tdata(Conn1_TDATA),
         .axi_c2c_aurora_tx_tready(Conn1_TREADY),
         .axi_c2c_aurora_tx_tvalid(Conn1_TVALID),
+        .axi_c2c_config_error_out(axi_chip2chip_0_axi_c2c_config_error_out),
+        .axi_c2c_link_error_out(axi_chip2chip_0_axi_c2c_link_error_out),
         .axi_c2c_link_status_out(axi_chip2chip_0_axi_c2c_link_status_out),
         .axi_c2c_m2s_intr_in({1'b0,1'b0,1'b0,1'b0}),
+        .axi_c2c_multi_bit_error_out(axi_chip2chip_0_axi_c2c_multi_bit_error_out),
         .axi_c2c_phy_clk(axi_c2c_phy_clk_0_1),
         .s_aclk(Net),
         .s_aresetn(axisafety_1_M_AXI_ARESETN),
@@ -3900,7 +3955,7 @@ module dbg_imp_5R9Y5
         .clk(Net));
 endmodule
 
-(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=120,numReposBlks=79,numNonXlnxBlks=2,numHierBlks=41,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=9,numPkgbdBlks=0,bdsource=USER,da_aeth_cnt=7,da_axi4_cnt=40,da_axi_chip2chip_cnt=1,da_board_cnt=37,da_bram_cntlr_cnt=1,da_clkrst_cnt=25,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
+(* CORE_GENERATION_INFO = "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=121,numReposBlks=80,numNonXlnxBlks=2,numHierBlks=41,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=9,numPkgbdBlks=0,bdsource=USER,da_aeth_cnt=7,da_axi4_cnt=40,da_axi_chip2chip_cnt=1,da_board_cnt=37,da_bram_cntlr_cnt=1,da_clkrst_cnt=25,synth_mode=Global}" *) (* HW_HANDOFF = "design_1.hwdef" *) 
 module design_1
    (DDR_addr,
     DDR_ba,
@@ -3965,6 +4020,8 @@ module design_1
     mgt_locked_top,
     phy_rst,
     pim_alarm,
+    prbs_err,
+    prbs_sel,
     qbv_on_off,
     ready_ipmb_zynq,
     rgmii_rd,
@@ -3999,7 +4056,8 @@ module design_1
     scf_tdo_1,
     scf_tms_0,
     scf_tms_1,
-    soft_reset);
+    soft_reset,
+    tx_polarity);
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR ADDR" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DDR, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250" *) inout [14:0]DDR_addr;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR BA" *) inout [2:0]DDR_ba;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR CAS_N" *) inout DDR_cas_n;
@@ -4063,6 +4121,8 @@ module design_1
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.MGT_LOCKED_TOP RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.MGT_LOCKED_TOP, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input mgt_locked_top;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.PHY_RST RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.PHY_RST, INSERT_VIP 0, POLARITY ACTIVE_LOW" *) output [0:0]phy_rst;
   input [0:0]pim_alarm;
+  input [3:0]prbs_err;
+  output [2:0]prbs_sel;
   output [0:0]qbv_on_off;
   input [1:0]ready_ipmb_zynq;
   (* X_INTERFACE_INFO = "xilinx.com:interface:rgmii:1.0 rgmii RD" *) input [3:0]rgmii_rd;
@@ -4098,6 +4158,7 @@ module design_1
   output scf_tms_0;
   output scf_tms_1;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.SOFT_RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.SOFT_RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) output soft_reset;
+  output [3:0]tx_polarity;
 
   wire [0:0]ARESETN_1;
   wire [31:0]AXIS_RX_0_1_TDATA;
@@ -4320,10 +4381,21 @@ module design_1
   wire [31:0]chip2chip_bot_ff_AXIS_TX_0_TDATA;
   wire chip2chip_bot_ff_AXIS_TX_0_TREADY;
   wire chip2chip_bot_ff_AXIS_TX_0_TVALID;
+  wire chip2chip_bot_ff_aurora_do_cc;
   wire chip2chip_bot_ff_aurora_pma_init_out_0;
+  wire chip2chip_bot_ff_aurora_reset_pb;
+  wire chip2chip_bot_ff_axi_c2c_config_error_out;
+  wire chip2chip_bot_ff_axi_c2c_link_error_out;
+  wire chip2chip_bot_ff_axi_c2c_multi_bit_error_out;
   wire [31:0]chip2chip_top_ff_AXIS_TX_0_TDATA;
   wire chip2chip_top_ff_AXIS_TX_0_TREADY;
   wire chip2chip_top_ff_AXIS_TX_0_TVALID;
+  wire chip2chip_top_ff_aurora_do_cc;
+  wire chip2chip_top_ff_aurora_pma_init_out;
+  wire chip2chip_top_ff_aurora_reset_pb;
+  wire chip2chip_top_ff_axi_c2c_config_error_out;
+  wire chip2chip_top_ff_axi_c2c_link_error_out;
+  wire chip2chip_top_ff_axi_c2c_multi_bit_error_out;
   wire [31:0]cpu_M10_AXI_ARADDR;
   wire cpu_M10_AXI_ARREADY;
   wire cpu_M10_AXI_ARVALID;
@@ -4529,6 +4601,7 @@ module design_1
   wire ipmc_jtag_irq1;
   wire ipmc_jtag_s0_o;
   wire ipmc_jtag_s0_o1;
+  wire [3:0]probe0_0_1;
   wire [0:0]proc_sys_reset_0_peripheral_aresetn;
   wire [14:0]processing_system7_0_DDR_ADDR;
   wire [2:0]processing_system7_0_DDR_BA;
@@ -4606,6 +4679,8 @@ module design_1
   wire [31:0]ps7_0_axi_periph_M02_AXI_WDATA;
   wire ps7_0_axi_periph_M02_AXI_WREADY;
   wire ps7_0_axi_periph_M02_AXI_WVALID;
+  wire [2:0]reg_bank_Dout;
+  wire [3:0]reg_bank_Dout2;
   wire [1:0]reg_bank_en_ipmb_zynq;
   wire [0:0]reg_bank_qbv_on_off;
   wire s0_i1_1;
@@ -4739,6 +4814,8 @@ module design_1
   assign mdio_phy_mdio_o = axi_ethernet_0_mdio_MDIO_O;
   assign mdio_phy_mdio_t = axi_ethernet_0_mdio_MDIO_T;
   assign phy_rst[0] = axi_ethernet_0_phy_rst_n;
+  assign prbs_sel[2:0] = reg_bank_Dout;
+  assign probe0_0_1 = prbs_err[3:0];
   assign qbv_on_off[0] = reg_bank_qbv_on_off;
   assign rgmii_td[3:0] = axi_ethernet_0_rgmii_TD;
   assign rgmii_tx_ctl = axi_ethernet_0_rgmii_TX_CTL;
@@ -4762,6 +4839,7 @@ module design_1
   assign scf_tms_0 = ipmc_jtag_TMS_0;
   assign scf_tms_1 = ipmc_jtag_TMS_1;
   assign soft_reset = chip2chip_bot_ff_aurora_pma_init_out_0;
+  assign tx_polarity[3:0] = reg_bank_Dout2;
   bram_loopback_imp_8MI6B2 bram_loopback
        (.S_AXI_ACLK(Net),
         .S_AXI_ARESETN(proc_sys_reset_0_peripheral_aresetn),
@@ -4808,12 +4886,17 @@ module design_1
         .AXIS_TX_0_tdata(chip2chip_bot_ff_AXIS_TX_0_TDATA),
         .AXIS_TX_0_tready(chip2chip_bot_ff_AXIS_TX_0_TREADY),
         .AXIS_TX_0_tvalid(chip2chip_bot_ff_AXIS_TX_0_TVALID),
+        .aurora_do_cc(chip2chip_bot_ff_aurora_do_cc),
         .aurora_init_clk(Net),
         .aurora_mmcm_not_locked_1(aurora_mmcm_not_locked_1_1),
         .aurora_pma_init_in(cpu_peripheral_reset),
         .aurora_pma_init_out_0(chip2chip_bot_ff_aurora_pma_init_out_0),
+        .aurora_reset_pb(chip2chip_bot_ff_aurora_reset_pb),
         .axi_c2c_aurora_channel_up_1(axi_c2c_aurora_channel_up_1_1),
+        .axi_c2c_config_error_out(chip2chip_bot_ff_axi_c2c_config_error_out),
+        .axi_c2c_link_error_out(chip2chip_bot_ff_axi_c2c_link_error_out),
         .axi_c2c_link_status_out(chip2chip_1_axi_c2c_link_status_out),
+        .axi_c2c_multi_bit_error_out(chip2chip_bot_ff_axi_c2c_multi_bit_error_out),
         .axi_c2c_phy_clk(axi_c2c_phy_clk_0_1),
         .channel_up(In7_1),
         .s_aresetn(proc_sys_reset_0_peripheral_aresetn),
@@ -4897,11 +4980,17 @@ module design_1
         .S_AXI1_wready(cpu_M14_AXI_WREADY),
         .S_AXI1_wstrb(cpu_M14_AXI_WSTRB),
         .S_AXI1_wvalid(cpu_M14_AXI_WVALID),
+        .aurora_do_cc(chip2chip_top_ff_aurora_do_cc),
         .aurora_init_clk(Net),
         .aurora_mmcm_not_locked_0(aurora_mmcm_not_locked_0_1),
         .aurora_pma_init_in(cpu_peripheral_reset),
+        .aurora_pma_init_out(chip2chip_top_ff_aurora_pma_init_out),
+        .aurora_reset_pb(chip2chip_top_ff_aurora_reset_pb),
         .axi_c2c_aurora_channel_up_0(axi_c2c_aurora_channel_up_0_1),
+        .axi_c2c_config_error_out(chip2chip_top_ff_axi_c2c_config_error_out),
+        .axi_c2c_link_error_out(chip2chip_top_ff_axi_c2c_link_error_out),
         .axi_c2c_link_status_out(chip2chip_0_axi_c2c_link_status_out),
+        .axi_c2c_multi_bit_error_out(chip2chip_top_ff_axi_c2c_multi_bit_error_out),
         .axi_c2c_phy_clk_0(axi_c2c_phy_clk_0_1),
         .channel_up(In5_1),
         .s_aresetn(proc_sys_reset_0_peripheral_aresetn));
@@ -5651,6 +5740,23 @@ module design_1
         .iic_rtl_4_sda_t(i2c_iic_rtl_4_SDA_T),
         .s_axi_aclk(Net),
         .s_axi_aresetn(proc_sys_reset_0_peripheral_aresetn));
+  design_1_ila_0_0 ila_0
+       (.clk(axi_c2c_phy_clk_0_1),
+        .probe0(probe0_0_1),
+        .probe1(chip2chip_0_axi_c2c_link_status_out),
+        .probe10(chip2chip_bot_ff_aurora_reset_pb),
+        .probe11(chip2chip_bot_ff_axi_c2c_config_error_out),
+        .probe12(chip2chip_bot_ff_axi_c2c_multi_bit_error_out),
+        .probe13(chip2chip_bot_ff_axi_c2c_link_error_out),
+        .probe14(chip2chip_bot_ff_aurora_do_cc),
+        .probe2(chip2chip_1_axi_c2c_link_status_out),
+        .probe3(chip2chip_top_ff_aurora_do_cc),
+        .probe4(chip2chip_top_ff_aurora_pma_init_out),
+        .probe5(chip2chip_top_ff_aurora_reset_pb),
+        .probe6(chip2chip_top_ff_axi_c2c_config_error_out),
+        .probe7(chip2chip_top_ff_axi_c2c_multi_bit_error_out),
+        .probe8(chip2chip_top_ff_axi_c2c_link_error_out),
+        .probe9(chip2chip_bot_ff_aurora_pma_init_out_0));
   ipmc_imp_13B1Q7C ipmc
        (.S_AXI1_araddr(S_AXI4_1_ARADDR),
         .S_AXI1_arburst(S_AXI4_1_ARBURST),
@@ -5839,7 +5945,9 @@ module design_1
         .s_axi_wstrb(s_axi_1_WSTRB),
         .s_axi_wvalid(s_axi_1_WVALID));
   reg_bank_imp_161U6JD reg_bank
-       (.Dout1(cpu_peripheral_reset),
+       (.Dout(reg_bank_Dout),
+        .Dout1(cpu_peripheral_reset),
+        .Dout2(reg_bank_Dout2),
         .Dout_1(xlslice_0_Dout),
         .In0_0(In0_0_1),
         .In1_0(In1_0_1),
@@ -5850,7 +5958,6 @@ module design_1
         .In6(chip2chip_1_axi_c2c_link_status_out),
         .In7(In7_1),
         .In8_0(In8_0_1),
-        .In9(1'b0),
         .S_AXI_araddr(cpu_M13_AXI_ARADDR),
         .S_AXI_arready(cpu_M13_AXI_ARREADY),
         .S_AXI_arvalid(cpu_M13_AXI_ARVALID),
@@ -5869,6 +5976,8 @@ module design_1
         .S_AXI_wstrb(cpu_M13_AXI_WSTRB),
         .S_AXI_wvalid(cpu_M13_AXI_WVALID),
         .en_ipmb_zynq(reg_bank_en_ipmb_zynq),
+        .mgt_chup_bot(axi_c2c_aurora_channel_up_1_1),
+        .mgt_chup_top(axi_c2c_aurora_channel_up_0_1),
         .qbv_on_off(reg_bank_qbv_on_off),
         .s_axi_aclk(Net),
         .s_axi_aresetn(proc_sys_reset_0_peripheral_aresetn));
@@ -21721,7 +21830,6 @@ module reg_bank_imp_161U6JD
     In6,
     In7,
     In8_0,
-    In9,
     S_AXI_araddr,
     S_AXI_arready,
     S_AXI_arvalid,
@@ -21740,12 +21848,14 @@ module reg_bank_imp_161U6JD
     S_AXI_wstrb,
     S_AXI_wvalid,
     en_ipmb_zynq,
+    mgt_chup_bot,
+    mgt_chup_top,
     qbv_on_off,
     s_axi_aclk,
     s_axi_aresetn);
   output [2:0]Dout;
   output [0:0]Dout1;
-  output [0:0]Dout2;
+  output [3:0]Dout2;
   output [2:0]Dout_1;
   input [1:0]In0_0;
   input [0:0]In1_0;
@@ -21756,7 +21866,6 @@ module reg_bank_imp_161U6JD
   input In6;
   input [0:0]In7;
   input [0:0]In8_0;
-  input In9;
   input [31:0]S_AXI_araddr;
   output S_AXI_arready;
   input S_AXI_arvalid;
@@ -21775,6 +21884,8 @@ module reg_bank_imp_161U6JD
   input [3:0]S_AXI_wstrb;
   input S_AXI_wvalid;
   output [1:0]en_ipmb_zynq;
+  input [0:0]mgt_chup_bot;
+  input [0:0]mgt_chup_top;
   output [0:0]qbv_on_off;
   input s_axi_aclk;
   input s_axi_aresetn;
@@ -21788,9 +21899,8 @@ module reg_bank_imp_161U6JD
   wire In6_1;
   wire [0:0]In7_1;
   wire [0:0]In8_0_1;
-  wire In9_1;
   wire Net;
-  wire [10:0]axi_gpio_0_gpio_io_o;
+  wire [13:0]axi_gpio_0_gpio_io_o;
   wire [31:0]cpu_M13_AXI_ARADDR;
   wire cpu_M13_AXI_ARREADY;
   wire cpu_M13_AXI_ARVALID;
@@ -21808,6 +21918,8 @@ module reg_bank_imp_161U6JD
   wire cpu_M13_AXI_WREADY;
   wire [3:0]cpu_M13_AXI_WSTRB;
   wire cpu_M13_AXI_WVALID;
+  wire [0:0]mgt_chup_bot_1;
+  wire [0:0]mgt_chup_top_1;
   wire proc_sys_reset_0_peripheral_aresetn;
   wire [1:0]util_vector_logic_0_Res;
   wire [0:0]util_vector_logic_1_Res;
@@ -21817,11 +21929,11 @@ module reg_bank_imp_161U6JD
   wire [0:0]xlslice_2_Dout;
   wire [2:0]xlslice_3_Dout;
   wire [0:0]xlslice_4_Dout;
-  wire [0:0]xlslice_5_Dout;
+  wire [3:0]xlslice_5_Dout;
 
   assign Dout[2:0] = xlslice_3_Dout;
   assign Dout1[0] = xlslice_4_Dout;
-  assign Dout2[0] = xlslice_5_Dout;
+  assign Dout2[3:0] = xlslice_5_Dout;
   assign Dout_1[2:0] = xlslice_0_Dout;
   assign In0_0_1 = In0_0[1:0];
   assign In1_0_1 = In1_0[0];
@@ -21832,7 +21944,6 @@ module reg_bank_imp_161U6JD
   assign In6_1 = In6;
   assign In7_1 = In7[0];
   assign In8_0_1 = In8_0[0];
-  assign In9_1 = In9;
   assign Net = s_axi_aclk;
   assign S_AXI_arready = cpu_M13_AXI_ARREADY;
   assign S_AXI_awready = cpu_M13_AXI_AWREADY;
@@ -21852,6 +21963,8 @@ module reg_bank_imp_161U6JD
   assign cpu_M13_AXI_WSTRB = S_AXI_wstrb[3:0];
   assign cpu_M13_AXI_WVALID = S_AXI_wvalid;
   assign en_ipmb_zynq[1:0] = util_vector_logic_0_Res;
+  assign mgt_chup_bot_1 = mgt_chup_bot[0];
+  assign mgt_chup_top_1 = mgt_chup_top[0];
   assign proc_sys_reset_0_peripheral_aresetn = s_axi_aresetn;
   assign qbv_on_off[0] = util_vector_logic_1_Res;
   design_1_axi_gpio_0_2 axi_gpio_0
@@ -21885,7 +21998,7 @@ module reg_bank_imp_161U6JD
   design_1_xlconcat_0_1 xlconcat_0
        (.In0(In2_0_1),
         .In1(In0_0_1),
-        .In10(In9_1),
+        .In10(mgt_chup_top_1),
         .In2(In1_0_1),
         .In3(In3_0_1),
         .In4(In4_1),
@@ -21893,22 +22006,22 @@ module reg_bank_imp_161U6JD
         .In6(In6_1),
         .In7(In7_1),
         .In8(In8_0_1),
-        .In9(In9_1),
+        .In9(mgt_chup_bot_1),
         .dout(xlconcat_0_dout));
   design_1_xlslice_0_0 xlslice_0
-       (.Din(axi_gpio_0_gpio_io_o[9:0]),
+       (.Din(axi_gpio_0_gpio_io_o),
         .Dout(xlslice_0_Dout));
   design_1_xlslice_0_1 xlslice_1
-       (.Din(axi_gpio_0_gpio_io_o[9:0]),
+       (.Din(axi_gpio_0_gpio_io_o),
         .Dout(xlslice_1_Dout));
   design_1_xlslice_1_0 xlslice_2
-       (.Din(axi_gpio_0_gpio_io_o[9:0]),
+       (.Din(axi_gpio_0_gpio_io_o),
         .Dout(xlslice_2_Dout));
   design_1_xlslice_2_0 xlslice_3
-       (.Din(axi_gpio_0_gpio_io_o[9:0]),
+       (.Din(axi_gpio_0_gpio_io_o),
         .Dout(xlslice_3_Dout));
   design_1_xlslice_3_0 xlslice_4
-       (.Din(axi_gpio_0_gpio_io_o[9:0]),
+       (.Din(axi_gpio_0_gpio_io_o),
         .Dout(xlslice_4_Dout));
   design_1_xlslice_2_1 xlslice_5
        (.Din(axi_gpio_0_gpio_io_o),
