@@ -26,6 +26,8 @@ module c2c_mgt_tux
     output [31:0] rxdata [3:0],
     output [ 3:0] rxvalid,
     
+    output [3:0] channel_up, 
+    
     output usr_clk // single user clock for tx and rx
 );
 
@@ -361,6 +363,12 @@ wire            gt3_rxfsmresetdone_i;
     wire            gt0_pll0refclklost_i;
     wire            gt0_pll0reset_i;
 
+    wire gt0_rxbyteisaligned_out;
+    wire gt1_rxbyteisaligned_out;
+    wire gt2_rxbyteisaligned_out;
+    wire gt3_rxbyteisaligned_out;
+    assign channel_up = {gt3_rxbyteisaligned_out, gt2_rxbyteisaligned_out, 
+                         gt1_rxbyteisaligned_out, gt0_rxbyteisaligned_out};
 
     //----------------------------- Global Signals -----------------------------
 
@@ -733,8 +741,9 @@ wire            pll1pd_i;
         .gt0_gtprxn_in                  (RXN_IN[0]),
         .gt0_gtprxp_in                  (RXP_IN[0]),
         //------------ Receive Ports - RX Byte and Word Alignment Ports ------------
+        .gt0_rxbyteisaligned_out        (gt0_rxbyteisaligned_out), // output wire gt0_rxbyteisaligned_out
         .gt0_rxmcommaalignen_in         (gt0_rxmcommaalignen_i),
-        .gt0_rxpcommaalignen_in         (gt0_rxpcommaalignen_i),
+        .gt0_rxpcommaalignen_in         (1'b1),
         //---------- Receive Ports - RX Decision Feedback Equalizer(DFE) -----------
         .gt0_dmonitorout_out            (gt0_dmonitorout_i),
         //------------------ Receive Ports - RX Equailizer Ports -------------------
@@ -802,8 +811,9 @@ wire            pll1pd_i;
         .gt1_gtprxn_in                  (RXN_IN[1]),
         .gt1_gtprxp_in                  (RXP_IN[1]),
         //------------ Receive Ports - RX Byte and Word Alignment Ports ------------
+        .gt1_rxbyteisaligned_out        (gt1_rxbyteisaligned_out), // output wire gt0_rxbyteisaligned_out
         .gt1_rxmcommaalignen_in         (gt1_rxmcommaalignen_i),
-        .gt1_rxpcommaalignen_in         (gt1_rxpcommaalignen_i),
+        .gt1_rxpcommaalignen_in         (1'b1),
         //---------- Receive Ports - RX Decision Feedback Equalizer(DFE) -----------
         .gt1_dmonitorout_out            (gt1_dmonitorout_i),
         //------------------ Receive Ports - RX Equailizer Ports -------------------
@@ -871,8 +881,9 @@ wire            pll1pd_i;
         .gt2_gtprxn_in                  (RXN_IN[2]),
         .gt2_gtprxp_in                  (RXP_IN[2]),
         //------------ Receive Ports - RX Byte and Word Alignment Ports ------------
+        .gt2_rxbyteisaligned_out        (gt2_rxbyteisaligned_out), // output wire gt0_rxbyteisaligned_out
         .gt2_rxmcommaalignen_in         (gt2_rxmcommaalignen_i),
-        .gt2_rxpcommaalignen_in         (gt2_rxpcommaalignen_i),
+        .gt2_rxpcommaalignen_in         (1'b1),
         //---------- Receive Ports - RX Decision Feedback Equalizer(DFE) -----------
         .gt2_dmonitorout_out            (gt2_dmonitorout_i),
         //------------------ Receive Ports - RX Equailizer Ports -------------------
@@ -940,8 +951,9 @@ wire            pll1pd_i;
         .gt3_gtprxn_in                  (RXN_IN[3]),
         .gt3_gtprxp_in                  (RXP_IN[3]),
         //------------ Receive Ports - RX Byte and Word Alignment Ports ------------
+        .gt3_rxbyteisaligned_out        (gt3_rxbyteisaligned_out), // output wire gt0_rxbyteisaligned_out
         .gt3_rxmcommaalignen_in         (gt3_rxmcommaalignen_i),
-        .gt3_rxpcommaalignen_in         (gt3_rxpcommaalignen_i),
+        .gt3_rxpcommaalignen_in         (1'b1),
         //---------- Receive Ports - RX Decision Feedback Equalizer(DFE) -----------
         .gt3_dmonitorout_out            (gt3_dmonitorout_i),
         //------------------ Receive Ports - RX Equailizer Ports -------------------

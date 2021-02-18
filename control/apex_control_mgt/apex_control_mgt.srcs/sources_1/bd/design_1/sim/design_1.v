@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Thu Feb 18 00:46:24 2021
+//Date        : Thu Feb 18 05:20:43 2021
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -353,6 +353,7 @@ module chip2chip_bot_ff_imp_ZOMF2S
     aurora_init_clk,
     aurora_mmcm_not_locked_1,
     aurora_pma_init_in,
+    aurora_pma_init_out_0,
     axi_c2c_aurora_channel_up_1,
     axi_c2c_link_status_out,
     axi_c2c_phy_clk,
@@ -403,6 +404,7 @@ module chip2chip_bot_ff_imp_ZOMF2S
   input aurora_init_clk;
   input aurora_mmcm_not_locked_1;
   input aurora_pma_init_in;
+  output aurora_pma_init_out_0;
   input axi_c2c_aurora_channel_up_1;
   output axi_c2c_link_status_out;
   input axi_c2c_phy_clk;
@@ -455,6 +457,7 @@ module chip2chip_bot_ff_imp_ZOMF2S
   wire aurora_mmcm_not_locked_1_1;
   wire axi_c2c_aurora_channel_up_1_1;
   wire axi_c2c_phy_clk_1;
+  wire axi_chip2chip_0_aurora_pma_init_out;
   wire axi_chip2chip_0_axi_c2c_link_status_out;
   wire [26:0]axisafety_1_M_AXI_ARADDR;
   wire [1:0]axisafety_1_M_AXI_ARBURST;
@@ -533,6 +536,7 @@ module chip2chip_bot_ff_imp_ZOMF2S
   assign Conn2_TVALID = AXIS_RX_0_tvalid;
   assign Net = aurora_init_clk;
   assign aurora_mmcm_not_locked_1_1 = aurora_mmcm_not_locked_1;
+  assign aurora_pma_init_out_0 = axi_chip2chip_0_aurora_pma_init_out;
   assign axi_c2c_aurora_channel_up_1_1 = axi_c2c_aurora_channel_up_1;
   assign axi_c2c_link_status_out = axi_chip2chip_0_axi_c2c_link_status_out;
   assign axi_c2c_phy_clk_1 = axi_c2c_phy_clk;
@@ -580,6 +584,7 @@ module chip2chip_bot_ff_imp_ZOMF2S
        (.aurora_init_clk(Net),
         .aurora_mmcm_not_locked(aurora_mmcm_not_locked_1_1),
         .aurora_pma_init_in(cpu_peripheral_reset),
+        .aurora_pma_init_out(axi_chip2chip_0_aurora_pma_init_out),
         .axi_c2c_aurora_channel_up(axi_c2c_aurora_channel_up_1_1),
         .axi_c2c_aurora_rx_tdata(Conn2_TDATA),
         .axi_c2c_aurora_rx_tvalid(Conn2_TVALID),
@@ -3993,7 +3998,8 @@ module design_1
     scf_tdo_0,
     scf_tdo_1,
     scf_tms_0,
-    scf_tms_1);
+    scf_tms_1,
+    soft_reset);
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR ADDR" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DDR, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250" *) inout [14:0]DDR_addr;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR BA" *) inout [2:0]DDR_ba;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR CAS_N" *) inout DDR_cas_n;
@@ -4091,6 +4097,7 @@ module design_1
   input scf_tdo_1;
   output scf_tms_0;
   output scf_tms_1;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.SOFT_RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.SOFT_RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) output soft_reset;
 
   wire [0:0]ARESETN_1;
   wire [31:0]AXIS_RX_0_1_TDATA;
@@ -4313,6 +4320,7 @@ module design_1
   wire [31:0]chip2chip_bot_ff_AXIS_TX_0_TDATA;
   wire chip2chip_bot_ff_AXIS_TX_0_TREADY;
   wire chip2chip_bot_ff_AXIS_TX_0_TVALID;
+  wire chip2chip_bot_ff_aurora_pma_init_out_0;
   wire [31:0]chip2chip_top_ff_AXIS_TX_0_TDATA;
   wire chip2chip_top_ff_AXIS_TX_0_TREADY;
   wire chip2chip_top_ff_AXIS_TX_0_TVALID;
@@ -4753,6 +4761,7 @@ module design_1
   assign scf_tdi_1 = ipmc_jtag_TDI_1;
   assign scf_tms_0 = ipmc_jtag_TMS_0;
   assign scf_tms_1 = ipmc_jtag_TMS_1;
+  assign soft_reset = chip2chip_bot_ff_aurora_pma_init_out_0;
   bram_loopback_imp_8MI6B2 bram_loopback
        (.S_AXI_ACLK(Net),
         .S_AXI_ARESETN(proc_sys_reset_0_peripheral_aresetn),
@@ -4802,6 +4811,7 @@ module design_1
         .aurora_init_clk(Net),
         .aurora_mmcm_not_locked_1(aurora_mmcm_not_locked_1_1),
         .aurora_pma_init_in(cpu_peripheral_reset),
+        .aurora_pma_init_out_0(chip2chip_bot_ff_aurora_pma_init_out_0),
         .axi_c2c_aurora_channel_up_1(axi_c2c_aurora_channel_up_1_1),
         .axi_c2c_link_status_out(chip2chip_1_axi_c2c_link_status_out),
         .axi_c2c_phy_clk(axi_c2c_phy_clk_0_1),

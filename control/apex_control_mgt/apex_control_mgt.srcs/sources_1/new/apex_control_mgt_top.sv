@@ -37,10 +37,6 @@ module apex_control_mgt_top
   input [0:0]los_10g,
   output mdio_phy_mdc,
   inout mdio_phy_mdio_io,
-  input mgt_chup_bot,
-  input mgt_chup_top,
-  input mgt_locked_bot,
-  input mgt_locked_top,
   output [0:0]phy_rst,
   input [0:0]pim_alarm,
   output [0:0]qbv_on_off,
@@ -108,7 +104,7 @@ module apex_control_mgt_top
   wire scf_i2c_2_sda_o;
   wire scf_i2c_2_sda_t;
   
-    wire soft_reset_i;
+    wire soft_reset;
     
     // interface for c2c TX
     wire [31:0] txdata [3:0];
@@ -118,6 +114,8 @@ module apex_control_mgt_top
     // interface for c2c RX
     wire [31:0] rxdata [3:0];
     wire [ 3:0] rxvalid;
+    
+    wire [3:0] channel_up;
     
     wire usr_clk; // single user clock for tx and rx
     
@@ -186,10 +184,12 @@ module apex_control_mgt_top
         .mdio_phy_mdio_i(mdio_phy_mdio_i),
         .mdio_phy_mdio_o(mdio_phy_mdio_o),
         .mdio_phy_mdio_t(mdio_phy_mdio_t),
-        .mgt_chup_bot(mgt_chup_bot),
-        .mgt_chup_top(mgt_chup_top),
-        .mgt_locked_bot(mgt_locked_bot),
-        .mgt_locked_top(mgt_locked_top),
+        
+        .mgt_chup_bot   (channel_up[3]),
+        .mgt_chup_top   (channel_up[1]),
+        .mgt_locked_bot (channel_up[3]),
+        .mgt_locked_top (channel_up[1]),
+        
         .phy_rst(phy_rst),
         .pim_alarm(pim_alarm),
         .qbv_on_off(qbv_on_off),
@@ -225,7 +225,9 @@ module apex_control_mgt_top
         .scf_tdo_0(scf_tdo_0),
         .scf_tdo_1(scf_tdo_1),
         .scf_tms_0(scf_tms_0),
-        .scf_tms_1(scf_tms_1));
+        .scf_tms_1(scf_tms_1),
+        .soft_reset (soft_reset)
+        );
   IOBUF i2c_10g_scl_iobuf
        (.I(i2c_10g_scl_o),
         .IO(i2c_10g_scl_io),
@@ -293,7 +295,7 @@ module apex_control_mgt_top
         .TXN_OUT (TXN_OUT),
         .TXP_OUT (TXP_OUT),
         
-        .soft_reset_i (),
+        .soft_reset_i (soft_reset),
         
         // interface for c2c TX
         .txdata  (txdata ),

@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Thu Feb 18 00:46:24 2021
+//Date        : Thu Feb 18 05:20:43 2021
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -84,7 +84,8 @@ module design_1_wrapper
     scf_tdo_0,
     scf_tdo_1,
     scf_tms_0,
-    scf_tms_1);
+    scf_tms_1,
+    soft_reset);
   inout [14:0]DDR_addr;
   inout [2:0]DDR_ba;
   inout DDR_cas_n;
@@ -160,6 +161,7 @@ module design_1_wrapper
   input scf_tdo_1;
   output scf_tms_0;
   output scf_tms_1;
+  output soft_reset;
 
   wire [14:0]DDR_addr;
   wire [2:0]DDR_ba;
@@ -269,6 +271,7 @@ module design_1_wrapper
   wire scf_tdo_1;
   wire scf_tms_0;
   wire scf_tms_1;
+  wire soft_reset;
 
   design_1 design_1_i
        (.DDR_addr(DDR_addr),
@@ -367,7 +370,8 @@ module design_1_wrapper
         .scf_tdo_0(scf_tdo_0),
         .scf_tdo_1(scf_tdo_1),
         .scf_tms_0(scf_tms_0),
-        .scf_tms_1(scf_tms_1));
+        .scf_tms_1(scf_tms_1),
+        .soft_reset(soft_reset));
   IOBUF i2c_10g_scl_iobuf
        (.I(i2c_10g_scl_o),
         .IO(i2c_10g_scl_io),
