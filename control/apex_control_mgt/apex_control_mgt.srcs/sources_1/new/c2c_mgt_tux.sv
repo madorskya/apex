@@ -23,8 +23,14 @@ module c2c_mgt_tux
     output [ 3:0] txready,
     
     // interface for c2c RX
-    output [31:0] rxdata [3:0],
-    output [ 3:0] rxvalid,
+    output reg [31:0] rxdata [3:0],
+    output reg [ 3:0] rxvalid,
+    
+    // raw data for debugging
+    output [31:0] rxd_raw [3:0],
+    output [ 3:0] rxk_raw [3:0],
+    output [ 3:0] align_b0,
+    output [ 3:0] align_lock,
     
     output [3:0] channel_up,
     input  [2:0] prbs_sel, 
@@ -1194,14 +1200,74 @@ assign gt3_drpwe_i = 1'b0;
     
     assign txready = 4'b1111; // always ready
     
-    assign rxdata [0]  = gt0_rxdata_i;  
-    assign rxdata [1]  = gt1_rxdata_i;  
-    assign rxdata [2]  = gt2_rxdata_i;  
-    assign rxdata [3]  = gt3_rxdata_i;  
-    assign rxvalid[0] = (gt0_rxcharisk_i == 4'b0000) ? 1'b1 : 1'b0;  
-    assign rxvalid[1] = (gt1_rxcharisk_i == 4'b0000) ? 1'b1 : 1'b0;  
-    assign rxvalid[2] = (gt2_rxcharisk_i == 4'b0000) ? 1'b1 : 1'b0;  
-    assign rxvalid[3] = (gt3_rxcharisk_i == 4'b0000) ? 1'b1 : 1'b0;  
+    // alignment logic
+    // GTP only supports 2-byte alignment
+    // this logic realigns to 4-byte boundary
+    reg [31:0] rxd_r [1:0][3:0];
+    reg [ 3:0] rxk_r [1:0][3:0];
+    reg [ 3:0] alignment_b0;
+    reg [ 3:0] alignment_lock = 4'b0;
+    integer i;
+    always @(posedge usr_clk)
+    begin
+    
+        for (i = 0; i < 4; i++)
+        begin
+        
+            if (alignment_lock[i] == 1'b1) // alignment is locked
+            begin
+                if (alignment_b0[i] == 1'b1) // byte 0 aligned, just pass data to output
+                begin
+                    rxdata[i] = rxd_r[1][i];
+                end
+                else
+                begin // byte 2 aligned, need swizzling
+                    rxdata[i] = {rxd_r[1][i][15:0], rxd_r[0][i][31:16]};
+                end
+                rxvalid[i] = 1'b1; // valid data
+            end
+            else
+            begin
+                rxvalid[i] = 1'b0; // invalid data
+                rxdata[i] = 32'h0;
+            end
+        
+            
+            if (rxk_r[1][i] == 4'b0001) // byte 0 alignment
+            begin
+                alignment_b0[i] = 1'b1;
+                alignment_lock[i] = 1'b1;
+            end
+            else if (rxk_r[1][i] == 4'b0100) // byte 2 alignment
+            begin
+                alignment_b0[i] = 1'b0;
+                alignment_lock[i] = 1'b1;
+            end  
+            else if (rxk_r[1][i] != 4'b0000 || channel_up[i] == 1'b0) // something else is going on, looks invalid
+            begin
+                alignment_lock[i] = 1'b0;
+            end   
+        end
+    
+        rxd_r[1] = rxd_r[0];
+        rxk_r[1] = rxk_r[0];
+    
+        rxd_r[0][0] = gt0_rxdata_i;
+        rxd_r[0][1] = gt1_rxdata_i;
+        rxd_r[0][2] = gt2_rxdata_i;
+        rxd_r[0][3] = gt3_rxdata_i;
+        
+        rxk_r[0][0] = gt0_rxcharisk_i;
+        rxk_r[0][1] = gt1_rxcharisk_i;
+        rxk_r[0][2] = gt2_rxcharisk_i;
+        rxk_r[0][3] = gt3_rxcharisk_i;
+    end
+
+    assign rxd_raw = rxd_r[0];
+    assign rxk_raw = rxk_r[0];
+    assign align_b0   = alignment_b0; 
+    assign align_lock = alignment_lock;
+
 
 endmodule
     

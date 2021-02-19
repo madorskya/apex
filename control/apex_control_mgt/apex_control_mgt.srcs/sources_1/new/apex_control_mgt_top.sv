@@ -121,6 +121,10 @@ module apex_control_mgt_top
     wire [3:0] tx_polarity;
     
     wire usr_clk; // single user clock for tx and rx
+    wire [31:0] rxd_raw [3:0];
+    wire [ 3:0] rxk_raw [3:0];
+    wire [ 3:0] align_b0;
+    wire [ 3:0] align_lock;
     
 
   design_1 design_1_i
@@ -148,28 +152,39 @@ module apex_control_mgt_top
         .axi_c2c_phy_clk(usr_clk),
         
         // for index mapping see file Firefly_map.xlsx
-        .c2c_bot_rx_tdata  (rxdata  [3]),
-        .c2c_bot_rx_tvalid (rxvalid [3]),
+        .rxdata_bot  (rxdata  [3]),
+        .rxvalid_bot (rxvalid [3]),
         
         .c2c_bot_tx_tdata  (txdata  [0]),
         .c2c_bot_tx_tready (txready [0]),
         .c2c_bot_tx_tvalid (txvalid [0]),
         
-        .c2c_top_rx_tdata  (rxdata  [1]),
-        .c2c_top_rx_tvalid (rxvalid [1]),
+        .rxdata_top  (rxdata  [1]),
+        .rxvalid_top (rxvalid [1]),
         
         .c2c_top_tx_tdata  (txdata  [2]),
         .c2c_top_tx_tready (txready [2]),
         .c2c_top_tx_tvalid (txvalid [2]),
         
-        .mgt_chup_bot   (channel_up[3]),
-        .mgt_chup_top   (channel_up[1]),
-        .mgt_locked_bot (channel_up[3]),
-        .mgt_locked_top (channel_up[1]),
+        .mgt_chup_bot     ( channel_up[3]),
+        .mgt_chup_top     ( channel_up[1]),
+        .mgt_unlocked_bot (~channel_up[3]),
+        .mgt_unlocked_top (~channel_up[1]),
 
         .prbs_sel       (prbs_sel),
         .prbs_err       (prbs_err),
         .tx_polarity    (tx_polarity),
+
+        .rxd_raw0    (rxd_raw [0]  ),
+        .rxd_raw1    (rxd_raw [1]  ),
+        .rxd_raw2    (rxd_raw [2]  ),
+        .rxd_raw3    (rxd_raw [3]  ),
+        .rxk_raw0    (rxk_raw [0]  ),
+        .rxk_raw1    (rxk_raw [1]  ),
+        .rxk_raw2    (rxk_raw [2]  ),
+        .rxk_raw3    (rxk_raw [3]  ),
+        .align_b0   (align_b0  ),
+        .align_lock (align_lock),
 
         .en_ipmb_zynq(en_ipmb_zynq),
         .ha(ha),
@@ -312,6 +327,11 @@ module apex_control_mgt_top
         .rxdata  (rxdata ),
         .rxvalid (rxvalid),
         
+        .rxd_raw    (rxd_raw   ),
+        .rxk_raw    (rxk_raw   ),
+        .align_b0   (align_b0  ),
+        .align_lock (align_lock),
+
         .channel_up (channel_up),
         .prbs_sel   (prbs_sel), 
         .prbs_err   (prbs_err),

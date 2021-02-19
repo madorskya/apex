@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Thu Feb 18 17:44:45 2021
+//Date        : Fri Feb 19 20:02:50 2021
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -3978,14 +3978,12 @@ module design_1
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
+    align_b0,
+    align_lock,
     axi_c2c_phy_clk,
-    c2c_bot_rx_tdata,
-    c2c_bot_rx_tvalid,
     c2c_bot_tx_tdata,
     c2c_bot_tx_tready,
     c2c_bot_tx_tvalid,
-    c2c_top_rx_tdata,
-    c2c_top_rx_tvalid,
     c2c_top_tx_tdata,
     c2c_top_tx_tready,
     c2c_top_tx_tvalid,
@@ -4016,8 +4014,8 @@ module design_1
     mdio_phy_mdio_t,
     mgt_chup_bot,
     mgt_chup_top,
-    mgt_locked_bot,
-    mgt_locked_top,
+    mgt_unlocked_bot,
+    mgt_unlocked_top,
     phy_rst,
     pim_alarm,
     prbs_err,
@@ -4030,6 +4028,18 @@ module design_1
     rgmii_td,
     rgmii_tx_ctl,
     rgmii_txc,
+    rxd_raw0,
+    rxd_raw1,
+    rxd_raw2,
+    rxd_raw3,
+    rxdata_bot,
+    rxdata_top,
+    rxk_raw0,
+    rxk_raw1,
+    rxk_raw2,
+    rxk_raw3,
+    rxvalid_bot,
+    rxvalid_top,
     scf_i2c_0_scl_i,
     scf_i2c_0_scl_o,
     scf_i2c_0_scl_t,
@@ -4079,14 +4089,12 @@ module design_1
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_CLK" *) inout FIXED_IO_ps_clk;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_PORB" *) inout FIXED_IO_ps_porb;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB" *) inout FIXED_IO_ps_srstb;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_C2C_PHY_CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_C2C_PHY_CLK, ASSOCIATED_BUSIF c2c_bot_tx:c2c_bot_rx:c2c_top_tx:c2c_top_rx, CLK_DOMAIN design_1_axi_c2c_phy_clk_0, FREQ_HZ 187500000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0" *) input axi_c2c_phy_clk;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 c2c_bot_rx TDATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME c2c_bot_rx, CLK_DOMAIN design_1_axi_c2c_phy_clk_0, FREQ_HZ 187500000, HAS_TKEEP 0, HAS_TLAST 0, HAS_TREADY 0, HAS_TSTRB 0, INSERT_VIP 0, LAYERED_METADATA undef, PHASE 0, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0" *) input [31:0]c2c_bot_rx_tdata;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 c2c_bot_rx TVALID" *) input c2c_bot_rx_tvalid;
+  input [3:0]align_b0;
+  input [3:0]align_lock;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_C2C_PHY_CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_C2C_PHY_CLK, ASSOCIATED_BUSIF c2c_bot_tx:c2c_top_tx, CLK_DOMAIN design_1_axi_c2c_phy_clk_0, FREQ_HZ 187500000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0" *) input axi_c2c_phy_clk;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 c2c_bot_tx TDATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME c2c_bot_tx, CLK_DOMAIN design_1_axi_c2c_phy_clk_0, FREQ_HZ 187500000, HAS_TKEEP 0, HAS_TLAST 0, HAS_TREADY 1, HAS_TSTRB 0, INSERT_VIP 0, LAYERED_METADATA undef, PHASE 0, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0" *) output [31:0]c2c_bot_tx_tdata;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 c2c_bot_tx TREADY" *) input c2c_bot_tx_tready;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 c2c_bot_tx TVALID" *) output c2c_bot_tx_tvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 c2c_top_rx TDATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME c2c_top_rx, CLK_DOMAIN design_1_axi_c2c_phy_clk_0, FREQ_HZ 187500000, HAS_TKEEP 0, HAS_TLAST 0, HAS_TREADY 0, HAS_TSTRB 0, INSERT_VIP 0, LAYERED_METADATA undef, PHASE 0, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0" *) input [31:0]c2c_top_rx_tdata;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 c2c_top_rx TVALID" *) input c2c_top_rx_tvalid;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 c2c_top_tx TDATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME c2c_top_tx, CLK_DOMAIN design_1_axi_c2c_phy_clk_0, FREQ_HZ 187500000, HAS_TKEEP 0, HAS_TLAST 0, HAS_TREADY 1, HAS_TSTRB 0, INSERT_VIP 0, LAYERED_METADATA undef, PHASE 0, TDATA_NUM_BYTES 4, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0" *) output [31:0]c2c_top_tx_tdata;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 c2c_top_tx TREADY" *) input c2c_top_tx_tready;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 c2c_top_tx TVALID" *) output c2c_top_tx_tvalid;
@@ -4117,8 +4125,8 @@ module design_1
   (* X_INTERFACE_INFO = "xilinx.com:interface:mdio:1.0 mdio_phy MDIO_T" *) output mdio_phy_mdio_t;
   input mgt_chup_bot;
   input mgt_chup_top;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.MGT_LOCKED_BOT RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.MGT_LOCKED_BOT, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input mgt_locked_bot;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.MGT_LOCKED_TOP RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.MGT_LOCKED_TOP, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input mgt_locked_top;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.MGT_UNLOCKED_BOT RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.MGT_UNLOCKED_BOT, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input mgt_unlocked_bot;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.MGT_UNLOCKED_TOP RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.MGT_UNLOCKED_TOP, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) input mgt_unlocked_top;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.PHY_RST RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.PHY_RST, INSERT_VIP 0, POLARITY ACTIVE_LOW" *) output [0:0]phy_rst;
   input [0:0]pim_alarm;
   input [3:0]prbs_err;
@@ -4131,6 +4139,18 @@ module design_1
   (* X_INTERFACE_INFO = "xilinx.com:interface:rgmii:1.0 rgmii TD" *) output [3:0]rgmii_td;
   (* X_INTERFACE_INFO = "xilinx.com:interface:rgmii:1.0 rgmii TX_CTL" *) output rgmii_tx_ctl;
   (* X_INTERFACE_INFO = "xilinx.com:interface:rgmii:1.0 rgmii TXC" *) output rgmii_txc;
+  input [31:0]rxd_raw0;
+  input [31:0]rxd_raw1;
+  input [31:0]rxd_raw2;
+  input [31:0]rxd_raw3;
+  input [31:0]rxdata_bot;
+  input [31:0]rxdata_top;
+  input [3:0]rxk_raw0;
+  input [3:0]rxk_raw1;
+  input [3:0]rxk_raw2;
+  input [3:0]rxk_raw3;
+  input rxvalid_bot;
+  input rxvalid_top;
   (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_0 SCL_I" *) input scf_i2c_0_scl_i;
   (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_0 SCL_O" *) output scf_i2c_0_scl_o;
   (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 scf_i2c_0 SCL_T" *) output scf_i2c_0_scl_t;
@@ -4161,10 +4181,10 @@ module design_1
   output [3:0]tx_polarity;
 
   wire [0:0]ARESETN_1;
-  wire [31:0]AXIS_RX_0_1_TDATA;
-  wire AXIS_RX_0_1_TVALID;
-  wire [31:0]AXIS_RX_0_2_TDATA;
-  wire AXIS_RX_0_2_TVALID;
+  wire [31:0]AXIS_RX_0_tdata_0_1;
+  wire [31:0]AXIS_RX_0_tdata_1_1;
+  wire AXIS_RX_0_tvalid_0_1;
+  wire AXIS_RX_0_tvalid_1_1;
   wire [1:0]In0_0_1;
   wire [0:0]In1_0_1;
   wire [7:0]In2_0_1;
@@ -4602,6 +4622,16 @@ module design_1
   wire ipmc_jtag_s0_o;
   wire ipmc_jtag_s0_o1;
   wire [3:0]probe0_0_1;
+  wire [31:0]probe15_0_1;
+  wire [31:0]probe16_0_1;
+  wire [31:0]probe17_0_1;
+  wire [31:0]probe18_0_1;
+  wire [3:0]probe19_0_1;
+  wire [3:0]probe20_0_1;
+  wire [3:0]probe21_0_1;
+  wire [3:0]probe22_0_1;
+  wire [3:0]probe23_0_1;
+  wire [3:0]probe24_0_1;
   wire [0:0]proc_sys_reset_0_peripheral_aresetn;
   wire [14:0]processing_system7_0_DDR_ADDR;
   wire [2:0]processing_system7_0_DDR_BA;
@@ -4764,10 +4794,10 @@ module design_1
   wire s_axi_2_WVALID;
   wire [2:0]xlslice_0_Dout;
 
-  assign AXIS_RX_0_1_TDATA = c2c_bot_rx_tdata[31:0];
-  assign AXIS_RX_0_1_TVALID = c2c_bot_rx_tvalid;
-  assign AXIS_RX_0_2_TDATA = c2c_top_rx_tdata[31:0];
-  assign AXIS_RX_0_2_TVALID = c2c_top_rx_tvalid;
+  assign AXIS_RX_0_tdata_0_1 = rxdata_top[31:0];
+  assign AXIS_RX_0_tdata_1_1 = rxdata_bot[31:0];
+  assign AXIS_RX_0_tvalid_0_1 = rxvalid_top;
+  assign AXIS_RX_0_tvalid_1_1 = rxvalid_bot;
   assign In0_0_1 = ready_ipmb_zynq[1:0];
   assign In1_0_1 = los_10g[0];
   assign In2_0_1 = ha[7:0];
@@ -4775,8 +4805,8 @@ module design_1
   assign In8_0_1 = hot_swap_sw[0];
   assign TDO_0_0_1 = scf_tdo_0;
   assign TDO_1_0_1 = scf_tdo_1;
-  assign aurora_mmcm_not_locked_0_1 = mgt_locked_top;
-  assign aurora_mmcm_not_locked_1_1 = mgt_locked_bot;
+  assign aurora_mmcm_not_locked_0_1 = mgt_unlocked_top;
+  assign aurora_mmcm_not_locked_1_1 = mgt_unlocked_bot;
   assign axi_c2c_aurora_channel_up_0_1 = mgt_chup_top;
   assign axi_c2c_aurora_channel_up_1_1 = mgt_chup_bot;
   assign axi_c2c_phy_clk_0_1 = axi_c2c_phy_clk;
@@ -4816,6 +4846,16 @@ module design_1
   assign phy_rst[0] = axi_ethernet_0_phy_rst_n;
   assign prbs_sel[2:0] = reg_bank_Dout;
   assign probe0_0_1 = prbs_err[3:0];
+  assign probe15_0_1 = rxd_raw0[31:0];
+  assign probe16_0_1 = rxd_raw1[31:0];
+  assign probe17_0_1 = rxd_raw2[31:0];
+  assign probe18_0_1 = rxd_raw3[31:0];
+  assign probe19_0_1 = rxk_raw0[3:0];
+  assign probe20_0_1 = rxk_raw1[3:0];
+  assign probe21_0_1 = rxk_raw2[3:0];
+  assign probe22_0_1 = rxk_raw3[3:0];
+  assign probe23_0_1 = align_b0[3:0];
+  assign probe24_0_1 = align_lock[3:0];
   assign qbv_on_off[0] = reg_bank_qbv_on_off;
   assign rgmii_td[3:0] = axi_ethernet_0_rgmii_TD;
   assign rgmii_tx_ctl = axi_ethernet_0_rgmii_TX_CTL;
@@ -4881,8 +4921,8 @@ module design_1
         .S_AXI_wstrb(cpu_M18_AXI_WSTRB),
         .S_AXI_wvalid(cpu_M18_AXI_WVALID));
   chip2chip_bot_ff_imp_ZOMF2S chip2chip_bot_ff
-       (.AXIS_RX_0_tdata(AXIS_RX_0_1_TDATA),
-        .AXIS_RX_0_tvalid(AXIS_RX_0_1_TVALID),
+       (.AXIS_RX_0_tdata(AXIS_RX_0_tdata_1_1),
+        .AXIS_RX_0_tvalid(AXIS_RX_0_tvalid_1_1),
         .AXIS_TX_0_tdata(chip2chip_bot_ff_AXIS_TX_0_TDATA),
         .AXIS_TX_0_tready(chip2chip_bot_ff_AXIS_TX_0_TREADY),
         .AXIS_TX_0_tvalid(chip2chip_bot_ff_AXIS_TX_0_TVALID),
@@ -4938,8 +4978,8 @@ module design_1
         .s_axi_wstrb(s_axi_2_WSTRB),
         .s_axi_wvalid(s_axi_2_WVALID));
   chip2chip_top_ff_imp_8AXF8X chip2chip_top_ff
-       (.AXIS_RX_0_tdata(AXIS_RX_0_2_TDATA),
-        .AXIS_RX_0_tvalid(AXIS_RX_0_2_TVALID),
+       (.AXIS_RX_0_tdata(AXIS_RX_0_tdata_0_1),
+        .AXIS_RX_0_tvalid(AXIS_RX_0_tvalid_0_1),
         .AXIS_TX_0_tdata(chip2chip_top_ff_AXIS_TX_0_TDATA),
         .AXIS_TX_0_tready(chip2chip_top_ff_AXIS_TX_0_TREADY),
         .AXIS_TX_0_tvalid(chip2chip_top_ff_AXIS_TX_0_TVALID),
@@ -5749,7 +5789,21 @@ module design_1
         .probe12(chip2chip_bot_ff_axi_c2c_multi_bit_error_out),
         .probe13(chip2chip_bot_ff_axi_c2c_link_error_out),
         .probe14(chip2chip_bot_ff_aurora_do_cc),
+        .probe15(probe15_0_1),
+        .probe16(probe16_0_1),
+        .probe17(probe17_0_1),
+        .probe18(probe18_0_1),
+        .probe19(probe19_0_1),
         .probe2(chip2chip_1_axi_c2c_link_status_out),
+        .probe20(probe20_0_1),
+        .probe21(probe21_0_1),
+        .probe22(probe22_0_1),
+        .probe23(probe23_0_1),
+        .probe24(probe24_0_1),
+        .probe25(AXIS_RX_0_tdata_0_1),
+        .probe26(AXIS_RX_0_tvalid_0_1),
+        .probe27(AXIS_RX_0_tdata_1_1),
+        .probe28(AXIS_RX_0_tvalid_1_1),
         .probe3(chip2chip_top_ff_aurora_do_cc),
         .probe4(chip2chip_top_ff_aurora_pma_init_out),
         .probe5(chip2chip_top_ff_aurora_reset_pb),

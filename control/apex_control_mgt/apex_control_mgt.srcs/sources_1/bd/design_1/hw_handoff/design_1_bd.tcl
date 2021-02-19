@@ -2427,41 +2427,11 @@ proc create_root_design { parentCell } {
 
   set FIXED_IO [ create_bd_intf_port -mode Master -vlnv xilinx.com:display_processing_system7:fixedio_rtl:1.0 FIXED_IO ]
 
-  set c2c_bot_rx [ create_bd_intf_port -mode Slave -vlnv xilinx.com:interface:axis_rtl:1.0 c2c_bot_rx ]
-  set_property -dict [ list \
-   CONFIG.FREQ_HZ {187500000} \
-   CONFIG.HAS_TKEEP {0} \
-   CONFIG.HAS_TLAST {0} \
-   CONFIG.HAS_TREADY {0} \
-   CONFIG.HAS_TSTRB {0} \
-   CONFIG.LAYERED_METADATA {undef} \
-   CONFIG.PHASE {0} \
-   CONFIG.TDATA_NUM_BYTES {4} \
-   CONFIG.TDEST_WIDTH {0} \
-   CONFIG.TID_WIDTH {0} \
-   CONFIG.TUSER_WIDTH {0} \
-   ] $c2c_bot_rx
-
   set c2c_bot_tx [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:axis_rtl:1.0 c2c_bot_tx ]
   set_property -dict [ list \
    CONFIG.FREQ_HZ {187500000} \
    CONFIG.PHASE {0} \
    ] $c2c_bot_tx
-
-  set c2c_top_rx [ create_bd_intf_port -mode Slave -vlnv xilinx.com:interface:axis_rtl:1.0 c2c_top_rx ]
-  set_property -dict [ list \
-   CONFIG.FREQ_HZ {187500000} \
-   CONFIG.HAS_TKEEP {0} \
-   CONFIG.HAS_TLAST {0} \
-   CONFIG.HAS_TREADY {0} \
-   CONFIG.HAS_TSTRB {0} \
-   CONFIG.LAYERED_METADATA {undef} \
-   CONFIG.PHASE {0} \
-   CONFIG.TDATA_NUM_BYTES {4} \
-   CONFIG.TDEST_WIDTH {0} \
-   CONFIG.TID_WIDTH {0} \
-   CONFIG.TUSER_WIDTH {0} \
-   ] $c2c_top_rx
 
   set c2c_top_tx [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:axis_rtl:1.0 c2c_top_tx ]
   set_property -dict [ list \
@@ -2485,8 +2455,11 @@ proc create_root_design { parentCell } {
 
 
   # Create ports
+  set align_b0 [ create_bd_port -dir I -from 3 -to 0 align_b0 ]
+  set align_lock [ create_bd_port -dir I -from 3 -to 0 align_lock ]
   set axi_c2c_phy_clk [ create_bd_port -dir I -type clk -freq_hz 187500000 axi_c2c_phy_clk ]
   set_property -dict [ list \
+   CONFIG.ASSOCIATED_BUSIF {c2c_bot_tx:c2c_top_tx} \
    CONFIG.PHASE {0} \
  ] $axi_c2c_phy_clk
   set en_ipmb_zynq [ create_bd_port -dir O -from 1 -to 0 en_ipmb_zynq ]
@@ -2500,14 +2473,14 @@ proc create_root_design { parentCell } {
   set los_10g [ create_bd_port -dir I -from 0 -to 0 los_10g ]
   set mgt_chup_bot [ create_bd_port -dir I mgt_chup_bot ]
   set mgt_chup_top [ create_bd_port -dir I mgt_chup_top ]
-  set mgt_locked_bot [ create_bd_port -dir I -type rst mgt_locked_bot ]
+  set mgt_unlocked_bot [ create_bd_port -dir I -type rst mgt_unlocked_bot ]
   set_property -dict [ list \
    CONFIG.POLARITY {ACTIVE_HIGH} \
- ] $mgt_locked_bot
-  set mgt_locked_top [ create_bd_port -dir I -type rst mgt_locked_top ]
+ ] $mgt_unlocked_bot
+  set mgt_unlocked_top [ create_bd_port -dir I -type rst mgt_unlocked_top ]
   set_property -dict [ list \
    CONFIG.POLARITY {ACTIVE_HIGH} \
- ] $mgt_locked_top
+ ] $mgt_unlocked_top
   set phy_rst [ create_bd_port -dir O -from 0 -to 0 -type rst phy_rst ]
   set_property -dict [ list \
    CONFIG.POLARITY {ACTIVE_LOW} \
@@ -2517,6 +2490,18 @@ proc create_root_design { parentCell } {
   set prbs_sel [ create_bd_port -dir O -from 2 -to 0 prbs_sel ]
   set qbv_on_off [ create_bd_port -dir O -from 0 -to 0 qbv_on_off ]
   set ready_ipmb_zynq [ create_bd_port -dir I -from 1 -to 0 ready_ipmb_zynq ]
+  set rxd_raw0 [ create_bd_port -dir I -from 31 -to 0 rxd_raw0 ]
+  set rxd_raw1 [ create_bd_port -dir I -from 31 -to 0 rxd_raw1 ]
+  set rxd_raw2 [ create_bd_port -dir I -from 31 -to 0 rxd_raw2 ]
+  set rxd_raw3 [ create_bd_port -dir I -from 31 -to 0 rxd_raw3 ]
+  set rxdata_bot [ create_bd_port -dir I -from 31 -to 0 rxdata_bot ]
+  set rxdata_top [ create_bd_port -dir I -from 31 -to 0 rxdata_top ]
+  set rxk_raw0 [ create_bd_port -dir I -from 3 -to 0 rxk_raw0 ]
+  set rxk_raw1 [ create_bd_port -dir I -from 3 -to 0 rxk_raw1 ]
+  set rxk_raw2 [ create_bd_port -dir I -from 3 -to 0 rxk_raw2 ]
+  set rxk_raw3 [ create_bd_port -dir I -from 3 -to 0 rxk_raw3 ]
+  set rxvalid_bot [ create_bd_port -dir I rxvalid_bot ]
+  set rxvalid_top [ create_bd_port -dir I rxvalid_top ]
   set scf_tck_0 [ create_bd_port -dir O scf_tck_0 ]
   set scf_tck_1 [ create_bd_port -dir O scf_tck_1 ]
   set scf_tdi_0 [ create_bd_port -dir O scf_tdi_0 ]
@@ -2555,8 +2540,20 @@ proc create_root_design { parentCell } {
    CONFIG.C_ENABLE_ILA_AXI_MON {false} \
    CONFIG.C_INPUT_PIPE_STAGES {6} \
    CONFIG.C_MONITOR_TYPE {Native} \
-   CONFIG.C_NUM_OF_PROBES {15} \
+   CONFIG.C_NUM_OF_PROBES {29} \
    CONFIG.C_PROBE0_WIDTH {4} \
+   CONFIG.C_PROBE15_WIDTH {32} \
+   CONFIG.C_PROBE16_WIDTH {32} \
+   CONFIG.C_PROBE17_WIDTH {32} \
+   CONFIG.C_PROBE18_WIDTH {32} \
+   CONFIG.C_PROBE19_WIDTH {4} \
+   CONFIG.C_PROBE20_WIDTH {4} \
+   CONFIG.C_PROBE21_WIDTH {4} \
+   CONFIG.C_PROBE22_WIDTH {4} \
+   CONFIG.C_PROBE23_WIDTH {4} \
+   CONFIG.C_PROBE24_WIDTH {4} \
+   CONFIG.C_PROBE25_WIDTH {32} \
+   CONFIG.C_PROBE27_WIDTH {32} \
  ] $ila_0
 
   # Create instance: ipmc
@@ -2569,8 +2566,6 @@ proc create_root_design { parentCell } {
   create_hier_cell_reg_bank [current_bd_instance .] reg_bank
 
   # Create interface connections
-  connect_bd_intf_net -intf_net AXIS_RX_0_1 [get_bd_intf_ports c2c_bot_rx] [get_bd_intf_pins chip2chip_bot_ff/AXIS_RX_0]
-  connect_bd_intf_net -intf_net AXIS_RX_0_2 [get_bd_intf_ports c2c_top_rx] [get_bd_intf_pins chip2chip_top_ff/AXIS_RX_0]
   connect_bd_intf_net -intf_net S_AXI2_1 [get_bd_intf_pins cpu/M05_AXI] [get_bd_intf_pins ipmc/S_AXI]
   connect_bd_intf_net -intf_net S_AXI3_1 [get_bd_intf_pins cpu/M06_AXI] [get_bd_intf_pins ipmc/S_AXI2]
   connect_bd_intf_net -intf_net S_AXI4_1 [get_bd_intf_pins cpu/M07_AXI] [get_bd_intf_pins ipmc/S_AXI1]
@@ -2605,6 +2600,10 @@ proc create_root_design { parentCell } {
 
   # Create port connections
   connect_bd_net -net ARESETN_1 [get_bd_pins cpu/interconnect_aresetn] [get_bd_pins eth1/ARESETN]
+  connect_bd_net -net AXIS_RX_0_tdata_0_1 [get_bd_ports rxdata_top] [get_bd_pins chip2chip_top_ff/AXIS_RX_0_tdata] [get_bd_pins ila_0/probe25]
+  connect_bd_net -net AXIS_RX_0_tdata_1_1 [get_bd_ports rxdata_bot] [get_bd_pins chip2chip_bot_ff/AXIS_RX_0_tdata] [get_bd_pins ila_0/probe27]
+  connect_bd_net -net AXIS_RX_0_tvalid_0_1 [get_bd_ports rxvalid_top] [get_bd_pins chip2chip_top_ff/AXIS_RX_0_tvalid] [get_bd_pins ila_0/probe26]
+  connect_bd_net -net AXIS_RX_0_tvalid_1_1 [get_bd_ports rxvalid_bot] [get_bd_pins chip2chip_bot_ff/AXIS_RX_0_tvalid] [get_bd_pins ila_0/probe28]
   connect_bd_net -net In0_0_1 [get_bd_ports ready_ipmb_zynq] [get_bd_pins reg_bank/In0_0]
   connect_bd_net -net In1_0_1 [get_bd_ports los_10g] [get_bd_pins reg_bank/In1_0]
   connect_bd_net -net In2_0_1 [get_bd_ports ha] [get_bd_pins ipmc/ha] [get_bd_pins reg_bank/In2_0]
@@ -2619,8 +2618,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net Net4 [get_bd_ports ipmc_sda_1] [get_bd_pins ipmc/ipmc_sda_1]
   connect_bd_net -net TDO_0_0_1 [get_bd_ports scf_tdo_0] [get_bd_pins jtag/TDO_0]
   connect_bd_net -net TDO_1_0_1 [get_bd_ports scf_tdo_1] [get_bd_pins jtag/TDO_1]
-  connect_bd_net -net aurora_mmcm_not_locked_0_1 [get_bd_ports mgt_locked_top] [get_bd_pins chip2chip_top_ff/aurora_mmcm_not_locked_0]
-  connect_bd_net -net aurora_mmcm_not_locked_1_1 [get_bd_ports mgt_locked_bot] [get_bd_pins chip2chip_bot_ff/aurora_mmcm_not_locked_1]
+  connect_bd_net -net aurora_mmcm_not_locked_0_1 [get_bd_ports mgt_unlocked_top] [get_bd_pins chip2chip_top_ff/aurora_mmcm_not_locked_0]
+  connect_bd_net -net aurora_mmcm_not_locked_1_1 [get_bd_ports mgt_unlocked_bot] [get_bd_pins chip2chip_bot_ff/aurora_mmcm_not_locked_1]
   connect_bd_net -net axi_c2c_aurora_channel_up_0_1 [get_bd_ports mgt_chup_top] [get_bd_pins chip2chip_top_ff/axi_c2c_aurora_channel_up_0] [get_bd_pins reg_bank/mgt_chup_top]
   connect_bd_net -net axi_c2c_aurora_channel_up_1_1 [get_bd_ports mgt_chup_bot] [get_bd_pins chip2chip_bot_ff/axi_c2c_aurora_channel_up_1] [get_bd_pins reg_bank/mgt_chup_bot]
   connect_bd_net -net axi_c2c_phy_clk_0_1 [get_bd_ports axi_c2c_phy_clk] [get_bd_pins chip2chip_bot_ff/axi_c2c_phy_clk] [get_bd_pins chip2chip_top_ff/axi_c2c_phy_clk_0] [get_bd_pins ila_0/clk]
@@ -2661,6 +2660,16 @@ proc create_root_design { parentCell } {
   connect_bd_net -net ipmc_jtag_s0_o [get_bd_pins cpu/I2C1_SDA_I] [get_bd_pins ipmc/s0_o]
   connect_bd_net -net ipmc_jtag_s0_o1 [get_bd_pins cpu/I2C1_SCL_I] [get_bd_pins ipmc/s0_o1]
   connect_bd_net -net probe0_0_1 [get_bd_ports prbs_err] [get_bd_pins ila_0/probe0]
+  connect_bd_net -net probe15_0_1 [get_bd_ports rxd_raw0] [get_bd_pins ila_0/probe15]
+  connect_bd_net -net probe16_0_1 [get_bd_ports rxd_raw1] [get_bd_pins ila_0/probe16]
+  connect_bd_net -net probe17_0_1 [get_bd_ports rxd_raw2] [get_bd_pins ila_0/probe17]
+  connect_bd_net -net probe18_0_1 [get_bd_ports rxd_raw3] [get_bd_pins ila_0/probe18]
+  connect_bd_net -net probe19_0_1 [get_bd_ports rxk_raw0] [get_bd_pins ila_0/probe19]
+  connect_bd_net -net probe20_0_1 [get_bd_ports rxk_raw1] [get_bd_pins ila_0/probe20]
+  connect_bd_net -net probe21_0_1 [get_bd_ports rxk_raw2] [get_bd_pins ila_0/probe21]
+  connect_bd_net -net probe22_0_1 [get_bd_ports rxk_raw3] [get_bd_pins ila_0/probe22]
+  connect_bd_net -net probe23_0_1 [get_bd_ports align_b0] [get_bd_pins ila_0/probe23]
+  connect_bd_net -net probe24_0_1 [get_bd_ports align_lock] [get_bd_pins ila_0/probe24]
   connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins bram_loopback/S_AXI_ARESETN] [get_bd_pins chip2chip_bot_ff/s_aresetn] [get_bd_pins chip2chip_top_ff/s_aresetn] [get_bd_pins cpu/S00_ARESETN] [get_bd_pins dbg/s_axi_aresetn] [get_bd_pins eth1/axi_resetn] [get_bd_pins i2c/s_axi_aresetn] [get_bd_pins ipmc/s_axi_aresetn] [get_bd_pins jtag/s_axi_aresetn] [get_bd_pins reg_bank/s_axi_aresetn]
   connect_bd_net -net processing_system7_0_FCLK_CLK1 [get_bd_pins cpu/FCLK_CLK1] [get_bd_pins eth1/ref_clk]
   connect_bd_net -net processing_system7_0_FCLK_CLK2 [get_bd_pins cpu/FCLK_CLK2] [get_bd_pins eth1/gtx_clk]

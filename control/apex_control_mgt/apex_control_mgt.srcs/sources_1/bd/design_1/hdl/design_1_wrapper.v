@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Thu Feb 18 17:44:45 2021
+//Date        : Fri Feb 19 20:02:50 2021
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -31,14 +31,12 @@ module design_1_wrapper
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
+    align_b0,
+    align_lock,
     axi_c2c_phy_clk,
-    c2c_bot_rx_tdata,
-    c2c_bot_rx_tvalid,
     c2c_bot_tx_tdata,
     c2c_bot_tx_tready,
     c2c_bot_tx_tvalid,
-    c2c_top_rx_tdata,
-    c2c_top_rx_tvalid,
     c2c_top_tx_tdata,
     c2c_top_tx_tready,
     c2c_top_tx_tvalid,
@@ -59,8 +57,8 @@ module design_1_wrapper
     mdio_phy_mdio_io,
     mgt_chup_bot,
     mgt_chup_top,
-    mgt_locked_bot,
-    mgt_locked_top,
+    mgt_unlocked_bot,
+    mgt_unlocked_top,
     phy_rst,
     pim_alarm,
     prbs_err,
@@ -73,6 +71,18 @@ module design_1_wrapper
     rgmii_td,
     rgmii_tx_ctl,
     rgmii_txc,
+    rxd_raw0,
+    rxd_raw1,
+    rxd_raw2,
+    rxd_raw3,
+    rxdata_bot,
+    rxdata_top,
+    rxk_raw0,
+    rxk_raw1,
+    rxk_raw2,
+    rxk_raw3,
+    rxvalid_bot,
+    rxvalid_top,
     scf_i2c_0_scl_io,
     scf_i2c_0_sda_io,
     scf_i2c_1_scl_io,
@@ -110,14 +120,12 @@ module design_1_wrapper
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
+  input [3:0]align_b0;
+  input [3:0]align_lock;
   input axi_c2c_phy_clk;
-  input [31:0]c2c_bot_rx_tdata;
-  input c2c_bot_rx_tvalid;
   output [31:0]c2c_bot_tx_tdata;
   input c2c_bot_tx_tready;
   output c2c_bot_tx_tvalid;
-  input [31:0]c2c_top_rx_tdata;
-  input c2c_top_rx_tvalid;
   output [31:0]c2c_top_tx_tdata;
   input c2c_top_tx_tready;
   output c2c_top_tx_tvalid;
@@ -138,8 +146,8 @@ module design_1_wrapper
   inout mdio_phy_mdio_io;
   input mgt_chup_bot;
   input mgt_chup_top;
-  input mgt_locked_bot;
-  input mgt_locked_top;
+  input mgt_unlocked_bot;
+  input mgt_unlocked_top;
   output [0:0]phy_rst;
   input [0:0]pim_alarm;
   input [3:0]prbs_err;
@@ -152,6 +160,18 @@ module design_1_wrapper
   output [3:0]rgmii_td;
   output rgmii_tx_ctl;
   output rgmii_txc;
+  input [31:0]rxd_raw0;
+  input [31:0]rxd_raw1;
+  input [31:0]rxd_raw2;
+  input [31:0]rxd_raw3;
+  input [31:0]rxdata_bot;
+  input [31:0]rxdata_top;
+  input [3:0]rxk_raw0;
+  input [3:0]rxk_raw1;
+  input [3:0]rxk_raw2;
+  input [3:0]rxk_raw3;
+  input rxvalid_bot;
+  input rxvalid_top;
   inout scf_i2c_0_scl_io;
   inout scf_i2c_0_sda_io;
   inout scf_i2c_1_scl_io;
@@ -190,14 +210,12 @@ module design_1_wrapper
   wire FIXED_IO_ps_clk;
   wire FIXED_IO_ps_porb;
   wire FIXED_IO_ps_srstb;
+  wire [3:0]align_b0;
+  wire [3:0]align_lock;
   wire axi_c2c_phy_clk;
-  wire [31:0]c2c_bot_rx_tdata;
-  wire c2c_bot_rx_tvalid;
   wire [31:0]c2c_bot_tx_tdata;
   wire c2c_bot_tx_tready;
   wire c2c_bot_tx_tvalid;
-  wire [31:0]c2c_top_rx_tdata;
-  wire c2c_top_rx_tvalid;
   wire [31:0]c2c_top_tx_tdata;
   wire c2c_top_tx_tready;
   wire c2c_top_tx_tvalid;
@@ -233,8 +251,8 @@ module design_1_wrapper
   wire mdio_phy_mdio_t;
   wire mgt_chup_bot;
   wire mgt_chup_top;
-  wire mgt_locked_bot;
-  wire mgt_locked_top;
+  wire mgt_unlocked_bot;
+  wire mgt_unlocked_top;
   wire [0:0]phy_rst;
   wire [0:0]pim_alarm;
   wire [3:0]prbs_err;
@@ -247,6 +265,18 @@ module design_1_wrapper
   wire [3:0]rgmii_td;
   wire rgmii_tx_ctl;
   wire rgmii_txc;
+  wire [31:0]rxd_raw0;
+  wire [31:0]rxd_raw1;
+  wire [31:0]rxd_raw2;
+  wire [31:0]rxd_raw3;
+  wire [31:0]rxdata_bot;
+  wire [31:0]rxdata_top;
+  wire [3:0]rxk_raw0;
+  wire [3:0]rxk_raw1;
+  wire [3:0]rxk_raw2;
+  wire [3:0]rxk_raw3;
+  wire rxvalid_bot;
+  wire rxvalid_top;
   wire scf_i2c_0_scl_i;
   wire scf_i2c_0_scl_io;
   wire scf_i2c_0_scl_o;
@@ -304,14 +334,12 @@ module design_1_wrapper
         .FIXED_IO_ps_clk(FIXED_IO_ps_clk),
         .FIXED_IO_ps_porb(FIXED_IO_ps_porb),
         .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
+        .align_b0(align_b0),
+        .align_lock(align_lock),
         .axi_c2c_phy_clk(axi_c2c_phy_clk),
-        .c2c_bot_rx_tdata(c2c_bot_rx_tdata),
-        .c2c_bot_rx_tvalid(c2c_bot_rx_tvalid),
         .c2c_bot_tx_tdata(c2c_bot_tx_tdata),
         .c2c_bot_tx_tready(c2c_bot_tx_tready),
         .c2c_bot_tx_tvalid(c2c_bot_tx_tvalid),
-        .c2c_top_rx_tdata(c2c_top_rx_tdata),
-        .c2c_top_rx_tvalid(c2c_top_rx_tvalid),
         .c2c_top_tx_tdata(c2c_top_tx_tdata),
         .c2c_top_tx_tready(c2c_top_tx_tready),
         .c2c_top_tx_tvalid(c2c_top_tx_tvalid),
@@ -342,8 +370,8 @@ module design_1_wrapper
         .mdio_phy_mdio_t(mdio_phy_mdio_t),
         .mgt_chup_bot(mgt_chup_bot),
         .mgt_chup_top(mgt_chup_top),
-        .mgt_locked_bot(mgt_locked_bot),
-        .mgt_locked_top(mgt_locked_top),
+        .mgt_unlocked_bot(mgt_unlocked_bot),
+        .mgt_unlocked_top(mgt_unlocked_top),
         .phy_rst(phy_rst),
         .pim_alarm(pim_alarm),
         .prbs_err(prbs_err),
@@ -356,6 +384,18 @@ module design_1_wrapper
         .rgmii_td(rgmii_td),
         .rgmii_tx_ctl(rgmii_tx_ctl),
         .rgmii_txc(rgmii_txc),
+        .rxd_raw0(rxd_raw0),
+        .rxd_raw1(rxd_raw1),
+        .rxd_raw2(rxd_raw2),
+        .rxd_raw3(rxd_raw3),
+        .rxdata_bot(rxdata_bot),
+        .rxdata_top(rxdata_top),
+        .rxk_raw0(rxk_raw0),
+        .rxk_raw1(rxk_raw1),
+        .rxk_raw2(rxk_raw2),
+        .rxk_raw3(rxk_raw3),
+        .rxvalid_bot(rxvalid_bot),
+        .rxvalid_top(rxvalid_top),
         .scf_i2c_0_scl_i(scf_i2c_0_scl_i),
         .scf_i2c_0_scl_o(scf_i2c_0_scl_o),
         .scf_i2c_0_scl_t(scf_i2c_0_scl_t),

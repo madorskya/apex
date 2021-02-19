@@ -175,15 +175,6 @@
 						"WVALID": { "actual": "S_AXI_WVALID"}
 					}
 				},
-				"/chip2chip_bot_ff/AXIS_RX_0": {
-					"interface": "xilinx.com:interface:axis:1.0",
-					"ports": {
-						"ACLK": { "actual": "axi_c2c_phy_clk"},
-						"ARESET": { "actual": "aurora_reset_pb"},
-						"TDATA": { "actual": "AXIS_RX_0_tdata"},
-						"TVALID": { "actual": "AXIS_RX_0_tvalid"}
-					}
-				},
 				"/chip2chip_bot_ff/AXIS_TX_0": {
 					"interface": "xilinx.com:interface:axis:1.0",
 					"ports": {
@@ -377,15 +368,6 @@
 						"WREADY": { "actual": "s_axi_wready"},
 						"WSTRB": { "actual": "s_axi_wstrb"},
 						"WVALID": { "actual": "s_axi_wvalid"}
-					}
-				},
-				"/chip2chip_top_ff/AXIS_RX_0": {
-					"interface": "xilinx.com:interface:axis:1.0",
-					"ports": {
-						"ACLK": { "actual": "axi_c2c_phy_clk_0"},
-						"ARESET": { "actual": "aurora_reset_pb"},
-						"TDATA": { "actual": "AXIS_RX_0_tdata"},
-						"TVALID": { "actual": "AXIS_RX_0_tvalid"}
 					}
 				},
 				"/chip2chip_top_ff/AXIS_TX_0": {

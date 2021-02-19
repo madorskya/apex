@@ -155,4 +155,7 @@ set_property PULLUP true         [get_ports local_i2c_*]
 set_property PACKAGE_PIN T16  [get_ports tach]; # J2 pin 84
 
 set_false_path -from [get_clocks clk_fpga_0] -to [get_clocks -of_objects [get_pins design_1_i/chip2chip_*/axi_chip2chip_*_aurora8/inst/clock_module_i/mmcm_adv_inst/CLKOUT0]]
-set_false_path -from [get_clocks -of_objects [get_pins design_1_i/chip2chip_*/axi_chip2chip_*_aurora8/inst/clock_module_i/mmcm_adv_inst/CLKOUT0]] -to [get_clocks clk_fpga_0] 
+set_false_path -from [get_clocks -of_objects [get_pins design_1_i/chip2chip_*/axi_chip2chip_*_aurora8/inst/clock_module_i/mmcm_adv_inst/CLKOUT0]] -to [get_clocks clk_fpga_0]
+
+set_false_path -from [get_clocks clk_fpga_0] -to [get_clocks -of_objects [get_pins c2c_mgt/c2c_mgt_support_i/inst/gt_usrclk_source/txoutclk_mmcm0_i/mmcm_adv_inst/CLKOUT0]]
+set_false_path -from [get_clocks -of_objects [get_pins c2c_mgt/c2c_mgt_support_i/inst/gt_usrclk_source/txoutclk_mmcm0_i/mmcm_adv_inst/CLKOUT0]] -to [get_clocks clk_fpga_0]
