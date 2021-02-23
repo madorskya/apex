@@ -125,6 +125,7 @@ module apex_control_mgt_top
     wire [ 3:0] rxk_raw [3:0];
     wire [ 3:0] align_b0;
     wire [ 3:0] align_lock;
+    wire axi_clk;
     
 
   design_1 design_1_i
@@ -155,16 +156,16 @@ module apex_control_mgt_top
         .rxdata_bot  (rxdata  [3]),
         .rxvalid_bot (rxvalid [3]),
         
-        .c2c_bot_tx_tdata  (txdata  [0]),
-        .c2c_bot_tx_tready (txready [0]),
-        .c2c_bot_tx_tvalid (txvalid [0]),
+        .txdata_bot  (txdata  [0]),
+        .txready_bot (txready [0]),
+        .txvalid_bot (txvalid [0]),
         
         .rxdata_top  (rxdata  [1]),
         .rxvalid_top (rxvalid [1]),
         
-        .c2c_top_tx_tdata  (txdata  [2]),
-        .c2c_top_tx_tready (txready [2]),
-        .c2c_top_tx_tvalid (txvalid [2]),
+        .txdata_top  (txdata  [2]),
+        .txready_top (txready [2]),
+        .txvalid_top (txvalid [2]),
         
         .mgt_chup_bot     ( channel_up[3]),
         .mgt_chup_top     ( channel_up[1]),
@@ -185,6 +186,7 @@ module apex_control_mgt_top
         .rxk_raw3    (rxk_raw [3]  ),
         .align_b0   (align_b0  ),
         .align_lock (align_lock),
+        .gtp_reset  (soft_reset),
 
         .en_ipmb_zynq(en_ipmb_zynq),
         .ha(ha),
@@ -247,7 +249,7 @@ module apex_control_mgt_top
         .scf_tdo_1(scf_tdo_1),
         .scf_tms_0(scf_tms_0),
         .scf_tms_1(scf_tms_1),
-        .soft_reset (soft_reset)
+        .axi_clk  (axi_clk)
         );
   IOBUF i2c_10g_scl_iobuf
        (.I(i2c_10g_scl_o),
@@ -309,7 +311,7 @@ module apex_control_mgt_top
     (
         .Q0_CLK1_GTREFCLK_PAD_N_IN (Q0_CLK1_GTREFCLK_PAD_N_IN),
         .Q0_CLK1_GTREFCLK_PAD_P_IN (Q0_CLK1_GTREFCLK_PAD_P_IN),
-        .DRP_CLK_IN (),
+        .DRP_CLK_IN (axi_clk),
     
         .RXN_IN  (RXN_IN ),
         .RXP_IN  (RXP_IN ),

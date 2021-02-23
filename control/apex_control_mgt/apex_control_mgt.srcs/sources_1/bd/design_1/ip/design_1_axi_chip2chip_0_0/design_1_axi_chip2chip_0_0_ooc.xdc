@@ -1,4 +1,4 @@
-# (c) Copyright 2012-2020 Xilinx, Inc. All rights reserved.
+# (c) Copyright 2012-2021 Xilinx, Inc. All rights reserved.
 # 
 # This file contains confidential and proprietary information
 # of Xilinx, Inc. and is protected under U.S. and
@@ -54,7 +54,7 @@
 
 create_clock -period 10 -name s_aclk [get_ports s_aclk]
 
-create_clock -period 5.333 -name axi_c2c_phy_clk [get_ports axi_c2c_phy_clk]
+create_clock -period 10.667 -name axi_c2c_phy_clk [get_ports axi_c2c_phy_clk]
 
 create_clock -period 10 -name aurora_init_clk [get_ports aurora_init_clk]
 

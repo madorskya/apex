@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Fri Feb 19 20:02:50 2021
+//Date        : Tue Feb 23 17:43:25 2021
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -34,13 +34,9 @@ module design_1_wrapper
     align_b0,
     align_lock,
     axi_c2c_phy_clk,
-    c2c_bot_tx_tdata,
-    c2c_bot_tx_tready,
-    c2c_bot_tx_tvalid,
-    c2c_top_tx_tdata,
-    c2c_top_tx_tready,
-    c2c_top_tx_tvalid,
+    axi_clk,
     en_ipmb_zynq,
+    gtp_reset,
     ha,
     hot_swap_sw,
     i2c_10g_scl_io,
@@ -97,8 +93,13 @@ module design_1_wrapper
     scf_tdo_1,
     scf_tms_0,
     scf_tms_1,
-    soft_reset,
-    tx_polarity);
+    tx_polarity,
+    txdata_bot,
+    txdata_top,
+    txready_bot,
+    txready_top,
+    txvalid_bot,
+    txvalid_top);
   inout [14:0]DDR_addr;
   inout [2:0]DDR_ba;
   inout DDR_cas_n;
@@ -123,13 +124,9 @@ module design_1_wrapper
   input [3:0]align_b0;
   input [3:0]align_lock;
   input axi_c2c_phy_clk;
-  output [31:0]c2c_bot_tx_tdata;
-  input c2c_bot_tx_tready;
-  output c2c_bot_tx_tvalid;
-  output [31:0]c2c_top_tx_tdata;
-  input c2c_top_tx_tready;
-  output c2c_top_tx_tvalid;
+  output axi_clk;
   output [1:0]en_ipmb_zynq;
+  output gtp_reset;
   input [7:0]ha;
   input [0:0]hot_swap_sw;
   inout i2c_10g_scl_io;
@@ -186,8 +183,13 @@ module design_1_wrapper
   input scf_tdo_1;
   output scf_tms_0;
   output scf_tms_1;
-  output soft_reset;
   output [3:0]tx_polarity;
+  output [31:0]txdata_bot;
+  output [31:0]txdata_top;
+  input txready_bot;
+  input txready_top;
+  output txvalid_bot;
+  output txvalid_top;
 
   wire [14:0]DDR_addr;
   wire [2:0]DDR_ba;
@@ -213,13 +215,9 @@ module design_1_wrapper
   wire [3:0]align_b0;
   wire [3:0]align_lock;
   wire axi_c2c_phy_clk;
-  wire [31:0]c2c_bot_tx_tdata;
-  wire c2c_bot_tx_tready;
-  wire c2c_bot_tx_tvalid;
-  wire [31:0]c2c_top_tx_tdata;
-  wire c2c_top_tx_tready;
-  wire c2c_top_tx_tvalid;
+  wire axi_clk;
   wire [1:0]en_ipmb_zynq;
+  wire gtp_reset;
   wire [7:0]ha;
   wire [0:0]hot_swap_sw;
   wire i2c_10g_scl_i;
@@ -309,8 +307,13 @@ module design_1_wrapper
   wire scf_tdo_1;
   wire scf_tms_0;
   wire scf_tms_1;
-  wire soft_reset;
   wire [3:0]tx_polarity;
+  wire [31:0]txdata_bot;
+  wire [31:0]txdata_top;
+  wire txready_bot;
+  wire txready_top;
+  wire txvalid_bot;
+  wire txvalid_top;
 
   design_1 design_1_i
        (.DDR_addr(DDR_addr),
@@ -337,13 +340,9 @@ module design_1_wrapper
         .align_b0(align_b0),
         .align_lock(align_lock),
         .axi_c2c_phy_clk(axi_c2c_phy_clk),
-        .c2c_bot_tx_tdata(c2c_bot_tx_tdata),
-        .c2c_bot_tx_tready(c2c_bot_tx_tready),
-        .c2c_bot_tx_tvalid(c2c_bot_tx_tvalid),
-        .c2c_top_tx_tdata(c2c_top_tx_tdata),
-        .c2c_top_tx_tready(c2c_top_tx_tready),
-        .c2c_top_tx_tvalid(c2c_top_tx_tvalid),
+        .axi_clk(axi_clk),
         .en_ipmb_zynq(en_ipmb_zynq),
+        .gtp_reset(gtp_reset),
         .ha(ha),
         .hot_swap_sw(hot_swap_sw),
         .i2c_10g_scl_i(i2c_10g_scl_i),
@@ -422,8 +421,13 @@ module design_1_wrapper
         .scf_tdo_1(scf_tdo_1),
         .scf_tms_0(scf_tms_0),
         .scf_tms_1(scf_tms_1),
-        .soft_reset(soft_reset),
-        .tx_polarity(tx_polarity));
+        .tx_polarity(tx_polarity),
+        .txdata_bot(txdata_bot),
+        .txdata_top(txdata_top),
+        .txready_bot(txready_bot),
+        .txready_top(txready_top),
+        .txvalid_bot(txvalid_bot),
+        .txvalid_top(txvalid_top));
   IOBUF i2c_10g_scl_iobuf
        (.I(i2c_10g_scl_o),
         .IO(i2c_10g_scl_io),

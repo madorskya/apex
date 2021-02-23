@@ -2561,7 +2561,7 @@
           <spirit:name>FREQ_HZ</spirit:name>
           <spirit:displayName>Physical Interface Clock</spirit:displayName>
           <spirit:description>Physical Interface Clock.AXI Chip2Chip Master core operations excluding the AXI Slave Interface are synchronous to axi_c2c_phy_clk</spirit:description>
-          <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="BUSIFPARAM_VALUE.AXI_C2C_PHY_CLK.FREQ_HZ">187500000</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="BUSIFPARAM_VALUE.AXI_C2C_PHY_CLK.FREQ_HZ">93750000</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_TOLERANCE_HZ</spirit:name>
@@ -3301,7 +3301,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.AXIS_RX.FREQ_HZ">187500000</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.AXIS_RX.FREQ_HZ">93750000</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -3459,7 +3459,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.AXIS_TX.FREQ_HZ">187500000</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.AXIS_TX.FREQ_HZ">93750000</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -3760,7 +3760,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:fb6184b4</spirit:value>
+            <spirit:value>9:26538794</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -3774,11 +3774,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Dec 14 15:42:28 UTC 2020</spirit:value>
+            <spirit:value>Mon Feb 22 21:46:28 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:fb6184b4</spirit:value>
+            <spirit:value>9:26538794</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -3794,11 +3794,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Dec 14 15:42:28 UTC 2020</spirit:value>
+            <spirit:value>Mon Feb 22 21:46:28 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:fb6184b4</spirit:value>
+            <spirit:value>9:26538794</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -3817,7 +3817,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:81ca24a0</spirit:value>
+            <spirit:value>9:f6fe28bd</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -3833,11 +3833,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Dec 14 15:42:28 UTC 2020</spirit:value>
+            <spirit:value>Mon Feb 22 21:46:28 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:81ca24a0</spirit:value>
+            <spirit:value>9:f6fe28bd</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>

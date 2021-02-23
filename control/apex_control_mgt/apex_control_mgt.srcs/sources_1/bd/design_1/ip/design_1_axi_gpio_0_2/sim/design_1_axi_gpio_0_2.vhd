@@ -77,8 +77,8 @@ ENTITY design_1_axi_gpio_0_2 IS
     s_axi_rresp : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
     s_axi_rvalid : OUT STD_LOGIC;
     s_axi_rready : IN STD_LOGIC;
-    gpio_io_o : OUT STD_LOGIC_VECTOR(13 DOWNTO 0);
-    gpio2_io_i : IN STD_LOGIC_VECTOR(18 DOWNTO 0)
+    gpio_io_o : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    gpio2_io_i : IN STD_LOGIC_VECTOR(16 DOWNTO 0)
   );
 END design_1_axi_gpio_0_2;
 
@@ -124,12 +124,12 @@ ARCHITECTURE design_1_axi_gpio_0_2_arch OF design_1_axi_gpio_0_2 IS
       s_axi_rvalid : OUT STD_LOGIC;
       s_axi_rready : IN STD_LOGIC;
       ip2intc_irpt : OUT STD_LOGIC;
-      gpio_io_i : IN STD_LOGIC_VECTOR(13 DOWNTO 0);
-      gpio_io_o : OUT STD_LOGIC_VECTOR(13 DOWNTO 0);
-      gpio_io_t : OUT STD_LOGIC_VECTOR(13 DOWNTO 0);
-      gpio2_io_i : IN STD_LOGIC_VECTOR(18 DOWNTO 0);
-      gpio2_io_o : OUT STD_LOGIC_VECTOR(18 DOWNTO 0);
-      gpio2_io_t : OUT STD_LOGIC_VECTOR(18 DOWNTO 0)
+      gpio_io_i : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+      gpio_io_o : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      gpio_io_t : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      gpio2_io_i : IN STD_LOGIC_VECTOR(16 DOWNTO 0);
+      gpio2_io_o : OUT STD_LOGIC_VECTOR(16 DOWNTO 0);
+      gpio2_io_t : OUT STD_LOGIC_VECTOR(16 DOWNTO 0)
     );
   END COMPONENT axi_gpio;
   ATTRIBUTE X_INTERFACE_INFO : STRING;
@@ -167,8 +167,8 @@ BEGIN
       C_FAMILY => "zynq",
       C_S_AXI_ADDR_WIDTH => 9,
       C_S_AXI_DATA_WIDTH => 32,
-      C_GPIO_WIDTH => 14,
-      C_GPIO2_WIDTH => 19,
+      C_GPIO_WIDTH => 16,
+      C_GPIO2_WIDTH => 17,
       C_ALL_INPUTS => 0,
       C_ALL_INPUTS_2 => 1,
       C_ALL_OUTPUTS => 1,
@@ -200,7 +200,7 @@ BEGIN
       s_axi_rresp => s_axi_rresp,
       s_axi_rvalid => s_axi_rvalid,
       s_axi_rready => s_axi_rready,
-      gpio_io_i => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 14)),
+      gpio_io_i => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 16)),
       gpio_io_o => gpio_io_o,
       gpio2_io_i => gpio2_io_i
     );

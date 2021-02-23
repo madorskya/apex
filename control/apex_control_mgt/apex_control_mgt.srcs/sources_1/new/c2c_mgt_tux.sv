@@ -20,7 +20,7 @@ module c2c_mgt_tux
     // interface for c2c TX
     input  [31:0] txdata [3:0],
     input  [ 3:0] txvalid,
-    output [ 3:0] txready,
+    output reg [ 3:0] txready,
     
     // interface for c2c RX
     output reg [31:0] rxdata [3:0],
@@ -402,21 +402,22 @@ wire            PLL1RESET_IN;
      //--------------------------- User Clocks ---------------------------------
  wire            gt0_txusrclk_i; 
  wire            gt0_txusrclk2_i; // this one is used as main user clock
- assign usr_clk = gt0_txusrclk2_i;
+ assign usr_clk = gt0_txusrclk2_i; // all [tr]xusrclk2 below are the same clock derived from gt0_txusrclk2_i
+ // see gt_usrclk_source module inside core
  wire            gt0_rxusrclk_i; 
- wire            gt0_rxusrclk2_i = usr_clk; 
- wire            gt1_txusrclk_i; 
- wire            gt1_txusrclk2_i = usr_clk; 
- wire            gt1_rxusrclk_i; 
- wire            gt1_rxusrclk2_i = usr_clk; 
- wire            gt2_txusrclk_i; 
- wire            gt2_txusrclk2_i = usr_clk; 
- wire            gt2_rxusrclk_i; 
- wire            gt2_rxusrclk2_i = usr_clk; 
- wire            gt3_txusrclk_i; 
- wire            gt3_txusrclk2_i = usr_clk; 
- wire            gt3_rxusrclk_i; 
- wire            gt3_rxusrclk2_i = usr_clk; 
+ wire            gt0_rxusrclk2_i; 
+ wire            gt1_txusrclk_i;
+ wire            gt1_txusrclk2_i; 
+ wire            gt1_rxusrclk_i;
+ wire            gt1_rxusrclk2_i; 
+ wire            gt2_txusrclk_i;
+ wire            gt2_txusrclk2_i; 
+ wire            gt2_rxusrclk_i;
+ wire            gt2_rxusrclk2_i; 
+ wire            gt3_txusrclk_i;
+ wire            gt3_txusrclk2_i; 
+ wire            gt3_rxusrclk_i;
+ wire            gt3_rxusrclk2_i; 
  
 wire            gt0_txmmcm_lock_i;
 wire            gt0_txmmcm_reset_i;
@@ -697,25 +698,25 @@ wire            pll1pd_i;
         .gt3_rx_fsm_reset_done_out      (gt3_rxfsmresetdone_i),
         .gt3_data_valid_in              (1'b1),
  
-//    .gt0_txusrclk_out(gt0_txusrclk_i),
+    .gt0_txusrclk_out(gt0_txusrclk_i),
     .gt0_txusrclk2_out(gt0_txusrclk2_i),
-//    .gt0_rxusrclk_out(gt0_rxusrclk_i),
-//    .gt0_rxusrclk2_out(gt0_rxusrclk2_i),
+    .gt0_rxusrclk_out(gt0_rxusrclk_i),
+    .gt0_rxusrclk2_out(gt0_rxusrclk2_i),
  
-//    .gt1_txusrclk_out(gt1_txusrclk_i),
-//    .gt1_txusrclk2_out(gt1_txusrclk2_i),
-//    .gt1_rxusrclk_out(gt1_rxusrclk_i),
-//    .gt1_rxusrclk2_out(gt1_rxusrclk2_i),
+    .gt1_txusrclk_out(gt1_txusrclk_i),
+    .gt1_txusrclk2_out(gt1_txusrclk2_i),
+    .gt1_rxusrclk_out(gt1_rxusrclk_i),
+    .gt1_rxusrclk2_out(gt1_rxusrclk2_i),
  
-//    .gt2_txusrclk_out(gt2_txusrclk_i),
-//    .gt2_txusrclk2_out(gt2_txusrclk2_i),
-//    .gt2_rxusrclk_out(gt2_rxusrclk_i),
-//    .gt2_rxusrclk2_out(gt2_rxusrclk2_i),
+    .gt2_txusrclk_out(gt2_txusrclk_i),
+    .gt2_txusrclk2_out(gt2_txusrclk2_i),
+    .gt2_rxusrclk_out(gt2_rxusrclk_i),
+    .gt2_rxusrclk2_out(gt2_rxusrclk2_i),
  
-//    .gt3_txusrclk_out(gt3_txusrclk_i),
-//    .gt3_txusrclk2_out(gt3_txusrclk2_i),
-//    .gt3_rxusrclk_out(gt3_rxusrclk_i),
-//    .gt3_rxusrclk2_out(gt3_rxusrclk2_i),
+    .gt3_txusrclk_out(gt3_txusrclk_i),
+    .gt3_txusrclk2_out(gt3_txusrclk2_i),
+    .gt3_rxusrclk_out(gt3_rxusrclk_i),
+    .gt3_rxusrclk2_out(gt3_rxusrclk2_i),
 
 
         //_____________________________________________________________________
@@ -1198,8 +1199,6 @@ assign gt3_drpwe_i = 1'b0;
     assign gt2_txcharisk_i = (txvalid[2] == 1'b1) ? 4'b0000 : 4'b0001;
     assign gt3_txcharisk_i = (txvalid[3] == 1'b1) ? 4'b0000 : 4'b0001;
     
-    assign txready = 4'b1111; // always ready
-    
     // alignment logic
     // GTP only supports 2-byte alignment
     // this logic realigns to 4-byte boundary
@@ -1208,28 +1207,34 @@ assign gt3_drpwe_i = 1'b0;
     reg [ 3:0] alignment_b0;
     reg [ 3:0] alignment_lock = 4'b0;
     integer i;
+    reg [7:0] ready_cnt = 8'h0;
+    reg [3:0] rx_k;
+    
     always @(posedge usr_clk)
     begin
+    
+        txready = 4'b1111;
     
         for (i = 0; i < 4; i++)
         begin
         
+            rxvalid[i] = 1'b0; // invalid data
+            rxdata[i] = 32'h0;
             if (alignment_lock[i] == 1'b1) // alignment is locked
             begin
                 if (alignment_b0[i] == 1'b1) // byte 0 aligned, just pass data to output
                 begin
                     rxdata[i] = rxd_r[1][i];
+                    rx_k[i]   = rxk_r[1][i];
                 end
                 else
                 begin // byte 2 aligned, need swizzling
                     rxdata[i] = {rxd_r[1][i][15:0], rxd_r[0][i][31:16]};
+                    rx_k[i]   = {rxk_r[1][i][ 1:0], rxk_r[0][i][ 3: 2]};
                 end
-                rxvalid[i] = 1'b1; // valid data
-            end
-            else
-            begin
-                rxvalid[i] = 1'b0; // invalid data
-                rxdata[i] = 32'h0;
+                
+                if (rx_k[i] == 4'b0) // only if not K symbol
+                    rxvalid[i] = 1'b1; // valid data
             end
         
             
