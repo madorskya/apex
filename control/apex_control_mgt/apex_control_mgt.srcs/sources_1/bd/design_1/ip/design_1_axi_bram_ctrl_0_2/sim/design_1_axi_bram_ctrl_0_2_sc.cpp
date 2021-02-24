@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2021 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -66,7 +66,7 @@ design_1_axi_bram_ctrl_0_2_sc::design_1_axi_bram_ctrl_0_2_sc(const sc_core::sc_m
     model_param_props.addLong("C_S_AXI_ADDR_WIDTH", "13");
     model_param_props.addLong("C_S_AXI_DATA_WIDTH", "32");
     model_param_props.addLong("C_S_AXI_ID_WIDTH", "6");
-    model_param_props.addLong("C_S_AXI_SUPPORTS_NARROW_BURST", "1");
+    model_param_props.addLong("C_S_AXI_SUPPORTS_NARROW_BURST", "0");
     model_param_props.addLong("C_SINGLE_PORT_BRAM", "1");
     model_param_props.addLong("C_READ_LATENCY", "1");
     model_param_props.addLong("C_RD_CMD_OPTIMIZATION", "0");

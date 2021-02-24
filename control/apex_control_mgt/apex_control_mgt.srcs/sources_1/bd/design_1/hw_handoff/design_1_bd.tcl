@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# axisafety, axisafety, freq_meter, reg_bank, axisafety, i2cSlave, i2c_switch, i2c_switch, i2cSlave, i2c_switch, i2c_switch
+# axisafety, axisafety, reg_bank, i2cSlave, i2c_switch, i2c_switch, i2cSlave, i2c_switch, i2c_switch
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -1955,35 +1955,16 @@ proc create_hier_cell_bram_loopback { parentCell nameHier } {
    CONFIG.SINGLE_PORT_BRAM {1} \
  ] $axi_bram_ctrl_0
 
-  # Create instance: axisafety_0, and set properties
-  set block_name axisafety
-  set block_cell_name axisafety_0
-  if { [catch {set axisafety_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $axisafety_0 eq "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-    set_property -dict [ list \
-   CONFIG.C_S_AXI_ADDR_WIDTH {13} \
-   CONFIG.C_S_AXI_ID_WIDTH {6} \
-   CONFIG.OPT_SELF_RESET {1} \
-   CONFIG.OPT_TIMEOUT {512} \
- ] $axisafety_0
-
   # Create instance: blk_mem_gen_0, and set properties
   set blk_mem_gen_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.4 blk_mem_gen_0 ]
 
   # Create interface connections
+  connect_bd_intf_net -intf_net S_AXI_1 [get_bd_intf_pins S_AXI] [get_bd_intf_pins axi_bram_ctrl_0/S_AXI]
   connect_bd_intf_net -intf_net axi_bram_ctrl_0_BRAM_PORTA [get_bd_intf_pins axi_bram_ctrl_0/BRAM_PORTA] [get_bd_intf_pins blk_mem_gen_0/BRAM_PORTA]
-  connect_bd_intf_net -intf_net axisafety_0_M_AXI [get_bd_intf_pins axi_bram_ctrl_0/S_AXI] [get_bd_intf_pins axisafety_0/M_AXI]
-  connect_bd_intf_net -intf_net cpu_M18_AXI [get_bd_intf_pins S_AXI] [get_bd_intf_pins axisafety_0/S_AXI]
 
   # Create port connections
-  connect_bd_net -net Net [get_bd_pins S_AXI_ACLK] [get_bd_pins axi_bram_ctrl_0/s_axi_aclk] [get_bd_pins axisafety_0/S_AXI_ACLK]
-  connect_bd_net -net axisafety_0_M_AXI_ARESETN [get_bd_pins axi_bram_ctrl_0/s_axi_aresetn] [get_bd_pins axisafety_0/M_AXI_ARESETN]
-  connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins S_AXI_ARESETN] [get_bd_pins axisafety_0/S_AXI_ARESETN]
+  connect_bd_net -net Net [get_bd_pins S_AXI_ACLK] [get_bd_pins axi_bram_ctrl_0/s_axi_aclk]
+  connect_bd_net -net S_AXI_ARESETN_1 [get_bd_pins S_AXI_ARESETN] [get_bd_pins axi_bram_ctrl_0/s_axi_aresetn]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -2184,27 +2165,17 @@ proc create_root_design { parentCell } {
   # Create instance: eth1
   create_hier_cell_eth1 [current_bd_instance .] eth1
 
-  # Create instance: freq_meter_0, and set properties
-  set block_name freq_meter
-  set block_cell_name freq_meter_0
-  if { [catch {set freq_meter_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $freq_meter_0 eq "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
   # Create instance: i2c
   create_hier_cell_i2c [current_bd_instance .] i2c
 
   # Create instance: ila_0, and set properties
   set ila_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:ila:6.2 ila_0 ]
   set_property -dict [ list \
+   CONFIG.C_DATA_DEPTH {2048} \
    CONFIG.C_ENABLE_ILA_AXI_MON {false} \
    CONFIG.C_INPUT_PIPE_STAGES {6} \
    CONFIG.C_MONITOR_TYPE {Native} \
-   CONFIG.C_NUM_OF_PROBES {37} \
+   CONFIG.C_NUM_OF_PROBES {38} \
    CONFIG.C_PROBE0_WIDTH {4} \
    CONFIG.C_PROBE15_WIDTH {32} \
    CONFIG.C_PROBE16_WIDTH {32} \
@@ -2239,13 +2210,6 @@ proc create_root_design { parentCell } {
      return 1
    }
   
-  # Create instance: vio_0, and set properties
-  set vio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:vio:3.0 vio_0 ]
-  set_property -dict [ list \
-   CONFIG.C_NUM_PROBE_IN {3} \
-   CONFIG.C_NUM_PROBE_OUT {0} \
- ] $vio_0
-
   # Create interface connections
   connect_bd_intf_net -intf_net S_AXI2_1 [get_bd_intf_pins cpu/M05_AXI] [get_bd_intf_pins ipmc/S_AXI]
   connect_bd_intf_net -intf_net S_AXI3_1 [get_bd_intf_pins cpu/M06_AXI] [get_bd_intf_pins ipmc/S_AXI2]
@@ -2290,7 +2254,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net In2_0_1 [get_bd_ports ha] [get_bd_pins ipmc/ha] [get_bd_pins reg_bank_0/ha_7_0]
   connect_bd_net -net In3_0_1 [get_bd_ports pim_alarm] [get_bd_pins reg_bank_0/pim_alarm_11]
   connect_bd_net -net In8_0_1 [get_bd_ports hot_swap_sw] [get_bd_pins reg_bank_0/hot_swap_handle_16]
-  connect_bd_net -net Net [get_bd_ports axi_clk] [get_bd_pins axi_chip2chip_0/aurora_init_clk] [get_bd_pins axi_chip2chip_0/s_aclk] [get_bd_pins axi_chip2chip_1/aurora_init_clk] [get_bd_pins axi_chip2chip_1/s_aclk] [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axisafety_1/S_AXI_ACLK] [get_bd_pins axisafety_2/S_AXI_ACLK] [get_bd_pins bram_loopback/S_AXI_ACLK] [get_bd_pins cpu/FCLK_CLK0] [get_bd_pins dbg/clk] [get_bd_pins eth1/s_axi_lite_aclk] [get_bd_pins freq_meter_0/f3] [get_bd_pins freq_meter_0/ref_clk] [get_bd_pins i2c/s_axi_aclk] [get_bd_pins ipmc/s_axi_aclk] [get_bd_pins jtag/s_axi_aclk] [get_bd_pins vio_0/clk]
+  connect_bd_net -net Net [get_bd_ports axi_clk] [get_bd_pins axi_chip2chip_0/aurora_init_clk] [get_bd_pins axi_chip2chip_0/s_aclk] [get_bd_pins axi_chip2chip_1/aurora_init_clk] [get_bd_pins axi_chip2chip_1/s_aclk] [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axisafety_1/S_AXI_ACLK] [get_bd_pins axisafety_2/S_AXI_ACLK] [get_bd_pins bram_loopback/S_AXI_ACLK] [get_bd_pins cpu/FCLK_CLK0] [get_bd_pins dbg/clk] [get_bd_pins eth1/s_axi_lite_aclk] [get_bd_pins i2c/s_axi_aclk] [get_bd_pins ipmc/s_axi_aclk] [get_bd_pins jtag/s_axi_aclk]
   connect_bd_net -net Net1 [get_bd_ports ipmc_sda_0] [get_bd_pins ipmc/ipmc_sda_0]
   connect_bd_net -net Net2 [get_bd_ports ipmc_scl_0] [get_bd_pins ipmc/ipmc_scl_0]
   connect_bd_net -net Net3 [get_bd_ports ipmc_scl_1] [get_bd_pins ipmc/ipmc_scl_1]
@@ -2301,10 +2265,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net align_lock [get_bd_ports align_lock] [get_bd_pins ila_0/probe24]
   connect_bd_net -net aurora_mmcm_not_locked_0_1 [get_bd_ports mgt_unlocked_top] [get_bd_pins axi_chip2chip_1/aurora_mmcm_not_locked]
   connect_bd_net -net aurora_mmcm_not_locked_1_1 [get_bd_ports mgt_unlocked_bot] [get_bd_pins axi_chip2chip_0/aurora_mmcm_not_locked]
-  connect_bd_net -net axi_c2c_aurora_channel_up_0_1 [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_channel_up] [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_tx_tready] [get_bd_pins axi_chip2chip_1/axi_c2c_aurora_channel_up] [get_bd_pins axi_chip2chip_1/axi_c2c_aurora_tx_tready] [get_bd_pins reg_bank_0/channel_up_15] [get_bd_pins reg_bank_0/channel_up_bot_15] [get_bd_pins reg_bank_0/channel_up_top_13]
-  connect_bd_net -net axi_c2c_aurora_tx_tready_0_1 [get_bd_ports txready_top] [get_bd_pins ila_0/probe31]
-  connect_bd_net -net axi_c2c_aurora_tx_tready_1_1 [get_bd_ports txready_bot] [get_bd_pins ila_0/probe34]
-  connect_bd_net -net axi_c2c_phy_clk_0_1 [get_bd_ports axi_c2c_phy_clk] [get_bd_pins axi_chip2chip_0/axi_c2c_phy_clk] [get_bd_pins axi_chip2chip_1/axi_c2c_phy_clk] [get_bd_pins freq_meter_0/f1] [get_bd_pins freq_meter_0/f2] [get_bd_pins ila_0/clk]
+  connect_bd_net -net axi_c2c_aurora_channel_up_0_1 [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_tx_tready] [get_bd_pins axi_chip2chip_1/axi_c2c_aurora_tx_tready] [get_bd_pins axisafety_1/ext_resetn] [get_bd_pins axisafety_2/ext_resetn] [get_bd_pins reg_bank_0/channel_up_15] [get_bd_pins reg_bank_0/channel_up_bot_15] [get_bd_pins reg_bank_0/channel_up_top_13]
+  connect_bd_net -net axi_c2c_phy_clk_0_1 [get_bd_ports axi_c2c_phy_clk] [get_bd_pins axi_chip2chip_0/axi_c2c_phy_clk] [get_bd_pins axi_chip2chip_1/axi_c2c_phy_clk] [get_bd_pins ila_0/clk]
   connect_bd_net -net axi_chip2chip_0_axi_c2c_aurora_tx_tdata [get_bd_ports txdata_bot] [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_tx_tdata] [get_bd_pins ila_0/probe32]
   connect_bd_net -net axi_chip2chip_0_axi_c2c_aurora_tx_tvalid [get_bd_ports txvalid_bot] [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_tx_tvalid] [get_bd_pins ila_0/probe33]
   connect_bd_net -net axi_chip2chip_1_axi_c2c_aurora_tx_tdata [get_bd_ports txdata_top] [get_bd_pins axi_chip2chip_1/axi_c2c_aurora_tx_tdata] [get_bd_pins ila_0/probe29]
@@ -2315,8 +2277,10 @@ proc create_root_design { parentCell } {
   connect_bd_net -net axi_ethernet_0_mac_irq [get_bd_pins cpu/In2] [get_bd_pins eth1/mac_irq]
   connect_bd_net -net axi_ethernet_0_phy_rst_n [get_bd_ports phy_rst] [get_bd_pins eth1/phy_rst]
   connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_pins axi_gpio_0/gpio_io_o] [get_bd_pins reg_bank_0/reg_rw]
-  connect_bd_net -net axisafety_1_M_AXI_ARESETN [get_bd_pins axi_chip2chip_0/s_aresetn] [get_bd_pins axisafety_1/M_AXI_ARESETN]
-  connect_bd_net -net axisafety_1_M_AXI_ARESETN_1 [get_bd_pins axi_chip2chip_1/s_aresetn] [get_bd_pins axisafety_2/M_AXI_ARESETN]
+  connect_bd_net -net axisafety_1_M_AXI_ARESETN [get_bd_pins axi_chip2chip_0/s_aresetn] [get_bd_pins axisafety_1/comb_aresetn] [get_bd_pins ila_0/probe35]
+  connect_bd_net -net axisafety_1_M_AXI_ARESETN_1 [get_bd_pins axi_chip2chip_1/s_aresetn] [get_bd_pins axisafety_2/comb_aresetn] [get_bd_pins ila_0/probe31]
+  connect_bd_net -net axisafety_1_channel_up [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_channel_up] [get_bd_pins axisafety_1/channel_up] [get_bd_pins ila_0/probe36]
+  connect_bd_net -net axisafety_2_channel_up [get_bd_pins axi_chip2chip_1/axi_c2c_aurora_channel_up] [get_bd_pins axisafety_2/channel_up] [get_bd_pins ila_0/probe34]
   connect_bd_net -net chip2chip_0_axi_c2c_link_status_out [get_bd_pins axi_chip2chip_1/axi_c2c_link_status_out] [get_bd_pins ila_0/probe1] [get_bd_pins reg_bank_0/link_stat_top_12]
   connect_bd_net -net chip2chip_1_axi_c2c_link_status_out [get_bd_pins axi_chip2chip_0/axi_c2c_link_status_out] [get_bd_pins ila_0/probe2] [get_bd_pins reg_bank_0/link_stat_bot_14]
   connect_bd_net -net chip2chip_bot_ff_aurora_do_cc [get_bd_pins axi_chip2chip_0/aurora_do_cc] [get_bd_pins ila_0/probe14]
@@ -2332,9 +2296,6 @@ proc create_root_design { parentCell } {
   connect_bd_net -net chip2chip_top_ff_axi_c2c_link_error_out [get_bd_pins axi_chip2chip_1/axi_c2c_link_error_out] [get_bd_pins ila_0/probe8]
   connect_bd_net -net chip2chip_top_ff_axi_c2c_multi_bit_error_out [get_bd_pins axi_chip2chip_1/axi_c2c_multi_bit_error_out] [get_bd_pins ila_0/probe7]
   connect_bd_net -net cpu_peripheral_reset [get_bd_pins axi_chip2chip_0/aurora_pma_init_in] [get_bd_pins axi_chip2chip_1/aurora_pma_init_in] [get_bd_pins reg_bank_0/aurora_pma_init_9]
-  connect_bd_net -net freq_meter_0_final0 [get_bd_pins freq_meter_0/final3] [get_bd_pins vio_0/probe_in0]
-  connect_bd_net -net freq_meter_0_final1 [get_bd_pins freq_meter_0/final1] [get_bd_pins vio_0/probe_in1]
-  connect_bd_net -net freq_meter_0_final2 [get_bd_pins freq_meter_0/final2] [get_bd_pins vio_0/probe_in2]
   connect_bd_net -net i2c_iic2intc_irpt [get_bd_pins cpu/In7] [get_bd_pins i2c/iic2intc_irpt]
   connect_bd_net -net i2c_iic2intc_irpt1 [get_bd_pins cpu/In8] [get_bd_pins i2c/iic2intc_irpt1]
   connect_bd_net -net i2c_iic2intc_irpt2 [get_bd_pins cpu/In9] [get_bd_pins i2c/iic2intc_irpt2]
@@ -2351,11 +2312,9 @@ proc create_root_design { parentCell } {
   connect_bd_net -net ipmc_jtag_irq1 [get_bd_pins cpu/In6] [get_bd_pins ipmc/irq1]
   connect_bd_net -net ipmc_jtag_s0_o [get_bd_pins cpu/I2C1_SDA_I] [get_bd_pins ipmc/s0_o]
   connect_bd_net -net ipmc_jtag_s0_o1 [get_bd_pins cpu/I2C1_SCL_I] [get_bd_pins ipmc/s0_o1]
-  connect_bd_net -net mgt_chup_bot_1 [get_bd_ports mgt_chup_bot] [get_bd_pins ila_0/probe36]
-  connect_bd_net -net mgt_chup_top_1 [get_bd_ports mgt_chup_top] [get_bd_pins ila_0/probe35]
   connect_bd_net -net prbs_sel [get_bd_ports prbs_sel] [get_bd_pins reg_bank_0/prbs_sel_8_6]
   connect_bd_net -net probe0_0_1 [get_bd_ports prbs_err] [get_bd_pins ila_0/probe0]
-  connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axisafety_1/S_AXI_ARESETN] [get_bd_pins axisafety_2/S_AXI_ARESETN] [get_bd_pins bram_loopback/S_AXI_ARESETN] [get_bd_pins cpu/S00_ARESETN] [get_bd_pins dbg/s_axi_aresetn] [get_bd_pins eth1/axi_resetn] [get_bd_pins i2c/s_axi_aresetn] [get_bd_pins ipmc/s_axi_aresetn] [get_bd_pins jtag/s_axi_aresetn]
+  connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axisafety_1/S_AXI_ARESETN] [get_bd_pins axisafety_2/S_AXI_ARESETN] [get_bd_pins bram_loopback/S_AXI_ARESETN] [get_bd_pins cpu/S00_ARESETN] [get_bd_pins dbg/s_axi_aresetn] [get_bd_pins eth1/axi_resetn] [get_bd_pins i2c/s_axi_aresetn] [get_bd_pins ila_0/probe37] [get_bd_pins ipmc/s_axi_aresetn] [get_bd_pins jtag/s_axi_aresetn]
   connect_bd_net -net processing_system7_0_FCLK_CLK1 [get_bd_pins cpu/FCLK_CLK1] [get_bd_pins eth1/ref_clk]
   connect_bd_net -net processing_system7_0_FCLK_CLK2 [get_bd_pins cpu/FCLK_CLK2] [get_bd_pins eth1/gtx_clk]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins cpu/ext_reset_in] [get_bd_pins eth1/ext_reset_in]
@@ -2381,9 +2340,9 @@ proc create_root_design { parentCell } {
   # Create address segments
   assign_bd_address -offset 0x00000000 -range 0x08000000 -target_address_space [get_bd_addr_spaces axisafety_1/M_AXI] [get_bd_addr_segs axi_chip2chip_0/s_axi/Mem0] -force
   assign_bd_address -offset 0x00000000 -range 0x08000000 -target_address_space [get_bd_addr_spaces axisafety_2/M_AXI] [get_bd_addr_segs axi_chip2chip_1/s_axi/Mem0] -force
-  assign_bd_address -offset 0x00000000 -range 0x00002000 -target_address_space [get_bd_addr_spaces bram_loopback/axisafety_0/M_AXI] [get_bd_addr_segs bram_loopback/axi_bram_ctrl_0/S_AXI/Mem0] -force
   assign_bd_address -offset 0x40000000 -range 0x00002000 -target_address_space [get_bd_addr_spaces cpu/processing_system7_0/Data] [get_bd_addr_segs ipmc/ipmc_i2c_0/axi_bram_ctrl_0/S_AXI/Mem0] -force
   assign_bd_address -offset 0x42000000 -range 0x00002000 -target_address_space [get_bd_addr_spaces cpu/processing_system7_0/Data] [get_bd_addr_segs ipmc/ipmc_i2c_1/axi_bram_ctrl_0/S_AXI/Mem0] -force
+  assign_bd_address -offset 0x44000000 -range 0x00002000 -target_address_space [get_bd_addr_spaces cpu/processing_system7_0/Data] [get_bd_addr_segs bram_loopback/axi_bram_ctrl_0/S_AXI/Mem0] -force
   assign_bd_address -offset 0x41000000 -range 0x00040000 -target_address_space [get_bd_addr_spaces cpu/processing_system7_0/Data] [get_bd_addr_segs eth1/axi_ethernet_0/s_axi/Reg0] -force
   assign_bd_address -offset 0x40400000 -range 0x00010000 -target_address_space [get_bd_addr_spaces cpu/processing_system7_0/Data] [get_bd_addr_segs eth1/axi_ethernet_0_dma/S_AXI_LITE/Reg] -force
   assign_bd_address -offset 0x41200000 -range 0x00010000 -target_address_space [get_bd_addr_spaces cpu/processing_system7_0/Data] [get_bd_addr_segs ipmc/ipmc_i2c_0/axi_gpio_0/S_AXI/Reg] -force
@@ -2397,7 +2356,6 @@ proc create_root_design { parentCell } {
   assign_bd_address -offset 0x41650000 -range 0x00010000 -target_address_space [get_bd_addr_spaces cpu/processing_system7_0/Data] [get_bd_addr_segs i2c/axi_iic_4/S_AXI/Reg] -force
   assign_bd_address -offset 0x43C00000 -range 0x00010000 -target_address_space [get_bd_addr_spaces cpu/processing_system7_0/Data] [get_bd_addr_segs jtag/axi_jtag_0/s_axi/reg0] -force
   assign_bd_address -offset 0x43C10000 -range 0x00010000 -target_address_space [get_bd_addr_spaces cpu/processing_system7_0/Data] [get_bd_addr_segs jtag/axi_jtag_1/s_axi/reg0] -force
-  assign_bd_address -offset 0x43C30000 -range 0x00002000 -target_address_space [get_bd_addr_spaces cpu/processing_system7_0/Data] [get_bd_addr_segs bram_loopback/axisafety_0/S_AXI/reg0] -force
   assign_bd_address -offset 0x58000000 -range 0x08000000 -target_address_space [get_bd_addr_spaces cpu/processing_system7_0/Data] [get_bd_addr_segs axisafety_1/S_AXI/reg0] -force
   assign_bd_address -offset 0x50000000 -range 0x08000000 -target_address_space [get_bd_addr_spaces cpu/processing_system7_0/Data] [get_bd_addr_segs axisafety_2/S_AXI/reg0] -force
   assign_bd_address -offset 0x43C20000 -range 0x00010000 -target_address_space [get_bd_addr_spaces cpu/processing_system7_0/Data] [get_bd_addr_segs dbg/debug_bridge_0/S_AXI/Reg0] -force

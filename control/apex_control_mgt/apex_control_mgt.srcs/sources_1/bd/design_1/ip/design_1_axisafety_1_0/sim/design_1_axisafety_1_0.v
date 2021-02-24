@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2020 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2021 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -60,6 +60,9 @@ module design_1_axisafety_1_0 (
   S_AXI_ACLK,
   S_AXI_ARESETN,
   M_AXI_ARESETN,
+  comb_aresetn,
+  ext_resetn,
+  channel_up,
   S_AXI_AWID,
   S_AXI_AWADDR,
   S_AXI_AWLEN,
@@ -147,6 +150,13 @@ input wire S_AXI_ARESETN;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI_ARESETN, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 M_AXI_ARESETN RST" *)
 output wire M_AXI_ARESETN;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME comb_aresetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 comb_aresetn RST" *)
+output wire comb_aresetn;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME ext_resetn, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 ext_resetn RST" *)
+input wire ext_resetn;
+output wire channel_up;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWID" *)
 input wire [5 : 0] S_AXI_AWID;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 S_AXI AWADDR" *)
@@ -312,6 +322,9 @@ output wire M_AXI_RREADY;
     .S_AXI_ACLK(S_AXI_ACLK),
     .S_AXI_ARESETN(S_AXI_ARESETN),
     .M_AXI_ARESETN(M_AXI_ARESETN),
+    .comb_aresetn(comb_aresetn),
+    .ext_resetn(ext_resetn),
+    .channel_up(channel_up),
     .S_AXI_AWID(S_AXI_AWID),
     .S_AXI_AWADDR(S_AXI_AWADDR),
     .S_AXI_AWLEN(S_AXI_AWLEN),

@@ -180,6 +180,9 @@ module axisafety #(
 		// Global Reset Signal. This Signal is Active LOW
 		input	wire			S_AXI_ARESETN,
 		output	reg			M_AXI_ARESETN,
+		output  wire        comb_aresetn,
+		input   wire        ext_resetn,
+		output  wire        channel_up,
 		//
 		// The input side.  This is where slave requests come into
 		// the core.
@@ -1309,6 +1312,21 @@ module axisafety #(
 	////////////////////////////////////////////////////////////////////////
 	//
 	//
+	
+	// resync external reset to axi clock
+	(* async_reg *) reg [2:0] ext_resetn_r;
+	(* async_reg *) reg [1023:0] channel_up_r;
+	
+	always @(posedge S_AXI_ACLK)
+	begin
+	   ext_resetn_r = {ext_resetn_r[1:0], ext_resetn};
+	   channel_up_r = {channel_up_r[1022:0], ext_resetn};
+	end
+	
+	assign channel_up = channel_up_r[1023];
+	
+	assign comb_aresetn = M_AXI_ARESETN & ext_resetn_r[2];
+	
 	generate if (OPT_SELF_RESET)
 	begin
 		// {{{
@@ -1322,7 +1340,7 @@ module axisafety #(
 		// {{{
 		initial	M_AXI_ARESETN = 0;
 		always @(posedge S_AXI_ACLK)
-		if (!S_AXI_ARESETN)
+		if (S_AXI_ARESETN == 1'b0) 
 			M_AXI_ARESETN <= 0;
 		else if (clear_fault)
 			M_AXI_ARESETN <= 1;
