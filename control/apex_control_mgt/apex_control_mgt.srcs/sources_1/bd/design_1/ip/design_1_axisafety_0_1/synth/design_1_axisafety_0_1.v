@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "axisafety,Vivado 2020.1.1_AR73018" *)
 (* CHECK_LICENSE_TYPE = "design_1_axisafety_0_1,axisafety,{}" *)
-(* CORE_GENERATION_INFO = "design_1_axisafety_0_1,axisafety,{x_ipProduct=Vivado 2020.1.1_AR73018,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=axisafety,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_S_AXI_ID_WIDTH=6,C_S_AXI_DATA_WIDTH=32,C_S_AXI_ADDR_WIDTH=27,OPT_SELF_RESET=1,OPT_TIMEOUT=10000}" *)
+(* CORE_GENERATION_INFO = "design_1_axisafety_0_1,axisafety,{x_ipProduct=Vivado 2020.1.1_AR73018,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=axisafety,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_S_AXI_ID_WIDTH=6,C_S_AXI_DATA_WIDTH=32,C_S_AXI_ADDR_WIDTH=27,OPT_SELF_RESET=1,OPT_TIMEOUT=512}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module design_1_axisafety_0_1 (
@@ -316,7 +316,7 @@ output wire M_AXI_RREADY;
     .C_S_AXI_DATA_WIDTH(32),
     .C_S_AXI_ADDR_WIDTH(27),
     .OPT_SELF_RESET(1),
-    .OPT_TIMEOUT(10000)
+    .OPT_TIMEOUT(512)
   ) inst (
     .o_read_fault(o_read_fault),
     .o_write_fault(o_write_fault),

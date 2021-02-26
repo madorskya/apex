@@ -133,6 +133,8 @@ input           gt3_data_valid_in,
     //------------------------ RX Margin Analysis Ports ------------------------
     output          gt0_eyescandataerror_out,
     input           gt0_eyescantrigger_in,
+    //----------------- Receive Ports - Clock Correction Ports -----------------
+    output  [1:0]   gt0_rxclkcorcnt_out,
     //---------------- Receive Ports - FPGA RX Interface Ports -----------------
     output  [31:0]  gt0_rxdata_out,
     //----------------- Receive Ports - Pattern Checker Ports ------------------
@@ -200,6 +202,8 @@ input           gt3_data_valid_in,
     //------------------------ RX Margin Analysis Ports ------------------------
     output          gt1_eyescandataerror_out,
     input           gt1_eyescantrigger_in,
+    //----------------- Receive Ports - Clock Correction Ports -----------------
+    output  [1:0]   gt1_rxclkcorcnt_out,
     //---------------- Receive Ports - FPGA RX Interface Ports -----------------
     output  [31:0]  gt1_rxdata_out,
     //----------------- Receive Ports - Pattern Checker Ports ------------------
@@ -267,6 +271,8 @@ input           gt3_data_valid_in,
     //------------------------ RX Margin Analysis Ports ------------------------
     output          gt2_eyescandataerror_out,
     input           gt2_eyescantrigger_in,
+    //----------------- Receive Ports - Clock Correction Ports -----------------
+    output  [1:0]   gt2_rxclkcorcnt_out,
     //---------------- Receive Ports - FPGA RX Interface Ports -----------------
     output  [31:0]  gt2_rxdata_out,
     //----------------- Receive Ports - Pattern Checker Ports ------------------
@@ -334,6 +340,8 @@ input           gt3_data_valid_in,
     //------------------------ RX Margin Analysis Ports ------------------------
     output          gt3_eyescandataerror_out,
     input           gt3_eyescantrigger_in,
+    //----------------- Receive Ports - Clock Correction Ports -----------------
+    output  [1:0]   gt3_rxclkcorcnt_out,
     //---------------- Receive Ports - FPGA RX Interface Ports -----------------
     output  [31:0]  gt3_rxdata_out,
     //----------------- Receive Ports - Pattern Checker Ports ------------------
@@ -467,6 +475,8 @@ input           gt3_data_valid_in,
     //------------------------ RX Margin Analysis Ports ------------------------
         .gt0_eyescandataerror_out       (gt0_eyescandataerror_out), // output wire gt0_eyescandataerror_out
         .gt0_eyescantrigger_in          (gt0_eyescantrigger_in), // input wire gt0_eyescantrigger_in
+    //----------------- Receive Ports - Clock Correction Ports -----------------
+        .gt0_rxclkcorcnt_out            (gt0_rxclkcorcnt_out), // output wire [1:0] gt0_rxclkcorcnt_out
     //---------------- Receive Ports - FPGA RX Interface Ports -----------------
         .gt0_rxdata_out                 (gt0_rxdata_out), // output wire [31:0] gt0_rxdata_out
     //----------------- Receive Ports - Pattern Checker Ports ------------------
@@ -534,6 +544,8 @@ input           gt3_data_valid_in,
     //------------------------ RX Margin Analysis Ports ------------------------
         .gt1_eyescandataerror_out       (gt1_eyescandataerror_out), // output wire gt1_eyescandataerror_out
         .gt1_eyescantrigger_in          (gt1_eyescantrigger_in), // input wire gt1_eyescantrigger_in
+    //----------------- Receive Ports - Clock Correction Ports -----------------
+        .gt1_rxclkcorcnt_out            (gt1_rxclkcorcnt_out), // output wire [1:0] gt1_rxclkcorcnt_out
     //---------------- Receive Ports - FPGA RX Interface Ports -----------------
         .gt1_rxdata_out                 (gt1_rxdata_out), // output wire [31:0] gt1_rxdata_out
     //----------------- Receive Ports - Pattern Checker Ports ------------------
@@ -601,6 +613,8 @@ input           gt3_data_valid_in,
     //------------------------ RX Margin Analysis Ports ------------------------
         .gt2_eyescandataerror_out       (gt2_eyescandataerror_out), // output wire gt2_eyescandataerror_out
         .gt2_eyescantrigger_in          (gt2_eyescantrigger_in), // input wire gt2_eyescantrigger_in
+    //----------------- Receive Ports - Clock Correction Ports -----------------
+        .gt2_rxclkcorcnt_out            (gt2_rxclkcorcnt_out), // output wire [1:0] gt2_rxclkcorcnt_out
     //---------------- Receive Ports - FPGA RX Interface Ports -----------------
         .gt2_rxdata_out                 (gt2_rxdata_out), // output wire [31:0] gt2_rxdata_out
     //----------------- Receive Ports - Pattern Checker Ports ------------------
@@ -668,6 +682,8 @@ input           gt3_data_valid_in,
     //------------------------ RX Margin Analysis Ports ------------------------
         .gt3_eyescandataerror_out       (gt3_eyescandataerror_out), // output wire gt3_eyescandataerror_out
         .gt3_eyescantrigger_in          (gt3_eyescantrigger_in), // input wire gt3_eyescantrigger_in
+    //----------------- Receive Ports - Clock Correction Ports -----------------
+        .gt3_rxclkcorcnt_out            (gt3_rxclkcorcnt_out), // output wire [1:0] gt3_rxclkcorcnt_out
     //---------------- Receive Ports - FPGA RX Interface Ports -----------------
         .gt3_rxdata_out                 (gt3_rxdata_out), // output wire [31:0] gt3_rxdata_out
     //----------------- Receive Ports - Pattern Checker Ports ------------------

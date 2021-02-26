@@ -110,6 +110,7 @@ module apex_control_mgt_top
     wire [31:0] txdata [3:0];
     wire [ 3:0] txvalid;
     wire [ 3:0] txready;
+    wire [ 3:0] do_cc;
     
     // interface for c2c RX
     wire [31:0] rxdata [3:0];
@@ -126,7 +127,7 @@ module apex_control_mgt_top
     wire [ 3:0] align_b0;
     wire [ 3:0] align_lock;
     wire axi_clk;
-    
+    wire [1:0] rxclkcorcnt [3:0];
 
   design_1 design_1_i
        (.DDR_addr(DDR_addr),
@@ -159,6 +160,7 @@ module apex_control_mgt_top
         .txdata_bot  (txdata  [0]),
         .txready_bot (txready [0]),
         .txvalid_bot (txvalid [0]),
+        .do_cc_bot   (do_cc   [0]),
         
         .rxdata_top  (rxdata  [1]),
         .rxvalid_top (rxvalid [1]),
@@ -166,11 +168,14 @@ module apex_control_mgt_top
         .txdata_top  (txdata  [2]),
         .txready_top (txready [2]),
         .txvalid_top (txvalid [2]),
+        .do_cc_top   (do_cc   [2]),
         
         .mgt_chup_bot     ( channel_up[3]),
         .mgt_chup_top     ( channel_up[1]),
         .mgt_unlocked_bot (~channel_up[3]),
         .mgt_unlocked_top (~channel_up[1]),
+        .rxclkcorcnt_bot  (rxclkcorcnt [3]),
+        .rxclkcorcnt_top  (rxclkcorcnt [1]),
 
         .prbs_sel       (prbs_sel),
         .prbs_err       (prbs_err),
@@ -324,6 +329,7 @@ module apex_control_mgt_top
         .txdata  (txdata ),
         .txvalid (txvalid),
         .txready (txready),
+        .do_cc   (do_cc),
         
         // interface for c2c RX
         .rxdata  (rxdata ),

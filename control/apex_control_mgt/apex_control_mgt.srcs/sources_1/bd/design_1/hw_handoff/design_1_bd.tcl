@@ -2031,6 +2031,8 @@ proc create_root_design { parentCell } {
    CONFIG.PHASE {0} \
  ] $axi_c2c_phy_clk
   set axi_clk [ create_bd_port -dir O -type clk axi_clk ]
+  set do_cc_bot [ create_bd_port -dir O do_cc_bot ]
+  set do_cc_top [ create_bd_port -dir O do_cc_top ]
   set en_ipmb_zynq [ create_bd_port -dir O -from 1 -to 0 en_ipmb_zynq ]
   set gtp_reset [ create_bd_port -dir O gtp_reset ]
   set ha [ create_bd_port -dir I -from 7 -to 0 ha ]
@@ -2060,6 +2062,8 @@ proc create_root_design { parentCell } {
   set prbs_sel [ create_bd_port -dir O -from 2 -to 0 prbs_sel ]
   set qbv_on_off [ create_bd_port -dir O -from 0 -to 0 qbv_on_off ]
   set ready_ipmb_zynq [ create_bd_port -dir I -from 1 -to 0 ready_ipmb_zynq ]
+  set rxclkcorcnt_bot [ create_bd_port -dir I -from 1 -to 0 rxclkcorcnt_bot ]
+  set rxclkcorcnt_top [ create_bd_port -dir I -from 1 -to 0 rxclkcorcnt_top ]
   set rxd_raw0 [ create_bd_port -dir I -from 31 -to 0 rxd_raw0 ]
   set rxd_raw1 [ create_bd_port -dir I -from 31 -to 0 rxd_raw1 ]
   set rxd_raw2 [ create_bd_port -dir I -from 31 -to 0 rxd_raw2 ]
@@ -2133,7 +2137,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_S_AXI_ADDR_WIDTH {27} \
    CONFIG.C_S_AXI_ID_WIDTH {6} \
    CONFIG.OPT_SELF_RESET {1} \
-   CONFIG.OPT_TIMEOUT {10000} \
+   CONFIG.OPT_TIMEOUT {512} \
  ] $axisafety_1
 
   # Create instance: axisafety_2, and set properties
@@ -2150,7 +2154,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_S_AXI_ADDR_WIDTH {27} \
    CONFIG.C_S_AXI_ID_WIDTH {6} \
    CONFIG.OPT_SELF_RESET {1} \
-   CONFIG.OPT_TIMEOUT {10000} \
+   CONFIG.OPT_TIMEOUT {512} \
  ] $axisafety_2
 
   # Create instance: bram_loopback
@@ -2175,7 +2179,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_ENABLE_ILA_AXI_MON {false} \
    CONFIG.C_INPUT_PIPE_STAGES {6} \
    CONFIG.C_MONITOR_TYPE {Native} \
-   CONFIG.C_NUM_OF_PROBES {38} \
+   CONFIG.C_NUM_OF_PROBES {42} \
    CONFIG.C_PROBE0_WIDTH {4} \
    CONFIG.C_PROBE15_WIDTH {32} \
    CONFIG.C_PROBE16_WIDTH {32} \
@@ -2191,6 +2195,8 @@ proc create_root_design { parentCell } {
    CONFIG.C_PROBE27_WIDTH {32} \
    CONFIG.C_PROBE29_WIDTH {32} \
    CONFIG.C_PROBE32_WIDTH {32} \
+   CONFIG.C_PROBE40_WIDTH {2} \
+   CONFIG.C_PROBE41_WIDTH {2} \
  ] $ila_0
 
   # Create instance: ipmc
@@ -2280,16 +2286,18 @@ proc create_root_design { parentCell } {
   connect_bd_net -net axisafety_1_M_AXI_ARESETN [get_bd_pins axi_chip2chip_0/s_aresetn] [get_bd_pins axisafety_1/comb_aresetn] [get_bd_pins ila_0/probe35]
   connect_bd_net -net axisafety_1_M_AXI_ARESETN_1 [get_bd_pins axi_chip2chip_1/s_aresetn] [get_bd_pins axisafety_2/comb_aresetn] [get_bd_pins ila_0/probe31]
   connect_bd_net -net axisafety_1_channel_up [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_channel_up] [get_bd_pins axisafety_1/channel_up] [get_bd_pins ila_0/probe36]
+  connect_bd_net -net axisafety_1_o_read_fault [get_bd_pins axisafety_1/o_read_fault] [get_bd_pins ila_0/probe38]
+  connect_bd_net -net axisafety_1_o_write_fault [get_bd_pins axisafety_1/o_write_fault] [get_bd_pins ila_0/probe39]
   connect_bd_net -net axisafety_2_channel_up [get_bd_pins axi_chip2chip_1/axi_c2c_aurora_channel_up] [get_bd_pins axisafety_2/channel_up] [get_bd_pins ila_0/probe34]
   connect_bd_net -net chip2chip_0_axi_c2c_link_status_out [get_bd_pins axi_chip2chip_1/axi_c2c_link_status_out] [get_bd_pins ila_0/probe1] [get_bd_pins reg_bank_0/link_stat_top_12]
   connect_bd_net -net chip2chip_1_axi_c2c_link_status_out [get_bd_pins axi_chip2chip_0/axi_c2c_link_status_out] [get_bd_pins ila_0/probe2] [get_bd_pins reg_bank_0/link_stat_bot_14]
-  connect_bd_net -net chip2chip_bot_ff_aurora_do_cc [get_bd_pins axi_chip2chip_0/aurora_do_cc] [get_bd_pins ila_0/probe14]
+  connect_bd_net -net chip2chip_bot_ff_aurora_do_cc [get_bd_ports do_cc_bot] [get_bd_pins axi_chip2chip_0/aurora_do_cc] [get_bd_pins ila_0/probe14]
   connect_bd_net -net chip2chip_bot_ff_aurora_pma_init_out_0 [get_bd_pins axi_chip2chip_0/aurora_pma_init_out] [get_bd_pins ila_0/probe9]
   connect_bd_net -net chip2chip_bot_ff_aurora_reset_pb [get_bd_pins axi_chip2chip_0/aurora_reset_pb] [get_bd_pins ila_0/probe10]
   connect_bd_net -net chip2chip_bot_ff_axi_c2c_config_error_out [get_bd_pins axi_chip2chip_0/axi_c2c_config_error_out] [get_bd_pins ila_0/probe11]
   connect_bd_net -net chip2chip_bot_ff_axi_c2c_link_error_out [get_bd_pins axi_chip2chip_0/axi_c2c_link_error_out] [get_bd_pins ila_0/probe13]
   connect_bd_net -net chip2chip_bot_ff_axi_c2c_multi_bit_error_out [get_bd_pins axi_chip2chip_0/axi_c2c_multi_bit_error_out] [get_bd_pins ila_0/probe12]
-  connect_bd_net -net chip2chip_top_ff_aurora_do_cc [get_bd_pins axi_chip2chip_1/aurora_do_cc] [get_bd_pins ila_0/probe3]
+  connect_bd_net -net chip2chip_top_ff_aurora_do_cc [get_bd_ports do_cc_top] [get_bd_pins axi_chip2chip_1/aurora_do_cc] [get_bd_pins ila_0/probe3]
   connect_bd_net -net chip2chip_top_ff_aurora_pma_init_out [get_bd_pins axi_chip2chip_1/aurora_pma_init_out] [get_bd_pins ila_0/probe4]
   connect_bd_net -net chip2chip_top_ff_aurora_reset_pb [get_bd_pins axi_chip2chip_1/aurora_reset_pb] [get_bd_pins ila_0/probe5]
   connect_bd_net -net chip2chip_top_ff_axi_c2c_config_error_out [get_bd_pins axi_chip2chip_1/axi_c2c_config_error_out] [get_bd_pins ila_0/probe6]
@@ -2323,6 +2331,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net reg_bank_en_ipmb_zynq [get_bd_ports en_ipmb_zynq] [get_bd_pins reg_bank_0/ipmb_en_1_0]
   connect_bd_net -net reg_bank_gtp_reset_14_0 [get_bd_ports gtp_reset] [get_bd_pins reg_bank_0/gtp_reset_14]
   connect_bd_net -net reg_bank_qbv_on_off [get_bd_ports qbv_on_off] [get_bd_pins reg_bank_0/payload_on_5]
+  connect_bd_net -net rxclkcorcnt_bot [get_bd_ports rxclkcorcnt_bot] [get_bd_pins ila_0/probe41]
+  connect_bd_net -net rxclkcorcnt_top [get_bd_ports rxclkcorcnt_top] [get_bd_pins ila_0/probe40]
   connect_bd_net -net rxd_raw0 [get_bd_ports rxd_raw0] [get_bd_pins ila_0/probe15]
   connect_bd_net -net rxd_raw1 [get_bd_ports rxd_raw1] [get_bd_pins ila_0/probe16]
   connect_bd_net -net rxd_raw2 [get_bd_ports rxd_raw2] [get_bd_pins ila_0/probe17]

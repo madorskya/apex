@@ -315,7 +315,7 @@ output wire M_AXI_RREADY;
     .C_S_AXI_DATA_WIDTH(32),
     .C_S_AXI_ADDR_WIDTH(27),
     .OPT_SELF_RESET(1),
-    .OPT_TIMEOUT(10000)
+    .OPT_TIMEOUT(512)
   ) inst (
     .o_read_fault(o_read_fault),
     .o_write_fault(o_write_fault),

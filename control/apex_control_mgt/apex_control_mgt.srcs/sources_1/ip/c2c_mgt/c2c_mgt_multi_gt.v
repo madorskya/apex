@@ -96,6 +96,8 @@ output gt0_txpmaresetdone_out,
     //------------------------ RX Margin Analysis Ports ------------------------
     output          gt0_eyescandataerror_out,
     input           gt0_eyescantrigger_in,
+    //----------------- Receive Ports - Clock Correction Ports -----------------
+    output  [1:0]   gt0_rxclkcorcnt_out,
     //---------------- Receive Ports - FPGA RX Interface Ports -----------------
     output  [31:0]  gt0_rxdata_out,
     input           gt0_rxusrclk_in,
@@ -175,6 +177,8 @@ output gt1_txpmaresetdone_out,
     //------------------------ RX Margin Analysis Ports ------------------------
     output          gt1_eyescandataerror_out,
     input           gt1_eyescantrigger_in,
+    //----------------- Receive Ports - Clock Correction Ports -----------------
+    output  [1:0]   gt1_rxclkcorcnt_out,
     //---------------- Receive Ports - FPGA RX Interface Ports -----------------
     output  [31:0]  gt1_rxdata_out,
     input           gt1_rxusrclk_in,
@@ -254,6 +258,8 @@ output gt2_txpmaresetdone_out,
     //------------------------ RX Margin Analysis Ports ------------------------
     output          gt2_eyescandataerror_out,
     input           gt2_eyescantrigger_in,
+    //----------------- Receive Ports - Clock Correction Ports -----------------
+    output  [1:0]   gt2_rxclkcorcnt_out,
     //---------------- Receive Ports - FPGA RX Interface Ports -----------------
     output  [31:0]  gt2_rxdata_out,
     input           gt2_rxusrclk_in,
@@ -333,6 +339,8 @@ output gt3_txpmaresetdone_out,
     //------------------------ RX Margin Analysis Ports ------------------------
     output          gt3_eyescandataerror_out,
     input           gt3_eyescantrigger_in,
+    //----------------- Receive Ports - Clock Correction Ports -----------------
+    output  [1:0]   gt3_rxclkcorcnt_out,
     //---------------- Receive Ports - FPGA RX Interface Ports -----------------
     output  [31:0]  gt3_rxdata_out,
     input           gt3_rxusrclk_in,
@@ -515,6 +523,8 @@ gt0_c2c_mgt_i
         //------------------------ RX Margin Analysis Ports ------------------------
         .eyescandataerror_out           (gt0_eyescandataerror_out),
         .eyescantrigger_in              (gt0_eyescantrigger_in),
+        //----------------- Receive Ports - Clock Correction Ports -----------------
+        .rxclkcorcnt_out                (gt0_rxclkcorcnt_out),
         //---------------- Receive Ports - FPGA RX Interface Ports -----------------
         .rxdata_out                     (gt0_rxdata_out),
         .rxusrclk_in                    (gt0_rxusrclk_in),
@@ -612,6 +622,8 @@ gt1_c2c_mgt_i
         //------------------------ RX Margin Analysis Ports ------------------------
         .eyescandataerror_out           (gt1_eyescandataerror_out),
         .eyescantrigger_in              (gt1_eyescantrigger_in),
+        //----------------- Receive Ports - Clock Correction Ports -----------------
+        .rxclkcorcnt_out                (gt1_rxclkcorcnt_out),
         //---------------- Receive Ports - FPGA RX Interface Ports -----------------
         .rxdata_out                     (gt1_rxdata_out),
         .rxusrclk_in                    (gt1_rxusrclk_in),
@@ -709,6 +721,8 @@ gt2_c2c_mgt_i
         //------------------------ RX Margin Analysis Ports ------------------------
         .eyescandataerror_out           (gt2_eyescandataerror_out),
         .eyescantrigger_in              (gt2_eyescantrigger_in),
+        //----------------- Receive Ports - Clock Correction Ports -----------------
+        .rxclkcorcnt_out                (gt2_rxclkcorcnt_out),
         //---------------- Receive Ports - FPGA RX Interface Ports -----------------
         .rxdata_out                     (gt2_rxdata_out),
         .rxusrclk_in                    (gt2_rxusrclk_in),
@@ -806,6 +820,8 @@ gt3_c2c_mgt_i
         //------------------------ RX Margin Analysis Ports ------------------------
         .eyescandataerror_out           (gt3_eyescandataerror_out),
         .eyescantrigger_in              (gt3_eyescantrigger_in),
+        //----------------- Receive Ports - Clock Correction Ports -----------------
+        .rxclkcorcnt_out                (gt3_rxclkcorcnt_out),
         //---------------- Receive Ports - FPGA RX Interface Ports -----------------
         .rxdata_out                     (gt3_rxdata_out),
         .rxusrclk_in                    (gt3_rxusrclk_in),

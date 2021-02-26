@@ -21,6 +21,7 @@ module c2c_mgt_tux
     input  [31:0] txdata [3:0],
     input  [ 3:0] txvalid,
     output reg [ 3:0] txready,
+    input  [ 3:0] do_cc,
     
     // interface for c2c RX
     output reg [31:0] rxdata [3:0],
@@ -36,6 +37,7 @@ module c2c_mgt_tux
     input  [2:0] prbs_sel, 
     output [3:0] prbs_err,
     input  [3:0] tx_polarity,
+    output [1:0] rxclkcorcnt [3:0],
     
     output usr_clk // single user clock for tx and rx
 );
@@ -752,7 +754,7 @@ wire            pll1pd_i;
         .gt0_gtprxp_in                  (RXP_IN[0]),
         //------------ Receive Ports - RX Byte and Word Alignment Ports ------------
         .gt0_rxbyteisaligned_out        (gt0_rxbyteisaligned_out), // output wire gt0_rxbyteisaligned_out
-        .gt0_rxmcommaalignen_in         (gt0_rxmcommaalignen_i),
+        .gt0_rxmcommaalignen_in         (1'b0),
         .gt0_rxpcommaalignen_in         (1'b1),
         //---------- Receive Ports - RX Decision Feedback Equalizer(DFE) -----------
         .gt0_dmonitorout_out            (gt0_dmonitorout_i),
@@ -822,7 +824,7 @@ wire            pll1pd_i;
         .gt1_gtprxp_in                  (RXP_IN[1]),
         //------------ Receive Ports - RX Byte and Word Alignment Ports ------------
         .gt1_rxbyteisaligned_out        (gt1_rxbyteisaligned_out), // output wire gt0_rxbyteisaligned_out
-        .gt1_rxmcommaalignen_in         (gt1_rxmcommaalignen_i),
+        .gt1_rxmcommaalignen_in         (1'b0),
         .gt1_rxpcommaalignen_in         (1'b1),
         //---------- Receive Ports - RX Decision Feedback Equalizer(DFE) -----------
         .gt1_dmonitorout_out            (gt1_dmonitorout_i),
@@ -892,7 +894,7 @@ wire            pll1pd_i;
         .gt2_gtprxp_in                  (RXP_IN[2]),
         //------------ Receive Ports - RX Byte and Word Alignment Ports ------------
         .gt2_rxbyteisaligned_out        (gt2_rxbyteisaligned_out), // output wire gt0_rxbyteisaligned_out
-        .gt2_rxmcommaalignen_in         (gt2_rxmcommaalignen_i),
+        .gt2_rxmcommaalignen_in         (1'b0),
         .gt2_rxpcommaalignen_in         (1'b1),
         //---------- Receive Ports - RX Decision Feedback Equalizer(DFE) -----------
         .gt2_dmonitorout_out            (gt2_dmonitorout_i),
@@ -962,7 +964,7 @@ wire            pll1pd_i;
         .gt3_gtprxp_in                  (RXP_IN[3]),
         //------------ Receive Ports - RX Byte and Word Alignment Ports ------------
         .gt3_rxbyteisaligned_out        (gt3_rxbyteisaligned_out), // output wire gt0_rxbyteisaligned_out
-        .gt3_rxmcommaalignen_in         (gt3_rxmcommaalignen_i),
+        .gt3_rxmcommaalignen_in         (1'b0),
         .gt3_rxpcommaalignen_in         (1'b1),
         //---------- Receive Ports - RX Decision Feedback Equalizer(DFE) -----------
         .gt3_dmonitorout_out            (gt3_dmonitorout_i),
@@ -998,7 +1000,11 @@ wire            pll1pd_i;
         //---------------- Transmit Ports - pattern Generator Ports ----------------
         .gt3_txprbssel_in               (gt3_txprbssel_i),
 
-
+        .gt0_rxclkcorcnt_out            (rxclkcorcnt [0]),
+        .gt1_rxclkcorcnt_out            (rxclkcorcnt [1]),
+        .gt2_rxclkcorcnt_out            (rxclkcorcnt [2]),
+        .gt3_rxclkcorcnt_out            (rxclkcorcnt [3]),
+ 
     //____________________________COMMON PORTS________________________________
     .gt0_pll0reset_out(),
     .gt0_pll0outclk_out(),
@@ -1009,6 +1015,7 @@ wire            pll1pd_i;
     .gt0_pll1outrefclk_out(),
 
    .sysclk_in(drpclk_in_i)
+
 
     );
 
@@ -1189,15 +1196,18 @@ assign gt3_drpdi_i = 16'd0;
 assign gt3_drpen_i = 1'b0;
 assign gt3_drpwe_i = 1'b0;
 
+    reg [31:0] gt_txdata [3:0];
+    reg [ 3:0] gt_txcharisk [3:0];
+
 // logic for c2c stream interface
-    assign gt0_txdata_i    = (txvalid[0] == 1'b1) ? txdata[0] : 32'h000050bc;
-    assign gt1_txdata_i    = (txvalid[1] == 1'b1) ? txdata[1] : 32'h000050bc;
-    assign gt2_txdata_i    = (txvalid[2] == 1'b1) ? txdata[2] : 32'h000050bc;
-    assign gt3_txdata_i    = (txvalid[3] == 1'b1) ? txdata[3] : 32'h000050bc;
-    assign gt0_txcharisk_i = (txvalid[0] == 1'b1) ? 4'b0000 : 4'b0001;
-    assign gt1_txcharisk_i = (txvalid[1] == 1'b1) ? 4'b0000 : 4'b0001;
-    assign gt2_txcharisk_i = (txvalid[2] == 1'b1) ? 4'b0000 : 4'b0001;
-    assign gt3_txcharisk_i = (txvalid[3] == 1'b1) ? 4'b0000 : 4'b0001;
+    assign gt0_txdata_i    = gt_txdata [0]; 
+    assign gt1_txdata_i    = gt_txdata [1]; 
+    assign gt2_txdata_i    = gt_txdata [2];
+    assign gt3_txdata_i    = gt_txdata [3]; 
+    assign gt0_txcharisk_i = gt_txcharisk [0];
+    assign gt1_txcharisk_i = gt_txcharisk [1];
+    assign gt2_txcharisk_i = gt_txcharisk [2];
+    assign gt3_txcharisk_i = gt_txcharisk [3];
     
     // alignment logic
     // GTP only supports 2-byte alignment
@@ -1210,6 +1220,76 @@ assign gt3_drpwe_i = 1'b0;
     reg [7:0] ready_cnt = 8'h0;
     reg [3:0] rx_k;
     
+    wire [31:0] idle_d = 32'h000050bc; // IDLE symbol
+    wire [ 3:0] idle_k = 4'b0001;
+    
+    wire [31:0] clkc_d = 32'h0403021c; // clock correction symbol
+    wire [ 3:0] clkc_k = 4'b0001;
+    
+    wire [31:0] zero_d = 32'h0; // zero data, invalid for c2c
+    wire [ 3:0] zero_k = 4'b0;
+    
+    
+    // sync patterns used by c2c master, can be interrupted by CC if needed
+    wire [31:0] mpatd0 = 32'h000808dc;
+    wire [31:0] mpatd1 = 32'h000808fc;
+    wire [31:0] mpatd2 = 32'h000808ec;
+    
+    // sync patterns used by c2c slave, should not break alignment
+    wire [31:0] spatd0 = 32'h001011bc;
+    wire [31:0] spatd1 = 32'h001011fc;
+    wire [31:0] spatd2 = 32'h001011dc;
+    
+    // TX logic
+    reg [3:0] cc_req;
+    reg [3:0] tx_non_data; 
+    reg [2:0] tx_sel [3:0]; 
+    
+    always @(*)
+    begin
+        for (i = 0; i < 4; i++)
+        begin
+            cc_req[i] = 1'b0;
+        
+            tx_non_data[i] = 
+                (txdata[i] == zero_d) ||
+                (txdata[i] == mpatd0) ||
+                (txdata[i] == mpatd1) ||
+                (txdata[i] == mpatd2);
+        
+            // tx select word
+            tx_sel[i] = 
+            {
+                txvalid[i],
+                tx_non_data[i],
+                cc_req[i]
+            };
+        end
+    end
+    
+    reg [11:0] cc_cnt; // clock correction counter
+    
+    always @(posedge usr_clk)
+    begin
+        // tx logic
+        for (i = 0; i < 4; i++)
+        begin
+            case (tx_sel[i])
+                3'b000: begin gt_txdata[i] = idle_d;    gt_txcharisk[i] = idle_k; end
+                3'b001: begin gt_txdata[i] = clkc_d;    gt_txcharisk[i] = clkc_k; cc_req[i] = 1'b0; end
+                3'b010: begin gt_txdata[i] = idle_d;    gt_txcharisk[i] = idle_k; end
+                3'b011: begin gt_txdata[i] = clkc_d;    gt_txcharisk[i] = clkc_k; cc_req[i] = 1'b0; end
+                3'b100: begin gt_txdata[i] = txdata[i]; gt_txcharisk[i] = 4'b0; end
+                3'b101: begin gt_txdata[i] = txdata[i]; gt_txcharisk[i] = 4'b0; end
+                3'b110: begin gt_txdata[i] = txdata[i]; gt_txcharisk[i] = 4'b0; end
+                3'b111: begin gt_txdata[i] = clkc_d;    gt_txcharisk[i] = clkc_k; cc_req[i] = 1'b0; end
+            endcase
+        end        
+        if (cc_cnt == 12'h0) cc_req = 4'b1111; // set clock correction requests for all links
+        cc_cnt++;
+    end    
+    
+    // RX logic
     always @(posedge usr_clk)
     begin
     
@@ -1229,29 +1309,41 @@ assign gt3_drpwe_i = 1'b0;
                 end
                 else
                 begin // byte 2 aligned, need swizzling
-                    rxdata[i] = {rxd_r[1][i][15:0], rxd_r[0][i][31:16]};
-                    rx_k[i]   = {rxk_r[1][i][ 1:0], rxk_r[0][i][ 3: 2]};
+                    rxdata[i] = {rxd_r[0][i][15:0], rxd_r[1][i][31:16]};
+                    rx_k[i]   = {rxk_r[0][i][ 1:0], rxk_r[1][i][ 3: 2]};
                 end
                 
-                if (rx_k[i] == 4'b0) // only if not K symbol
-                    rxvalid[i] = 1'b1; // valid data
+                if (rx_k[i] == idle_k && rxdata[i] == idle_d) // IDLE symbol
+                begin
+                    rxdata[i] = zero_d; // replace IDLE with zeros, so c2c does not freak out 
+                    rxvalid[i] = 1'b0; // invalid data
+                end
+                else if (rx_k[i] == clkc_k && rxdata[i] == clkc_d) // CC symbol
+                begin
+                    rxdata[i] = zero_d; // replace CC with zeros, so c2c does not freak out 
+                    rxvalid[i] = channel_up[i]; // valid if byteisaligned
+                end
+                else
+                begin
+                    rxvalid[i] = channel_up[i]; // valid if byteisaligned
+                end
             end
         
-            
-            if (rxk_r[1][i] == 4'b0001) // byte 0 alignment
+            // todo: ignore CC words, don't break alignment
+            if (rxk_r[1][i] == 4'b0001 && rxd_r[1][i] == 32'h000050bc) // byte 0 alignment
             begin
                 alignment_b0[i] = 1'b1;
                 alignment_lock[i] = 1'b1;
             end
-            else if (rxk_r[1][i] == 4'b0100) // byte 2 alignment
+            else if (rxk_r[1][i] == 4'b0100 && rxd_r[1][i][31:16] == 32'h50bc) // byte 2 alignment
             begin
                 alignment_b0[i] = 1'b0;
                 alignment_lock[i] = 1'b1;
             end  
-            else if (rxk_r[1][i] != 4'b0000 || channel_up[i] == 1'b0) // something else is going on, looks invalid
-            begin
-                alignment_lock[i] = 1'b0;
-            end   
+//            else if (rxk_r[1][i] != 4'b0000 || channel_up[i] == 1'b0) // something else is going on, looks invalid
+//            begin
+//                alignment_lock[i] = 1'b0;
+//            end   
         end
     
         rxd_r[1] = rxd_r[0];

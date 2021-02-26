@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Feb 24 04:52:03 2021" VIVADOVERSION="2020.1.1_AR73018">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Feb 24 22:55:43 2021" VIVADOVERSION="2020.1.1_AR73018">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z015" NAME="design_1" PACKAGE="clg485" SPEEDGRADE="-1"/>
 
@@ -556,6 +556,26 @@
         <CONNECTION INSTANCE="cpu_processing_system7_0" PORT="DDR_DQS"/>
       </CONNECTIONS>
     </PORT>
+    <PORT DIR="O" NAME="do_cc_bot" SIGIS="undef" SIGNAME="axi_chip2chip_0_aurora_do_cc">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_chip2chip_0" PORT="aurora_do_cc"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="do_cc_top" SIGIS="undef" SIGNAME="axi_chip2chip_1_aurora_do_cc">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="axi_chip2chip_1" PORT="aurora_do_cc"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="1" NAME="rxclkcorcnt_top" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_rxclkcorcnt_top">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ila_0" PORT="probe40"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="1" NAME="rxclkcorcnt_bot" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_rxclkcorcnt_bot">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="ila_0" PORT="probe41"/>
+      </CONNECTIONS>
+    </PORT>
   </EXTERNALPORTS>
 
   <EXTERNALINTERFACES>
@@ -925,6 +945,7 @@
         <PORT DIR="O" NAME="aurora_do_cc" SIGIS="undef" SIGNAME="axi_chip2chip_0_aurora_do_cc">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_0" PORT="probe14"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="do_cc_bot"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="aurora_pma_init_in" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="reg_bank_0_aurora_pma_init_9">
@@ -1332,6 +1353,7 @@
         <PORT DIR="O" NAME="aurora_do_cc" SIGIS="undef" SIGNAME="axi_chip2chip_1_aurora_do_cc">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_0" PORT="probe3"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="do_cc_top"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="aurora_pma_init_in" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="reg_bank_0_aurora_pma_init_9">
@@ -1865,15 +1887,23 @@
         <PARAMETER NAME="C_S_AXI_DATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_S_AXI_ADDR_WIDTH" VALUE="27"/>
         <PARAMETER NAME="OPT_SELF_RESET" VALUE="1"/>
-        <PARAMETER NAME="OPT_TIMEOUT" VALUE="10000"/>
+        <PARAMETER NAME="OPT_TIMEOUT" VALUE="512"/>
         <PARAMETER NAME="Component_Name" VALUE="design_1_axisafety_1_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
         <PARAMETER NAME="C_BASEADDR" VALUE="0x58000000"/>
         <PARAMETER NAME="C_HIGHADDR" VALUE="0x5FFFFFFF"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="O" NAME="o_read_fault" SIGIS="undef"/>
-        <PORT DIR="O" NAME="o_write_fault" SIGIS="undef"/>
+        <PORT DIR="O" NAME="o_read_fault" SIGIS="undef" SIGNAME="axisafety_1_o_read_fault">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe38"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="o_write_fault" SIGIS="undef" SIGNAME="axisafety_1_o_write_fault">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ila_0" PORT="probe39"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="I" NAME="S_AXI_ACLK" SIGIS="clk" SIGNAME="cpu_processing_system7_0_FCLK_CLK0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="cpu_processing_system7_0" PORT="FCLK_CLK0"/>
@@ -2404,7 +2434,7 @@
         <PARAMETER NAME="C_S_AXI_DATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_S_AXI_ADDR_WIDTH" VALUE="27"/>
         <PARAMETER NAME="OPT_SELF_RESET" VALUE="1"/>
-        <PARAMETER NAME="OPT_TIMEOUT" VALUE="10000"/>
+        <PARAMETER NAME="OPT_TIMEOUT" VALUE="512"/>
         <PARAMETER NAME="Component_Name" VALUE="design_1_axisafety_0_1"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
         <PARAMETER NAME="C_BASEADDR" VALUE="0x50000000"/>
@@ -22707,7 +22737,7 @@
         <PARAMETER NAME="C_SLOT_0_AXI_PROTOCOL" VALUE="AXI4"/>
         <PARAMETER NAME="C_NUM_MONITOR_SLOTS" VALUE="1"/>
         <PARAMETER NAME="C_ENABLE_ILA_AXI_MON" VALUE="0"/>
-        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="38"/>
+        <PARAMETER NAME="C_NUM_OF_PROBES" VALUE="42"/>
         <PARAMETER NAME="C_DATA_DEPTH" VALUE="2048"/>
         <PARAMETER NAME="C_MAJOR_VERSION" VALUE="2020"/>
         <PARAMETER NAME="C_MINOR_VERSION" VALUE="1"/>
@@ -22727,7 +22757,7 @@
         <PARAMETER NAME="C_SLOT_0_AXIS_TID_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_ID_WIDTH" VALUE="4"/>
         <PARAMETER NAME="C_SLOT_0_AXI_ARUSER_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_SLOT_0_AXI_RUSER_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_SLOT_0_AXI_RUSER_WIDTH" VALUE="2"/>
         <PARAMETER NAME="C_SLOT_0_AXI_AWUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_WUSER_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_SLOT_0_AXI_BUSER_WIDTH" VALUE="4"/>
@@ -22771,8 +22801,8 @@
         <PARAMETER NAME="C_PROBE37_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE38_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE39_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE40_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="C_PROBE41_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="C_PROBE40_WIDTH" VALUE="2"/>
+        <PARAMETER NAME="C_PROBE41_WIDTH" VALUE="2"/>
         <PARAMETER NAME="C_PROBE42_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE43_WIDTH" VALUE="1"/>
         <PARAMETER NAME="C_PROBE44_WIDTH" VALUE="1"/>
@@ -26020,6 +26050,26 @@
         <PORT DIR="I" LEFT="0" NAME="probe37" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="undef" SIGNAME="cpu_proc_sys_reset_0_peripheral_aresetn">
           <CONNECTIONS>
             <CONNECTION INSTANCE="cpu_proc_sys_reset_0" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe38" RIGHT="0" SIGIS="undef" SIGNAME="axisafety_1_o_read_fault">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axisafety_1" PORT="o_read_fault"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="probe39" RIGHT="0" SIGIS="undef" SIGNAME="axisafety_1_o_write_fault">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axisafety_1" PORT="o_write_fault"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="probe40" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_rxclkcorcnt_top">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="rxclkcorcnt_top"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="probe41" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_rxclkcorcnt_bot">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="rxclkcorcnt_bot"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

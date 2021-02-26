@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Wed Feb 24 04:51:52 2021
+//Date        : Wed Feb 24 22:54:56 2021
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -35,6 +35,8 @@ module design_1_wrapper
     align_lock,
     axi_c2c_phy_clk,
     axi_clk,
+    do_cc_bot,
+    do_cc_top,
     en_ipmb_zynq,
     gtp_reset,
     ha,
@@ -67,6 +69,8 @@ module design_1_wrapper
     rgmii_td,
     rgmii_tx_ctl,
     rgmii_txc,
+    rxclkcorcnt_bot,
+    rxclkcorcnt_top,
     rxd_raw0,
     rxd_raw1,
     rxd_raw2,
@@ -125,6 +129,8 @@ module design_1_wrapper
   input [3:0]align_lock;
   input axi_c2c_phy_clk;
   output axi_clk;
+  output do_cc_bot;
+  output do_cc_top;
   output [1:0]en_ipmb_zynq;
   output gtp_reset;
   input [7:0]ha;
@@ -157,6 +163,8 @@ module design_1_wrapper
   output [3:0]rgmii_td;
   output rgmii_tx_ctl;
   output rgmii_txc;
+  input [1:0]rxclkcorcnt_bot;
+  input [1:0]rxclkcorcnt_top;
   input [31:0]rxd_raw0;
   input [31:0]rxd_raw1;
   input [31:0]rxd_raw2;
@@ -216,6 +224,8 @@ module design_1_wrapper
   wire [3:0]align_lock;
   wire axi_c2c_phy_clk;
   wire axi_clk;
+  wire do_cc_bot;
+  wire do_cc_top;
   wire [1:0]en_ipmb_zynq;
   wire gtp_reset;
   wire [7:0]ha;
@@ -263,6 +273,8 @@ module design_1_wrapper
   wire [3:0]rgmii_td;
   wire rgmii_tx_ctl;
   wire rgmii_txc;
+  wire [1:0]rxclkcorcnt_bot;
+  wire [1:0]rxclkcorcnt_top;
   wire [31:0]rxd_raw0;
   wire [31:0]rxd_raw1;
   wire [31:0]rxd_raw2;
@@ -341,6 +353,8 @@ module design_1_wrapper
         .align_lock(align_lock),
         .axi_c2c_phy_clk(axi_c2c_phy_clk),
         .axi_clk(axi_clk),
+        .do_cc_bot(do_cc_bot),
+        .do_cc_top(do_cc_top),
         .en_ipmb_zynq(en_ipmb_zynq),
         .gtp_reset(gtp_reset),
         .ha(ha),
@@ -383,6 +397,8 @@ module design_1_wrapper
         .rgmii_td(rgmii_td),
         .rgmii_tx_ctl(rgmii_tx_ctl),
         .rgmii_txc(rgmii_txc),
+        .rxclkcorcnt_bot(rxclkcorcnt_bot),
+        .rxclkcorcnt_top(rxclkcorcnt_top),
         .rxd_raw0(rxd_raw0),
         .rxd_raw1(rxd_raw1),
         .rxd_raw2(rxd_raw2),

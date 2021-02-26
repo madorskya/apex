@@ -1,7 +1,7 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
--- Date        : Thu Feb 18 05:05:47 2021
+-- Date        : Wed Feb 24 16:50:52 2021
 -- Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               c:/github/apex/control/apex_control_mgt/apex_control_mgt.srcs/sources_1/ip/c2c_mgt/c2c_mgt_sim_netlist.vhdl
@@ -32935,6 +32935,7 @@ entity c2c_mgt_c2c_mgt_GT is
     gt0_txresetdone_out : out STD_LOGIC;
     gt0_dmonitorout_out : out STD_LOGIC_VECTOR ( 14 downto 0 );
     gt0_drpdo_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    gt0_rxclkcorcnt_out : out STD_LOGIC_VECTOR ( 1 downto 0 );
     gt0_rxdata_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     gt0_rxcharisk_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
     gt0_rxdisperr_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -33035,7 +33036,6 @@ architecture STRUCTURE of c2c_mgt_c2c_mgt_GT is
   signal NLW_gtpe2_i_RXBUFSTATUS_UNCONNECTED : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal NLW_gtpe2_i_RXCHARISCOMMA_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal NLW_gtpe2_i_RXCHBONDO_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal NLW_gtpe2_i_RXCLKCORCNT_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal NLW_gtpe2_i_RXDATAVALID_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal NLW_gtpe2_i_RXHEADER_UNCONNECTED : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal NLW_gtpe2_i_RXPHMONITOR_UNCONNECTED : STD_LOGIC_VECTOR ( 4 downto 0 );
@@ -33086,24 +33086,24 @@ gtpe2_i: unisim.vcomponents.GTPE2_CHANNEL
       CHAN_BOND_SEQ_2_USE => "FALSE",
       CHAN_BOND_SEQ_LEN => 1,
       CLK_COMMON_SWING => '0',
-      CLK_CORRECT_USE => "FALSE",
+      CLK_CORRECT_USE => "TRUE",
       CLK_COR_KEEP_IDLE => "FALSE",
-      CLK_COR_MAX_LAT => 10,
-      CLK_COR_MIN_LAT => 8,
+      CLK_COR_MAX_LAT => 17,
+      CLK_COR_MIN_LAT => 12,
       CLK_COR_PRECEDENCE => "TRUE",
       CLK_COR_REPEAT_WAIT => 0,
-      CLK_COR_SEQ_1_1 => B"0100000000",
-      CLK_COR_SEQ_1_2 => B"0000000000",
-      CLK_COR_SEQ_1_3 => B"0000000000",
-      CLK_COR_SEQ_1_4 => B"0000000000",
+      CLK_COR_SEQ_1_1 => B"0100011100",
+      CLK_COR_SEQ_1_2 => B"0000000010",
+      CLK_COR_SEQ_1_3 => B"0000000011",
+      CLK_COR_SEQ_1_4 => B"0000000100",
       CLK_COR_SEQ_1_ENABLE => B"1111",
-      CLK_COR_SEQ_2_1 => B"0100000000",
+      CLK_COR_SEQ_2_1 => B"0000000000",
       CLK_COR_SEQ_2_2 => B"0000000000",
       CLK_COR_SEQ_2_3 => B"0000000000",
       CLK_COR_SEQ_2_4 => B"0000000000",
       CLK_COR_SEQ_2_ENABLE => B"1111",
       CLK_COR_SEQ_2_USE => "FALSE",
-      CLK_COR_SEQ_LEN => 1,
+      CLK_COR_SEQ_LEN => 4,
       DEC_MCOMMA_DETECT => "TRUE",
       DEC_PCOMMA_DETECT => "TRUE",
       DEC_VALID_COMMA_ONLY => "FALSE",
@@ -33149,7 +33149,7 @@ gtpe2_i: unisim.vcomponents.GTPE2_CHANNEL
       PMA_RSV6 => '0',
       PMA_RSV7 => '0',
       RXBUFRESET_TIME => B"00001",
-      RXBUF_ADDR_MODE => "FAST",
+      RXBUF_ADDR_MODE => "FULL",
       RXBUF_EIDLE_HI_CNT => B"1000",
       RXBUF_EIDLE_LO_CNT => B"0000",
       RXBUF_EN => "TRUE",
@@ -33369,7 +33369,7 @@ gtpe2_i: unisim.vcomponents.GTPE2_CHANNEL
       RXCHBONDMASTER => '0',
       RXCHBONDO(3 downto 0) => NLW_gtpe2_i_RXCHBONDO_UNCONNECTED(3 downto 0),
       RXCHBONDSLAVE => '0',
-      RXCLKCORCNT(1 downto 0) => NLW_gtpe2_i_RXCLKCORCNT_UNCONNECTED(1 downto 0),
+      RXCLKCORCNT(1 downto 0) => gt0_rxclkcorcnt_out(1 downto 0),
       RXCOMINITDET => NLW_gtpe2_i_RXCOMINITDET_UNCONNECTED,
       RXCOMMADET => NLW_gtpe2_i_RXCOMMADET_UNCONNECTED,
       RXCOMMADETEN => '1',
@@ -33792,6 +33792,7 @@ entity c2c_mgt_c2c_mgt_GT_65 is
     gt1_txresetdone_out : out STD_LOGIC;
     gt1_dmonitorout_out : out STD_LOGIC_VECTOR ( 14 downto 0 );
     gt1_drpdo_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    gt1_rxclkcorcnt_out : out STD_LOGIC_VECTOR ( 1 downto 0 );
     gt1_rxdata_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     gt1_rxcharisk_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
     gt1_rxdisperr_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -33907,7 +33908,6 @@ architecture STRUCTURE of c2c_mgt_c2c_mgt_GT_65 is
   signal NLW_gtpe2_i_RXBUFSTATUS_UNCONNECTED : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal NLW_gtpe2_i_RXCHARISCOMMA_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal NLW_gtpe2_i_RXCHBONDO_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal NLW_gtpe2_i_RXCLKCORCNT_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal NLW_gtpe2_i_RXDATAVALID_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal NLW_gtpe2_i_RXHEADER_UNCONNECTED : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal NLW_gtpe2_i_RXPHMONITOR_UNCONNECTED : STD_LOGIC_VECTOR ( 4 downto 0 );
@@ -33958,24 +33958,24 @@ gtpe2_i: unisim.vcomponents.GTPE2_CHANNEL
       CHAN_BOND_SEQ_2_USE => "FALSE",
       CHAN_BOND_SEQ_LEN => 1,
       CLK_COMMON_SWING => '0',
-      CLK_CORRECT_USE => "FALSE",
+      CLK_CORRECT_USE => "TRUE",
       CLK_COR_KEEP_IDLE => "FALSE",
-      CLK_COR_MAX_LAT => 10,
-      CLK_COR_MIN_LAT => 8,
+      CLK_COR_MAX_LAT => 17,
+      CLK_COR_MIN_LAT => 12,
       CLK_COR_PRECEDENCE => "TRUE",
       CLK_COR_REPEAT_WAIT => 0,
-      CLK_COR_SEQ_1_1 => B"0100000000",
-      CLK_COR_SEQ_1_2 => B"0000000000",
-      CLK_COR_SEQ_1_3 => B"0000000000",
-      CLK_COR_SEQ_1_4 => B"0000000000",
+      CLK_COR_SEQ_1_1 => B"0100011100",
+      CLK_COR_SEQ_1_2 => B"0000000010",
+      CLK_COR_SEQ_1_3 => B"0000000011",
+      CLK_COR_SEQ_1_4 => B"0000000100",
       CLK_COR_SEQ_1_ENABLE => B"1111",
-      CLK_COR_SEQ_2_1 => B"0100000000",
+      CLK_COR_SEQ_2_1 => B"0000000000",
       CLK_COR_SEQ_2_2 => B"0000000000",
       CLK_COR_SEQ_2_3 => B"0000000000",
       CLK_COR_SEQ_2_4 => B"0000000000",
       CLK_COR_SEQ_2_ENABLE => B"1111",
       CLK_COR_SEQ_2_USE => "FALSE",
-      CLK_COR_SEQ_LEN => 1,
+      CLK_COR_SEQ_LEN => 4,
       DEC_MCOMMA_DETECT => "TRUE",
       DEC_PCOMMA_DETECT => "TRUE",
       DEC_VALID_COMMA_ONLY => "FALSE",
@@ -34021,7 +34021,7 @@ gtpe2_i: unisim.vcomponents.GTPE2_CHANNEL
       PMA_RSV6 => '0',
       PMA_RSV7 => '0',
       RXBUFRESET_TIME => B"00001",
-      RXBUF_ADDR_MODE => "FAST",
+      RXBUF_ADDR_MODE => "FULL",
       RXBUF_EIDLE_HI_CNT => B"1000",
       RXBUF_EIDLE_LO_CNT => B"0000",
       RXBUF_EN => "TRUE",
@@ -34241,7 +34241,7 @@ gtpe2_i: unisim.vcomponents.GTPE2_CHANNEL
       RXCHBONDMASTER => '0',
       RXCHBONDO(3 downto 0) => NLW_gtpe2_i_RXCHBONDO_UNCONNECTED(3 downto 0),
       RXCHBONDSLAVE => '0',
-      RXCLKCORCNT(1 downto 0) => NLW_gtpe2_i_RXCLKCORCNT_UNCONNECTED(1 downto 0),
+      RXCLKCORCNT(1 downto 0) => gt1_rxclkcorcnt_out(1 downto 0),
       RXCOMINITDET => NLW_gtpe2_i_RXCOMINITDET_UNCONNECTED,
       RXCOMMADET => NLW_gtpe2_i_RXCOMMADET_UNCONNECTED,
       RXCOMMADETEN => '1',
@@ -34677,6 +34677,7 @@ entity c2c_mgt_c2c_mgt_GT_66 is
     gt2_txresetdone_out : out STD_LOGIC;
     gt2_dmonitorout_out : out STD_LOGIC_VECTOR ( 14 downto 0 );
     gt2_drpdo_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    gt2_rxclkcorcnt_out : out STD_LOGIC_VECTOR ( 1 downto 0 );
     gt2_rxdata_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     gt2_rxcharisk_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
     gt2_rxdisperr_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -34792,7 +34793,6 @@ architecture STRUCTURE of c2c_mgt_c2c_mgt_GT_66 is
   signal NLW_gtpe2_i_RXBUFSTATUS_UNCONNECTED : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal NLW_gtpe2_i_RXCHARISCOMMA_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal NLW_gtpe2_i_RXCHBONDO_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal NLW_gtpe2_i_RXCLKCORCNT_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal NLW_gtpe2_i_RXDATAVALID_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal NLW_gtpe2_i_RXHEADER_UNCONNECTED : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal NLW_gtpe2_i_RXPHMONITOR_UNCONNECTED : STD_LOGIC_VECTOR ( 4 downto 0 );
@@ -34843,24 +34843,24 @@ gtpe2_i: unisim.vcomponents.GTPE2_CHANNEL
       CHAN_BOND_SEQ_2_USE => "FALSE",
       CHAN_BOND_SEQ_LEN => 1,
       CLK_COMMON_SWING => '0',
-      CLK_CORRECT_USE => "FALSE",
+      CLK_CORRECT_USE => "TRUE",
       CLK_COR_KEEP_IDLE => "FALSE",
-      CLK_COR_MAX_LAT => 10,
-      CLK_COR_MIN_LAT => 8,
+      CLK_COR_MAX_LAT => 17,
+      CLK_COR_MIN_LAT => 12,
       CLK_COR_PRECEDENCE => "TRUE",
       CLK_COR_REPEAT_WAIT => 0,
-      CLK_COR_SEQ_1_1 => B"0100000000",
-      CLK_COR_SEQ_1_2 => B"0000000000",
-      CLK_COR_SEQ_1_3 => B"0000000000",
-      CLK_COR_SEQ_1_4 => B"0000000000",
+      CLK_COR_SEQ_1_1 => B"0100011100",
+      CLK_COR_SEQ_1_2 => B"0000000010",
+      CLK_COR_SEQ_1_3 => B"0000000011",
+      CLK_COR_SEQ_1_4 => B"0000000100",
       CLK_COR_SEQ_1_ENABLE => B"1111",
-      CLK_COR_SEQ_2_1 => B"0100000000",
+      CLK_COR_SEQ_2_1 => B"0000000000",
       CLK_COR_SEQ_2_2 => B"0000000000",
       CLK_COR_SEQ_2_3 => B"0000000000",
       CLK_COR_SEQ_2_4 => B"0000000000",
       CLK_COR_SEQ_2_ENABLE => B"1111",
       CLK_COR_SEQ_2_USE => "FALSE",
-      CLK_COR_SEQ_LEN => 1,
+      CLK_COR_SEQ_LEN => 4,
       DEC_MCOMMA_DETECT => "TRUE",
       DEC_PCOMMA_DETECT => "TRUE",
       DEC_VALID_COMMA_ONLY => "FALSE",
@@ -34906,7 +34906,7 @@ gtpe2_i: unisim.vcomponents.GTPE2_CHANNEL
       PMA_RSV6 => '0',
       PMA_RSV7 => '0',
       RXBUFRESET_TIME => B"00001",
-      RXBUF_ADDR_MODE => "FAST",
+      RXBUF_ADDR_MODE => "FULL",
       RXBUF_EIDLE_HI_CNT => B"1000",
       RXBUF_EIDLE_LO_CNT => B"0000",
       RXBUF_EN => "TRUE",
@@ -35126,7 +35126,7 @@ gtpe2_i: unisim.vcomponents.GTPE2_CHANNEL
       RXCHBONDMASTER => '0',
       RXCHBONDO(3 downto 0) => NLW_gtpe2_i_RXCHBONDO_UNCONNECTED(3 downto 0),
       RXCHBONDSLAVE => '0',
-      RXCLKCORCNT(1 downto 0) => NLW_gtpe2_i_RXCLKCORCNT_UNCONNECTED(1 downto 0),
+      RXCLKCORCNT(1 downto 0) => gt2_rxclkcorcnt_out(1 downto 0),
       RXCOMINITDET => NLW_gtpe2_i_RXCOMINITDET_UNCONNECTED,
       RXCOMMADET => NLW_gtpe2_i_RXCOMMADET_UNCONNECTED,
       RXCOMMADETEN => '1',
@@ -35562,6 +35562,7 @@ entity c2c_mgt_c2c_mgt_GT_67 is
     gt3_txresetdone_out : out STD_LOGIC;
     gt3_dmonitorout_out : out STD_LOGIC_VECTOR ( 14 downto 0 );
     gt3_drpdo_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    gt3_rxclkcorcnt_out : out STD_LOGIC_VECTOR ( 1 downto 0 );
     gt3_rxdata_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     gt3_rxcharisk_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
     gt3_rxdisperr_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -35677,7 +35678,6 @@ architecture STRUCTURE of c2c_mgt_c2c_mgt_GT_67 is
   signal NLW_gtpe2_i_RXBUFSTATUS_UNCONNECTED : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal NLW_gtpe2_i_RXCHARISCOMMA_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal NLW_gtpe2_i_RXCHBONDO_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal NLW_gtpe2_i_RXCLKCORCNT_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal NLW_gtpe2_i_RXDATAVALID_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal NLW_gtpe2_i_RXHEADER_UNCONNECTED : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal NLW_gtpe2_i_RXPHMONITOR_UNCONNECTED : STD_LOGIC_VECTOR ( 4 downto 0 );
@@ -35728,24 +35728,24 @@ gtpe2_i: unisim.vcomponents.GTPE2_CHANNEL
       CHAN_BOND_SEQ_2_USE => "FALSE",
       CHAN_BOND_SEQ_LEN => 1,
       CLK_COMMON_SWING => '0',
-      CLK_CORRECT_USE => "FALSE",
+      CLK_CORRECT_USE => "TRUE",
       CLK_COR_KEEP_IDLE => "FALSE",
-      CLK_COR_MAX_LAT => 10,
-      CLK_COR_MIN_LAT => 8,
+      CLK_COR_MAX_LAT => 17,
+      CLK_COR_MIN_LAT => 12,
       CLK_COR_PRECEDENCE => "TRUE",
       CLK_COR_REPEAT_WAIT => 0,
-      CLK_COR_SEQ_1_1 => B"0100000000",
-      CLK_COR_SEQ_1_2 => B"0000000000",
-      CLK_COR_SEQ_1_3 => B"0000000000",
-      CLK_COR_SEQ_1_4 => B"0000000000",
+      CLK_COR_SEQ_1_1 => B"0100011100",
+      CLK_COR_SEQ_1_2 => B"0000000010",
+      CLK_COR_SEQ_1_3 => B"0000000011",
+      CLK_COR_SEQ_1_4 => B"0000000100",
       CLK_COR_SEQ_1_ENABLE => B"1111",
-      CLK_COR_SEQ_2_1 => B"0100000000",
+      CLK_COR_SEQ_2_1 => B"0000000000",
       CLK_COR_SEQ_2_2 => B"0000000000",
       CLK_COR_SEQ_2_3 => B"0000000000",
       CLK_COR_SEQ_2_4 => B"0000000000",
       CLK_COR_SEQ_2_ENABLE => B"1111",
       CLK_COR_SEQ_2_USE => "FALSE",
-      CLK_COR_SEQ_LEN => 1,
+      CLK_COR_SEQ_LEN => 4,
       DEC_MCOMMA_DETECT => "TRUE",
       DEC_PCOMMA_DETECT => "TRUE",
       DEC_VALID_COMMA_ONLY => "FALSE",
@@ -35791,7 +35791,7 @@ gtpe2_i: unisim.vcomponents.GTPE2_CHANNEL
       PMA_RSV6 => '0',
       PMA_RSV7 => '0',
       RXBUFRESET_TIME => B"00001",
-      RXBUF_ADDR_MODE => "FAST",
+      RXBUF_ADDR_MODE => "FULL",
       RXBUF_EIDLE_HI_CNT => B"1000",
       RXBUF_EIDLE_LO_CNT => B"0000",
       RXBUF_EN => "TRUE",
@@ -36011,7 +36011,7 @@ gtpe2_i: unisim.vcomponents.GTPE2_CHANNEL
       RXCHBONDMASTER => '0',
       RXCHBONDO(3 downto 0) => NLW_gtpe2_i_RXCHBONDO_UNCONNECTED(3 downto 0),
       RXCHBONDSLAVE => '0',
-      RXCLKCORCNT(1 downto 0) => NLW_gtpe2_i_RXCLKCORCNT_UNCONNECTED(1 downto 0),
+      RXCLKCORCNT(1 downto 0) => gt3_rxclkcorcnt_out(1 downto 0),
       RXCOMINITDET => NLW_gtpe2_i_RXCOMINITDET_UNCONNECTED,
       RXCOMMADET => NLW_gtpe2_i_RXCOMMADET_UNCONNECTED,
       RXCOMMADETEN => '1',
@@ -36448,6 +36448,7 @@ entity c2c_mgt_c2c_mgt_multi_gt is
     gt0_txresetdone_out : out STD_LOGIC;
     gt0_dmonitorout_out : out STD_LOGIC_VECTOR ( 14 downto 0 );
     gt0_drpdo_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    gt0_rxclkcorcnt_out : out STD_LOGIC_VECTOR ( 1 downto 0 );
     gt0_rxdata_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     gt0_rxcharisk_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
     gt0_rxdisperr_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -36466,6 +36467,7 @@ entity c2c_mgt_c2c_mgt_multi_gt is
     gt1_txresetdone_out : out STD_LOGIC;
     gt1_dmonitorout_out : out STD_LOGIC_VECTOR ( 14 downto 0 );
     gt1_drpdo_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    gt1_rxclkcorcnt_out : out STD_LOGIC_VECTOR ( 1 downto 0 );
     gt1_rxdata_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     gt1_rxcharisk_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
     gt1_rxdisperr_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -36484,6 +36486,7 @@ entity c2c_mgt_c2c_mgt_multi_gt is
     gt2_txresetdone_out : out STD_LOGIC;
     gt2_dmonitorout_out : out STD_LOGIC_VECTOR ( 14 downto 0 );
     gt2_drpdo_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    gt2_rxclkcorcnt_out : out STD_LOGIC_VECTOR ( 1 downto 0 );
     gt2_rxdata_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     gt2_rxcharisk_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
     gt2_rxdisperr_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -36502,6 +36505,7 @@ entity c2c_mgt_c2c_mgt_multi_gt is
     gt3_txresetdone_out : out STD_LOGIC;
     gt3_dmonitorout_out : out STD_LOGIC_VECTOR ( 14 downto 0 );
     gt3_drpdo_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    gt3_rxclkcorcnt_out : out STD_LOGIC_VECTOR ( 1 downto 0 );
     gt3_rxdata_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     gt3_rxcharisk_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
     gt3_rxdisperr_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -36643,6 +36647,7 @@ gt0_c2c_mgt_i: entity work.c2c_mgt_c2c_mgt_GT
       gt0_pll1outrefclk_out => gt0_pll1outrefclk_out,
       gt0_rxbyteisaligned_out => gt0_rxbyteisaligned_out,
       gt0_rxcharisk_out(3 downto 0) => gt0_rxcharisk_out(3 downto 0),
+      gt0_rxclkcorcnt_out(1 downto 0) => gt0_rxclkcorcnt_out(1 downto 0),
       gt0_rxdata_out(31 downto 0) => gt0_rxdata_out(31 downto 0),
       gt0_rxdisperr_out(3 downto 0) => gt0_rxdisperr_out(3 downto 0),
       gt0_rxlpmhfhold_in => gt0_rxlpmhfhold_in,
@@ -36696,6 +36701,7 @@ gt1_c2c_mgt_i: entity work.c2c_mgt_c2c_mgt_GT_65
       gt1_gttxreset_in => gt1_gttxreset_in,
       gt1_rxbyteisaligned_out => gt1_rxbyteisaligned_out,
       gt1_rxcharisk_out(3 downto 0) => gt1_rxcharisk_out(3 downto 0),
+      gt1_rxclkcorcnt_out(1 downto 0) => gt1_rxclkcorcnt_out(1 downto 0),
       gt1_rxdata_out(31 downto 0) => gt1_rxdata_out(31 downto 0),
       gt1_rxdisperr_out(3 downto 0) => gt1_rxdisperr_out(3 downto 0),
       gt1_rxlpmhfhold_in => gt1_rxlpmhfhold_in,
@@ -36749,6 +36755,7 @@ gt2_c2c_mgt_i: entity work.c2c_mgt_c2c_mgt_GT_66
       gt2_gttxreset_in => gt2_gttxreset_in,
       gt2_rxbyteisaligned_out => gt2_rxbyteisaligned_out,
       gt2_rxcharisk_out(3 downto 0) => gt2_rxcharisk_out(3 downto 0),
+      gt2_rxclkcorcnt_out(1 downto 0) => gt2_rxclkcorcnt_out(1 downto 0),
       gt2_rxdata_out(31 downto 0) => gt2_rxdata_out(31 downto 0),
       gt2_rxdisperr_out(3 downto 0) => gt2_rxdisperr_out(3 downto 0),
       gt2_rxlpmhfhold_in => gt2_rxlpmhfhold_in,
@@ -36802,6 +36809,7 @@ gt3_c2c_mgt_i: entity work.c2c_mgt_c2c_mgt_GT_67
       gt3_gttxreset_in => gt3_gttxreset_in,
       gt3_rxbyteisaligned_out => gt3_rxbyteisaligned_out,
       gt3_rxcharisk_out(3 downto 0) => gt3_rxcharisk_out(3 downto 0),
+      gt3_rxclkcorcnt_out(1 downto 0) => gt3_rxclkcorcnt_out(1 downto 0),
       gt3_rxdata_out(31 downto 0) => gt3_rxdata_out(31 downto 0),
       gt3_rxdisperr_out(3 downto 0) => gt3_rxdisperr_out(3 downto 0),
       gt3_rxlpmhfhold_in => gt3_rxlpmhfhold_in,
@@ -36868,6 +36876,7 @@ entity c2c_mgt_c2c_mgt_init is
     gt0_txoutclkpcs_out : out STD_LOGIC;
     gt0_dmonitorout_out : out STD_LOGIC_VECTOR ( 14 downto 0 );
     gt0_drpdo_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    gt0_rxclkcorcnt_out : out STD_LOGIC_VECTOR ( 1 downto 0 );
     gt0_rxdata_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     gt0_rxcharisk_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
     gt0_rxdisperr_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -36883,6 +36892,7 @@ entity c2c_mgt_c2c_mgt_init is
     gt1_txoutclkpcs_out : out STD_LOGIC;
     gt1_dmonitorout_out : out STD_LOGIC_VECTOR ( 14 downto 0 );
     gt1_drpdo_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    gt1_rxclkcorcnt_out : out STD_LOGIC_VECTOR ( 1 downto 0 );
     gt1_rxdata_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     gt1_rxcharisk_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
     gt1_rxdisperr_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -36898,6 +36908,7 @@ entity c2c_mgt_c2c_mgt_init is
     gt2_txoutclkpcs_out : out STD_LOGIC;
     gt2_dmonitorout_out : out STD_LOGIC_VECTOR ( 14 downto 0 );
     gt2_drpdo_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    gt2_rxclkcorcnt_out : out STD_LOGIC_VECTOR ( 1 downto 0 );
     gt2_rxdata_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     gt2_rxcharisk_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
     gt2_rxdisperr_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -36913,6 +36924,7 @@ entity c2c_mgt_c2c_mgt_init is
     gt3_txoutclkpcs_out : out STD_LOGIC;
     gt3_dmonitorout_out : out STD_LOGIC_VECTOR ( 14 downto 0 );
     gt3_drpdo_out : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    gt3_rxclkcorcnt_out : out STD_LOGIC_VECTOR ( 1 downto 0 );
     gt3_rxdata_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     gt3_rxcharisk_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
     gt3_rxdisperr_out : out STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -37524,6 +37536,7 @@ c2c_mgt_i: entity work.c2c_mgt_c2c_mgt_multi_gt
       gt0_pll1outrefclk_out => gt0_pll1outrefclk_out,
       gt0_rxbyteisaligned_out => gt0_rxbyteisaligned_out,
       gt0_rxcharisk_out(3 downto 0) => gt0_rxcharisk_out(3 downto 0),
+      gt0_rxclkcorcnt_out(1 downto 0) => gt0_rxclkcorcnt_out(1 downto 0),
       gt0_rxdata_out(31 downto 0) => gt0_rxdata_out(31 downto 0),
       gt0_rxdisperr_out(3 downto 0) => gt0_rxdisperr_out(3 downto 0),
       gt0_rxlpmhfhold_in => gt0_rxlpmhfhold_in,
@@ -37566,6 +37579,7 @@ c2c_mgt_i: entity work.c2c_mgt_c2c_mgt_multi_gt
       gt1_gttxreset_in => gt1_gttxreset_i,
       gt1_rxbyteisaligned_out => gt1_rxbyteisaligned_out,
       gt1_rxcharisk_out(3 downto 0) => gt1_rxcharisk_out(3 downto 0),
+      gt1_rxclkcorcnt_out(1 downto 0) => gt1_rxclkcorcnt_out(1 downto 0),
       gt1_rxdata_out(31 downto 0) => gt1_rxdata_out(31 downto 0),
       gt1_rxdisperr_out(3 downto 0) => gt1_rxdisperr_out(3 downto 0),
       gt1_rxlpmhfhold_in => gt1_rxlpmhfhold_in,
@@ -37607,6 +37621,7 @@ c2c_mgt_i: entity work.c2c_mgt_c2c_mgt_multi_gt
       gt2_gttxreset_in => gt2_gttxreset_i,
       gt2_rxbyteisaligned_out => gt2_rxbyteisaligned_out,
       gt2_rxcharisk_out(3 downto 0) => gt2_rxcharisk_out(3 downto 0),
+      gt2_rxclkcorcnt_out(1 downto 0) => gt2_rxclkcorcnt_out(1 downto 0),
       gt2_rxdata_out(31 downto 0) => gt2_rxdata_out(31 downto 0),
       gt2_rxdisperr_out(3 downto 0) => gt2_rxdisperr_out(3 downto 0),
       gt2_rxlpmhfhold_in => gt2_rxlpmhfhold_in,
@@ -37648,6 +37663,7 @@ c2c_mgt_i: entity work.c2c_mgt_c2c_mgt_multi_gt
       gt3_gttxreset_in => gt3_gttxreset_i,
       gt3_rxbyteisaligned_out => gt3_rxbyteisaligned_out,
       gt3_rxcharisk_out(3 downto 0) => gt3_rxcharisk_out(3 downto 0),
+      gt3_rxclkcorcnt_out(1 downto 0) => gt3_rxclkcorcnt_out(1 downto 0),
       gt3_rxdata_out(31 downto 0) => gt3_rxdata_out(31 downto 0),
       gt3_rxdisperr_out(3 downto 0) => gt3_rxdisperr_out(3 downto 0),
       gt3_rxlpmhfhold_in => gt3_rxlpmhfhold_in,
@@ -41810,6 +41826,7 @@ entity c2c_mgt_c2c_mgt_support is
     gt0_rxuserrdy_in : in STD_LOGIC;
     gt0_eyescandataerror_out : out STD_LOGIC;
     gt0_eyescantrigger_in : in STD_LOGIC;
+    gt0_rxclkcorcnt_out : out STD_LOGIC_VECTOR ( 1 downto 0 );
     gt0_rxdata_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     gt0_rxprbserr_out : out STD_LOGIC;
     gt0_rxprbssel_in : in STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -41851,6 +41868,7 @@ entity c2c_mgt_c2c_mgt_support is
     gt1_rxuserrdy_in : in STD_LOGIC;
     gt1_eyescandataerror_out : out STD_LOGIC;
     gt1_eyescantrigger_in : in STD_LOGIC;
+    gt1_rxclkcorcnt_out : out STD_LOGIC_VECTOR ( 1 downto 0 );
     gt1_rxdata_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     gt1_rxprbserr_out : out STD_LOGIC;
     gt1_rxprbssel_in : in STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -41892,6 +41910,7 @@ entity c2c_mgt_c2c_mgt_support is
     gt2_rxuserrdy_in : in STD_LOGIC;
     gt2_eyescandataerror_out : out STD_LOGIC;
     gt2_eyescantrigger_in : in STD_LOGIC;
+    gt2_rxclkcorcnt_out : out STD_LOGIC_VECTOR ( 1 downto 0 );
     gt2_rxdata_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     gt2_rxprbserr_out : out STD_LOGIC;
     gt2_rxprbssel_in : in STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -41933,6 +41952,7 @@ entity c2c_mgt_c2c_mgt_support is
     gt3_rxuserrdy_in : in STD_LOGIC;
     gt3_eyescandataerror_out : out STD_LOGIC;
     gt3_eyescantrigger_in : in STD_LOGIC;
+    gt3_rxclkcorcnt_out : out STD_LOGIC_VECTOR ( 1 downto 0 );
     gt3_rxdata_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     gt3_rxprbserr_out : out STD_LOGIC;
     gt3_rxprbssel_in : in STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -42066,6 +42086,7 @@ c2c_mgt_init_i: entity work.c2c_mgt_c2c_mgt_init
       gt0_rx_fsm_reset_done_out => gt0_rx_fsm_reset_done_out,
       gt0_rxbyteisaligned_out => gt0_rxbyteisaligned_out,
       gt0_rxcharisk_out(3 downto 0) => gt0_rxcharisk_out(3 downto 0),
+      gt0_rxclkcorcnt_out(1 downto 0) => gt0_rxclkcorcnt_out(1 downto 0),
       gt0_rxdata_out(31 downto 0) => gt0_rxdata_out(31 downto 0),
       gt0_rxdisperr_out(3 downto 0) => gt0_rxdisperr_out(3 downto 0),
       gt0_rxlpmhfhold_in => gt0_rxlpmhfhold_in,
@@ -42107,6 +42128,7 @@ c2c_mgt_init_i: entity work.c2c_mgt_c2c_mgt_init
       gt1_rx_fsm_reset_done_out => gt1_rx_fsm_reset_done_out,
       gt1_rxbyteisaligned_out => gt1_rxbyteisaligned_out,
       gt1_rxcharisk_out(3 downto 0) => gt1_rxcharisk_out(3 downto 0),
+      gt1_rxclkcorcnt_out(1 downto 0) => gt1_rxclkcorcnt_out(1 downto 0),
       gt1_rxdata_out(31 downto 0) => gt1_rxdata_out(31 downto 0),
       gt1_rxdisperr_out(3 downto 0) => gt1_rxdisperr_out(3 downto 0),
       gt1_rxlpmhfhold_in => gt1_rxlpmhfhold_in,
@@ -42147,6 +42169,7 @@ c2c_mgt_init_i: entity work.c2c_mgt_c2c_mgt_init
       gt2_rx_fsm_reset_done_out => gt2_rx_fsm_reset_done_out,
       gt2_rxbyteisaligned_out => gt2_rxbyteisaligned_out,
       gt2_rxcharisk_out(3 downto 0) => gt2_rxcharisk_out(3 downto 0),
+      gt2_rxclkcorcnt_out(1 downto 0) => gt2_rxclkcorcnt_out(1 downto 0),
       gt2_rxdata_out(31 downto 0) => gt2_rxdata_out(31 downto 0),
       gt2_rxdisperr_out(3 downto 0) => gt2_rxdisperr_out(3 downto 0),
       gt2_rxlpmhfhold_in => gt2_rxlpmhfhold_in,
@@ -42187,6 +42210,7 @@ c2c_mgt_init_i: entity work.c2c_mgt_c2c_mgt_init
       gt3_rx_fsm_reset_done_out => gt3_rx_fsm_reset_done_out,
       gt3_rxbyteisaligned_out => gt3_rxbyteisaligned_out,
       gt3_rxcharisk_out(3 downto 0) => gt3_rxcharisk_out(3 downto 0),
+      gt3_rxclkcorcnt_out(1 downto 0) => gt3_rxclkcorcnt_out(1 downto 0),
       gt3_rxdata_out(31 downto 0) => gt3_rxdata_out(31 downto 0),
       gt3_rxdisperr_out(3 downto 0) => gt3_rxdisperr_out(3 downto 0),
       gt3_rxlpmhfhold_in => gt3_rxlpmhfhold_in,
@@ -42310,6 +42334,7 @@ entity c2c_mgt is
     gt0_rxuserrdy_in : in STD_LOGIC;
     gt0_eyescandataerror_out : out STD_LOGIC;
     gt0_eyescantrigger_in : in STD_LOGIC;
+    gt0_rxclkcorcnt_out : out STD_LOGIC_VECTOR ( 1 downto 0 );
     gt0_rxdata_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     gt0_rxprbserr_out : out STD_LOGIC;
     gt0_rxprbssel_in : in STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -42351,6 +42376,7 @@ entity c2c_mgt is
     gt1_rxuserrdy_in : in STD_LOGIC;
     gt1_eyescandataerror_out : out STD_LOGIC;
     gt1_eyescantrigger_in : in STD_LOGIC;
+    gt1_rxclkcorcnt_out : out STD_LOGIC_VECTOR ( 1 downto 0 );
     gt1_rxdata_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     gt1_rxprbserr_out : out STD_LOGIC;
     gt1_rxprbssel_in : in STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -42392,6 +42418,7 @@ entity c2c_mgt is
     gt2_rxuserrdy_in : in STD_LOGIC;
     gt2_eyescandataerror_out : out STD_LOGIC;
     gt2_eyescantrigger_in : in STD_LOGIC;
+    gt2_rxclkcorcnt_out : out STD_LOGIC_VECTOR ( 1 downto 0 );
     gt2_rxdata_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     gt2_rxprbserr_out : out STD_LOGIC;
     gt2_rxprbssel_in : in STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -42433,6 +42460,7 @@ entity c2c_mgt is
     gt3_rxuserrdy_in : in STD_LOGIC;
     gt3_eyescandataerror_out : out STD_LOGIC;
     gt3_eyescantrigger_in : in STD_LOGIC;
+    gt3_rxclkcorcnt_out : out STD_LOGIC_VECTOR ( 1 downto 0 );
     gt3_rxdata_out : out STD_LOGIC_VECTOR ( 31 downto 0 );
     gt3_rxprbserr_out : out STD_LOGIC;
     gt3_rxprbssel_in : in STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -42519,6 +42547,7 @@ inst: entity work.c2c_mgt_c2c_mgt_support
       gt0_rx_mmcm_lock_out => gt0_rx_mmcm_lock_out,
       gt0_rxbyteisaligned_out => gt0_rxbyteisaligned_out,
       gt0_rxcharisk_out(3 downto 0) => gt0_rxcharisk_out(3 downto 0),
+      gt0_rxclkcorcnt_out(1 downto 0) => gt0_rxclkcorcnt_out(1 downto 0),
       gt0_rxdata_out(31 downto 0) => gt0_rxdata_out(31 downto 0),
       gt0_rxdisperr_out(3 downto 0) => gt0_rxdisperr_out(3 downto 0),
       gt0_rxlpmhfhold_in => gt0_rxlpmhfhold_in,
@@ -42569,6 +42598,7 @@ inst: entity work.c2c_mgt_c2c_mgt_support
       gt1_rx_mmcm_lock_out => gt1_rx_mmcm_lock_out,
       gt1_rxbyteisaligned_out => gt1_rxbyteisaligned_out,
       gt1_rxcharisk_out(3 downto 0) => gt1_rxcharisk_out(3 downto 0),
+      gt1_rxclkcorcnt_out(1 downto 0) => gt1_rxclkcorcnt_out(1 downto 0),
       gt1_rxdata_out(31 downto 0) => gt1_rxdata_out(31 downto 0),
       gt1_rxdisperr_out(3 downto 0) => gt1_rxdisperr_out(3 downto 0),
       gt1_rxlpmhfhold_in => gt1_rxlpmhfhold_in,
@@ -42619,6 +42649,7 @@ inst: entity work.c2c_mgt_c2c_mgt_support
       gt2_rx_mmcm_lock_out => gt2_rx_mmcm_lock_out,
       gt2_rxbyteisaligned_out => gt2_rxbyteisaligned_out,
       gt2_rxcharisk_out(3 downto 0) => gt2_rxcharisk_out(3 downto 0),
+      gt2_rxclkcorcnt_out(1 downto 0) => gt2_rxclkcorcnt_out(1 downto 0),
       gt2_rxdata_out(31 downto 0) => gt2_rxdata_out(31 downto 0),
       gt2_rxdisperr_out(3 downto 0) => gt2_rxdisperr_out(3 downto 0),
       gt2_rxlpmhfhold_in => gt2_rxlpmhfhold_in,
@@ -42669,6 +42700,7 @@ inst: entity work.c2c_mgt_c2c_mgt_support
       gt3_rx_mmcm_lock_out => gt3_rx_mmcm_lock_out,
       gt3_rxbyteisaligned_out => gt3_rxbyteisaligned_out,
       gt3_rxcharisk_out(3 downto 0) => gt3_rxcharisk_out(3 downto 0),
+      gt3_rxclkcorcnt_out(1 downto 0) => gt3_rxclkcorcnt_out(1 downto 0),
       gt3_rxdata_out(31 downto 0) => gt3_rxdata_out(31 downto 0),
       gt3_rxdisperr_out(3 downto 0) => gt3_rxdisperr_out(3 downto 0),
       gt3_rxlpmhfhold_in => gt3_rxlpmhfhold_in,

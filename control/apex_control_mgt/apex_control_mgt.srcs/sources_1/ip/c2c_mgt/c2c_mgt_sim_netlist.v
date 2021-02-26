@@ -1,7 +1,7 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-// Date        : Thu Feb 18 05:05:47 2021
+// Date        : Wed Feb 24 16:50:51 2021
 // Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/github/apex/control/apex_control_mgt/apex_control_mgt.srcs/sources_1/ip/c2c_mgt/c2c_mgt_sim_netlist.v
@@ -66,6 +66,7 @@ module c2c_mgt
     gt0_rxuserrdy_in,
     gt0_eyescandataerror_out,
     gt0_eyescantrigger_in,
+    gt0_rxclkcorcnt_out,
     gt0_rxdata_out,
     gt0_rxprbserr_out,
     gt0_rxprbssel_in,
@@ -107,6 +108,7 @@ module c2c_mgt
     gt1_rxuserrdy_in,
     gt1_eyescandataerror_out,
     gt1_eyescantrigger_in,
+    gt1_rxclkcorcnt_out,
     gt1_rxdata_out,
     gt1_rxprbserr_out,
     gt1_rxprbssel_in,
@@ -148,6 +150,7 @@ module c2c_mgt
     gt2_rxuserrdy_in,
     gt2_eyescandataerror_out,
     gt2_eyescantrigger_in,
+    gt2_rxclkcorcnt_out,
     gt2_rxdata_out,
     gt2_rxprbserr_out,
     gt2_rxprbssel_in,
@@ -189,6 +192,7 @@ module c2c_mgt
     gt3_rxuserrdy_in,
     gt3_eyescandataerror_out,
     gt3_eyescantrigger_in,
+    gt3_rxclkcorcnt_out,
     gt3_rxdata_out,
     gt3_rxprbserr_out,
     gt3_rxprbssel_in,
@@ -279,6 +283,7 @@ module c2c_mgt
   input gt0_rxuserrdy_in;
   output gt0_eyescandataerror_out;
   input gt0_eyescantrigger_in;
+  output [1:0]gt0_rxclkcorcnt_out;
   output [31:0]gt0_rxdata_out;
   output gt0_rxprbserr_out;
   input [2:0]gt0_rxprbssel_in;
@@ -320,6 +325,7 @@ module c2c_mgt
   input gt1_rxuserrdy_in;
   output gt1_eyescandataerror_out;
   input gt1_eyescantrigger_in;
+  output [1:0]gt1_rxclkcorcnt_out;
   output [31:0]gt1_rxdata_out;
   output gt1_rxprbserr_out;
   input [2:0]gt1_rxprbssel_in;
@@ -361,6 +367,7 @@ module c2c_mgt
   input gt2_rxuserrdy_in;
   output gt2_eyescandataerror_out;
   input gt2_eyescantrigger_in;
+  output [1:0]gt2_rxclkcorcnt_out;
   output [31:0]gt2_rxdata_out;
   output gt2_rxprbserr_out;
   input [2:0]gt2_rxprbssel_in;
@@ -402,6 +409,7 @@ module c2c_mgt
   input gt3_rxuserrdy_in;
   output gt3_eyescandataerror_out;
   input gt3_eyescantrigger_in;
+  output [1:0]gt3_rxclkcorcnt_out;
   output [31:0]gt3_rxdata_out;
   output gt3_rxprbserr_out;
   input [2:0]gt3_rxprbssel_in;
@@ -471,6 +479,7 @@ module c2c_mgt
   wire gt0_rx_mmcm_lock_out;
   wire gt0_rxbyteisaligned_out;
   wire [3:0]gt0_rxcharisk_out;
+  wire [1:0]gt0_rxclkcorcnt_out;
   wire [31:0]gt0_rxdata_out;
   wire [3:0]gt0_rxdisperr_out;
   wire gt0_rxlpmhfhold_in;
@@ -521,6 +530,7 @@ module c2c_mgt
   wire gt1_rx_mmcm_lock_out;
   wire gt1_rxbyteisaligned_out;
   wire [3:0]gt1_rxcharisk_out;
+  wire [1:0]gt1_rxclkcorcnt_out;
   wire [31:0]gt1_rxdata_out;
   wire [3:0]gt1_rxdisperr_out;
   wire gt1_rxlpmhfhold_in;
@@ -571,6 +581,7 @@ module c2c_mgt
   wire gt2_rx_mmcm_lock_out;
   wire gt2_rxbyteisaligned_out;
   wire [3:0]gt2_rxcharisk_out;
+  wire [1:0]gt2_rxclkcorcnt_out;
   wire [31:0]gt2_rxdata_out;
   wire [3:0]gt2_rxdisperr_out;
   wire gt2_rxlpmhfhold_in;
@@ -621,6 +632,7 @@ module c2c_mgt
   wire gt3_rx_mmcm_lock_out;
   wire gt3_rxbyteisaligned_out;
   wire [3:0]gt3_rxcharisk_out;
+  wire [1:0]gt3_rxclkcorcnt_out;
   wire [31:0]gt3_rxdata_out;
   wire [3:0]gt3_rxdisperr_out;
   wire gt3_rxlpmhfhold_in;
@@ -689,6 +701,7 @@ module c2c_mgt
         .gt0_rx_mmcm_lock_out(gt0_rx_mmcm_lock_out),
         .gt0_rxbyteisaligned_out(gt0_rxbyteisaligned_out),
         .gt0_rxcharisk_out(gt0_rxcharisk_out),
+        .gt0_rxclkcorcnt_out(gt0_rxclkcorcnt_out),
         .gt0_rxdata_out(gt0_rxdata_out),
         .gt0_rxdisperr_out(gt0_rxdisperr_out),
         .gt0_rxlpmhfhold_in(gt0_rxlpmhfhold_in),
@@ -739,6 +752,7 @@ module c2c_mgt
         .gt1_rx_mmcm_lock_out(gt1_rx_mmcm_lock_out),
         .gt1_rxbyteisaligned_out(gt1_rxbyteisaligned_out),
         .gt1_rxcharisk_out(gt1_rxcharisk_out),
+        .gt1_rxclkcorcnt_out(gt1_rxclkcorcnt_out),
         .gt1_rxdata_out(gt1_rxdata_out),
         .gt1_rxdisperr_out(gt1_rxdisperr_out),
         .gt1_rxlpmhfhold_in(gt1_rxlpmhfhold_in),
@@ -789,6 +803,7 @@ module c2c_mgt
         .gt2_rx_mmcm_lock_out(gt2_rx_mmcm_lock_out),
         .gt2_rxbyteisaligned_out(gt2_rxbyteisaligned_out),
         .gt2_rxcharisk_out(gt2_rxcharisk_out),
+        .gt2_rxclkcorcnt_out(gt2_rxclkcorcnt_out),
         .gt2_rxdata_out(gt2_rxdata_out),
         .gt2_rxdisperr_out(gt2_rxdisperr_out),
         .gt2_rxlpmhfhold_in(gt2_rxlpmhfhold_in),
@@ -839,6 +854,7 @@ module c2c_mgt
         .gt3_rx_mmcm_lock_out(gt3_rx_mmcm_lock_out),
         .gt3_rxbyteisaligned_out(gt3_rxbyteisaligned_out),
         .gt3_rxcharisk_out(gt3_rxcharisk_out),
+        .gt3_rxclkcorcnt_out(gt3_rxclkcorcnt_out),
         .gt3_rxdata_out(gt3_rxdata_out),
         .gt3_rxdisperr_out(gt3_rxdisperr_out),
         .gt3_rxlpmhfhold_in(gt3_rxlpmhfhold_in),
@@ -1028,6 +1044,7 @@ module c2c_mgt_c2c_mgt_GT
     gt0_txresetdone_out,
     gt0_dmonitorout_out,
     gt0_drpdo_out,
+    gt0_rxclkcorcnt_out,
     gt0_rxdata_out,
     gt0_rxcharisk_out,
     gt0_rxdisperr_out,
@@ -1079,6 +1096,7 @@ module c2c_mgt_c2c_mgt_GT
   output gt0_txresetdone_out;
   output [14:0]gt0_dmonitorout_out;
   output [15:0]gt0_drpdo_out;
+  output [1:0]gt0_rxclkcorcnt_out;
   output [31:0]gt0_rxdata_out;
   output [3:0]gt0_rxcharisk_out;
   output [3:0]gt0_rxdisperr_out;
@@ -1145,6 +1163,7 @@ module c2c_mgt_c2c_mgt_GT
   wire gt0_pll1outrefclk_out;
   wire gt0_rxbyteisaligned_out;
   wire [3:0]gt0_rxcharisk_out;
+  wire [1:0]gt0_rxclkcorcnt_out;
   wire [31:0]gt0_rxdata_out;
   wire [3:0]gt0_rxdisperr_out;
   wire gt0_rxlpmhfhold_in;
@@ -1223,7 +1242,6 @@ module c2c_mgt_c2c_mgt_GT
   wire [2:0]NLW_gtpe2_i_RXBUFSTATUS_UNCONNECTED;
   wire [3:0]NLW_gtpe2_i_RXCHARISCOMMA_UNCONNECTED;
   wire [3:0]NLW_gtpe2_i_RXCHBONDO_UNCONNECTED;
-  wire [1:0]NLW_gtpe2_i_RXCLKCORCNT_UNCONNECTED;
   wire [1:0]NLW_gtpe2_i_RXDATAVALID_UNCONNECTED;
   wire [2:0]NLW_gtpe2_i_RXHEADER_UNCONNECTED;
   wire [4:0]NLW_gtpe2_i_RXPHMONITOR_UNCONNECTED;
@@ -1267,24 +1285,24 @@ module c2c_mgt_c2c_mgt_GT
     .CHAN_BOND_SEQ_2_USE("FALSE"),
     .CHAN_BOND_SEQ_LEN(1),
     .CLK_COMMON_SWING(1'b0),
-    .CLK_CORRECT_USE("FALSE"),
+    .CLK_CORRECT_USE("TRUE"),
     .CLK_COR_KEEP_IDLE("FALSE"),
-    .CLK_COR_MAX_LAT(10),
-    .CLK_COR_MIN_LAT(8),
+    .CLK_COR_MAX_LAT(17),
+    .CLK_COR_MIN_LAT(12),
     .CLK_COR_PRECEDENCE("TRUE"),
     .CLK_COR_REPEAT_WAIT(0),
-    .CLK_COR_SEQ_1_1(10'b0100000000),
-    .CLK_COR_SEQ_1_2(10'b0000000000),
-    .CLK_COR_SEQ_1_3(10'b0000000000),
-    .CLK_COR_SEQ_1_4(10'b0000000000),
+    .CLK_COR_SEQ_1_1(10'b0100011100),
+    .CLK_COR_SEQ_1_2(10'b0000000010),
+    .CLK_COR_SEQ_1_3(10'b0000000011),
+    .CLK_COR_SEQ_1_4(10'b0000000100),
     .CLK_COR_SEQ_1_ENABLE(4'b1111),
-    .CLK_COR_SEQ_2_1(10'b0100000000),
+    .CLK_COR_SEQ_2_1(10'b0000000000),
     .CLK_COR_SEQ_2_2(10'b0000000000),
     .CLK_COR_SEQ_2_3(10'b0000000000),
     .CLK_COR_SEQ_2_4(10'b0000000000),
     .CLK_COR_SEQ_2_ENABLE(4'b1111),
     .CLK_COR_SEQ_2_USE("FALSE"),
-    .CLK_COR_SEQ_LEN(1),
+    .CLK_COR_SEQ_LEN(4),
     .DEC_MCOMMA_DETECT("TRUE"),
     .DEC_PCOMMA_DETECT("TRUE"),
     .DEC_VALID_COMMA_ONLY("FALSE"),
@@ -1330,7 +1348,7 @@ module c2c_mgt_c2c_mgt_GT
     .PMA_RSV6(1'b0),
     .PMA_RSV7(1'b0),
     .RXBUFRESET_TIME(5'b00001),
-    .RXBUF_ADDR_MODE("FAST"),
+    .RXBUF_ADDR_MODE("FULL"),
     .RXBUF_EIDLE_HI_CNT(4'b1000),
     .RXBUF_EIDLE_LO_CNT(4'b0000),
     .RXBUF_EN("TRUE"),
@@ -1541,7 +1559,7 @@ module c2c_mgt_c2c_mgt_GT
         .RXCHBONDMASTER(1'b0),
         .RXCHBONDO(NLW_gtpe2_i_RXCHBONDO_UNCONNECTED[3:0]),
         .RXCHBONDSLAVE(1'b0),
-        .RXCLKCORCNT(NLW_gtpe2_i_RXCLKCORCNT_UNCONNECTED[1:0]),
+        .RXCLKCORCNT(gt0_rxclkcorcnt_out),
         .RXCOMINITDET(NLW_gtpe2_i_RXCOMINITDET_UNCONNECTED),
         .RXCOMMADET(NLW_gtpe2_i_RXCOMMADET_UNCONNECTED),
         .RXCOMMADETEN(1'b1),
@@ -1896,6 +1914,7 @@ module c2c_mgt_c2c_mgt_GT_65
     gt1_txresetdone_out,
     gt1_dmonitorout_out,
     gt1_drpdo_out,
+    gt1_rxclkcorcnt_out,
     gt1_rxdata_out,
     gt1_rxcharisk_out,
     gt1_rxdisperr_out,
@@ -1946,6 +1965,7 @@ module c2c_mgt_c2c_mgt_GT_65
   output gt1_txresetdone_out;
   output [14:0]gt1_dmonitorout_out;
   output [15:0]gt1_drpdo_out;
+  output [1:0]gt1_rxclkcorcnt_out;
   output [31:0]gt1_rxdata_out;
   output [3:0]gt1_rxcharisk_out;
   output [3:0]gt1_rxdisperr_out;
@@ -2011,6 +2031,7 @@ module c2c_mgt_c2c_mgt_GT_65
   wire gt1_gttxreset_in;
   wire gt1_rxbyteisaligned_out;
   wire [3:0]gt1_rxcharisk_out;
+  wire [1:0]gt1_rxclkcorcnt_out;
   wire [31:0]gt1_rxdata_out;
   wire [3:0]gt1_rxdisperr_out;
   wire gt1_rxlpmhfhold_in;
@@ -2104,7 +2125,6 @@ module c2c_mgt_c2c_mgt_GT_65
   wire [2:0]NLW_gtpe2_i_RXBUFSTATUS_UNCONNECTED;
   wire [3:0]NLW_gtpe2_i_RXCHARISCOMMA_UNCONNECTED;
   wire [3:0]NLW_gtpe2_i_RXCHBONDO_UNCONNECTED;
-  wire [1:0]NLW_gtpe2_i_RXCLKCORCNT_UNCONNECTED;
   wire [1:0]NLW_gtpe2_i_RXDATAVALID_UNCONNECTED;
   wire [2:0]NLW_gtpe2_i_RXHEADER_UNCONNECTED;
   wire [4:0]NLW_gtpe2_i_RXPHMONITOR_UNCONNECTED;
@@ -2148,24 +2168,24 @@ module c2c_mgt_c2c_mgt_GT_65
     .CHAN_BOND_SEQ_2_USE("FALSE"),
     .CHAN_BOND_SEQ_LEN(1),
     .CLK_COMMON_SWING(1'b0),
-    .CLK_CORRECT_USE("FALSE"),
+    .CLK_CORRECT_USE("TRUE"),
     .CLK_COR_KEEP_IDLE("FALSE"),
-    .CLK_COR_MAX_LAT(10),
-    .CLK_COR_MIN_LAT(8),
+    .CLK_COR_MAX_LAT(17),
+    .CLK_COR_MIN_LAT(12),
     .CLK_COR_PRECEDENCE("TRUE"),
     .CLK_COR_REPEAT_WAIT(0),
-    .CLK_COR_SEQ_1_1(10'b0100000000),
-    .CLK_COR_SEQ_1_2(10'b0000000000),
-    .CLK_COR_SEQ_1_3(10'b0000000000),
-    .CLK_COR_SEQ_1_4(10'b0000000000),
+    .CLK_COR_SEQ_1_1(10'b0100011100),
+    .CLK_COR_SEQ_1_2(10'b0000000010),
+    .CLK_COR_SEQ_1_3(10'b0000000011),
+    .CLK_COR_SEQ_1_4(10'b0000000100),
     .CLK_COR_SEQ_1_ENABLE(4'b1111),
-    .CLK_COR_SEQ_2_1(10'b0100000000),
+    .CLK_COR_SEQ_2_1(10'b0000000000),
     .CLK_COR_SEQ_2_2(10'b0000000000),
     .CLK_COR_SEQ_2_3(10'b0000000000),
     .CLK_COR_SEQ_2_4(10'b0000000000),
     .CLK_COR_SEQ_2_ENABLE(4'b1111),
     .CLK_COR_SEQ_2_USE("FALSE"),
-    .CLK_COR_SEQ_LEN(1),
+    .CLK_COR_SEQ_LEN(4),
     .DEC_MCOMMA_DETECT("TRUE"),
     .DEC_PCOMMA_DETECT("TRUE"),
     .DEC_VALID_COMMA_ONLY("FALSE"),
@@ -2211,7 +2231,7 @@ module c2c_mgt_c2c_mgt_GT_65
     .PMA_RSV6(1'b0),
     .PMA_RSV7(1'b0),
     .RXBUFRESET_TIME(5'b00001),
-    .RXBUF_ADDR_MODE("FAST"),
+    .RXBUF_ADDR_MODE("FULL"),
     .RXBUF_EIDLE_HI_CNT(4'b1000),
     .RXBUF_EIDLE_LO_CNT(4'b0000),
     .RXBUF_EN("TRUE"),
@@ -2422,7 +2442,7 @@ module c2c_mgt_c2c_mgt_GT_65
         .RXCHBONDMASTER(1'b0),
         .RXCHBONDO(NLW_gtpe2_i_RXCHBONDO_UNCONNECTED[3:0]),
         .RXCHBONDSLAVE(1'b0),
-        .RXCLKCORCNT(NLW_gtpe2_i_RXCLKCORCNT_UNCONNECTED[1:0]),
+        .RXCLKCORCNT(gt1_rxclkcorcnt_out),
         .RXCOMINITDET(NLW_gtpe2_i_RXCOMINITDET_UNCONNECTED),
         .RXCOMMADET(NLW_gtpe2_i_RXCOMMADET_UNCONNECTED),
         .RXCOMMADETEN(1'b1),
@@ -2777,6 +2797,7 @@ module c2c_mgt_c2c_mgt_GT_66
     gt2_txresetdone_out,
     gt2_dmonitorout_out,
     gt2_drpdo_out,
+    gt2_rxclkcorcnt_out,
     gt2_rxdata_out,
     gt2_rxcharisk_out,
     gt2_rxdisperr_out,
@@ -2827,6 +2848,7 @@ module c2c_mgt_c2c_mgt_GT_66
   output gt2_txresetdone_out;
   output [14:0]gt2_dmonitorout_out;
   output [15:0]gt2_drpdo_out;
+  output [1:0]gt2_rxclkcorcnt_out;
   output [31:0]gt2_rxdata_out;
   output [3:0]gt2_rxcharisk_out;
   output [3:0]gt2_rxdisperr_out;
@@ -2892,6 +2914,7 @@ module c2c_mgt_c2c_mgt_GT_66
   wire gt2_gttxreset_in;
   wire gt2_rxbyteisaligned_out;
   wire [3:0]gt2_rxcharisk_out;
+  wire [1:0]gt2_rxclkcorcnt_out;
   wire [31:0]gt2_rxdata_out;
   wire [3:0]gt2_rxdisperr_out;
   wire gt2_rxlpmhfhold_in;
@@ -2985,7 +3008,6 @@ module c2c_mgt_c2c_mgt_GT_66
   wire [2:0]NLW_gtpe2_i_RXBUFSTATUS_UNCONNECTED;
   wire [3:0]NLW_gtpe2_i_RXCHARISCOMMA_UNCONNECTED;
   wire [3:0]NLW_gtpe2_i_RXCHBONDO_UNCONNECTED;
-  wire [1:0]NLW_gtpe2_i_RXCLKCORCNT_UNCONNECTED;
   wire [1:0]NLW_gtpe2_i_RXDATAVALID_UNCONNECTED;
   wire [2:0]NLW_gtpe2_i_RXHEADER_UNCONNECTED;
   wire [4:0]NLW_gtpe2_i_RXPHMONITOR_UNCONNECTED;
@@ -3029,24 +3051,24 @@ module c2c_mgt_c2c_mgt_GT_66
     .CHAN_BOND_SEQ_2_USE("FALSE"),
     .CHAN_BOND_SEQ_LEN(1),
     .CLK_COMMON_SWING(1'b0),
-    .CLK_CORRECT_USE("FALSE"),
+    .CLK_CORRECT_USE("TRUE"),
     .CLK_COR_KEEP_IDLE("FALSE"),
-    .CLK_COR_MAX_LAT(10),
-    .CLK_COR_MIN_LAT(8),
+    .CLK_COR_MAX_LAT(17),
+    .CLK_COR_MIN_LAT(12),
     .CLK_COR_PRECEDENCE("TRUE"),
     .CLK_COR_REPEAT_WAIT(0),
-    .CLK_COR_SEQ_1_1(10'b0100000000),
-    .CLK_COR_SEQ_1_2(10'b0000000000),
-    .CLK_COR_SEQ_1_3(10'b0000000000),
-    .CLK_COR_SEQ_1_4(10'b0000000000),
+    .CLK_COR_SEQ_1_1(10'b0100011100),
+    .CLK_COR_SEQ_1_2(10'b0000000010),
+    .CLK_COR_SEQ_1_3(10'b0000000011),
+    .CLK_COR_SEQ_1_4(10'b0000000100),
     .CLK_COR_SEQ_1_ENABLE(4'b1111),
-    .CLK_COR_SEQ_2_1(10'b0100000000),
+    .CLK_COR_SEQ_2_1(10'b0000000000),
     .CLK_COR_SEQ_2_2(10'b0000000000),
     .CLK_COR_SEQ_2_3(10'b0000000000),
     .CLK_COR_SEQ_2_4(10'b0000000000),
     .CLK_COR_SEQ_2_ENABLE(4'b1111),
     .CLK_COR_SEQ_2_USE("FALSE"),
-    .CLK_COR_SEQ_LEN(1),
+    .CLK_COR_SEQ_LEN(4),
     .DEC_MCOMMA_DETECT("TRUE"),
     .DEC_PCOMMA_DETECT("TRUE"),
     .DEC_VALID_COMMA_ONLY("FALSE"),
@@ -3092,7 +3114,7 @@ module c2c_mgt_c2c_mgt_GT_66
     .PMA_RSV6(1'b0),
     .PMA_RSV7(1'b0),
     .RXBUFRESET_TIME(5'b00001),
-    .RXBUF_ADDR_MODE("FAST"),
+    .RXBUF_ADDR_MODE("FULL"),
     .RXBUF_EIDLE_HI_CNT(4'b1000),
     .RXBUF_EIDLE_LO_CNT(4'b0000),
     .RXBUF_EN("TRUE"),
@@ -3303,7 +3325,7 @@ module c2c_mgt_c2c_mgt_GT_66
         .RXCHBONDMASTER(1'b0),
         .RXCHBONDO(NLW_gtpe2_i_RXCHBONDO_UNCONNECTED[3:0]),
         .RXCHBONDSLAVE(1'b0),
-        .RXCLKCORCNT(NLW_gtpe2_i_RXCLKCORCNT_UNCONNECTED[1:0]),
+        .RXCLKCORCNT(gt2_rxclkcorcnt_out),
         .RXCOMINITDET(NLW_gtpe2_i_RXCOMINITDET_UNCONNECTED),
         .RXCOMMADET(NLW_gtpe2_i_RXCOMMADET_UNCONNECTED),
         .RXCOMMADETEN(1'b1),
@@ -3658,6 +3680,7 @@ module c2c_mgt_c2c_mgt_GT_67
     gt3_txresetdone_out,
     gt3_dmonitorout_out,
     gt3_drpdo_out,
+    gt3_rxclkcorcnt_out,
     gt3_rxdata_out,
     gt3_rxcharisk_out,
     gt3_rxdisperr_out,
@@ -3708,6 +3731,7 @@ module c2c_mgt_c2c_mgt_GT_67
   output gt3_txresetdone_out;
   output [14:0]gt3_dmonitorout_out;
   output [15:0]gt3_drpdo_out;
+  output [1:0]gt3_rxclkcorcnt_out;
   output [31:0]gt3_rxdata_out;
   output [3:0]gt3_rxcharisk_out;
   output [3:0]gt3_rxdisperr_out;
@@ -3773,6 +3797,7 @@ module c2c_mgt_c2c_mgt_GT_67
   wire gt3_gttxreset_in;
   wire gt3_rxbyteisaligned_out;
   wire [3:0]gt3_rxcharisk_out;
+  wire [1:0]gt3_rxclkcorcnt_out;
   wire [31:0]gt3_rxdata_out;
   wire [3:0]gt3_rxdisperr_out;
   wire gt3_rxlpmhfhold_in;
@@ -3866,7 +3891,6 @@ module c2c_mgt_c2c_mgt_GT_67
   wire [2:0]NLW_gtpe2_i_RXBUFSTATUS_UNCONNECTED;
   wire [3:0]NLW_gtpe2_i_RXCHARISCOMMA_UNCONNECTED;
   wire [3:0]NLW_gtpe2_i_RXCHBONDO_UNCONNECTED;
-  wire [1:0]NLW_gtpe2_i_RXCLKCORCNT_UNCONNECTED;
   wire [1:0]NLW_gtpe2_i_RXDATAVALID_UNCONNECTED;
   wire [2:0]NLW_gtpe2_i_RXHEADER_UNCONNECTED;
   wire [4:0]NLW_gtpe2_i_RXPHMONITOR_UNCONNECTED;
@@ -3910,24 +3934,24 @@ module c2c_mgt_c2c_mgt_GT_67
     .CHAN_BOND_SEQ_2_USE("FALSE"),
     .CHAN_BOND_SEQ_LEN(1),
     .CLK_COMMON_SWING(1'b0),
-    .CLK_CORRECT_USE("FALSE"),
+    .CLK_CORRECT_USE("TRUE"),
     .CLK_COR_KEEP_IDLE("FALSE"),
-    .CLK_COR_MAX_LAT(10),
-    .CLK_COR_MIN_LAT(8),
+    .CLK_COR_MAX_LAT(17),
+    .CLK_COR_MIN_LAT(12),
     .CLK_COR_PRECEDENCE("TRUE"),
     .CLK_COR_REPEAT_WAIT(0),
-    .CLK_COR_SEQ_1_1(10'b0100000000),
-    .CLK_COR_SEQ_1_2(10'b0000000000),
-    .CLK_COR_SEQ_1_3(10'b0000000000),
-    .CLK_COR_SEQ_1_4(10'b0000000000),
+    .CLK_COR_SEQ_1_1(10'b0100011100),
+    .CLK_COR_SEQ_1_2(10'b0000000010),
+    .CLK_COR_SEQ_1_3(10'b0000000011),
+    .CLK_COR_SEQ_1_4(10'b0000000100),
     .CLK_COR_SEQ_1_ENABLE(4'b1111),
-    .CLK_COR_SEQ_2_1(10'b0100000000),
+    .CLK_COR_SEQ_2_1(10'b0000000000),
     .CLK_COR_SEQ_2_2(10'b0000000000),
     .CLK_COR_SEQ_2_3(10'b0000000000),
     .CLK_COR_SEQ_2_4(10'b0000000000),
     .CLK_COR_SEQ_2_ENABLE(4'b1111),
     .CLK_COR_SEQ_2_USE("FALSE"),
-    .CLK_COR_SEQ_LEN(1),
+    .CLK_COR_SEQ_LEN(4),
     .DEC_MCOMMA_DETECT("TRUE"),
     .DEC_PCOMMA_DETECT("TRUE"),
     .DEC_VALID_COMMA_ONLY("FALSE"),
@@ -3973,7 +3997,7 @@ module c2c_mgt_c2c_mgt_GT_67
     .PMA_RSV6(1'b0),
     .PMA_RSV7(1'b0),
     .RXBUFRESET_TIME(5'b00001),
-    .RXBUF_ADDR_MODE("FAST"),
+    .RXBUF_ADDR_MODE("FULL"),
     .RXBUF_EIDLE_HI_CNT(4'b1000),
     .RXBUF_EIDLE_LO_CNT(4'b0000),
     .RXBUF_EN("TRUE"),
@@ -4184,7 +4208,7 @@ module c2c_mgt_c2c_mgt_GT_67
         .RXCHBONDMASTER(1'b0),
         .RXCHBONDO(NLW_gtpe2_i_RXCHBONDO_UNCONNECTED[3:0]),
         .RXCHBONDSLAVE(1'b0),
-        .RXCLKCORCNT(NLW_gtpe2_i_RXCLKCORCNT_UNCONNECTED[1:0]),
+        .RXCLKCORCNT(gt3_rxclkcorcnt_out),
         .RXCOMINITDET(NLW_gtpe2_i_RXCOMINITDET_UNCONNECTED),
         .RXCOMMADET(NLW_gtpe2_i_RXCOMMADET_UNCONNECTED),
         .RXCOMMADETEN(1'b1),
@@ -22280,6 +22304,7 @@ module c2c_mgt_c2c_mgt_init
     gt0_txoutclkpcs_out,
     gt0_dmonitorout_out,
     gt0_drpdo_out,
+    gt0_rxclkcorcnt_out,
     gt0_rxdata_out,
     gt0_rxcharisk_out,
     gt0_rxdisperr_out,
@@ -22295,6 +22320,7 @@ module c2c_mgt_c2c_mgt_init
     gt1_txoutclkpcs_out,
     gt1_dmonitorout_out,
     gt1_drpdo_out,
+    gt1_rxclkcorcnt_out,
     gt1_rxdata_out,
     gt1_rxcharisk_out,
     gt1_rxdisperr_out,
@@ -22310,6 +22336,7 @@ module c2c_mgt_c2c_mgt_init
     gt2_txoutclkpcs_out,
     gt2_dmonitorout_out,
     gt2_drpdo_out,
+    gt2_rxclkcorcnt_out,
     gt2_rxdata_out,
     gt2_rxcharisk_out,
     gt2_rxdisperr_out,
@@ -22325,6 +22352,7 @@ module c2c_mgt_c2c_mgt_init
     gt3_txoutclkpcs_out,
     gt3_dmonitorout_out,
     gt3_drpdo_out,
+    gt3_rxclkcorcnt_out,
     gt3_rxdata_out,
     gt3_rxcharisk_out,
     gt3_rxdisperr_out,
@@ -22459,6 +22487,7 @@ module c2c_mgt_c2c_mgt_init
   output gt0_txoutclkpcs_out;
   output [14:0]gt0_dmonitorout_out;
   output [15:0]gt0_drpdo_out;
+  output [1:0]gt0_rxclkcorcnt_out;
   output [31:0]gt0_rxdata_out;
   output [3:0]gt0_rxcharisk_out;
   output [3:0]gt0_rxdisperr_out;
@@ -22474,6 +22503,7 @@ module c2c_mgt_c2c_mgt_init
   output gt1_txoutclkpcs_out;
   output [14:0]gt1_dmonitorout_out;
   output [15:0]gt1_drpdo_out;
+  output [1:0]gt1_rxclkcorcnt_out;
   output [31:0]gt1_rxdata_out;
   output [3:0]gt1_rxcharisk_out;
   output [3:0]gt1_rxdisperr_out;
@@ -22489,6 +22519,7 @@ module c2c_mgt_c2c_mgt_init
   output gt2_txoutclkpcs_out;
   output [14:0]gt2_dmonitorout_out;
   output [15:0]gt2_drpdo_out;
+  output [1:0]gt2_rxclkcorcnt_out;
   output [31:0]gt2_rxdata_out;
   output [3:0]gt2_rxcharisk_out;
   output [3:0]gt2_rxdisperr_out;
@@ -22504,6 +22535,7 @@ module c2c_mgt_c2c_mgt_init
   output gt3_txoutclkpcs_out;
   output [14:0]gt3_dmonitorout_out;
   output [15:0]gt3_drpdo_out;
+  output [1:0]gt3_rxclkcorcnt_out;
   output [31:0]gt3_rxdata_out;
   output [3:0]gt3_rxcharisk_out;
   output [3:0]gt3_rxdisperr_out;
@@ -22717,6 +22749,7 @@ module c2c_mgt_c2c_mgt_init
   wire gt0_rx_fsm_reset_done_out;
   wire gt0_rxbyteisaligned_out;
   wire [3:0]gt0_rxcharisk_out;
+  wire [1:0]gt0_rxclkcorcnt_out;
   wire [31:0]gt0_rxdata_out;
   wire [3:0]gt0_rxdisperr_out;
   wire gt0_rxlpmhfhold_in;
@@ -22869,6 +22902,7 @@ module c2c_mgt_c2c_mgt_init
   wire gt1_rx_fsm_reset_done_out;
   wire gt1_rxbyteisaligned_out;
   wire [3:0]gt1_rxcharisk_out;
+  wire [1:0]gt1_rxclkcorcnt_out;
   wire [31:0]gt1_rxdata_out;
   wire [3:0]gt1_rxdisperr_out;
   wire gt1_rxlpmhfhold_in;
@@ -23019,6 +23053,7 @@ module c2c_mgt_c2c_mgt_init
   wire gt2_rx_fsm_reset_done_out;
   wire gt2_rxbyteisaligned_out;
   wire [3:0]gt2_rxcharisk_out;
+  wire [1:0]gt2_rxclkcorcnt_out;
   wire [31:0]gt2_rxdata_out;
   wire [3:0]gt2_rxdisperr_out;
   wire gt2_rxlpmhfhold_in;
@@ -23169,6 +23204,7 @@ module c2c_mgt_c2c_mgt_init
   wire gt3_rx_fsm_reset_done_out;
   wire gt3_rxbyteisaligned_out;
   wire [3:0]gt3_rxcharisk_out;
+  wire [1:0]gt3_rxclkcorcnt_out;
   wire [31:0]gt3_rxdata_out;
   wire [3:0]gt3_rxdisperr_out;
   wire gt3_rxlpmhfhold_in;
@@ -23233,6 +23269,7 @@ module c2c_mgt_c2c_mgt_init
         .gt0_pll1outrefclk_out(gt0_pll1outrefclk_out),
         .gt0_rxbyteisaligned_out(gt0_rxbyteisaligned_out),
         .gt0_rxcharisk_out(gt0_rxcharisk_out),
+        .gt0_rxclkcorcnt_out(gt0_rxclkcorcnt_out),
         .gt0_rxdata_out(gt0_rxdata_out),
         .gt0_rxdisperr_out(gt0_rxdisperr_out),
         .gt0_rxlpmhfhold_in(gt0_rxlpmhfhold_in),
@@ -23275,6 +23312,7 @@ module c2c_mgt_c2c_mgt_init
         .gt1_gttxreset_in(gt1_gttxreset_i),
         .gt1_rxbyteisaligned_out(gt1_rxbyteisaligned_out),
         .gt1_rxcharisk_out(gt1_rxcharisk_out),
+        .gt1_rxclkcorcnt_out(gt1_rxclkcorcnt_out),
         .gt1_rxdata_out(gt1_rxdata_out),
         .gt1_rxdisperr_out(gt1_rxdisperr_out),
         .gt1_rxlpmhfhold_in(gt1_rxlpmhfhold_in),
@@ -23316,6 +23354,7 @@ module c2c_mgt_c2c_mgt_init
         .gt2_gttxreset_in(gt2_gttxreset_i),
         .gt2_rxbyteisaligned_out(gt2_rxbyteisaligned_out),
         .gt2_rxcharisk_out(gt2_rxcharisk_out),
+        .gt2_rxclkcorcnt_out(gt2_rxclkcorcnt_out),
         .gt2_rxdata_out(gt2_rxdata_out),
         .gt2_rxdisperr_out(gt2_rxdisperr_out),
         .gt2_rxlpmhfhold_in(gt2_rxlpmhfhold_in),
@@ -23357,6 +23396,7 @@ module c2c_mgt_c2c_mgt_init
         .gt3_gttxreset_in(gt3_gttxreset_i),
         .gt3_rxbyteisaligned_out(gt3_rxbyteisaligned_out),
         .gt3_rxcharisk_out(gt3_rxcharisk_out),
+        .gt3_rxclkcorcnt_out(gt3_rxclkcorcnt_out),
         .gt3_rxdata_out(gt3_rxdata_out),
         .gt3_rxdisperr_out(gt3_rxdisperr_out),
         .gt3_rxlpmhfhold_in(gt3_rxlpmhfhold_in),
@@ -26285,6 +26325,7 @@ module c2c_mgt_c2c_mgt_multi_gt
     gt0_txresetdone_out,
     gt0_dmonitorout_out,
     gt0_drpdo_out,
+    gt0_rxclkcorcnt_out,
     gt0_rxdata_out,
     gt0_rxcharisk_out,
     gt0_rxdisperr_out,
@@ -26303,6 +26344,7 @@ module c2c_mgt_c2c_mgt_multi_gt
     gt1_txresetdone_out,
     gt1_dmonitorout_out,
     gt1_drpdo_out,
+    gt1_rxclkcorcnt_out,
     gt1_rxdata_out,
     gt1_rxcharisk_out,
     gt1_rxdisperr_out,
@@ -26321,6 +26363,7 @@ module c2c_mgt_c2c_mgt_multi_gt
     gt2_txresetdone_out,
     gt2_dmonitorout_out,
     gt2_drpdo_out,
+    gt2_rxclkcorcnt_out,
     gt2_rxdata_out,
     gt2_rxcharisk_out,
     gt2_rxdisperr_out,
@@ -26339,6 +26382,7 @@ module c2c_mgt_c2c_mgt_multi_gt
     gt3_txresetdone_out,
     gt3_dmonitorout_out,
     gt3_drpdo_out,
+    gt3_rxclkcorcnt_out,
     gt3_rxdata_out,
     gt3_rxcharisk_out,
     gt3_rxdisperr_out,
@@ -26462,6 +26506,7 @@ module c2c_mgt_c2c_mgt_multi_gt
   output gt0_txresetdone_out;
   output [14:0]gt0_dmonitorout_out;
   output [15:0]gt0_drpdo_out;
+  output [1:0]gt0_rxclkcorcnt_out;
   output [31:0]gt0_rxdata_out;
   output [3:0]gt0_rxcharisk_out;
   output [3:0]gt0_rxdisperr_out;
@@ -26480,6 +26525,7 @@ module c2c_mgt_c2c_mgt_multi_gt
   output gt1_txresetdone_out;
   output [14:0]gt1_dmonitorout_out;
   output [15:0]gt1_drpdo_out;
+  output [1:0]gt1_rxclkcorcnt_out;
   output [31:0]gt1_rxdata_out;
   output [3:0]gt1_rxcharisk_out;
   output [3:0]gt1_rxdisperr_out;
@@ -26498,6 +26544,7 @@ module c2c_mgt_c2c_mgt_multi_gt
   output gt2_txresetdone_out;
   output [14:0]gt2_dmonitorout_out;
   output [15:0]gt2_drpdo_out;
+  output [1:0]gt2_rxclkcorcnt_out;
   output [31:0]gt2_rxdata_out;
   output [3:0]gt2_rxcharisk_out;
   output [3:0]gt2_rxdisperr_out;
@@ -26516,6 +26563,7 @@ module c2c_mgt_c2c_mgt_multi_gt
   output gt3_txresetdone_out;
   output [14:0]gt3_dmonitorout_out;
   output [15:0]gt3_drpdo_out;
+  output [1:0]gt3_rxclkcorcnt_out;
   output [31:0]gt3_rxdata_out;
   output [3:0]gt3_rxcharisk_out;
   output [3:0]gt3_rxdisperr_out;
@@ -26650,6 +26698,7 @@ module c2c_mgt_c2c_mgt_multi_gt
   wire gt0_pll1outrefclk_out;
   wire gt0_rxbyteisaligned_out;
   wire [3:0]gt0_rxcharisk_out;
+  wire [1:0]gt0_rxclkcorcnt_out;
   wire [31:0]gt0_rxdata_out;
   wire [3:0]gt0_rxdisperr_out;
   wire gt0_rxlpmhfhold_in;
@@ -26692,6 +26741,7 @@ module c2c_mgt_c2c_mgt_multi_gt
   wire gt1_gttxreset_in;
   wire gt1_rxbyteisaligned_out;
   wire [3:0]gt1_rxcharisk_out;
+  wire [1:0]gt1_rxclkcorcnt_out;
   wire [31:0]gt1_rxdata_out;
   wire [3:0]gt1_rxdisperr_out;
   wire gt1_rxlpmhfhold_in;
@@ -26733,6 +26783,7 @@ module c2c_mgt_c2c_mgt_multi_gt
   wire gt2_gttxreset_in;
   wire gt2_rxbyteisaligned_out;
   wire [3:0]gt2_rxcharisk_out;
+  wire [1:0]gt2_rxclkcorcnt_out;
   wire [31:0]gt2_rxdata_out;
   wire [3:0]gt2_rxdisperr_out;
   wire gt2_rxlpmhfhold_in;
@@ -26774,6 +26825,7 @@ module c2c_mgt_c2c_mgt_multi_gt
   wire gt3_gttxreset_in;
   wire gt3_rxbyteisaligned_out;
   wire [3:0]gt3_rxcharisk_out;
+  wire [1:0]gt3_rxclkcorcnt_out;
   wire [31:0]gt3_rxdata_out;
   wire [3:0]gt3_rxdisperr_out;
   wire gt3_rxlpmhfhold_in;
@@ -26828,6 +26880,7 @@ module c2c_mgt_c2c_mgt_multi_gt
         .gt0_pll1outrefclk_out(gt0_pll1outrefclk_out),
         .gt0_rxbyteisaligned_out(gt0_rxbyteisaligned_out),
         .gt0_rxcharisk_out(gt0_rxcharisk_out),
+        .gt0_rxclkcorcnt_out(gt0_rxclkcorcnt_out),
         .gt0_rxdata_out(gt0_rxdata_out),
         .gt0_rxdisperr_out(gt0_rxdisperr_out),
         .gt0_rxlpmhfhold_in(gt0_rxlpmhfhold_in),
@@ -26879,6 +26932,7 @@ module c2c_mgt_c2c_mgt_multi_gt
         .gt1_gttxreset_in(gt1_gttxreset_in),
         .gt1_rxbyteisaligned_out(gt1_rxbyteisaligned_out),
         .gt1_rxcharisk_out(gt1_rxcharisk_out),
+        .gt1_rxclkcorcnt_out(gt1_rxclkcorcnt_out),
         .gt1_rxdata_out(gt1_rxdata_out),
         .gt1_rxdisperr_out(gt1_rxdisperr_out),
         .gt1_rxlpmhfhold_in(gt1_rxlpmhfhold_in),
@@ -26930,6 +26984,7 @@ module c2c_mgt_c2c_mgt_multi_gt
         .gt2_gttxreset_in(gt2_gttxreset_in),
         .gt2_rxbyteisaligned_out(gt2_rxbyteisaligned_out),
         .gt2_rxcharisk_out(gt2_rxcharisk_out),
+        .gt2_rxclkcorcnt_out(gt2_rxclkcorcnt_out),
         .gt2_rxdata_out(gt2_rxdata_out),
         .gt2_rxdisperr_out(gt2_rxdisperr_out),
         .gt2_rxlpmhfhold_in(gt2_rxlpmhfhold_in),
@@ -26981,6 +27036,7 @@ module c2c_mgt_c2c_mgt_multi_gt
         .gt3_gttxreset_in(gt3_gttxreset_in),
         .gt3_rxbyteisaligned_out(gt3_rxbyteisaligned_out),
         .gt3_rxcharisk_out(gt3_rxcharisk_out),
+        .gt3_rxclkcorcnt_out(gt3_rxclkcorcnt_out),
         .gt3_rxdata_out(gt3_rxdata_out),
         .gt3_rxdisperr_out(gt3_rxdisperr_out),
         .gt3_rxlpmhfhold_in(gt3_rxlpmhfhold_in),
@@ -27064,6 +27120,7 @@ module c2c_mgt_c2c_mgt_support
     gt0_rxuserrdy_in,
     gt0_eyescandataerror_out,
     gt0_eyescantrigger_in,
+    gt0_rxclkcorcnt_out,
     gt0_rxdata_out,
     gt0_rxprbserr_out,
     gt0_rxprbssel_in,
@@ -27105,6 +27162,7 @@ module c2c_mgt_c2c_mgt_support
     gt1_rxuserrdy_in,
     gt1_eyescandataerror_out,
     gt1_eyescantrigger_in,
+    gt1_rxclkcorcnt_out,
     gt1_rxdata_out,
     gt1_rxprbserr_out,
     gt1_rxprbssel_in,
@@ -27146,6 +27204,7 @@ module c2c_mgt_c2c_mgt_support
     gt2_rxuserrdy_in,
     gt2_eyescandataerror_out,
     gt2_eyescantrigger_in,
+    gt2_rxclkcorcnt_out,
     gt2_rxdata_out,
     gt2_rxprbserr_out,
     gt2_rxprbssel_in,
@@ -27187,6 +27246,7 @@ module c2c_mgt_c2c_mgt_support
     gt3_rxuserrdy_in,
     gt3_eyescandataerror_out,
     gt3_eyescantrigger_in,
+    gt3_rxclkcorcnt_out,
     gt3_rxdata_out,
     gt3_rxprbserr_out,
     gt3_rxprbssel_in,
@@ -27277,6 +27337,7 @@ module c2c_mgt_c2c_mgt_support
   input gt0_rxuserrdy_in;
   output gt0_eyescandataerror_out;
   input gt0_eyescantrigger_in;
+  output [1:0]gt0_rxclkcorcnt_out;
   output [31:0]gt0_rxdata_out;
   output gt0_rxprbserr_out;
   input [2:0]gt0_rxprbssel_in;
@@ -27318,6 +27379,7 @@ module c2c_mgt_c2c_mgt_support
   input gt1_rxuserrdy_in;
   output gt1_eyescandataerror_out;
   input gt1_eyescantrigger_in;
+  output [1:0]gt1_rxclkcorcnt_out;
   output [31:0]gt1_rxdata_out;
   output gt1_rxprbserr_out;
   input [2:0]gt1_rxprbssel_in;
@@ -27359,6 +27421,7 @@ module c2c_mgt_c2c_mgt_support
   input gt2_rxuserrdy_in;
   output gt2_eyescandataerror_out;
   input gt2_eyescantrigger_in;
+  output [1:0]gt2_rxclkcorcnt_out;
   output [31:0]gt2_rxdata_out;
   output gt2_rxprbserr_out;
   input [2:0]gt2_rxprbssel_in;
@@ -27400,6 +27463,7 @@ module c2c_mgt_c2c_mgt_support
   input gt3_rxuserrdy_in;
   output gt3_eyescandataerror_out;
   input gt3_eyescantrigger_in;
+  output [1:0]gt3_rxclkcorcnt_out;
   output [31:0]gt3_rxdata_out;
   output gt3_rxprbserr_out;
   input [2:0]gt3_rxprbssel_in;
@@ -27471,6 +27535,7 @@ module c2c_mgt_c2c_mgt_support
   wire gt0_rx_fsm_reset_done_out;
   wire gt0_rxbyteisaligned_out;
   wire [3:0]gt0_rxcharisk_out;
+  wire [1:0]gt0_rxclkcorcnt_out;
   wire [31:0]gt0_rxdata_out;
   wire [3:0]gt0_rxdisperr_out;
   wire gt0_rxlpmhfhold_in;
@@ -27514,6 +27579,7 @@ module c2c_mgt_c2c_mgt_support
   wire gt1_rx_fsm_reset_done_out;
   wire gt1_rxbyteisaligned_out;
   wire [3:0]gt1_rxcharisk_out;
+  wire [1:0]gt1_rxclkcorcnt_out;
   wire [31:0]gt1_rxdata_out;
   wire [3:0]gt1_rxdisperr_out;
   wire gt1_rxlpmhfhold_in;
@@ -27554,6 +27620,7 @@ module c2c_mgt_c2c_mgt_support
   wire gt2_rx_fsm_reset_done_out;
   wire gt2_rxbyteisaligned_out;
   wire [3:0]gt2_rxcharisk_out;
+  wire [1:0]gt2_rxclkcorcnt_out;
   wire [31:0]gt2_rxdata_out;
   wire [3:0]gt2_rxdisperr_out;
   wire gt2_rxlpmhfhold_in;
@@ -27595,6 +27662,7 @@ module c2c_mgt_c2c_mgt_support
   wire gt3_rx_mmcm_lock_out;
   wire gt3_rxbyteisaligned_out;
   wire [3:0]gt3_rxcharisk_out;
+  wire [1:0]gt3_rxclkcorcnt_out;
   wire [31:0]gt3_rxdata_out;
   wire [3:0]gt3_rxdisperr_out;
   wire gt3_rxlpmhfhold_in;
@@ -27679,6 +27747,7 @@ module c2c_mgt_c2c_mgt_support
         .gt0_rx_fsm_reset_done_out(gt0_rx_fsm_reset_done_out),
         .gt0_rxbyteisaligned_out(gt0_rxbyteisaligned_out),
         .gt0_rxcharisk_out(gt0_rxcharisk_out),
+        .gt0_rxclkcorcnt_out(gt0_rxclkcorcnt_out),
         .gt0_rxdata_out(gt0_rxdata_out),
         .gt0_rxdisperr_out(gt0_rxdisperr_out),
         .gt0_rxlpmhfhold_in(gt0_rxlpmhfhold_in),
@@ -27720,6 +27789,7 @@ module c2c_mgt_c2c_mgt_support
         .gt1_rx_fsm_reset_done_out(gt1_rx_fsm_reset_done_out),
         .gt1_rxbyteisaligned_out(gt1_rxbyteisaligned_out),
         .gt1_rxcharisk_out(gt1_rxcharisk_out),
+        .gt1_rxclkcorcnt_out(gt1_rxclkcorcnt_out),
         .gt1_rxdata_out(gt1_rxdata_out),
         .gt1_rxdisperr_out(gt1_rxdisperr_out),
         .gt1_rxlpmhfhold_in(gt1_rxlpmhfhold_in),
@@ -27760,6 +27830,7 @@ module c2c_mgt_c2c_mgt_support
         .gt2_rx_fsm_reset_done_out(gt2_rx_fsm_reset_done_out),
         .gt2_rxbyteisaligned_out(gt2_rxbyteisaligned_out),
         .gt2_rxcharisk_out(gt2_rxcharisk_out),
+        .gt2_rxclkcorcnt_out(gt2_rxclkcorcnt_out),
         .gt2_rxdata_out(gt2_rxdata_out),
         .gt2_rxdisperr_out(gt2_rxdisperr_out),
         .gt2_rxlpmhfhold_in(gt2_rxlpmhfhold_in),
@@ -27800,6 +27871,7 @@ module c2c_mgt_c2c_mgt_support
         .gt3_rx_fsm_reset_done_out(gt3_rx_fsm_reset_done_out),
         .gt3_rxbyteisaligned_out(gt3_rxbyteisaligned_out),
         .gt3_rxcharisk_out(gt3_rxcharisk_out),
+        .gt3_rxclkcorcnt_out(gt3_rxclkcorcnt_out),
         .gt3_rxdata_out(gt3_rxdata_out),
         .gt3_rxdisperr_out(gt3_rxdisperr_out),
         .gt3_rxlpmhfhold_in(gt3_rxlpmhfhold_in),

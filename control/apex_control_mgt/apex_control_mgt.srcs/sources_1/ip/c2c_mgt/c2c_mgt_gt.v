@@ -100,6 +100,8 @@ module c2c_mgt_GT #
     //------------------------ RX Margin Analysis Ports ------------------------
     output          eyescandataerror_out,
     input           eyescantrigger_in,
+    //----------------- Receive Ports - Clock Correction Ports -----------------
+    output  [1:0]   rxclkcorcnt_out,
     //---------------- Receive Ports - FPGA RX Interface Ports -----------------
     output  [31:0]  rxdata_out,
     input           rxusrclk_in,
@@ -270,19 +272,19 @@ wire            rxdatavalid_float_i;
             .CBCC_DATA_SOURCE_SEL                   ("DECODED"),
             .CLK_COR_SEQ_2_USE                      ("FALSE"),
             .CLK_COR_KEEP_IDLE                      ("FALSE"),
-            .CLK_COR_MAX_LAT                        (10),
-            .CLK_COR_MIN_LAT                        (8),
+            .CLK_COR_MAX_LAT                        (17),
+            .CLK_COR_MIN_LAT                        (12),
             .CLK_COR_PRECEDENCE                     ("TRUE"),
             .CLK_COR_REPEAT_WAIT                    (0),
-            .CLK_COR_SEQ_LEN                        (1),
+            .CLK_COR_SEQ_LEN                        (4),
             .CLK_COR_SEQ_1_ENABLE                   (4'b1111),
-            .CLK_COR_SEQ_1_1                        (10'b0100000000),
-            .CLK_COR_SEQ_1_2                        (10'b0000000000),
-            .CLK_COR_SEQ_1_3                        (10'b0000000000),
-            .CLK_COR_SEQ_1_4                        (10'b0000000000),
-            .CLK_CORRECT_USE                        ("FALSE"),
+            .CLK_COR_SEQ_1_1                        (10'b0100011100),
+            .CLK_COR_SEQ_1_2                        (10'b0000000010),
+            .CLK_COR_SEQ_1_3                        (10'b0000000011),
+            .CLK_COR_SEQ_1_4                        (10'b0000000100),
+            .CLK_CORRECT_USE                        ("TRUE"),
             .CLK_COR_SEQ_2_ENABLE                   (4'b1111),
-            .CLK_COR_SEQ_2_1                        (10'b0100000000),
+            .CLK_COR_SEQ_2_1                        (10'b0000000000),
             .CLK_COR_SEQ_2_2                        (10'b0000000000),
             .CLK_COR_SEQ_2_3                        (10'b0000000000),
             .CLK_COR_SEQ_2_4                        (10'b0000000000),
@@ -347,7 +349,7 @@ wire            rxdatavalid_float_i;
             .PCS_RSVD_ATTR                          (48'h000000000000),
 
            //-----------RX Buffer Attributes------------
-            .RXBUF_ADDR_MODE                        ("FAST"),
+            .RXBUF_ADDR_MODE                        ("FULL"),
             .RXBUF_EIDLE_HI_CNT                     (4'b1000),
             .RXBUF_EIDLE_LO_CNT                     (4'b0000),
             .RXBUF_EN                               ("TRUE"),
@@ -640,7 +642,7 @@ wire            rxdatavalid_float_i;
         .RXOSINTSTROBESTARTED           (),
         .RXOSINTTESTOVRDEN              (tied_to_ground_i),
         //----------------- Receive Ports - Clock Correction Ports -----------------
-        .RXCLKCORCNT                    (),
+        .RXCLKCORCNT                    (rxclkcorcnt_out),
         //-------- Receive Ports - FPGA RX Interface Datapath Configuration --------
         .RX8B10BEN                      (tied_to_vcc_i),
         //---------------- Receive Ports - FPGA RX Interface Ports -----------------

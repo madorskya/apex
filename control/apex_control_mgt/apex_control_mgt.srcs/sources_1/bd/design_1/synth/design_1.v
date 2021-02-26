@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Wed Feb 24 04:51:50 2021
+//Date        : Wed Feb 24 22:54:54 2021
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -3096,6 +3096,8 @@ module design_1
     align_lock,
     axi_c2c_phy_clk,
     axi_clk,
+    do_cc_bot,
+    do_cc_top,
     en_ipmb_zynq,
     gtp_reset,
     ha,
@@ -3138,6 +3140,8 @@ module design_1
     rgmii_td,
     rgmii_tx_ctl,
     rgmii_txc,
+    rxclkcorcnt_bot,
+    rxclkcorcnt_top,
     rxd_raw0,
     rxd_raw1,
     rxd_raw2,
@@ -3208,6 +3212,8 @@ module design_1
   input [3:0]align_lock;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_C2C_PHY_CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_C2C_PHY_CLK, CLK_DOMAIN design_1_axi_c2c_phy_clk_0, FREQ_HZ 93750000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0" *) input axi_c2c_phy_clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_CLK, CLK_DOMAIN design_1_processing_system7_0_0_FCLK_CLK0, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.000" *) output axi_clk;
+  output do_cc_bot;
+  output do_cc_top;
   output [1:0]en_ipmb_zynq;
   output gtp_reset;
   input [7:0]ha;
@@ -3250,6 +3256,8 @@ module design_1
   (* X_INTERFACE_INFO = "xilinx.com:interface:rgmii:1.0 rgmii TD" *) output [3:0]rgmii_td;
   (* X_INTERFACE_INFO = "xilinx.com:interface:rgmii:1.0 rgmii TX_CTL" *) output rgmii_tx_ctl;
   (* X_INTERFACE_INFO = "xilinx.com:interface:rgmii:1.0 rgmii TXC" *) output rgmii_txc;
+  input [1:0]rxclkcorcnt_bot;
+  input [1:0]rxclkcorcnt_top;
   input [31:0]rxd_raw0;
   input [31:0]rxd_raw1;
   input [31:0]rxd_raw2;
@@ -3577,6 +3585,8 @@ module design_1
   wire [3:0]axisafety_1_M_AXI_WSTRB;
   wire axisafety_1_M_AXI_WVALID;
   wire axisafety_1_channel_up;
+  wire axisafety_1_o_read_fault;
+  wire axisafety_1_o_write_fault;
   wire axisafety_2_channel_up;
   wire chip2chip_0_axi_c2c_link_status_out;
   wire chip2chip_1_axi_c2c_link_status_out;
@@ -3879,6 +3889,8 @@ module design_1
   wire [1:0]reg_bank_en_ipmb_zynq;
   wire reg_bank_gtp_reset_14_0;
   wire reg_bank_qbv_on_off;
+  wire [1:0]rxclkcorcnt_bot;
+  wire [1:0]rxclkcorcnt_top;
   wire [31:0]rxd_raw0;
   wire [31:0]rxd_raw1;
   wire [31:0]rxd_raw2;
@@ -3993,6 +4005,8 @@ module design_1
   assign axi_iic_1_IIC_SDA_I = scf_i2c_1_sda_i;
   assign axi_iic_2_IIC_SCL_I = scf_i2c_2_scl_i;
   assign axi_iic_2_IIC_SDA_I = scf_i2c_2_sda_i;
+  assign do_cc_bot = chip2chip_bot_ff_aurora_do_cc;
+  assign do_cc_top = chip2chip_top_ff_aurora_do_cc;
   assign en_ipmb_zynq[1:0] = reg_bank_en_ipmb_zynq;
   assign gtp_reset = reg_bank_gtp_reset_14_0;
   assign i2c_10g_scl_o = i2c_iic_rtl_3_SCL_O;
@@ -4233,7 +4247,9 @@ module design_1
         .S_AXI_WVALID(s_axi_2_WVALID),
         .channel_up(axisafety_1_channel_up),
         .comb_aresetn(axisafety_1_M_AXI_ARESETN),
-        .ext_resetn(axi_c2c_aurora_channel_up_0_1));
+        .ext_resetn(axi_c2c_aurora_channel_up_0_1),
+        .o_read_fault(axisafety_1_o_read_fault),
+        .o_write_fault(axisafety_1_o_write_fault));
   design_1_axisafety_0_1 axisafety_2
        (.M_AXI_ARADDR(axisafety_1_M_AXI_1_ARADDR),
         .M_AXI_ARBURST(axisafety_1_M_AXI_1_ARBURST),
@@ -5122,7 +5138,11 @@ module design_1
         .probe35(axisafety_1_M_AXI_ARESETN),
         .probe36(axisafety_1_channel_up),
         .probe37(proc_sys_reset_0_peripheral_aresetn),
+        .probe38(axisafety_1_o_read_fault),
+        .probe39(axisafety_1_o_write_fault),
         .probe4(chip2chip_top_ff_aurora_pma_init_out),
+        .probe40(rxclkcorcnt_top),
+        .probe41(rxclkcorcnt_bot),
         .probe5(chip2chip_top_ff_aurora_reset_pb),
         .probe6(chip2chip_top_ff_axi_c2c_config_error_out),
         .probe7(chip2chip_top_ff_axi_c2c_multi_bit_error_out),
