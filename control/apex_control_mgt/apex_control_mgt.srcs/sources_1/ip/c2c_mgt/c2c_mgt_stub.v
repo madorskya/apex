@@ -1,7 +1,7 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-// Date        : Wed Feb 24 16:50:51 2021
+// Date        : Mon Mar  1 03:10:37 2021
 // Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode synth_stub
 //               c:/github/apex/control/apex_control_mgt/apex_control_mgt.srcs/sources_1/ip/c2c_mgt/c2c_mgt_stub.v

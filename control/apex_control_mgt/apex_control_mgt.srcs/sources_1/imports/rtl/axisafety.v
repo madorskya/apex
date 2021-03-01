@@ -234,6 +234,7 @@ module axisafety #(
 		//
 		// The output side, where slave requests are forwarded to the
 		// actual slave
+		input	wire			M_AXI_ACLK, // using separate master clock trying to avoid warning about missing clock for master interface
 		// {{{
 		//	Write address
 		// {{{

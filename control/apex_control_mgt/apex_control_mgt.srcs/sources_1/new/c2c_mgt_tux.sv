@@ -30,6 +30,10 @@ module c2c_mgt_tux
     // raw data for debugging
     output [31:0] rxd_raw [3:0],
     output [ 3:0] rxk_raw [3:0],
+    output reg [31:0] gt_txdata [3:0],
+    output reg [ 3:0] gt_txcharisk [3:0],
+
+
     output [ 3:0] align_b0,
     output [ 3:0] align_lock,
     
@@ -38,6 +42,7 @@ module c2c_mgt_tux
     output [3:0] prbs_err,
     input  [3:0] tx_polarity,
     output [1:0] rxclkcorcnt [3:0],
+    input  [3:0] link_up,
     
     output usr_clk // single user clock for tx and rx
 );
@@ -1196,8 +1201,6 @@ assign gt3_drpdi_i = 16'd0;
 assign gt3_drpen_i = 1'b0;
 assign gt3_drpwe_i = 1'b0;
 
-    reg [31:0] gt_txdata [3:0];
-    reg [ 3:0] gt_txcharisk [3:0];
 
 // logic for c2c stream interface
     assign gt0_txdata_i    = gt_txdata [0]; 
@@ -1220,73 +1223,49 @@ assign gt3_drpwe_i = 1'b0;
     reg [7:0] ready_cnt = 8'h0;
     reg [3:0] rx_k;
     
-    wire [31:0] idle_d = 32'h000050bc; // IDLE symbol
-    wire [ 3:0] idle_k = 4'b0001;
-    
-    wire [31:0] clkc_d = 32'h0403021c; // clock correction symbol
+    wire [31:0] clkc_d = 32'h000050bc; // clock correction symbol = IDLE
+    wire [31:0] clkc_swapped = {clkc_d[15:0], clkc_d[31:16]};
     wire [ 3:0] clkc_k = 4'b0001;
     
     wire [31:0] zero_d = 32'h0; // zero data, invalid for c2c
     wire [ 3:0] zero_k = 4'b0;
     
     
-    // sync patterns used by c2c master, can be interrupted by CC if needed
-    wire [31:0] mpatd0 = 32'h000808dc;
-    wire [31:0] mpatd1 = 32'h000808fc;
-    wire [31:0] mpatd2 = 32'h000808ec;
+    // sync patterns used by c2c master
+//    wire [31:0] mpatd0 = 32'h000808dc; 
+//    wire [31:0] mpatd1 = 32'h000808fc;
+//    wire [31:0] mpatd2 = 32'h000808ec;
     
-    // sync patterns used by c2c slave, should not break alignment
-    wire [31:0] spatd0 = 32'h001011bc;
-    wire [31:0] spatd1 = 32'h001011fc;
-    wire [31:0] spatd2 = 32'h001011dc;
+    // sync patterns used by c2c slave
+//    wire [31:0] spatd0 = 32'h001011bc;
+//    wire [31:0] spatd1 = 32'h001011fc;
+//    wire [31:0] spatd2 = 32'h001011dc;
+    
+    reg [31:0] gt_txdata_r [3:0];
+    reg [ 3:0] gt_txcharisk_r [3:0];
+    
     
     // TX logic
-    reg [3:0] cc_req;
-    reg [3:0] tx_non_data; 
-    reg [2:0] tx_sel [3:0]; 
-    
-    always @(*)
-    begin
-        for (i = 0; i < 4; i++)
-        begin
-            cc_req[i] = 1'b0;
-        
-            tx_non_data[i] = 
-                (txdata[i] == zero_d) ||
-                (txdata[i] == mpatd0) ||
-                (txdata[i] == mpatd1) ||
-                (txdata[i] == mpatd2);
-        
-            // tx select word
-            tx_sel[i] = 
-            {
-                txvalid[i],
-                tx_non_data[i],
-                cc_req[i]
-            };
-        end
-    end
-    
-    reg [11:0] cc_cnt; // clock correction counter
-    
     always @(posedge usr_clk)
     begin
+        gt_txdata    = gt_txdata_r;
+        gt_txcharisk = gt_txcharisk_r;
+    
         // tx logic
         for (i = 0; i < 4; i++)
         begin
-            case (tx_sel[i])
-                3'b000: begin gt_txdata[i] = idle_d;    gt_txcharisk[i] = idle_k; end
-                3'b001: begin gt_txdata[i] = clkc_d;    gt_txcharisk[i] = clkc_k; cc_req[i] = 1'b0; end
-                3'b010: begin gt_txdata[i] = idle_d;    gt_txcharisk[i] = idle_k; end
-                3'b011: begin gt_txdata[i] = clkc_d;    gt_txcharisk[i] = clkc_k; cc_req[i] = 1'b0; end
-                3'b100: begin gt_txdata[i] = txdata[i]; gt_txcharisk[i] = 4'b0; end
-                3'b101: begin gt_txdata[i] = txdata[i]; gt_txcharisk[i] = 4'b0; end
-                3'b110: begin gt_txdata[i] = txdata[i]; gt_txcharisk[i] = 4'b0; end
-                3'b111: begin gt_txdata[i] = clkc_d;    gt_txcharisk[i] = clkc_k; cc_req[i] = 1'b0; end
-            endcase
+            if (txvalid[i] == 1'b0 || txdata[i] == zero_d)
+            begin // for any invalid data, send CC
+                gt_txdata_r[i] = clkc_d;    
+                gt_txcharisk_r[i] = clkc_k; 
+            end
+            else
+            begin // valid data
+                gt_txdata_r[i] = txdata[i]; 
+                // if link is not up, this is sync pattern, add K so RX takes it as clk correction
+                gt_txcharisk_r[i] = (link_up[i] == 1'b1) ? 4'b0 : clkc_k;
+            end
         end        
-        if (cc_cnt == 12'h0) cc_req = 4'b1111; // set clock correction requests for all links
-        cc_cnt++;
     end    
     
     // RX logic
@@ -1313,12 +1292,7 @@ assign gt3_drpwe_i = 1'b0;
                     rx_k[i]   = {rxk_r[0][i][ 1:0], rxk_r[1][i][ 3: 2]};
                 end
                 
-                if (rx_k[i] == idle_k && rxdata[i] == idle_d) // IDLE symbol
-                begin
-                    rxdata[i] = zero_d; // replace IDLE with zeros, so c2c does not freak out 
-                    rxvalid[i] = 1'b0; // invalid data
-                end
-                else if (rx_k[i] == clkc_k && rxdata[i] == clkc_d) // CC symbol
+                if (rx_k[i] == clkc_k && rxdata[i] == clkc_d) // CC symbol
                 begin
                     rxdata[i] = zero_d; // replace CC with zeros, so c2c does not freak out 
                     rxvalid[i] = channel_up[i]; // valid if byteisaligned
@@ -1329,21 +1303,16 @@ assign gt3_drpwe_i = 1'b0;
                 end
             end
         
-            // todo: ignore CC words, don't break alignment
-            if (rxk_r[1][i] == 4'b0001 && rxd_r[1][i] == 32'h000050bc) // byte 0 alignment
+            if (rxk_r[1][i] == clkc_k && rxd_r[1][i] == clkc_d) // byte 0 alignment
             begin
                 alignment_b0[i] = 1'b1;
                 alignment_lock[i] = 1'b1;
             end
-            else if (rxk_r[1][i] == 4'b0100 && rxd_r[1][i][31:16] == 32'h50bc) // byte 2 alignment
+            else if (rxk_r[1][i] == 4'b0100 && rxd_r[1][i] == clkc_swapped) // byte 2 alignment
             begin
                 alignment_b0[i] = 1'b0;
                 alignment_lock[i] = 1'b1;
             end  
-//            else if (rxk_r[1][i] != 4'b0000 || channel_up[i] == 1'b0) // something else is going on, looks invalid
-//            begin
-//                alignment_lock[i] = 1'b0;
-//            end   
         end
     
         rxd_r[1] = rxd_r[0];

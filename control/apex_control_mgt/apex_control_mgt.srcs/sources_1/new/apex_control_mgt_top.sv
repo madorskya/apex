@@ -124,10 +124,14 @@ module apex_control_mgt_top
     wire usr_clk; // single user clock for tx and rx
     wire [31:0] rxd_raw [3:0];
     wire [ 3:0] rxk_raw [3:0];
+    wire [31:0] gt_txdata [3:0];
+    wire [ 3:0] gt_txcharisk [3:0];
     wire [ 3:0] align_b0;
     wire [ 3:0] align_lock;
     wire axi_clk;
     wire [1:0] rxclkcorcnt [3:0];
+    wire link_up_top;
+    wire link_up_bot;
 
   design_1 design_1_i
        (.DDR_addr(DDR_addr),
@@ -176,6 +180,8 @@ module apex_control_mgt_top
         .mgt_unlocked_top (~channel_up[1]),
         .rxclkcorcnt_bot  (rxclkcorcnt [3]),
         .rxclkcorcnt_top  (rxclkcorcnt [1]),
+        .link_up_top      (link_up_top),
+        .link_up_bot      (link_up_bot),
 
         .prbs_sel       (prbs_sel),
         .prbs_err       (prbs_err),
@@ -189,6 +195,16 @@ module apex_control_mgt_top
         .rxk_raw1    (rxk_raw [1]  ),
         .rxk_raw2    (rxk_raw [2]  ),
         .rxk_raw3    (rxk_raw [3]  ),
+        
+        .txd_raw0    (gt_txdata[0]),
+        .txd_raw1    (gt_txdata[1]),
+        .txd_raw2    (gt_txdata[2]),
+        .txd_raw3    (gt_txdata[3]),
+        .txk_raw0    (gt_txcharisk[0]),
+        .txk_raw1    (gt_txcharisk[1]),
+        .txk_raw2    (gt_txcharisk[2]),
+        .txk_raw3    (gt_txcharisk[3]),
+        
         .align_b0   (align_b0  ),
         .align_lock (align_lock),
         .gtp_reset  (soft_reset),
@@ -337,6 +353,8 @@ module apex_control_mgt_top
         
         .rxd_raw    (rxd_raw   ),
         .rxk_raw    (rxk_raw   ),
+        .gt_txdata    (gt_txdata   ),
+        .gt_txcharisk (gt_txcharisk),
         .align_b0   (align_b0  ),
         .align_lock (align_lock),
 
@@ -344,6 +362,7 @@ module apex_control_mgt_top
         .prbs_sel   (prbs_sel), 
         .prbs_err   (prbs_err),
         .tx_polarity    (tx_polarity),
+        .link_up    ({link_up_bot, link_up_top, link_up_top, link_up_bot}),
         
         .usr_clk (usr_clk)// single user clock for tx and rx
     );

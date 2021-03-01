@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Wed Feb 24 22:54:56 2021
+//Date        : Mon Mar  1 03:33:28 2021
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -48,6 +48,8 @@ module design_1_wrapper
     ipmc_scl_1,
     ipmc_sda_0,
     ipmc_sda_1,
+    link_up_bot,
+    link_up_top,
     local_i2c_scl_io,
     local_i2c_sda_io,
     los_10g,
@@ -98,8 +100,16 @@ module design_1_wrapper
     scf_tms_0,
     scf_tms_1,
     tx_polarity,
+    txd_raw0,
+    txd_raw1,
+    txd_raw2,
+    txd_raw3,
     txdata_bot,
     txdata_top,
+    txk_raw0,
+    txk_raw1,
+    txk_raw2,
+    txk_raw3,
     txready_bot,
     txready_top,
     txvalid_bot,
@@ -142,6 +152,8 @@ module design_1_wrapper
   inout ipmc_scl_1;
   inout ipmc_sda_0;
   inout ipmc_sda_1;
+  output link_up_bot;
+  output link_up_top;
   inout local_i2c_scl_io;
   inout local_i2c_sda_io;
   input [0:0]los_10g;
@@ -192,8 +204,16 @@ module design_1_wrapper
   output scf_tms_0;
   output scf_tms_1;
   output [3:0]tx_polarity;
+  input [31:0]txd_raw0;
+  input [31:0]txd_raw1;
+  input [31:0]txd_raw2;
+  input [31:0]txd_raw3;
   output [31:0]txdata_bot;
   output [31:0]txdata_top;
+  input [3:0]txk_raw0;
+  input [3:0]txk_raw1;
+  input [3:0]txk_raw2;
+  input [3:0]txk_raw3;
   input txready_bot;
   input txready_top;
   output txvalid_bot;
@@ -243,6 +263,8 @@ module design_1_wrapper
   wire ipmc_scl_1;
   wire ipmc_sda_0;
   wire ipmc_sda_1;
+  wire link_up_bot;
+  wire link_up_top;
   wire local_i2c_scl_i;
   wire local_i2c_scl_io;
   wire local_i2c_scl_o;
@@ -320,8 +342,16 @@ module design_1_wrapper
   wire scf_tms_0;
   wire scf_tms_1;
   wire [3:0]tx_polarity;
+  wire [31:0]txd_raw0;
+  wire [31:0]txd_raw1;
+  wire [31:0]txd_raw2;
+  wire [31:0]txd_raw3;
   wire [31:0]txdata_bot;
   wire [31:0]txdata_top;
+  wire [3:0]txk_raw0;
+  wire [3:0]txk_raw1;
+  wire [3:0]txk_raw2;
+  wire [3:0]txk_raw3;
   wire txready_bot;
   wire txready_top;
   wire txvalid_bot;
@@ -370,6 +400,8 @@ module design_1_wrapper
         .ipmc_scl_1(ipmc_scl_1),
         .ipmc_sda_0(ipmc_sda_0),
         .ipmc_sda_1(ipmc_sda_1),
+        .link_up_bot(link_up_bot),
+        .link_up_top(link_up_top),
         .local_i2c_scl_i(local_i2c_scl_i),
         .local_i2c_scl_o(local_i2c_scl_o),
         .local_i2c_scl_t(local_i2c_scl_t),
@@ -438,8 +470,16 @@ module design_1_wrapper
         .scf_tms_0(scf_tms_0),
         .scf_tms_1(scf_tms_1),
         .tx_polarity(tx_polarity),
+        .txd_raw0(txd_raw0),
+        .txd_raw1(txd_raw1),
+        .txd_raw2(txd_raw2),
+        .txd_raw3(txd_raw3),
         .txdata_bot(txdata_bot),
         .txdata_top(txdata_top),
+        .txk_raw0(txk_raw0),
+        .txk_raw1(txk_raw1),
+        .txk_raw2(txk_raw2),
+        .txk_raw3(txk_raw3),
         .txready_bot(txready_bot),
         .txready_top(txready_top),
         .txvalid_bot(txvalid_bot),

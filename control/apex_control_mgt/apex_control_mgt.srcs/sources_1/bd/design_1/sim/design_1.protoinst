@@ -102,9 +102,11 @@
 				"/axisafety_1/M_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
+						"ACLK": { "actual": "M_AXI_ACLK"},
 						"ARADDR": { "actual": "M_AXI_ARADDR"},
 						"ARBURST": { "actual": "M_AXI_ARBURST"},
 						"ARCACHE": { "actual": "M_AXI_ARCACHE"},
+						"ARESETN": { "actual": "M_AXI_ARESETN"},
 						"ARID": { "actual": "M_AXI_ARID"},
 						"ARLEN": { "actual": "M_AXI_ARLEN"},
 						"ARLOCK": { "actual": "M_AXI_ARLOCK"},
@@ -188,9 +190,11 @@
 				"/axisafety_2/M_AXI": {
 					"interface": "xilinx.com:interface:aximm:1.0",
 					"ports": {
+						"ACLK": { "actual": "M_AXI_ACLK"},
 						"ARADDR": { "actual": "M_AXI_ARADDR"},
 						"ARBURST": { "actual": "M_AXI_ARBURST"},
 						"ARCACHE": { "actual": "M_AXI_ARCACHE"},
+						"ARESETN": { "actual": "M_AXI_ARESETN"},
 						"ARID": { "actual": "M_AXI_ARID"},
 						"ARLEN": { "actual": "M_AXI_ARLEN"},
 						"ARLOCK": { "actual": "M_AXI_ARLOCK"},
