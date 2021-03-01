@@ -1,7 +1,7 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-// Date        : Mon Mar  1 03:10:37 2021
+// Date        : Mon Mar  1 15:08:38 2021
 // Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               c:/github/apex/control/apex_control_mgt/apex_control_mgt.srcs/sources_1/ip/c2c_mgt/c2c_mgt_sim_netlist.v
@@ -1301,7 +1301,7 @@ module c2c_mgt_c2c_mgt_GT
     .CLK_COR_SEQ_2_3(10'b0000010000),
     .CLK_COR_SEQ_2_4(10'b0000000000),
     .CLK_COR_SEQ_2_ENABLE(4'b1111),
-    .CLK_COR_SEQ_2_USE("TRUE"),
+    .CLK_COR_SEQ_2_USE("FALSE"),
     .CLK_COR_SEQ_LEN(4),
     .DEC_MCOMMA_DETECT("TRUE"),
     .DEC_PCOMMA_DETECT("TRUE"),
@@ -2184,7 +2184,7 @@ module c2c_mgt_c2c_mgt_GT_65
     .CLK_COR_SEQ_2_3(10'b0000010000),
     .CLK_COR_SEQ_2_4(10'b0000000000),
     .CLK_COR_SEQ_2_ENABLE(4'b1111),
-    .CLK_COR_SEQ_2_USE("TRUE"),
+    .CLK_COR_SEQ_2_USE("FALSE"),
     .CLK_COR_SEQ_LEN(4),
     .DEC_MCOMMA_DETECT("TRUE"),
     .DEC_PCOMMA_DETECT("TRUE"),
@@ -3067,7 +3067,7 @@ module c2c_mgt_c2c_mgt_GT_66
     .CLK_COR_SEQ_2_3(10'b0000010000),
     .CLK_COR_SEQ_2_4(10'b0000000000),
     .CLK_COR_SEQ_2_ENABLE(4'b1111),
-    .CLK_COR_SEQ_2_USE("TRUE"),
+    .CLK_COR_SEQ_2_USE("FALSE"),
     .CLK_COR_SEQ_LEN(4),
     .DEC_MCOMMA_DETECT("TRUE"),
     .DEC_PCOMMA_DETECT("TRUE"),
@@ -3950,7 +3950,7 @@ module c2c_mgt_c2c_mgt_GT_67
     .CLK_COR_SEQ_2_3(10'b0000010000),
     .CLK_COR_SEQ_2_4(10'b0000000000),
     .CLK_COR_SEQ_2_ENABLE(4'b1111),
-    .CLK_COR_SEQ_2_USE("TRUE"),
+    .CLK_COR_SEQ_2_USE("FALSE"),
     .CLK_COR_SEQ_LEN(4),
     .DEC_MCOMMA_DETECT("TRUE"),
     .DEC_PCOMMA_DETECT("TRUE"),

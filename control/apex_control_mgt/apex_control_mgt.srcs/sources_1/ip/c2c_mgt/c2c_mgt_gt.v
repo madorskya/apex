@@ -270,7 +270,7 @@ wire            rxdatavalid_float_i;
 
            //----------------------RX Clock Correction Attributes----------------------
             .CBCC_DATA_SOURCE_SEL                   ("DECODED"),
-            .CLK_COR_SEQ_2_USE                      ("TRUE"),
+            .CLK_COR_SEQ_2_USE                      ("FALSE"),
             .CLK_COR_KEEP_IDLE                      ("FALSE"),
             .CLK_COR_MAX_LAT                        (17),
             .CLK_COR_MIN_LAT                        (12),

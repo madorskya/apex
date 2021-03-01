@@ -1232,18 +1232,31 @@ assign gt3_drpwe_i = 1'b0;
     
     
     // sync patterns used by c2c master
-//    wire [31:0] mpatd0 = 32'h000808dc; 
-//    wire [31:0] mpatd1 = 32'h000808fc;
-//    wire [31:0] mpatd2 = 32'h000808ec;
+    wire [31:0] mpatd0 = 32'h000808dc; 
+    wire [31:0] mpatd1 = 32'h000808fc;
+    wire [31:0] mpatd2 = 32'h000808ec;
     
     // sync patterns used by c2c slave
-//    wire [31:0] spatd0 = 32'h001011bc;
-//    wire [31:0] spatd1 = 32'h001011fc;
-//    wire [31:0] spatd2 = 32'h001011dc;
+    wire [31:0] spatd0 = 32'h001011bc;
+    wire [31:0] spatd1 = 32'h001011fc;
+    wire [31:0] spatd2 = 32'h001011dc;
     
     reg [31:0] gt_txdata_r [3:0];
     reg [ 3:0] gt_txcharisk_r [3:0];
+
+    wire [3:0] tx_can_cc;
+    assign tx_can_cc[0] = (txdata[0] == mpatd0) || (txdata[0] == mpatd1) || (txdata[0] == zero_d);
+    assign tx_can_cc[1] = (txdata[1] == mpatd0) || (txdata[1] == mpatd1) || (txdata[1] == zero_d);
+    assign tx_can_cc[2] = (txdata[2] == mpatd0) || (txdata[2] == mpatd1) || (txdata[2] == zero_d);
+    assign tx_can_cc[3] = (txdata[3] == mpatd0) || (txdata[3] == mpatd1) || (txdata[3] == zero_d);
     
+    reg [7:0] cc_cnt; // clock correction counter
+    always @(posedge usr_clk)
+    begin
+        cc_cnt++;
+    end
+    wire local_do_cc = (cc_cnt == 8'h0);
+        
     
     // TX logic
     always @(posedge usr_clk)
@@ -1254,25 +1267,51 @@ assign gt3_drpwe_i = 1'b0;
         // tx logic
         for (i = 0; i < 4; i++)
         begin
-            if (txvalid[i] == 1'b0 || txdata[i] == zero_d)
-            begin // for any invalid data, send CC
-                gt_txdata_r[i] = clkc_d;    
-                gt_txcharisk_r[i] = clkc_k; 
+            if (txvalid[i] == 1'b0)
+            begin
+                if (local_do_cc) // CC needed 
+                begin
+                    // send CC
+                    gt_txdata_r[i] = clkc_d;    
+                    gt_txcharisk_r[i] = clkc_k; 
+                end
+                else
+                begin
+                    // CC not needed, send zeros
+                    gt_txdata_r[i] = zero_d;    
+                    gt_txcharisk_r[i] = zero_k;
+                end 
             end
             else
-            begin // valid data
-                gt_txdata_r[i] = txdata[i]; 
-                // if link is not up, this is sync pattern, add K so RX takes it as clk correction
-                gt_txcharisk_r[i] = (link_up[i] == 1'b1) ? 4'b0 : clkc_k;
+            begin 
+                if (local_do_cc && tx_can_cc[i]) // CC needed and data can be interrupted
+                begin
+                    // send CC
+                    gt_txdata_r[i] = clkc_d;    
+                    gt_txcharisk_r[i] = clkc_k; 
+                end
+                else
+                begin
+                    // valid data, send as is.   
+                    gt_txdata_r[i] = txdata[i]; 
+                    gt_txcharisk_r[i] = zero_k;
+                end
             end
         end        
     end    
+    
+    reg [31:0] rxdata_r [3:0];
+    reg [3:0] rxvalid_r;    
     
     // RX logic
     always @(posedge usr_clk)
     begin
     
         txready = 4'b1111;
+
+        // remember previous data sample
+        rxdata_r = rxdata;
+        rxvalid_r = rxvalid;
     
         for (i = 0; i < 4; i++)
         begin
@@ -1294,8 +1333,8 @@ assign gt3_drpwe_i = 1'b0;
                 
                 if (rx_k[i] == clkc_k && rxdata[i] == clkc_d) // CC symbol
                 begin
-                    rxdata[i] = zero_d; // replace CC with zeros, so c2c does not freak out 
-                    rxvalid[i] = channel_up[i]; // valid if byteisaligned
+                    rxdata[i] = zero_d; // replace with invalid data 
+                    rxvalid[i] = 1'b0; 
                 end
                 else
                 begin

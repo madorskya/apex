@@ -105,7 +105,7 @@
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.gt0_val_clk_cor_seq_2_4_disp">false</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.gt0_val_clk_cor_seq_2_4_k">false</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.gt0_val_clk_cor_seq_2_4_mask">false</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.gt0_val_clk_cor_seq_2_use">true</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.gt0_val_clk_cor_seq_2_use">false</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.gt0_val_clk_cor_seq_len">4</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.gt0_val_comma_preset">K28.5</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.gt0_val_cpll_fbdiv">1</spirit:configurableElementValue>
@@ -712,7 +712,7 @@
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.gt0_val_clk_cor_seq_2_4_disp">false</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.gt0_val_clk_cor_seq_2_4_k">false</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.gt0_val_clk_cor_seq_2_4_mask">false</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.gt0_val_clk_cor_seq_2_use">true</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.gt0_val_clk_cor_seq_2_use">false</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.gt0_val_clk_cor_seq_len">4</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.gt0_val_comma_preset">K28.5</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.gt0_val_cpll_fbdiv">1</spirit:configurableElementValue>
