@@ -1256,6 +1256,7 @@ assign gt3_drpwe_i = 1'b0;
         cc_cnt++;
     end
     wire local_do_cc = (cc_cnt == 8'h0);
+    reg [3:0] do_cc_r;
         
     
     // TX logic
@@ -1269,11 +1270,12 @@ assign gt3_drpwe_i = 1'b0;
         begin
             if (txvalid[i] == 1'b0)
             begin
-                if (local_do_cc) // CC needed 
+                if (do_cc_r[i]) // CC needed 
                 begin
                     // send CC
                     gt_txdata_r[i] = clkc_d;    
                     gt_txcharisk_r[i] = clkc_k; 
+                    do_cc_r[i] = 1'b0;
                 end
                 else
                 begin
@@ -1284,11 +1286,12 @@ assign gt3_drpwe_i = 1'b0;
             end
             else
             begin 
-                if (local_do_cc && tx_can_cc[i]) // CC needed and data can be interrupted
+                if (do_cc_r[i] && tx_can_cc[i]) // CC needed and data can be interrupted
                 begin
                     // send CC
                     gt_txdata_r[i] = clkc_d;    
-                    gt_txcharisk_r[i] = clkc_k; 
+                    gt_txcharisk_r[i] = clkc_k;
+                    do_cc_r[i] = 1'b0; 
                 end
                 else
                 begin
@@ -1297,7 +1300,8 @@ assign gt3_drpwe_i = 1'b0;
                     gt_txcharisk_r[i] = zero_k;
                 end
             end
-        end        
+        end
+        if (local_do_cc) do_cc_r = 4'b1111;         
     end    
     
     reg [31:0] rxdata_r [3:0];
