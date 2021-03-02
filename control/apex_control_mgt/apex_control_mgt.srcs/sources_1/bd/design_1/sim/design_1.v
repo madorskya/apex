@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Mon Mar  1 03:33:27 2021
+//Date        : Tue Mar  2 17:00:16 2021
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -3096,6 +3096,7 @@ module design_1
     align_lock,
     axi_c2c_phy_clk,
     axi_clk,
+    c2c_slave_reset,
     do_cc_bot,
     do_cc_top,
     en_ipmb_zynq,
@@ -3222,6 +3223,7 @@ module design_1
   input [3:0]align_lock;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_C2C_PHY_CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_C2C_PHY_CLK, CLK_DOMAIN design_1_axi_c2c_phy_clk_0, FREQ_HZ 93750000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0" *) input axi_c2c_phy_clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_CLK, CLK_DOMAIN design_1_processing_system7_0_0_FCLK_CLK0, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.000" *) output axi_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.C2C_SLAVE_RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.C2C_SLAVE_RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) output c2c_slave_reset;
   output do_cc_bot;
   output do_cc_top;
   output [1:0]en_ipmb_zynq;
@@ -3487,7 +3489,7 @@ module design_1
   wire [3:0]axi_ethernet_0_rgmii_TD;
   wire axi_ethernet_0_rgmii_TXC;
   wire axi_ethernet_0_rgmii_TX_CTL;
-  wire [15:0]axi_gpio_0_gpio_io_o;
+  wire [16:0]axi_gpio_0_gpio_io_o;
   wire axi_iic_0_IIC_SCL_I;
   wire axi_iic_0_IIC_SCL_O;
   wire axi_iic_0_IIC_SCL_T;
@@ -3912,6 +3914,7 @@ module design_1
   wire [31:0]ps7_0_axi_periph_M02_AXI_WDATA;
   wire ps7_0_axi_periph_M02_AXI_WREADY;
   wire ps7_0_axi_periph_M02_AXI_WVALID;
+  wire reg_bank_0_c2c_slave_reset;
   wire [16:0]reg_bank_0_reg_ro;
   wire [3:0]reg_bank_Dout2;
   wire [1:0]reg_bank_en_ipmb_zynq;
@@ -4041,6 +4044,7 @@ module design_1
   assign axi_iic_1_IIC_SDA_I = scf_i2c_1_sda_i;
   assign axi_iic_2_IIC_SCL_I = scf_i2c_2_scl_i;
   assign axi_iic_2_IIC_SDA_I = scf_i2c_2_sda_i;
+  assign c2c_slave_reset = reg_bank_0_c2c_slave_reset;
   assign do_cc_bot = chip2chip_bot_ff_aurora_do_cc;
   assign do_cc_top = chip2chip_top_ff_aurora_do_cc;
   assign en_ipmb_zynq[1:0] = reg_bank_en_ipmb_zynq;
@@ -5393,6 +5397,7 @@ module design_1
         .s_axi_wvalid(s_axi_1_WVALID));
   design_1_reg_bank_0_0 reg_bank_0
        (.aurora_pma_init_9(cpu_peripheral_reset),
+        .c2c_slave_reset(reg_bank_0_c2c_slave_reset),
         .channel_up_15(axi_c2c_aurora_channel_up_0_1),
         .channel_up_bot_15(axi_c2c_aurora_channel_up_0_1),
         .channel_up_top_13(axi_c2c_aurora_channel_up_0_1),

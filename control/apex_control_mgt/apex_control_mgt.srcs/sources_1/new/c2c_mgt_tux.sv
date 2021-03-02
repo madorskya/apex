@@ -43,6 +43,7 @@ module c2c_mgt_tux
     input  [3:0] tx_polarity,
     output [1:0] rxclkcorcnt [3:0],
     input  [3:0] link_up,
+    input  c2c_slave_reset,
     
     output usr_clk // single user clock for tx and rx
 );
@@ -1257,7 +1258,11 @@ assign gt3_drpwe_i = 1'b0;
     end
     wire local_do_cc = (cc_cnt == 8'h0);
     reg [3:0] do_cc_r;
+    reg [3:0] slave_rst = 4'b0;
         
+    // link reset command pattern    
+    wire [31:0] lrst_d = 32'hfcfcfcfc;
+    wire [ 3:0] lrst_k = 4'b1111;
     
     // TX logic
     always @(posedge usr_clk)
@@ -1268,6 +1273,13 @@ assign gt3_drpwe_i = 1'b0;
         // tx logic
         for (i = 0; i < 4; i++)
         begin
+        
+            if (slave_rst == 4'b0111) // slave reset command
+            begin
+                gt_txdata_r[i] = lrst_d;    
+                gt_txcharisk_r[i] = lrst_k; 
+            end
+            else
             if (txvalid[i] == 1'b0)
             begin
                 if (do_cc_r[i]) // CC needed 
@@ -1301,7 +1313,8 @@ assign gt3_drpwe_i = 1'b0;
                 end
             end
         end
-        if (local_do_cc) do_cc_r = 4'b1111;         
+        if (local_do_cc) do_cc_r = 4'b1111;   
+        slave_rst = {slave_rst[2:0], c2c_slave_reset};      
     end    
     
     reg [31:0] rxdata_r [3:0];

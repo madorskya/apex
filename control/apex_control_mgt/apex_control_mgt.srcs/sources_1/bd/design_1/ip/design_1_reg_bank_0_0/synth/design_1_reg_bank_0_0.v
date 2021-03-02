@@ -65,6 +65,7 @@ module design_1_reg_bank_0_0 (
   tx_polarity_13_10,
   gtp_reset_14,
   channel_up_15,
+  c2c_slave_reset,
   ha_7_0,
   ready_ipmb_zynq_9_8,
   los_10g_10,
@@ -77,7 +78,7 @@ module design_1_reg_bank_0_0 (
   reg_ro
 );
 
-input wire [15 : 0] reg_rw;
+input wire [16 : 0] reg_rw;
 output wire [1 : 0] ipmb_en_1_0;
 output wire [2 : 0] id_4_2;
 output wire payload_on_5;
@@ -86,6 +87,9 @@ output wire aurora_pma_init_9;
 output wire [3 : 0] tx_polarity_13_10;
 output wire gtp_reset_14;
 output wire channel_up_15;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME c2c_slave_reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 c2c_slave_reset RST" *)
+output wire c2c_slave_reset;
 input wire [7 : 0] ha_7_0;
 input wire [1 : 0] ready_ipmb_zynq_9_8;
 input wire los_10g_10;
@@ -107,6 +111,7 @@ output wire [16 : 0] reg_ro;
     .tx_polarity_13_10(tx_polarity_13_10),
     .gtp_reset_14(gtp_reset_14),
     .channel_up_15(channel_up_15),
+    .c2c_slave_reset(c2c_slave_reset),
     .ha_7_0(ha_7_0),
     .ready_ipmb_zynq_9_8(ready_ipmb_zynq_9_8),
     .los_10g_10(los_10g_10),

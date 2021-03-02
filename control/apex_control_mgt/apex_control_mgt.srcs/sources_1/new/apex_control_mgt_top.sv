@@ -132,6 +132,7 @@ module apex_control_mgt_top
     wire [1:0] rxclkcorcnt [3:0];
     wire link_up_top;
     wire link_up_bot;
+    wire c2c_slave_reset;
 
   design_1 design_1_i
        (.DDR_addr(DDR_addr),
@@ -186,6 +187,7 @@ module apex_control_mgt_top
         .prbs_sel       (prbs_sel),
         .prbs_err       (prbs_err),
         .tx_polarity    (tx_polarity),
+        .c2c_slave_reset (c2c_slave_reset),
 
         .rxd_raw0    (rxd_raw [0]  ),
         .rxd_raw1    (rxd_raw [1]  ),
@@ -363,6 +365,7 @@ module apex_control_mgt_top
         .prbs_err   (prbs_err),
         .tx_polarity    (tx_polarity),
         .link_up    ({link_up_bot, link_up_top, link_up_top, link_up_bot}),
+        .c2c_slave_reset (c2c_slave_reset),
         
         .usr_clk (usr_clk)// single user clock for tx and rx
     );

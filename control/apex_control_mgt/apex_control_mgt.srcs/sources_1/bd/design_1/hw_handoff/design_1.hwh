@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Mar  1 03:33:46 2021" VIVADOVERSION="2020.1.1_AR73018">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Mar  2 17:00:35 2021" VIVADOVERSION="2020.1.1_AR73018">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z015" NAME="design_1" PACKAGE="clg485" SPEEDGRADE="-1"/>
 
@@ -626,6 +626,11 @@
         <CONNECTION INSTANCE="axi_chip2chip_0" PORT="axi_c2c_link_status_out"/>
       </CONNECTIONS>
     </PORT>
+    <PORT DIR="O" NAME="c2c_slave_reset" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="reg_bank_0_c2c_slave_reset">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="reg_bank_0" PORT="c2c_slave_reset"/>
+      </CONNECTIONS>
+    </PORT>
   </EXTERNALPORTS>
 
   <EXTERNALINTERFACES>
@@ -1031,8 +1036,8 @@
         <PORT DIR="O" NAME="axi_c2c_link_status_out" SIGIS="undef" SIGNAME="axi_chip2chip_0_axi_c2c_link_status_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_0" PORT="probe2"/>
-            <CONNECTION INSTANCE="reg_bank_0" PORT="link_stat_bot_14"/>
             <CONNECTION INSTANCE="External_Ports" PORT="link_up_bot"/>
+            <CONNECTION INSTANCE="reg_bank_0" PORT="link_stat_bot_14"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="axi_c2c_multi_bit_error_out" SIGIS="undef" SIGNAME="axi_chip2chip_0_axi_c2c_multi_bit_error_out">
@@ -1440,8 +1445,8 @@
         <PORT DIR="O" NAME="axi_c2c_link_status_out" SIGIS="undef" SIGNAME="axi_chip2chip_1_axi_c2c_link_status_out">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ila_0" PORT="probe1"/>
-            <CONNECTION INSTANCE="reg_bank_0" PORT="link_stat_top_12"/>
             <CONNECTION INSTANCE="External_Ports" PORT="link_up_top"/>
+            <CONNECTION INSTANCE="reg_bank_0" PORT="link_stat_top_12"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="axi_c2c_multi_bit_error_out" SIGIS="undef" SIGNAME="axi_chip2chip_1_axi_c2c_multi_bit_error_out">
@@ -1573,7 +1578,7 @@
             <REGISTER NAME="GPIO_DATA">
               <PROPERTY NAME="DESCRIPTION" VALUE="Channel-1 AXI GPIO Data register"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x0"/>
-              <PROPERTY NAME="SIZE" VALUE="16"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="read-write"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
@@ -1586,14 +1591,14 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="16"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
             <REGISTER NAME="GPIO_TRI">
               <PROPERTY NAME="DESCRIPTION" VALUE="Channel-1 AXI GPIO 3-State Control register"/>
               <PROPERTY NAME="ADDRESS_OFFSET" VALUE="0x4"/>
-              <PROPERTY NAME="SIZE" VALUE="16"/>
+              <PROPERTY NAME="SIZE" VALUE="17"/>
               <PROPERTY NAME="ACCESS" VALUE="read-write"/>
               <PROPERTY NAME="IS_ENABLED" VALUE="true"/>
               <PROPERTY NAME="RESET_VALUE" VALUE="0x0"/>
@@ -1606,7 +1611,7 @@
                   <PROPERTY NAME="WRITE_CONSTRAINT" VALUE="0"/>
                   <PROPERTY NAME="READ_ACTION" VALUE=""/>
                   <PROPERTY NAME="BIT_OFFSET" VALUE="0"/>
-                  <PROPERTY NAME="BIT_WIDTH" VALUE="16"/>
+                  <PROPERTY NAME="BIT_WIDTH" VALUE="17"/>
                 </FIELD>
               </FIELDS>
             </REGISTER>
@@ -1737,7 +1742,7 @@
         <PARAMETER NAME="C_FAMILY" VALUE="zynq"/>
         <PARAMETER NAME="C_S_AXI_ADDR_WIDTH" VALUE="9"/>
         <PARAMETER NAME="C_S_AXI_DATA_WIDTH" VALUE="32"/>
-        <PARAMETER NAME="C_GPIO_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="C_GPIO_WIDTH" VALUE="17"/>
         <PARAMETER NAME="C_GPIO2_WIDTH" VALUE="17"/>
         <PARAMETER NAME="C_ALL_INPUTS" VALUE="0"/>
         <PARAMETER NAME="C_ALL_INPUTS_2" VALUE="1"/>
@@ -1853,7 +1858,7 @@
             <CONNECTION INSTANCE="cpu_ps7_0_axi_periph" PORT="M13_AXI_rready"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="15" NAME="gpio_io_o" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_gpio_io_o">
+        <PORT DIR="O" LEFT="16" NAME="gpio_io_o" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_gpio_io_o">
           <CONNECTIONS>
             <CONNECTION INSTANCE="reg_bank_0" PORT="reg_rw"/>
           </CONNECTIONS>
@@ -30000,7 +30005,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="15" NAME="reg_rw" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_gpio_io_o">
+        <PORT DIR="I" LEFT="16" NAME="reg_rw" RIGHT="0" SIGIS="undef" SIGNAME="axi_gpio_0_gpio_io_o">
           <CONNECTIONS>
             <CONNECTION INSTANCE="axi_gpio_0" PORT="gpio_io_o"/>
           </CONNECTIONS>
@@ -30043,12 +30048,17 @@
         </PORT>
         <PORT DIR="O" NAME="channel_up_15" SIGIS="undef" SIGNAME="reg_bank_0_channel_up_15">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="reg_bank_0" PORT="channel_up_top_13"/>
-            <CONNECTION INSTANCE="reg_bank_0" PORT="channel_up_bot_15"/>
             <CONNECTION INSTANCE="axi_chip2chip_1" PORT="axi_c2c_aurora_tx_tready"/>
             <CONNECTION INSTANCE="axi_chip2chip_0" PORT="axi_c2c_aurora_tx_tready"/>
             <CONNECTION INSTANCE="axisafety_2" PORT="ext_resetn"/>
             <CONNECTION INSTANCE="axisafety_1" PORT="ext_resetn"/>
+            <CONNECTION INSTANCE="reg_bank_0" PORT="channel_up_top_13"/>
+            <CONNECTION INSTANCE="reg_bank_0" PORT="channel_up_bot_15"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="c2c_slave_reset" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="reg_bank_0_c2c_slave_reset">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="c2c_slave_reset"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="7" NAME="ha_7_0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_ha">

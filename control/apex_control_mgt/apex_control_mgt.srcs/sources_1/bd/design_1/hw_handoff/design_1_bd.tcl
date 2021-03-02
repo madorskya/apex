@@ -2031,6 +2031,7 @@ proc create_root_design { parentCell } {
    CONFIG.PHASE {0} \
  ] $axi_c2c_phy_clk
   set axi_clk [ create_bd_port -dir O -type clk axi_clk ]
+  set c2c_slave_reset [ create_bd_port -dir O -type rst c2c_slave_reset ]
   set do_cc_bot [ create_bd_port -dir O do_cc_bot ]
   set do_cc_top [ create_bd_port -dir O do_cc_top ]
   set en_ipmb_zynq [ create_bd_port -dir O -from 1 -to 0 en_ipmb_zynq ]
@@ -2129,7 +2130,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_ALL_OUTPUTS {1} \
    CONFIG.C_DOUT_DEFAULT {0x00000000} \
    CONFIG.C_GPIO2_WIDTH {17} \
-   CONFIG.C_GPIO_WIDTH {16} \
+   CONFIG.C_GPIO_WIDTH {17} \
    CONFIG.C_IS_DUAL {1} \
  ] $axi_gpio_0
 
@@ -2234,6 +2235,10 @@ proc create_root_design { parentCell } {
      return 1
    }
   
+  set_property -dict [ list \
+   CONFIG.POLARITY {ACTIVE_HIGH} \
+ ] [get_bd_pins /reg_bank_0/c2c_slave_reset]
+
   # Create instance: system_ila_0, and set properties
   set system_ila_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:system_ila:1.1 system_ila_0 ]
   set_property -dict [ list \
@@ -2356,6 +2361,7 @@ connect_bd_intf_net -intf_net [get_bd_intf_nets s_axi_2] [get_bd_intf_pins cpu/M
   connect_bd_net -net processing_system7_0_FCLK_CLK1 [get_bd_pins cpu/FCLK_CLK1] [get_bd_pins eth1/ref_clk]
   connect_bd_net -net processing_system7_0_FCLK_CLK2 [get_bd_pins cpu/FCLK_CLK2] [get_bd_pins eth1/gtx_clk]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins cpu/ext_reset_in] [get_bd_pins eth1/ext_reset_in]
+  connect_bd_net -net reg_bank_0_c2c_slave_reset [get_bd_ports c2c_slave_reset] [get_bd_pins reg_bank_0/c2c_slave_reset]
   connect_bd_net -net reg_bank_0_reg_ro [get_bd_pins axi_gpio_0/gpio2_io_i] [get_bd_pins reg_bank_0/reg_ro]
   connect_bd_net -net reg_bank_Dout2 [get_bd_ports tx_polarity] [get_bd_pins reg_bank_0/tx_polarity_13_10]
   connect_bd_net -net reg_bank_en_ipmb_zynq [get_bd_ports en_ipmb_zynq] [get_bd_pins reg_bank_0/ipmb_en_1_0]
