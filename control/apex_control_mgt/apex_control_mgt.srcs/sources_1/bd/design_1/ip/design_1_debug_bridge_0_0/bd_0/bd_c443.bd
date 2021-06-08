@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xF2885E83AE9027B6",
+      "boundary_crc": "0xF2885E83CC555CB3",
       "design_src": "SBD",
       "device": "xc7z015clg485-1",
       "name": "bd_c443",
@@ -35,7 +35,7 @@
             "value_src": "constant"
           },
           "FREQ_HZ": {
-            "value": "100000000",
+            "value": "1e+08",
             "value_src": "user_prop"
           },
           "ID_WIDTH": {
@@ -176,7 +176,7 @@
             "value_src": "default_prop"
           },
           "FREQ_HZ": {
-            "value": "100000000",
+            "value": "1e+08",
             "value_src": "user_prop"
           },
           "FREQ_TOLERANCE_HZ": {

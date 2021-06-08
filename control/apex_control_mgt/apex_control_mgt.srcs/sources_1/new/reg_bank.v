@@ -21,7 +21,8 @@ module reg_bank
     input link_stat_bot_14,
     input channel_up_bot_15,
     input hot_swap_handle_16,
-    output [16:0] reg_ro
+    input [3:0] prbs_err_20_17,
+    output [20:0] reg_ro
 );
 
     assign ipmb_en_1_0       = ~reg_rw[1:0];
@@ -34,15 +35,16 @@ module reg_bank
     assign channel_up_15     = reg_rw[15];
     assign c2c_slave_reset   = reg_rw[16];
     
-    assign reg_ro[7:0] = ha_7_0;
-    assign reg_ro[9:8] = ready_ipmb_zynq_9_8;
-    assign reg_ro[10]  = los_10g_10;
-    assign reg_ro[11]  = pim_alarm_11;
-    assign reg_ro[12]  = link_stat_top_12;
-    assign reg_ro[13]  = channel_up_top_13;
-    assign reg_ro[14]  = link_stat_bot_14;
-    assign reg_ro[15]  = channel_up_bot_15;
-    assign reg_ro[16]  = hot_swap_handle_16;
+    assign reg_ro[7:0]   = ha_7_0;
+    assign reg_ro[9:8]   = ready_ipmb_zynq_9_8;
+    assign reg_ro[10]    = los_10g_10;
+    assign reg_ro[11]    = pim_alarm_11;
+    assign reg_ro[12]    = link_stat_top_12;
+    assign reg_ro[13]    = channel_up_top_13;
+    assign reg_ro[14]    = link_stat_bot_14;
+    assign reg_ro[15]    = channel_up_bot_15;
+    assign reg_ro[16]    = hot_swap_handle_16;
+    assign reg_ro[20:17] = prbs_err_20_17;
     
 
 endmodule

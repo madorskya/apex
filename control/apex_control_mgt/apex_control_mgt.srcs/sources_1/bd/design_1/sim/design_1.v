@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Tue Mar  2 17:00:16 2021
+//Date        : Tue Jun  8 21:25:42 2021
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -3222,8 +3222,8 @@ module design_1
   input [3:0]align_b0;
   input [3:0]align_lock;
   (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_C2C_PHY_CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_C2C_PHY_CLK, CLK_DOMAIN design_1_axi_c2c_phy_clk_0, FREQ_HZ 93750000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0" *) input axi_c2c_phy_clk;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_CLK, CLK_DOMAIN design_1_processing_system7_0_0_FCLK_CLK0, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.000" *) output axi_clk;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.C2C_SLAVE_RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.C2C_SLAVE_RESET, INSERT_VIP 0, POLARITY ACTIVE_HIGH" *) output c2c_slave_reset;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 CLK.AXI_CLK CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.AXI_CLK, CLK_DOMAIN design_1_processing_system7_0_0_FCLK_CLK0, FREQ_HZ 1e+08, FREQ_TOLERANCE_HZ 0, INSERT_VIP 0, PHASE 0.000" *) output axi_clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 RST.C2C_SLAVE_RESET RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME RST.C2C_SLAVE_RESET, INSERT_VIP 0, POLARITY ACTIVE_LOW" *) output c2c_slave_reset;
   output do_cc_bot;
   output do_cc_top;
   output [1:0]en_ipmb_zynq;
@@ -3915,7 +3915,7 @@ module design_1
   wire ps7_0_axi_periph_M02_AXI_WREADY;
   wire ps7_0_axi_periph_M02_AXI_WVALID;
   wire reg_bank_0_c2c_slave_reset;
-  wire [16:0]reg_bank_0_reg_ro;
+  wire [20:0]reg_bank_0_reg_ro;
   wire [3:0]reg_bank_Dout2;
   wire [1:0]reg_bank_en_ipmb_zynq;
   wire reg_bank_gtp_reset_14_0;
@@ -5411,6 +5411,7 @@ module design_1
         .los_10g_10(In1_0_1),
         .payload_on_5(reg_bank_qbv_on_off),
         .pim_alarm_11(In3_0_1),
+        .prbs_err_20_17(probe0_0_1),
         .prbs_sel_8_6(prbs_sel),
         .ready_ipmb_zynq_9_8(In0_0_1),
         .reg_ro(reg_bank_0_reg_ro),

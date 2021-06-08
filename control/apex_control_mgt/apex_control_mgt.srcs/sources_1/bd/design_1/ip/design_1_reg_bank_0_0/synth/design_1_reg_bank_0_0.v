@@ -75,6 +75,7 @@ module design_1_reg_bank_0_0 (
   link_stat_bot_14,
   channel_up_bot_15,
   hot_swap_handle_16,
+  prbs_err_20_17,
   reg_ro
 );
 
@@ -87,7 +88,7 @@ output wire aurora_pma_init_9;
 output wire [3 : 0] tx_polarity_13_10;
 output wire gtp_reset_14;
 output wire channel_up_15;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME c2c_slave_reset, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME c2c_slave_reset, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 c2c_slave_reset RST" *)
 output wire c2c_slave_reset;
 input wire [7 : 0] ha_7_0;
@@ -99,7 +100,8 @@ input wire channel_up_top_13;
 input wire link_stat_bot_14;
 input wire channel_up_bot_15;
 input wire hot_swap_handle_16;
-output wire [16 : 0] reg_ro;
+input wire [3 : 0] prbs_err_20_17;
+output wire [20 : 0] reg_ro;
 
   reg_bank inst (
     .reg_rw(reg_rw),
@@ -121,6 +123,7 @@ output wire [16 : 0] reg_ro;
     .link_stat_bot_14(link_stat_bot_14),
     .channel_up_bot_15(channel_up_bot_15),
     .hot_swap_handle_16(hot_swap_handle_16),
+    .prbs_err_20_17(prbs_err_20_17),
     .reg_ro(reg_ro)
   );
 endmodule
