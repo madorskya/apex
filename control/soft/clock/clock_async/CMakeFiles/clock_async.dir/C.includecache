@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/root/clock/clock_async/semaphore.c
+stdio.h
+-
+stdint.h
+-
+stdlib.h
+-
+string.h
+-
+unistd.h
+-
+sys/types.h
+-
+sys/ipc.h
+-
+sys/sem.h
+-
+errno.h
+-
+semaphore.h
+/root/clock/clock_async/semaphore.h
+
+/root/clock/clock_async/semaphore.h
+

@@ -1,0 +1,12 @@
+
+devmem 0x41200000 32 2
+
+i2cdetect -y -r 1
+
+./qsfp_i2c_prepare.sh 
+./qsfp_i2c_clear.sh
+
+while true; do i2cset -y 1 0x18 1 0xe7; i2cset -y 1 0x18 1 0xef; done
+
+
+
