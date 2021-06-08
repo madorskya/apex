@@ -1163,16 +1163,19 @@ assign  gt0_rxprbssel_i                      =  prbs_sel;
 assign  gt0_rxpolarity_i                     =  tied_to_ground_i;
 assign  gt0_txpolarity_i                     =  tx_polarity [0];
 assign  gt0_txprbssel_i                      =  prbs_sel;
+
 assign  gt1_rxprbscntreset_i                 =  tied_to_ground_i;
 assign  gt1_rxprbssel_i                      =  prbs_sel;
 assign  gt1_rxpolarity_i                     =  tied_to_ground_i;
 assign  gt1_txpolarity_i                     =  tx_polarity [1];
 assign  gt1_txprbssel_i                      =  prbs_sel;
+
 assign  gt2_rxprbscntreset_i                 =  tied_to_ground_i;
 assign  gt2_rxprbssel_i                      =  prbs_sel;
 assign  gt2_rxpolarity_i                     =  tied_to_ground_i;
 assign  gt2_txpolarity_i                     =  tx_polarity [2];
 assign  gt2_txprbssel_i                      =  prbs_sel;
+
 assign  gt3_rxprbscntreset_i                 =  tied_to_ground_i;
 assign  gt3_rxprbssel_i                      =  prbs_sel;
 assign  gt3_rxpolarity_i                     =  tied_to_ground_i;
