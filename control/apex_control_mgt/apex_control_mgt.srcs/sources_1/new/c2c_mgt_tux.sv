@@ -677,8 +677,12 @@ wire            pll1pd_i;
     // minimum 500ns as mentioned in AR 43482.
 
 
-
-    c2c_mgt c2c_mgt_support_i 
+`ifdef C2C_2P5G
+    c2c_mgt_2p5g // 2.5G
+`else
+    c2c_mgt // 3.75G
+`endif 
+    c2c_mgt_support_i
     (
         .soft_reset_tx_in               (soft_reset_i),
         .soft_reset_rx_in               (soft_reset_i),
