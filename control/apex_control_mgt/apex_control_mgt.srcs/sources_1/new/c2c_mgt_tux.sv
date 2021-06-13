@@ -680,7 +680,11 @@ wire            pll1pd_i;
 `ifdef C2C_2P5G
     c2c_mgt_2p5g // 2.5G
 `else
+`ifdef C2C_3P125G
+    c2c_mgt_3p125g // 3.125G
+`else
     c2c_mgt // 3.75G
+`endif
 `endif 
     c2c_mgt_support_i
     (
