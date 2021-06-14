@@ -948,16 +948,16 @@
           "mac/rgmii"
         ]
       },
-      "s_axis_txc_1": {
-        "interface_ports": [
-          "s_axis_txc",
-          "eth_buf/AXI_STR_TXC"
-        ]
-      },
       "s_axis_txd_1": {
         "interface_ports": [
           "s_axis_txd",
           "eth_buf/AXI_STR_TXD"
+        ]
+      },
+      "s_axis_txc_1": {
+        "interface_ports": [
+          "s_axis_txc",
+          "eth_buf/AXI_STR_TXC"
         ]
       },
       "s_axi_1": {
