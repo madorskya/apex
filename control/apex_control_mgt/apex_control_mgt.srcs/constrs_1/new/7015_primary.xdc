@@ -134,6 +134,11 @@ set_property PACKAGE_PIN L5  [get_ports scf_tdo_1]; # J2 pin 17
 set_property PACKAGE_PIN K7  [get_ports scf_tms_0]; # J2 pin 14
 set_property PACKAGE_PIN L4  [get_ports scf_tms_1]; # J2 pin 19
 
+set_property -dict {DRIVE 12 SLEW FAST IOB TRUE} [get_ports scf_tck_*]; 
+set_property -dict {DRIVE 12 SLEW FAST IOB TRUE} [get_ports scf_tms_*]; 
+set_property -dict {DRIVE 12 SLEW FAST IOB TRUE} [get_ports scf_tdi_*]; 
+set_property IOB TRUE [get_ports scf_tdo_*]; 
+
 set_property PACKAGE_PIN AB19 [get_ports hot_swap_sw]; # J2 pin 73
 
 # payload I2C from Elma chip

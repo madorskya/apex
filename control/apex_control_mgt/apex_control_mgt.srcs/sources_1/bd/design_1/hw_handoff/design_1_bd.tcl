@@ -463,13 +463,13 @@ proc create_hier_cell_jtag { parentCell nameHier } {
   # Create instance: axi_jtag_0, and set properties
   set axi_jtag_0 [ create_bd_cell -type ip -vlnv A_Clark:Debug:axi_jtag:1.0 axi_jtag_0 ]
   set_property -dict [ list \
-   CONFIG.C_TCK_CLOCK_RATIO {4} \
+   CONFIG.C_TCK_CLOCK_RATIO {6} \
  ] $axi_jtag_0
 
   # Create instance: axi_jtag_1, and set properties
   set axi_jtag_1 [ create_bd_cell -type ip -vlnv A_Clark:Debug:axi_jtag:1.0 axi_jtag_1 ]
   set_property -dict [ list \
-   CONFIG.C_TCK_CLOCK_RATIO {4} \
+   CONFIG.C_TCK_CLOCK_RATIO {6} \
  ] $axi_jtag_1
 
   # Create interface connections

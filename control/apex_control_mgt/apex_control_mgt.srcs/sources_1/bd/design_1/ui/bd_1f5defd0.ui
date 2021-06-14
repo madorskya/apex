@@ -249,7 +249,7 @@ pagesize -pg 1 -db -bbox -sgen -190 0 3300 2750
 pagesize -hier jtag -db -bbox -sgen 1350 2242 1630 2582
 ",
    "Color Coded_ScaleFactor":"1.13285",
-   "Color Coded_TopLeft":"818,2182",
+   "Color Coded_TopLeft":"818,2179",
    "Default View_ScaleFactor":"1.12622",
    "Default View_TopLeft":"606,330",
    "ExpandedHierarchyInLayout":"",
