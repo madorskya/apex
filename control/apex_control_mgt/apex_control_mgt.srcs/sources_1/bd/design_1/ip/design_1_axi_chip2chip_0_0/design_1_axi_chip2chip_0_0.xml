@@ -1261,7 +1261,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI.FREQ_HZ">1e+08</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.S_AXI.FREQ_HZ">100000000</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -1988,7 +1988,7 @@
           <spirit:name>FREQ_HZ</spirit:name>
           <spirit:displayName>Slave AXI clock frequency</spirit:displayName>
           <spirit:description>Global Slave Interface Clock (Independent clock)</spirit:description>
-          <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="BUSIFPARAM_VALUE.S_ACLK.FREQ_HZ">1e+08</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="BUSIFPARAM_VALUE.S_ACLK.FREQ_HZ">100000000</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_TOLERANCE_HZ</spirit:name>
@@ -2583,7 +2583,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>CLK_DOMAIN</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.AXI_C2C_PHY_CLK.CLK_DOMAIN">design_1_axi_c2c_phy_clk_0</spirit:value>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.AXI_C2C_PHY_CLK.CLK_DOMAIN">design_1_axi_c2c_phy_clk</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -2632,7 +2632,7 @@
           <spirit:name>FREQ_HZ</spirit:name>
           <spirit:displayName>Aurora Init Clock</spirit:displayName>
           <spirit:description>Single-ended init_clk_out signal from the Aurora IP</spirit:description>
-          <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="BUSIFPARAM_VALUE.INIT_CLK.FREQ_HZ">1e+08</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="BUSIFPARAM_VALUE.INIT_CLK.FREQ_HZ">100000000</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>FREQ_TOLERANCE_HZ</spirit:name>
@@ -3319,7 +3319,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>CLK_DOMAIN</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.AXIS_RX.CLK_DOMAIN">design_1_axi_c2c_phy_clk_0</spirit:value>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.AXIS_RX.CLK_DOMAIN">design_1_axi_c2c_phy_clk</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -3477,7 +3477,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>CLK_DOMAIN</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.AXIS_TX.CLK_DOMAIN">design_1_axi_c2c_phy_clk_0</spirit:value>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.AXIS_TX.CLK_DOMAIN">design_1_axi_c2c_phy_clk</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -3760,7 +3760,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:fcfe90b6</spirit:value>
+            <spirit:value>9:26538794</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -3774,11 +3774,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Jun 08 19:25:48 UTC 2021</spirit:value>
+            <spirit:value>Mon Jun 14 20:40:50 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:fcfe90b6</spirit:value>
+            <spirit:value>9:26538794</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -3794,11 +3794,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Jun 08 19:25:48 UTC 2021</spirit:value>
+            <spirit:value>Mon Jun 14 20:40:50 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:fcfe90b6</spirit:value>
+            <spirit:value>9:26538794</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -3817,7 +3817,7 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:2d9564e4</spirit:value>
+            <spirit:value>9:f6fe28bd</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -3833,11 +3833,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Tue Jun 08 19:25:48 UTC 2021</spirit:value>
+            <spirit:value>Mon Jun 14 20:40:50 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:2d9564e4</spirit:value>
+            <spirit:value>9:f6fe28bd</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
