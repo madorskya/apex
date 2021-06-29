@@ -2059,13 +2059,13 @@ proc create_root_design { parentCell } {
   # Create instance: axi_jtag_0, and set properties
   set axi_jtag_0 [ create_bd_cell -type ip -vlnv A_Clark:Debug:axi_jtag:1.0 axi_jtag_0 ]
   set_property -dict [ list \
-   CONFIG.C_TCK_CLOCK_RATIO {10} \
+   CONFIG.C_TCK_CLOCK_RATIO {20} \
  ] $axi_jtag_0
 
   # Create instance: axi_jtag_1, and set properties
   set axi_jtag_1 [ create_bd_cell -type ip -vlnv A_Clark:Debug:axi_jtag:1.0 axi_jtag_1 ]
   set_property -dict [ list \
-   CONFIG.C_TCK_CLOCK_RATIO {10} \
+   CONFIG.C_TCK_CLOCK_RATIO {20} \
  ] $axi_jtag_1
 
   # Create instance: axisafety_1, and set properties
@@ -2117,41 +2117,6 @@ proc create_root_design { parentCell } {
   # Create instance: i2c
   create_hier_cell_i2c [current_bd_instance .] i2c
 
-  # Create instance: ila_0, and set properties
-  set ila_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:ila:6.2 ila_0 ]
-  set_property -dict [ list \
-   CONFIG.C_DATA_DEPTH {2048} \
-   CONFIG.C_ENABLE_ILA_AXI_MON {false} \
-   CONFIG.C_INPUT_PIPE_STAGES {6} \
-   CONFIG.C_MONITOR_TYPE {Native} \
-   CONFIG.C_NUM_OF_PROBES {50} \
-   CONFIG.C_PROBE0_WIDTH {4} \
-   CONFIG.C_PROBE15_WIDTH {32} \
-   CONFIG.C_PROBE16_WIDTH {32} \
-   CONFIG.C_PROBE17_WIDTH {32} \
-   CONFIG.C_PROBE18_WIDTH {32} \
-   CONFIG.C_PROBE19_WIDTH {4} \
-   CONFIG.C_PROBE20_WIDTH {4} \
-   CONFIG.C_PROBE21_WIDTH {4} \
-   CONFIG.C_PROBE22_WIDTH {4} \
-   CONFIG.C_PROBE23_WIDTH {4} \
-   CONFIG.C_PROBE24_WIDTH {4} \
-   CONFIG.C_PROBE25_WIDTH {32} \
-   CONFIG.C_PROBE27_WIDTH {32} \
-   CONFIG.C_PROBE29_WIDTH {32} \
-   CONFIG.C_PROBE32_WIDTH {32} \
-   CONFIG.C_PROBE40_WIDTH {2} \
-   CONFIG.C_PROBE41_WIDTH {2} \
-   CONFIG.C_PROBE42_WIDTH {32} \
-   CONFIG.C_PROBE43_WIDTH {32} \
-   CONFIG.C_PROBE44_WIDTH {32} \
-   CONFIG.C_PROBE45_WIDTH {32} \
-   CONFIG.C_PROBE46_WIDTH {4} \
-   CONFIG.C_PROBE47_WIDTH {4} \
-   CONFIG.C_PROBE48_WIDTH {4} \
-   CONFIG.C_PROBE49_WIDTH {4} \
- ] $ila_0
-
   # Create instance: ipmc
   create_hier_cell_ipmc [current_bd_instance .] ipmc
 
@@ -2166,16 +2131,6 @@ proc create_root_design { parentCell } {
      return 1
    }
   
-  # Create instance: system_ila_0, and set properties
-  set system_ila_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:system_ila:1.1 system_ila_0 ]
-  set_property -dict [ list \
-   CONFIG.C_BRAM_CNT {6} \
-   CONFIG.C_INPUT_PIPE_STAGES {6} \
-   CONFIG.C_MON_TYPE {MIX} \
-   CONFIG.C_NUM_MONITOR_SLOTS {2} \
-   CONFIG.C_NUM_OF_PROBES {2} \
- ] $system_ila_0
-
   # Create interface connections
   connect_bd_intf_net -intf_net S_AXI2_1 [get_bd_intf_pins cpu/M05_AXI] [get_bd_intf_pins ipmc/S_AXI]
   connect_bd_intf_net -intf_net S_AXI3_1 [get_bd_intf_pins cpu/M06_AXI] [get_bd_intf_pins ipmc/S_AXI2]
@@ -2189,7 +2144,6 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net axi_iic_2_IIC [get_bd_intf_ports scf_i2c_2] [get_bd_intf_pins i2c/iic_rtl_2]
   connect_bd_intf_net -intf_net axi_mem_intercon_M00_AXI [get_bd_intf_pins cpu/S_AXI_HP0] [get_bd_intf_pins eth1/M00_AXI]
   connect_bd_intf_net -intf_net axisafety_1_M_AXI [get_bd_intf_pins axi_chip2chip_0/s_axi] [get_bd_intf_pins axisafety_1/M_AXI]
-connect_bd_intf_net -intf_net [get_bd_intf_nets axisafety_1_M_AXI] [get_bd_intf_pins axisafety_1/M_AXI] [get_bd_intf_pins system_ila_0/SLOT_1_AXI]
   connect_bd_intf_net -intf_net axisafety_1_M_AXI_1 [get_bd_intf_pins axi_chip2chip_1/s_axi] [get_bd_intf_pins axisafety_2/M_AXI]
   connect_bd_intf_net -intf_net cpu_M03_AXI [get_bd_intf_pins axi_jtag_0/s_axi] [get_bd_intf_pins cpu/M03_AXI]
   connect_bd_intf_net -intf_net cpu_M04_AXI [get_bd_intf_pins axi_jtag_1/s_axi] [get_bd_intf_pins cpu/M04_AXI]
@@ -2209,36 +2163,33 @@ connect_bd_intf_net -intf_net [get_bd_intf_nets axisafety_1_M_AXI] [get_bd_intf_
   connect_bd_intf_net -intf_net ps7_0_axi_periph_M01_AXI [get_bd_intf_pins cpu/M01_AXI] [get_bd_intf_pins dbg/S_AXI]
   connect_bd_intf_net -intf_net ps7_0_axi_periph_M02_AXI [get_bd_intf_pins cpu/M02_AXI] [get_bd_intf_pins eth1/S_AXI_LITE]
   connect_bd_intf_net -intf_net s_axi_2 [get_bd_intf_pins axisafety_1/S_AXI] [get_bd_intf_pins cpu/M15_AXI]
-connect_bd_intf_net -intf_net [get_bd_intf_nets s_axi_2] [get_bd_intf_pins cpu/M15_AXI] [get_bd_intf_pins system_ila_0/SLOT_0_AXI]
 
   # Create port connections
   connect_bd_net -net ARESETN_1 [get_bd_pins cpu/interconnect_aresetn] [get_bd_pins eth1/ARESETN]
-  connect_bd_net -net AXIS_RX_0_tdata_0_1 [get_bd_ports rxdata_top] [get_bd_pins axi_chip2chip_1/axi_c2c_aurora_rx_tdata] [get_bd_pins ila_0/probe25]
-  connect_bd_net -net AXIS_RX_0_tdata_1_1 [get_bd_ports rxdata_bot] [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_rx_tdata] [get_bd_pins ila_0/probe27]
-  connect_bd_net -net AXIS_RX_0_tvalid_0_1 [get_bd_ports rxvalid_top] [get_bd_pins axi_chip2chip_1/axi_c2c_aurora_rx_tvalid] [get_bd_pins ila_0/probe26]
-  connect_bd_net -net AXIS_RX_0_tvalid_1_1 [get_bd_ports rxvalid_bot] [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_rx_tvalid] [get_bd_pins ila_0/probe28]
+  connect_bd_net -net AXIS_RX_0_tdata_0_1 [get_bd_ports rxdata_top] [get_bd_pins axi_chip2chip_1/axi_c2c_aurora_rx_tdata]
+  connect_bd_net -net AXIS_RX_0_tdata_1_1 [get_bd_ports rxdata_bot] [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_rx_tdata]
+  connect_bd_net -net AXIS_RX_0_tvalid_0_1 [get_bd_ports rxvalid_top] [get_bd_pins axi_chip2chip_1/axi_c2c_aurora_rx_tvalid]
+  connect_bd_net -net AXIS_RX_0_tvalid_1_1 [get_bd_ports rxvalid_bot] [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_rx_tvalid]
   connect_bd_net -net In0_0_1 [get_bd_ports ready_ipmb_zynq] [get_bd_pins reg_bank_0/ready_ipmb_zynq_9_8]
   connect_bd_net -net In1_0_1 [get_bd_ports los_10g] [get_bd_pins reg_bank_0/los_10g_10]
   connect_bd_net -net In2_0_1 [get_bd_ports ha] [get_bd_pins ipmc/ha] [get_bd_pins reg_bank_0/ha_7_0]
   connect_bd_net -net In3_0_1 [get_bd_ports pim_alarm] [get_bd_pins reg_bank_0/pim_alarm_11]
   connect_bd_net -net In8_0_1 [get_bd_ports hot_swap_sw] [get_bd_pins reg_bank_0/hot_swap_handle_16]
-  connect_bd_net -net Net [get_bd_ports axi_clk] [get_bd_pins axi_chip2chip_0/aurora_init_clk] [get_bd_pins axi_chip2chip_0/s_aclk] [get_bd_pins axi_chip2chip_1/aurora_init_clk] [get_bd_pins axi_chip2chip_1/s_aclk] [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axisafety_1/M_AXI_ACLK] [get_bd_pins axisafety_1/S_AXI_ACLK] [get_bd_pins axisafety_2/M_AXI_ACLK] [get_bd_pins axisafety_2/S_AXI_ACLK] [get_bd_pins bram_loopback/S_AXI_ACLK] [get_bd_pins cpu/FCLK_CLK0] [get_bd_pins dbg/clk] [get_bd_pins eth1/s_axi_lite_aclk] [get_bd_pins i2c/s_axi_aclk] [get_bd_pins ipmc/s_axi_aclk] [get_bd_pins system_ila_0/clk]
+  connect_bd_net -net Net [get_bd_ports axi_clk] [get_bd_pins axi_chip2chip_0/aurora_init_clk] [get_bd_pins axi_chip2chip_0/s_aclk] [get_bd_pins axi_chip2chip_1/aurora_init_clk] [get_bd_pins axi_chip2chip_1/s_aclk] [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axisafety_1/M_AXI_ACLK] [get_bd_pins axisafety_1/S_AXI_ACLK] [get_bd_pins axisafety_2/M_AXI_ACLK] [get_bd_pins axisafety_2/S_AXI_ACLK] [get_bd_pins bram_loopback/S_AXI_ACLK] [get_bd_pins cpu/FCLK_CLK0] [get_bd_pins dbg/clk] [get_bd_pins eth1/s_axi_lite_aclk] [get_bd_pins i2c/s_axi_aclk] [get_bd_pins ipmc/s_axi_aclk]
   connect_bd_net -net Net1 [get_bd_ports ipmc_sda_0] [get_bd_pins ipmc/ipmc_sda_0]
   connect_bd_net -net Net2 [get_bd_ports ipmc_scl_0] [get_bd_pins ipmc/ipmc_scl_0]
   connect_bd_net -net Net3 [get_bd_ports ipmc_scl_1] [get_bd_pins ipmc/ipmc_scl_1]
   connect_bd_net -net Net4 [get_bd_ports ipmc_sda_1] [get_bd_pins ipmc/ipmc_sda_1]
   connect_bd_net -net TDO_0_0_1 [get_bd_ports scf_tdo_0] [get_bd_pins axi_jtag_0/TDO]
   connect_bd_net -net TDO_1_0_1 [get_bd_ports scf_tdo_1] [get_bd_pins axi_jtag_1/TDO]
-  connect_bd_net -net align_b0 [get_bd_ports align_b0] [get_bd_pins ila_0/probe23]
-  connect_bd_net -net align_lock [get_bd_ports align_lock] [get_bd_pins ila_0/probe24]
   connect_bd_net -net aurora_mmcm_not_locked_0_1 [get_bd_ports mgt_unlocked_top] [get_bd_pins axi_chip2chip_1/aurora_mmcm_not_locked]
   connect_bd_net -net aurora_mmcm_not_locked_1_1 [get_bd_ports mgt_unlocked_bot] [get_bd_pins axi_chip2chip_0/aurora_mmcm_not_locked]
   connect_bd_net -net axi_c2c_aurora_channel_up_0_1 [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_tx_tready] [get_bd_pins axi_chip2chip_1/axi_c2c_aurora_tx_tready] [get_bd_pins axisafety_1/ext_resetn] [get_bd_pins axisafety_2/ext_resetn] [get_bd_pins reg_bank_0/channel_up_15] [get_bd_pins reg_bank_0/channel_up_bot_15] [get_bd_pins reg_bank_0/channel_up_top_13]
-  connect_bd_net -net axi_c2c_phy_clk_0_1 [get_bd_ports axi_c2c_phy_clk] [get_bd_pins axi_chip2chip_0/axi_c2c_phy_clk] [get_bd_pins axi_chip2chip_1/axi_c2c_phy_clk] [get_bd_pins ila_0/clk]
-  connect_bd_net -net axi_chip2chip_0_axi_c2c_aurora_tx_tdata [get_bd_ports txdata_bot] [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_tx_tdata] [get_bd_pins ila_0/probe32]
-  connect_bd_net -net axi_chip2chip_0_axi_c2c_aurora_tx_tvalid [get_bd_ports txvalid_bot] [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_tx_tvalid] [get_bd_pins ila_0/probe33]
-  connect_bd_net -net axi_chip2chip_1_axi_c2c_aurora_tx_tdata [get_bd_ports txdata_top] [get_bd_pins axi_chip2chip_1/axi_c2c_aurora_tx_tdata] [get_bd_pins ila_0/probe29]
-  connect_bd_net -net axi_chip2chip_1_axi_c2c_aurora_tx_tvalid [get_bd_ports txvalid_top] [get_bd_pins axi_chip2chip_1/axi_c2c_aurora_tx_tvalid] [get_bd_pins ila_0/probe30]
+  connect_bd_net -net axi_c2c_phy_clk_0_1 [get_bd_ports axi_c2c_phy_clk] [get_bd_pins axi_chip2chip_0/axi_c2c_phy_clk] [get_bd_pins axi_chip2chip_1/axi_c2c_phy_clk]
+  connect_bd_net -net axi_chip2chip_0_axi_c2c_aurora_tx_tdata [get_bd_ports txdata_bot] [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_tx_tdata]
+  connect_bd_net -net axi_chip2chip_0_axi_c2c_aurora_tx_tvalid [get_bd_ports txvalid_bot] [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_tx_tvalid]
+  connect_bd_net -net axi_chip2chip_1_axi_c2c_aurora_tx_tdata [get_bd_ports txdata_top] [get_bd_pins axi_chip2chip_1/axi_c2c_aurora_tx_tdata]
+  connect_bd_net -net axi_chip2chip_1_axi_c2c_aurora_tx_tvalid [get_bd_ports txvalid_top] [get_bd_pins axi_chip2chip_1/axi_c2c_aurora_tx_tvalid]
   connect_bd_net -net axi_ethernet_0_dma_mm2s_introut [get_bd_pins cpu/In0] [get_bd_pins eth1/mm2s_introut]
   connect_bd_net -net axi_ethernet_0_dma_s2mm_introut [get_bd_pins cpu/In1] [get_bd_pins eth1/s2mm_introut]
   connect_bd_net -net axi_ethernet_0_interrupt [get_bd_pins cpu/In3] [get_bd_pins eth1/interrupt]
@@ -2251,26 +2202,14 @@ connect_bd_intf_net -intf_net [get_bd_intf_nets s_axi_2] [get_bd_intf_pins cpu/M
   connect_bd_net -net axi_jtag_3_TCK [get_bd_ports scf_tck_0] [get_bd_pins axi_jtag_0/TCK]
   connect_bd_net -net axi_jtag_3_TDI [get_bd_ports scf_tdi_0] [get_bd_pins axi_jtag_0/TDI]
   connect_bd_net -net axi_jtag_3_TMS [get_bd_ports scf_tms_0] [get_bd_pins axi_jtag_0/TMS]
-  connect_bd_net -net axisafety_1_M_AXI_ARESETN [get_bd_pins axi_chip2chip_0/s_aresetn] [get_bd_pins axisafety_1/comb_aresetn] [get_bd_pins ila_0/probe35]
-  connect_bd_net -net axisafety_1_M_AXI_ARESETN_1 [get_bd_pins axi_chip2chip_1/s_aresetn] [get_bd_pins axisafety_2/comb_aresetn] [get_bd_pins ila_0/probe31]
-  connect_bd_net -net axisafety_1_channel_up [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_channel_up] [get_bd_pins axisafety_1/channel_up] [get_bd_pins ila_0/probe36]
-  connect_bd_net -net axisafety_1_o_read_fault [get_bd_pins axisafety_1/o_read_fault] [get_bd_pins ila_0/probe38] [get_bd_pins system_ila_0/probe0]
-  connect_bd_net -net axisafety_1_o_write_fault [get_bd_pins axisafety_1/o_write_fault] [get_bd_pins ila_0/probe39] [get_bd_pins system_ila_0/probe1]
-  connect_bd_net -net axisafety_2_channel_up [get_bd_pins axi_chip2chip_1/axi_c2c_aurora_channel_up] [get_bd_pins axisafety_2/channel_up] [get_bd_pins ila_0/probe34]
-  connect_bd_net -net chip2chip_0_axi_c2c_link_status_out [get_bd_ports link_up_top] [get_bd_pins axi_chip2chip_1/axi_c2c_link_status_out] [get_bd_pins ila_0/probe1] [get_bd_pins reg_bank_0/link_stat_top_12]
-  connect_bd_net -net chip2chip_1_axi_c2c_link_status_out [get_bd_ports link_up_bot] [get_bd_pins axi_chip2chip_0/axi_c2c_link_status_out] [get_bd_pins ila_0/probe2] [get_bd_pins reg_bank_0/link_stat_bot_14]
-  connect_bd_net -net chip2chip_bot_ff_aurora_do_cc [get_bd_ports do_cc_bot] [get_bd_pins axi_chip2chip_0/aurora_do_cc] [get_bd_pins ila_0/probe14]
-  connect_bd_net -net chip2chip_bot_ff_aurora_pma_init_out_0 [get_bd_pins axi_chip2chip_0/aurora_pma_init_out] [get_bd_pins ila_0/probe9]
-  connect_bd_net -net chip2chip_bot_ff_aurora_reset_pb [get_bd_pins axi_chip2chip_0/aurora_reset_pb] [get_bd_pins ila_0/probe10]
-  connect_bd_net -net chip2chip_bot_ff_axi_c2c_config_error_out [get_bd_pins axi_chip2chip_0/axi_c2c_config_error_out] [get_bd_pins ila_0/probe11]
-  connect_bd_net -net chip2chip_bot_ff_axi_c2c_link_error_out [get_bd_pins axi_chip2chip_0/axi_c2c_link_error_out] [get_bd_pins ila_0/probe13]
-  connect_bd_net -net chip2chip_bot_ff_axi_c2c_multi_bit_error_out [get_bd_pins axi_chip2chip_0/axi_c2c_multi_bit_error_out] [get_bd_pins ila_0/probe12]
-  connect_bd_net -net chip2chip_top_ff_aurora_do_cc [get_bd_ports do_cc_top] [get_bd_pins axi_chip2chip_1/aurora_do_cc] [get_bd_pins ila_0/probe3]
-  connect_bd_net -net chip2chip_top_ff_aurora_pma_init_out [get_bd_pins axi_chip2chip_1/aurora_pma_init_out] [get_bd_pins ila_0/probe4]
-  connect_bd_net -net chip2chip_top_ff_aurora_reset_pb [get_bd_pins axi_chip2chip_1/aurora_reset_pb] [get_bd_pins ila_0/probe5]
-  connect_bd_net -net chip2chip_top_ff_axi_c2c_config_error_out [get_bd_pins axi_chip2chip_1/axi_c2c_config_error_out] [get_bd_pins ila_0/probe6]
-  connect_bd_net -net chip2chip_top_ff_axi_c2c_link_error_out [get_bd_pins axi_chip2chip_1/axi_c2c_link_error_out] [get_bd_pins ila_0/probe8]
-  connect_bd_net -net chip2chip_top_ff_axi_c2c_multi_bit_error_out [get_bd_pins axi_chip2chip_1/axi_c2c_multi_bit_error_out] [get_bd_pins ila_0/probe7]
+  connect_bd_net -net axisafety_1_M_AXI_ARESETN [get_bd_pins axi_chip2chip_0/s_aresetn] [get_bd_pins axisafety_1/comb_aresetn]
+  connect_bd_net -net axisafety_1_M_AXI_ARESETN_1 [get_bd_pins axi_chip2chip_1/s_aresetn] [get_bd_pins axisafety_2/comb_aresetn]
+  connect_bd_net -net axisafety_1_channel_up [get_bd_pins axi_chip2chip_0/axi_c2c_aurora_channel_up] [get_bd_pins axisafety_1/channel_up]
+  connect_bd_net -net axisafety_2_channel_up [get_bd_pins axi_chip2chip_1/axi_c2c_aurora_channel_up] [get_bd_pins axisafety_2/channel_up]
+  connect_bd_net -net chip2chip_0_axi_c2c_link_status_out [get_bd_ports link_up_top] [get_bd_pins axi_chip2chip_1/axi_c2c_link_status_out] [get_bd_pins reg_bank_0/link_stat_top_12]
+  connect_bd_net -net chip2chip_1_axi_c2c_link_status_out [get_bd_ports link_up_bot] [get_bd_pins axi_chip2chip_0/axi_c2c_link_status_out] [get_bd_pins reg_bank_0/link_stat_bot_14]
+  connect_bd_net -net chip2chip_bot_ff_aurora_do_cc [get_bd_ports do_cc_bot] [get_bd_pins axi_chip2chip_0/aurora_do_cc]
+  connect_bd_net -net chip2chip_top_ff_aurora_do_cc [get_bd_ports do_cc_top] [get_bd_pins axi_chip2chip_1/aurora_do_cc]
   connect_bd_net -net cpu_peripheral_reset [get_bd_pins axi_chip2chip_0/aurora_pma_init_in] [get_bd_pins axi_chip2chip_1/aurora_pma_init_in] [get_bd_pins reg_bank_0/aurora_pma_init_9]
   connect_bd_net -net i2c_iic2intc_irpt [get_bd_pins cpu/In7] [get_bd_pins i2c/iic2intc_irpt]
   connect_bd_net -net i2c_iic2intc_irpt1 [get_bd_pins cpu/In8] [get_bd_pins i2c/iic2intc_irpt1]
@@ -2283,8 +2222,8 @@ connect_bd_intf_net -intf_net [get_bd_intf_nets s_axi_2] [get_bd_intf_pins cpu/M
   connect_bd_net -net ipmc_jtag_s0_o [get_bd_pins cpu/I2C1_SDA_I] [get_bd_pins ipmc/s0_o]
   connect_bd_net -net ipmc_jtag_s0_o1 [get_bd_pins cpu/I2C1_SCL_I] [get_bd_pins ipmc/s0_o1]
   connect_bd_net -net prbs_sel [get_bd_ports prbs_sel] [get_bd_pins reg_bank_0/prbs_sel_8_6]
-  connect_bd_net -net probe0_0_1 [get_bd_ports prbs_err] [get_bd_pins ila_0/probe0] [get_bd_pins reg_bank_0/prbs_err_20_17]
-  connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_jtag_0/s_axi_aresetn] [get_bd_pins axi_jtag_1/s_axi_aresetn] [get_bd_pins axisafety_1/S_AXI_ARESETN] [get_bd_pins axisafety_2/S_AXI_ARESETN] [get_bd_pins bram_loopback/S_AXI_ARESETN] [get_bd_pins cpu/S00_ARESETN] [get_bd_pins dbg/s_axi_aresetn] [get_bd_pins eth1/axi_resetn] [get_bd_pins i2c/s_axi_aresetn] [get_bd_pins ila_0/probe37] [get_bd_pins ipmc/s_axi_aresetn] [get_bd_pins system_ila_0/resetn]
+  connect_bd_net -net probe0_0_1 [get_bd_ports prbs_err] [get_bd_pins reg_bank_0/prbs_err_20_17]
+  connect_bd_net -net proc_sys_reset_0_peripheral_aresetn [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_jtag_0/s_axi_aresetn] [get_bd_pins axi_jtag_1/s_axi_aresetn] [get_bd_pins axisafety_1/S_AXI_ARESETN] [get_bd_pins axisafety_2/S_AXI_ARESETN] [get_bd_pins bram_loopback/S_AXI_ARESETN] [get_bd_pins cpu/S00_ARESETN] [get_bd_pins dbg/s_axi_aresetn] [get_bd_pins eth1/axi_resetn] [get_bd_pins i2c/s_axi_aresetn] [get_bd_pins ipmc/s_axi_aresetn]
   connect_bd_net -net processing_system7_0_FCLK_CLK1 [get_bd_pins axi_jtag_0/s_axi_aclk] [get_bd_pins axi_jtag_1/s_axi_aclk] [get_bd_pins cpu/FCLK_CLK1] [get_bd_pins eth1/ref_clk]
   connect_bd_net -net processing_system7_0_FCLK_CLK2 [get_bd_pins cpu/FCLK_CLK2] [get_bd_pins eth1/gtx_clk]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins cpu/ext_reset_in] [get_bd_pins eth1/ext_reset_in]
@@ -2294,28 +2233,10 @@ connect_bd_intf_net -intf_net [get_bd_intf_nets s_axi_2] [get_bd_intf_pins cpu/M
   connect_bd_net -net reg_bank_en_ipmb_zynq [get_bd_ports en_ipmb_zynq] [get_bd_pins reg_bank_0/ipmb_en_1_0]
   connect_bd_net -net reg_bank_gtp_reset_14_0 [get_bd_ports gtp_reset] [get_bd_pins reg_bank_0/gtp_reset_14]
   connect_bd_net -net reg_bank_qbv_on_off [get_bd_ports qbv_on_off] [get_bd_pins reg_bank_0/payload_on_5]
-  connect_bd_net -net rxclkcorcnt_bot [get_bd_ports rxclkcorcnt_bot] [get_bd_pins ila_0/probe41]
-  connect_bd_net -net rxclkcorcnt_top [get_bd_ports rxclkcorcnt_top] [get_bd_pins ila_0/probe40]
-  connect_bd_net -net rxd_raw0 [get_bd_ports rxd_raw0] [get_bd_pins ila_0/probe15]
-  connect_bd_net -net rxd_raw1 [get_bd_ports rxd_raw1] [get_bd_pins ila_0/probe16]
-  connect_bd_net -net rxd_raw2 [get_bd_ports rxd_raw2] [get_bd_pins ila_0/probe17]
-  connect_bd_net -net rxd_raw3 [get_bd_ports rxd_raw3] [get_bd_pins ila_0/probe18]
-  connect_bd_net -net rxk_raw0 [get_bd_ports rxk_raw0] [get_bd_pins ila_0/probe19]
-  connect_bd_net -net rxk_raw1 [get_bd_ports rxk_raw1] [get_bd_pins ila_0/probe20]
-  connect_bd_net -net rxk_raw2 [get_bd_ports rxk_raw2] [get_bd_pins ila_0/probe21]
-  connect_bd_net -net rxk_raw3 [get_bd_ports rxk_raw3] [get_bd_pins ila_0/probe22]
   connect_bd_net -net s0_i1_1 [get_bd_pins cpu/I2C1_SCL_O] [get_bd_pins ipmc/s0_i1]
   connect_bd_net -net s0_i_1 [get_bd_pins cpu/I2C1_SDA_O] [get_bd_pins ipmc/s0_i]
   connect_bd_net -net s0_t1_1 [get_bd_pins cpu/I2C1_SCL_T] [get_bd_pins ipmc/s0_t1]
   connect_bd_net -net s0_t_1 [get_bd_pins cpu/I2C1_SDA_T] [get_bd_pins ipmc/s0_t]
-  connect_bd_net -net txd_raw0 [get_bd_ports txd_raw0] [get_bd_pins ila_0/probe42]
-  connect_bd_net -net txd_raw1 [get_bd_ports txd_raw1] [get_bd_pins ila_0/probe43]
-  connect_bd_net -net txd_raw2 [get_bd_ports txd_raw2] [get_bd_pins ila_0/probe44]
-  connect_bd_net -net txd_raw3 [get_bd_ports txd_raw3] [get_bd_pins ila_0/probe45]
-  connect_bd_net -net txk_raw0 [get_bd_ports txk_raw0] [get_bd_pins ila_0/probe46]
-  connect_bd_net -net txk_raw1 [get_bd_ports txk_raw1] [get_bd_pins ila_0/probe47]
-  connect_bd_net -net txk_raw2 [get_bd_ports txk_raw2] [get_bd_pins ila_0/probe48]
-  connect_bd_net -net txk_raw3 [get_bd_ports txk_raw3] [get_bd_pins ila_0/probe49]
   connect_bd_net -net xlslice_0_Dout [get_bd_ports id] [get_bd_pins reg_bank_0/id_4_2]
 
   # Create address segments

@@ -135,7 +135,7 @@ input wire TDO;
   axi_jtag_v1_0 #(
     .C_S_AXI_DATA_WIDTH(32),
     .C_S_AXI_ADDR_WIDTH(5),
-    .C_TCK_CLOCK_RATIO(10)
+    .C_TCK_CLOCK_RATIO(20)
   ) inst (
     .s_axi_aclk(s_axi_aclk),
     .s_axi_aresetn(s_axi_aresetn),

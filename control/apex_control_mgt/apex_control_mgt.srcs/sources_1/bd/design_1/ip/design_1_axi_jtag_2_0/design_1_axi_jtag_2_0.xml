@@ -577,11 +577,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jun 14 20:40:57 UTC 2021</spirit:value>
+            <spirit:value>Thu Jun 24 21:20:00 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:1c06e8fd</spirit:value>
+            <spirit:value>9:4f323947</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -592,7 +592,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:1c06e8fd</spirit:value>
+            <spirit:value>9:4f323947</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -608,11 +608,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jun 14 20:40:57 UTC 2021</spirit:value>
+            <spirit:value>Fri Jun 25 14:55:12 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:1c06e8fd</spirit:value>
+            <spirit:value>9:4f323947</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -628,11 +628,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jun 14 20:40:57 UTC 2021</spirit:value>
+            <spirit:value>Thu Jun 24 21:20:00 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:201e732c</spirit:value>
+            <spirit:value>9:e63bd241</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -648,11 +648,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Jun 14 20:40:57 UTC 2021</spirit:value>
+            <spirit:value>Fri Jun 25 14:55:12 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:201e732c</spirit:value>
+            <spirit:value>9:e63bd241</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1078,7 +1078,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_TCK_CLOCK_RATIO</spirit:name>
         <spirit:displayName>C Tck Clock Ratio</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_TCK_CLOCK_RATIO">10</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_TCK_CLOCK_RATIO">20</spirit:value>
       </spirit:modelParameter>
     </spirit:modelParameters>
   </spirit:model>
@@ -1170,7 +1170,7 @@
     <spirit:parameter>
       <spirit:name>C_TCK_CLOCK_RATIO</spirit:name>
       <spirit:displayName>TCK Clock Ratio</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_TCK_CLOCK_RATIO" spirit:order="10200">10</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_TCK_CLOCK_RATIO" spirit:order="10200">20</spirit:value>
     </spirit:parameter>
   </spirit:parameters>
   <spirit:vendorExtensions>

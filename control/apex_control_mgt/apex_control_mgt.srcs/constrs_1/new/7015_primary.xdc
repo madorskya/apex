@@ -164,3 +164,5 @@ set_false_path -from [get_clocks -of_objects [get_pins design_1_i/chip2chip_*/ax
 
 set_false_path -from [get_clocks clk_fpga_0] -to [get_clocks -of_objects [get_pins c2c_mgt/c2c_mgt_support_i/inst/gt_usrclk_source/txoutclk_mmcm0_i/mmcm_adv_inst/CLKOUT0]]
 set_false_path -from [get_clocks -of_objects [get_pins c2c_mgt/c2c_mgt_support_i/inst/gt_usrclk_source/txoutclk_mmcm0_i/mmcm_adv_inst/CLKOUT0]] -to [get_clocks clk_fpga_0]
+
+
