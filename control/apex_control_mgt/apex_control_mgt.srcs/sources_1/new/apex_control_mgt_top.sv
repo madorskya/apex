@@ -159,6 +159,30 @@ module apex_control_mgt_top
         .axi_c2c_phy_clk(usr_clk),
         
         // for index mapping see file Firefly_map.xlsx
+`ifdef AXI0 // C2C link on AXI0 link
+        .rxdata_bot  (rxdata  [0]), 
+        .rxvalid_bot (rxvalid [0]),
+        
+        .txdata_bot  (txdata  [3]),
+        .txready_bot (txready [3]),
+        .txvalid_bot (txvalid [3]),
+        .do_cc_bot   (do_cc   [3]),
+        
+        .rxdata_top  (rxdata  [2]),
+        .rxvalid_top (rxvalid [2]),
+        
+        .txdata_top  (txdata  [1]),
+        .txready_top (txready [1]),
+        .txvalid_top (txvalid [1]),
+        .do_cc_top   (do_cc   [1]),
+
+        .mgt_chup_bot     ( channel_up[0]),
+        .mgt_chup_top     ( channel_up[2]),
+        .mgt_unlocked_bot (~channel_up[0]),
+        .mgt_unlocked_top (~channel_up[2]),
+        .rxclkcorcnt_bot  (rxclkcorcnt [0]),
+        .rxclkcorcnt_top  (rxclkcorcnt [2]),
+`else // C2C link on AXI1 link
         .rxdata_bot  (rxdata  [3]),
         .rxvalid_bot (rxvalid [3]),
         
@@ -174,13 +198,14 @@ module apex_control_mgt_top
         .txready_top (txready [2]),
         .txvalid_top (txvalid [2]),
         .do_cc_top   (do_cc   [2]),
-        
+
         .mgt_chup_bot     ( channel_up[3]),
         .mgt_chup_top     ( channel_up[1]),
         .mgt_unlocked_bot (~channel_up[3]),
         .mgt_unlocked_top (~channel_up[1]),
         .rxclkcorcnt_bot  (rxclkcorcnt [3]),
         .rxclkcorcnt_top  (rxclkcorcnt [1]),
+`endif        
         .link_up_top      (link_up_top),
         .link_up_bot      (link_up_bot),
 
