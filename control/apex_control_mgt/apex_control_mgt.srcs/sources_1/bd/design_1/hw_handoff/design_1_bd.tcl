@@ -2082,7 +2082,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_S_AXI_ADDR_WIDTH {27} \
    CONFIG.C_S_AXI_ID_WIDTH {6} \
    CONFIG.OPT_SELF_RESET {1} \
-   CONFIG.OPT_TIMEOUT {512} \
+   CONFIG.OPT_TIMEOUT {100000} \
  ] $axisafety_1
 
   # Create instance: axisafety_2, and set properties
@@ -2099,7 +2099,7 @@ proc create_root_design { parentCell } {
    CONFIG.C_S_AXI_ADDR_WIDTH {27} \
    CONFIG.C_S_AXI_ID_WIDTH {6} \
    CONFIG.OPT_SELF_RESET {1} \
-   CONFIG.OPT_TIMEOUT {512} \
+   CONFIG.OPT_TIMEOUT {100000} \
  ] $axisafety_2
 
   # Create instance: bram_loopback

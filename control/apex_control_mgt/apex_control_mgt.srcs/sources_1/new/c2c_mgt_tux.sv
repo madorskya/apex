@@ -676,13 +676,22 @@ wire            pll1pd_i;
     // While connecting the GT TX/RX Reset ports below, please add a delay of
     // minimum 500ns as mentioned in AR 43482.
 
-
+// selection of the cores below is done depending on the run settings
+// unfortunately Vivado does not handle it nicely
+// all possible cores must be included in order for Vivado to recognize them depending on verilog defines
+// unconnected cores will be optimized away during synthesis
 `ifdef C2C_2P5G
+    c2c_mgt (); // 3.75G
+    c2c_mgt_3p125g (); // 3.125G
     c2c_mgt_2p5g // 2.5G
 `else
 `ifdef C2C_3P125G
+    c2c_mgt (); // 3.75G
+    c2c_mgt_2p5g (); // 2.5G
     c2c_mgt_3p125g // 3.125G
 `else
+    c2c_mgt_2p5g (); // 2.5G
+    c2c_mgt_3p125g (); // 3.125G
     c2c_mgt // 3.75G
 `endif
 `endif 
