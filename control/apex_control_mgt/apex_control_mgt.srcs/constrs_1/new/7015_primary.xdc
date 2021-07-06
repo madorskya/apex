@@ -38,9 +38,6 @@ set_property SLEW FAST [get_ports rgmii_tx_ctl]
 #set_property IODELAY_GROUP gpr1 [get_cells -hier -filter {name =~ *gmii_to_rgmii_0_0_core/*delay_rgmii_rxd*            }]
 #set_property IODELAY_GROUP gpr1 [get_cells -hier -filter {name =~ *gmii_to_rgmii_0_0_idelayctrl}]
 
-set_false_path -to [get_pins -hier -nocase -regexp {.*axi_eth_ex_des_data_sync_reg0.*/D}]
-set_false_path -to [get_pins -hier -nocase -regexp {.*axi_eth_ex_des_reset_sync.*/PRE}  ]
-
 set_power_opt -exclude_cells [get_cells -hierarchical -filter { PRIMITIVE_TYPE =~ *.bram.* }]
 
 # IMPORTANT: how to find pins on MYIR eval board:
@@ -134,10 +131,10 @@ set_property PACKAGE_PIN L5  [get_ports scf_tdo_1]; # J2 pin 17
 set_property PACKAGE_PIN K7  [get_ports scf_tms_0]; # J2 pin 14
 set_property PACKAGE_PIN L4  [get_ports scf_tms_1]; # J2 pin 19
 
-set_property -dict {DRIVE 12 SLEW FAST IOB TRUE} [get_ports scf_tck_*]; 
+#set_property -dict {DRIVE 12 SLEW FAST IOB TRUE} [get_ports scf_tck_*]; 
 set_property -dict {DRIVE 12 SLEW FAST IOB TRUE} [get_ports scf_tms_*]; 
 set_property -dict {DRIVE 12 SLEW FAST IOB TRUE} [get_ports scf_tdi_*]; 
-set_property IOB TRUE [get_ports scf_tdo_*]; 
+#set_property IOB TRUE [get_ports scf_tdo_*]; 
 
 set_property PACKAGE_PIN AB19 [get_ports hot_swap_sw]; # J2 pin 73
 
@@ -157,10 +154,8 @@ set_property PULLUP true         [get_ports local_i2c_*]
 #set_property PACKAGE_PIN W11  [get_ports scl_zynq[4]]; # J2 pin 110
 #set_property PACKAGE_PIN V11  [get_ports sda_zynq[4]]; # J2 pin 108
 
-set_property PACKAGE_PIN T16  [get_ports tach]; # J2 pin 84
+#set_property PACKAGE_PIN T16  [get_ports tach]; # J2 pin 84
 
-set_false_path -from [get_clocks clk_fpga_0] -to [get_clocks -of_objects [get_pins design_1_i/chip2chip_*/axi_chip2chip_*_aurora8/inst/clock_module_i/mmcm_adv_inst/CLKOUT0]]
-set_false_path -from [get_clocks -of_objects [get_pins design_1_i/chip2chip_*/axi_chip2chip_*_aurora8/inst/clock_module_i/mmcm_adv_inst/CLKOUT0]] -to [get_clocks clk_fpga_0]
 
 set_false_path -from [get_clocks clk_fpga_0] -to [get_clocks -of_objects [get_pins c2c_mgt/c2c_mgt_support_i/inst/gt_usrclk_source/txoutclk_mmcm0_i/mmcm_adv_inst/CLKOUT0]]
 set_false_path -from [get_clocks -of_objects [get_pins c2c_mgt/c2c_mgt_support_i/inst/gt_usrclk_source/txoutclk_mmcm0_i/mmcm_adv_inst/CLKOUT0]] -to [get_clocks clk_fpga_0]

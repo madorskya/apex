@@ -678,20 +678,12 @@ wire            pll1pd_i;
 
 // selection of the cores below is done depending on the run settings
 // unfortunately Vivado does not handle it nicely
-// all possible cores must be included in order for Vivado to recognize them depending on verilog defines
-// unconnected cores will be optimized away during synthesis
 `ifdef C2C_2P5G
-    c2c_mgt (); // 3.75G
-    c2c_mgt_3p125g (); // 3.125G
     c2c_mgt_2p5g // 2.5G
 `else
 `ifdef C2C_3P125G
-    c2c_mgt (); // 3.75G
-    c2c_mgt_2p5g (); // 2.5G
     c2c_mgt_3p125g // 3.125G
 `else
-    c2c_mgt_2p5g (); // 2.5G
-    c2c_mgt_3p125g (); // 3.125G
     c2c_mgt // 3.75G
 `endif
 `endif 
@@ -1294,7 +1286,8 @@ assign gt3_drpwe_i = 1'b0;
         for (i = 0; i < 4; i++)
         begin
         
-            if (slave_rst == 4'b0111) // slave reset command
+//            if (slave_rst == 4'b0111) // slave reset command
+            if (slave_rst[0] == 1'b1 && slave_rst[3] == 1'b0) // slave reset command extended
             begin
                 gt_txdata_r[i] = lrst_d;    
                 gt_txcharisk_r[i] = lrst_k; 
