@@ -43,7 +43,8 @@ module c2c_mgt_tux
     input  [3:0] tx_polarity,
     output [1:0] rxclkcorcnt [3:0],
     input  [3:0] link_up,
-    input  c2c_slave_reset,
+    input  c2c_slave_reset_top,
+    input  c2c_slave_reset_bot,
     
     output usr_clk // single user clock for tx and rx
 );
@@ -1270,7 +1271,8 @@ assign gt3_drpwe_i = 1'b0;
     end
     wire local_do_cc = (cc_cnt == 8'h0);
     reg [3:0] do_cc_r;
-    reg [3:0] slave_rst = 4'b0;
+    reg [3:0] slave_rst_top = 4'b0;
+    reg [3:0] slave_rst_bot = 4'b0;
         
     // link reset command pattern    
     wire [31:0] lrst_d = 32'hfcfcfcfc;
@@ -1287,7 +1289,10 @@ assign gt3_drpwe_i = 1'b0;
         begin
         
 //            if (slave_rst == 4'b0111) // slave reset command
-            if (slave_rst[0] == 1'b1 && slave_rst[3] == 1'b0) // slave reset command extended
+            // separate reset commands for top and bottom AXI links
+            // TX 0,1 = top, TX 2,3 = bot
+            if ((slave_rst_top[0] == 1'b1 && slave_rst_top[3] == 1'b0 && i <  2) || // slave reset command extended
+                (slave_rst_bot[0] == 1'b1 && slave_rst_bot[3] == 1'b0 && i >= 2))
             begin
                 gt_txdata_r[i] = lrst_d;    
                 gt_txcharisk_r[i] = lrst_k; 
@@ -1327,7 +1332,8 @@ assign gt3_drpwe_i = 1'b0;
             end
         end
         if (local_do_cc) do_cc_r = 4'b1111;   
-        slave_rst = {slave_rst[2:0], c2c_slave_reset};      
+        slave_rst_top = {slave_rst_top[2:0], c2c_slave_reset_top};      
+        slave_rst_bot = {slave_rst_bot[2:0], c2c_slave_reset_bot};      
     end    
     
     reg [31:0] rxdata_r [3:0];

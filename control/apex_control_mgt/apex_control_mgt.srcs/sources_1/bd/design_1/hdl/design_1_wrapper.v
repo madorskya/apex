@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1.1_AR73018 (win64) Build 2960000 Wed Aug  5 22:57:20 MDT 2020
-//Date        : Fri Jul  2 16:30:40 2021
+//Date        : Fri Jul  9 20:07:58 2021
 //Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -35,7 +35,8 @@ module design_1_wrapper
     align_lock,
     axi_c2c_phy_clk,
     axi_clk,
-    c2c_slave_reset,
+    c2c_slave_reset_bot,
+    c2c_slave_reset_top,
     do_cc_bot,
     do_cc_top,
     en_ipmb_zynq,
@@ -140,7 +141,8 @@ module design_1_wrapper
   input [3:0]align_lock;
   input axi_c2c_phy_clk;
   output axi_clk;
-  output c2c_slave_reset;
+  output c2c_slave_reset_bot;
+  output c2c_slave_reset_top;
   output do_cc_bot;
   output do_cc_top;
   output [1:0]en_ipmb_zynq;
@@ -246,7 +248,8 @@ module design_1_wrapper
   wire [3:0]align_lock;
   wire axi_c2c_phy_clk;
   wire axi_clk;
-  wire c2c_slave_reset;
+  wire c2c_slave_reset_bot;
+  wire c2c_slave_reset_top;
   wire do_cc_bot;
   wire do_cc_top;
   wire [1:0]en_ipmb_zynq;
@@ -386,7 +389,8 @@ module design_1_wrapper
         .align_lock(align_lock),
         .axi_c2c_phy_clk(axi_c2c_phy_clk),
         .axi_clk(axi_clk),
-        .c2c_slave_reset(c2c_slave_reset),
+        .c2c_slave_reset_bot(c2c_slave_reset_bot),
+        .c2c_slave_reset_top(c2c_slave_reset_top),
         .do_cc_bot(do_cc_bot),
         .do_cc_top(do_cc_top),
         .en_ipmb_zynq(en_ipmb_zynq),
