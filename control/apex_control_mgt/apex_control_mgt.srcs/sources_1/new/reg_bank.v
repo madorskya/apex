@@ -1,7 +1,8 @@
 `timescale 1ns / 1ps
 module reg_bank
 (
-    input  [18:0] reg_rw,
+    input prbs_clk,
+    input  [19:0] reg_rw,
     output [1:0] ipmb_en_1_0,
     output [2:0] id_4_2,
     output payload_on_5,
@@ -24,7 +25,7 @@ module reg_bank
     input channel_up_bot_15,
     input hot_swap_handle_16,
     input [3:0] prbs_err_20_17,
-    output [20:0] reg_ro
+    output [24:0] reg_ro
 );
 
     assign ipmb_en_1_0        = ~reg_rw[1:0];
@@ -38,6 +39,9 @@ module reg_bank
     assign c2c_slave_reset_top_16 = reg_rw[16];
     assign channel_up_bot_17      = reg_rw[17];
     assign c2c_slave_reset_bot_18 = reg_rw[18];
+    wire   prbs_sticky_reset      = reg_rw[19];
+    
+    reg [3:0] prbs_err_sticky;
     
     assign reg_ro[7:0]   = ha_7_0;
     assign reg_ro[9:8]   = ready_ipmb_zynq_9_8;
@@ -49,6 +53,12 @@ module reg_bank
     assign reg_ro[15]    = channel_up_bot_15;
     assign reg_ro[16]    = hot_swap_handle_16;
     assign reg_ro[20:17] = prbs_err_20_17;
+    assign reg_ro[24:21] = prbs_err_sticky;
     
+    always @(posedge prbs_clk)
+    begin
+        prbs_err_sticky = prbs_err_sticky | prbs_err_20_17;
+        if (prbs_sticky_reset == 1'b1) prbs_err_sticky = 4'b0;
+    end
 
 endmodule

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Jul  9 20:07:59 2021" VIVADOVERSION="2020.1.1_AR73018">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Aug 22 17:03:22 2021" VIVADOVERSION="2020.1.1_AR73018">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z015" NAME="bd_525a" PACKAGE="clg485" SPEEDGRADE="-1"/>
 
@@ -133,24 +133,34 @@
         <CONNECTION INSTANCE="eth_buf" PORT="AXI_STR_TXD_TVALID"/>
       </CONNECTIONS>
     </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="O" NAME="mdio_mdc" SIGIS="clk" SIGNAME="mac_mdc">
+    <PORT DIR="I" LEFT="3" NAME="rgmii_rd" RIGHT="0" SIGIS="undef" SIGNAME="mac_rgmii_rxd">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="mac" PORT="mdc"/>
+        <CONNECTION INSTANCE="mac" PORT="rgmii_rxd"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" NAME="mdio_mdio_i" SIGIS="undef" SIGNAME="mac_mdio_i">
+    <PORT DIR="I" NAME="rgmii_rx_ctl" SIGIS="undef" SIGNAME="mac_rgmii_rx_ctl">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="mac" PORT="mdio_i"/>
+        <CONNECTION INSTANCE="mac" PORT="rgmii_rx_ctl"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="mdio_mdio_o" SIGIS="undef" SIGNAME="mac_mdio_o">
+    <PORT CLKFREQUENCY="100000000" DIR="I" NAME="rgmii_rxc" SIGIS="clk" SIGNAME="mac_rgmii_rxc">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="mac" PORT="mdio_o"/>
+        <CONNECTION INSTANCE="mac" PORT="rgmii_rxc"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="mdio_mdio_t" SIGIS="undef" SIGNAME="mac_mdio_t">
+    <PORT DIR="O" LEFT="3" NAME="rgmii_td" RIGHT="0" SIGIS="undef" SIGNAME="mac_rgmii_txd">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="mac" PORT="mdio_t"/>
+        <CONNECTION INSTANCE="mac" PORT="rgmii_txd"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="rgmii_tx_ctl" SIGIS="undef" SIGNAME="mac_rgmii_tx_ctl">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mac" PORT="rgmii_tx_ctl"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="O" NAME="rgmii_txc" SIGIS="clk" SIGNAME="mac_rgmii_txc">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="mac" PORT="rgmii_txc"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="31" NAME="s_axis_txc_tdata" RIGHT="0" SIGIS="undef" SIGNAME="eth_buf_AXI_STR_TXC_TDATA">
@@ -288,34 +298,24 @@
         <CONNECTION INSTANCE="eth_buf" PORT="AXI_STR_RXS_VALID"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" LEFT="3" NAME="rgmii_rd" RIGHT="0" SIGIS="undef" SIGNAME="mac_rgmii_rxd">
+    <PORT CLKFREQUENCY="100000000" DIR="O" NAME="mdio_mdc" SIGIS="clk" SIGNAME="mac_mdc">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="mac" PORT="rgmii_rxd"/>
+        <CONNECTION INSTANCE="mac" PORT="mdc"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" NAME="rgmii_rx_ctl" SIGIS="undef" SIGNAME="mac_rgmii_rx_ctl">
+    <PORT DIR="I" NAME="mdio_mdio_i" SIGIS="undef" SIGNAME="mac_mdio_i">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="mac" PORT="rgmii_rx_ctl"/>
+        <CONNECTION INSTANCE="mac" PORT="mdio_i"/>
       </CONNECTIONS>
     </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="I" NAME="rgmii_rxc" SIGIS="clk" SIGNAME="mac_rgmii_rxc">
+    <PORT DIR="O" NAME="mdio_mdio_o" SIGIS="undef" SIGNAME="mac_mdio_o">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="mac" PORT="rgmii_rxc"/>
+        <CONNECTION INSTANCE="mac" PORT="mdio_o"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" LEFT="3" NAME="rgmii_td" RIGHT="0" SIGIS="undef" SIGNAME="mac_rgmii_txd">
+    <PORT DIR="O" NAME="mdio_mdio_t" SIGIS="undef" SIGNAME="mac_mdio_t">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="mac" PORT="rgmii_txd"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="rgmii_tx_ctl" SIGIS="undef" SIGNAME="mac_rgmii_tx_ctl">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="mac" PORT="rgmii_tx_ctl"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="O" NAME="rgmii_txc" SIGIS="clk" SIGNAME="mac_rgmii_txc">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="mac" PORT="rgmii_txc"/>
+        <CONNECTION INSTANCE="mac" PORT="mdio_t"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>

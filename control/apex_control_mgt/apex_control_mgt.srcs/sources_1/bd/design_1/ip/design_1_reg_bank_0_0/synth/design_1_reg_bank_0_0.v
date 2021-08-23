@@ -56,6 +56,7 @@
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module design_1_reg_bank_0_0 (
+  prbs_clk,
   reg_rw,
   ipmb_en_1_0,
   id_4_2,
@@ -81,7 +82,10 @@ module design_1_reg_bank_0_0 (
   reg_ro
 );
 
-input wire [18 : 0] reg_rw;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME prbs_clk, FREQ_HZ 93750000, FREQ_TOLERANCE_HZ 0, PHASE 0, CLK_DOMAIN design_1_axi_c2c_phy_clk, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 prbs_clk CLK" *)
+input wire prbs_clk;
+input wire [19 : 0] reg_rw;
 output wire [1 : 0] ipmb_en_1_0;
 output wire [2 : 0] id_4_2;
 output wire payload_on_5;
@@ -103,9 +107,10 @@ input wire link_stat_bot_14;
 input wire channel_up_bot_15;
 input wire hot_swap_handle_16;
 input wire [3 : 0] prbs_err_20_17;
-output wire [20 : 0] reg_ro;
+output wire [24 : 0] reg_ro;
 
   reg_bank inst (
+    .prbs_clk(prbs_clk),
     .reg_rw(reg_rw),
     .ipmb_en_1_0(ipmb_en_1_0),
     .id_4_2(id_4_2),
