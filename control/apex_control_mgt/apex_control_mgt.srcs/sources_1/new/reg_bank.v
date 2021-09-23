@@ -2,7 +2,7 @@
 module reg_bank
 (
     input prbs_clk,
-    input  [19:0] reg_rw,
+    input  [25:0] reg_rw,
     output [1:0] ipmb_en_1_0,
     output [2:0] id_4_2,
     output payload_on_5,
@@ -14,6 +14,8 @@ module reg_bank
     output c2c_slave_reset_top_16,
     output channel_up_bot_17,
     output c2c_slave_reset_bot_18,
+    output [2:0] pok_change_polarity_22_20,
+    output [2:0] pok_change_enable_25_23,
     
     input [7:0] ha_7_0,
     input [1:0] ready_ipmb_zynq_9_8,
@@ -25,7 +27,8 @@ module reg_bank
     input channel_up_bot_15,
     input hot_swap_handle_16,
     input [3:0] prbs_err_20_17,
-    output [24:0] reg_ro
+    input [2:0] payload_off_alarm_27_25,
+    output [27:0] reg_ro
 );
 
     assign ipmb_en_1_0        = ~reg_rw[1:0];
@@ -40,6 +43,8 @@ module reg_bank
     assign channel_up_bot_17      = reg_rw[17];
     assign c2c_slave_reset_bot_18 = reg_rw[18];
     wire   prbs_sticky_reset      = reg_rw[19];
+    assign pok_change_polarity_22_20 = reg_rw[22:20];
+    assign pok_change_enable_25_23   = reg_rw[25:23];
     
     reg [3:0] prbs_err_sticky;
     
@@ -54,6 +59,7 @@ module reg_bank
     assign reg_ro[16]    = hot_swap_handle_16;
     assign reg_ro[20:17] = prbs_err_20_17;
     assign reg_ro[24:21] = prbs_err_sticky;
+    assign reg_ro[27:25] = payload_off_alarm_27_25;
     
     always @(posedge prbs_clk)
     begin

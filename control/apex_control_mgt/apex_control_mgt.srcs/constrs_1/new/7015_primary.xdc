@@ -108,12 +108,17 @@ set_property PACKAGE_PIN M8  [get_ports ha[4]]; # J2 pin 28
 set_property PACKAGE_PIN M7  [get_ports ha[5]]; # J2 pin 30
 set_property PACKAGE_PIN N8  [get_ports ha[6]]; # J2 pin 32
 set_property PACKAGE_PIN P8  [get_ports ha[7]]; # J2 pin 34
-set_property PACKAGE_PIN Y18  [get_ports id[0]]; # J2 pin 68
-set_property PACKAGE_PIN Y19  [get_ports id[1]]; # J2 pin 70
-set_property PACKAGE_PIN V18  [get_ports id[2]]; # J2 pin 72
+set_property PACKAGE_PIN Y18 [get_ports id[0]]; # J2 pin 68
+set_property PACKAGE_PIN Y19 [get_ports id[1]]; # J2 pin 70
+set_property PACKAGE_PIN V18 [get_ports id[2]]; # J2 pin 72
 
-set_property PACKAGE_PIN AA20  [get_ports pim_alarm]; # J2 pin 77
+set_property PACKAGE_PIN AA20 [get_ports pim_alarm]; # J2 pin 77
 set_property PACKAGE_PIN W12  [get_ports qbv_on_off]; # J2 pin 101 12V DC-DC control 0 = enable
+
+set_property PACKAGE_PIN  [get_ports pok_change[0]]; # J8 pin 46
+set_property PACKAGE_PIN  [get_ports pok_change[1]]; # J8 pin 44
+set_property PACKAGE_PIN  [get_ports pok_change[2]]; # J8 pin 107
+set_property PACKAGE_PIN  [get_ports pok_change[3]]; # J8 pin 42
 
 set_property PACKAGE_PIN N1  [get_ports scf_i2c_0_scl_io]; # J2 pin 9 
 set_property PACKAGE_PIN N6  [get_ports scf_i2c_1_scl_io]; # J2 pin 13

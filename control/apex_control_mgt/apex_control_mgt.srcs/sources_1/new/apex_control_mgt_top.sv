@@ -61,6 +61,7 @@ module apex_control_mgt_top
   input scf_tdo_1,
   output scf_tms_0,
   output scf_tms_1,
+  input [2:0] pok_change, // 2 = QSFP, 1 = TOP, 2 = BOTTOM
 
     input wire  Q0_CLK1_GTREFCLK_PAD_N_IN,
     input wire  Q0_CLK1_GTREFCLK_PAD_P_IN,
@@ -266,6 +267,7 @@ module apex_control_mgt_top
         .phy_rst(phy_rst),
         .pim_alarm(pim_alarm),
         .qbv_on_off(qbv_on_off),
+        .pok_change(pok_change),
         .ready_ipmb_zynq(ready_ipmb_zynq),
         .rgmii_rd(rgmii_rd),
         .rgmii_rx_ctl(rgmii_rx_ctl),
