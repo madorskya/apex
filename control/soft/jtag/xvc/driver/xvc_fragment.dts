@@ -1,4 +1,0 @@
-
-&debug_bridge_0 {
-        compatible = "xlnx,xvc";
-};

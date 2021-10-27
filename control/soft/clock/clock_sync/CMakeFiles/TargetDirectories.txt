@@ -1,1 +1,0 @@
-/root/clock/clock_sync/CMakeFiles/clock_sync.dir

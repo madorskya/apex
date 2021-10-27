@@ -1,1 +1,0 @@
-gcc i2c-chip.c si5345_config_MOD.c toml.c -g -o si5345_EXEC -lpthread
