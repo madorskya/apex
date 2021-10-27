@@ -66,6 +66,7 @@ set_property -dict {IOSTANDARD LVCMOS33 PULLUP true} [get_ports los_10g*]
 set_property -dict {IOSTANDARD LVCMOS33 PULLUP true} [get_ports pim_alarm*]
 set_property -dict {IOSTANDARD LVCMOS33 PULLUP true} [get_ports i2c_10g_*]
 set_property IOSTANDARD LVCMOS33 [get_ports qbv_on_off*]
+set_property -dict {IOSTANDARD LVCMOS33 PULLUP true} [get_ports pok_*]
 set_property IOSTANDARD LVCMOS33 [get_ports hot_swap_sw]
 
 #-------------------- from excel file -------------------------
@@ -115,10 +116,10 @@ set_property PACKAGE_PIN V18 [get_ports id[2]]; # J2 pin 72
 set_property PACKAGE_PIN AA20 [get_ports pim_alarm]; # J2 pin 77
 set_property PACKAGE_PIN W12  [get_ports qbv_on_off]; # J2 pin 101 12V DC-DC control 0 = enable
 
-set_property PACKAGE_PIN  [get_ports pok_change[0]]; # J8 pin 46
-set_property PACKAGE_PIN  [get_ports pok_change[1]]; # J8 pin 44
-set_property PACKAGE_PIN  [get_ports pok_change[2]]; # J8 pin 107
-set_property PACKAGE_PIN  [get_ports pok_change[3]]; # J8 pin 42
+set_property PACKAGE_PIN R4   [get_ports pok_change[0]]; # J2 pin 46
+set_property PACKAGE_PIN R5   [get_ports pok_change[1]]; # J2 pin 44
+set_property PACKAGE_PIN AB12 [get_ports pok_change[2]]; # J2 pin 107
+set_property PACKAGE_PIN R7   [get_ports pok_payload]; # J2 pin 42
 
 set_property PACKAGE_PIN N1  [get_ports scf_i2c_0_scl_io]; # J2 pin 9 
 set_property PACKAGE_PIN N6  [get_ports scf_i2c_1_scl_io]; # J2 pin 13

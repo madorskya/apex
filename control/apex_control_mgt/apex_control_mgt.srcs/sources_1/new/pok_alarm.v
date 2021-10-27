@@ -42,6 +42,7 @@ module pok_alarm_single
 endmodule
 
 
+// indexes: 0 = bottom payload, 1 = top payload, 2 = QSFP
 module pok_alarm
 (
     // polarity of the pok_change signal, may depend on particular payload module

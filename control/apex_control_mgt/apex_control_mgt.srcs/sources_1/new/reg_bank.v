@@ -28,7 +28,9 @@ module reg_bank
     input hot_swap_handle_16,
     input [3:0] prbs_err_20_17,
     input [2:0] payload_off_alarm_27_25,
-    output [27:0] reg_ro
+    input pok_payload_28,
+    input [2:0] pok_change_31_29,
+    output [31:0] reg_ro
 );
 
     assign ipmb_en_1_0        = ~reg_rw[1:0];
@@ -60,6 +62,8 @@ module reg_bank
     assign reg_ro[20:17] = prbs_err_20_17;
     assign reg_ro[24:21] = prbs_err_sticky;
     assign reg_ro[27:25] = payload_off_alarm_27_25;
+    assign reg_ro[28]    = pok_payload_28;
+    assign reg_ro[31:29] = pok_change_31_29;
     
     always @(posedge prbs_clk)
     begin
