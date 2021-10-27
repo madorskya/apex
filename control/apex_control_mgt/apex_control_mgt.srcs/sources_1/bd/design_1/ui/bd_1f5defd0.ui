@@ -217,8 +217,8 @@ preplace netloc s_axi_2 1 1 2 710 960 1240
 levelinfo -pg 1 -40 390 1080 1895 2580 2980
 pagesize -pg 1 -db -bbox -sgen -230 -120 3160 5460
 ",
-   "Color Coded_ScaleFactor":"1.0",
-   "Color Coded_TopLeft":"916,680",
+   "Color Coded_ScaleFactor":"0.364783",
+   "Color Coded_TopLeft":"-872,-121",
    "Default View_ScaleFactor":"1.12622",
    "Default View_TopLeft":"606,330",
    "ExpandedHierarchyInLayout":"",

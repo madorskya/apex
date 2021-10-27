@@ -791,7 +791,7 @@
                       "width": "18",
                       "usage": "register",
                       "bank_blocks": {
-                        "SEG_eth_buf_REG;/eth_buf/S_AXI/Reg;xilinx.com:ip:axi_ethernet_buffer:2.0;/eth_buf;S_AXI;NONE;NONE": {
+                        "SEG_eth_buf_REG;Reg;xilinx.com:ip:axi_ethernet_buffer:2.0;eth_buf;S_AXI;NONE;NONE": {
                           "base_address": "0",
                           "range": "256K",
                           "width": "18",
@@ -8994,7 +8994,7 @@
                       "width": "16",
                       "usage": "register",
                       "bank_blocks": {
-                        "REG;/axi_jtag/s_axi/reg0;xilinx.com:ip:axi_jtag:1.0;/axi_jtag;s_axi;NONE;NONE": {
+                        "REG;reg0;xilinx.com:ip:axi_jtag:1.0;axi_jtag;s_axi;NONE;NONE": {
                           "base_address": "0x0000",
                           "range": "64K",
                           "width": "16",
