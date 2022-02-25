@@ -36,21 +36,21 @@
       },
       "ipmc": {
         "ipmc_i2c_0": {
-          "i2c_switch_0": "",
-          "i2c_switch_1": "",
-          "xlconstant_0": "",
-          "i2cSlave_0": "",
-          "axi_bram_ctrl_0": "",
-          "axi_gpio_0": ""
-        },
-        "ipmc_i2c_1": {
-          "i2c_switch_0": "",
-          "i2c_switch_1": "",
           "xlconstant_0": "",
           "i2cSlave_0": "",
           "axi_bram_ctrl_0": "",
           "axi_gpio_0": "",
-          "axi_iic_0": ""
+          "i2c_switch_0": "",
+          "i2c_switch_1": ""
+        },
+        "ipmc_i2c_1": {
+          "xlconstant_0": "",
+          "i2cSlave_0": "",
+          "axi_bram_ctrl_0": "",
+          "axi_gpio_0": "",
+          "axi_iic_0": "",
+          "i2c_switch_0": "",
+          "i2c_switch_1": ""
         }
       },
       "cpu": {
@@ -151,7 +151,8 @@
       "axi_gpio_0": "",
       "system_ila_0": "",
       "pok_alarm_0": "",
-      "reg_bank_0": ""
+      "reg_bank_0": "",
+      "ila_1": ""
     },
     "interface_ports": {
       "DDR": {
@@ -791,7 +792,7 @@
                       "width": "18",
                       "usage": "register",
                       "bank_blocks": {
-                        "SEG_eth_buf_REG;Reg;xilinx.com:ip:axi_ethernet_buffer:2.0;eth_buf;S_AXI;NONE;NONE": {
+                        "SEG_eth_buf_REG;/eth_buf/S_AXI/Reg;xilinx.com:ip:axi_ethernet_buffer:2.0;/eth_buf;S_AXI;NONE;NONE": {
                           "base_address": "0",
                           "range": "256K",
                           "width": "18",
@@ -1940,6 +1941,42 @@
             "direction": "I",
             "left": "7",
             "right": "0"
+          },
+          "s_o": {
+            "direction": "O"
+          },
+          "s_i": {
+            "direction": "O"
+          },
+          "s_t": {
+            "direction": "O"
+          },
+          "s_o1": {
+            "direction": "O"
+          },
+          "s_i1": {
+            "direction": "O"
+          },
+          "s_t1": {
+            "direction": "O"
+          },
+          "s_o2": {
+            "direction": "O"
+          },
+          "s_i2": {
+            "direction": "O"
+          },
+          "s_t2": {
+            "direction": "O"
+          },
+          "s_o3": {
+            "direction": "O"
+          },
+          "s_i3": {
+            "direction": "O"
+          },
+          "s_t3": {
+            "direction": "O"
           }
         },
         "components": {
@@ -2002,83 +2039,27 @@
                 "direction": "I",
                 "left": "7",
                 "right": "0"
+              },
+              "s_o": {
+                "direction": "O"
+              },
+              "s_i": {
+                "direction": "O"
+              },
+              "s_t": {
+                "direction": "O"
+              },
+              "s_o1": {
+                "direction": "O"
+              },
+              "s_i1": {
+                "direction": "O"
+              },
+              "s_t1": {
+                "direction": "O"
               }
             },
             "components": {
-              "i2c_switch_0": {
-                "vlnv": "xilinx.com:module_ref:i2c_switch:1.0",
-                "xci_name": "design_1_i2c_switch_0_0",
-                "xci_path": "ip\\design_1_i2c_switch_0_0\\design_1_i2c_switch_0_0.xci",
-                "inst_hier_path": "ipmc/ipmc_i2c_0/i2c_switch_0",
-                "reference_info": {
-                  "ref_type": "hdl",
-                  "ref_name": "i2c_switch",
-                  "boundary_crc": "0x0"
-                },
-                "ports": {
-                  "s0_i": {
-                    "direction": "I"
-                  },
-                  "s0_o": {
-                    "direction": "O"
-                  },
-                  "s0_t": {
-                    "direction": "I"
-                  },
-                  "s1_i": {
-                    "direction": "I"
-                  },
-                  "s1_o": {
-                    "direction": "O"
-                  },
-                  "s1_t": {
-                    "direction": "I"
-                  },
-                  "s": {
-                    "direction": "IO"
-                  },
-                  "sel": {
-                    "direction": "I"
-                  }
-                }
-              },
-              "i2c_switch_1": {
-                "vlnv": "xilinx.com:module_ref:i2c_switch:1.0",
-                "xci_name": "design_1_i2c_switch_1_0",
-                "xci_path": "ip\\design_1_i2c_switch_1_0\\design_1_i2c_switch_1_0.xci",
-                "inst_hier_path": "ipmc/ipmc_i2c_0/i2c_switch_1",
-                "reference_info": {
-                  "ref_type": "hdl",
-                  "ref_name": "i2c_switch",
-                  "boundary_crc": "0x0"
-                },
-                "ports": {
-                  "s0_i": {
-                    "direction": "I"
-                  },
-                  "s0_o": {
-                    "direction": "O"
-                  },
-                  "s0_t": {
-                    "direction": "I"
-                  },
-                  "s1_i": {
-                    "direction": "I"
-                  },
-                  "s1_o": {
-                    "direction": "O"
-                  },
-                  "s1_t": {
-                    "direction": "I"
-                  },
-                  "s": {
-                    "direction": "IO"
-                  },
-                  "sel": {
-                    "direction": "I"
-                  }
-                }
-              },
               "xlconstant_0": {
                 "vlnv": "xilinx.com:ip:xlconstant:1.1",
                 "xci_name": "design_1_xlconstant_0_1",
@@ -2220,6 +2201,98 @@
                     "value": "1"
                   }
                 }
+              },
+              "i2c_switch_0": {
+                "vlnv": "xilinx.com:module_ref:i2c_switch:1.0",
+                "xci_name": "design_1_i2c_switch_0_0",
+                "xci_path": "ip\\design_1_i2c_switch_0_0\\design_1_i2c_switch_0_0.xci",
+                "inst_hier_path": "ipmc/ipmc_i2c_0/i2c_switch_0",
+                "reference_info": {
+                  "ref_type": "hdl",
+                  "ref_name": "i2c_switch",
+                  "boundary_crc": "0x0"
+                },
+                "ports": {
+                  "s0_i": {
+                    "direction": "I"
+                  },
+                  "s0_o": {
+                    "direction": "O"
+                  },
+                  "s0_t": {
+                    "direction": "I"
+                  },
+                  "s1_i": {
+                    "direction": "I"
+                  },
+                  "s1_o": {
+                    "direction": "O"
+                  },
+                  "s1_t": {
+                    "direction": "I"
+                  },
+                  "s": {
+                    "direction": "IO"
+                  },
+                  "s_o": {
+                    "direction": "O"
+                  },
+                  "s_i": {
+                    "direction": "O"
+                  },
+                  "s_t": {
+                    "direction": "O"
+                  },
+                  "sel": {
+                    "direction": "I"
+                  }
+                }
+              },
+              "i2c_switch_1": {
+                "vlnv": "xilinx.com:module_ref:i2c_switch:1.0",
+                "xci_name": "design_1_i2c_switch_1_0",
+                "xci_path": "ip\\design_1_i2c_switch_1_0\\design_1_i2c_switch_1_0.xci",
+                "inst_hier_path": "ipmc/ipmc_i2c_0/i2c_switch_1",
+                "reference_info": {
+                  "ref_type": "hdl",
+                  "ref_name": "i2c_switch",
+                  "boundary_crc": "0x0"
+                },
+                "ports": {
+                  "s0_i": {
+                    "direction": "I"
+                  },
+                  "s0_o": {
+                    "direction": "O"
+                  },
+                  "s0_t": {
+                    "direction": "I"
+                  },
+                  "s1_i": {
+                    "direction": "I"
+                  },
+                  "s1_o": {
+                    "direction": "O"
+                  },
+                  "s1_t": {
+                    "direction": "I"
+                  },
+                  "s": {
+                    "direction": "IO"
+                  },
+                  "s_o": {
+                    "direction": "O"
+                  },
+                  "s_i": {
+                    "direction": "O"
+                  },
+                  "s_t": {
+                    "direction": "O"
+                  },
+                  "sel": {
+                    "direction": "I"
+                  }
+                }
               }
             },
             "interface_nets": {
@@ -2340,6 +2413,24 @@
                   "i2cSlave_0/scl"
                 ]
               },
+              "i2c_switch_0_s_i": {
+                "ports": [
+                  "i2c_switch_0/s_i",
+                  "s_i1"
+                ]
+              },
+              "i2c_switch_0_s_o": {
+                "ports": [
+                  "i2c_switch_0/s_o",
+                  "s_o1"
+                ]
+              },
+              "i2c_switch_0_s_t": {
+                "ports": [
+                  "i2c_switch_0/s_t",
+                  "s_t1"
+                ]
+              },
               "i2c_switch_1_s0_o": {
                 "ports": [
                   "i2c_switch_1/s0_o",
@@ -2350,6 +2441,24 @@
                 "ports": [
                   "i2c_switch_1/s1_o",
                   "i2cSlave_0/sda_in"
+                ]
+              },
+              "i2c_switch_1_s_i": {
+                "ports": [
+                  "i2c_switch_1/s_i",
+                  "s_i"
+                ]
+              },
+              "i2c_switch_1_s_o": {
+                "ports": [
+                  "i2c_switch_1/s_o",
+                  "s_o"
+                ]
+              },
+              "i2c_switch_1_s_t": {
+                "ports": [
+                  "i2c_switch_1/s_t",
+                  "s_t"
                 ]
               },
               "proc_sys_reset_0_peripheral_aresetn": {
@@ -2451,83 +2560,27 @@
                 "direction": "I",
                 "left": "7",
                 "right": "0"
+              },
+              "s_o": {
+                "direction": "O"
+              },
+              "s_i": {
+                "direction": "O"
+              },
+              "s_t": {
+                "direction": "O"
+              },
+              "s_o1": {
+                "direction": "O"
+              },
+              "s_i1": {
+                "direction": "O"
+              },
+              "s_t1": {
+                "direction": "O"
               }
             },
             "components": {
-              "i2c_switch_0": {
-                "vlnv": "xilinx.com:module_ref:i2c_switch:1.0",
-                "xci_name": "design_1_i2c_switch_0_1",
-                "xci_path": "ip\\design_1_i2c_switch_0_1\\design_1_i2c_switch_0_1.xci",
-                "inst_hier_path": "ipmc/ipmc_i2c_1/i2c_switch_0",
-                "reference_info": {
-                  "ref_type": "hdl",
-                  "ref_name": "i2c_switch",
-                  "boundary_crc": "0x0"
-                },
-                "ports": {
-                  "s0_i": {
-                    "direction": "I"
-                  },
-                  "s0_o": {
-                    "direction": "O"
-                  },
-                  "s0_t": {
-                    "direction": "I"
-                  },
-                  "s1_i": {
-                    "direction": "I"
-                  },
-                  "s1_o": {
-                    "direction": "O"
-                  },
-                  "s1_t": {
-                    "direction": "I"
-                  },
-                  "s": {
-                    "direction": "IO"
-                  },
-                  "sel": {
-                    "direction": "I"
-                  }
-                }
-              },
-              "i2c_switch_1": {
-                "vlnv": "xilinx.com:module_ref:i2c_switch:1.0",
-                "xci_name": "design_1_i2c_switch_1_1",
-                "xci_path": "ip\\design_1_i2c_switch_1_1\\design_1_i2c_switch_1_1.xci",
-                "inst_hier_path": "ipmc/ipmc_i2c_1/i2c_switch_1",
-                "reference_info": {
-                  "ref_type": "hdl",
-                  "ref_name": "i2c_switch",
-                  "boundary_crc": "0x0"
-                },
-                "ports": {
-                  "s0_i": {
-                    "direction": "I"
-                  },
-                  "s0_o": {
-                    "direction": "O"
-                  },
-                  "s0_t": {
-                    "direction": "I"
-                  },
-                  "s1_i": {
-                    "direction": "I"
-                  },
-                  "s1_o": {
-                    "direction": "O"
-                  },
-                  "s1_t": {
-                    "direction": "I"
-                  },
-                  "s": {
-                    "direction": "IO"
-                  },
-                  "sel": {
-                    "direction": "I"
-                  }
-                }
-              },
               "xlconstant_0": {
                 "vlnv": "xilinx.com:ip:xlconstant:1.1",
                 "xci_name": "design_1_xlconstant_0_2",
@@ -2675,6 +2728,98 @@
                 "xci_name": "design_1_axi_iic_0_0",
                 "xci_path": "ip\\design_1_axi_iic_0_0\\design_1_axi_iic_0_0.xci",
                 "inst_hier_path": "ipmc/ipmc_i2c_1/axi_iic_0"
+              },
+              "i2c_switch_0": {
+                "vlnv": "xilinx.com:module_ref:i2c_switch:1.0",
+                "xci_name": "design_1_i2c_switch_0_1",
+                "xci_path": "ip\\design_1_i2c_switch_0_1\\design_1_i2c_switch_0_1.xci",
+                "inst_hier_path": "ipmc/ipmc_i2c_1/i2c_switch_0",
+                "reference_info": {
+                  "ref_type": "hdl",
+                  "ref_name": "i2c_switch",
+                  "boundary_crc": "0x0"
+                },
+                "ports": {
+                  "s0_i": {
+                    "direction": "I"
+                  },
+                  "s0_o": {
+                    "direction": "O"
+                  },
+                  "s0_t": {
+                    "direction": "I"
+                  },
+                  "s1_i": {
+                    "direction": "I"
+                  },
+                  "s1_o": {
+                    "direction": "O"
+                  },
+                  "s1_t": {
+                    "direction": "I"
+                  },
+                  "s": {
+                    "direction": "IO"
+                  },
+                  "s_o": {
+                    "direction": "O"
+                  },
+                  "s_i": {
+                    "direction": "O"
+                  },
+                  "s_t": {
+                    "direction": "O"
+                  },
+                  "sel": {
+                    "direction": "I"
+                  }
+                }
+              },
+              "i2c_switch_1": {
+                "vlnv": "xilinx.com:module_ref:i2c_switch:1.0",
+                "xci_name": "design_1_i2c_switch_1_1",
+                "xci_path": "ip\\design_1_i2c_switch_1_1\\design_1_i2c_switch_1_1.xci",
+                "inst_hier_path": "ipmc/ipmc_i2c_1/i2c_switch_1",
+                "reference_info": {
+                  "ref_type": "hdl",
+                  "ref_name": "i2c_switch",
+                  "boundary_crc": "0x0"
+                },
+                "ports": {
+                  "s0_i": {
+                    "direction": "I"
+                  },
+                  "s0_o": {
+                    "direction": "O"
+                  },
+                  "s0_t": {
+                    "direction": "I"
+                  },
+                  "s1_i": {
+                    "direction": "I"
+                  },
+                  "s1_o": {
+                    "direction": "O"
+                  },
+                  "s1_t": {
+                    "direction": "I"
+                  },
+                  "s": {
+                    "direction": "IO"
+                  },
+                  "s_o": {
+                    "direction": "O"
+                  },
+                  "s_i": {
+                    "direction": "O"
+                  },
+                  "s_t": {
+                    "direction": "O"
+                  },
+                  "sel": {
+                    "direction": "I"
+                  }
+                }
               }
             },
             "interface_nets": {
@@ -2831,6 +2976,24 @@
                   "i2cSlave_0/scl"
                 ]
               },
+              "i2c_switch_0_s_i": {
+                "ports": [
+                  "i2c_switch_0/s_i",
+                  "s_i1"
+                ]
+              },
+              "i2c_switch_0_s_o": {
+                "ports": [
+                  "i2c_switch_0/s_o",
+                  "s_o1"
+                ]
+              },
+              "i2c_switch_0_s_t": {
+                "ports": [
+                  "i2c_switch_0/s_t",
+                  "s_t1"
+                ]
+              },
               "i2c_switch_1_s0_o": {
                 "ports": [
                   "i2c_switch_1/s0_o",
@@ -2841,6 +3004,24 @@
                 "ports": [
                   "i2c_switch_1/s1_o",
                   "i2cSlave_0/sda_in"
+                ]
+              },
+              "i2c_switch_1_s_i": {
+                "ports": [
+                  "i2c_switch_1/s_i",
+                  "s_i"
+                ]
+              },
+              "i2c_switch_1_s_o": {
+                "ports": [
+                  "i2c_switch_1/s_o",
+                  "s_o"
+                ]
+              },
+              "i2c_switch_1_s_t": {
+                "ports": [
+                  "i2c_switch_1/s_t",
+                  "s_t"
                 ]
               },
               "processing_system7_0_FCLK_CLK0": {
@@ -2948,10 +3129,82 @@
               "i2c_addr_received"
             ]
           },
+          "ipmc_i2c_0_s_i": {
+            "ports": [
+              "ipmc_i2c_0/s_i",
+              "s_i"
+            ]
+          },
+          "ipmc_i2c_0_s_i1": {
+            "ports": [
+              "ipmc_i2c_0/s_i1",
+              "s_i1"
+            ]
+          },
+          "ipmc_i2c_0_s_o": {
+            "ports": [
+              "ipmc_i2c_0/s_o",
+              "s_o"
+            ]
+          },
+          "ipmc_i2c_0_s_o1": {
+            "ports": [
+              "ipmc_i2c_0/s_o1",
+              "s_o1"
+            ]
+          },
+          "ipmc_i2c_0_s_t": {
+            "ports": [
+              "ipmc_i2c_0/s_t",
+              "s_t"
+            ]
+          },
+          "ipmc_i2c_0_s_t1": {
+            "ports": [
+              "ipmc_i2c_0/s_t1",
+              "s_t1"
+            ]
+          },
           "ipmc_i2c_1_i2c_addr_received": {
             "ports": [
               "ipmc_i2c_1/i2c_addr_received",
               "i2c_addr_received1"
+            ]
+          },
+          "ipmc_i2c_1_s_i": {
+            "ports": [
+              "ipmc_i2c_1/s_i",
+              "s_i2"
+            ]
+          },
+          "ipmc_i2c_1_s_i1": {
+            "ports": [
+              "ipmc_i2c_1/s_i1",
+              "s_i3"
+            ]
+          },
+          "ipmc_i2c_1_s_o": {
+            "ports": [
+              "ipmc_i2c_1/s_o",
+              "s_o2"
+            ]
+          },
+          "ipmc_i2c_1_s_o1": {
+            "ports": [
+              "ipmc_i2c_1/s_o1",
+              "s_o3"
+            ]
+          },
+          "ipmc_i2c_1_s_t": {
+            "ports": [
+              "ipmc_i2c_1/s_t",
+              "s_t2"
+            ]
+          },
+          "ipmc_i2c_1_s_t1": {
+            "ports": [
+              "ipmc_i2c_1/s_t1",
+              "s_t3"
             ]
           },
           "ipmc_jtag_iic2intc_irpt": {
@@ -8994,7 +9247,7 @@
                       "width": "16",
                       "usage": "register",
                       "bank_blocks": {
-                        "REG;reg0;xilinx.com:ip:axi_jtag:1.0;axi_jtag;s_axi;NONE;NONE": {
+                        "REG;/axi_jtag/s_axi/reg0;xilinx.com:ip:axi_jtag:1.0;/axi_jtag;s_axi;NONE;NONE": {
                           "base_address": "0x0000",
                           "range": "64K",
                           "width": "16",
@@ -11233,6 +11486,26 @@
             "right": "0"
           }
         }
+      },
+      "ila_1": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "xci_name": "design_1_ila_1_0",
+        "xci_path": "ip\\design_1_ila_1_0\\design_1_ila_1_0.xci",
+        "inst_hier_path": "ila_1",
+        "parameters": {
+          "C_ENABLE_ILA_AXI_MON": {
+            "value": "false"
+          },
+          "C_INPUT_PIPE_STAGES": {
+            "value": "6"
+          },
+          "C_MONITOR_TYPE": {
+            "value": "Native"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "12"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -11494,7 +11767,8 @@
           "axi_chip2chip_0/aurora_init_clk",
           "axi_gpio_0/s_axi_aclk",
           "system_ila_0/clk",
-          "pok_alarm_0/clk"
+          "pok_alarm_0/clk",
+          "ila_1/clk"
         ]
       },
       "Net1": {
@@ -11743,6 +12017,78 @@
         "ports": [
           "ipmc/s0_o1",
           "cpu/I2C1_SCL_I"
+        ]
+      },
+      "ipmc_s_i": {
+        "ports": [
+          "ipmc/s_i",
+          "ila_1/probe1"
+        ]
+      },
+      "ipmc_s_i1": {
+        "ports": [
+          "ipmc/s_i1",
+          "ila_1/probe4"
+        ]
+      },
+      "ipmc_s_i2": {
+        "ports": [
+          "ipmc/s_i2",
+          "ila_1/probe7"
+        ]
+      },
+      "ipmc_s_i3": {
+        "ports": [
+          "ipmc/s_i3",
+          "ila_1/probe10"
+        ]
+      },
+      "ipmc_s_o": {
+        "ports": [
+          "ipmc/s_o",
+          "ila_1/probe0"
+        ]
+      },
+      "ipmc_s_o1": {
+        "ports": [
+          "ipmc/s_o1",
+          "ila_1/probe3"
+        ]
+      },
+      "ipmc_s_o2": {
+        "ports": [
+          "ipmc/s_o2",
+          "ila_1/probe6"
+        ]
+      },
+      "ipmc_s_o3": {
+        "ports": [
+          "ipmc/s_o3",
+          "ila_1/probe9"
+        ]
+      },
+      "ipmc_s_t": {
+        "ports": [
+          "ipmc/s_t",
+          "ila_1/probe2"
+        ]
+      },
+      "ipmc_s_t1": {
+        "ports": [
+          "ipmc/s_t1",
+          "ila_1/probe5"
+        ]
+      },
+      "ipmc_s_t2": {
+        "ports": [
+          "ipmc/s_t2",
+          "ila_1/probe8"
+        ]
+      },
+      "ipmc_s_t3": {
+        "ports": [
+          "ipmc/s_t3",
+          "ila_1/probe11"
         ]
       },
       "link_stat_bot": {

@@ -12,6 +12,11 @@ module i2c_switch
 
     inout  s,
     
+    // for debugging
+    output s_o,
+    output s_i,
+    output s_t,
+    
     input sel
 );
 
