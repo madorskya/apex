@@ -1919,10 +1919,6 @@
           "ipmc_sda_1": {
             "direction": "IO"
           },
-          "iic2intc_irpt": {
-            "type": "intr",
-            "direction": "O"
-          },
           "irq1": {
             "type": "intr",
             "direction": "O"
@@ -1977,6 +1973,24 @@
           },
           "s_t3": {
             "direction": "O"
+          },
+          "s0_o2": {
+            "direction": "O"
+          },
+          "s0_o3": {
+            "direction": "O"
+          },
+          "s0_i2": {
+            "direction": "I"
+          },
+          "s0_t2": {
+            "direction": "I"
+          },
+          "s0_i3": {
+            "direction": "I"
+          },
+          "s0_t3": {
+            "direction": "I"
           }
         },
         "components": {
@@ -2535,10 +2549,6 @@
               "i2c1_sda": {
                 "direction": "IO"
               },
-              "iic2intc_irpt": {
-                "type": "intr",
-                "direction": "O"
-              },
               "irq": {
                 "type": "intr",
                 "direction": "O"
@@ -2578,6 +2588,24 @@
               },
               "s_t1": {
                 "direction": "O"
+              },
+              "s0_o2": {
+                "direction": "O"
+              },
+              "s0_o3": {
+                "direction": "O"
+              },
+              "s0_i2": {
+                "direction": "I"
+              },
+              "s0_t2": {
+                "direction": "I"
+              },
+              "s0_i3": {
+                "direction": "I"
+              },
+              "s0_t3": {
+                "direction": "I"
               }
             },
             "components": {
@@ -2898,36 +2926,6 @@
                   "i2c_switch_1/sel"
                 ]
               },
-              "axi_iic_0_iic2intc_irpt": {
-                "ports": [
-                  "axi_iic_0/iic2intc_irpt",
-                  "iic2intc_irpt"
-                ]
-              },
-              "axi_iic_0_scl_o": {
-                "ports": [
-                  "axi_iic_0/scl_o",
-                  "i2c_switch_0/s0_i"
-                ]
-              },
-              "axi_iic_0_scl_t": {
-                "ports": [
-                  "axi_iic_0/scl_t",
-                  "i2c_switch_0/s0_t"
-                ]
-              },
-              "axi_iic_0_sda_o": {
-                "ports": [
-                  "axi_iic_0/sda_o",
-                  "i2c_switch_1/s0_i"
-                ]
-              },
-              "axi_iic_0_sda_t": {
-                "ports": [
-                  "axi_iic_0/sda_t",
-                  "i2c_switch_1/s0_t"
-                ]
-              },
               "ha_1": {
                 "ports": [
                   "ha",
@@ -2967,7 +2965,7 @@
               "i2c_switch_0_s0_o": {
                 "ports": [
                   "i2c_switch_0/s0_o",
-                  "axi_iic_0/scl_i"
+                  "s0_o2"
                 ]
               },
               "i2c_switch_0_s1_o": {
@@ -2997,7 +2995,7 @@
               "i2c_switch_1_s0_o": {
                 "ports": [
                   "i2c_switch_1/s0_o",
-                  "axi_iic_0/sda_i"
+                  "s0_o3"
                 ]
               },
               "i2c_switch_1_s1_o": {
@@ -3033,6 +3031,30 @@
                   "axi_iic_0/s_axi_aclk"
                 ]
               },
+              "s0_i2_1": {
+                "ports": [
+                  "s0_i2",
+                  "i2c_switch_0/s0_i"
+                ]
+              },
+              "s0_i3_1": {
+                "ports": [
+                  "s0_i3",
+                  "i2c_switch_1/s0_i"
+                ]
+              },
+              "s0_t2_1": {
+                "ports": [
+                  "s0_t2",
+                  "i2c_switch_0/s0_t"
+                ]
+              },
+              "s0_t3_1": {
+                "ports": [
+                  "s0_t3",
+                  "i2c_switch_1/s0_t"
+                ]
+              },
               "s_axi_aresetn_1": {
                 "ports": [
                   "s_axi_aresetn",
@@ -3046,7 +3068,9 @@
                 "ports": [
                   "xlconstant_0/dout",
                   "i2c_switch_0/s1_i",
-                  "i2c_switch_0/s1_t"
+                  "i2c_switch_0/s1_t",
+                  "axi_iic_0/scl_i",
+                  "axi_iic_0/sda_i"
                 ]
               }
             }
@@ -3171,6 +3195,18 @@
               "i2c_addr_received1"
             ]
           },
+          "ipmc_i2c_1_s0_o2": {
+            "ports": [
+              "ipmc_i2c_1/s0_o2",
+              "s0_o2"
+            ]
+          },
+          "ipmc_i2c_1_s0_o3": {
+            "ports": [
+              "ipmc_i2c_1/s0_o3",
+              "s0_o3"
+            ]
+          },
           "ipmc_i2c_1_s_i": {
             "ports": [
               "ipmc_i2c_1/s_i",
@@ -3205,12 +3241,6 @@
             "ports": [
               "ipmc_i2c_1/s_t1",
               "s_t3"
-            ]
-          },
-          "ipmc_jtag_iic2intc_irpt": {
-            "ports": [
-              "ipmc_i2c_1/iic2intc_irpt",
-              "iic2intc_irpt"
             ]
           },
           "ipmc_jtag_irq": {
@@ -3250,6 +3280,18 @@
               "ipmc_i2c_0/s0_i1"
             ]
           },
+          "s0_i2_1": {
+            "ports": [
+              "s0_i2",
+              "ipmc_i2c_1/s0_i2"
+            ]
+          },
+          "s0_i3_1": {
+            "ports": [
+              "s0_i3",
+              "ipmc_i2c_1/s0_i3"
+            ]
+          },
           "s0_i_1": {
             "ports": [
               "s0_i",
@@ -3260,6 +3302,18 @@
             "ports": [
               "s0_t1",
               "ipmc_i2c_0/s0_t1"
+            ]
+          },
+          "s0_t2_1": {
+            "ports": [
+              "s0_t2",
+              "ipmc_i2c_1/s0_t2"
+            ]
+          },
+          "s0_t3_1": {
+            "ports": [
+              "s0_t3",
+              "ipmc_i2c_1/s0_t3"
             ]
           },
           "s0_t_1": {
@@ -3443,11 +3497,6 @@
             "left": "0",
             "right": "0"
           },
-          "In5": {
-            "direction": "I",
-            "left": "0",
-            "right": "0"
-          },
           "In6": {
             "direction": "I",
             "left": "0",
@@ -3490,6 +3539,24 @@
           "In11": {
             "type": "intr",
             "direction": "I"
+          },
+          "I2C0_SCL_I": {
+            "direction": "I"
+          },
+          "I2C0_SDA_I": {
+            "direction": "I"
+          },
+          "I2C0_SCL_O": {
+            "direction": "O"
+          },
+          "I2C0_SCL_T": {
+            "direction": "O"
+          },
+          "I2C0_SDA_O": {
+            "direction": "O"
+          },
+          "I2C0_SDA_T": {
+            "direction": "O"
           }
         },
         "components": {
@@ -3782,7 +3849,7 @@
                 "value": "0"
               },
               "PCW_EN_EMIO_I2C0": {
-                "value": "0"
+                "value": "1"
               },
               "PCW_EN_EMIO_I2C1": {
                 "value": "1"
@@ -3997,14 +4064,11 @@
               "PCW_I2C0_BASEADDR": {
                 "value": "0xE0004000"
               },
-              "PCW_I2C0_GRP_INT_ENABLE": {
-                "value": "0"
-              },
               "PCW_I2C0_HIGHADDR": {
                 "value": "0xE0004FFF"
               },
               "PCW_I2C0_I2C0_IO": {
-                "value": "MIO 50 .. 51"
+                "value": "EMIO"
               },
               "PCW_I2C0_PERIPHERAL_ENABLE": {
                 "value": "1"
@@ -4517,10 +4581,10 @@
                 "value": "54"
               },
               "PCW_MIO_TREE_PERIPHERALS": {
-                "value": "GPIO#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#USB Reset#CAN 1#CAN 1#SD 1#SD 1#SD 1#SD 1#SD 1#SD 1#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#SD 0#SD 0#SD 0#SD 0#SD 0#SD 0#GPIO#GPIO#UART 1#UART 1#I2C 0#I2C 0#Enet 0#Enet 0"
+                "value": "GPIO#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#USB Reset#CAN 1#CAN 1#SD 1#SD 1#SD 1#SD 1#SD 1#SD 1#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#Enet 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#USB 0#SD 0#SD 0#SD 0#SD 0#SD 0#SD 0#GPIO#GPIO#UART 1#UART 1#GPIO#GPIO#Enet 0#Enet 0"
               },
               "PCW_MIO_TREE_SIGNALS": {
-                "value": "gpio[0]#qspi0_ss_b#qspi0_io[0]#qspi0_io[1]#qspi0_io[2]#qspi0_io[3]/HOLD_B#qspi0_sclk#reset#tx#rx#data[0]#cmd#clk#data[1]#data[2]#data[3]#tx_clk#txd[0]#txd[1]#txd[2]#txd[3]#tx_ctl#rx_clk#rxd[0]#rxd[1]#rxd[2]#rxd[3]#rx_ctl#data[4]#dir#stp#nxt#data[0]#data[1]#data[2]#data[3]#clk#data[5]#data[6]#data[7]#clk#cmd#data[0]#data[1]#data[2]#data[3]#gpio[46]#gpio[47]#tx#rx#scl#sda#mdc#mdio"
+                "value": "gpio[0]#qspi0_ss_b#qspi0_io[0]#qspi0_io[1]#qspi0_io[2]#qspi0_io[3]/HOLD_B#qspi0_sclk#reset#tx#rx#data[0]#cmd#clk#data[1]#data[2]#data[3]#tx_clk#txd[0]#txd[1]#txd[2]#txd[3]#tx_ctl#rx_clk#rxd[0]#rxd[1]#rxd[2]#rxd[3]#rx_ctl#data[4]#dir#stp#nxt#data[0]#data[1]#data[2]#data[3]#clk#data[5]#data[6]#data[7]#clk#cmd#data[0]#data[1]#data[2]#data[3]#gpio[46]#gpio[47]#tx#rx#gpio[50]#gpio[51]#mdc#mdio"
               },
               "PCW_M_AXI_GP0_ENABLE_STATIC_REMAP": {
                 "value": "1"
@@ -8971,6 +9035,18 @@
               "interconnect_aresetn"
             ]
           },
+          "I2C0_SCL_I_1": {
+            "ports": [
+              "I2C0_SCL_I",
+              "processing_system7_0/I2C0_SCL_I"
+            ]
+          },
+          "I2C0_SDA_I_1": {
+            "ports": [
+              "I2C0_SDA_I",
+              "processing_system7_0/I2C0_SDA_I"
+            ]
+          },
           "In10_1": {
             "ports": [
               "In10",
@@ -9053,12 +9129,6 @@
               "xlconcat_0/In2"
             ]
           },
-          "ipmc_jtag_iic2intc_irpt": {
-            "ports": [
-              "In5",
-              "xlconcat_0/In5"
-            ]
-          },
           "ipmc_jtag_irq": {
             "ports": [
               "In4",
@@ -9137,6 +9207,30 @@
               "proc_sys_reset_0/ext_reset_in"
             ]
           },
+          "processing_system7_0_I2C0_SCL_O": {
+            "ports": [
+              "processing_system7_0/I2C0_SCL_O",
+              "I2C0_SCL_O"
+            ]
+          },
+          "processing_system7_0_I2C0_SCL_T": {
+            "ports": [
+              "processing_system7_0/I2C0_SCL_T",
+              "I2C0_SCL_T"
+            ]
+          },
+          "processing_system7_0_I2C0_SDA_O": {
+            "ports": [
+              "processing_system7_0/I2C0_SDA_O",
+              "I2C0_SDA_O"
+            ]
+          },
+          "processing_system7_0_I2C0_SDA_T": {
+            "ports": [
+              "processing_system7_0/I2C0_SDA_T",
+              "I2C0_SDA_T"
+            ]
+          },
           "s0_i1_1": {
             "ports": [
               "processing_system7_0/I2C1_SCL_O",
@@ -9173,7 +9267,8 @@
               "processing_system7_0/SDIO0_CDN",
               "processing_system7_0/SDIO0_WP",
               "processing_system7_0/SDIO1_CDN",
-              "processing_system7_0/SDIO1_WP"
+              "processing_system7_0/SDIO1_WP",
+              "xlconcat_0/In5"
             ]
           }
         }
@@ -11717,6 +11812,18 @@
           "axi_chip2chip_0/axi_c2c_aurora_rx_tvalid"
         ]
       },
+      "I2C0_SCL_I_1": {
+        "ports": [
+          "ipmc/s0_o2",
+          "cpu/I2C0_SCL_I"
+        ]
+      },
+      "I2C0_SDA_I_1": {
+        "ports": [
+          "ipmc/s0_o3",
+          "cpu/I2C0_SDA_I"
+        ]
+      },
       "In0_0_1": {
         "ports": [
           "ready_ipmb_zynq",
@@ -11987,12 +12094,6 @@
         "ports": [
           "i2c/iic2intc_irpt4",
           "cpu/In11"
-        ]
-      },
-      "ipmc_jtag_iic2intc_irpt": {
-        "ports": [
-          "ipmc/iic2intc_irpt",
-          "cpu/In5"
         ]
       },
       "ipmc_jtag_irq": {
@@ -12282,6 +12383,18 @@
           "ipmc/s0_i1"
         ]
       },
+      "s0_i2_1": {
+        "ports": [
+          "cpu/I2C0_SCL_O",
+          "ipmc/s0_i2"
+        ]
+      },
+      "s0_i3_1": {
+        "ports": [
+          "cpu/I2C0_SDA_O",
+          "ipmc/s0_i3"
+        ]
+      },
       "s0_i_1": {
         "ports": [
           "cpu/I2C1_SDA_O",
@@ -12292,6 +12405,18 @@
         "ports": [
           "cpu/I2C1_SCL_T",
           "ipmc/s0_t1"
+        ]
+      },
+      "s0_t2_1": {
+        "ports": [
+          "cpu/I2C0_SCL_T",
+          "ipmc/s0_t2"
+        ]
+      },
+      "s0_t3_1": {
+        "ports": [
+          "cpu/I2C0_SDA_T",
+          "ipmc/s0_t3"
         ]
       },
       "s0_t_1": {
