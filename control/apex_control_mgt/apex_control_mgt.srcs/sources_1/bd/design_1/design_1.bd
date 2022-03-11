@@ -152,7 +152,8 @@
       "system_ila_0": "",
       "pok_alarm_0": "",
       "reg_bank_0": "",
-      "ila_1": ""
+      "ila_1": "",
+      "i2c_clk_divider_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -1991,6 +1992,16 @@
           },
           "s0_t3": {
             "direction": "I"
+          },
+          "gpio_io_o": {
+            "direction": "O",
+            "left": "0",
+            "right": "0"
+          },
+          "gpio_io_o1": {
+            "direction": "O",
+            "left": "0",
+            "right": "0"
           }
         },
         "components": {
@@ -2071,6 +2082,11 @@
               },
               "s_t1": {
                 "direction": "O"
+              },
+              "gpio_io_o": {
+                "direction": "O",
+                "left": "0",
+                "right": "0"
               }
             },
             "components": {
@@ -2376,7 +2392,8 @@
                 "ports": [
                   "axi_gpio_0/gpio_io_o",
                   "i2c_switch_0/sel",
-                  "i2c_switch_1/sel"
+                  "i2c_switch_1/sel",
+                  "gpio_io_o"
                 ]
               },
               "ha_1": {
@@ -2606,6 +2623,11 @@
               },
               "s0_t3": {
                 "direction": "I"
+              },
+              "gpio_io_o": {
+                "direction": "O",
+                "left": "0",
+                "right": "0"
               }
             },
             "components": {
@@ -2923,7 +2945,8 @@
                 "ports": [
                   "axi_gpio_0/gpio_io_o",
                   "i2c_switch_0/sel",
-                  "i2c_switch_1/sel"
+                  "i2c_switch_1/sel",
+                  "gpio_io_o"
                 ]
               },
               "ha_1": {
@@ -3147,6 +3170,12 @@
               "ipmc_i2c_1/ha"
             ]
           },
+          "ipmc_i2c_0_gpio_io_o": {
+            "ports": [
+              "ipmc_i2c_0/gpio_io_o",
+              "gpio_io_o"
+            ]
+          },
           "ipmc_i2c_0_i2c_addr_received": {
             "ports": [
               "ipmc_i2c_0/i2c_addr_received",
@@ -3187,6 +3216,12 @@
             "ports": [
               "ipmc_i2c_0/s_t1",
               "s_t1"
+            ]
+          },
+          "ipmc_i2c_1_gpio_io_o": {
+            "ports": [
+              "ipmc_i2c_1/gpio_io_o",
+              "gpio_io_o1"
             ]
           },
           "ipmc_i2c_1_i2c_addr_received": {
@@ -11588,6 +11623,9 @@
         "xci_path": "ip\\design_1_ila_1_0\\design_1_ila_1_0.xci",
         "inst_hier_path": "ila_1",
         "parameters": {
+          "C_DATA_DEPTH": {
+            "value": "32768"
+          },
           "C_ENABLE_ILA_AXI_MON": {
             "value": "false"
           },
@@ -11598,7 +11636,44 @@
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "12"
+            "value": "15"
+          },
+          "C_PROBE12_WIDTH": {
+            "value": "2"
+          }
+        }
+      },
+      "i2c_clk_divider_0": {
+        "vlnv": "xilinx.com:module_ref:i2c_clk_divider:1.0",
+        "xci_name": "design_1_i2c_clk_divider_0_0",
+        "xci_path": "ip\\design_1_i2c_clk_divider_0_0\\design_1_i2c_clk_divider_0_0.xci",
+        "inst_hier_path": "i2c_clk_divider_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "i2c_clk_divider",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "user_prop"
+              },
+              "PHASE": {
+                "value": "0.000",
+                "value_src": "default_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "design_1_processing_system7_0_0_FCLK_CLK0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "clk_div": {
+            "direction": "O"
           }
         }
       }
@@ -11824,12 +11899,6 @@
           "cpu/I2C0_SDA_I"
         ]
       },
-      "In0_0_1": {
-        "ports": [
-          "ready_ipmb_zynq",
-          "reg_bank_0/ready_ipmb_zynq_9_8"
-        ]
-      },
       "In1_0_1": {
         "ports": [
           "los_10g",
@@ -11875,7 +11944,7 @@
           "axi_gpio_0/s_axi_aclk",
           "system_ila_0/clk",
           "pok_alarm_0/clk",
-          "ila_1/clk"
+          "i2c_clk_divider_0/clk"
         ]
       },
       "Net1": {
@@ -12066,6 +12135,12 @@
           "axi_chip2chip_0/aurora_pma_init_in"
         ]
       },
+      "i2c_clk_divider_0_clk_div": {
+        "ports": [
+          "i2c_clk_divider_0/clk_div",
+          "ila_1/clk"
+        ]
+      },
       "i2c_iic2intc_irpt": {
         "ports": [
           "i2c/iic2intc_irpt",
@@ -12096,6 +12171,25 @@
           "cpu/In11"
         ]
       },
+      "ipmb_rdy": {
+        "ports": [
+          "ready_ipmb_zynq",
+          "reg_bank_0/ready_ipmb_zynq_9_8",
+          "ila_1/probe12"
+        ]
+      },
+      "ipmc_gpio_io_o": {
+        "ports": [
+          "ipmc/gpio_io_o",
+          "ila_1/probe13"
+        ]
+      },
+      "ipmc_gpio_io_o1": {
+        "ports": [
+          "ipmc/gpio_io_o1",
+          "ila_1/probe14"
+        ]
+      },
       "ipmc_jtag_irq": {
         "ports": [
           "ipmc/irq",
@@ -12118,78 +12212,6 @@
         "ports": [
           "ipmc/s0_o1",
           "cpu/I2C1_SCL_I"
-        ]
-      },
-      "ipmc_s_i": {
-        "ports": [
-          "ipmc/s_i",
-          "ila_1/probe1"
-        ]
-      },
-      "ipmc_s_i1": {
-        "ports": [
-          "ipmc/s_i1",
-          "ila_1/probe4"
-        ]
-      },
-      "ipmc_s_i2": {
-        "ports": [
-          "ipmc/s_i2",
-          "ila_1/probe7"
-        ]
-      },
-      "ipmc_s_i3": {
-        "ports": [
-          "ipmc/s_i3",
-          "ila_1/probe10"
-        ]
-      },
-      "ipmc_s_o": {
-        "ports": [
-          "ipmc/s_o",
-          "ila_1/probe0"
-        ]
-      },
-      "ipmc_s_o1": {
-        "ports": [
-          "ipmc/s_o1",
-          "ila_1/probe3"
-        ]
-      },
-      "ipmc_s_o2": {
-        "ports": [
-          "ipmc/s_o2",
-          "ila_1/probe6"
-        ]
-      },
-      "ipmc_s_o3": {
-        "ports": [
-          "ipmc/s_o3",
-          "ila_1/probe9"
-        ]
-      },
-      "ipmc_s_t": {
-        "ports": [
-          "ipmc/s_t",
-          "ila_1/probe2"
-        ]
-      },
-      "ipmc_s_t1": {
-        "ports": [
-          "ipmc/s_t1",
-          "ila_1/probe5"
-        ]
-      },
-      "ipmc_s_t2": {
-        "ports": [
-          "ipmc/s_t2",
-          "ila_1/probe8"
-        ]
-      },
-      "ipmc_s_t3": {
-        "ports": [
-          "ipmc/s_t3",
-          "ila_1/probe11"
         ]
       },
       "link_stat_bot": {
@@ -12423,6 +12445,78 @@
         "ports": [
           "cpu/I2C1_SDA_T",
           "ipmc/s0_t"
+        ]
+      },
+      "scl0_i": {
+        "ports": [
+          "ipmc/s_i1",
+          "ila_1/probe4"
+        ]
+      },
+      "scl0_o": {
+        "ports": [
+          "ipmc/s_o1",
+          "ila_1/probe3"
+        ]
+      },
+      "scl0_t": {
+        "ports": [
+          "ipmc/s_t1",
+          "ila_1/probe5"
+        ]
+      },
+      "scl1_i": {
+        "ports": [
+          "ipmc/s_i3",
+          "ila_1/probe10"
+        ]
+      },
+      "scl1_o": {
+        "ports": [
+          "ipmc/s_o3",
+          "ila_1/probe9"
+        ]
+      },
+      "scl1_t": {
+        "ports": [
+          "ipmc/s_t3",
+          "ila_1/probe11"
+        ]
+      },
+      "sda0_i": {
+        "ports": [
+          "ipmc/s_i",
+          "ila_1/probe1"
+        ]
+      },
+      "sda0_o": {
+        "ports": [
+          "ipmc/s_o",
+          "ila_1/probe0"
+        ]
+      },
+      "sda0_t": {
+        "ports": [
+          "ipmc/s_t",
+          "ila_1/probe2"
+        ]
+      },
+      "sda1_i": {
+        "ports": [
+          "ipmc/s_i2",
+          "ila_1/probe7"
+        ]
+      },
+      "sda1_o": {
+        "ports": [
+          "ipmc/s_o2",
+          "ila_1/probe6"
+        ]
+      },
+      "sda1_t": {
+        "ports": [
+          "ipmc/s_t2",
+          "ila_1/probe8"
         ]
       },
       "txdata_bot": {
