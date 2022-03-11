@@ -9,6 +9,6 @@ module i2c_clk_divider
     
     always @(posedge clk) cnt = cnt + 8'h1;
     
-    BUFG clk_div_buf (.O(clk_div), .I(cnt[7]));
+    BUFG clk_div_buf (.O(clk_div), .I(cnt[5]));
 
 endmodule
