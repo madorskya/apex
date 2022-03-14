@@ -49,26 +49,48 @@ module i2cSlave
 (
     input  clk,
     input  rst,
-    input  sda_in,
-    output sda_out,
-    output sda_t,
-    input  scl,
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 RX SCL_I" *)
+  input scl, // IIC Serial Clock Input from 3-state buffer (required)
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 RX SCL_O" *)
+  output rx_scl_o, // IIC Serial Clock Output to 3-state buffer (required)
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 RX SCL_T" *)
+  output rx_scl_t, // IIC Serial Clock Output Enable to 3-state buffer (required)
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 RX SDA_I" *)
+  input sda_in, // IIC Serial Data Input from 3-state buffer (required)
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 RX SDA_O" *)
+  output sda_out, // IIC Serial Data Output to 3-state buffer (required)
+  (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 RX SDA_T" *)
+  output sda_t, // IIC Serial Data Output Enable to 3-state buffer (required)
     
-    input [12:0]  bram_addr,
-    input         bram_clk,
-    input [31:0]  bram_wrdata,
-    output reg [31:0] bram_rddata,
-    input         bram_en,
-    input         bram_rst,
-    input [3:0]   bram_we,
+
+ (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 CONTROL EN" *)
+  // Uncomment the following to set interface specific parameter on the bus interface.
+  //  (* X_INTERFACE_PARAMETER = "MASTER_TYPE <value>,MEM_ECC <value>,MEM_WIDTH <value>,MEM_SIZE <value>,READ_WRITE_MODE <value>" *)
+  input         bram_en, // Chip Enable Signal (optional)
+  (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 CONTROL DOUT" *)
+  output reg [31:0] bram_rddata, // Data Out Bus (optional)
+  (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 CONTROL DIN" *)
+  input [31:0]  bram_wrdata, // Data In Bus (optional)
+  (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 CONTROL WE" *)
+  input [3:0]   bram_we, // Byte Enables (optional)
+  (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 CONTROL ADDR" *)
+  input [12:0]  bram_addr, // Address Signal (required)
+  (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 CONTROL CLK" *)
+  input         bram_clk, // Clock Signal (required)
+  (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 CONTROL RST" *)
+  input         bram_rst, // Reset Signal (required)
+
     
     output irq,
     output [6:0] i2c_addr_received,
     input [7:0] hardware_address
 );
 
-wire  [6:0] i2c_addr_crate = hardware_address[6:0];
-localparam max_reg = 64;
+  assign rx_scl_o = 1'b1; // IIC Serial Clock Output to 3-state buffer (required)
+  assign rx_scl_t = 1'b1; // IIC Serial Clock Output Enable to 3-state buffer (required)
+
+    wire  [6:0] i2c_addr_crate = hardware_address[6:0];
+    localparam max_reg = 64;
 
     wire reset_reg = bram_en == 1'b1 && bram_we == 4'b0; // reset irq at read operation
 
