@@ -132,9 +132,9 @@
       "axi_bram_ctrl_0": "",
       "axi_gpio_1": "",
       "axi_bram_ctrl_1": "",
+      "i2c_switch_dual_0": "",
       "i2cSlave_0": "",
-      "i2cSlave_1": "",
-      "i2c_switch_dual_0": ""
+      "i2cSlave_1": ""
     },
     "interface_ports": {
       "DDR": {
@@ -9891,6 +9891,149 @@
           }
         }
       },
+      "i2c_switch_dual_0": {
+        "vlnv": "xilinx.com:module_ref:i2c_switch_dual:1.0",
+        "xci_name": "design_1_i2c_switch_dual_0_0",
+        "xci_path": "ip\\design_1_i2c_switch_dual_0_0\\design_1_i2c_switch_dual_0_0.xci",
+        "inst_hier_path": "i2c_switch_dual_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "i2c_switch_dual",
+          "boundary_crc": "0x0"
+        },
+        "interface_ports": {
+          "TX_MASTER": {
+            "mode": "Slave",
+            "vlnv_bus_definition": "xilinx.com:interface:iic:1.0",
+            "vlnv": "xilinx.com:interface:iic_rtl:1.0",
+            "port_maps": {
+              "SCL_I": {
+                "physical_name": "tx_scl_i",
+                "direction": "O"
+              },
+              "SCL_O": {
+                "physical_name": "tx_scl_o",
+                "direction": "I"
+              },
+              "SCL_T": {
+                "physical_name": "tx_scl_t",
+                "direction": "I"
+              },
+              "SDA_I": {
+                "physical_name": "tx_sda_i",
+                "direction": "O"
+              },
+              "SDA_O": {
+                "physical_name": "tx_sda_o",
+                "direction": "I"
+              },
+              "SDA_T": {
+                "physical_name": "tx_sda_t",
+                "direction": "I"
+              }
+            }
+          },
+          "RX0_SLAVE": {
+            "mode": "Slave",
+            "vlnv_bus_definition": "xilinx.com:interface:iic:1.0",
+            "vlnv": "xilinx.com:interface:iic_rtl:1.0",
+            "port_maps": {
+              "SCL_I": {
+                "physical_name": "rx0_scl_i",
+                "direction": "O"
+              },
+              "SCL_O": {
+                "physical_name": "rx0_scl_o",
+                "direction": "I"
+              },
+              "SCL_T": {
+                "physical_name": "rx0_scl_t",
+                "direction": "I"
+              },
+              "SDA_I": {
+                "physical_name": "rx0_sda_i",
+                "direction": "O"
+              },
+              "SDA_O": {
+                "physical_name": "rx0_sda_o",
+                "direction": "I"
+              },
+              "SDA_T": {
+                "physical_name": "rx0_sda_t",
+                "direction": "I"
+              }
+            }
+          },
+          "RX1_SLAVE": {
+            "mode": "Slave",
+            "vlnv_bus_definition": "xilinx.com:interface:iic:1.0",
+            "vlnv": "xilinx.com:interface:iic_rtl:1.0",
+            "port_maps": {
+              "SCL_I": {
+                "physical_name": "rx1_scl_i",
+                "direction": "O"
+              },
+              "SCL_O": {
+                "physical_name": "rx1_scl_o",
+                "direction": "I"
+              },
+              "SCL_T": {
+                "physical_name": "rx1_scl_t",
+                "direction": "I"
+              },
+              "SDA_I": {
+                "physical_name": "rx1_sda_i",
+                "direction": "O"
+              },
+              "SDA_O": {
+                "physical_name": "rx1_sda_o",
+                "direction": "I"
+              },
+              "SDA_T": {
+                "physical_name": "rx1_sda_t",
+                "direction": "I"
+              }
+            }
+          }
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "user_prop"
+              },
+              "PHASE": {
+                "value": "0.000",
+                "value_src": "default_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "design_1_processing_system7_0_0_FCLK_CLK0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "tx_en": {
+            "direction": "I",
+            "left": "1",
+            "right": "0"
+          },
+          "scl0": {
+            "direction": "IO"
+          },
+          "sda0": {
+            "direction": "IO"
+          },
+          "scl1": {
+            "direction": "IO"
+          },
+          "sda1": {
+            "direction": "IO"
+          }
+        }
+      },
       "i2cSlave_0": {
         "vlnv": "xilinx.com:module_ref:i2cSlave:1.0",
         "xci_name": "design_1_i2cSlave_0_0",
@@ -10216,149 +10359,6 @@
             "right": "0"
           }
         }
-      },
-      "i2c_switch_dual_0": {
-        "vlnv": "xilinx.com:module_ref:i2c_switch_dual:1.0",
-        "xci_name": "design_1_i2c_switch_dual_0_0",
-        "xci_path": "ip\\design_1_i2c_switch_dual_0_0\\design_1_i2c_switch_dual_0_0.xci",
-        "inst_hier_path": "i2c_switch_dual_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "i2c_switch_dual",
-          "boundary_crc": "0x0"
-        },
-        "interface_ports": {
-          "TX_MASTER": {
-            "mode": "Slave",
-            "vlnv_bus_definition": "xilinx.com:interface:iic:1.0",
-            "vlnv": "xilinx.com:interface:iic_rtl:1.0",
-            "port_maps": {
-              "SCL_I": {
-                "physical_name": "tx_scl_i",
-                "direction": "O"
-              },
-              "SCL_O": {
-                "physical_name": "tx_scl_o",
-                "direction": "I"
-              },
-              "SCL_T": {
-                "physical_name": "tx_scl_t",
-                "direction": "I"
-              },
-              "SDA_I": {
-                "physical_name": "tx_sda_i",
-                "direction": "O"
-              },
-              "SDA_O": {
-                "physical_name": "tx_sda_o",
-                "direction": "I"
-              },
-              "SDA_T": {
-                "physical_name": "tx_sda_t",
-                "direction": "I"
-              }
-            }
-          },
-          "RX0_SLAVE": {
-            "mode": "Slave",
-            "vlnv_bus_definition": "xilinx.com:interface:iic:1.0",
-            "vlnv": "xilinx.com:interface:iic_rtl:1.0",
-            "port_maps": {
-              "SCL_I": {
-                "physical_name": "rx0_scl_i",
-                "direction": "O"
-              },
-              "SCL_O": {
-                "physical_name": "rx0_scl_o",
-                "direction": "I"
-              },
-              "SCL_T": {
-                "physical_name": "rx0_scl_t",
-                "direction": "I"
-              },
-              "SDA_I": {
-                "physical_name": "rx0_sda_i",
-                "direction": "O"
-              },
-              "SDA_O": {
-                "physical_name": "rx0_sda_o",
-                "direction": "I"
-              },
-              "SDA_T": {
-                "physical_name": "rx0_sda_t",
-                "direction": "I"
-              }
-            }
-          },
-          "RX1_SLAVE": {
-            "mode": "Slave",
-            "vlnv_bus_definition": "xilinx.com:interface:iic:1.0",
-            "vlnv": "xilinx.com:interface:iic_rtl:1.0",
-            "port_maps": {
-              "SCL_I": {
-                "physical_name": "rx1_scl_i",
-                "direction": "O"
-              },
-              "SCL_O": {
-                "physical_name": "rx1_scl_o",
-                "direction": "I"
-              },
-              "SCL_T": {
-                "physical_name": "rx1_scl_t",
-                "direction": "I"
-              },
-              "SDA_I": {
-                "physical_name": "rx1_sda_i",
-                "direction": "O"
-              },
-              "SDA_O": {
-                "physical_name": "rx1_sda_o",
-                "direction": "I"
-              },
-              "SDA_T": {
-                "physical_name": "rx1_sda_t",
-                "direction": "I"
-              }
-            }
-          }
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "FREQ_HZ": {
-                "value": "100000000",
-                "value_src": "user_prop"
-              },
-              "PHASE": {
-                "value": "0.000",
-                "value_src": "default_prop"
-              },
-              "CLK_DOMAIN": {
-                "value": "design_1_processing_system7_0_0_FCLK_CLK0",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "tx_en": {
-            "direction": "I",
-            "left": "1",
-            "right": "0"
-          },
-          "scl0": {
-            "direction": "IO"
-          },
-          "sda0": {
-            "direction": "IO"
-          },
-          "scl1": {
-            "direction": "IO"
-          },
-          "sda1": {
-            "direction": "IO"
-          }
-        }
       }
     },
     "interface_nets": {
@@ -10636,9 +10636,9 @@
           "axi_bram_ctrl_0/s_axi_aclk",
           "axi_gpio_1/s_axi_aclk",
           "axi_bram_ctrl_1/s_axi_aclk",
+          "i2c_switch_dual_0/clk",
           "i2cSlave_0/clk",
-          "i2cSlave_1/clk",
-          "i2c_switch_dual_0/clk"
+          "i2cSlave_1/clk"
         ]
       },
       "Net1": {

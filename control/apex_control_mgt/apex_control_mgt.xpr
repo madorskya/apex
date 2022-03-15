@@ -61,7 +61,7 @@
     <Option Name="IPUserFilesDir" Val="$PIPUSERFILESDIR"/>
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
-    <Option Name="WTXSimLaunchSim" Val="0"/>
+    <Option Name="WTXSimLaunchSim" Val="25"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -87,6 +87,29 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
       <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sources_1/imports/rtl/axisafety.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../Users/madorsky/github/others/wb2axip/rtl/axisafety.v"/>
+          <Attr Name="ImportTime" Val="1605981685"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/pok_alarm.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/reg_bank.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/rtl/i2cSlave_define.v">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../../Users/madorsky/cernbox/projects/vivado/apex/control/apex_control_eval_ipmc2/apex_control_eval_ipmc2.srcs/sources_1/imports/rtl/i2cSlave_define.v"/>
@@ -127,29 +150,6 @@
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../../Users/madorsky/cernbox/projects/vivado/apex/control/apex_control_eval_ipmc2/apex_control_eval_ipmc2.srcs/sources_1/imports/rtl/i2cSlave.v"/>
           <Attr Name="ImportTime" Val="1593437110"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/rtl/axisafety.v">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../Users/madorsky/github/others/wb2axip/rtl/axisafety.v"/>
-          <Attr Name="ImportTime" Val="1605981685"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/pok_alarm.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/reg_bank.v">
-        <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -314,11 +314,22 @@
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1" RelGenDir="$PGENDIR/sim_1">
       <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sim_1/new/i2c_slave_tf.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/i2c_slave_tf_behav.wcfg">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
-        <Option Name="TopModule" Val="design_1_wrapper"/>
+        <Option Name="TopModule" Val="i2c_slave_tf"/>
         <Option Name="TopLib" Val="xil_defaultlib"/>
-        <Option Name="TopAutoSet" Val="TRUE"/>
         <Option Name="TransportPathDelay" Val="0"/>
         <Option Name="TransportIntDelay" Val="0"/>
         <Option Name="SelectedSimModel" Val="rtl"/>
@@ -327,6 +338,8 @@
         <Option Name="PamSignalDriverFile" Val="xil_bypass_driver"/>
         <Option Name="PamPseudoTop" Val="pseudo_tb"/>
         <Option Name="SrcSet" Val="sources_1"/>
+        <Option Name="XSimWcfgFile" Val="$PPRDIR/i2c_slave_tf_behav.wcfg"/>
+        <Option Name="xsim.simulate.runtime" Val="2ms"/>
       </Config>
     </FileSet>
     <FileSet Name="utils_1" Type="Utils" RelSrcDir="$PSRCDIR/utils_1" RelGenDir="$PGENDIR/utils_1">
@@ -424,7 +437,9 @@
     </Run>
     <Run Id="synth_3p125_AXI0" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7z015clg485-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/synth_3p125_AXI0" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/synth_3p125_AXI0">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
         <Step Id="synth_design">
           <Option Id="MoreOptsStr"><![CDATA[-verilog_define {AXI0} -verilog_define {C2C_3P125G}]]></Option>
         </Step>
@@ -436,7 +451,7 @@
         </ReportConfig>
         <ReportConfig DisplayName="synth_3p125_AXI0_synth_report_utilization_0" Name="synth_3p125_AXI0_synth_report_utilization_0" Spec="report_utilization" RunStep="synth_design" ReportFile="apex_control_mgt_top_utilization_synth.rpt" Version="1" Minor="0">
           <ReportConfigOption Name="dummy_option" Type="string"/>
-          <ReportConfigOutputOption Name="pb" Type="string" Value="apex_control_mgt_top_utilization_synth.pb"/>
+          <ReportConfigOutputOption Name="pb" Type="string" Value=""/>
         </ReportConfig>
       </ReportStrategy>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
@@ -546,7 +561,9 @@
     </Run>
     <Run Id="impl_3p125_AXI0" Type="Ft2:EntireDesign" Part="xc7z015clg485-1" ConstrsSet="constrs_1" Description="Similar to Peformance_Explore, but enables the physical optimization step (phys_opt_design) with the Explore directive after routing." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/impl_3p125_AXI0" SynthRun="synth_3p125_AXI0" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_3p125_AXI0">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Performance_ExplorePostRoutePhysOpt" Flow="Vivado Implementation 2020"/>
+        <StratHandle Name="Performance_ExplorePostRoutePhysOpt" Flow="Vivado Implementation 2020">
+          <Desc>Similar to Peformance_Explore, but enables the physical optimization step (phys_opt_design) with the Explore directive after routing.</Desc>
+        </StratHandle>
         <Step Id="init_design"/>
         <Step Id="opt_design">
           <Option Id="Directive">0</Option>
@@ -577,8 +594,8 @@
         </ReportConfig>
         <ReportConfig DisplayName="impl_3p125_AXI0_opt_report_drc_0" Name="impl_3p125_AXI0_opt_report_drc_0" Spec="report_drc" RunStep="opt_design" ReportFile="apex_control_mgt_top_drc_opted.rpt" Version="1" Minor="0">
           <ReportConfigOption Name="dummy_option" Type="string"/>
-          <ReportConfigOutputOption Name="pb" Type="string" Value="apex_control_mgt_top_drc_opted.pb"/>
-          <ReportConfigOutputOption Name="rpx" Type="string" Value="apex_control_mgt_top_drc_opted.rpx"/>
+          <ReportConfigOutputOption Name="pb" Type="string" Value=""/>
+          <ReportConfigOutputOption Name="rpx" Type="string" Value=""/>
         </ReportConfig>
         <ReportConfig DisplayName="impl_3p125_AXI0_opt_report_timing_summary_0" Name="impl_3p125_AXI0_opt_report_timing_summary_0" Spec="report_timing_summary" RunStep="opt_design" Version="1" Minor="0" IsDisabled="true">
           <ReportConfigOption Name="max_paths" Type="" Value="10"/>
@@ -595,7 +612,7 @@
         </ReportConfig>
         <ReportConfig DisplayName="impl_3p125_AXI0_place_report_utilization_0" Name="impl_3p125_AXI0_place_report_utilization_0" Spec="report_utilization" RunStep="place_design" ReportFile="apex_control_mgt_top_utilization_placed.rpt" Version="1" Minor="0">
           <ReportConfigOption Name="dummy_option" Type="string"/>
-          <ReportConfigOutputOption Name="pb" Type="string" Value="apex_control_mgt_top_utilization_placed.pb"/>
+          <ReportConfigOutputOption Name="pb" Type="string" Value=""/>
         </ReportConfig>
         <ReportConfig DisplayName="impl_3p125_AXI0_place_report_control_sets_0" Name="impl_3p125_AXI0_place_report_control_sets_0" Spec="report_control_sets" RunStep="place_design" ReportFile="apex_control_mgt_top_control_sets_placed.rpt" Version="1" Minor="0">
           <ReportConfigOption Name="verbose" Type="" Value="true"/>
@@ -626,27 +643,27 @@
         </ReportConfig>
         <ReportConfig DisplayName="impl_3p125_AXI0_route_report_drc_0" Name="impl_3p125_AXI0_route_report_drc_0" Spec="report_drc" RunStep="route_design" ReportFile="apex_control_mgt_top_drc_routed.rpt" Version="1" Minor="0">
           <ReportConfigOption Name="dummy_option" Type="string"/>
-          <ReportConfigOutputOption Name="pb" Type="string" Value="apex_control_mgt_top_drc_routed.pb"/>
-          <ReportConfigOutputOption Name="rpx" Type="string" Value="apex_control_mgt_top_drc_routed.rpx"/>
+          <ReportConfigOutputOption Name="pb" Type="string" Value=""/>
+          <ReportConfigOutputOption Name="rpx" Type="string" Value=""/>
         </ReportConfig>
         <ReportConfig DisplayName="impl_3p125_AXI0_route_report_methodology_0" Name="impl_3p125_AXI0_route_report_methodology_0" Spec="report_methodology" RunStep="route_design" ReportFile="apex_control_mgt_top_methodology_drc_routed.rpt" Version="1" Minor="0">
           <ReportConfigOption Name="dummy_option" Type="string"/>
-          <ReportConfigOutputOption Name="pb" Type="string" Value="apex_control_mgt_top_methodology_drc_routed.pb"/>
-          <ReportConfigOutputOption Name="rpx" Type="string" Value="apex_control_mgt_top_methodology_drc_routed.rpx"/>
+          <ReportConfigOutputOption Name="pb" Type="string" Value=""/>
+          <ReportConfigOutputOption Name="rpx" Type="string" Value=""/>
         </ReportConfig>
         <ReportConfig DisplayName="impl_3p125_AXI0_route_report_power_0" Name="impl_3p125_AXI0_route_report_power_0" Spec="report_power" RunStep="route_design" ReportFile="apex_control_mgt_top_power_routed.rpt" Version="1" Minor="0">
           <ReportConfigOption Name="dummy_option" Type="string"/>
-          <ReportConfigOutputOption Name="pb" Type="string" Value="apex_control_mgt_top_power_summary_routed.pb"/>
-          <ReportConfigOutputOption Name="rpx" Type="string" Value="apex_control_mgt_top_power_routed.rpx"/>
+          <ReportConfigOutputOption Name="pb" Type="string" Value=""/>
+          <ReportConfigOutputOption Name="rpx" Type="string" Value=""/>
         </ReportConfig>
         <ReportConfig DisplayName="impl_3p125_AXI0_route_report_route_status_0" Name="impl_3p125_AXI0_route_report_route_status_0" Spec="report_route_status" RunStep="route_design" ReportFile="apex_control_mgt_top_route_status.rpt" Version="1" Minor="0">
           <ReportConfigOption Name="dummy_option" Type="string"/>
-          <ReportConfigOutputOption Name="pb" Type="string" Value="apex_control_mgt_top_route_status.pb"/>
+          <ReportConfigOutputOption Name="pb" Type="string" Value=""/>
         </ReportConfig>
         <ReportConfig DisplayName="impl_3p125_AXI0_route_report_timing_summary_0" Name="impl_3p125_AXI0_route_report_timing_summary_0" Spec="report_timing_summary" RunStep="route_design" ReportFile="apex_control_mgt_top_timing_summary_routed.rpt" Version="1" Minor="0">
           <ReportConfigOption Name="max_paths" Type="" Value="10"/>
-          <ReportConfigOutputOption Name="pb" Type="string" Value="apex_control_mgt_top_timing_summary_routed.pb"/>
-          <ReportConfigOutputOption Name="rpx" Type="string" Value="apex_control_mgt_top_timing_summary_routed.rpx"/>
+          <ReportConfigOutputOption Name="pb" Type="string" Value=""/>
+          <ReportConfigOutputOption Name="rpx" Type="string" Value=""/>
         </ReportConfig>
         <ReportConfig DisplayName="impl_3p125_AXI0_route_report_incremental_reuse_0" Name="impl_3p125_AXI0_route_report_incremental_reuse_0" Spec="report_incremental_reuse" RunStep="route_design" ReportFile="apex_control_mgt_top_incremental_reuse_routed.rpt" Version="1" Minor="0">
           <ReportConfigOption Name="dummy_option" Type="string"/>
@@ -656,19 +673,19 @@
         </ReportConfig>
         <ReportConfig DisplayName="impl_3p125_AXI0_route_report_bus_skew_0" Name="impl_3p125_AXI0_route_report_bus_skew_0" Spec="report_bus_skew" RunStep="route_design" ReportFile="apex_control_mgt_top_bus_skew_routed.rpt" Version="1" Minor="1">
           <ReportConfigOption Name="warn_on_violation" Type="" Value="true"/>
-          <ReportConfigOutputOption Name="pb" Type="string" Value="apex_control_mgt_top_bus_skew_routed.pb"/>
-          <ReportConfigOutputOption Name="rpx" Type="string" Value="apex_control_mgt_top_bus_skew_routed.rpx"/>
+          <ReportConfigOutputOption Name="pb" Type="string" Value=""/>
+          <ReportConfigOutputOption Name="rpx" Type="string" Value=""/>
         </ReportConfig>
         <ReportConfig DisplayName="impl_3p125_AXI0_post_route_phys_opt_report_timing_summary_0" Name="impl_3p125_AXI0_post_route_phys_opt_report_timing_summary_0" Spec="report_timing_summary" RunStep="post_route_phys_opt_design" ReportFile="apex_control_mgt_top_timing_summary_postroute_physopted.rpt" Version="1" Minor="0">
           <ReportConfigOption Name="max_paths" Type="" Value="10"/>
           <ReportConfigOption Name="warn_on_violation" Type="" Value="true"/>
-          <ReportConfigOutputOption Name="pb" Type="string" Value="apex_control_mgt_top_timing_summary_postroute_physopted.pb"/>
-          <ReportConfigOutputOption Name="rpx" Type="string" Value="apex_control_mgt_top_timing_summary_postroute_physopted.rpx"/>
+          <ReportConfigOutputOption Name="pb" Type="string" Value=""/>
+          <ReportConfigOutputOption Name="rpx" Type="string" Value=""/>
         </ReportConfig>
         <ReportConfig DisplayName="impl_3p125_AXI0_post_route_phys_opt_report_bus_skew_0" Name="impl_3p125_AXI0_post_route_phys_opt_report_bus_skew_0" Spec="report_bus_skew" RunStep="post_route_phys_opt_design" ReportFile="apex_control_mgt_top_bus_skew_postroute_physopted.rpt" Version="1" Minor="1">
           <ReportConfigOption Name="warn_on_violation" Type="" Value="true"/>
-          <ReportConfigOutputOption Name="pb" Type="string" Value="apex_control_mgt_top_bus_skew_postroute_physopted.pb"/>
-          <ReportConfigOutputOption Name="rpx" Type="string" Value="apex_control_mgt_top_bus_skew_postroute_physopted.rpx"/>
+          <ReportConfigOutputOption Name="pb" Type="string" Value=""/>
+          <ReportConfigOutputOption Name="rpx" Type="string" Value=""/>
         </ReportConfig>
         <ReportConfig DisplayName="report_webtalk" Name="impl_3p125_AXI0_bitstream_report_webtalk_0" Spec="" RunStep="write_bitstream" ReportFile="usage_statistics_webtalk.html">
           <ReportConfigOption Name="dummy_option" Type="string"/>

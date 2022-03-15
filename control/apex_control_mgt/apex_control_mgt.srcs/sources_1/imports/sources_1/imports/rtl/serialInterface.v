@@ -280,7 +280,8 @@ begin
             if (rxData[7:1] == i2c_addr_crate && startStopDetState == `START_DET) 
             begin
                 if (rxData[0] == 1'b1)
-                    next_streamSt <= `STREAM_READ;
+                    //next_streamSt <= `STREAM_READ; // disable read operation completely
+                    next_sdaOut <= `I2C_NAK; // don't ack anything instead
                 else
                     next_streamSt <= `STREAM_WRITE_ADDR;
                 next_addr_detected = 1;
