@@ -1887,16 +1887,6 @@
             "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
             "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
           },
-          "M08_AXI": {
-            "mode": "Master",
-            "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
-            "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
-          },
-          "M09_AXI": {
-            "mode": "Master",
-            "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
-            "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
-          },
           "M10_AXI": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
@@ -1949,18 +1939,6 @@
           }
         },
         "ports": {
-          "I2C1_SDA_O": {
-            "direction": "O"
-          },
-          "I2C1_SDA_T": {
-            "direction": "O"
-          },
-          "I2C1_SCL_O": {
-            "direction": "O"
-          },
-          "I2C1_SCL_T": {
-            "direction": "O"
-          },
           "FCLK_CLK0": {
             "type": "clk",
             "direction": "O"
@@ -2019,12 +1997,6 @@
             "left": "0",
             "right": "0"
           },
-          "peripheral_reset": {
-            "type": "rst",
-            "direction": "O",
-            "left": "0",
-            "right": "0"
-          },
           "In7": {
             "type": "intr",
             "direction": "I"
@@ -2044,18 +2016,6 @@
           "In11": {
             "type": "intr",
             "direction": "I"
-          },
-          "I2C0_SCL_O": {
-            "direction": "O"
-          },
-          "I2C0_SCL_T": {
-            "direction": "O"
-          },
-          "I2C0_SDA_O": {
-            "direction": "O"
-          },
-          "I2C0_SDA_T": {
-            "direction": "O"
           }
         },
         "components": {
@@ -2348,10 +2308,10 @@
                 "value": "0"
               },
               "PCW_EN_EMIO_I2C0": {
-                "value": "1"
+                "value": "0"
               },
               "PCW_EN_EMIO_I2C1": {
-                "value": "0"
+                "value": "1"
               },
               "PCW_EN_EMIO_MODEM_UART0": {
                 "value": "0"
@@ -2411,10 +2371,10 @@
                 "value": "1"
               },
               "PCW_EN_I2C0": {
-                "value": "1"
+                "value": "0"
               },
               "PCW_EN_I2C1": {
-                "value": "0"
+                "value": "1"
               },
               "PCW_EN_MODEM_UART0": {
                 "value": "0"
@@ -2560,23 +2520,23 @@
               "PCW_GPIO_PERIPHERAL_ENABLE": {
                 "value": "0"
               },
-              "PCW_I2C0_BASEADDR": {
-                "value": "0xE0004000"
-              },
-              "PCW_I2C0_HIGHADDR": {
-                "value": "0xE0004FFF"
-              },
-              "PCW_I2C0_I2C0_IO": {
-                "value": "EMIO"
-              },
               "PCW_I2C0_PERIPHERAL_ENABLE": {
-                "value": "1"
+                "value": "0"
               },
               "PCW_I2C0_RESET_ENABLE": {
                 "value": "0"
               },
+              "PCW_I2C1_BASEADDR": {
+                "value": "0xE0005000"
+              },
+              "PCW_I2C1_HIGHADDR": {
+                "value": "0xE0005FFF"
+              },
+              "PCW_I2C1_I2C1_IO": {
+                "value": "EMIO"
+              },
               "PCW_I2C1_PERIPHERAL_ENABLE": {
-                "value": "0"
+                "value": "1"
               },
               "PCW_I2C_PERIPHERAL_FREQMHZ": {
                 "value": "111.111115"
@@ -3208,7 +3168,7 @@
               "PCW_P2F_GPIO_INTR": {
                 "value": "0"
               },
-              "PCW_P2F_I2C0_INTR": {
+              "PCW_P2F_I2C1_INTR": {
                 "value": "0"
               },
               "PCW_P2F_QSPI_INTR": {
@@ -7346,18 +7306,6 @@
               "ps7_0_axi_periph/M07_AXI"
             ]
           },
-          "S_AXI5_1": {
-            "interface_ports": [
-              "M08_AXI",
-              "ps7_0_axi_periph/M08_AXI"
-            ]
-          },
-          "S_AXI6_1": {
-            "interface_ports": [
-              "M09_AXI",
-              "ps7_0_axi_periph/M09_AXI"
-            ]
-          },
           "axi_mem_intercon_M00_AXI": {
             "interface_ports": [
               "S_AXI_HP0",
@@ -7376,10 +7324,10 @@
               "processing_system7_0/FIXED_IO"
             ]
           },
-          "processing_system7_0_IIC_0": {
+          "processing_system7_0_IIC_1": {
             "interface_ports": [
               "IIC_0",
-              "processing_system7_0/IIC_0"
+              "processing_system7_0/IIC_1"
             ]
           },
           "processing_system7_0_M_AXI_GP0": {
@@ -7557,12 +7505,6 @@
               "ps7_0_axi_periph/M16_ARESETN",
               "ps7_0_axi_periph/M17_ARESETN",
               "ps7_0_axi_periph/M18_ARESETN"
-            ]
-          },
-          "proc_sys_reset_0_peripheral_reset": {
-            "ports": [
-              "proc_sys_reset_0/peripheral_reset",
-              "peripheral_reset"
             ]
           },
           "processing_system7_0_FCLK_CLK1": {
@@ -11128,46 +11070,6 @@
           "rxdata_top",
           "ila_0/probe0",
           "axi_chip2chip_1/axi_c2c_aurora_rx_tdata"
-        ]
-      },
-      "s0_i1_1": {
-        "ports": [
-          "cpu/I2C1_SCL_O"
-        ]
-      },
-      "s0_i2_1": {
-        "ports": [
-          "cpu/I2C0_SCL_O"
-        ]
-      },
-      "s0_i3_1": {
-        "ports": [
-          "cpu/I2C0_SDA_O"
-        ]
-      },
-      "s0_i_1": {
-        "ports": [
-          "cpu/I2C1_SDA_O"
-        ]
-      },
-      "s0_t1_1": {
-        "ports": [
-          "cpu/I2C1_SCL_T"
-        ]
-      },
-      "s0_t2_1": {
-        "ports": [
-          "cpu/I2C0_SCL_T"
-        ]
-      },
-      "s0_t3_1": {
-        "ports": [
-          "cpu/I2C0_SDA_T"
-        ]
-      },
-      "s0_t_1": {
-        "ports": [
-          "cpu/I2C1_SDA_T"
         ]
       },
       "txdata_bot": {
