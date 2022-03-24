@@ -96,13 +96,13 @@ preplace inst axi_chip2chip_0 -pg 1 -lvl 5 -x 5620 -y 2090 -defaultsOSRD
 preplace inst axi_gpio_0 -pg 1 -lvl 3 -x 4445 -y 1270 -defaultsOSRD
 preplace inst system_ila_0 -pg 1 -lvl 5 -x 5620 -y 1800 -defaultsOSRD
 preplace inst pok_alarm_0 -pg 1 -lvl 6 -x 6350 -y 1660 -defaultsOSRD
-preplace inst reg_bank_0 -pg 1 -lvl 5 -x 5620 -y 1390 -defaultsOSRD
 preplace inst axi_bram_ctrl_0 -pg 1 -lvl 3 -x 4445 -y 800 -defaultsOSRD
 preplace inst axi_gpio_1 -pg 1 -lvl 3 -x 4445 -y 640 -defaultsOSRD
 preplace inst axi_bram_ctrl_1 -pg 1 -lvl 3 -x 4445 -y 1080 -defaultsOSRD
 preplace inst i2c_switch_dual_0 -pg 1 -lvl 5 -x 5620 -y 1070 -defaultsOSRD
 preplace inst i2cSlave_0 -pg 1 -lvl 4 -x 4900 -y 910 -defaultsOSRD
 preplace inst i2cSlave_1 -pg 1 -lvl 4 -x 4900 -y 1100 -defaultsOSRD
+preplace inst reg_bank_0 -pg 1 -lvl 5 -x 5620 -y 1390 -defaultsOSRD
 preplace netloc ARESETN_1 1 0 3 -40 722 NJ 722 1070
 preplace netloc AXIS_RX_0_tvalid_0_1 1 0 5 NJ 2360 NJ 2360 NJ 2360 NJ 2360 NJ
 preplace netloc AXIS_RX_0_tvalid_1_1 1 0 5 NJ 2180 NJ 2180 NJ 2180 NJ 2180 5160J

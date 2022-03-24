@@ -33,7 +33,7 @@ module reg_bank
     output [31:0] reg_ro
 );
 
-    assign ipmb_en_1_0        = ~reg_rw[1:0];
+    assign ipmb_en_1_0        = reg_rw[1:0];
     assign id_4_2             = reg_rw[4:2];
     assign payload_on_5       = ~reg_rw[5];
     assign prbs_sel_8_6       = reg_rw[8:6];
