@@ -8025,7 +8025,7 @@
         "inst_hier_path": "axisafety_2",
         "parameters": {
           "C_S_AXI_ADDR_WIDTH": {
-            "value": "27"
+            "value": "28"
           },
           "C_S_AXI_ID_WIDTH": {
             "value": "6"
@@ -8065,7 +8065,7 @@
                 "value_src": "auto"
               },
               "ADDR_WIDTH": {
-                "value": "27",
+                "value": "28",
                 "value_src": "auto"
               },
               "AWUSER_WIDTH": {
@@ -8152,8 +8152,8 @@
             "address_space_ref": "M_AXI",
             "base_address": {
               "minimum": "0x00000000",
-              "maximum": "0x07FFFFFF",
-              "width": "27"
+              "maximum": "0x0FFFFFFF",
+              "width": "28"
             },
             "port_maps": {
               "AWID": {
@@ -8165,7 +8165,7 @@
               "AWADDR": {
                 "physical_name": "M_AXI_AWADDR",
                 "direction": "O",
-                "left": "26",
+                "left": "27",
                 "right": "0"
               },
               "AWLEN": {
@@ -8269,7 +8269,7 @@
               "ARADDR": {
                 "physical_name": "M_AXI_ARADDR",
                 "direction": "O",
-                "left": "26",
+                "left": "27",
                 "right": "0"
               },
               "ARLEN": {
@@ -8374,7 +8374,7 @@
                 "value_src": "auto"
               },
               "ADDR_WIDTH": {
-                "value": "27",
+                "value": "28",
                 "value_src": "auto"
               },
               "AWUSER_WIDTH": {
@@ -8468,7 +8468,7 @@
               "AWADDR": {
                 "physical_name": "S_AXI_AWADDR",
                 "direction": "I",
-                "left": "26",
+                "left": "27",
                 "right": "0"
               },
               "AWLEN": {
@@ -8572,7 +8572,7 @@
               "ARADDR": {
                 "physical_name": "S_AXI_ARADDR",
                 "direction": "I",
-                "left": "26",
+                "left": "27",
                 "right": "0"
               },
               "ARLEN": {
@@ -8754,8 +8754,8 @@
         "addressing": {
           "address_spaces": {
             "M_AXI": {
-              "range": "128M",
-              "width": "27"
+              "range": "256M",
+              "width": "28"
             }
           }
         }
@@ -8767,7 +8767,7 @@
         "inst_hier_path": "axisafety_1",
         "parameters": {
           "C_S_AXI_ADDR_WIDTH": {
-            "value": "27"
+            "value": "28"
           },
           "C_S_AXI_ID_WIDTH": {
             "value": "6"
@@ -8807,7 +8807,7 @@
                 "value_src": "auto"
               },
               "ADDR_WIDTH": {
-                "value": "27",
+                "value": "28",
                 "value_src": "auto"
               },
               "AWUSER_WIDTH": {
@@ -8894,8 +8894,8 @@
             "address_space_ref": "M_AXI",
             "base_address": {
               "minimum": "0x00000000",
-              "maximum": "0x07FFFFFF",
-              "width": "27"
+              "maximum": "0x0FFFFFFF",
+              "width": "28"
             },
             "port_maps": {
               "AWID": {
@@ -8907,7 +8907,7 @@
               "AWADDR": {
                 "physical_name": "M_AXI_AWADDR",
                 "direction": "O",
-                "left": "26",
+                "left": "27",
                 "right": "0"
               },
               "AWLEN": {
@@ -9011,7 +9011,7 @@
               "ARADDR": {
                 "physical_name": "M_AXI_ARADDR",
                 "direction": "O",
-                "left": "26",
+                "left": "27",
                 "right": "0"
               },
               "ARLEN": {
@@ -9116,7 +9116,7 @@
                 "value_src": "auto"
               },
               "ADDR_WIDTH": {
-                "value": "27",
+                "value": "28",
                 "value_src": "auto"
               },
               "AWUSER_WIDTH": {
@@ -9210,7 +9210,7 @@
               "AWADDR": {
                 "physical_name": "S_AXI_AWADDR",
                 "direction": "I",
-                "left": "26",
+                "left": "27",
                 "right": "0"
               },
               "AWLEN": {
@@ -9314,7 +9314,7 @@
               "ARADDR": {
                 "physical_name": "S_AXI_ARADDR",
                 "direction": "I",
-                "left": "26",
+                "left": "27",
                 "right": "0"
               },
               "ARLEN": {
@@ -9496,8 +9496,8 @@
         "addressing": {
           "address_spaces": {
             "M_AXI": {
-              "range": "128M",
-              "width": "27"
+              "range": "256M",
+              "width": "28"
             }
           }
         }
@@ -11213,13 +11213,13 @@
               },
               "SEG_axisafety_1_reg0": {
                 "address_block": "/axisafety_1/S_AXI/reg0",
-                "offset": "0x58000000",
-                "range": "128M"
+                "offset": "0x60000000",
+                "range": "256M"
               },
               "SEG_axisafety_1_reg01": {
                 "address_block": "/axisafety_2/S_AXI/reg0",
                 "offset": "0x50000000",
-                "range": "128M"
+                "range": "256M"
               },
               "SEG_debug_bridge_0_Reg0": {
                 "address_block": "/dbg/debug_bridge_0/S_AXI/Reg0",
