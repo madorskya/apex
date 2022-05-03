@@ -11237,7 +11237,7 @@
               "SEG_axi_chip2chip_0_Mem0": {
                 "address_block": "/axi_chip2chip_1/s_axi/Mem0",
                 "offset": "0x0000000",
-                "range": "128M"
+                "range": "256M"
               }
             }
           }
@@ -11250,7 +11250,7 @@
               "SEG_axi_chip2chip_0_Mem0": {
                 "address_block": "/axi_chip2chip_0/s_axi/Mem0",
                 "offset": "0x0000000",
-                "range": "128M"
+                "range": "256M"
               }
             }
           }
