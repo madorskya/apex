@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="i2c_slave_tf_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="i2c_slave_tf" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="2,294.392525 us"></ZoomEndTime>
+      <Cursor1Time time="1,143.395000 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="194"></NameColumnWidth>
+      <ValueColumnWidth column_width="72"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="33" />
+   <wvobject fp_name="/i2c_slave_tf/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/scl" type="logic">
+      <obj_property name="ElementShortName">scl</obj_property>
+      <obj_property name="ObjectShortName">scl</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/sda_in" type="logic">
+      <obj_property name="ElementShortName">sda_in</obj_property>
+      <obj_property name="ObjectShortName">sda_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/rx_scl_o" type="logic">
+      <obj_property name="ElementShortName">rx_scl_o</obj_property>
+      <obj_property name="ObjectShortName">rx_scl_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/rx_scl_t" type="logic">
+      <obj_property name="ElementShortName">rx_scl_t</obj_property>
+      <obj_property name="ObjectShortName">rx_scl_t</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/sda_out" type="logic">
+      <obj_property name="ElementShortName">sda_out</obj_property>
+      <obj_property name="ObjectShortName">sda_out</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/sda_t" type="logic">
+      <obj_property name="ElementShortName">sda_t</obj_property>
+      <obj_property name="ObjectShortName">sda_t</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/bram_en" type="logic">
+      <obj_property name="ElementShortName">bram_en</obj_property>
+      <obj_property name="ObjectShortName">bram_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/bram_rddata" type="array">
+      <obj_property name="ElementShortName">bram_rddata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_rddata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/bram_wrdata" type="array">
+      <obj_property name="ElementShortName">bram_wrdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_wrdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/bram_we" type="array">
+      <obj_property name="ElementShortName">bram_we[3:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_we[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/bram_addr" type="array">
+      <obj_property name="ElementShortName">bram_addr[12:0]</obj_property>
+      <obj_property name="ObjectShortName">bram_addr[12:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/bram_clk" type="logic">
+      <obj_property name="ElementShortName">bram_clk</obj_property>
+      <obj_property name="ObjectShortName">bram_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/bram_rst" type="logic">
+      <obj_property name="ElementShortName">bram_rst</obj_property>
+      <obj_property name="ObjectShortName">bram_rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/irq" type="logic">
+      <obj_property name="ElementShortName">irq</obj_property>
+      <obj_property name="ObjectShortName">irq</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/i2c_addr_received" type="array">
+      <obj_property name="ElementShortName">i2c_addr_received[6:0]</obj_property>
+      <obj_property name="ObjectShortName">i2c_addr_received[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/hardware_address" type="array">
+      <obj_property name="ElementShortName">hardware_address[7:0]</obj_property>
+      <obj_property name="ObjectShortName">hardware_address[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/i" type="array">
+      <obj_property name="ElementShortName">i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/sda" type="array">
+      <obj_property name="ElementShortName">sda[89:0]</obj_property>
+      <obj_property name="ObjectShortName">sda[89:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/uut/u_serialInterface/CurrState_SISt" type="array">
+      <obj_property name="ElementShortName">CurrState_SISt[3:0]</obj_property>
+      <obj_property name="ObjectShortName">CurrState_SISt[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/uut/u_serialInterface/NextState_SISt" type="array">
+      <obj_property name="ElementShortName">NextState_SISt[3:0]</obj_property>
+      <obj_property name="ObjectShortName">NextState_SISt[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/uut/u_serialInterface/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/uut/u_serialInterface/streamSt" type="array">
+      <obj_property name="ElementShortName">streamSt[1:0]</obj_property>
+      <obj_property name="ObjectShortName">streamSt[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/uut/u_serialInterface/rxData" type="array">
+      <obj_property name="ElementShortName">rxData[7:0]</obj_property>
+      <obj_property name="ObjectShortName">rxData[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/uut/u_serialInterface/sdaIn" type="logic">
+      <obj_property name="ElementShortName">sdaIn</obj_property>
+      <obj_property name="ObjectShortName">sdaIn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/uut/u_serialInterface/scl" type="logic">
+      <obj_property name="ElementShortName">scl</obj_property>
+      <obj_property name="ObjectShortName">scl</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/uut/sclDelayed" type="array">
+      <obj_property name="ElementShortName">sclDelayed[19:0]</obj_property>
+      <obj_property name="ObjectShortName">sclDelayed[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/uut/sdaDelayed" type="array">
+      <obj_property name="ElementShortName">sdaDelayed[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sdaDelayed[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/uut/sdaDeb" type="logic">
+      <obj_property name="ElementShortName">sdaDeb</obj_property>
+      <obj_property name="ObjectShortName">sdaDeb</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/uut/sclDeb" type="logic">
+      <obj_property name="ElementShortName">sclDeb</obj_property>
+      <obj_property name="ObjectShortName">sclDeb</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/uut/myReg" type="array">
+      <obj_property name="ElementShortName">myReg[511:0]</obj_property>
+      <obj_property name="ObjectShortName">myReg[511:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/i2c_slave_tf/uut/startStopDetState" type="array">
+      <obj_property name="ElementShortName">startStopDetState[1:0]</obj_property>
+      <obj_property name="ObjectShortName">startStopDetState[1:0]</obj_property>
+   </wvobject>
+</wave_config>
