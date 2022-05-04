@@ -84,7 +84,10 @@ module apex_control_mgt_top
     output som240_2_d57,
     input som240_2_d58,
     input som240_2_c3,
-    input som240_2_c4
+    input som240_2_c4,
+
+    input som240_2_a7, // using unconnected refclk temporarily for compile check
+    input som240_2_a8
 );
 
     wire dcdc_control_alarm;
@@ -163,6 +166,9 @@ module apex_control_mgt_top
     wire uart_usb2dev;
     wire gth_refclk0_c2m_p;
     wire gth_refclk0_c2m_n;
+
+    wire gth_refclk1_c2m_p;
+    wire gth_refclk1_c2m_n;
     
     assign dcdc_control_alarm = som240_1_c24;
     assign fpga_srv0_pok = som240_1_b20;
@@ -248,6 +254,10 @@ module apex_control_mgt_top
     assign uart_usb2dev = som240_2_d58;
     assign gth_refclk0_c2m_p = som240_2_c3;
     assign gth_refclk0_c2m_n = som240_2_c4;
+    
+    assign gth_refclk1_c2m_p = som240_2_a7;
+    assign gth_refclk1_c2m_n = som240_2_a8;
+    
     
     wire soft_reset;
     
@@ -345,22 +355,27 @@ module apex_control_mgt_top
         .xg_grx_p            (g10s_rxp),
         .xg_gtx_n            (g10s_txn),
         .xg_gtx_p            (g10s_txp),
-        .xg_refclk_clk_n     (),
-        .xg_refclk_clk_p     ()
+        .xg_refclk_clk_n     (gth_refclk1_c2m_n), // this is temporary
+        .xg_refclk_clk_p     (gth_refclk1_c2m_p) // this refclk is the same as for AXI
     );
             
         
-    c2c_mgt_tux c2c_mgt 
+    c2c_gth_7p8125g_tux c2c_mgt 
     (
-        .Q0_CLK1_GTREFCLK_PAD_N_IN (gth_refclk0_c2m_n),
-        .Q0_CLK1_GTREFCLK_PAD_P_IN (gth_refclk0_c2m_p),
-        .DRP_CLK_IN (axi_clk),
+        .mgtrefclk0_x0y1_n (gth_refclk0_c2m_n),
+        .mgtrefclk0_x0y1_p (gth_refclk0_c2m_p),
     
-        .RXN_IN  ({axi_link1_rx_n, axi_link0_rx_n}),
-        .RXP_IN  ({axi_link1_rx_p, axi_link0_rx_p}),
-        .TXN_OUT ({axi_link1_tx_n, axi_link0_tx_n}),
-        .TXP_OUT ({axi_link1_tx_p, axi_link0_tx_p}),
+        .ch0_gthrxn_in  (axi_link0_rx_n),
+        .ch0_gthrxp_in  (axi_link0_rx_p),
+        .ch0_gthtxn_out (axi_link0_tx_n),
+        .ch0_gthtxp_out (axi_link0_tx_p),
+
+        .ch1_gthrxn_in  (axi_link1_rx_n),
+        .ch1_gthrxp_in  (axi_link1_rx_p),
+        .ch1_gthtxn_out (axi_link1_tx_n),
+        .ch1_gthtxp_out (axi_link1_tx_p),
         
+        .drp_clk      (axi_clk),
         .soft_reset_i (soft_reset),
         
         // interface for c2c TX
