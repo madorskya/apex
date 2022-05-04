@@ -2076,7 +2076,10 @@
             "value": "1"
           },
           "LANE1_GT_LOC": {
-            "value": "X0Y4"
+            "value": "X0Y5"
+          },
+          "RX_EQ_MODE": {
+            "value": "LPM"
           }
         },
         "interface_ports": {
