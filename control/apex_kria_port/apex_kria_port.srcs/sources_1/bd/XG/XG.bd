@@ -1,16 +1,26 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x629002C182EB4029",
+      "boundary_crc": "0x629002C137E6ECB2",
       "device": "xck26-sfvc784-2LV-c",
       "gen_directory": "../../../../apex_kria_port.gen/sources_1/bd/XG",
       "name": "XG",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2021.1",
+      "tool_version": "2021.2",
       "validated": "true"
     },
     "design_tree": {
+      "dma_rx_rst": "",
+      "dma_tx_rst": "",
+      "rx_rst_n": "",
+      "sfp_tx_dis": "",
+      "tx_rst_n": "",
+      "util_vector_logic_0": "",
+      "xlconcat_0": "",
+      "xlconstant_0": "",
+      "xlconstant_1": "",
+      "xlconstant_2": "",
       "axi_dma_0": "",
       "axi_pl_ps": {
         "xbar": "",
@@ -30,8 +40,6 @@
         "s01_mmu": "",
         "s02_mmu": ""
       },
-      "dma_rx_rst": "",
-      "dma_tx_rst": "",
       "ps_axi_periph": {
         "xbar": "",
         "s00_couplers": {},
@@ -47,15 +55,7 @@
       },
       "rst_ps8_0_99M": "",
       "rx_data_fifo": "",
-      "rx_rst_n": "",
-      "sfp_tx_dis": "",
       "tx_data_fifo": "",
-      "tx_rst_n": "",
-      "util_vector_logic_0": "",
-      "xlconcat_0": "",
-      "xlconstant_0": "",
-      "xlconstant_1": "",
-      "xlconstant_2": "",
       "xxv_ethernet_0": ""
     },
     "interface_ports": {
@@ -123,7 +123,7 @@
           },
           "ID_WIDTH": {
             "value": "2",
-            "value_src": "default"
+            "value_src": "auto_prop"
           },
           "INSERT_VIP": {
             "value": "0",
@@ -386,6 +386,132 @@
       }
     },
     "components": {
+      "dma_rx_rst": {
+        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+        "xci_name": "XG_dma_rx_rst_0",
+        "xci_path": "ip/XG_dma_rx_rst_0_1/XG_dma_rx_rst_0.xci",
+        "inst_hier_path": "dma_rx_rst",
+        "parameters": {
+          "C_OPERATION": {
+            "value": "not"
+          },
+          "C_SIZE": {
+            "value": "1"
+          }
+        }
+      },
+      "dma_tx_rst": {
+        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+        "xci_name": "XG_dma_tx_rst_0",
+        "xci_path": "ip/XG_dma_tx_rst_0_1/XG_dma_tx_rst_0.xci",
+        "inst_hier_path": "dma_tx_rst",
+        "parameters": {
+          "C_OPERATION": {
+            "value": "not"
+          },
+          "C_SIZE": {
+            "value": "1"
+          }
+        }
+      },
+      "rx_rst_n": {
+        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+        "xci_name": "XG_rx_rst_n_0",
+        "xci_path": "ip/XG_rx_rst_n_0_1/XG_rx_rst_n_0.xci",
+        "inst_hier_path": "rx_rst_n",
+        "parameters": {
+          "C_OPERATION": {
+            "value": "not"
+          },
+          "C_SIZE": {
+            "value": "1"
+          }
+        }
+      },
+      "sfp_tx_dis": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "xci_name": "XG_sfp_tx_dis_0",
+        "xci_path": "ip/XG_sfp_tx_dis_0_1/XG_sfp_tx_dis_0.xci",
+        "inst_hier_path": "sfp_tx_dis",
+        "parameters": {
+          "CONST_VAL": {
+            "value": "1"
+          }
+        }
+      },
+      "tx_rst_n": {
+        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+        "xci_name": "XG_tx_rst_n_0",
+        "xci_path": "ip/XG_tx_rst_n_0_1/XG_tx_rst_n_0.xci",
+        "inst_hier_path": "tx_rst_n",
+        "parameters": {
+          "C_OPERATION": {
+            "value": "not"
+          },
+          "C_SIZE": {
+            "value": "1"
+          }
+        }
+      },
+      "util_vector_logic_0": {
+        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+        "xci_name": "XG_util_vector_logic_0_0",
+        "xci_path": "ip/XG_util_vector_logic_0_0_1/XG_util_vector_logic_0_0.xci",
+        "inst_hier_path": "util_vector_logic_0",
+        "parameters": {
+          "C_OPERATION": {
+            "value": "not"
+          },
+          "C_SIZE": {
+            "value": "1"
+          }
+        }
+      },
+      "xlconcat_0": {
+        "vlnv": "xilinx.com:ip:xlconcat:2.1",
+        "xci_name": "XG_xlconcat_0_0",
+        "xci_path": "ip/XG_xlconcat_0_0_1/XG_xlconcat_0_0.xci",
+        "inst_hier_path": "xlconcat_0"
+      },
+      "xlconstant_0": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "xci_name": "XG_xlconstant_0_0",
+        "xci_path": "ip/XG_xlconstant_0_0_1/XG_xlconstant_0_0.xci",
+        "inst_hier_path": "xlconstant_0",
+        "parameters": {
+          "CONST_VAL": {
+            "value": "0"
+          },
+          "CONST_WIDTH": {
+            "value": "56"
+          }
+        }
+      },
+      "xlconstant_1": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "xci_name": "XG_xlconstant_1_0",
+        "xci_path": "ip/XG_xlconstant_1_0_1/XG_xlconstant_1_0.xci",
+        "inst_hier_path": "xlconstant_1",
+        "parameters": {
+          "CONST_VAL": {
+            "value": "0"
+          }
+        }
+      },
+      "xlconstant_2": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "xci_name": "XG_xlconstant_2_0",
+        "xci_path": "ip/XG_xlconstant_2_0_1/XG_xlconstant_2_0.xci",
+        "inst_hier_path": "xlconstant_2",
+        "parameters": {
+          "CONST_VAL": {
+            "value": "5"
+          },
+          "CONST_WIDTH": {
+            "value": "3"
+          }
+        }
+      },
       "axi_dma_0": {
         "vlnv": "xilinx.com:ip:axi_dma:7.1",
         "xci_name": "XG_axi_dma_0_0",
@@ -586,8 +712,8 @@
         "components": {
           "xbar": {
             "vlnv": "xilinx.com:ip:axi_crossbar:2.1",
-            "xci_name": "XG_xbar_2",
-            "xci_path": "ip/XG_xbar_2_1/XG_xbar_2.xci",
+            "xci_name": "XG_xbar_4",
+            "xci_path": "ip/XG_xbar_4/XG_xbar_4.xci",
             "inst_hier_path": "axi_pl_ps/xbar",
             "parameters": {
               "NUM_MI": {
@@ -1244,34 +1370,6 @@
           }
         }
       },
-      "dma_rx_rst": {
-        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
-        "xci_name": "XG_dma_rx_rst_0",
-        "xci_path": "ip/XG_dma_rx_rst_0_1/XG_dma_rx_rst_0.xci",
-        "inst_hier_path": "dma_rx_rst",
-        "parameters": {
-          "C_OPERATION": {
-            "value": "not"
-          },
-          "C_SIZE": {
-            "value": "1"
-          }
-        }
-      },
-      "dma_tx_rst": {
-        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
-        "xci_name": "XG_dma_tx_rst_0",
-        "xci_path": "ip/XG_dma_tx_rst_0_1/XG_dma_tx_rst_0.xci",
-        "inst_hier_path": "dma_tx_rst",
-        "parameters": {
-          "C_OPERATION": {
-            "value": "not"
-          },
-          "C_SIZE": {
-            "value": "1"
-          }
-        }
-      },
       "ps_axi_periph": {
         "vlnv": "xilinx.com:ip:axi_interconnect:2.1",
         "xci_path": "ip/XG_ps_axi_periph_0_1/XG_ps_axi_periph_0.xci",
@@ -1389,8 +1487,8 @@
         "components": {
           "xbar": {
             "vlnv": "xilinx.com:ip:axi_crossbar:2.1",
-            "xci_name": "XG_xbar_3",
-            "xci_path": "ip/XG_xbar_3_1/XG_xbar_3.xci",
+            "xci_name": "XG_xbar_5",
+            "xci_path": "ip/XG_xbar_5/XG_xbar_5.xci",
             "inst_hier_path": "ps_axi_periph/xbar",
             "parameters": {
               "NUM_MI": {
@@ -1942,31 +2040,6 @@
           }
         }
       },
-      "rx_rst_n": {
-        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
-        "xci_name": "XG_rx_rst_n_0",
-        "xci_path": "ip/XG_rx_rst_n_0_1/XG_rx_rst_n_0.xci",
-        "inst_hier_path": "rx_rst_n",
-        "parameters": {
-          "C_OPERATION": {
-            "value": "not"
-          },
-          "C_SIZE": {
-            "value": "1"
-          }
-        }
-      },
-      "sfp_tx_dis": {
-        "vlnv": "xilinx.com:ip:xlconstant:1.1",
-        "xci_name": "XG_sfp_tx_dis_0",
-        "xci_path": "ip/XG_sfp_tx_dis_0_1/XG_sfp_tx_dis_0.xci",
-        "inst_hier_path": "sfp_tx_dis",
-        "parameters": {
-          "CONST_VAL": {
-            "value": "1"
-          }
-        }
-      },
       "tx_data_fifo": {
         "vlnv": "xilinx.com:ip:axis_data_fifo:2.0",
         "xci_name": "XG_tx_data_fifo_0",
@@ -1987,79 +2060,6 @@
           }
         }
       },
-      "tx_rst_n": {
-        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
-        "xci_name": "XG_tx_rst_n_0",
-        "xci_path": "ip/XG_tx_rst_n_0_1/XG_tx_rst_n_0.xci",
-        "inst_hier_path": "tx_rst_n",
-        "parameters": {
-          "C_OPERATION": {
-            "value": "not"
-          },
-          "C_SIZE": {
-            "value": "1"
-          }
-        }
-      },
-      "util_vector_logic_0": {
-        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
-        "xci_name": "XG_util_vector_logic_0_0",
-        "xci_path": "ip/XG_util_vector_logic_0_0_1/XG_util_vector_logic_0_0.xci",
-        "inst_hier_path": "util_vector_logic_0",
-        "parameters": {
-          "C_OPERATION": {
-            "value": "not"
-          },
-          "C_SIZE": {
-            "value": "1"
-          }
-        }
-      },
-      "xlconcat_0": {
-        "vlnv": "xilinx.com:ip:xlconcat:2.1",
-        "xci_name": "XG_xlconcat_0_0",
-        "xci_path": "ip/XG_xlconcat_0_0_1/XG_xlconcat_0_0.xci",
-        "inst_hier_path": "xlconcat_0"
-      },
-      "xlconstant_0": {
-        "vlnv": "xilinx.com:ip:xlconstant:1.1",
-        "xci_name": "XG_xlconstant_0_0",
-        "xci_path": "ip/XG_xlconstant_0_0_1/XG_xlconstant_0_0.xci",
-        "inst_hier_path": "xlconstant_0",
-        "parameters": {
-          "CONST_VAL": {
-            "value": "0"
-          },
-          "CONST_WIDTH": {
-            "value": "56"
-          }
-        }
-      },
-      "xlconstant_1": {
-        "vlnv": "xilinx.com:ip:xlconstant:1.1",
-        "xci_name": "XG_xlconstant_1_0",
-        "xci_path": "ip/XG_xlconstant_1_0_1/XG_xlconstant_1_0.xci",
-        "inst_hier_path": "xlconstant_1",
-        "parameters": {
-          "CONST_VAL": {
-            "value": "0"
-          }
-        }
-      },
-      "xlconstant_2": {
-        "vlnv": "xilinx.com:ip:xlconstant:1.1",
-        "xci_name": "XG_xlconstant_2_0",
-        "xci_path": "ip/XG_xlconstant_2_0_1/XG_xlconstant_2_0.xci",
-        "inst_hier_path": "xlconstant_2",
-        "parameters": {
-          "CONST_VAL": {
-            "value": "5"
-          },
-          "CONST_WIDTH": {
-            "value": "3"
-          }
-        }
-      },
       "xxv_ethernet_0": {
         "vlnv": "xilinx.com:ip:xxv_ethernet:4.0",
         "xci_name": "XG_xxv_ethernet_0_0",
@@ -2068,6 +2068,9 @@
         "parameters": {
           "BASE_R_KR": {
             "value": "BASE-R"
+          },
+          "ENABLE_GT_BOARD_INTERFACE": {
+            "value": "1"
           },
           "GT_GROUP_SELECT": {
             "value": "Quad_X0Y1"
@@ -2355,8 +2358,8 @@
       "zynq_ultra_ps_e_0_pl_resetn0": {
         "ports": [
           "Op1",
-          "rst_ps8_0_99M/ext_reset_in",
-          "util_vector_logic_0/Op1"
+          "util_vector_logic_0/Op1",
+          "rst_ps8_0_99M/ext_reset_in"
         ]
       }
     },

@@ -60,3 +60,5 @@ set_property -dict {IOSTANDARD LVCMOS33 PULLUP true} [get_ports som240_2_d58]
 #set_property -dict {DRIVE 12 SLEW FAST IOB TRUE} [get_ports scf_tck_*]; 
 #set_property -dict {DRIVE 12 SLEW FAST IOB TRUE} [get_ports scf_tms_*]; 
 #set_property -dict {DRIVE 12 SLEW FAST IOB TRUE} [get_ports scf_tdi_*]; 
+
+set_false_path -from [get_clocks clk_pl_0]

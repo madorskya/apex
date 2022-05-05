@@ -13,14 +13,6 @@ module apex_control_mgt_top
     inout som240_1_d11,
     inout som240_1_d13,
     input som240_1_d14,
-    output som240_1_a47,
-    output som240_1_a48,
-    input som240_1_c55,
-    input som240_1_c56,
-    output som240_1_b57,
-    output som240_1_b58,
-    input som240_1_a55,
-    input som240_1_a56,
     input som240_1_d20,
     inout som240_1_c20,
     inout som240_1_c22,
@@ -29,10 +21,6 @@ module apex_control_mgt_top
     inout som240_1_a16,
     inout som240_1_a17,
     output som240_1_c19,
-    input som240_1_d49,
-    input som240_1_d50,
-    output som240_1_c51,
-    output som240_1_c52,
     inout som240_1_d16,
     input som240_1_d17,
     input som240_1_d18,
@@ -102,14 +90,6 @@ module apex_control_mgt_top
     wire gem_mdio_mdc;
     wire gem_mdio_mdio;
     wire gem_mdio_mdint;
-    wire gem2_tdp;
-    wire gem2_tdn;
-    wire gem2_rdp;
-    wire gem2_rdn;
-    wire gem3_tdp;
-    wire gem3_tdn;
-    wire gem3_rdp;
-    wire gem3_rdn;
     wire ipmb_buf0_rdy;
     wire ipmb_buf0_sda;
     wire ipmb_buf0_scl;
@@ -118,10 +98,6 @@ module apex_control_mgt_top
     wire ipmb_buf1_sda;
     wire ipmb_buf1_scl;
     wire ipmb_buf1_en;
-    wire pcie_link_rx_p;
-    wire pcie_link_rx_n;
-    wire pcie_link_tx_p;
-    wire pcie_link_tx_n;
     wire qsfp_srv_sda;
     wire qsfp_srv_hot_swap;
     wire qsfp_srv_pok;
@@ -182,14 +158,6 @@ module apex_control_mgt_top
     alias som240_1_d11 = gem_mdio_mdc;
     alias som240_1_d13 = gem_mdio_mdio;
     assign gem_mdio_mdint = som240_1_d14;
-    assign som240_1_a47 = gem2_tdp;
-    assign som240_1_a48 = gem2_tdn;
-    assign gem2_rdp = som240_1_c55;
-    assign gem2_rdn = som240_1_c56;
-    assign som240_1_b57 = gem3_tdp;
-    assign som240_1_b58 = gem3_tdn;
-    assign gem3_rdp = som240_1_a55;
-    assign gem3_rdn = som240_1_a56;
     assign ipmb_buf0_rdy = som240_1_d20;
     alias som240_1_c20 = ipmb_buf0_sda;
     alias som240_1_c22 = ipmb_buf0_scl;
@@ -198,23 +166,21 @@ module apex_control_mgt_top
     alias som240_1_a16 = ipmb_buf1_sda;
     alias som240_1_a17 = ipmb_buf1_scl;
     assign som240_1_c19 = ipmb_buf1_en;
-    assign pcie_link_rx_p = som240_1_d49;
-    assign pcie_link_rx_n = som240_1_d50;
-    assign som240_1_c51 = pcie_link_tx_p;
-    assign som240_1_c52 = pcie_link_tx_n;
     alias som240_1_d16 = qsfp_srv_sda;
     assign qsfp_srv_hot_swap = som240_1_d17;
     assign qsfp_srv_pok = som240_1_d18;
     alias som240_1_c18 = qsfp_srv_scl;
     
-    assign axi_link0_rx_n = som240_2_d5;
-    assign axi_link0_rx_p = som240_2_d6;
-    assign som240_2_a3 = axi_link0_tx_n;
-    assign som240_2_a4 = axi_link0_tx_p;
-    assign som240_2_d9 = axi_link1_tx_n;
-    assign som240_2_d10 = axi_link1_tx_p;
-    assign axi_link1_rx_n = som240_2_b9;
-    assign axi_link1_rx_p = som240_2_b10;
+    assign axi_link1_rx_p = som240_2_d5; // inverted
+    assign axi_link1_rx_n = som240_2_d6;
+    assign som240_2_a3 = axi_link1_tx_p; // inverted
+    assign som240_2_a4 = axi_link1_tx_n;
+    
+    assign som240_2_d9 = axi_link0_tx_p; // inverted
+    assign som240_2_d10 = axi_link0_tx_n;
+    assign axi_link0_rx_p = som240_2_b9; // inverted
+    assign axi_link0_rx_n = som240_2_b10;
+    
     assign som240_2_a51 = bp_clk_sel[0];
     assign som240_2_a52 = bp_clk_sel[1];
     assign dcdc_control_payload_fault = som240_2_a54;
