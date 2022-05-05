@@ -305,8 +305,6 @@ module apex_control_mgt_top
         .gtp_reset           (soft_reset),
         .ha                  (ha),
         .hot_swap_sw         (qsfp_srv_hot_swap),
-        .i2c_10g_scl_io      (), // 10G CDR is removed
-        .i2c_10g_sda_io      (),
         .id                  (), // ELMA chip is removed
         .ipmc_scl_0          (ipmb_buf0_scl),
         .ipmc_scl_1          (ipmb_buf1_scl),
@@ -322,8 +320,6 @@ module apex_control_mgt_top
         .jtag_1_tms          (fpga_srv1_tms),
         .link_up_bot         (link_up_bot),
         .link_up_top         (link_up_top),
-        .local_i2c_scl_io    (), // local I2C is removed
-        .local_i2c_sda_io    (),
         .los_10g             (), // 10G CDR is removed
         .mgt_unlocked_bot    (~channel_up[0]),
         .mgt_unlocked_top    (~channel_up[1]),
