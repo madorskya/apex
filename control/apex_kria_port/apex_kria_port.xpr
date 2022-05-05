@@ -656,7 +656,7 @@
         </ReportConfig>
         <ReportConfig DisplayName="synth_3p125_AXI0_synth_report_utilization_0" Name="synth_3p125_AXI0_synth_report_utilization_0" Spec="report_utilization" RunStep="synth_design" ReportFile="apex_control_mgt_top_utilization_synth.rpt" Version="1" Minor="0">
           <ReportConfigOption Name="dummy_option" Type="string"/>
-          <ReportConfigOutputOption Name="pb" Type="string" Value=""/>
+          <ReportConfigOutputOption Name="pb" Type="string" Value="apex_control_mgt_top_utilization_synth.pb"/>
         </ReportConfig>
       </ReportStrategy>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>

@@ -61,8 +61,8 @@ module apex_control_mgt_top
     input som240_2_a47,
     output som240_2_a48,
     output som240_2_b49,
-    input som240_2_d1,
-    input som240_2_d2,
+    output som240_2_d1,
+    output som240_2_d2,
     input som240_2_d44,
     input som240_2_d45,
     inout som240_2_d46,
@@ -230,8 +230,8 @@ module apex_control_mgt_top
     assign fpga_srv1_tdo = som240_2_a47;
     assign som240_2_a48 = fpga_srv1_tms;
     assign som240_2_b49 = fpga_srv1_tck;
-    assign g10s_txp = som240_2_d1;
-    assign g10s_txn = som240_2_d2;
+    assign som240_2_d1 = g10s_txp;
+    assign som240_2_d2 = g10s_txn;
     assign g10s_rxalarm = som240_2_d44;
     assign g10s_txalarm = som240_2_d45;
     alias som240_2_d46 = g10s_mdc;

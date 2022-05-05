@@ -1928,6 +1928,9 @@
           "FIFO_DEPTH": {
             "value": "32768"
           },
+          "FIFO_MEMORY_TYPE": {
+            "value": "ultra"
+          },
           "FIFO_MODE": {
             "value": "2"
           },

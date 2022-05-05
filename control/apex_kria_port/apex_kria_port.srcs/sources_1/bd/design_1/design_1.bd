@@ -9295,7 +9295,7 @@
                 "value_src": "default"
               },
               "MAX_BURST_LENGTH": {
-                "value": "32",
+                "value": "128",
                 "value_src": "ip_prop"
               },
               "NUM_READ_OUTSTANDING": {
@@ -9586,7 +9586,7 @@
         "variant_info": {
           "XG.bd": {
             "scoped_diagram": "XG_inst_0.bd",
-            "design_checksum": "0x9F727775",
+            "design_checksum": "0xAD38DDA5",
             "ref_name": "XG",
             "ref_subinst_path": "design_1_XG_0",
             "ref_type": "Block Design",
