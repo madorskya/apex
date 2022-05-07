@@ -2388,6 +2388,9 @@
               "PCW_EN_PTP_ENET0": {
                 "value": "1"
               },
+              "PCW_EN_PTP_ENET1": {
+                "value": "0"
+              },
               "PCW_EN_QSPI": {
                 "value": "1"
               },
@@ -3225,6 +3228,9 @@
               "PCW_PJTAG_PERIPHERAL_ENABLE": {
                 "value": "0"
               },
+              "PCW_PLL_BYPASSMODE_ENABLE": {
+                "value": "0"
+              },
               "PCW_PRESET_BANK0_VOLTAGE": {
                 "value": "LVCMOS 3.3V"
               },
@@ -3377,15 +3383,6 @@
               },
               "PCW_S_AXI_HP0_ID_WIDTH": {
                 "value": "6"
-              },
-              "PCW_S_AXI_HP1_DATA_WIDTH": {
-                "value": "64"
-              },
-              "PCW_S_AXI_HP2_DATA_WIDTH": {
-                "value": "64"
-              },
-              "PCW_S_AXI_HP3_DATA_WIDTH": {
-                "value": "64"
               },
               "PCW_TPIU_PERIPHERAL_CLKSRC": {
                 "value": "External"
@@ -3767,6 +3764,9 @@
               },
               "PCW_WDT_PERIPHERAL_ENABLE": {
                 "value": "0"
+              },
+              "preset": {
+                "value": "None"
               }
             },
             "interface_ports": {
@@ -8144,6 +8144,10 @@
                 "value": "256",
                 "value_src": "auto"
               },
+              "PHASE": {
+                "value": "0.000",
+                "value_src": "default_prop"
+              },
               "CLK_DOMAIN": {
                 "value": "design_1_processing_system7_0_0_FCLK_CLK0",
                 "value_src": "default_prop"
@@ -8453,6 +8457,10 @@
                 "value": "256",
                 "value_src": "auto"
               },
+              "PHASE": {
+                "value": "0.000",
+                "value_src": "default_prop"
+              },
               "CLK_DOMAIN": {
                 "value": "design_1_processing_system7_0_0_FCLK_CLK0",
                 "value_src": "default_prop"
@@ -8679,6 +8687,10 @@
                 "value": "100000000",
                 "value_src": "user_prop"
               },
+              "PHASE": {
+                "value": "0.000",
+                "value_src": "default_prop"
+              },
               "CLK_DOMAIN": {
                 "value": "design_1_processing_system7_0_0_FCLK_CLK0",
                 "value_src": "default_prop"
@@ -8743,6 +8755,10 @@
               "FREQ_HZ": {
                 "value": "100000000",
                 "value_src": "user_prop"
+              },
+              "PHASE": {
+                "value": "0.000",
+                "value_src": "default_prop"
               },
               "CLK_DOMAIN": {
                 "value": "design_1_processing_system7_0_0_FCLK_CLK0",
@@ -8886,6 +8902,10 @@
                 "value": "256",
                 "value_src": "auto"
               },
+              "PHASE": {
+                "value": "0.000",
+                "value_src": "default_prop"
+              },
               "CLK_DOMAIN": {
                 "value": "design_1_processing_system7_0_0_FCLK_CLK0",
                 "value_src": "default_prop"
@@ -9195,6 +9215,10 @@
                 "value": "256",
                 "value_src": "auto"
               },
+              "PHASE": {
+                "value": "0.000",
+                "value_src": "default_prop"
+              },
               "CLK_DOMAIN": {
                 "value": "design_1_processing_system7_0_0_FCLK_CLK0",
                 "value_src": "default_prop"
@@ -9421,6 +9445,10 @@
                 "value": "100000000",
                 "value_src": "user_prop"
               },
+              "PHASE": {
+                "value": "0.000",
+                "value_src": "default_prop"
+              },
               "CLK_DOMAIN": {
                 "value": "design_1_processing_system7_0_0_FCLK_CLK0",
                 "value_src": "default_prop"
@@ -9485,6 +9513,10 @@
               "FREQ_HZ": {
                 "value": "100000000",
                 "value_src": "user_prop"
+              },
+              "PHASE": {
+                "value": "0.000",
+                "value_src": "default_prop"
               },
               "CLK_DOMAIN": {
                 "value": "design_1_processing_system7_0_0_FCLK_CLK0",

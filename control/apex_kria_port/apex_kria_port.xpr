@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Product Version: Vivado v2021.2 (64-bit)              -->
+<!-- Product Version: Vivado v2022.1 (64-bit)              -->
 <!--                                                         -->
-<!-- Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.   -->
+<!-- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="56" Path="/home/madorsky/github/apex/control/apex_kria_port/apex_kria_port.xpr">
+<Project Version="7" Minor="60" Path="C:/github/apex/control/apex_kria_port/apex_kria_port.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="9535e729870640ac8f419caf7608de51"/>
@@ -28,20 +28,20 @@
     <Option Name="SimulatorGccInstallDirVCS" Val=""/>
     <Option Name="SimulatorGccInstallDirRiviera" Val=""/>
     <Option Name="SimulatorGccInstallDirActiveHdl" Val=""/>
-    <Option Name="SimulatorVersionXsim" Val="2021.1"/>
-    <Option Name="SimulatorVersionModelSim" Val="2020.4"/>
-    <Option Name="SimulatorVersionQuesta" Val="2020.4"/>
+    <Option Name="SimulatorVersionXsim" Val="2022.1"/>
+    <Option Name="SimulatorVersionModelSim" Val="2021.3"/>
+    <Option Name="SimulatorVersionQuesta" Val="2021.3"/>
     <Option Name="SimulatorVersionXcelium" Val="20.09.006"/>
     <Option Name="SimulatorVersionVCS" Val="R-2020.12"/>
-    <Option Name="SimulatorVersionRiviera" Val="2020.10"/>
+    <Option Name="SimulatorVersionRiviera" Val="2021.04"/>
     <Option Name="SimulatorVersionActiveHdl" Val="12.0"/>
     <Option Name="SimulatorGccVersionXsim" Val="6.2.0"/>
-    <Option Name="SimulatorGccVersionModelSim" Val="5.3.0"/>
-    <Option Name="SimulatorGccVersionQuesta" Val="5.3.0"/>
+    <Option Name="SimulatorGccVersionModelSim" Val="7.4.0"/>
+    <Option Name="SimulatorGccVersionQuesta" Val="7.4.0"/>
     <Option Name="SimulatorGccVersionXcelium" Val="6.3"/>
     <Option Name="SimulatorGccVersionVCS" Val="6.2.0"/>
-    <Option Name="SimulatorGccVersionRiviera" Val="6.2.0"/>
-    <Option Name="SimulatorGccVersionActiveHdl" Val="6.2.0"/>
+    <Option Name="SimulatorGccVersionRiviera" Val="9.3.0"/>
+    <Option Name="SimulatorGccVersionActiveHdl" Val="9.3.0"/>
     <Option Name="BoardPart" Val=""/>
     <Option Name="ActiveSimSet" Val="sim_1"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
@@ -52,6 +52,7 @@
     <Option Name="IPCachePermission" Val="read"/>
     <Option Name="IPCachePermission" Val="write"/>
     <Option Name="EnableCoreContainer" Val="FALSE"/>
+    <Option Name="EnableResourceEstimation" Val="FALSE"/>
     <Option Name="CreateRefXciForCoreContainers" Val="FALSE"/>
     <Option Name="IPUserFilesDir" Val="$PIPUSERFILESDIR"/>
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
@@ -79,28 +80,11 @@
     <Option Name="MEMEnableMemoryMapGeneration" Val="TRUE"/>
     <Option Name="DcpsUptoDate" Val="TRUE"/>
     <Option Name="ClassicSocBoot" Val="FALSE"/>
+    <Option Name="LocalIPRepoLeafDirName" Val="ip_repo"/>
   </Configuration>
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PSRCDIR/sources_1/ip/ipmc_ila/ipmc_ila.xci">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../apex_control_mgt/apex_control_mgt.srcs/sources_1/ip/ipmc_ila/ipmc_ila.xci"/>
-          <Attr Name="ImportTime" Val="1647118234"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/i2c_switch_dual.v">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../apex_control_mgt/apex_control_mgt.srcs/sources_1/new/i2c_switch_dual.v"/>
-          <Attr Name="ImportTime" Val="1647282703"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/rtl/i2cSlave_define.v">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../../Users/madorsky/cernbox/projects/vivado/apex/control/apex_control_eval_ipmc2/apex_control_eval_ipmc2.srcs/sources_1/imports/rtl/i2cSlave_define.v"/>
@@ -141,6 +125,24 @@
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../../Users/madorsky/cernbox/projects/vivado/apex/control/apex_control_eval_ipmc2/apex_control_eval_ipmc2.srcs/sources_1/imports/rtl/i2cSlave.v"/>
           <Attr Name="ImportTime" Val="1593437110"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/ip/ipmc_ila/ipmc_ila.xci">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../apex_control_mgt/apex_control_mgt.srcs/sources_1/ip/ipmc_ila/ipmc_ila.xci"/>
+          <Attr Name="ImportTime" Val="1647118234"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/i2c_switch_dual.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../apex_control_mgt/apex_control_mgt.srcs/sources_1/new/i2c_switch_dual.v"/>
+          <Attr Name="ImportTime" Val="1647282703"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -530,7 +532,7 @@
         <Define Name="C2C_3P125G"/>
       </Config>
     </FileSet>
-    <FileSet Name="XG_inst_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/XG_inst_0" RelGenDir="$PGENDIR/XG_inst_0">
+    <FileSet Name="XG_inst_0" Type="BlockSrcs" RelSrcDir="$PGENDIR/sources_1/bd/design_1/bd/XG_inst_0" RelGenDir="$PGENDIR/sources_1/bd/design_1/bd/XG_inst_0">
       <File Path="$PGENDIR/sources_1/bd/design_1/bd/XG_inst_0/XG_inst_0.bd">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
@@ -542,20 +544,6 @@
       <Config>
         <Option Name="TopModule" Val="XG_inst_0"/>
         <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
-    <FileSet Name="c2c_gth_7p8125g" Type="BlockSrcs" RelSrcDir="$PSRCDIR/c2c_gth_7p8125g" RelGenDir="$PGENDIR/c2c_gth_7p8125g">
-      <File Path="$PSRCDIR/sources_1/ip/c2c_gth_7p8125g/c2c_gth_7p8125g.xci">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <Config>
-        <Option Name="TopModule" Val="c2c_gth_7p8125g"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-        <Define Name="C2C_3P125G"/>
       </Config>
     </FileSet>
     <FileSet Name="c2c_gth_7p8125g_vio_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/c2c_gth_7p8125g_vio_0" RelGenDir="$PGENDIR/c2c_gth_7p8125g_vio_0">
@@ -574,6 +562,20 @@
         <Define Name="C2C_3P125G"/>
       </Config>
     </FileSet>
+    <FileSet Name="c2c_gth_7p8125g" Type="BlockSrcs" RelSrcDir="$PSRCDIR/c2c_gth_7p8125g" RelGenDir="$PGENDIR/c2c_gth_7p8125g">
+      <File Path="$PSRCDIR/sources_1/ip/c2c_gth_7p8125g/c2c_gth_7p8125g.xci">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <Config>
+        <Option Name="TopModule" Val="c2c_gth_7p8125g"/>
+        <Option Name="UseBlackboxStub" Val="1"/>
+        <Define Name="C2C_3P125G"/>
+      </Config>
+    </FileSet>
   </FileSets>
   <Simulators>
     <Simulator Name="XSim">
@@ -586,18 +588,15 @@
     <Simulator Name="Questa">
       <Option Name="Description" Val="Questa Advanced Simulator"/>
     </Simulator>
-    <Simulator Name="Xcelium">
-      <Option Name="Description" Val="Xcelium Parallel Simulator"/>
-    </Simulator>
-    <Simulator Name="VCS">
-      <Option Name="Description" Val="Verilog Compiler Simulator (VCS)"/>
-    </Simulator>
     <Simulator Name="Riviera">
       <Option Name="Description" Val="Riviera-PRO Simulator"/>
     </Simulator>
+    <Simulator Name="ActiveHDL">
+      <Option Name="Description" Val="Active-HDL Simulator"/>
+    </Simulator>
   </Simulators>
-  <Runs Version="1" Minor="15">
-    <Run Id="synth_3p75" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7z015clg485-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PPRDIR/C:/github/apex/control/apex_control_mgt/apex_control_mgt.srcs/utils_1/imports/synth_3p75">
+  <Runs Version="1" Minor="19">
+    <Run Id="synth_3p75" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7z015clg485-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/synth_3p75" AutoRQSDir="$PSRCDIR/utils_1/imports/synth_3p75">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
@@ -606,7 +605,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="synth_2p5" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7z015clg485-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PPRDIR/C:/github/apex/control/apex_control_mgt/apex_control_mgt.srcs/utils_1/imports/synth_2p5">
+    <Run Id="synth_2p5" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7z015clg485-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/synth_2p5" AutoRQSDir="$PSRCDIR/utils_1/imports/synth_2p5">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design">
@@ -617,7 +616,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="synth_3p125" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7z015clg485-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PPRDIR/C:/github/apex/control/apex_control_mgt/apex_control_mgt.srcs/utils_1/imports/synth_3p125">
+    <Run Id="synth_3p125" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7z015clg485-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/synth_3p125" AutoRQSDir="$PSRCDIR/utils_1/imports/synth_3p125">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design">
@@ -628,7 +627,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="synth_3p125_tck10M" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7z015clg485-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PPRDIR/C:/github/apex/control/apex_control_mgt/apex_control_mgt.srcs/utils_1/imports/synth_3p125_tck10M">
+    <Run Id="synth_3p125_tck10M" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7z015clg485-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/synth_3p125_tck10M" AutoRQSDir="$PSRCDIR/utils_1/imports/synth_3p125_tck10M">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
         <Step Id="synth_design">
@@ -639,11 +638,9 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="synth_3p125_AXI0" Type="Ft3:Synth" SrcSet="sources_1" Part="xck26-sfvc784-2LV-c" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/synth_3p125_AXI0" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PPRDIR/C:/github/apex/control/apex_control_mgt/apex_control_mgt.srcs/utils_1/imports/synth_3p125_AXI0">
+    <Run Id="synth_3p125_AXI0" Type="Ft3:Synth" SrcSet="sources_1" Part="xck26-sfvc784-2LV-c" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/synth_3p125_AXI0" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/synth_3p125_AXI0" AutoRQSDir="$PSRCDIR/utils_1/imports/synth_3p125_AXI0">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2021">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2021"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -651,7 +648,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="c2c_mgt_3p125g_synth_1" Type="Ft3:Synth" SrcSet="c2c_mgt_3p125g" Part="xck26-sfvc784-2LV-c" ConstrsSet="c2c_mgt_3p125g" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PPRDIR/C:/github/apex/control/apex_control_mgt/apex_control_mgt.srcs/utils_1/imports/c2c_mgt_3p125g_synth_1">
+    <Run Id="c2c_mgt_3p125g_synth_1" Type="Ft3:Synth" SrcSet="c2c_mgt_3p125g" Part="xck26-sfvc784-2LV-c" ConstrsSet="c2c_mgt_3p125g" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/c2c_mgt_3p125g_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/c2c_mgt_3p125g_synth_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2021"/>
         <Step Id="synth_design"/>
@@ -660,11 +657,9 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="c2c_gth_7p8125g_synth_1" Type="Ft3:Synth" SrcSet="c2c_gth_7p8125g" Part="xck26-sfvc784-2LV-c" ConstrsSet="c2c_gth_7p8125g" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/c2c_gth_7p8125g_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/c2c_gth_7p8125g_synth_1">
+    <Run Id="c2c_gth_7p8125g_vio_0_synth_1" Type="Ft3:Synth" SrcSet="c2c_gth_7p8125g_vio_0" Part="xck26-sfvc784-2LV-c" ConstrsSet="c2c_gth_7p8125g_vio_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/c2c_gth_7p8125g_vio_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/c2c_gth_7p8125g_vio_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/c2c_gth_7p8125g_vio_0_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2021">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2021"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -672,19 +667,19 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="c2c_gth_7p8125g_vio_0_synth_1" Type="Ft3:Synth" SrcSet="c2c_gth_7p8125g_vio_0" Part="xck26-sfvc784-2LV-c" ConstrsSet="c2c_gth_7p8125g_vio_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/c2c_gth_7p8125g_vio_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/c2c_gth_7p8125g_vio_0_synth_1">
+    <Run Id="c2c_gth_7p8125g_synth_1" Type="Ft3:Synth" SrcSet="c2c_gth_7p8125g" Part="xck26-sfvc784-2LV-c" ConstrsSet="c2c_gth_7p8125g" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/c2c_gth_7p8125g_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/c2c_gth_7p8125g_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/c2c_gth_7p8125g_synth_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2021">
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2022">
           <Desc>Vivado Synthesis Defaults</Desc>
         </StratHandle>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2021"/>
+      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2022"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="impl_3p75" Type="Ft2:EntireDesign" Part="xc7z015clg485-1" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="synth_3p75" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PPRDIR/C:/github/apex/control/apex_control_mgt/apex_control_mgt.srcs/utils_1/imports/impl_3p75">
+    <Run Id="impl_3p75" Type="Ft2:EntireDesign" Part="xc7z015clg485-1" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="synth_3p75" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_3p75" AutoRQSDir="$PSRCDIR/utils_1/imports/impl_3p75">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
         <Step Id="init_design"/>
@@ -701,7 +696,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="impl_2p5" Type="Ft2:EntireDesign" Part="xc7z015clg485-1" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="synth_2p5" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PPRDIR/C:/github/apex/control/apex_control_mgt/apex_control_mgt.srcs/utils_1/imports/impl_2p5">
+    <Run Id="impl_2p5" Type="Ft2:EntireDesign" Part="xc7z015clg485-1" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="synth_2p5" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_2p5" AutoRQSDir="$PSRCDIR/utils_1/imports/impl_2p5">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020"/>
         <Step Id="init_design"/>
@@ -718,7 +713,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="impl_3p125" Type="Ft2:EntireDesign" Part="xc7z015clg485-1" ConstrsSet="constrs_1" Description="Similar to Peformance_Explore, but enables the physical optimization step (phys_opt_design) with the Explore directive after routing." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="synth_3p125" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PPRDIR/C:/github/apex/control/apex_control_mgt/apex_control_mgt.srcs/utils_1/imports/impl_3p125">
+    <Run Id="impl_3p125" Type="Ft2:EntireDesign" Part="xc7z015clg485-1" ConstrsSet="constrs_1" Description="Similar to Peformance_Explore, but enables the physical optimization step (phys_opt_design) with the Explore directive after routing." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="synth_3p125" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_3p125" AutoRQSDir="$PSRCDIR/utils_1/imports/impl_3p125">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Performance_ExplorePostRoutePhysOpt" Flow="Vivado Implementation 2020"/>
         <Step Id="init_design"/>
@@ -746,7 +741,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="impl_3p125_tck10M" Type="Ft2:EntireDesign" Part="xc7z015clg485-1" ConstrsSet="constrs_1" Description="Similar to Peformance_Explore, but enables the physical optimization step (phys_opt_design) with the Explore directive after routing." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="synth_3p125_tck10M" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PPRDIR/C:/github/apex/control/apex_control_mgt/apex_control_mgt.srcs/utils_1/imports/impl_3p125_tck10M">
+    <Run Id="impl_3p125_tck10M" Type="Ft2:EntireDesign" Part="xc7z015clg485-1" ConstrsSet="constrs_1" Description="Similar to Peformance_Explore, but enables the physical optimization step (phys_opt_design) with the Explore directive after routing." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="synth_3p125_tck10M" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_3p125_tck10M" AutoRQSDir="$PSRCDIR/utils_1/imports/impl_3p125_tck10M">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Performance_ExplorePostRoutePhysOpt" Flow="Vivado Implementation 2020"/>
         <Step Id="init_design"/>
@@ -774,11 +769,9 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="impl_3p125_AXI0" Type="Ft2:EntireDesign" Part="xck26-sfvc784-2LV-c" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/impl_3p125_AXI0" SynthRun="synth_3p125_AXI0" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PPRDIR/C:/github/apex/control/apex_control_mgt/apex_control_mgt.srcs/utils_1/imports/impl_3p125_AXI0">
+    <Run Id="impl_3p125_AXI0" Type="Ft2:EntireDesign" Part="xck26-sfvc784-2LV-c" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/impl_3p125_AXI0" SynthRun="synth_3p125_AXI0" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_3p125_AXI0" AutoRQSDir="$PSRCDIR/utils_1/imports/impl_3p125_AXI0">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2021">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2021"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -794,7 +787,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="c2c_mgt_3p125g_impl_1" Type="Ft2:EntireDesign" Part="xck26-sfvc784-2LV-c" ConstrsSet="c2c_mgt_3p125g" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="c2c_mgt_3p125g_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PPRDIR/C:/github/apex/control/apex_control_mgt/apex_control_mgt.srcs/utils_1/imports/c2c_mgt_3p125g_impl_1">
+    <Run Id="c2c_mgt_3p125g_impl_1" Type="Ft2:EntireDesign" Part="xck26-sfvc784-2LV-c" ConstrsSet="c2c_mgt_3p125g" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="c2c_mgt_3p125g_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/c2c_mgt_3p125g_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/c2c_mgt_3p125g_impl_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2021"/>
         <Step Id="init_design"/>
@@ -811,11 +804,9 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="c2c_gth_7p8125g_impl_1" Type="Ft2:EntireDesign" Part="xck26-sfvc784-2LV-c" ConstrsSet="c2c_gth_7p8125g" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="c2c_gth_7p8125g_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/c2c_gth_7p8125g_impl_1">
+    <Run Id="c2c_gth_7p8125g_vio_0_impl_1" Type="Ft2:EntireDesign" Part="xck26-sfvc784-2LV-c" ConstrsSet="c2c_gth_7p8125g_vio_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="c2c_gth_7p8125g_vio_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/c2c_gth_7p8125g_vio_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/c2c_gth_7p8125g_vio_0_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2021">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2021"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -830,9 +821,9 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="c2c_gth_7p8125g_vio_0_impl_1" Type="Ft2:EntireDesign" Part="xck26-sfvc784-2LV-c" ConstrsSet="c2c_gth_7p8125g_vio_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="c2c_gth_7p8125g_vio_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/c2c_gth_7p8125g_vio_0_impl_1">
+    <Run Id="c2c_gth_7p8125g_impl_1" Type="Ft2:EntireDesign" Part="xck26-sfvc784-2LV-c" ConstrsSet="c2c_gth_7p8125g" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="c2c_gth_7p8125g_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/c2c_gth_7p8125g_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/c2c_gth_7p8125g_impl_1">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2021">
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2022">
           <Desc>Default settings for Implementation.</Desc>
         </StratHandle>
         <Step Id="init_design"/>
@@ -845,7 +836,7 @@
         <Step Id="post_route_phys_opt_design"/>
         <Step Id="write_bitstream"/>
       </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2021"/>
+      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2022"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
