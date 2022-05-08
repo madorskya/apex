@@ -1023,8 +1023,8 @@
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_AXI_WUSER_WIDTH">1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_CONNECTIVITY_MODE">1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_FAMILY">zynq</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_M_AXI_ADDR_WIDTH">0x00000000000000000000000000000000000000000000000d0000001100000000000000000000001c0000001c00000011000000100000001000000010000000110000000d0000001000000012000000100000000d</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_M_AXI_BASE_ADDR">0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00000000440000000000000041640000ffffffffffffffffffffffffffffffff000000006000000000000000500000000000000041620000000000004161000000000000412200000000000043c200000000000043c0000000000000420000000000000041200000000000004100000000000000404000000000000040000000</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_M_AXI_ADDR_WIDTH">0x00000000000000000000000000000000000000000000000d00000011000000000000001c0000001c0000001000000011000000100000001000000010000000110000000d0000001000000012000000100000000d</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_M_AXI_BASE_ADDR">0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00000000440000000000000041640000ffffffffffffffff000000006000000000000000500000000000000043c300000000000041620000000000004161000000000000412200000000000043c200000000000043c0000000000000420000000000000041200000000000004100000000000000404000000000000040000000</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_M_AXI_READ_CONNECTIVITY">0x000000010000000100000001</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_M_AXI_READ_ISSUING">0x000000080000000800000008</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_M_AXI_SECURE">0x000000000000000000000000</spirit:configurableElementValue>
@@ -1123,12 +1123,12 @@
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.M01_A01_BASE_ADDR">0x0000000041610000</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.M01_A02_ADDR_WIDTH">17</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.M01_A02_BASE_ADDR">0x0000000041620000</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.M01_A03_ADDR_WIDTH">28</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.M01_A03_BASE_ADDR">0x0000000050000000</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.M01_A03_ADDR_WIDTH">16</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.M01_A03_BASE_ADDR">0x0000000043C30000</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.M01_A04_ADDR_WIDTH">28</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.M01_A04_BASE_ADDR">0x0000000060000000</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.M01_A05_ADDR_WIDTH">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.M01_A05_BASE_ADDR">0xffffffffffffffff</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.M01_A04_BASE_ADDR">0x0000000050000000</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.M01_A05_ADDR_WIDTH">28</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.M01_A05_BASE_ADDR">0x0000000060000000</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.M01_A06_ADDR_WIDTH">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.M01_A06_BASE_ADDR">0xffffffffffffffff</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.M01_A07_ADDR_WIDTH">0</spirit:configurableElementValue>
@@ -2476,8 +2476,8 @@
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.M01_A03_BASE_ADDR" xilinx:valueSource="propagated" xilinx:valuePermission="bd_and_user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.M01_A04_ADDR_WIDTH" xilinx:valueSource="propagated" xilinx:valuePermission="bd_and_user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.M01_A04_BASE_ADDR" xilinx:valueSource="propagated" xilinx:valuePermission="bd_and_user"/>
-            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.M01_A05_ADDR_WIDTH" xilinx:valuePermission="bd_and_user"/>
-            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.M01_A05_BASE_ADDR" xilinx:valuePermission="bd_and_user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.M01_A05_ADDR_WIDTH" xilinx:valueSource="propagated" xilinx:valuePermission="bd_and_user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.M01_A05_BASE_ADDR" xilinx:valueSource="propagated" xilinx:valuePermission="bd_and_user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.M01_A06_ADDR_WIDTH" xilinx:valuePermission="bd_and_user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.M01_A06_BASE_ADDR" xilinx:valuePermission="bd_and_user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.M01_A07_ADDR_WIDTH" xilinx:valuePermission="bd_and_user"/>

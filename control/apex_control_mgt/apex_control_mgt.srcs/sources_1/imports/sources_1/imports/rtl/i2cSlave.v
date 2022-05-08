@@ -66,6 +66,7 @@ module i2cSlave
  (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 CONTROL EN" *)
   // Uncomment the following to set interface specific parameter on the bus interface.
   //  (* X_INTERFACE_PARAMETER = "MASTER_TYPE <value>,MEM_ECC <value>,MEM_WIDTH <value>,MEM_SIZE <value>,READ_WRITE_MODE <value>" *)
+  (* X_INTERFACE_PARAMETER = "MASTER_TYPE BRAM_CTRL,READ_WRITE_MODE READ_WRITE" *)
   input         bram_en, // Chip Enable Signal (optional)
   (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 CONTROL DOUT" *)
   output reg [31:0] bram_rddata, // Data Out Bus (optional)
