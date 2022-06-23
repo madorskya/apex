@@ -82,8 +82,8 @@
         "i2cSlave_1": "",
         "axi_bram_ctrl_0": "",
         "axi_bram_ctrl_1": "",
-        "i2c_switch_dual_0": "",
-        "axi_gpio_1": ""
+        "axi_gpio_1": "",
+        "i2c_switch_dual_0": ""
       },
       "C2C": {
         "axisafety_2": "",
@@ -7367,6 +7367,20 @@
               }
             }
           },
+          "axi_gpio_1": {
+            "vlnv": "xilinx.com:ip:axi_gpio:2.0",
+            "xci_name": "design_1_axi_gpio_1_0",
+            "xci_path": "ip\\design_1_axi_gpio_1_0\\design_1_axi_gpio_1_0.xci",
+            "inst_hier_path": "IPMC/axi_gpio_1",
+            "parameters": {
+              "C_ALL_OUTPUTS": {
+                "value": "1"
+              },
+              "C_GPIO_WIDTH": {
+                "value": "2"
+              }
+            }
+          },
           "i2c_switch_dual_0": {
             "vlnv": "xilinx.com:module_ref:i2c_switch_dual:1.0",
             "xci_name": "design_1_i2c_switch_dual_0_0",
@@ -7505,20 +7519,6 @@
                 "direction": "IO"
               }
             }
-          },
-          "axi_gpio_1": {
-            "vlnv": "xilinx.com:ip:axi_gpio:2.0",
-            "xci_name": "design_1_axi_gpio_1_0",
-            "xci_path": "ip\\design_1_axi_gpio_1_0\\design_1_axi_gpio_1_0.xci",
-            "inst_hier_path": "IPMC/axi_gpio_1",
-            "parameters": {
-              "C_ALL_OUTPUTS": {
-                "value": "1"
-              },
-              "C_GPIO_WIDTH": {
-                "value": "2"
-              }
-            }
           }
         },
         "interface_nets": {
@@ -7586,8 +7586,8 @@
               "i2cSlave_1/clk",
               "axi_bram_ctrl_0/s_axi_aclk",
               "axi_bram_ctrl_1/s_axi_aclk",
-              "i2c_switch_dual_0/clk",
-              "axi_gpio_1/s_axi_aclk"
+              "axi_gpio_1/s_axi_aclk",
+              "i2c_switch_dual_0/clk"
             ]
           },
           "Net1": {
@@ -10750,7 +10750,7 @@
               },
               "HAS_REGION": {
                 "value": "1",
-                "value_src": "default_prop"
+                "value_src": "default"
               },
               "HAS_RRESP": {
                 "value": "1",
