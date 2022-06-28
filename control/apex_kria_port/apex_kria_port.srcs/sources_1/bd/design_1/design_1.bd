@@ -4492,16 +4492,16 @@
                 "value": "slow"
               },
               "PSU_MIO_TREE_PERIPHERALS": {
-                "value": "Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#SPI 1#GPIO0 MIO#GPIO0 MIO#SPI 1#SPI 1#SPI 1#GPIO0 MIO#SD 0#SD 0#SD 0#SD 0#SD 0#SD 0#SD 0#SD 0#SD 0#SD 0#SD 0#GPIO0 MIO#GPIO0 MIO#PMU GPI 0#GPIO1 MIO#GPIO1 MIO#GPIO1 MIO#GPIO1 MIO#PMU GPI 5#PMU GPO 0#PMU GPO 1#PMU GPO 2#PMU GPO 3#GPIO1 MIO#GPIO1 MIO#GPIO1 MIO#SD 1#SD 1#SD 1#SD 1#SD 1#GPIO1 MIO#SD 1#SD 1#SD 1#SD 1#SD 1#SD 1#SD 1##########################"
+                "value": "Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#SPI 1#GPIO0 MIO#GPIO0 MIO#SPI 1#SPI 1#SPI 1#GPIO0 MIO#SD 0#SD 0#SD 0#SD 0#SD 0#SD 0#SD 0#SD 0#SD 0#SD 0#SD 0#GPIO0 MIO#GPIO0 MIO#PMU GPI 0#GPIO1 MIO#GPIO1 MIO#GPIO1 MIO#GPIO1 MIO#PMU GPI 5#PMU GPO 0#PMU GPO 1#PMU GPO 2#PMU GPO 3#GPIO1 MIO#GPIO1 MIO#GPIO1 MIO#GPIO1 MIO#GPIO1 MIO#GPIO1 MIO#GPIO1 MIO#SD 1#GPIO1 MIO#SD 1#SD 1#SD 1#SD 1#SD 1#SD 1#SD 1##########################"
               },
               "PSU_MIO_TREE_SIGNALS": {
-                "value": "sclk_out#miso_mo1#mo2#mo3#mosi_mi0#n_ss_out#sclk_out#gpio0[7]#gpio0[8]#n_ss_out[0]#miso#mosi#gpio0[12]#sdio0_data_out[0]#sdio0_data_out[1]#sdio0_data_out[2]#sdio0_data_out[3]#sdio0_data_out[4]#sdio0_data_out[5]#sdio0_data_out[6]#sdio0_data_out[7]#sdio0_cmd_out#sdio0_clk_out#sdio0_bus_pow#gpio0[24]#gpio0[25]#gpi[0]#gpio1[27]#gpio1[28]#gpio1[29]#gpio1[30]#gpi[5]#gpo[0]#gpo[1]#gpo[2]#gpo[3]#gpio1[36]#gpio1[37]#gpio1[38]#sdio1_data_out[4]#sdio1_data_out[5]#sdio1_data_out[6]#sdio1_data_out[7]#sdio1_bus_pow#gpio1[44]#sdio1_cd_n#sdio1_data_out[0]#sdio1_data_out[1]#sdio1_data_out[2]#sdio1_data_out[3]#sdio1_cmd_out#sdio1_clk_out##########################"
+                "value": "sclk_out#miso_mo1#mo2#mo3#mosi_mi0#n_ss_out#sclk_out#gpio0[7]#gpio0[8]#n_ss_out[0]#miso#mosi#gpio0[12]#sdio0_data_out[0]#sdio0_data_out[1]#sdio0_data_out[2]#sdio0_data_out[3]#sdio0_data_out[4]#sdio0_data_out[5]#sdio0_data_out[6]#sdio0_data_out[7]#sdio0_cmd_out#sdio0_clk_out#sdio0_bus_pow#gpio0[24]#gpio0[25]#gpi[0]#gpio1[27]#gpio1[28]#gpio1[29]#gpio1[30]#gpi[5]#gpo[0]#gpo[1]#gpo[2]#gpo[3]#gpio1[36]#gpio1[37]#gpio1[38]#gpio1[39]#gpio1[40]#gpio1[41]#gpio1[42]#sdio1_bus_pow#gpio1[44]#sdio1_cd_n#sdio1_data_out[0]#sdio1_data_out[1]#sdio1_data_out[2]#sdio1_data_out[3]#sdio1_cmd_out#sdio1_clk_out##########################"
               },
               "PSU_SD0_INTERNAL_BUS_WIDTH": {
                 "value": "8"
               },
               "PSU_SD1_INTERNAL_BUS_WIDTH": {
-                "value": "8"
+                "value": "4"
               },
               "PSU_SMC_CYCLE_T0": {
                 "value": "NA"
@@ -6210,26 +6210,14 @@
               "PSU__SD1_ROUTE_THROUGH_FPD": {
                 "value": "0"
               },
-              "PSU__SD1__CLK_100_SDR_OTAP_DLY": {
-                "value": "0x00"
-              },
-              "PSU__SD1__CLK_200_SDR_OTAP_DLY": {
-                "value": "0x00"
-              },
-              "PSU__SD1__CLK_50_DDR_ITAP_DLY": {
-                "value": "0x00"
-              },
-              "PSU__SD1__CLK_50_DDR_OTAP_DLY": {
-                "value": "0x00"
-              },
               "PSU__SD1__CLK_50_SDR_ITAP_DLY": {
-                "value": "0x00"
+                "value": "0x15"
               },
               "PSU__SD1__CLK_50_SDR_OTAP_DLY": {
-                "value": "0x00"
+                "value": "0x5"
               },
               "PSU__SD1__DATA_TRANSFER_MODE": {
-                "value": "8Bit"
+                "value": "4Bit"
               },
               "PSU__SD1__GRP_CD__ENABLE": {
                 "value": "1"
@@ -6250,10 +6238,10 @@
                 "value": "1"
               },
               "PSU__SD1__PERIPHERAL__IO": {
-                "value": "MIO 39 .. 51"
+                "value": "MIO 46 .. 51"
               },
               "PSU__SD1__SLOT_TYPE": {
-                "value": "SD 3.0"
+                "value": "SD 2.0"
               },
               "PSU__SPI0_LOOP_SPI1__ENABLE": {
                 "value": "0"
