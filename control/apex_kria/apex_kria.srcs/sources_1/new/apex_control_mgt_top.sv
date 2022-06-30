@@ -28,12 +28,12 @@ module apex_control_mgt_top
     
     input som240_2_d5,
     input som240_2_d6,
-    output som240_2_a3,
-    output som240_2_a4,
-    output som240_2_d9,
-    output som240_2_d10,
-    input som240_2_b9,
-    input som240_2_b10,
+//    output som240_2_a3,
+//    output som240_2_a4,
+//    output som240_2_d9,
+//    output som240_2_d10,
+//    input som240_2_b9,
+//    input som240_2_b10,
     output som240_2_a51,
     output som240_2_a52,
     input som240_2_a54,
@@ -57,8 +57,8 @@ module apex_control_mgt_top
     output som240_2_d48,
     inout som240_2_d49,
     input som240_2_d50,
-    output som240_2_c7,
-    output som240_2_c8,
+//    output som240_2_c7,
+//    output som240_2_c8,
     output som240_2_c59,
     output som240_2_c60,
     input som240_2_a11,
@@ -171,15 +171,15 @@ module apex_control_mgt_top
     assign qsfp_srv_pok = som240_1_d18;
     alias som240_1_c18 = qsfp_srv_scl;
     
-    assign axi_link1_rx_p = som240_2_d5; // inverted
-    assign axi_link1_rx_n = som240_2_d6;
-    assign som240_2_a3 = axi_link1_tx_p; // inverted
-    assign som240_2_a4 = axi_link1_tx_n;
+//    assign axi_link1_rx_p = som240_2_d5; // inverted
+//    assign axi_link1_rx_n = som240_2_d6;
+//    assign som240_2_a3 = axi_link1_tx_p; // inverted
+//    assign som240_2_a4 = axi_link1_tx_n;
     
-    assign som240_2_d9 = axi_link0_tx_p; // inverted
-    assign som240_2_d10 = axi_link0_tx_n;
-    assign axi_link0_rx_p = som240_2_b9; // inverted
-    assign axi_link0_rx_n = som240_2_b10;
+//    assign som240_2_d9 = axi_link0_tx_p; // inverted
+//    assign som240_2_d10 = axi_link0_tx_n;
+//    assign axi_link0_rx_p = som240_2_b9; // inverted
+//    assign axi_link0_rx_n = som240_2_b10;
     
     assign som240_2_a51 = bp_clk_sel[0];
     assign som240_2_a52 = bp_clk_sel[1];
@@ -259,114 +259,11 @@ module apex_control_mgt_top
             
     design_1_wrapper bdw
     (
-        .axi_c2c_phy_clk     (usr_clk),
-        .axi_clk             (axi_clk),
-        .c2c_slave_reset_bot (c2c_slave_reset_bot),
-        .c2c_slave_reset_top (c2c_slave_reset_top),
-        .do_cc_bot           (do_cc[0]),
-        .do_cc_top           (do_cc[1]),
-        .en_ipmb_zynq        ({ipmb_buf1_en, ipmb_buf0_en}),
-        .gem_mdio_mdc        (gem_mdio_mdc),
-        .gem_mdio_mdio_io    (gem_mdio_mdio),
-        .gtp_reset           (soft_reset),
-        .ha                  (ha),
-        .hot_swap_sw         (qsfp_srv_hot_swap),
-        .id                  (), // ELMA chip is removed
-        .ipmc_scl_0          (ipmb_buf0_scl),
-        .ipmc_scl_1          (ipmb_buf1_scl),
-        .ipmc_sda_0          (ipmb_buf0_sda),
-        .ipmc_sda_1          (ipmb_buf1_sda),
-        .jtag_0_tck          (fpga_srv0_tck),
-        .jtag_0_tdi          (fpga_srv0_tdi),
-        .jtag_0_tdo          (fpga_srv0_tdo),
-        .jtag_0_tms          (fpga_srv0_tms),
-        .jtag_1_tck          (fpga_srv1_tck),
-        .jtag_1_tdi          (fpga_srv1_tdi),
-        .jtag_1_tdo          (fpga_srv1_tdo),
-        .jtag_1_tms          (fpga_srv1_tms),
-        .link_up_bot         (link_up_bot),
-        .link_up_top         (link_up_top),
-        .los_10g             (), // 10G CDR is removed
-        .mgt_unlocked_bot    (~channel_up[0]),
-        .mgt_unlocked_top    (~channel_up[1]),
-        .pim_alarm           (dcdc_control_alarm),
-        .pok_change          ({qsfp_srv_pok, fpga_srv1_pok, fpga_srv0_pok}),
-        .pok_payload         (dcdc_control_pok),
-        .prbs_err            (prbs_err),
-        .prbs_sel            (prbs_sel),
-        .qbv_on_off          (dcdc_control_on_off),
-        .ready_ipmb_zynq     ({ipmb_buf1_rdy, ipmb_buf0_rdy}),
-        .rxdata_bot          (rxdata[0]),
-        .rxdata_top          (rxdata[1]),
-        .rxvalid_bot         (rxvalid[0]),
-        .rxvalid_top         (rxvalid[1]),
-        .scf_i2c_0_scl_io    (fpga_srv0_scl),
-        .scf_i2c_0_sda_io    (fpga_srv0_sda),
-        .scf_i2c_1_scl_io    (fpga_srv1_scl),
-        .scf_i2c_1_sda_io    (fpga_srv1_sda),
-        .scf_i2c_2_scl_io    (qsfp_srv_scl),
-        .scf_i2c_2_sda_io    (qsfp_srv_sda),
-        .tx_polarity         (tx_polarity),
-        .txdata_bot          (txdata[0]),
-        .txdata_top          (txdata[1]),
-        .txvalid_bot         (txvalid[0]),
-        .txvalid_top         (txvalid[1]),
         .uart_rxd            (uart_usb2dev),
-        .uart_txd            (uart_dev2usb),
-        .xg_grx_n            (g10s_rxn),
-        .xg_grx_p            (g10s_rxp),
-        .xg_gtx_n            (g10s_txn),
-        .xg_gtx_p            (g10s_txp),
-        .xg_refclk_clk_n     (gth_refclk1_c2m_n), // this is temporary
-        .xg_refclk_clk_p     (gth_refclk1_c2m_p) // this refclk is the same as for AXI
+        .uart_txd            (uart_dev2usb)
     );
             
         
-    c2c_gth_7p8125g_tux c2c_mgt 
-    (
-        .mgtrefclk0_x0y1_n (gth_refclk0_c2m_n),
-        .mgtrefclk0_x0y1_p (gth_refclk0_c2m_p),
-    
-        .ch0_gthrxn_in  (axi_link0_rx_n),
-        .ch0_gthrxp_in  (axi_link0_rx_p),
-        .ch0_gthtxn_out (axi_link0_tx_n),
-        .ch0_gthtxp_out (axi_link0_tx_p),
-
-        .ch1_gthrxn_in  (axi_link1_rx_n),
-        .ch1_gthrxp_in  (axi_link1_rx_p),
-        .ch1_gthtxn_out (axi_link1_tx_n),
-        .ch1_gthtxp_out (axi_link1_tx_p),
-        
-        .drp_clk      (axi_clk),
-        .soft_reset_i (soft_reset),
-        
-        // interface for c2c TX
-        .txdata  (txdata ),
-        .txvalid (txvalid),
-        .txready (txready),
-        .do_cc   (do_cc),
-        
-        // interface for c2c RX
-        .rxdata  (rxdata ),
-        .rxvalid (rxvalid),
-        
-        .rxd_raw    (rxd_raw   ),
-        .rxk_raw    (rxk_raw   ),
-        .gt_txdata    (gt_txdata   ),
-        .gt_txcharisk (gt_txcharisk),
-        .align_b0   (align_b0  ),
-        .align_lock (align_lock),
-
-        .channel_up (channel_up),
-        .prbs_sel   (prbs_sel), 
-        .prbs_err   (prbs_err),
-        .tx_polarity    (tx_polarity),
-        .link_up    ({link_up_top, link_up_bot}),
-        .c2c_slave_reset_top (c2c_slave_reset_top),
-        .c2c_slave_reset_bot (c2c_slave_reset_bot),
-        
-        .usr_clk (usr_clk)// single user clock for tx and rx
-    );
             
         
 endmodule
