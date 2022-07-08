@@ -2004,15 +2004,15 @@ pio1[45]#sdio1_data_out[0]#sdio1_data_out[1]#sdio1_data_out[2]#sdio1_data_out[3]
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__DP__REF_CLK_SEL">&lt;Select></spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__ENABLE__DDR__REFRESH__SIGNALS">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__ENET0__FIFO__ENABLE">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__ENET0__GRP_MDIO__ENABLE">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__ENET0__GRP_MDIO__IO">EMIO</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__ENET0__GRP_MDIO__ENABLE">0</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__ENET0__GRP_MDIO__IO">&lt;Select></spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__ENET0__PERIPHERAL__ENABLE">1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__ENET0__PERIPHERAL__IO">GT Lane0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__ENET0__PTP__ENABLE">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__ENET0__TSU__ENABLE">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__ENET1__FIFO__ENABLE">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__ENET1__GRP_MDIO__ENABLE">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__ENET1__GRP_MDIO__IO">&lt;Select></spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__ENET1__GRP_MDIO__ENABLE">1</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__ENET1__GRP_MDIO__IO">EMIO</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__ENET1__PERIPHERAL__ENABLE">1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__ENET1__PERIPHERAL__IO">GT Lane1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__ENET1__PTP__ENABLE">0</spirit:configurableElementValue>
@@ -2718,6 +2718,7 @@ FFF;0|FPD;DPDMA;FD4C0000;FD4CFFFF;0|FPD;DDR_XMPU5_CFG;FD050000;FD05FFFF;1|FPD;DD
         <xilinx:componentInstanceExtensions>
           <xilinx:configElementInfos>
             <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.MDIO_ENET0.CAN_DEBUG" xilinx:valuePermission="bd"/>
+            <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.MDIO_ENET1.CAN_DEBUG" xilinx:valuePermission="bd"/>
             <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI_HPM0_FPD.ADDR_WIDTH" xilinx:valueSource="auto" xilinx:valuePermission="bd"/>
             <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI_HPM0_FPD.ARUSER_WIDTH" xilinx:valueSource="auto" xilinx:valuePermission="bd"/>
             <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.M_AXI_HPM0_FPD.AWUSER_WIDTH" xilinx:valueSource="auto" xilinx:valuePermission="bd"/>
@@ -3805,6 +3806,7 @@ FFF;0|FPD;DPDMA;FD4C0000;FD4CFFFF;0|FPD;DDR_XMPU5_CFG;FD050000;FD05FFFF;1|FPD;DD
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PSU__ENET0__TSU__ENABLE" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PSU__ENET1__FIFO__ENABLE" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PSU__ENET1__GRP_MDIO__ENABLE" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PSU__ENET1__GRP_MDIO__IO" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PSU__ENET1__PERIPHERAL__ENABLE" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PSU__ENET1__PERIPHERAL__IO" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.PSU__ENET1__PTP__ENABLE" xilinx:valueSource="user"/>
@@ -4482,10 +4484,10 @@ FFF;0|FPD;DPDMA;FD4C0000;FD4CFFFF;0|FPD;DDR_XMPU5_CFG;FD050000;FD05FFFF;1|FPD;DD
                   &quot;saxigp2_rready&quot;: [ { &quot;direction&quot;: &quot;in&quot;, &quot;driver_value&quot;: &quot;0&quot; } ],
                   &quot;saxigp2_awqos&quot;: [ { &quot;direction&quot;: &quot;in&quot;, &quot;size_left&quot;: &quot;3&quot;, &quot;size_right&quot;: &quot;0&quot;, &quot;driver_value&quot;: &quot;0&quot; } ],
                   &quot;saxigp2_arqos&quot;: [ { &quot;direction&quot;: &quot;in&quot;, &quot;size_left&quot;: &quot;3&quot;, &quot;size_right&quot;: &quot;0&quot;, &quot;driver_value&quot;: &quot;0&quot; } ],
-                  &quot;emio_enet0_mdio_mdc&quot;: [ { &quot;direction&quot;: &quot;out&quot; } ],
-                  &quot;emio_enet0_mdio_i&quot;: [ { &quot;direction&quot;: &quot;in&quot;, &quot;driver_value&quot;: &quot;0&quot; } ],
-                  &quot;emio_enet0_mdio_o&quot;: [ { &quot;direction&quot;: &quot;out&quot; } ],
-                  &quot;emio_enet0_mdio_t&quot;: [ { &quot;direction&quot;: &quot;out&quot; } ],
+                  &quot;emio_enet1_mdio_mdc&quot;: [ { &quot;direction&quot;: &quot;out&quot; } ],
+                  &quot;emio_enet1_mdio_i&quot;: [ { &quot;direction&quot;: &quot;in&quot;, &quot;driver_value&quot;: &quot;0&quot; } ],
+                  &quot;emio_enet1_mdio_o&quot;: [ { &quot;direction&quot;: &quot;out&quot; } ],
+                  &quot;emio_enet1_mdio_t&quot;: [ { &quot;direction&quot;: &quot;out&quot; } ],
                   &quot;emio_enet0_enet_tsu_timer_cnt&quot;: [ { &quot;direction&quot;: &quot;out&quot;, &quot;size_left&quot;: &quot;93&quot;, &quot;size_right&quot;: &quot;0&quot; } ],
                   &quot;emio_i2c0_scl_i&quot;: [ { &quot;direction&quot;: &quot;in&quot;, &quot;driver_value&quot;: &quot;0&quot; } ],
                   &quot;emio_i2c0_scl_o&quot;: [ { &quot;direction&quot;: &quot;out&quot; } ],
@@ -4827,7 +4829,7 @@ FFF;0|FPD;DPDMA;FD4C0000;FD4CFFFF;0|FPD;DDR_XMPU5_CFG;FD050000;FD05FFFF;1|FPD;DD
                       &quot;INSERT_VIP&quot;: [ { &quot;value&quot;: &quot;0&quot;, &quot;resolve_type&quot;: &quot;user&quot;, &quot;format&quot;: &quot;long&quot;, &quot;usage&quot;: &quot;simulation.rtl&quot;, &quot;is_static_object&quot;: false } ]
                     }
                   },
-                  &quot;MDIO_ENET0&quot;: {
+                  &quot;MDIO_ENET1&quot;: {
                     &quot;vlnv&quot;: &quot;xilinx.com:interface:mdio:1.0&quot;,
                     &quot;abstraction_type&quot;: &quot;xilinx.com:interface:mdio_rtl:1.0&quot;,
                     &quot;mode&quot;: &quot;master&quot;,
@@ -4835,10 +4837,10 @@ FFF;0|FPD;DPDMA;FD4C0000;FD4CFFFF;0|FPD;DDR_XMPU5_CFG;FD050000;FD05FFFF;1|FPD;DD
                       &quot;CAN_DEBUG&quot;: [ { &quot;value&quot;: &quot;false&quot;, &quot;value_permission&quot;: &quot;bd&quot;, &quot;resolve_type&quot;: &quot;generated&quot;, &quot;format&quot;: &quot;bool&quot;, &quot;is_static_object&quot;: false } ]
                     },
                     &quot;port_maps&quot;: {
-                      &quot;MDC&quot;: [ { &quot;physical_name&quot;: &quot;emio_enet0_mdio_mdc&quot; } ],
-                      &quot;MDIO_I&quot;: [ { &quot;physical_name&quot;: &quot;emio_enet0_mdio_i&quot; } ],
-                      &quot;MDIO_O&quot;: [ { &quot;physical_name&quot;: &quot;emio_enet0_mdio_o&quot; } ],
-                      &quot;MDIO_T&quot;: [ { &quot;physical_name&quot;: &quot;emio_enet0_mdio_t&quot; } ]
+                      &quot;MDC&quot;: [ { &quot;physical_name&quot;: &quot;emio_enet1_mdio_mdc&quot; } ],
+                      &quot;MDIO_I&quot;: [ { &quot;physical_name&quot;: &quot;emio_enet1_mdio_i&quot; } ],
+                      &quot;MDIO_O&quot;: [ { &quot;physical_name&quot;: &quot;emio_enet1_mdio_o&quot; } ],
+                      &quot;MDIO_T&quot;: [ { &quot;physical_name&quot;: &quot;emio_enet1_mdio_t&quot; } ]
                     }
                   },
                   &quot;IIC_0&quot;: {

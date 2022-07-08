@@ -5449,10 +5449,7 @@
                 "value": "0"
               },
               "PSU__ENET0__GRP_MDIO__ENABLE": {
-                "value": "1"
-              },
-              "PSU__ENET0__GRP_MDIO__IO": {
-                "value": "EMIO"
+                "value": "0"
               },
               "PSU__ENET0__PERIPHERAL__ENABLE": {
                 "value": "1"
@@ -5470,7 +5467,10 @@
                 "value": "0"
               },
               "PSU__ENET1__GRP_MDIO__ENABLE": {
-                "value": "0"
+                "value": "1"
+              },
+              "PSU__ENET1__GRP_MDIO__IO": {
+                "value": "EMIO"
               },
               "PSU__ENET1__PERIPHERAL__ENABLE": {
                 "value": "1"
@@ -6749,12 +6749,6 @@
               "ps7_0_axi_periph/M05_AXI"
             ]
           },
-          "cpu_MDIO_ENET0_0": {
-            "interface_ports": [
-              "gem_mdio",
-              "zynq_ultra_ps_e_0/MDIO_ENET0"
-            ]
-          },
           "ps7_0_axi_periph_M01_AXI": {
             "interface_ports": [
               "M00_AXI",
@@ -6765,6 +6759,12 @@
             "interface_ports": [
               "M09_AXI",
               "ps7_0_axi_periph/M09_AXI"
+            ]
+          },
+          "zynq_ultra_ps_e_0_MDIO_ENET1": {
+            "interface_ports": [
+              "gem_mdio",
+              "zynq_ultra_ps_e_0/MDIO_ENET1"
             ]
           },
           "zynq_ultra_ps_e_0_M_AXI_HPM0_FPD": {
