@@ -75,7 +75,8 @@
           "m14_couplers": {},
           "m15_couplers": {}
         },
-        "zynq_ultra_ps_e_0": ""
+        "zynq_ultra_ps_e_0": "",
+        "mdio_hub_0": ""
       },
       "IPMC": {
         "i2cSlave_0": "",
@@ -779,11 +780,6 @@
       },
       "cpu": {
         "interface_ports": {
-          "gem_mdio": {
-            "mode": "Master",
-            "vlnv_bus_definition": "xilinx.com:interface:mdio:1.0",
-            "vlnv": "xilinx.com:interface:mdio_rtl:1.0"
-          },
           "IIC_0": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:iic:1.0",
@@ -878,6 +874,11 @@
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
             "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
+          },
+          "gem_mdio": {
+            "mode": "Master",
+            "vlnv_bus_definition": "xilinx.com:interface:mdio:1.0",
+            "vlnv": "xilinx.com:interface:mdio_rtl:1.0"
           }
         },
         "ports": {
@@ -3930,6 +3931,12 @@
               "PSU_MIO_35_DRIVE_STRENGTH": {
                 "value": "4"
               },
+              "PSU_MIO_35_INPUT_TYPE": {
+                "value": "cmos"
+              },
+              "PSU_MIO_35_POLARITY": {
+                "value": "Default"
+              },
               "PSU_MIO_35_PULLUPDOWN": {
                 "value": "pullup"
               },
@@ -3966,14 +3973,29 @@
               "PSU_MIO_37_SLEW": {
                 "value": "fast"
               },
+              "PSU_MIO_38_DRIVE_STRENGTH": {
+                "value": "12"
+              },
               "PSU_MIO_38_INPUT_TYPE": {
                 "value": "cmos"
+              },
+              "PSU_MIO_38_POLARITY": {
+                "value": "Default"
               },
               "PSU_MIO_38_PULLUPDOWN": {
                 "value": "pullup"
               },
+              "PSU_MIO_38_SLEW": {
+                "value": "fast"
+              },
               "PSU_MIO_39_DRIVE_STRENGTH": {
                 "value": "4"
+              },
+              "PSU_MIO_39_INPUT_TYPE": {
+                "value": "cmos"
+              },
+              "PSU_MIO_39_POLARITY": {
+                "value": "Default"
               },
               "PSU_MIO_39_PULLUPDOWN": {
                 "value": "pulldown"
@@ -5449,7 +5471,10 @@
                 "value": "0"
               },
               "PSU__ENET0__GRP_MDIO__ENABLE": {
-                "value": "0"
+                "value": "1"
+              },
+              "PSU__ENET0__GRP_MDIO__IO": {
+                "value": "EMIO"
               },
               "PSU__ENET0__PERIPHERAL__ENABLE": {
                 "value": "1"
@@ -5965,7 +5990,10 @@
                 "value": "APB"
               },
               "PSU__LPD_SLCR__CSUPMU__ACT_FREQMHZ": {
-                "value": "100.000000"
+                "value": "100"
+              },
+              "PSU__LPD_SLCR__CSUPMU__FREQMHZ": {
+                "value": "100"
               },
               "PSU__MAXIGP0__DATA_WIDTH": {
                 "value": "128"
@@ -6650,6 +6678,88 @@
                 }
               }
             }
+          },
+          "mdio_hub_0": {
+            "vlnv": "xilinx.com:module_ref:mdio_hub:1.0",
+            "xci_name": "design_1_mdio_hub_0_0",
+            "xci_path": "ip\\design_1_mdio_hub_0_0\\design_1_mdio_hub_0_0.xci",
+            "inst_hier_path": "cpu/mdio_hub_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "mdio_hub",
+              "boundary_crc": "0x0"
+            },
+            "interface_ports": {
+              "mdio0": {
+                "mode": "Slave",
+                "vlnv_bus_definition": "xilinx.com:interface:mdio:1.0",
+                "vlnv": "xilinx.com:interface:mdio_rtl:1.0",
+                "port_maps": {
+                  "MDIO_I": {
+                    "physical_name": "mdio0_i",
+                    "direction": "O"
+                  },
+                  "MDIO_O": {
+                    "physical_name": "mdio0_o",
+                    "direction": "I"
+                  },
+                  "MDIO_T": {
+                    "physical_name": "mdio0_t",
+                    "direction": "I"
+                  },
+                  "MDC": {
+                    "physical_name": "mdc0",
+                    "direction": "I"
+                  }
+                }
+              },
+              "mdio1": {
+                "mode": "Slave",
+                "vlnv_bus_definition": "xilinx.com:interface:mdio:1.0",
+                "vlnv": "xilinx.com:interface:mdio_rtl:1.0",
+                "port_maps": {
+                  "MDIO_I": {
+                    "physical_name": "mdio1_i",
+                    "direction": "O"
+                  },
+                  "MDIO_O": {
+                    "physical_name": "mdio1_o",
+                    "direction": "I"
+                  },
+                  "MDIO_T": {
+                    "physical_name": "mdio1_t",
+                    "direction": "I"
+                  },
+                  "MDC": {
+                    "physical_name": "mdc1",
+                    "direction": "I"
+                  }
+                }
+              },
+              "mdio": {
+                "mode": "Master",
+                "vlnv_bus_definition": "xilinx.com:interface:mdio:1.0",
+                "vlnv": "xilinx.com:interface:mdio_rtl:1.0",
+                "port_maps": {
+                  "MDIO_I": {
+                    "physical_name": "mdio_i",
+                    "direction": "I"
+                  },
+                  "MDIO_O": {
+                    "physical_name": "mdio_o",
+                    "direction": "O"
+                  },
+                  "MDIO_T": {
+                    "physical_name": "mdio_t",
+                    "direction": "O"
+                  },
+                  "MDC": {
+                    "physical_name": "mdc",
+                    "direction": "O"
+                  }
+                }
+              }
+            }
           }
         },
         "interface_nets": {
@@ -6663,6 +6773,12 @@
             "interface_ports": [
               "S_AXI_HP0_FPD",
               "zynq_ultra_ps_e_0/S_AXI_HP0_FPD"
+            ]
+          },
+          "Conn3": {
+            "interface_ports": [
+              "gem_mdio",
+              "mdio_hub_0/mdio"
             ]
           },
           "S_AXI2_1": {
@@ -6761,10 +6877,16 @@
               "ps7_0_axi_periph/M09_AXI"
             ]
           },
+          "zynq_ultra_ps_e_0_MDIO_ENET0": {
+            "interface_ports": [
+              "zynq_ultra_ps_e_0/MDIO_ENET0",
+              "mdio_hub_0/mdio0"
+            ]
+          },
           "zynq_ultra_ps_e_0_MDIO_ENET1": {
             "interface_ports": [
-              "gem_mdio",
-              "zynq_ultra_ps_e_0/MDIO_ENET1"
+              "zynq_ultra_ps_e_0/MDIO_ENET1",
+              "mdio_hub_0/mdio1"
             ]
           },
           "zynq_ultra_ps_e_0_M_AXI_HPM0_FPD": {
@@ -11222,16 +11344,16 @@
           "cpu/M05_AXI"
         ]
       },
-      "cpu_MDIO_ENET0_0": {
-        "interface_ports": [
-          "gem_mdio",
-          "cpu/gem_mdio"
-        ]
-      },
       "cpu_UART_0_0": {
         "interface_ports": [
           "uart",
           "cpu/uart"
+        ]
+      },
+      "cpu_gem_mdio": {
+        "interface_ports": [
+          "gem_mdio",
+          "cpu/gem_mdio"
         ]
       },
       "gt_ref_clk_0_1": {
