@@ -75,8 +75,7 @@
           "m14_couplers": {},
           "m15_couplers": {}
         },
-        "zynq_ultra_ps_e_0": "",
-        "mdio_hub_0": ""
+        "zynq_ultra_ps_e_0": ""
       },
       "IPMC": {
         "i2cSlave_0": "",
@@ -5492,10 +5491,7 @@
                 "value": "0"
               },
               "PSU__ENET1__GRP_MDIO__ENABLE": {
-                "value": "1"
-              },
-              "PSU__ENET1__GRP_MDIO__IO": {
-                "value": "EMIO"
+                "value": "0"
               },
               "PSU__ENET1__PERIPHERAL__ENABLE": {
                 "value": "1"
@@ -6678,88 +6674,6 @@
                 }
               }
             }
-          },
-          "mdio_hub_0": {
-            "vlnv": "xilinx.com:module_ref:mdio_hub:1.0",
-            "xci_name": "design_1_mdio_hub_0_0",
-            "xci_path": "ip\\design_1_mdio_hub_0_0\\design_1_mdio_hub_0_0.xci",
-            "inst_hier_path": "cpu/mdio_hub_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "mdio_hub",
-              "boundary_crc": "0x0"
-            },
-            "interface_ports": {
-              "mdio0": {
-                "mode": "Slave",
-                "vlnv_bus_definition": "xilinx.com:interface:mdio:1.0",
-                "vlnv": "xilinx.com:interface:mdio_rtl:1.0",
-                "port_maps": {
-                  "MDIO_I": {
-                    "physical_name": "mdio0_i",
-                    "direction": "O"
-                  },
-                  "MDIO_O": {
-                    "physical_name": "mdio0_o",
-                    "direction": "I"
-                  },
-                  "MDIO_T": {
-                    "physical_name": "mdio0_t",
-                    "direction": "I"
-                  },
-                  "MDC": {
-                    "physical_name": "mdc0",
-                    "direction": "I"
-                  }
-                }
-              },
-              "mdio1": {
-                "mode": "Slave",
-                "vlnv_bus_definition": "xilinx.com:interface:mdio:1.0",
-                "vlnv": "xilinx.com:interface:mdio_rtl:1.0",
-                "port_maps": {
-                  "MDIO_I": {
-                    "physical_name": "mdio1_i",
-                    "direction": "O"
-                  },
-                  "MDIO_O": {
-                    "physical_name": "mdio1_o",
-                    "direction": "I"
-                  },
-                  "MDIO_T": {
-                    "physical_name": "mdio1_t",
-                    "direction": "I"
-                  },
-                  "MDC": {
-                    "physical_name": "mdc1",
-                    "direction": "I"
-                  }
-                }
-              },
-              "mdio": {
-                "mode": "Master",
-                "vlnv_bus_definition": "xilinx.com:interface:mdio:1.0",
-                "vlnv": "xilinx.com:interface:mdio_rtl:1.0",
-                "port_maps": {
-                  "MDIO_I": {
-                    "physical_name": "mdio_i",
-                    "direction": "I"
-                  },
-                  "MDIO_O": {
-                    "physical_name": "mdio_o",
-                    "direction": "O"
-                  },
-                  "MDIO_T": {
-                    "physical_name": "mdio_t",
-                    "direction": "O"
-                  },
-                  "MDC": {
-                    "physical_name": "mdc",
-                    "direction": "O"
-                  }
-                }
-              }
-            }
           }
         },
         "interface_nets": {
@@ -6773,12 +6687,6 @@
             "interface_ports": [
               "S_AXI_HP0_FPD",
               "zynq_ultra_ps_e_0/S_AXI_HP0_FPD"
-            ]
-          },
-          "Conn3": {
-            "interface_ports": [
-              "gem_mdio",
-              "mdio_hub_0/mdio"
             ]
           },
           "S_AXI2_1": {
@@ -6879,14 +6787,8 @@
           },
           "zynq_ultra_ps_e_0_MDIO_ENET0": {
             "interface_ports": [
-              "zynq_ultra_ps_e_0/MDIO_ENET0",
-              "mdio_hub_0/mdio0"
-            ]
-          },
-          "zynq_ultra_ps_e_0_MDIO_ENET1": {
-            "interface_ports": [
-              "zynq_ultra_ps_e_0/MDIO_ENET1",
-              "mdio_hub_0/mdio1"
+              "gem_mdio",
+              "zynq_ultra_ps_e_0/MDIO_ENET0"
             ]
           },
           "zynq_ultra_ps_e_0_M_AXI_HPM0_FPD": {
