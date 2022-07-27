@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xA5E5BECA8F5D8B4A",
+      "boundary_crc": "0x8C920B0F2CD699BF",
       "device": "xck26-sfvc784-2LV-c",
       "gen_directory": "../../../../apex_kria_port.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -398,6 +398,32 @@
       },
       "pok_payload": {
         "direction": "I"
+      },
+      "xg_refclk_out": {
+        "type": "clk",
+        "direction": "O",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "XG_inst_0_xxv_ethernet_0_0_gt_refclk_out",
+            "value_src": "default_prop"
+          },
+          "FREQ_HZ": {
+            "value": "156250000",
+            "value_src": "user_prop"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0",
+            "value_src": "user_prop"
+          }
+        }
       }
     },
     "components": {
@@ -10732,7 +10758,7 @@
               },
               "HAS_REGION": {
                 "value": "1",
-                "value_src": "default"
+                "value_src": "default_prop"
               },
               "HAS_RRESP": {
                 "value": "1",
@@ -11035,6 +11061,32 @@
             "direction": "O",
             "left": "0",
             "right": "0"
+          },
+          "gt_refclk_out": {
+            "type": "clk",
+            "direction": "O",
+            "parameters": {
+              "CLK_DOMAIN": {
+                "value": "XG_inst_0_xxv_ethernet_0_0_gt_refclk_out",
+                "value_src": "default_prop"
+              },
+              "FREQ_HZ": {
+                "value": "156250000",
+                "value_src": "user_prop"
+              },
+              "FREQ_TOLERANCE_HZ": {
+                "value": "0",
+                "value_src": "default"
+              },
+              "INSERT_VIP": {
+                "value": "0",
+                "value_src": "default"
+              },
+              "PHASE": {
+                "value": "0",
+                "value_src": "user_prop"
+              }
+            }
           }
         },
         "post_compiled_compname": "XG_inst_0",
@@ -11042,7 +11094,7 @@
         "variant_info": {
           "XG.bd": {
             "scoped_diagram": "XG_inst_0.bd",
-            "design_checksum": "0xA612A03B",
+            "design_checksum": "0xE816D6E9",
             "ref_name": "XG",
             "ref_subinst_path": "design_1_XG_0",
             "ref_type": "Block Design",
@@ -11363,6 +11415,12 @@
         "ports": [
           "XG_0/dout",
           "cpu/In7"
+        ]
+      },
+      "XG_0_gt_refclk_out": {
+        "ports": [
+          "XG_0/gt_refclk_out",
+          "xg_refclk_out"
         ]
       },
       "aresetn_bot": {

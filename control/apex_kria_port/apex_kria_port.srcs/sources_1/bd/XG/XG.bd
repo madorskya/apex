@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x629002C137E6ECB2",
+      "boundary_crc": "0x73421B08126C7968",
       "device": "xck26-sfvc784-2LV-c",
       "gen_directory": "../../../../apex_kria_port.gen/sources_1/bd/XG",
       "name": "XG",
@@ -383,6 +383,32 @@
         "direction": "O",
         "left": "0",
         "right": "0"
+      },
+      "gt_refclk_out": {
+        "type": "clk",
+        "direction": "O",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "XG_xxv_ethernet_0_0_gt_refclk_out",
+            "value_src": "default_prop"
+          },
+          "FREQ_HZ": {
+            "value": "156250000",
+            "value_src": "user_prop"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0",
+            "value_src": "user_prop"
+          }
+        }
       }
     },
     "components": {
@@ -2307,6 +2333,12 @@
         "ports": [
           "sfp_tx_dis/dout",
           "sfp_tx_dis"
+        ]
+      },
+      "xxv_ethernet_0_gt_refclk_out": {
+        "ports": [
+          "xxv_ethernet_0/gt_refclk_out",
+          "gt_refclk_out"
         ]
       },
       "xxv_ethernet_0_tx_clk_out_0": {

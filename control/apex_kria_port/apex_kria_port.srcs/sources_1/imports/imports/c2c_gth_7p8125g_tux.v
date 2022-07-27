@@ -4,8 +4,9 @@ module c2c_gth_7p8125g_tux
 (
 
   // Differential reference clock inputs
-  input  wire mgtrefclk0_x0y1_p,
-  input  wire mgtrefclk0_x0y1_n,
+//  input  wire mgtrefclk0_x0y1_p,
+//  input  wire mgtrefclk0_x0y1_n,
+  input mgtrefclk0_x0y1_int,
 
   // Serial data ports for transceiver channel 0
   input  wire ch0_gthrxn_in,
@@ -442,19 +443,19 @@ module c2c_gth_7p8125g_tux
   // and assign the single-ended output of each differential reference clock buffer to the appropriate PLL input signal
 
   // Differential reference clock buffer for MGTREFCLK0_X0Y1
-  wire mgtrefclk0_x0y1_int;
+//  wire mgtrefclk0_x0y1_int;
 
-  IBUFDS_GTE4 #(
-    .REFCLK_EN_TX_PATH  (1'b0),
-    .REFCLK_HROW_CK_SEL (2'b00),
-    .REFCLK_ICNTL_RX    (2'b00)
-  ) IBUFDS_GTE4_MGTREFCLK0_X0Y1_INST (
-    .I     (mgtrefclk0_x0y1_p),
-    .IB    (mgtrefclk0_x0y1_n),
-    .CEB   (1'b0),
-    .O     (mgtrefclk0_x0y1_int),
-    .ODIV2 ()
-  );
+//  IBUFDS_GTE4 #(
+//    .REFCLK_EN_TX_PATH  (1'b0),
+//    .REFCLK_HROW_CK_SEL (2'b00),
+//    .REFCLK_ICNTL_RX    (2'b00)
+//  ) IBUFDS_GTE4_MGTREFCLK0_X0Y1_INST (
+//    .I     (mgtrefclk0_x0y1_p),
+//    .IB    (mgtrefclk0_x0y1_n),
+//    .CEB   (1'b0),
+//    .O     (mgtrefclk0_x0y1_int),
+//    .ODIV2 ()
+//  );
 
   assign ch0_gtrefclk0_int = mgtrefclk0_x0y1_int;
   assign ch1_gtrefclk0_int = mgtrefclk0_x0y1_int;
