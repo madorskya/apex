@@ -319,7 +319,9 @@ module apex_control_mgt_top
         .xg_gtx_n            (g10s_txn),
         .xg_gtx_p            (g10s_txp),
         .xg_refclk_clk_n     (gth_refclk0_c2m_n), 
-        .xg_refclk_clk_p     (gth_refclk0_c2m_p) // this refclk is the same as for C2C
+        .xg_refclk_clk_p     (gth_refclk0_c2m_p), // this refclk is the same as for C2C
+        .g10s_scl_io         (g10s_scl),
+        .g10s_sda_io         (g10s_sda)
     );
             
     // reach into 10G eth's kishkes and pluck buffered ref clk
