@@ -130,7 +130,7 @@ module apex_control_mgt_top
     wire g10s_rxalarm;
     wire g10s_txalarm;
     wire g10s_mdc;
-    wire g10s_resetn;
+    wire g10s_resetn = 1'b1;
     wire g10s_mdio;
     wire g10s_lasi;
     wire g10s_rxp;
@@ -319,11 +319,10 @@ module apex_control_mgt_top
         .xg_gtx_n            (g10s_txn),
         .xg_gtx_p            (g10s_txp),
         .xg_refclk_clk_n     (gth_refclk0_c2m_n), 
-        .xg_refclk_clk_p     (gth_refclk0_c2m_p), // this refclk is the same as for C2C
-        .xg_refclk_out       () // buffered ref clk, 156.25M 
+        .xg_refclk_clk_p     (gth_refclk0_c2m_p) // this refclk is the same as for C2C
     );
             
-    // reach into 10G eth guts and pluck buffered ref clk
+    // reach into 10G eth's kishkes and pluck buffered ref clk
     assign xg_refclk_out = bdw.design_1_i.XG_0.xxv_ethernet_0.inst.gt_refclk;            
         
     c2c_gth_7p8125g_tux c2c_mgt 
