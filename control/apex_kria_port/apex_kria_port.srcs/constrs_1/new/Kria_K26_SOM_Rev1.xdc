@@ -37,75 +37,52 @@
 #set_property PACKAGE_PIN C12      [get_ports "RSV_FPGA_C12"] ;# Bank  45 VCCO - som240_1_b13 - IO_L12N_AD8N_45
 #set_property PACKAGE_PIN D12      [get_ports "RSV_FPGA_D12"] ;# Bank  45 VCCO - som240_1_b13 - IO_L12P_AD8P_45
 #set_property PACKAGE_PIN A11      [get_ports "No Connect"] ;# Bank  45 VCCO - som240_1_b13 - IO_L11N_AD9N_45
-set_property PACKAGE_PIN A12      [get_ports "som240_1_c24"] ;# Bank  45 VCCO - som240_1_b13 - IO_L11P_AD9P_45
-set_property PACKAGE_PIN A10      [get_ports "som240_1_c23"] ;# Bank  45 VCCO - som240_1_b13 - IO_L10N_AD10N_45
-set_property PACKAGE_PIN B11      [get_ports "som240_1_c22"] ;# Bank  45 VCCO - som240_1_b13 - IO_L10P_AD10P_45
-set_property PACKAGE_PIN B10      [get_ports "som240_1_b20"] ;# Bank  45 VCCO - som240_1_b13 - IO_L9N_AD11N_45
-set_property PACKAGE_PIN C11      [get_ports "som240_1_d22"] ;# Bank  45 VCCO - som240_1_b13 - IO_L9P_AD11P_45
-set_property PACKAGE_PIN D11      [get_ports "som240_1_b22"] ;# Bank  45 VCCO - som240_1_b13 - IO_L8N_HDGC_45
-set_property PACKAGE_PIN E12      [get_ports "som240_1_b21"] ;# Bank  45 VCCO - som240_1_b13 - IO_L8P_HDGC_45
-set_property PACKAGE_PIN D10      [get_ports "som240_1_d21"] ;# Bank  45 VCCO - som240_1_b13 - IO_L7N_HDGC_45
-set_property PACKAGE_PIN E10      [get_ports "som240_1_d20"] ;# Bank  45 VCCO - som240_1_b13 - IO_L7P_HDGC_45
-set_property PACKAGE_PIN F11      [get_ports "som240_1_a15"] ;# Bank  45 VCCO - som240_1_b13 - IO_L6N_HDGC_45
-set_property PACKAGE_PIN F12      [get_ports "som240_1_c20"] ;# Bank  45 VCCO - som240_1_b13 - IO_L6P_HDGC_45
-set_property PACKAGE_PIN F10      [get_ports "som240_1_d17"] ;# Bank  45 VCCO - som240_1_b13 - IO_L5N_HDGC_45
-set_property PACKAGE_PIN G11      [get_ports "som240_1_d16"] ;# Bank  45 VCCO - som240_1_b13 - IO_L5P_HDGC_45
-set_property PACKAGE_PIN H12      [get_ports "som240_1_a17"] ;# Bank  45 VCCO - som240_1_b13 - IO_L4N_AD12N_45
-set_property PACKAGE_PIN J12      [get_ports "som240_1_a16"] ;# Bank  45 VCCO - som240_1_b13 - IO_L4P_AD12P_45
-set_property PACKAGE_PIN G10      [get_ports "som240_1_c19"] ;# Bank  45 VCCO - som240_1_b13 - IO_L3N_AD13N_45
-set_property PACKAGE_PIN H11      [get_ports "som240_1_c18"] ;# Bank  45 VCCO - som240_1_b13 - IO_L3P_AD13P_45
-set_property PACKAGE_PIN K12      [get_ports "som240_1_b18"] ;# Bank  45 VCCO - som240_1_b13 - IO_L2N_AD14N_45
-set_property PACKAGE_PIN K13      [get_ports "som240_1_b17"] ;# Bank  45 VCCO - som240_1_b13 - IO_L2P_AD14P_45
-set_property PACKAGE_PIN J10      [get_ports "som240_1_b16"] ;# Bank  45 VCCO - som240_1_b13 - IO_L1N_AD15N_45
-set_property PACKAGE_PIN J11      [get_ports "som240_1_d18"] ;# Bank  45 VCCO - som240_1_b13 - IO_L1P_AD15P_45
-set_property PACKAGE_PIN AA12     [get_ports "som240_2_a60"] ;# Bank  44 VCCO - som240_2_d59 - IO_L12N_AD8N_44
-set_property PACKAGE_PIN Y12      [get_ports "som240_2_a59"] ;# Bank  44 VCCO - som240_2_d59 - IO_L12P_AD8P_44
-set_property PACKAGE_PIN W11      [get_ports "som240_2_a58"] ;# Bank  44 VCCO - som240_2_d59 - IO_L11N_AD9N_44
-set_property PACKAGE_PIN W12      [get_ports "som240_2_a56"] ;# Bank  44 VCCO - som240_2_d59 - IO_L11P_AD9P_44
-set_property PACKAGE_PIN Y13      [get_ports "som240_2_a55"] ;# Bank  44 VCCO - som240_2_d59 - IO_L10N_AD10N_44
-set_property PACKAGE_PIN Y14      [get_ports "som240_2_a54"] ;# Bank  44 VCCO - som240_2_d59 - IO_L10P_AD10P_44
-set_property PACKAGE_PIN W13      [get_ports "som240_2_b56"] ;# Bank  44 VCCO - som240_2_d59 - IO_L9N_AD11N_44
-set_property PACKAGE_PIN W14      [get_ports "som240_2_b54"] ;# Bank  44 VCCO - som240_2_d59 - IO_L9P_AD11P_44
-set_property PACKAGE_PIN AB14     [get_ports "som240_2_b58"] ;# Bank  44 VCCO - som240_2_d59 - IO_L8N_HDGC_44
-set_property PACKAGE_PIN AB15     [get_ports "som240_2_b57"] ;# Bank  44 VCCO - som240_2_d59 - IO_L8P_HDGC_44
-set_property PACKAGE_PIN AB13     [get_ports "som240_2_b53"] ;# Bank  44 VCCO - som240_2_d59 - IO_L7N_HDGC_44
-set_property PACKAGE_PIN AA13     [get_ports "som240_2_b52"] ;# Bank  44 VCCO - som240_2_d59 - IO_L7P_HDGC_44
-set_property PACKAGE_PIN AC13     [get_ports "som240_2_c58"] ;# Bank  44 VCCO - som240_2_d59 - IO_L6N_HDGC_44
-set_property PACKAGE_PIN AC14     [get_ports "som240_2_c56"] ;# Bank  44 VCCO - som240_2_d59 - IO_L6P_HDGC_44
-set_property PACKAGE_PIN AD14     [get_ports "som240_2_d53"] ;# Bank  44 VCCO - som240_2_d59 - IO_L5N_HDGC_44
-set_property PACKAGE_PIN AD15     [get_ports "som240_2_d52"] ;# Bank  44 VCCO - som240_2_d59 - IO_L5P_HDGC_44
-set_property PACKAGE_PIN AF13     [get_ports "som240_2_c60"] ;# Bank  44 VCCO - som240_2_d59 - IO_L4N_AD12N_44
-set_property PACKAGE_PIN AE13     [get_ports "som240_2_c59"] ;# Bank  44 VCCO - som240_2_d59 - IO_L4P_AD12P_44
-set_property PACKAGE_PIN AH13     [get_ports "som240_2_c55"] ;# Bank  44 VCCO - som240_2_d59 - IO_L3N_AD13N_44
-set_property PACKAGE_PIN AG13     [get_ports "som240_2_c54"] ;# Bank  44 VCCO - som240_2_d59 - IO_L3P_AD13P_44
-set_property PACKAGE_PIN AH14     [get_ports "som240_2_d58"] ;# Bank  44 VCCO - som240_2_d59 - IO_L2N_AD14N_44
-set_property PACKAGE_PIN AG14     [get_ports "som240_2_d57"] ;# Bank  44 VCCO - som240_2_d59 - IO_L2P_AD14P_44
-set_property PACKAGE_PIN AE14     [get_ports "som240_2_d56"] ;# Bank  44 VCCO - som240_2_d59 - IO_L1N_AD15N_44
-set_property PACKAGE_PIN AE15     [get_ports "som240_2_d54"] ;# Bank  44 VCCO - som240_2_d59 - IO_L1P_AD15P_44
-set_property PACKAGE_PIN AB9      [get_ports "som240_2_a52"] ;# Bank  43 VCCO - som240_2_b59 - IO_L12N_AD0N_43
-set_property PACKAGE_PIN AB10     [get_ports "som240_2_a51"] ;# Bank  43 VCCO - som240_2_b59 - IO_L12P_AD0P_43
-set_property PACKAGE_PIN AA8      [get_ports "som240_2_a50"] ;# Bank  43 VCCO - som240_2_b59 - IO_L11N_AD1N_43
-set_property PACKAGE_PIN Y9       [get_ports "som240_2_a48"] ;# Bank  43 VCCO - som240_2_b59 - IO_L11P_AD1P_43
-set_property PACKAGE_PIN Y10      [get_ports "som240_2_a47"] ;# Bank  43 VCCO - som240_2_b59 - IO_L10N_AD2N_43
-set_property PACKAGE_PIN W10      [get_ports "som240_2_a46"] ;# Bank  43 VCCO - som240_2_b59 - IO_L10P_AD2P_43
-set_property PACKAGE_PIN AA10     [get_ports "som240_2_b48"] ;# Bank  43 VCCO - som240_2_b59 - IO_L9N_AD3N_43
-set_property PACKAGE_PIN AA11     [get_ports "som240_2_b46"] ;# Bank  43 VCCO - som240_2_b59 - IO_L9P_AD3P_43
-set_property PACKAGE_PIN AC11     [get_ports "som240_2_b50"] ;# Bank  43 VCCO - som240_2_b59 - IO_L8N_HDGC_AD4N_43
-set_property PACKAGE_PIN AB11     [get_ports "som240_2_b49"] ;# Bank  43 VCCO - som240_2_b59 - IO_L8P_HDGC_AD4P_43
-set_property PACKAGE_PIN AD10     [get_ports "som240_2_b45"] ;# Bank  43 VCCO - som240_2_b59 - IO_L7N_HDGC_AD5N_43
-set_property PACKAGE_PIN AD11     [get_ports "som240_2_b44"] ;# Bank  43 VCCO - som240_2_b59 - IO_L7P_HDGC_AD5P_43
-set_property PACKAGE_PIN AD12     [get_ports "som240_2_c50"] ;# Bank  43 VCCO - som240_2_b59 - IO_L6N_HDGC_AD6N_43
-set_property PACKAGE_PIN AC12     [get_ports "som240_2_c48"] ;# Bank  43 VCCO - som240_2_b59 - IO_L6P_HDGC_AD6P_43
-set_property PACKAGE_PIN AF12     [get_ports "som240_2_d45"] ;# Bank  43 VCCO - som240_2_b59 - IO_L5N_HDGC_AD7N_43
-set_property PACKAGE_PIN AE12     [get_ports "som240_2_d44"] ;# Bank  43 VCCO - som240_2_b59 - IO_L5P_HDGC_AD7P_43
-set_property PACKAGE_PIN AF10     [get_ports "som240_2_c52"] ;# Bank  43 VCCO - som240_2_b59 - IO_L4N_AD8N_43
-set_property PACKAGE_PIN AE10     [get_ports "som240_2_c51"] ;# Bank  43 VCCO - som240_2_b59 - IO_L4P_AD8P_43
-set_property PACKAGE_PIN AH11     [get_ports "som240_2_c47"] ;# Bank  43 VCCO - som240_2_b59 - IO_L3N_AD9N_43
-set_property PACKAGE_PIN AH12     [get_ports "som240_2_c46"] ;# Bank  43 VCCO - som240_2_b59 - IO_L3P_AD9P_43
-set_property PACKAGE_PIN AG11     [get_ports "som240_2_d50"] ;# Bank  43 VCCO - som240_2_b59 - IO_L2N_AD10N_43
-set_property PACKAGE_PIN AF11     [get_ports "som240_2_d49"] ;# Bank  43 VCCO - som240_2_b59 - IO_L2P_AD10P_43
-set_property PACKAGE_PIN AH10     [get_ports "som240_2_d48"] ;# Bank  43 VCCO - som240_2_b59 - IO_L1N_AD11N_43
-set_property PACKAGE_PIN AG10     [get_ports "som240_2_d46"] ;# Bank  43 VCCO - som240_2_b59 - IO_L1P_AD11P_43
+set_property PACKAGE_PIN A12 [get_ports som240_1_c24]
+set_property PACKAGE_PIN A10 [get_ports som240_1_c23]
+set_property PACKAGE_PIN B11 [get_ports som240_1_c22]
+set_property PACKAGE_PIN B10 [get_ports som240_1_b20]
+set_property PACKAGE_PIN C11 [get_ports som240_1_d22]
+set_property PACKAGE_PIN D11 [get_ports som240_1_b22]
+set_property PACKAGE_PIN E12 [get_ports som240_1_b21]
+set_property PACKAGE_PIN D10 [get_ports som240_1_d21]
+set_property PACKAGE_PIN E10 [get_ports som240_1_d20]
+set_property PACKAGE_PIN F11 [get_ports som240_1_a15]
+set_property PACKAGE_PIN F12 [get_ports som240_1_c20]
+set_property PACKAGE_PIN F10 [get_ports som240_1_d17]
+set_property PACKAGE_PIN G11 [get_ports som240_1_d16]
+set_property PACKAGE_PIN H12 [get_ports som240_1_a17]
+set_property PACKAGE_PIN J12 [get_ports som240_1_a16]
+set_property PACKAGE_PIN G10 [get_ports som240_1_c19]
+set_property PACKAGE_PIN H11 [get_ports som240_1_c18]
+set_property PACKAGE_PIN K12 [get_ports som240_1_b18]
+set_property PACKAGE_PIN K13 [get_ports som240_1_b17]
+set_property PACKAGE_PIN J10 [get_ports som240_1_b16]
+set_property PACKAGE_PIN J11 [get_ports som240_1_d18]
+set_property PACKAGE_PIN AA12 [get_ports som240_2_a60]
+set_property PACKAGE_PIN Y12 [get_ports som240_2_a59]
+set_property PACKAGE_PIN W11 [get_ports som240_2_a58]
+set_property PACKAGE_PIN Y13 [get_ports som240_2_a55]
+set_property PACKAGE_PIN Y14 [get_ports som240_2_a54]
+set_property PACKAGE_PIN AF13 [get_ports som240_2_c60]
+set_property PACKAGE_PIN AE13 [get_ports som240_2_c59]
+set_property PACKAGE_PIN AH14 [get_ports som240_2_d58]
+set_property PACKAGE_PIN AG14 [get_ports som240_2_d57]
+set_property PACKAGE_PIN AB9 [get_ports som240_2_a52]
+set_property PACKAGE_PIN AB10 [get_ports som240_2_a51]
+set_property PACKAGE_PIN Y9 [get_ports som240_2_a48]
+set_property PACKAGE_PIN Y10 [get_ports som240_2_a47]
+set_property PACKAGE_PIN W10 [get_ports som240_2_a46]
+set_property PACKAGE_PIN AA10 [get_ports som240_2_b48]
+set_property PACKAGE_PIN AA11 [get_ports som240_2_b46]
+set_property PACKAGE_PIN AB11 [get_ports som240_2_b49]
+set_property PACKAGE_PIN AD10 [get_ports som240_2_b45]
+set_property PACKAGE_PIN AD11 [get_ports som240_2_b44]
+set_property PACKAGE_PIN AF12 [get_ports som240_2_d45]
+set_property PACKAGE_PIN AE12 [get_ports som240_2_d44]
+set_property PACKAGE_PIN AG11 [get_ports som240_2_d50]
+set_property PACKAGE_PIN AF11 [get_ports som240_2_d49]
+set_property PACKAGE_PIN AH10 [get_ports som240_2_d48]
+set_property PACKAGE_PIN AG10 [get_ports som240_2_d46]
 #set_property PACKAGE_PIN B9       [get_ports "No Connect"] ;# Bank  66 VCCO - som240_1_d1 - IO_L24N_T3U_N11_66
 #set_property PACKAGE_PIN C9       [get_ports "No Connect"] ;# Bank  66 VCCO - som240_1_d1 - IO_L24P_T3U_N10_66
 #set_property PACKAGE_PIN A8       [get_ports "No Connect"] ;# Bank  66 VCCO - som240_1_d1 - IO_L23N_T3U_N9_66
@@ -122,169 +99,56 @@ set_property PACKAGE_PIN AG10     [get_ports "som240_2_d46"] ;# Bank  43 VCCO - 
 #set_property PACKAGE_PIN E7       [get_ports "No Connect"] ;# Bank  66 VCCO - som240_1_d1 - IO_T2U_N12_66
 #set_property PACKAGE_PIN D9       [get_ports "No Connect"] ;# Bank  66 VCCO - som240_1_d1 - IO_L18N_T2U_N11_AD2N_66
 #set_property PACKAGE_PIN E9       [get_ports "No Connect"] ;# Bank  66 VCCO - som240_1_d1 - IO_L18P_T2U_N10_AD2P_66
-set_property PACKAGE_PIN E8       [get_ports "som240_1_d14"] ;# Bank  66 VCCO - som240_1_d1 - IO_L17N_T2U_N9_AD10N_66
-set_property PACKAGE_PIN F8       [get_ports "som240_1_d13"] ;# Bank  66 VCCO - som240_1_d1 - IO_L17P_T2U_N8_AD10P_66
-set_property PACKAGE_PIN F7       [get_ports "som240_1_a13"] ;# Bank  66 VCCO - som240_1_d1 - IO_L16N_T2U_N7_QBC_AD3N_66
-set_property PACKAGE_PIN G8       [get_ports "som240_1_a12"] ;# Bank  66 VCCO - som240_1_d1 - IO_L16P_T2U_N6_QBC_AD3P_66
-set_property PACKAGE_PIN F6       [get_ports "som240_1_a10"] ;# Bank  66 VCCO - som240_1_d1 - IO_L15N_T2L_N5_AD11N_66
-set_property PACKAGE_PIN G6       [get_ports "som240_1_a9"] ;# Bank  66 VCCO - som240_1_d1 - IO_L15P_T2L_N4_AD11P_66
-set_property PACKAGE_PIN D5       [get_ports "som240_1_b11"] ;# Bank  66 VCCO - som240_1_d1 - IO_L14N_T2L_N3_GC_66
-set_property PACKAGE_PIN E5       [get_ports "som240_1_b10"] ;# Bank  66 VCCO - som240_1_d1 - IO_L14P_T2L_N2_GC_66
-set_property PACKAGE_PIN D6       [get_ports "som240_1_c13"] ;# Bank  66 VCCO - som240_1_d1 - IO_L13N_T2L_N1_GC_QBC_66
-set_property PACKAGE_PIN D7       [get_ports "som240_1_c12"] ;# Bank  66 VCCO - som240_1_d1 - IO_L13P_T2L_N0_GC_QBC_66
-set_property PACKAGE_PIN C2       [get_ports "som240_1_a7"] ;# Bank  66 VCCO - som240_1_d1 - IO_L12N_T1U_N11_GC_66
-set_property PACKAGE_PIN C3       [get_ports "som240_1_a6"] ;# Bank  66 VCCO - som240_1_d1 - IO_L12P_T1U_N10_GC_66
-set_property PACKAGE_PIN C4       [get_ports "som240_1_d11"] ;# Bank  66 VCCO - som240_1_d1 - IO_L11N_T1U_N9_GC_66
-set_property PACKAGE_PIN D4       [get_ports "som240_1_d10"] ;# Bank  66 VCCO - som240_1_d1 - IO_L11P_T1U_N8_GC_66
-set_property PACKAGE_PIN A4       [get_ports "som240_1_c10"] ;# Bank  66 VCCO - som240_1_d1 - IO_L10N_T1U_N7_QBC_AD4N_66
-set_property PACKAGE_PIN B4       [get_ports "som240_1_c9"] ;# Bank  66 VCCO - som240_1_d1 - IO_L10P_T1U_N6_QBC_AD4P_66
-set_property PACKAGE_PIN A3       [get_ports "som240_1_b8"] ;# Bank  66 VCCO - som240_1_d1 - IO_L9N_T1L_N5_AD12N_66
-set_property PACKAGE_PIN B3       [get_ports "som240_1_b7"] ;# Bank  66 VCCO - som240_1_d1 - IO_L9P_T1L_N4_AD12P_66
-set_property PACKAGE_PIN A1       [get_ports "som240_1_a4"] ;# Bank  66 VCCO - som240_1_d1 - IO_L8N_T1L_N3_AD5N_66
-set_property PACKAGE_PIN A2       [get_ports "som240_1_a3"] ;# Bank  66 VCCO - som240_1_d1 - IO_L8P_T1L_N2_AD5P_66
-set_property PACKAGE_PIN B1       [get_ports "som240_1_b2"] ;# Bank  66 VCCO - som240_1_d1 - IO_L7N_T1L_N1_QBC_AD13N_66
-set_property PACKAGE_PIN C1       [get_ports "som240_1_b1"] ;# Bank  66 VCCO - som240_1_d1 - IO_L7P_T1L_N0_QBC_AD13P_66
+set_property PACKAGE_PIN E8 [get_ports som240_1_d14]
+set_property PACKAGE_PIN F8 [get_ports som240_1_d13]
+set_property PACKAGE_PIN C4 [get_ports som240_1_d11]
 #set_property PACKAGE_PIN D2       [get_ports "No Connect"] ;# Bank  66 VCCO - som240_1_d1 - IO_T1U_N12_66
 #set_property PACKAGE_PIN G4       [get_ports "N36723843"] ;# Bank  66 VCCO - som240_1_d1 - IO_T0U_N12_VRP_66
 #set_property PACKAGE_PIN F5       [get_ports "No Connect"] ;# Bank  66 VCCO - som240_1_d1 - IO_L6N_T0U_N11_AD6N_66
 #set_property PACKAGE_PIN G5       [get_ports "No Connect"] ;# Bank  66 VCCO - som240_1_d1 - IO_L6P_T0U_N10_AD6P_66
-set_property PACKAGE_PIN E3       [get_ports "som240_1_b5"] ;# Bank  66 VCCO - som240_1_d1 - IO_L5N_T0U_N9_AD14N_66
-set_property PACKAGE_PIN E4       [get_ports "som240_1_b4"] ;# Bank  66 VCCO - som240_1_d1 - IO_L5P_T0U_N8_AD14P_66
-set_property PACKAGE_PIN F3       [get_ports "som240_1_c7"] ;# Bank  66 VCCO - som240_1_d1 - IO_L4N_T0U_N7_DBC_AD7N_66
-set_property PACKAGE_PIN G3       [get_ports "som240_1_c6"] ;# Bank  66 VCCO - som240_1_d1 - IO_L4P_T0U_N6_DBC_AD7P_66
-set_property PACKAGE_PIN E2       [get_ports "som240_1_d5"] ;# Bank  66 VCCO - som240_1_d1 - IO_L3N_T0L_N5_AD15N_66
-set_property PACKAGE_PIN F2       [get_ports "som240_1_d4"] ;# Bank  66 VCCO - som240_1_d1 - IO_L3P_T0L_N4_AD15P_66
-set_property PACKAGE_PIN D1       [get_ports "som240_1_d8"] ;# Bank  66 VCCO - som240_1_d1 - IO_L2N_T0L_N3_66
-set_property PACKAGE_PIN E1       [get_ports "som240_1_d7"] ;# Bank  66 VCCO - som240_1_d1 - IO_L2P_T0L_N2_66
-set_property PACKAGE_PIN F1       [get_ports "som240_1_c4"] ;# Bank  66 VCCO - som240_1_d1 - IO_L1N_T0L_N1_DBC_66
-set_property PACKAGE_PIN G1       [get_ports "som240_1_c3"] ;# Bank  66 VCCO - som240_1_d1 - IO_L1P_T0L_N0_DBC_66
 #Other net   PACKAGE_PIN G9       - No Connect                Bank  66 - VREF_66
-set_property PACKAGE_PIN H8       [get_ports "som240_2_a27"] ;# Bank  65 VCCO - som240_2_a44 - IO_L24N_T3U_N11_PERSTN0_65
-set_property PACKAGE_PIN H9       [get_ports "som240_2_a26"] ;# Bank  65 VCCO - som240_2_a44 - IO_L24P_T3U_N10_PERSTN1_I2C_SDA_65
-set_property PACKAGE_PIN J9       [get_ports "som240_2_c24"] ;# Bank  65 VCCO - som240_2_a44 - IO_L23N_T3U_N9_65
-set_property PACKAGE_PIN K9       [get_ports "som240_2_c23"] ;# Bank  65 VCCO - som240_2_a44 - IO_L23P_T3U_N8_I2C_SCLK_65
-set_property PACKAGE_PIN K7       [get_ports "som240_2_d25"] ;# Bank  65 VCCO - som240_2_a44 - IO_L22N_T3U_N7_DBC_AD0N_65
-set_property PACKAGE_PIN K8       [get_ports "som240_2_d24"] ;# Bank  65 VCCO - som240_2_a44 - IO_L22P_T3U_N6_DBC_AD0P_65
-set_property PACKAGE_PIN H7       [get_ports "som240_2_a24"] ;# Bank  65 VCCO - som240_2_a44 - IO_L21N_T3L_N5_AD8N_65
-set_property PACKAGE_PIN J7       [get_ports "som240_2_a23"] ;# Bank  65 VCCO - som240_2_a44 - IO_L21P_T3L_N4_AD8P_65
 #set_property PACKAGE_PIN H6       [get_ports "RSV_FPGA_H6"] ;# Bank  65 VCCO - som240_2_a44 - IO_L20N_T3L_N3_AD1N_65
 #set_property PACKAGE_PIN J6       [get_ports "RSV_FPGA_J6"] ;# Bank  65 VCCO - som240_2_a44 - IO_L20P_T3L_N2_AD1P_65
-set_property PACKAGE_PIN J4       [get_ports "som240_2_a12"] ;# Bank  65 VCCO - som240_2_a44 - IO_L19N_T3L_N1_DBC_AD9N_65
-set_property PACKAGE_PIN J5       [get_ports "som240_2_a11"] ;# Bank  65 VCCO - som240_2_a44 - IO_L19P_T3L_N0_DBC_AD9P_65
+set_property PACKAGE_PIN J4 [get_ports som240_2_a12]
+set_property PACKAGE_PIN J5 [get_ports som240_2_a11]
 #set_property PACKAGE_PIN K5       [get_ports "No Connect"] ;# Bank  65 VCCO - som240_2_a44 - IO_T3U_N12_65
 #set_property PACKAGE_PIN P9       [get_ports "No Connect"] ;# Bank  65 VCCO - som240_2_a44 - IO_T2U_N12_65
 #set_property PACKAGE_PIN L8       [get_ports "No Connect"] ;# Bank  65 VCCO - som240_2_a44 - IO_L18N_T2U_N11_AD2N_65
 #set_property PACKAGE_PIN M8       [get_ports "No Connect"] ;# Bank  65 VCCO - som240_2_a44 - IO_L18P_T2U_N10_AD2P_65
-set_property PACKAGE_PIN N8       [get_ports "som240_2_c15"] ;# Bank  65 VCCO - som240_2_a44 - IO_L17N_T2U_N9_AD10N_65
-set_property PACKAGE_PIN N9       [get_ports "som240_2_c14"] ;# Bank  65 VCCO - som240_2_a44 - IO_L17P_T2U_N8_AD10P_65
-set_property PACKAGE_PIN P6       [get_ports "som240_2_c21"] ;# Bank  65 VCCO - som240_2_a44 - IO_L16N_T2U_N7_QBC_AD3N_65
-set_property PACKAGE_PIN P7       [get_ports "som240_2_c20"] ;# Bank  65 VCCO - som240_2_a44 - IO_L16P_T2U_N6_QBC_AD3P_65
-set_property PACKAGE_PIN N6       [get_ports "som240_2_a18"] ;# Bank  65 VCCO - som240_2_a44 - IO_L15N_T2L_N5_AD11N_65
-set_property PACKAGE_PIN N7       [get_ports "som240_2_a17"] ;# Bank  65 VCCO - som240_2_a44 - IO_L15P_T2L_N4_AD11P_65
-set_property PACKAGE_PIN L5       [get_ports "som240_2_b22"] ;# Bank  65 VCCO - som240_2_a44 - IO_L14N_T2L_N3_GC_65
-set_property PACKAGE_PIN M6       [get_ports "som240_2_b21"] ;# Bank  65 VCCO - som240_2_a44 - IO_L14P_T2L_N2_GC_65
-set_property PACKAGE_PIN L6       [get_ports "som240_2_b13"] ;# Bank  65 VCCO - som240_2_a44 - IO_L13N_T2L_N1_GC_QBC_65
-set_property PACKAGE_PIN L7       [get_ports "som240_2_b12"] ;# Bank  65 VCCO - som240_2_a44 - IO_L13P_T2L_N0_GC_QBC_65
-set_property PACKAGE_PIN L2       [get_ports "som240_2_d19"] ;# Bank  65 VCCO - som240_2_a44 - IO_L12N_T1U_N11_GC_65
-set_property PACKAGE_PIN L3       [get_ports "som240_2_d18"] ;# Bank  65 VCCO - som240_2_a44 - IO_L12P_T1U_N10_GC_65
-set_property PACKAGE_PIN K3       [get_ports "som240_2_c12"] ;# Bank  65 VCCO - som240_2_a44 - IO_L11N_T1U_N9_GC_65
-set_property PACKAGE_PIN K4       [get_ports "som240_2_c11"] ;# Bank  65 VCCO - som240_2_a44 - IO_L11P_T1U_N8_GC_65
-set_property PACKAGE_PIN H3       [get_ports "som240_2_a15"] ;# Bank  65 VCCO - som240_2_a44 - IO_L10N_T1U_N7_QBC_AD4N_65
-set_property PACKAGE_PIN H4       [get_ports "som240_2_a14"] ;# Bank  65 VCCO - som240_2_a44 - IO_L10P_T1U_N6_QBC_AD4P_65
-set_property PACKAGE_PIN J2       [get_ports "som240_2_b16"] ;# Bank  65 VCCO - som240_2_a44 - IO_L9N_T1L_N5_AD12N_65
-set_property PACKAGE_PIN K2       [get_ports "som240_2_b15"] ;# Bank  65 VCCO - som240_2_a44 - IO_L9P_T1L_N4_AD12P_65
-set_property PACKAGE_PIN H1       [get_ports "som240_2_a21"] ;# Bank  65 VCCO - som240_2_a44 - IO_L8N_T1L_N3_AD5N_65
-set_property PACKAGE_PIN J1       [get_ports "som240_2_a20"] ;# Bank  65 VCCO - som240_2_a44 - IO_L8P_T1L_N2_AD5P_65
-set_property PACKAGE_PIN K1       [get_ports "som240_2_b19"] ;# Bank  65 VCCO - som240_2_a44 - IO_L7N_T1L_N1_QBC_AD13N_65
-set_property PACKAGE_PIN L1       [get_ports "som240_2_b18"] ;# Bank  65 VCCO - som240_2_a44 - IO_L7P_T1L_N0_QBC_AD13P_65
+set_property PACKAGE_PIN N6 [get_ports som240_2_a18]
+set_property PACKAGE_PIN N7 [get_ports som240_2_a17]
+set_property PACKAGE_PIN H3 [get_ports som240_2_a15]
+set_property PACKAGE_PIN H4 [get_ports som240_2_a14]
+set_property PACKAGE_PIN H1 [get_ports som240_2_a21]
+set_property PACKAGE_PIN J1 [get_ports som240_2_a20]
 #set_property PACKAGE_PIN H2       [get_ports "No Connect"] ;# Bank  65 VCCO - som240_2_a44 - IO_T1U_N12_65
 #set_property PACKAGE_PIN W9       [get_ports "N36724136"] ;# Bank  65 VCCO - som240_2_a44 - IO_T0U_N12_VRP_65
 #set_property PACKAGE_PIN T6       [get_ports "No Connect"] ;# Bank  65 VCCO - som240_2_a44 - IO_L6N_T0U_N11_AD6N_65
 #set_property PACKAGE_PIN R6       [get_ports "No Connect"] ;# Bank  65 VCCO - som240_2_a44 - IO_L6P_T0U_N10_AD6P_65
-set_property PACKAGE_PIN T7       [get_ports "som240_2_d22"] ;# Bank  65 VCCO - som240_2_a44 - IO_L5N_T0U_N9_AD14N_65
-set_property PACKAGE_PIN R7       [get_ports "som240_2_d21"] ;# Bank  65 VCCO - som240_2_a44 - IO_L5P_T0U_N8_AD14P_65
-set_property PACKAGE_PIN T8       [get_ports "som240_2_b25"] ;# Bank  65 VCCO - som240_2_a44 - IO_L4N_T0U_N7_DBC_AD7N_65
-set_property PACKAGE_PIN R8       [get_ports "som240_2_b24"] ;# Bank  65 VCCO - som240_2_a44 - IO_L4P_T0U_N6_DBC_AD7P_SMBALERT_65
-set_property PACKAGE_PIN V8       [get_ports "som240_2_c18"] ;# Bank  65 VCCO - som240_2_a44 - IO_L3N_T0L_N5_AD15N_65
-set_property PACKAGE_PIN U8       [get_ports "som240_2_c17"] ;# Bank  65 VCCO - som240_2_a44 - IO_L3P_T0L_N4_AD15P_65
-set_property PACKAGE_PIN V9       [get_ports "som240_2_d13"] ;# Bank  65 VCCO - som240_2_a44 - IO_L2N_T0L_N3_65
-set_property PACKAGE_PIN U9       [get_ports "som240_2_d12"] ;# Bank  65 VCCO - som240_2_a44 - IO_L2P_T0L_N2_65
-set_property PACKAGE_PIN Y8       [get_ports "som240_2_d16"] ;# Bank  65 VCCO - som240_2_a44 - IO_L1N_T0L_N1_DBC_65
-set_property PACKAGE_PIN W8       [get_ports "som240_2_d15"] ;# Bank  65 VCCO - som240_2_a44 - IO_L1P_T0L_N0_DBC_65
 #Other net   PACKAGE_PIN R9       - No Connect                Bank  65 - VREF_65
 #set_property PACKAGE_PIN AG1      [get_ports "No Connect"] ;# Bank  64 VCCO - som240_2_c44 - IO_L24N_T3U_N11_64
 #set_property PACKAGE_PIN AF1      [get_ports "No Connect"] ;# Bank  64 VCCO - som240_2_c44 - IO_L24P_T3U_N10_64
-set_property PACKAGE_PIN AH1      [get_ports "som240_2_a33"] ;# Bank  64 VCCO - som240_2_c44 - IO_L23N_T3U_N9_64
-set_property PACKAGE_PIN AH2      [get_ports "som240_2_a32"] ;# Bank  64 VCCO - som240_2_c44 - IO_L23P_T3U_N8_64
-set_property PACKAGE_PIN AF2      [get_ports "som240_2_b40"] ;# Bank  64 VCCO - som240_2_c44 - IO_L22N_T3U_N7_DBC_AD0N_64
-set_property PACKAGE_PIN AE2      [get_ports "som240_2_b39"] ;# Bank  64 VCCO - som240_2_c44 - IO_L22P_T3U_N6_DBC_AD0P_64
-set_property PACKAGE_PIN AF3      [get_ports "som240_2_c27"] ;# Bank  64 VCCO - som240_2_c44 - IO_L21N_T3L_N5_AD8N_64
-set_property PACKAGE_PIN AE3      [get_ports "som240_2_c26"] ;# Bank  64 VCCO - som240_2_c44 - IO_L21P_T3L_N4_AD8P_64
-set_property PACKAGE_PIN AH3      [get_ports "som240_2_b34"] ;# Bank  64 VCCO - som240_2_c44 - IO_L20N_T3L_N3_AD1N_64
-set_property PACKAGE_PIN AG3      [get_ports "som240_2_b33"] ;# Bank  64 VCCO - som240_2_c44 - IO_L20P_T3L_N2_AD1P_64
-set_property PACKAGE_PIN AH4      [get_ports "som240_2_a39"] ;# Bank  64 VCCO - som240_2_c44 - IO_L19N_T3L_N1_DBC_AD9N_64
-set_property PACKAGE_PIN AG4      [get_ports "som240_2_a38"] ;# Bank  64 VCCO - som240_2_c44 - IO_L19P_T3L_N0_DBC_AD9P_64
 #set_property PACKAGE_PIN AE4      [get_ports "No Connect"] ;# Bank  64 VCCO - som240_2_c44 - IO_T3U_N12_64
 #set_property PACKAGE_PIN AB5      [get_ports "No Connect"] ;# Bank  64 VCCO - som240_2_c44 - IO_T2U_N12_64
 #set_property PACKAGE_PIN AC1      [get_ports "No Connect"] ;# Bank  64 VCCO - som240_2_c44 - IO_L18N_T2U_N11_AD2N_64
 #set_property PACKAGE_PIN AB1      [get_ports "No Connect"] ;# Bank  64 VCCO - som240_2_c44 - IO_L18P_T2U_N10_AD2P_64
-set_property PACKAGE_PIN AC2      [get_ports "som240_2_a36"] ;# Bank  64 VCCO - som240_2_c44 - IO_L17N_T2U_N9_AD10N_64
-set_property PACKAGE_PIN AB2      [get_ports "som240_2_a35"] ;# Bank  64 VCCO - som240_2_c44 - IO_L17P_T2U_N8_AD10P_64
-set_property PACKAGE_PIN AD1      [get_ports "som240_2_b31"] ;# Bank  64 VCCO - som240_2_c44 - IO_L16N_T2U_N7_QBC_AD3N_64
-set_property PACKAGE_PIN AD2      [get_ports "som240_2_b30"] ;# Bank  64 VCCO - som240_2_c44 - IO_L16P_T2U_N6_QBC_AD3P_64
-set_property PACKAGE_PIN AB3      [get_ports "som240_2_c36"] ;# Bank  64 VCCO - som240_2_c44 - IO_L15N_T2L_N5_AD11N_64
-set_property PACKAGE_PIN AB4      [get_ports "som240_2_c35"] ;# Bank  64 VCCO - som240_2_c44 - IO_L15P_T2L_N4_AD11P_64
-set_property PACKAGE_PIN AC3      [get_ports "som240_2_c33"] ;# Bank  64 VCCO - som240_2_c44 - IO_L14N_T2L_N3_GC_64
-set_property PACKAGE_PIN AC4      [get_ports "som240_2_c32"] ;# Bank  64 VCCO - som240_2_c44 - IO_L14P_T2L_N2_GC_64
-set_property PACKAGE_PIN AD4      [get_ports "som240_2_c30"] ;# Bank  64 VCCO - som240_2_c44 - IO_L13N_T2L_N1_GC_QBC_64
-set_property PACKAGE_PIN AD5      [get_ports "som240_2_c29"] ;# Bank  64 VCCO - som240_2_c44 - IO_L13P_T2L_N0_GC_QBC_64
-set_property PACKAGE_PIN AF5      [get_ports "som240_2_c42"] ;# Bank  64 VCCO - som240_2_c44 - IO_L12N_T1U_N11_GC_64
-set_property PACKAGE_PIN AE5      [get_ports "som240_2_c41"] ;# Bank  64 VCCO - som240_2_c44 - IO_L12P_T1U_N10_GC_64
-set_property PACKAGE_PIN AF6      [get_ports "som240_2_d28"] ;# Bank  64 VCCO - som240_2_c44 - IO_L11N_T1U_N9_GC_64
-set_property PACKAGE_PIN AF7      [get_ports "som240_2_d27"] ;# Bank  64 VCCO - som240_2_c44 - IO_L11P_T1U_N8_GC_64
-set_property PACKAGE_PIN AG5      [get_ports "som240_2_a30"] ;# Bank  64 VCCO - som240_2_c44 - IO_L10N_T1U_N7_QBC_AD4N_64
-set_property PACKAGE_PIN AG6      [get_ports "som240_2_a29"] ;# Bank  64 VCCO - som240_2_c44 - IO_L10P_T1U_N6_QBC_AD4P_64
-set_property PACKAGE_PIN AH7      [get_ports "som240_2_b37"] ;# Bank  64 VCCO - som240_2_c44 - IO_L9N_T1L_N5_AD12N_64
-set_property PACKAGE_PIN AH8      [get_ports "som240_2_b36"] ;# Bank  64 VCCO - som240_2_c44 - IO_L9P_T1L_N4_AD12P_64
-set_property PACKAGE_PIN AG8      [get_ports "som240_2_b28"] ;# Bank  64 VCCO - som240_2_c44 - IO_L8N_T1L_N3_AD5N_64
-set_property PACKAGE_PIN AF8      [get_ports "som240_2_b27"] ;# Bank  64 VCCO - som240_2_c44 - IO_L8P_T1L_N2_AD5P_64
-set_property PACKAGE_PIN AH9      [get_ports "som240_2_c39"] ;# Bank  64 VCCO - som240_2_c44 - IO_L7N_T1L_N1_QBC_AD13N_64
-set_property PACKAGE_PIN AG9      [get_ports "som240_2_c38"] ;# Bank  64 VCCO - som240_2_c44 - IO_L7P_T1L_N0_QBC_AD13P_64
 #set_property PACKAGE_PIN AH6      [get_ports "No Connect"] ;# Bank  64 VCCO - som240_2_c44 - IO_T1U_N12_64
 #set_property PACKAGE_PIN AD6      [get_ports "N36723887"] ;# Bank  64 VCCO - som240_2_c44 - IO_T0U_N12_VRP_64
 #set_property PACKAGE_PIN AC6      [get_ports "RSV_FPGA_AC6"] ;# Bank  64 VCCO - som240_2_c44 - IO_L6N_T0U_N11_AD6N_64
 #set_property PACKAGE_PIN AB6      [get_ports "RSV_FPGA_AB6"] ;# Bank  64 VCCO - som240_2_c44 - IO_L6P_T0U_N10_AD6P_64
-set_property PACKAGE_PIN AC7      [get_ports "som240_2_d40"] ;# Bank  64 VCCO - som240_2_c44 - IO_L5N_T0U_N9_AD14N_64
-set_property PACKAGE_PIN AB7      [get_ports "som240_2_d39"] ;# Bank  64 VCCO - som240_2_c44 - IO_L5P_T0U_N8_AD14P_64
-set_property PACKAGE_PIN AE7      [get_ports "som240_2_a42"] ;# Bank  64 VCCO - som240_2_c44 - IO_L4N_T0U_N7_DBC_AD7N_64
-set_property PACKAGE_PIN AD7      [get_ports "som240_2_a41"] ;# Bank  64 VCCO - som240_2_c44 - IO_L4P_T0U_N6_DBC_AD7P_64
-set_property PACKAGE_PIN AC8      [get_ports "som240_2_d37"] ;# Bank  64 VCCO - som240_2_c44 - IO_L3N_T0L_N5_AD15N_64
-set_property PACKAGE_PIN AB8      [get_ports "som240_2_d36"] ;# Bank  64 VCCO - som240_2_c44 - IO_L3P_T0L_N4_AD15P_64
-set_property PACKAGE_PIN AE8      [get_ports "som240_2_d31"] ;# Bank  64 VCCO - som240_2_c44 - IO_L2N_T0L_N3_64
-set_property PACKAGE_PIN AE9      [get_ports "som240_2_d30"] ;# Bank  64 VCCO - som240_2_c44 - IO_L2P_T0L_N2_64
-set_property PACKAGE_PIN AD9      [get_ports "som240_2_d34"] ;# Bank  64 VCCO - som240_2_c44 - IO_L1N_T0L_N1_DBC_64
-set_property PACKAGE_PIN AC9      [get_ports "som240_2_d33"] ;# Bank  64 VCCO - som240_2_c44 - IO_L1P_T0L_N0_DBC_64
 #Other net   PACKAGE_PIN AA7      - No Connect                Bank  64 - VREF_64
-set_property PACKAGE_PIN Y1       [get_ports "som240_2_b10"] ;# Bank 224 - MGTHRXN0_224
-set_property PACKAGE_PIN V1       [get_ports "som240_2_d2"] ;# Bank 224 - MGTHRXN1_224
-set_property PACKAGE_PIN T1       [get_ports "som240_2_b2"] ;# Bank 224 - MGTHRXN2_224
-set_property PACKAGE_PIN P1       [get_ports "som240_2_d6"] ;# Bank 224 - MGTHRXN3_224
-set_property PACKAGE_PIN Y2       [get_ports "som240_2_b9"] ;# Bank 224 - MGTHRXP0_224
-set_property PACKAGE_PIN V2       [get_ports "som240_2_d1"] ;# Bank 224 - MGTHRXP1_224
-set_property PACKAGE_PIN T2       [get_ports "som240_2_b1"] ;# Bank 224 - MGTHRXP2_224
-set_property PACKAGE_PIN P2       [get_ports "som240_2_d5"] ;# Bank 224 - MGTHRXP3_224
-set_property PACKAGE_PIN W3       [get_ports "som240_2_d10"] ;# Bank 224 - MGTHTXN0_224
-set_property PACKAGE_PIN U3       [get_ports "som240_2_c8"] ;# Bank 224 - MGTHTXN1_224
-set_property PACKAGE_PIN R3       [get_ports "som240_2_b6"] ;# Bank 224 - MGTHTXN2_224
-set_property PACKAGE_PIN N3       [get_ports "som240_2_a4"] ;# Bank 224 - MGTHTXN3_224
-set_property PACKAGE_PIN W4       [get_ports "som240_2_d9"] ;# Bank 224 - MGTHTXP0_224
-set_property PACKAGE_PIN U4       [get_ports "som240_2_c7"] ;# Bank 224 - MGTHTXP1_224
-set_property PACKAGE_PIN R4       [get_ports "som240_2_b5"] ;# Bank 224 - MGTHTXP2_224
-set_property PACKAGE_PIN N4       [get_ports "som240_2_a3"] ;# Bank 224 - MGTHTXP3_224
-set_property PACKAGE_PIN Y5       [get_ports "som240_2_c4"] ;# Bank 224 - MGTREFCLK0N_224
-set_property PACKAGE_PIN Y6       [get_ports "som240_2_c3"] ;# Bank 224 - MGTREFCLK0P_224
-set_property PACKAGE_PIN V5       [get_ports "som240_2_a8"] ;# Bank 224 - MGTREFCLK1N_224
-set_property PACKAGE_PIN V6       [get_ports "som240_2_a7"] ;# Bank 224 - MGTREFCLK1P_224
+set_property PACKAGE_PIN Y1 [get_ports som240_2_b10]
+set_property PACKAGE_PIN P1 [get_ports som240_2_d6]
+set_property PACKAGE_PIN Y2 [get_ports som240_2_b9]
+set_property PACKAGE_PIN P2 [get_ports som240_2_d5]
+set_property PACKAGE_PIN V2 [get_ports som240_2_d1]
+set_property PACKAGE_PIN V1 [get_ports som240_2_d2]
+set_property PACKAGE_PIN U4 [get_ports som240_2_c7]
+set_property PACKAGE_PIN U3 [get_ports som240_2_c8]
+set_property PACKAGE_PIN Y5 [get_ports som240_2_c4]
+set_property PACKAGE_PIN Y6 [get_ports som240_2_c3]
+set_property PACKAGE_PIN V5 [get_ports som240_2_a8]
+set_property PACKAGE_PIN V6 [get_ports som240_2_a7]
 #set_property PACKAGE_PIN N2       [get_ports "MGTRREF"] ;# Bank 224 - MGTRREF_R
 #Other net   PACKAGE_PIN N1       - MGTAVTTRCAL               Bank 224 - MGTAVTTRCAL_R
 #Other net   PACKAGE_PIN AG15     - MIO0_QSPI_CLK             Bank 500 - PS_MIO0
@@ -784,3 +648,4 @@ set_property PACKAGE_PIN V6       [get_ports "som240_2_a7"] ;# Bank 224 - MGTREF
 #Other net   PACKAGE_PIN T16      - VCC_PS_1V20               Bank 999 - VCC_PSPLL
 #Other net   PACKAGE_PIN T17      - VCC_PS_1V20               Bank 999 - VCC_PSPLL
 #Other net   PACKAGE_PIN T18      - VCC_PS_1V20               Bank 999 - VCC_PSPLL
+

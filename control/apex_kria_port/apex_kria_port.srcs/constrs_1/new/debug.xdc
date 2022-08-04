@@ -1,0 +1,13 @@
+set_property ASYNC_REG true [get_cells {c2c_mgt/c2c_gth_7p8125g_vio_0_inst/inst/PROBE_IN_INST/probe_in_reg_reg[10]}]
+set_property ASYNC_REG true [get_cells {c2c_mgt/c2c_gth_7p8125g_vio_0_inst/inst/PROBE_IN_INST/data_int_sync1_reg[10]}]
+set_property ASYNC_REG true [get_cells {c2c_mgt/c2c_gth_7p8125g_vio_0_inst/inst/PROBE_IN_INST/probe_in_reg_reg[11]}]
+set_property ASYNC_REG true [get_cells {c2c_mgt/c2c_gth_7p8125g_vio_0_inst/inst/PROBE_IN_INST/data_int_sync1_reg[11]}]
+set_property ASYNC_REG true [get_cells {c2c_mgt/c2c_gth_7p8125g_vio_0_inst/inst/PROBE_IN_INST/probe_in_reg_reg[12]}]
+set_property ASYNC_REG true [get_cells {c2c_mgt/c2c_gth_7p8125g_vio_0_inst/inst/PROBE_IN_INST/data_int_sync1_reg[12]}]
+set_property ASYNC_REG true [get_cells {c2c_mgt/c2c_gth_7p8125g_vio_0_inst/inst/PROBE_IN_INST/probe_in_reg_reg[8]}]
+set_property ASYNC_REG true [get_cells {c2c_mgt/c2c_gth_7p8125g_vio_0_inst/inst/PROBE_IN_INST/data_int_sync1_reg[8]}]
+set_property ASYNC_REG true [get_cells {c2c_mgt/c2c_gth_7p8125g_vio_0_inst/inst/PROBE_IN_INST/probe_in_reg_reg[9]}]
+set_property ASYNC_REG true [get_cells {c2c_mgt/c2c_gth_7p8125g_vio_0_inst/inst/PROBE_IN_INST/data_int_sync1_reg[9]}]
+set_clock_groups -asynchronous -group [get_clocks {rxoutclk_out[0]}] -group [get_clocks {txoutclk_out[0]}] -group [get_clocks {clk_pl_0}]
+#bdw/design_1_i/IPMC/i2c_switch_dual_0/inst/clk_i2c
+#create_generated_clock -name clk_i2c -source [get_clocks {clk_pl_0}] -divide_by 32 [get_pins {bdw/design_1_i/IPMC/i2c_switch_dual_0/inst/cnt_reg[5]/Q}]

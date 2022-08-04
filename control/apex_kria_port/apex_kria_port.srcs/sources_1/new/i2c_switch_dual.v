@@ -107,42 +107,42 @@ module i2c_switch_dual
         
     end
     
-    reg [5:0] cnt;
-    wire clk_i2c;
-    always @(posedge clk) cnt = cnt + 6'h1;
+//    reg [5:0] cnt;
+//    wire clk_i2c;
+//    always @(posedge clk) cnt = cnt + 6'h1;
     
-    BUFG clk_div_buf (.O(clk_i2c), .I(cnt[5]));
+//    BUFG clk_div_buf (.O(clk_i2c), .I(cnt[5]));
     
     
-    ipmc_ila ipmc_ila_i 
-    (
-        .clk     (clk_i2c), // input wire clk
+//    ipmc_ila ipmc_ila_i 
+//    (
+//        .clk     (clk_i2c), // input wire clk
 
-        .probe0  (tx_en), // input wire [1:0]  probe0
-        .probe1  (scl_i), // input wire [1:0]  probe1
-        .probe2  (scl_o), // input wire [1:0]  probe2
-        .probe3  (scl_t), // input wire [1:0]  probe3
-        .probe4  (sda_i), // input wire [1:0]  probe4
-        .probe5  (sda_o), // input wire [1:0]  probe5
-        .probe6  (sda_t), // input wire [1:0]  probe6
-        .probe7  (tx_scl_i), // input wire [0:0]  probe7
-        .probe8  (tx_scl_o), // input wire [0:0]  probe8
-        .probe9  (tx_scl_t), // input wire [0:0]  probe9
-        .probe10 (tx_sda_i), // input wire [0:0]  probe10
-        .probe11 (tx_sda_o), // input wire [0:0]  probe11
-        .probe12 (tx_sda_t), // input wire [0:0]  probe12
-        .probe13 (rx0_scl_i), // input wire [0:0]  probe13
-        .probe14 (rx0_scl_o), // input wire [0:0]  probe14
-        .probe15 (rx0_scl_t), // input wire [0:0]  probe15
-        .probe16 (rx0_sda_i), // input wire [0:0]  probe16
-        .probe17 (rx0_sda_o), // input wire [0:0]  probe17
-        .probe18 (rx0_sda_t), // input wire [0:0]  probe18
-        .probe19 (rx1_scl_i), // input wire [0:0]  probe19
-        .probe20 (rx1_scl_o), // input wire [0:0]  probe20
-        .probe21 (rx1_scl_t), // input wire [0:0]  probe21
-        .probe22 (rx1_sda_i), // input wire [0:0]  probe22
-        .probe23 (rx1_sda_o), // input wire [0:0]  probe23
-        .probe24 (rx1_sda_t) // input wire [0:0]  probe24
-);
+//        .probe0  (tx_en), // input wire [1:0]  probe0
+//        .probe1  (scl_i), // input wire [1:0]  probe1
+//        .probe2  (scl_o), // input wire [1:0]  probe2
+//        .probe3  (scl_t), // input wire [1:0]  probe3
+//        .probe4  (sda_i), // input wire [1:0]  probe4
+//        .probe5  (sda_o), // input wire [1:0]  probe5
+//        .probe6  (sda_t), // input wire [1:0]  probe6
+//        .probe7  (tx_scl_i), // input wire [0:0]  probe7
+//        .probe8  (tx_scl_o), // input wire [0:0]  probe8
+//        .probe9  (tx_scl_t), // input wire [0:0]  probe9
+//        .probe10 (tx_sda_i), // input wire [0:0]  probe10
+//        .probe11 (tx_sda_o), // input wire [0:0]  probe11
+//        .probe12 (tx_sda_t), // input wire [0:0]  probe12
+//        .probe13 (rx0_scl_i), // input wire [0:0]  probe13
+//        .probe14 (rx0_scl_o), // input wire [0:0]  probe14
+//        .probe15 (rx0_scl_t), // input wire [0:0]  probe15
+//        .probe16 (rx0_sda_i), // input wire [0:0]  probe16
+//        .probe17 (rx0_sda_o), // input wire [0:0]  probe17
+//        .probe18 (rx0_sda_t), // input wire [0:0]  probe18
+//        .probe19 (rx1_scl_i), // input wire [0:0]  probe19
+//        .probe20 (rx1_scl_o), // input wire [0:0]  probe20
+//        .probe21 (rx1_scl_t), // input wire [0:0]  probe21
+//        .probe22 (rx1_sda_i), // input wire [0:0]  probe22
+//        .probe23 (rx1_sda_o), // input wire [0:0]  probe23
+//        .probe24 (rx1_sda_t) // input wire [0:0]  probe24
+//    );
 
 endmodule
