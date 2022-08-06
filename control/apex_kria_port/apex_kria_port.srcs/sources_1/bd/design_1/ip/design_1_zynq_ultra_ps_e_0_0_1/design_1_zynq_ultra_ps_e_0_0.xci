@@ -1181,7 +1181,7 @@
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_34_POLARITY">Default</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_34_PULLUPDOWN">pullup</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_34_SLEW">slow</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_35_DIRECTION">out</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_35_DIRECTION">inout</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_35_DRIVE_STRENGTH">4</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_35_INPUT_TYPE">cmos</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_35_POLARITY">Default</spirit:configurableElementValue>
@@ -1199,13 +1199,13 @@
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_37_POLARITY">Default</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_37_PULLUPDOWN">pullup</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_37_SLEW">fast</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_38_DIRECTION">in</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_38_DIRECTION">inout</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_38_DRIVE_STRENGTH">12</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_38_INPUT_TYPE">cmos</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_38_POLARITY">Default</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_38_PULLUPDOWN">pullup</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_38_SLEW">fast</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_39_DIRECTION">out</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_39_DIRECTION">inout</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_39_DRIVE_STRENGTH">4</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_39_INPUT_TYPE">cmos</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_39_POLARITY">Default</spirit:configurableElementValue>
@@ -1235,7 +1235,7 @@
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_42_POLARITY">Default</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_42_PULLUPDOWN">pullup</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_42_SLEW">slow</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_43_DIRECTION">out</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_43_DIRECTION">inout</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_43_DRIVE_STRENGTH">4</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_43_INPUT_TYPE">cmos</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU_MIO_43_POLARITY">Default</spirit:configurableElementValue>
@@ -1833,7 +1833,7 @@ pio1[45]#sdio1_data_out[0]#sdio1_data_out[1]#sdio1_data_out[2]#sdio1_data_out[3]
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__CRL_APB__USB3_DUAL_REF_CTRL__FREQMHZ">20</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__CRL_APB__USB3_DUAL_REF_CTRL__SRCSEL">IOPLL</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__CRL_APB__USB3__ENABLE">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__CSUPMU__PERIPHERAL__VALID">1</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__CSUPMU__PERIPHERAL__VALID">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__CSU_COHERENCY">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__CSU__CSU_TAMPER_0__ENABLE">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PSU__CSU__CSU_TAMPER_0__ERASE_BBRAM">0</spirit:configurableElementValue>
@@ -4358,6 +4358,7 @@ FFF;0|FPD;DPDMA;FD4C0000;FD4CFFFF;0|FPD;DDR_XMPU5_CFG;FD050000;FD05FFFF;1|FPD;DD
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.UART1_BOARD_INTERFACE" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.USB0_BOARD_INTERFACE" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.USB1_BOARD_INTERFACE" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.preset" xilinx:valueSource="user"/>
           </xilinx:configElementInfos>
           <xilinx:boundaryDescriptionInfo>
             <xilinx:boundaryDescription xilinx:boundaryDescriptionJSON="{

@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x3D7AD6CF11FACC20",
+      "boundary_crc": "0x3D7AD6CF080BC457",
       "device": "xck26-sfvc784-2LV-c",
       "gen_directory": "../../../../apex_kria_port.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -417,7 +417,7 @@
           },
           "FREQ_HZ": {
             "value": "156250000",
-            "value_src": "user_prop"
+            "value_src": "ip_prop"
           },
           "FREQ_TOLERANCE_HZ": {
             "value": "0",
@@ -429,7 +429,7 @@
           },
           "PHASE": {
             "value": "0",
-            "value_src": "user_prop"
+            "value_src": "ip_prop"
           }
         }
       }
@@ -5382,7 +5382,7 @@
                 "value": "0"
               },
               "PSU__CSUPMU__PERIPHERAL__VALID": {
-                "value": "1"
+                "value": "0"
               },
               "PSU__CSU__CSU_TAMPER_0__ENABLE": {
                 "value": "0"
@@ -6706,6 +6706,9 @@
               },
               "USB1_BOARD_INTERFACE": {
                 "value": "custom"
+              },
+              "preset": {
+                "value": "None"
               }
             },
             "interface_ports": {
@@ -10869,7 +10872,7 @@
               },
               "HAS_REGION": {
                 "value": "1",
-                "value_src": "default"
+                "value_src": "default_prop"
               },
               "HAS_RRESP": {
                 "value": "1",
@@ -11183,7 +11186,7 @@
               },
               "FREQ_HZ": {
                 "value": "156250000",
-                "value_src": "user_prop"
+                "value_src": "ip_prop"
               },
               "FREQ_TOLERANCE_HZ": {
                 "value": "0",
@@ -11195,7 +11198,7 @@
               },
               "PHASE": {
                 "value": "0",
-                "value_src": "user_prop"
+                "value_src": "ip_prop"
               }
             }
           }
@@ -11205,7 +11208,7 @@
         "variant_info": {
           "XG.bd": {
             "scoped_diagram": "XG_inst_0.bd",
-            "design_checksum": "0xE816D6E9",
+            "design_checksum": "0x3B28A222",
             "ref_name": "XG",
             "ref_subinst_path": "design_1_XG_0",
             "ref_type": "Block Design",
