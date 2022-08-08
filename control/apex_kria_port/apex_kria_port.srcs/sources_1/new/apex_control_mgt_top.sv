@@ -327,26 +327,26 @@ module apex_control_mgt_top
             
     // reach into 10G eth's kishkes and pluck buffered ref clk
     assign xg_refclk_out  = bdw.design_1_i.XG_0.xxv_ethernet_0.inst.gt_refclk;    
-    wire [31:0] axi_f, xg_f, usr_f;  
+//    wire [31:0] axi_f, xg_f, usr_f;  
 
-    freq_meter# (.REF_F(32'd100000000)) fm
-    (
-        .ref_clk (axi_clk),
-        .f1      (axi_clk),
-        .f2      (xg_refclk_bufg),
-        .f3      (usr_clk),
-        .final1  (axi_f),
-        .final2  (xg_f),
-        .final3  (usr_f)
-    );
+//    freq_meter# (.REF_F(32'd100000000)) fm
+//    (
+//        .ref_clk (axi_clk),
+//        .f1      (axi_clk),
+//        .f2      (xg_refclk_bufg),
+//        .f3      (usr_clk),
+//        .final1  (axi_f),
+//        .final2  (xg_f),
+//        .final3  (usr_f)
+//    );
 
-    vio_f_meter viofm 
-    (
-        .clk       (axi_clk),
-        .probe_in0 (axi_f),
-        .probe_in1 (xg_f),
-        .probe_in2 (usr_f)
-    );
+//    vio_f_meter viofm 
+//    (
+//        .clk       (axi_clk),
+//        .probe_in0 (axi_f),
+//        .probe_in1 (xg_f),
+//        .probe_in2 (usr_f)
+//    );
 
         
     c2c_gth_7p8125g_tux c2c_mgt 

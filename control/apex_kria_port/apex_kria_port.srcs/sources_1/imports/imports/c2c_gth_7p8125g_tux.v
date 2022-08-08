@@ -66,7 +66,8 @@ module c2c_gth_7p8125g_tux
     wire [1:0] gtpowergood_int;
     wire [1:0] rxprbserr_int, rxprbslocked_int;
     wire [11:0] dum12_0, dum12_1;
-    wire [2:0] sm_reset_all;
+    wire [2:0] sm_reset_all = 0;
+    wire reset_all = soft_reset_i | hb_gtwiz_reset_all_vio;
 
     c2c_gth_7p8125g_vio_0 c2c_gth_7p8125g_vio_0_inst 
     (
@@ -79,29 +80,28 @@ module c2c_gth_7p8125g_tux
         ,.probe_in5  (gtwiz_reset_rx_done)
         ,.probe_in6  (rxprbserr_int)
         ,.probe_in7  (rxprbslocked_int)
-        ,.probe_in8  (sm_reset_all)
+        ,.probe_in8  (~reset_all)
         ,.probe_out0 (hb_gtwiz_reset_all_vio)
     );
 
-//    c2c_gth_7p8125g_example_wrapper example_wrapper_inst 
     c2c_gth_7p8125g c2c_gth 
     (
         .gthrxn_in					      ({ch1_gthrxn_in , ch0_gthrxn_in} ),        // input wire [1 : 0] gthrxn_in
         .gthrxp_in					      ({ch1_gthrxp_in , ch0_gthrxp_in} ),        // input wire [1 : 0] gthrxp_in
         .gthtxn_out					      ({ch1_gthtxn_out, ch0_gthtxn_out}),        // output wire [1 : 0] gthtxn_out
         .gthtxp_out					      ({ch1_gthtxp_out, ch0_gthtxp_out}),        // output wire [1 : 0] gthtxp_out
-        .gtwiz_userclk_tx_reset_in	      (1'b0), //(~(&txpmaresetdone_out)),               // input wire [0 : 0] gtwiz_userclk_tx_reset_in
+        .gtwiz_userclk_tx_reset_in	      (1'b0),     // input wire [0 : 0] gtwiz_userclk_tx_reset_in
         .gtwiz_userclk_tx_srcclk_out	  (),             // output wire [0 : 0] gtwiz_userclk_tx_srcclk_out
         .gtwiz_userclk_tx_usrclk_out      (),             // output wire [0 : 0] gtwiz_userclk_tx_usrclk_out
         .gtwiz_userclk_tx_usrclk2_out	  (usr_clk),            // output wire [0 : 0] gtwiz_userclk_tx_usrclk2_out
         .gtwiz_userclk_tx_active_out	  (gtwiz_userclk_tx_active_out),             // output wire [0 : 0] gtwiz_userclk_tx_active_out
-        .gtwiz_userclk_rx_reset_in	      (1'b0), //(~(&rxpmaresetdone_out)),               // input wire [0 : 0] gtwiz_userclk_rx_reset_in
+        .gtwiz_userclk_rx_reset_in	      (1'b0),    // input wire [0 : 0] gtwiz_userclk_rx_reset_in
         .gtwiz_userclk_rx_srcclk_out	  (),             // output wire [0 : 0] gtwiz_userclk_rx_srcclk_out
         .gtwiz_userclk_rx_usrclk_out	  (),             // output wire [0 : 0] gtwiz_userclk_rx_usrclk_out
         .gtwiz_userclk_rx_usrclk2_out	  (),            // output wire [0 : 0] gtwiz_userclk_rx_usrclk2_out
         .gtwiz_userclk_rx_active_out	  (),             // output wire [0 : 0] gtwiz_userclk_rx_active_out
         .gtwiz_reset_clk_freerun_in	      (drp_clk),                               // input wire [0 : 0] gtwiz_reset_clk_freerun_in
-        .gtwiz_reset_all_in			      (soft_reset_i | hb_gtwiz_reset_all_vio), // input wire [0 : 0] gtwiz_reset_all_in
+        .gtwiz_reset_all_in			      (~reset_all), // input wire [0 : 0] gtwiz_reset_all_in
         .gtwiz_reset_tx_pll_and_datapath_in(1'b0), // input wire [0 : 0] gtwiz_reset_tx_pll_and_datapath_in
         .gtwiz_reset_tx_datapath_in	      (1'b0),              // input wire [0 : 0] gtwiz_reset_tx_datapath_in
         .gtwiz_reset_rx_pll_and_datapath_in(1'b0), // input wire [0 : 0] gtwiz_reset_rx_pll_and_datapath_in
@@ -143,7 +143,6 @@ module c2c_gth_7p8125g_tux
 
     );
     
-    assign sm_reset_all = c2c_gth.inst.gen_gtwizard_gthe4_top.c2c_gth_7p8125g_gtwizard_gthe4_inst.gen_gtwizard_gthe4.gen_reset_controller_internal.gen_single_instance.gtwiz_reset_inst.sm_reset_all;
 // logic for c2c stream interface
     // alignment logic
     // GTP only supports 2-byte alignment
