@@ -86,60 +86,58 @@ module c2c_gth_7p8125g_tux
 
     c2c_gth_7p8125g c2c_gth 
     (
-        .gthrxn_in					      ({ch1_gthrxn_in , ch0_gthrxn_in} ),        // input wire [1 : 0] gthrxn_in
-        .gthrxp_in					      ({ch1_gthrxp_in , ch0_gthrxp_in} ),        // input wire [1 : 0] gthrxp_in
-        .gthtxn_out					      ({ch1_gthtxn_out, ch0_gthtxn_out}),        // output wire [1 : 0] gthtxn_out
-        .gthtxp_out					      ({ch1_gthtxp_out, ch0_gthtxp_out}),        // output wire [1 : 0] gthtxp_out
-        .gtwiz_userclk_tx_reset_in	      (1'b0),     // input wire [0 : 0] gtwiz_userclk_tx_reset_in
-        .gtwiz_userclk_tx_srcclk_out	  (),             // output wire [0 : 0] gtwiz_userclk_tx_srcclk_out
-        .gtwiz_userclk_tx_usrclk_out      (),             // output wire [0 : 0] gtwiz_userclk_tx_usrclk_out
-        .gtwiz_userclk_tx_usrclk2_out	  (usr_clk),            // output wire [0 : 0] gtwiz_userclk_tx_usrclk2_out
-        .gtwiz_userclk_tx_active_out	  (gtwiz_userclk_tx_active_out),             // output wire [0 : 0] gtwiz_userclk_tx_active_out
-        .gtwiz_userclk_rx_reset_in	      (1'b0),    // input wire [0 : 0] gtwiz_userclk_rx_reset_in
-        .gtwiz_userclk_rx_srcclk_out	  (),             // output wire [0 : 0] gtwiz_userclk_rx_srcclk_out
-        .gtwiz_userclk_rx_usrclk_out	  (),             // output wire [0 : 0] gtwiz_userclk_rx_usrclk_out
-        .gtwiz_userclk_rx_usrclk2_out	  (),            // output wire [0 : 0] gtwiz_userclk_rx_usrclk2_out
-        .gtwiz_userclk_rx_active_out	  (),             // output wire [0 : 0] gtwiz_userclk_rx_active_out
-        .gtwiz_reset_clk_freerun_in	      (drp_clk),                               // input wire [0 : 0] gtwiz_reset_clk_freerun_in
-        .gtwiz_reset_all_in			      (~reset_all), // input wire [0 : 0] gtwiz_reset_all_in
-        .gtwiz_reset_tx_pll_and_datapath_in(1'b0), // input wire [0 : 0] gtwiz_reset_tx_pll_and_datapath_in
-        .gtwiz_reset_tx_datapath_in	      (1'b0),              // input wire [0 : 0] gtwiz_reset_tx_datapath_in
-        .gtwiz_reset_rx_pll_and_datapath_in(1'b0), // input wire [0 : 0] gtwiz_reset_rx_pll_and_datapath_in
-        .gtwiz_reset_rx_datapath_in	      (1'b0),              // input wire [0 : 0] gtwiz_reset_rx_datapath_in
-        .gtwiz_reset_rx_cdr_stable_out    (),           // output wire [0 : 0] gtwiz_reset_rx_cdr_stable_out
-        .gtwiz_reset_tx_done_out		  (gtwiz_reset_tx_done),                 // output wire [0 : 0] gtwiz_reset_tx_done_out
-        .gtwiz_reset_rx_done_out		  (gtwiz_reset_rx_done),                 // output wire [0 : 0] gtwiz_reset_rx_done_out
-        .gtwiz_userdata_tx_in			  ({gt_txdata[1], gt_txdata[0]}),                    // input wire [63 : 0] gtwiz_userdata_tx_in
-        .gtwiz_userdata_rx_out		      ({gt1_rxdata_i, gt0_rxdata_i}),                   // output wire [63 : 0] gtwiz_userdata_rx_out
-        .drpclk_in					      ({drp_clk, drp_clk}),                               // input wire [1 : 0] drpclk_in
-        .gtrefclk0_in					  ({mgtrefclk0_x0y1_int, mgtrefclk0_x0y1_int}),                            // input wire [1 : 0] gtrefclk0_in
-        .rx8b10ben_in					  (2'b11),                            // input wire [1 : 0] rx8b10ben_in
-        .rxbufreset_in				      (2'b00),                           // input wire [1 : 0] rxbufreset_in
-        .rxcommadeten_in				  (2'b11),                         // input wire [1 : 0] rxcommadeten_in
-        .rxmcommaalignen_in			      (2'b00),                      // input wire [1 : 0] rxmcommaalignen_in
-        .rxpcommaalignen_in			      (2'b11),                      // input wire [1 : 0] rxpcommaalignen_in
-        .rxpolarity_in				      (2'b11),                           // input wire [1 : 0] rxpolarity_in
-        .rxprbssel_in					  ({2{prbs_sel}}),                            // input wire [7 : 0] rxprbssel_in
-        .tx8b10ben_in					  (2'b11),                            // input wire [1 : 0] tx8b10ben_in
-        .txctrl0_in					      (32'b0),                              // input wire [31 : 0] txctrl0_in
-        .txctrl1_in					      (32'b0),                              // input wire [31 : 0] txctrl1_in
-        .txctrl2_in					      ({4'b0, gt_txcharisk[1], 4'b0, gt_txcharisk[0]}),                              // input wire [15 : 0] txctrl2_in
-        .txpolarity_in				      (tx_polarity),                           // input wire [1 : 0] txpolarity_in
-        .txprbssel_in					  ({2{prbs_sel}}),                            // input wire [7 : 0] txprbssel_in
-        .gtpowergood_out				  (gtpowergood_int),                         // output wire [1 : 0] gtpowergood_out
-        .rxbufstatus_out				  (),                         // output wire [5 : 0] rxbufstatus_out
-        .rxbyteisaligned_out			  (),                     // output wire [1 : 0] rxbyteisaligned_out
-        .rxbyterealign_out			      (),                       // output wire [1 : 0] rxbyterealign_out
-        .rxclkcorcnt_out				  (),                         // output wire [3 : 0] rxclkcorcnt_out
-        .rxcommadet_out				      (),                          // output wire [1 : 0] rxcommadet_out
-        .rxctrl0_out					  ({dum12_1, gt1_rxcharisk_i, dum12_0, gt0_rxcharisk_i}),                             // output wire [31 : 0] rxctrl0_out
-        .rxctrl1_out					  (),                             // output wire [31 : 0] rxctrl1_out
-        .rxctrl2_out					  (),                             // output wire [15 : 0] rxctrl2_out
-        .rxctrl3_out					  (),                             // output wire [15 : 0] rxctrl3_out
-        .rxpmaresetdone_out			      (rxpmaresetdone_out),                      // output wire [1 : 0] rxpmaresetdone_out
-        .rxprbserr_out				      (rxprbserr_int),                           // output wire [1 : 0] rxprbserr_out
-        .rxprbslocked_out				  (rxprbslocked_int),                        // output wire [1 : 0] rxprbslocked_out
-        .txpmaresetdone_out			      (txpmaresetdone_int)                       // output wire [1 : 0] txpmaresetdone_out
+        .gthrxn_in					        ({ch1_gthrxn_in , ch0_gthrxn_in} ),                    // input wire [1 : 0] gthrxn_in
+        .gthrxp_in					        ({ch1_gthrxp_in , ch0_gthrxp_in} ),                    // input wire [1 : 0] gthrxp_in
+        .gthtxn_out					        ({ch1_gthtxn_out, ch0_gthtxn_out}),                    // output wire [1 : 0] gthtxn_out
+        .gthtxp_out					        ({ch1_gthtxp_out, ch0_gthtxp_out}),                    // output wire [1 : 0] gthtxp_out
+        .gtwiz_userclk_tx_reset_in	        (1'b0),                                                // input wire [0 : 0] gtwiz_userclk_tx_reset_in
+        .gtwiz_userclk_tx_srcclk_out	    (),                                                    // output wire [0 : 0] gtwiz_userclk_tx_srcclk_out
+        .gtwiz_userclk_tx_usrclk_out        (),                                                    // output wire [0 : 0] gtwiz_userclk_tx_usrclk_out
+        .gtwiz_userclk_tx_usrclk2_out	    (usr_clk),                                             // output wire [0 : 0] gtwiz_userclk_tx_usrclk2_out
+        .gtwiz_userclk_tx_active_out	    (gtwiz_userclk_tx_active_out),                         // output wire [0 : 0] gtwiz_userclk_tx_active_out
+        .gtwiz_userclk_rx_active_in         (1'b1),                                                // input wire [0 : 0] gtwiz_userclk_rx_active_in
+        .gtwiz_reset_clk_freerun_in	        (drp_clk),                                             // input wire [0 : 0] gtwiz_reset_clk_freerun_in
+        .gtwiz_reset_all_in			        (~reset_all),                                          // input wire [0 : 0] gtwiz_reset_all_in
+        .gtwiz_reset_tx_pll_and_datapath_in (1'b0),                                                // input wire [0 : 0] gtwiz_reset_tx_pll_and_datapath_in
+        .gtwiz_reset_tx_datapath_in	        (1'b0),                                                // input wire [0 : 0] gtwiz_reset_tx_datapath_in
+        .gtwiz_reset_rx_pll_and_datapath_in (1'b0),                                                // input wire [0 : 0] gtwiz_reset_rx_pll_and_datapath_in
+        .gtwiz_reset_rx_datapath_in	        (1'b0),                                                // input wire [0 : 0] gtwiz_reset_rx_datapath_in
+        .gtwiz_reset_rx_cdr_stable_out      (),                                                    // output wire [0 : 0] gtwiz_reset_rx_cdr_stable_out
+        .gtwiz_reset_tx_done_out		    (gtwiz_reset_tx_done),                                 // output wire [0 : 0] gtwiz_reset_tx_done_out
+        .gtwiz_reset_rx_done_out		    (gtwiz_reset_rx_done),                                 // output wire [0 : 0] gtwiz_reset_rx_done_out
+        .gtwiz_userdata_tx_in			    ({gt_txdata[1], gt_txdata[0]}),                        // input wire [63 : 0] gtwiz_userdata_tx_in
+        .gtwiz_userdata_rx_out		        ({gt1_rxdata_i, gt0_rxdata_i}),                        // output wire [63 : 0] gtwiz_userdata_rx_out
+        .drpclk_in					        ({2{drp_clk}}),                                        // input wire [1 : 0] drpclk_in
+        .gtrefclk0_in					    ({2{mgtrefclk0_x0y1_int}}),                            // input wire [1 : 0] gtrefclk0_in
+        .rx8b10ben_in					    (2'b11),                                               // input wire [1 : 0] rx8b10ben_in
+        .rxbufreset_in				        (2'b00),                                               // input wire [1 : 0] rxbufreset_in
+        .rxcommadeten_in				    (2'b11),                                               // input wire [1 : 0] rxcommadeten_in
+        .rxmcommaalignen_in			        (2'b00),                                               // input wire [1 : 0] rxmcommaalignen_in
+        .rxpcommaalignen_in			        (2'b11),                                               // input wire [1 : 0] rxpcommaalignen_in
+        .rxpolarity_in				        (2'b11),                                               // input wire [1 : 0] rxpolarity_in
+        .rxprbssel_in					    ({2{prbs_sel}}),                                       // input wire [7 : 0] rxprbssel_in
+        .rxusrclk_in                        ({2{usr_clk}}),                                        // input wire [1 : 0] rxusrclk_in
+        .rxusrclk2_in                       ({2{usr_clk}}),                                        // input wire [1 : 0] rxusrclk2_in
+        .tx8b10ben_in					    (2'b11),                                               // input wire [1 : 0] tx8b10ben_in
+        .txctrl0_in					        (32'b0),                                               // input wire [31 : 0] txctrl0_in
+        .txctrl1_in					        (32'b0),                                               // input wire [31 : 0] txctrl1_in
+        .txctrl2_in					        ({4'b0, gt_txcharisk[1], 4'b0, gt_txcharisk[0]}),      // input wire [15 : 0] txctrl2_in
+        .txpolarity_in				        (tx_polarity),                                         // input wire [1 : 0] txpolarity_in
+        .txprbssel_in					    ({2{prbs_sel}}),                                       // input wire [7 : 0] txprbssel_in
+        .gtpowergood_out				    (gtpowergood_int),                                     // output wire [1 : 0] gtpowergood_out
+        .rxbufstatus_out				    (),                                                    // output wire [5 : 0] rxbufstatus_out
+        .rxbyteisaligned_out			    (),                                                    // output wire [1 : 0] rxbyteisaligned_out
+        .rxbyterealign_out			        (),                                                    // output wire [1 : 0] rxbyterealign_out
+        .rxclkcorcnt_out				    (),                                                    // output wire [3 : 0] rxclkcorcnt_out
+        .rxcommadet_out				        (),                                                    // output wire [1 : 0] rxcommadet_out
+        .rxctrl0_out					    ({dum12_1, gt1_rxcharisk_i, dum12_0, gt0_rxcharisk_i}),// output wire [31 : 0] rxctrl0_out
+        .rxctrl1_out					    (),                                                    // output wire [31 : 0] rxctrl1_out
+        .rxctrl2_out					    (),                                                    // output wire [15 : 0] rxctrl2_out
+        .rxctrl3_out					    (),                                                    // output wire [15 : 0] rxctrl3_out
+        .rxpmaresetdone_out			        (rxpmaresetdone_out),                                  // output wire [1 : 0] rxpmaresetdone_out
+        .rxprbserr_out				        (rxprbserr_int),                                       // output wire [1 : 0] rxprbserr_out
+        .rxprbslocked_out				    (rxprbslocked_int),                                    // output wire [1 : 0] rxprbslocked_out
+        .txpmaresetdone_out			        (txpmaresetdone_int)                                   // output wire [1 : 0] txpmaresetdone_out
 
     );
     
