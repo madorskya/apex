@@ -57,7 +57,7 @@
               &quot;boundary&quot;: {
                 &quot;ports&quot;: {
                   &quot;prbs_clk&quot;: [ { &quot;direction&quot;: &quot;in&quot; } ],
-                  &quot;reg_rw&quot;: [ { &quot;direction&quot;: &quot;in&quot;, &quot;size_left&quot;: &quot;25&quot;, &quot;size_right&quot;: &quot;0&quot; } ],
+                  &quot;reg_rw&quot;: [ { &quot;direction&quot;: &quot;in&quot;, &quot;size_left&quot;: &quot;27&quot;, &quot;size_right&quot;: &quot;0&quot; } ],
                   &quot;ipmb_en_1_0&quot;: [ { &quot;direction&quot;: &quot;out&quot;, &quot;size_left&quot;: &quot;1&quot;, &quot;size_right&quot;: &quot;0&quot; } ],
                   &quot;id_4_2&quot;: [ { &quot;direction&quot;: &quot;out&quot;, &quot;size_left&quot;: &quot;2&quot;, &quot;size_right&quot;: &quot;0&quot; } ],
                   &quot;payload_on_5&quot;: [ { &quot;direction&quot;: &quot;out&quot; } ],
@@ -71,6 +71,7 @@
                   &quot;c2c_slave_reset_bot_18&quot;: [ { &quot;direction&quot;: &quot;out&quot; } ],
                   &quot;pok_change_polarity_22_20&quot;: [ { &quot;direction&quot;: &quot;out&quot;, &quot;size_left&quot;: &quot;2&quot;, &quot;size_right&quot;: &quot;0&quot; } ],
                   &quot;pok_change_enable_25_23&quot;: [ { &quot;direction&quot;: &quot;out&quot;, &quot;size_left&quot;: &quot;2&quot;, &quot;size_right&quot;: &quot;0&quot; } ],
+                  &quot;bp_clk_sel_27_26&quot;: [ { &quot;direction&quot;: &quot;out&quot;, &quot;size_left&quot;: &quot;1&quot;, &quot;size_right&quot;: &quot;0&quot; } ],
                   &quot;ha_7_0&quot;: [ { &quot;direction&quot;: &quot;in&quot;, &quot;size_left&quot;: &quot;7&quot;, &quot;size_right&quot;: &quot;0&quot; } ],
                   &quot;ready_ipmb_zynq_9_8&quot;: [ { &quot;direction&quot;: &quot;in&quot;, &quot;size_left&quot;: &quot;1&quot;, &quot;size_right&quot;: &quot;0&quot; } ],
                   &quot;los_10g_10&quot;: [ { &quot;direction&quot;: &quot;in&quot; } ],

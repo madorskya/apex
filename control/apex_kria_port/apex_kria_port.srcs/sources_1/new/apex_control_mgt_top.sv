@@ -262,6 +262,7 @@ module apex_control_mgt_top
     (
         .axi_c2c_phy_clk     (usr_clk),
         .axi_clk             (axi_clk),
+        .bp_clk_sel          (bp_clk_sel),
         .c2c_slave_reset_bot (c2c_slave_reset_bot),
         .c2c_slave_reset_top (c2c_slave_reset_top),
         .do_cc_bot           (do_cc[0]),

@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x3D7AD6CF11FACC20",
+      "boundary_crc": "0x97BFB07C8EEA27C1",
       "device": "xck26-sfvc784-2LV-c",
       "gen_directory": "../../../../apex_kria_port.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -99,9 +99,9 @@
         "axi_jtag_1": ""
       },
       "registers": {
-        "reg_bank_0": "",
         "pok_alarm_0": "",
-        "axi_gpio_0": ""
+        "axi_gpio_0": "",
+        "reg_bank_0": ""
       },
       "XG_0": "",
       "ila_0": "",
@@ -432,6 +432,11 @@
             "value_src": "user_prop"
           }
         }
+      },
+      "bp_clk_sel": {
+        "direction": "O",
+        "left": "1",
+        "right": "0"
       }
     },
     "components": {
@@ -10372,150 +10377,14 @@
           },
           "qbv_on_off": {
             "direction": "O"
+          },
+          "bp_clk_sel_27_26_0": {
+            "direction": "O",
+            "left": "1",
+            "right": "0"
           }
         },
         "components": {
-          "reg_bank_0": {
-            "vlnv": "xilinx.com:module_ref:reg_bank:1.0",
-            "xci_name": "design_1_reg_bank_0_0",
-            "xci_path": "ip\\design_1_reg_bank_0_0_1\\design_1_reg_bank_0_0.xci",
-            "inst_hier_path": "registers/reg_bank_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "reg_bank",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "prbs_clk": {
-                "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "FREQ_HZ": {
-                    "value": "93750000",
-                    "value_src": "user_prop"
-                  },
-                  "PHASE": {
-                    "value": "0",
-                    "value_src": "user_prop"
-                  },
-                  "CLK_DOMAIN": {
-                    "value": "design_1_axi_c2c_phy_clk",
-                    "value_src": "default_prop"
-                  }
-                }
-              },
-              "reg_rw": {
-                "direction": "I",
-                "left": "25",
-                "right": "0"
-              },
-              "ipmb_en_1_0": {
-                "direction": "O",
-                "left": "1",
-                "right": "0"
-              },
-              "id_4_2": {
-                "direction": "O",
-                "left": "2",
-                "right": "0"
-              },
-              "payload_on_5": {
-                "direction": "O"
-              },
-              "prbs_sel_8_6": {
-                "direction": "O",
-                "left": "2",
-                "right": "0"
-              },
-              "aurora_pma_init_9": {
-                "direction": "O"
-              },
-              "tx_polarity_13_10": {
-                "direction": "O",
-                "left": "3",
-                "right": "0"
-              },
-              "gtp_reset_14": {
-                "direction": "O"
-              },
-              "channel_up_top_15": {
-                "direction": "O"
-              },
-              "c2c_slave_reset_top_16": {
-                "direction": "O"
-              },
-              "channel_up_bot_17": {
-                "direction": "O"
-              },
-              "c2c_slave_reset_bot_18": {
-                "direction": "O"
-              },
-              "pok_change_polarity_22_20": {
-                "direction": "O",
-                "left": "2",
-                "right": "0"
-              },
-              "pok_change_enable_25_23": {
-                "direction": "O",
-                "left": "2",
-                "right": "0"
-              },
-              "ha_7_0": {
-                "direction": "I",
-                "left": "7",
-                "right": "0"
-              },
-              "ready_ipmb_zynq_9_8": {
-                "direction": "I",
-                "left": "1",
-                "right": "0"
-              },
-              "los_10g_10": {
-                "direction": "I"
-              },
-              "pim_alarm_11": {
-                "direction": "I"
-              },
-              "link_stat_top_12": {
-                "direction": "I"
-              },
-              "channel_up_top_13": {
-                "direction": "I"
-              },
-              "link_stat_bot_14": {
-                "direction": "I"
-              },
-              "channel_up_bot_15": {
-                "direction": "I"
-              },
-              "hot_swap_handle_16": {
-                "direction": "I"
-              },
-              "prbs_err_20_17": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "payload_off_alarm_27_25": {
-                "direction": "I",
-                "left": "2",
-                "right": "0"
-              },
-              "pok_payload_28": {
-                "direction": "I"
-              },
-              "pok_change_31_29": {
-                "direction": "I",
-                "left": "2",
-                "right": "0"
-              },
-              "reg_ro": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              }
-            }
-          },
           "pok_alarm_0": {
             "vlnv": "xilinx.com:module_ref:pok_alarm:1.0",
             "xci_name": "design_1_pok_alarm_0_0",
@@ -10588,10 +10457,156 @@
                 "value": "32"
               },
               "C_GPIO_WIDTH": {
-                "value": "26"
+                "value": "28"
               },
               "C_IS_DUAL": {
                 "value": "1"
+              }
+            }
+          },
+          "reg_bank_0": {
+            "vlnv": "xilinx.com:module_ref:reg_bank:1.0",
+            "xci_name": "design_1_reg_bank_0_0",
+            "xci_path": "ip\\design_1_reg_bank_0_0_1\\design_1_reg_bank_0_0.xci",
+            "inst_hier_path": "registers/reg_bank_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "reg_bank",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "prbs_clk": {
+                "type": "clk",
+                "direction": "I",
+                "parameters": {
+                  "FREQ_HZ": {
+                    "value": "93750000",
+                    "value_src": "user_prop"
+                  },
+                  "PHASE": {
+                    "value": "0",
+                    "value_src": "user_prop"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "design_1_axi_c2c_phy_clk",
+                    "value_src": "default_prop"
+                  }
+                }
+              },
+              "reg_rw": {
+                "direction": "I",
+                "left": "27",
+                "right": "0"
+              },
+              "ipmb_en_1_0": {
+                "direction": "O",
+                "left": "1",
+                "right": "0"
+              },
+              "id_4_2": {
+                "direction": "O",
+                "left": "2",
+                "right": "0"
+              },
+              "payload_on_5": {
+                "direction": "O"
+              },
+              "prbs_sel_8_6": {
+                "direction": "O",
+                "left": "2",
+                "right": "0"
+              },
+              "aurora_pma_init_9": {
+                "direction": "O"
+              },
+              "tx_polarity_13_10": {
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "gtp_reset_14": {
+                "direction": "O"
+              },
+              "channel_up_top_15": {
+                "direction": "O"
+              },
+              "c2c_slave_reset_top_16": {
+                "direction": "O"
+              },
+              "channel_up_bot_17": {
+                "direction": "O"
+              },
+              "c2c_slave_reset_bot_18": {
+                "direction": "O"
+              },
+              "pok_change_polarity_22_20": {
+                "direction": "O",
+                "left": "2",
+                "right": "0"
+              },
+              "pok_change_enable_25_23": {
+                "direction": "O",
+                "left": "2",
+                "right": "0"
+              },
+              "bp_clk_sel_27_26": {
+                "direction": "O",
+                "left": "1",
+                "right": "0"
+              },
+              "ha_7_0": {
+                "direction": "I",
+                "left": "7",
+                "right": "0"
+              },
+              "ready_ipmb_zynq_9_8": {
+                "direction": "I",
+                "left": "1",
+                "right": "0"
+              },
+              "los_10g_10": {
+                "direction": "I"
+              },
+              "pim_alarm_11": {
+                "direction": "I"
+              },
+              "link_stat_top_12": {
+                "direction": "I"
+              },
+              "channel_up_top_13": {
+                "direction": "I"
+              },
+              "link_stat_bot_14": {
+                "direction": "I"
+              },
+              "channel_up_bot_15": {
+                "direction": "I"
+              },
+              "hot_swap_handle_16": {
+                "direction": "I"
+              },
+              "prbs_err_20_17": {
+                "direction": "I",
+                "left": "3",
+                "right": "0"
+              },
+              "payload_off_alarm_27_25": {
+                "direction": "I",
+                "left": "2",
+                "right": "0"
+              },
+              "pok_payload_28": {
+                "direction": "I"
+              },
+              "pok_change_31_29": {
+                "direction": "I",
+                "left": "2",
+                "right": "0"
+              },
+              "reg_ro": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
               }
             }
           }
@@ -10713,6 +10728,12 @@
             "ports": [
               "s_axi_aresetn",
               "axi_gpio_0/s_axi_aresetn"
+            ]
+          },
+          "reg_bank_0_bp_clk_sel_27_26": {
+            "ports": [
+              "reg_bank_0/bp_clk_sel_27_26",
+              "bp_clk_sel_27_26_0"
             ]
           },
           "reg_bank_0_c2c_slave_reset": {
@@ -11771,6 +11792,12 @@
         "ports": [
           "registers/gtp_reset",
           "gtp_reset"
+        ]
+      },
+      "registers_bp_clk_sel_27_26_0": {
+        "ports": [
+          "registers/bp_clk_sel_27_26_0",
+          "bp_clk_sel"
         ]
       },
       "rxdata_bot": {
