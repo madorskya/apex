@@ -68,6 +68,7 @@ module c2c_gth_7p8125g_tux
     wire [11:0] dum12_0, dum12_1;
     wire [2:0] sm_reset_all = 0;
     wire reset_all = soft_reset_i | hb_gtwiz_reset_all_vio;
+    assign prbs_err = rxprbserr_int | (~rxprbslocked_int);
 
     c2c_gth_7p8125g_vio_0 c2c_gth_7p8125g_vio_0_inst 
     (
