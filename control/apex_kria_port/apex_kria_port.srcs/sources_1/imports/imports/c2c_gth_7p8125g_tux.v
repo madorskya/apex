@@ -69,7 +69,11 @@ module c2c_gth_7p8125g_tux
     wire [2:0] sm_reset_all = 0;
     wire reset_all = soft_reset_i | hb_gtwiz_reset_all_vio;
     assign prbs_err = rxprbserr_int | (~rxprbslocked_int);
-
+    wire [1 : 0] cplllock_out;
+    wire [1 : 0] cpllrefclklost_out;
+    wire [1 : 0] rxresetdone_out; 
+    wire [1 : 0] txresetdone_out;
+    
     c2c_gth_7p8125g_vio_0 c2c_gth_7p8125g_vio_0_inst 
     (
         .clk         (drp_clk)
@@ -82,6 +86,10 @@ module c2c_gth_7p8125g_tux
         ,.probe_in6  (rxprbserr_int)
         ,.probe_in7  (rxprbslocked_int)
         ,.probe_in8  (~reset_all)
+        ,.probe_in9  (cplllock_out)
+        ,.probe_in10 (cpllrefclklost_out)
+        ,.probe_in11 (rxresetdone_out)
+        ,.probe_in12 (txresetdone_out)
         ,.probe_out0 (hb_gtwiz_reset_all_vio)
     );
 
@@ -127,7 +135,7 @@ module c2c_gth_7p8125g_tux
         .txprbssel_in					    ({2{prbs_sel}}),                                       // input wire [7 : 0] txprbssel_in
         .gtpowergood_out				    (gtpowergood_int),                                     // output wire [1 : 0] gtpowergood_out
         .rxbufstatus_out				    (),                                                    // output wire [5 : 0] rxbufstatus_out
-        .rxbyteisaligned_out			    (),                                                    // output wire [1 : 0] rxbyteisaligned_out
+        .rxbyteisaligned_out			    (channel_up),                                          // output wire [1 : 0] rxbyteisaligned_out
         .rxbyterealign_out			        (),                                                    // output wire [1 : 0] rxbyterealign_out
         .rxclkcorcnt_out				    (),                                                    // output wire [3 : 0] rxclkcorcnt_out
         .rxcommadet_out				        (),                                                    // output wire [1 : 0] rxcommadet_out
@@ -138,8 +146,11 @@ module c2c_gth_7p8125g_tux
         .rxpmaresetdone_out			        (rxpmaresetdone_out),                                  // output wire [1 : 0] rxpmaresetdone_out
         .rxprbserr_out				        (rxprbserr_int),                                       // output wire [1 : 0] rxprbserr_out
         .rxprbslocked_out				    (rxprbslocked_int),                                    // output wire [1 : 0] rxprbslocked_out
-        .txpmaresetdone_out			        (txpmaresetdone_int)                                   // output wire [1 : 0] txpmaresetdone_out
-
+        .txpmaresetdone_out			        (txpmaresetdone_int),                                  // output wire [1 : 0] txpmaresetdone_out
+        .cplllock_out                       (cplllock_out),                                        // output wire [1 : 0] cplllock_out
+        .cpllrefclklost_out                 (cpllrefclklost_out),                                  // output wire [1 : 0] cpllrefclklost_out
+        .rxresetdone_out                    (rxresetdone_out),                                     // output wire [1 : 0] rxresetdone_out 
+        .txresetdone_out                    (txresetdone_out)                                      // output wire [1 : 0] txresetdone_out 
     );
     
 // logic for c2c stream interface

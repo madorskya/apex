@@ -256,7 +256,7 @@ module apex_control_mgt_top
     wire c2c_slave_reset_top;
     wire c2c_slave_reset_bot;
     wire xg_refclk_out; // buffered refclk 156.25M
-
+    (* dont_touch *) wire [2:0] c2c_mgt_stat = 3'b0;
             
     design_1_wrapper bdw
     (
@@ -289,8 +289,8 @@ module apex_control_mgt_top
         .link_up_bot         (link_up_bot),
         .link_up_top         (link_up_top),
         .los_10g             (), // 10G CDR is removed
-        .mgt_unlocked_bot    (~channel_up[0]),
-        .mgt_unlocked_top    (~channel_up[1]),
+        .mgt_unlocked_bot    (1'b0), // (~channel_up[0]),
+        .mgt_unlocked_top    (1'b0), // (~channel_up[1]),
         .pim_alarm           (dcdc_control_alarm),
         .pok_change          ({qsfp_srv_pok, fpga_srv1_pok, fpga_srv0_pok}),
         .pok_payload         (dcdc_control_pok),
@@ -323,7 +323,8 @@ module apex_control_mgt_top
         .xg_refclk_clk_p     (gth_refclk0_c2m_p), // this refclk is the same as for C2C
         .g10s_scl_io         (g10s_scl),
         .g10s_sda_io         (g10s_sda),
-        .xg_refclk_out       (xg_refclk_bufg)
+        .xg_refclk_out       (xg_refclk_bufg),
+        .c2c_mgt_stat        (c2c_mgt_stat)
     );
             
     // reach into 10G eth's kishkes and pluck buffered ref clk
@@ -352,8 +353,6 @@ module apex_control_mgt_top
         
     c2c_gth_7p8125g_tux c2c_mgt 
     (
-//        .mgtrefclk0_x0y1_n (gth_refclk0_c2m_n),
-//        .mgtrefclk0_x0y1_p (gth_refclk0_c2m_p),
         .mgtrefclk0_x0y1_int (xg_refclk_out),
     
         .ch0_gthrxn_in  (axi_link0_rx_n),
@@ -397,5 +396,6 @@ module apex_control_mgt_top
         .usr_clk (usr_clk)// single user clock for tx and rx
     );
             
+//    assign c2c_mgt_stat = c2c_mgt.c2c_gth.inst.gen_gtwizard_gthe4_top.c2c_gth_7p8125g_gtwizard_gthe4_inst.gen_gtwizard_gthe4.gen_reset_controller_internal.gen_single_instance.gtwiz_reset_inst.sm_reset_all;            
         
 endmodule

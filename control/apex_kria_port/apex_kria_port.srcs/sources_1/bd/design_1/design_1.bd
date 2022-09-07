@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x97BFB07C8EEA27C1",
+      "boundary_crc": "0xE0BF95FF37F5C5B",
       "device": "xck26-sfvc784-2LV-c",
       "gen_directory": "../../../../apex_kria_port.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -436,6 +436,11 @@
       "bp_clk_sel": {
         "direction": "O",
         "left": "1",
+        "right": "0"
+      },
+      "c2c_mgt_stat": {
+        "direction": "I",
+        "left": "2",
         "right": "0"
       }
     },
@@ -11257,7 +11262,7 @@
             "value": "Native"
           },
           "C_NUM_OF_PROBES": {
-            "value": "12"
+            "value": "14"
           },
           "C_PROBE0_WIDTH": {
             "value": "32"
@@ -11289,7 +11294,7 @@
             "value": "2"
           },
           "C_NUM_OF_PROBES": {
-            "value": "2"
+            "value": "3"
           }
         },
         "interface_ports": {
@@ -11587,13 +11592,15 @@
       "aurora_mmcm_not_locked_0_1": {
         "ports": [
           "mgt_unlocked_top",
-          "C2C/mgt_unlocked_top"
+          "C2C/mgt_unlocked_top",
+          "ila_0/probe12"
         ]
       },
       "aurora_mmcm_not_locked_1_1": {
         "ports": [
           "mgt_unlocked_bot",
-          "C2C/mgt_unlocked_bot"
+          "C2C/mgt_unlocked_bot",
+          "ila_0/probe13"
         ]
       },
       "axi_c2c_phy_clk_0_1": {
@@ -11614,6 +11621,12 @@
         "ports": [
           "C2C/txvalid_top",
           "txvalid_top"
+        ]
+      },
+      "c2c_mgt_stat": {
+        "ports": [
+          "c2c_mgt_stat",
+          "system_ila_0/probe2"
         ]
       },
       "chip2chip_bot_ff_aurora_do_cc": {
