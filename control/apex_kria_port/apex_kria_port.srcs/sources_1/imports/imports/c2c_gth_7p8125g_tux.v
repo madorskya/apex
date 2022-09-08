@@ -73,6 +73,7 @@ module c2c_gth_7p8125g_tux
     wire [1 : 0] cpllrefclklost_out;
     wire [1 : 0] rxresetdone_out; 
     wire [1 : 0] txresetdone_out;
+    wire [1 : 0] rxbyteisaligned_out;
     
     c2c_gth_7p8125g_vio_0 c2c_gth_7p8125g_vio_0_inst 
     (
@@ -90,6 +91,7 @@ module c2c_gth_7p8125g_tux
         ,.probe_in10 (cpllrefclklost_out)
         ,.probe_in11 (rxresetdone_out)
         ,.probe_in12 (txresetdone_out)
+        ,.probe_in13 (rxbyteisaligned_out)
         ,.probe_out0 (hb_gtwiz_reset_all_vio)
     );
 
@@ -135,7 +137,7 @@ module c2c_gth_7p8125g_tux
         .txprbssel_in					    ({2{prbs_sel}}),                                       // input wire [7 : 0] txprbssel_in
         .gtpowergood_out				    (gtpowergood_int),                                     // output wire [1 : 0] gtpowergood_out
         .rxbufstatus_out				    (),                                                    // output wire [5 : 0] rxbufstatus_out
-        .rxbyteisaligned_out			    (channel_up),                                          // output wire [1 : 0] rxbyteisaligned_out
+        .rxbyteisaligned_out			    (rxbyteisaligned_out), // (channel_up),                // output wire [1 : 0] rxbyteisaligned_out
         .rxbyterealign_out			        (),                                                    // output wire [1 : 0] rxbyterealign_out
         .rxclkcorcnt_out				    (),                                                    // output wire [3 : 0] rxclkcorcnt_out
         .rxcommadet_out				        (),                                                    // output wire [1 : 0] rxcommadet_out
@@ -152,6 +154,8 @@ module c2c_gth_7p8125g_tux
         .rxresetdone_out                    (rxresetdone_out),                                     // output wire [1 : 0] rxresetdone_out 
         .txresetdone_out                    (txresetdone_out)                                      // output wire [1 : 0] txresetdone_out 
     );
+    
+    assign channel_up = 2'b11;
     
 // logic for c2c stream interface
     // alignment logic
