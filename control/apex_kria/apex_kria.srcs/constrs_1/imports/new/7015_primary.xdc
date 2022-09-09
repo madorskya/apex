@@ -99,19 +99,15 @@ set_property PULLUP true [get_ports som240_2_d57]
 set_property IOSTANDARD LVCMOS33 [get_ports som240_2_d58]
 set_property PULLUP true [get_ports som240_2_d58]
 
-#set_property -dict {DRIVE 12 SLEW FAST IOB TRUE} [get_ports scf_tck_*];
-#set_property -dict {DRIVE 12 SLEW FAST IOB TRUE} [get_ports scf_tms_*];
-#set_property -dict {DRIVE 12 SLEW FAST IOB TRUE} [get_ports scf_tdi_*];
-
-# set_false_path -from [get_clocks clk_pl_0]
-
-#set_property ASYNC_REG true [get_cells {c2c_mgt/c2c_gth_7p8125g_vio_0_inst/inst/PROBE_IN_INST/probe_in_reg_reg[*]}]
-#set_property ASYNC_REG true [get_cells {c2c_mgt/c2c_gth_7p8125g_vio_0_inst/inst/PROBE_IN_INST/data_int_sync1_reg[*]}]
-set_clock_groups -asynchronous -group [get_clocks {gtwiz_userclk_rx_srcclk_out[0]}] -group [get_clocks {clk_pl_0}] -group [get_clocks {GTHE4_CHANNEL_TXOUTCLK[0]}] -group [get_clocks {GTHE4_CHANNEL_TXOUTCLK[0]_1}]
-set_false_path -to [get_pins {c2c_mgt/c2c_gth_7p8125g_vio_0_inst/inst/PROBE_IN_INST/probe_in_reg_reg[*]/D}]
-set_false_path -from [get_clocks clk_pl_0] -to [get_clocks -of_objects [get_pins {c2c_mgt/c2c_gth/inst/gen_gtwizard_gthe4_top.c2c_gth_7p8125g_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[*].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[*].GTHE4_CHANNEL_PRIM_INST/TXOUTCLK}]]
-set_false_path -from [get_pins {bdw/design_1_i/registers/axi_gpio_0/U0/gpio_core_1/Dual.gpio_Data_Out_reg[*]/C}] -to [get_pins {c2c_mgt/c2c_gth/inst/gen_gtwizard_gthe4_top.c2c_gth_7p8125g_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[*].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[*].GTHE4_CHANNEL_PRIM_INST/TXPRBSSEL[*]}]
-
 set_property BITSTREAM.GENERAL.COMPRESS TRUE [current_design]
-set_property BITSTREAM.CONFIG.OVERTEMPPOWERDOWN ENABLE [current_design]
 set_property BITSTREAM.CONFIG.USR_ACCESS TIMESTAMP [current_design]
+
+# create MGT clocks manually, Vivado gives incorrect names for some reason
+
+create_clock -period 5.12 -name txoutclk0 [get_pins -filter REF_PIN_NAME=~*TXOUTCLK -of_objects [get_cells -hierarchical -filter {NAME =~ c2c_mgt*gen_channel_container[1]*gen_gthe4_channel_inst[0]*GTHE4_CHANNEL_PRIM_INST*}]]
+create_clock -period 5.12 -name txoutclk1 [get_pins -filter REF_PIN_NAME=~*TXOUTCLK -of_objects [get_cells -hierarchical -filter {NAME =~ c2c_mgt*gen_channel_container[1]*gen_gthe4_channel_inst[1]*GTHE4_CHANNEL_PRIM_INST*}]]
+create_clock -period 5.12 -name rxoutclk0 [get_pins -filter REF_PIN_NAME=~*RXOUTCLK -of_objects [get_cells -hierarchical -filter {NAME =~ c2c_mgt*gen_channel_container[1]*gen_gthe4_channel_inst[0]*GTHE4_CHANNEL_PRIM_INST*}]]
+create_clock -period 5.12 -name rxoutclk1 [get_pins -filter REF_PIN_NAME=~*RXOUTCLK -of_objects [get_cells -hierarchical -filter {NAME =~ c2c_mgt*gen_channel_container[1]*gen_gthe4_channel_inst[1]*GTHE4_CHANNEL_PRIM_INST*}]]
+
+set_clock_groups -asynchronous -group [get_clocks {txoutclk0}] -group [get_clocks {txoutclk1}] -group [get_clocks {rxoutclk0}] -group [get_clocks {rxoutclk1}] -group [get_clocks {clk_pl_0}]
+
