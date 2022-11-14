@@ -47,8 +47,22 @@ module i2c_switch_dual
     inout scl0,
     inout sda0,
     inout scl1,
-    inout sda1
-
+    inout sda1,
+    
+    output [1:0] scl_i_out,
+    output [1:0] scl_t_out,
+    output [1:0] sda_i_out,
+    output [1:0] sda_t_out,
+    
+    output [1:0] sv_scl_o,
+    output [1:0] sv_scl_t,
+    output ms_scl_o,
+    output ms_scl_t,
+    
+    output [1:0] sv_sda_o,
+    output [1:0] sv_sda_t,
+    output ms_sda_o,
+    output ms_sda_t
 );
 
     wire [1:0] scl_o, sda_o;
@@ -144,5 +158,22 @@ module i2c_switch_dual
         .probe23 (rx1_sda_o), // input wire [0:0]  probe23
         .probe24 (rx1_sda_t) // input wire [0:0]  probe24
 );
+
+    assign scl_i_out = scl_i;
+    assign scl_t_out = scl_t;
+    assign sda_i_out = sda_i;
+    assign sda_t_out = sda_t;
+    assign sv_scl_o[0] = rx0_scl_o;
+    assign sv_scl_t[0] = rx0_scl_t;
+    assign sv_scl_o[1] = rx1_scl_o;
+    assign sv_scl_t[1] = rx1_scl_t;
+    assign ms_scl_o = tx_scl_o;
+    assign ms_scl_t = tx_scl_t;
+    assign sv_sda_o[0] = rx0_sda_o;
+    assign sv_sda_t[0] = rx0_sda_t;
+    assign sv_sda_o[1] = rx1_sda_o;
+    assign sv_sda_t[1] = rx1_sda_t;
+    assign ms_sda_o = tx_sda_o;
+    assign ms_sda_t = tx_sda_t;
 
 endmodule

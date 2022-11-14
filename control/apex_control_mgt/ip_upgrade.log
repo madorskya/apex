@@ -1,0 +1,431 @@
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Wed Oct  5 22:30:41 2022
+| Host         : uf-eng-srv-1 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z015clg485-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_axis_jtag_0_0'
+
+1. Summary
+----------
+
+CAUTION (success, with warnings) in the upgrade of design_1_axis_jtag_0_0 (user.org:user:axis_jtag:1.0) from (Rev. 23) to (Rev. 27)
+
+After upgrade, an IP may have parameter and port differences compared to the original customization. Please review the parameters within the IP customization GUI to ensure proper functionality. Also, please review the updated IP instantiation template to ensure proper connectivity, and update your design if required.
+
+2. Interface Information
+------------------------
+
+Detected external interface differences while upgrading 'design_1_axis_jtag_0_0'.
+
+
+-Upgrade has added interface 'jtag_0' (xilinx.com:interface:jtag:2.0)
+
+-Upgrade has added interface 'jtag_1' (xilinx.com:interface:jtag:2.0)
+
+
+3. Connection Warnings
+----------------------
+
+Detected external port differences while upgrading 'design_1_axis_jtag_0_0'. These changes may impact your design.
+
+
+-Upgrade has added port 'TDO_0'
+
+-Upgrade has added port 'TDO_1'
+
+
+
+
+
+
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Thu Sep  8 10:35:57 2022
+| Host         : uf-eng-srv-1 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z015clg485-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_axis_jtag_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_axis_jtag_0_0 (user.org:user:axis_jtag:1.0) from (Rev. 22) to (Rev. 23)
+
+
+
+
+
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Thu Sep  8 10:24:18 2022
+| Host         : uf-eng-srv-1 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z015clg485-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_axis_jtag_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_axis_jtag_0_0 (user.org:user:axis_jtag:1.0) from (Rev. 20) to (Rev. 22)
+
+
+
+
+
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Wed Aug 17 16:15:18 2022
+| Host         : uf-eng-srv-1 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z015clg485-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_axis_jtag_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_axis_jtag_0_0 (user.org:user:axis_jtag:1.0) from (Rev. 19) to (Rev. 20)
+
+
+
+
+
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Wed Aug 17 15:06:23 2022
+| Host         : uf-eng-srv-1 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z015clg485-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_axis_jtag_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_axis_jtag_0_0 (user.org:user:axis_jtag:1.0) from (Rev. 18) to (Rev. 19)
+
+
+
+
+
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Wed Aug 17 13:23:54 2022
+| Host         : uf-eng-srv-1 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z015clg485-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_axis_jtag_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_axis_jtag_0_0 (user.org:user:axis_jtag:1.0) from (Rev. 17) to (Rev. 18)
+
+
+
+
+
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Wed Aug 17 11:40:06 2022
+| Host         : uf-eng-srv-1 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z015clg485-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_axis_jtag_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_axis_jtag_0_0 (user.org:user:axis_jtag:1.0) from (Rev. 16) to (Rev. 17)
+
+
+
+
+
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Wed Aug 17 10:50:28 2022
+| Host         : uf-eng-srv-1 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z015clg485-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_axis_jtag_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_axis_jtag_0_0 (user.org:user:axis_jtag:1.0) from (Rev. 15) to (Rev. 16)
+
+
+
+
+
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Wed Aug 17 09:36:59 2022
+| Host         : uf-eng-srv-1 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z015clg485-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_axis_jtag_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_axis_jtag_0_0 (user.org:user:axis_jtag:1.0) from (Rev. 14) to (Rev. 15)
+
+
+
+
+
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Wed Aug 17 01:47:47 2022
+| Host         : uf-eng-srv-1 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z015clg485-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_axis_jtag_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_axis_jtag_0_0 (user.org:user:axis_jtag:1.0) from (Rev. 13) to (Rev. 14)
+
+
+
+
+
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Tue Aug 16 22:53:08 2022
+| Host         : uf-eng-srv-1 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z015clg485-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_axis_jtag_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_axis_jtag_0_0 (user.org:user:axis_jtag:1.0) from (Rev. 12) to (Rev. 13)
+
+
+
+
+
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Tue Aug 16 22:05:27 2022
+| Host         : uf-eng-srv-1 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z015clg485-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_axis_jtag_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_axis_jtag_0_0 (user.org:user:axis_jtag:1.0) from (Rev. 11) to (Rev. 12)
+
+
+
+
+
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Tue Aug 16 20:41:59 2022
+| Host         : uf-eng-srv-1 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z015clg485-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_axis_jtag_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_axis_jtag_0_0 (user.org:user:axis_jtag:1.0) from (Rev. 10) to (Rev. 11)
+
+
+
+
+
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Tue Aug 16 20:28:54 2022
+| Host         : uf-eng-srv-1 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z015clg485-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_axis_jtag_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_axis_jtag_0_0 (user.org:user:axis_jtag:1.0) from (Rev. 8) to (Rev. 10)
+
+
+
+
+
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Tue Aug 16 17:48:27 2022
+| Host         : uf-eng-srv-1 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z015clg485-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_axis_jtag_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_axis_jtag_0_0 (user.org:user:axis_jtag:1.0) from (Rev. 7) to (Rev. 8)
+
+
+
+
+
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Tue Aug 16 16:59:41 2022
+| Host         : uf-eng-srv-1 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z015clg485-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_axis_jtag_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_axis_jtag_0_0 (user.org:user:axis_jtag:1.0) from (Rev. 5) to (Rev. 7)
+
+
+
+
+
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Tue Aug 16 10:34:09 2022
+| Host         : uf-eng-srv-1 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z015clg485-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_axis_jtag_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_axis_jtag_0_0 (user.org:user:axis_jtag:1.0) from (Rev. 4) to (Rev. 5)
+
+
+
+
+
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Tue Aug 16 10:19:32 2022
+| Host         : uf-eng-srv-1 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z015clg485-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_axis_jtag_0_0'
+
+1. Summary
+----------
+
+CAUTION (success, with warnings) in the upgrade of design_1_axis_jtag_0_0 (user.org:user:axis_jtag:1.0) from (Rev. 2) to (Rev. 4)
+
+After upgrade, an IP may have parameter and port differences compared to the original customization. Please review the parameters within the IP customization GUI to ensure proper functionality. Also, please review the updated IP instantiation template to ensure proper connectivity, and update your design if required.
+
+2. Connection Warnings
+----------------------
+
+Detected external port differences while upgrading 'design_1_axis_jtag_0_0'. These changes may impact your design.
+
+
+-Upgrade has added port 's_axis_tkeep'
+
+-Upgrade has added port 's_axis_tlast'
+
+
+
+
+
+
+
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Tue Aug 16 09:22:55 2022
+| Host         : uf-eng-srv-1 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z015clg485-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_axis_jtag_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_axis_jtag_0_0 (user.org:user:axis_jtag:1.0) from (Rev. 1) to (Rev. 2)
+
