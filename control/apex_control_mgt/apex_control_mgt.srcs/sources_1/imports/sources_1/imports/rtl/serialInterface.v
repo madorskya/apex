@@ -413,6 +413,10 @@ end
 		begin
 			to_rst = 1'b1;
 		end
+		else
+		begin
+			to_rst = 1'b0;
+		end
 
 		if (sdaOut == 1'b0) to_cnt++;
 		else to_cnt = 20'h0;
