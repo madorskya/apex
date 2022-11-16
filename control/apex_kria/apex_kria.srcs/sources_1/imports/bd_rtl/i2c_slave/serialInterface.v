@@ -52,8 +52,7 @@
 ////                                                              ////
 //////////////////////////////////////////////////////////////////////
 //
-`timescale 1ns / 1ps
-//`include "timescale.v"
+`include "timescale.v"
 `include "i2cSlave_define.v"
 
 module serialInterface (
@@ -110,6 +109,7 @@ reg  [7:0]rxData, next_rxData;
 reg  [1:0]streamSt, next_streamSt;
 reg  [7:0]txData, next_txData;
 reg  next_data_valid;
+reg to_rst;
 
 // BINARY ENCODED state machine: SISt
 // State codes definitions:
@@ -367,7 +367,7 @@ end
 // Current State Logic (sequential)
 always @ (posedge clk)
 begin
-  if (rst == 1'b1)
+  if (rst == 1'b1 || to_rst == 1'b1) // adding SDA timeout reset 
     CurrState_SISt <= `START;
   else
     CurrState_SISt <= NextState_SISt;
@@ -376,7 +376,7 @@ end
 // Registered outputs logic
 always @ (posedge clk)
 begin
-  if (rst == 1'b1)
+  if (rst == 1'b1 || to_rst == 1'b1) // adding SDA timeout reset 
   begin
     sdaOut <= 1'b1;
     writeEn <= 1'b0;
@@ -403,5 +403,23 @@ begin
     data_valid <= next_data_valid;
   end
 end
+
+	// sda bus shorting protection logic
+`define MAX_SDA_0 100000 // 1 ms TO / 10 ns clock period
+	reg [19:0] to_cnt;
+	always @(posedge clk)
+	begin
+		if (to_cnt > `MAX_SDA_0) // we're holding SDA=0 too long
+		begin
+			to_rst = 1'b1;
+		end
+		else
+		begin
+			to_rst = 1'b0;
+		end
+
+		if (sdaOut == 1'b0) to_cnt++;
+		else to_cnt = 20'h0;
+	end
 
 endmodule
