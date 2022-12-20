@@ -52,7 +52,7 @@
 ////                                                              ////
 //////////////////////////////////////////////////////////////////////
 //
-`include "timescale.v"
+//`include "timescale.v"
 `include "i2cSlave_define.v"
 
 module serialInterface (
@@ -418,7 +418,7 @@ end
 			to_rst = 1'b0;
 		end
 
-		if (sdaOut == 1'b0) to_cnt++;
+		if (sdaOut == 1'b0) to_cnt = to_cnt+1;
 		else to_cnt = 20'h0;
 	end
 
