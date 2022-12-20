@@ -854,7 +854,7 @@ module axisafety #(
 	begin
 		m_bvalid = (s_wbursts > (S_AXI_BVALID ? 1:0));
 		m_bid    = wfifo_id;
-		m_bresp  = `SLAVE_ERROR;
+		m_bresp  = 0; //`SLAVE_ERROR; replaced on advice from Dan
 	end else begin
 		m_bvalid = M_AXI_BVALID;
 		if (faulty_write_return)
