@@ -1,8 +1,8 @@
-//Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+//Copyright 1986-2023 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2022.1.2 (win64) Build 3605665 Fri Aug  5 22:53:37 MDT 2022
-//Date        : Fri Sep  9 01:12:51 2022
-//Host        : uf-eng-srv-1 running 64-bit major release  (build 9200)
+//Tool Version: Vivado v.2022.2.2 (lin64) Build 3788238 Tue Feb 21 19:59:23 MST 2023
+//Date        : Tue Apr  4 23:48:41 2023
+//Host        : uftrig01 running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
 //Purpose     : IP block netlist
@@ -10,7 +10,9 @@
 `timescale 1 ps / 1 ps
 
 module design_1_wrapper
-   (axi_c2c_phy_clk,
+   (IIC_0_scl_io,
+    IIC_0_sda_io,
+    axi_c2c_phy_clk,
     axi_clk,
     bp_clk_sel,
     c2c_mgt_stat,
@@ -75,6 +77,8 @@ module design_1_wrapper
     xg_refclk_clk_n,
     xg_refclk_clk_p,
     xg_refclk_out);
+  inout IIC_0_scl_io;
+  inout IIC_0_sda_io;
   input axi_c2c_phy_clk;
   output axi_clk;
   output [1:0]bp_clk_sel;
@@ -141,6 +145,14 @@ module design_1_wrapper
   input xg_refclk_clk_p;
   output xg_refclk_out;
 
+  wire IIC_0_scl_i;
+  wire IIC_0_scl_io;
+  wire IIC_0_scl_o;
+  wire IIC_0_scl_t;
+  wire IIC_0_sda_i;
+  wire IIC_0_sda_io;
+  wire IIC_0_sda_o;
+  wire IIC_0_sda_t;
   wire axi_c2c_phy_clk;
   wire axi_clk;
   wire [1:0]bp_clk_sel;
@@ -234,8 +246,24 @@ module design_1_wrapper
   wire xg_refclk_clk_p;
   wire xg_refclk_out;
 
+  IOBUF IIC_0_scl_iobuf
+       (.I(IIC_0_scl_o),
+        .IO(IIC_0_scl_io),
+        .O(IIC_0_scl_i),
+        .T(IIC_0_scl_t));
+  IOBUF IIC_0_sda_iobuf
+       (.I(IIC_0_sda_o),
+        .IO(IIC_0_sda_io),
+        .O(IIC_0_sda_i),
+        .T(IIC_0_sda_t));
   design_1 design_1_i
-       (.axi_c2c_phy_clk(axi_c2c_phy_clk),
+       (.IIC_0_scl_i(IIC_0_scl_i),
+        .IIC_0_scl_o(IIC_0_scl_o),
+        .IIC_0_scl_t(IIC_0_scl_t),
+        .IIC_0_sda_i(IIC_0_sda_i),
+        .IIC_0_sda_o(IIC_0_sda_o),
+        .IIC_0_sda_t(IIC_0_sda_t),
+        .axi_c2c_phy_clk(axi_c2c_phy_clk),
         .axi_clk(axi_clk),
         .bp_clk_sel(bp_clk_sel),
         .c2c_mgt_stat(c2c_mgt_stat),

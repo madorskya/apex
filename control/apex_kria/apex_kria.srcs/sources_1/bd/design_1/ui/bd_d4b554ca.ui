@@ -1,0 +1,51 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.877586",
+   "Default View_TopLeft":"-402,-30",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
+#  -string -flagsOSRD
+preplace port IIC_0 -pg 1 -lvl 2 -x 580 -y 470 -defaultsOSRD
+preplace port S_AXI -pg 1 -lvl 0 -x -20 -y 190 -defaultsOSRD
+preplace port S_AXI1 -pg 1 -lvl 0 -x -20 -y 50 -defaultsOSRD
+preplace port S_AXI2 -pg 1 -lvl 0 -x -20 -y 330 -defaultsOSRD
+preplace port S_AXI3 -pg 1 -lvl 0 -x -20 -y 470 -defaultsOSRD
+preplace port iic_rtl_0 -pg 1 -lvl 2 -x 580 -y 330 -defaultsOSRD
+preplace port iic_rtl_1 -pg 1 -lvl 2 -x 580 -y 190 -defaultsOSRD
+preplace port iic_rtl_2 -pg 1 -lvl 2 -x 580 -y 50 -defaultsOSRD
+preplace port IIC_1 -pg 1 -lvl 2 -x 580 -y 590 -defaultsOSRD
+preplace port S_AXI4 -pg 1 -lvl 0 -x -20 -y 590 -defaultsOSRD
+preplace port port-id_iic2intc_irpt -pg 1 -lvl 2 -x 580 -y 210 -defaultsOSRD
+preplace port port-id_iic2intc_irpt1 -pg 1 -lvl 2 -x 580 -y 70 -defaultsOSRD
+preplace port port-id_iic2intc_irpt2 -pg 1 -lvl 2 -x 580 -y 350 -defaultsOSRD
+preplace port port-id_iic2intc_irpt3 -pg 1 -lvl 2 -x 580 -y 490 -defaultsOSRD
+preplace port port-id_s_axi_aclk -pg 1 -lvl 0 -x -20 -y 350 -defaultsOSRD
+preplace port port-id_s_axi_aresetn -pg 1 -lvl 0 -x -20 -y 490 -defaultsOSRD
+preplace portBus iic2intc_irpt4 -pg 1 -lvl 2 -x 580 -y 610 -defaultsOSRD
+preplace inst axi_iic_0 -pg 1 -lvl 1 -x 150 -y 330 -defaultsOSRD
+preplace inst axi_iic_1 -pg 1 -lvl 1 -x 150 -y 190 -defaultsOSRD
+preplace inst axi_iic_2 -pg 1 -lvl 1 -x 150 -y 50 -defaultsOSRD
+preplace inst axi_iic_3 -pg 1 -lvl 1 -x 150 -y 470 -defaultsOSRD
+preplace inst axi_iic_4 -pg 1 -lvl 1 -x 150 -y 610 -defaultsOSRD
+preplace netloc Net 1 0 1 10 50n
+preplace netloc axi_iic_0_iic2intc_irpt 1 1 1 280J 330n
+preplace netloc axi_iic_1_iic2intc_irpt 1 1 1 280J 190n
+preplace netloc axi_iic_2_iic2intc_irpt 1 1 1 280J 50n
+preplace netloc axi_iic_3_iic2intc_irpt 1 1 1 280J 470n
+preplace netloc proc_sys_reset_0_peripheral_aresetn 1 0 1 20 70n
+preplace netloc axi_iic_4_iic2intc_irpt 1 1 1 N 610
+preplace netloc Conn1 1 0 1 0J 450n
+preplace netloc Conn2 1 1 1 290J 450n
+preplace netloc axi_iic_0_IIC 1 1 1 290J 310n
+preplace netloc axi_iic_1_IIC 1 1 1 290J 170n
+preplace netloc axi_iic_2_IIC 1 1 1 290J 30n
+preplace netloc cpu_M10_AXI 1 0 1 0J 310n
+preplace netloc cpu_M11_AXI 1 0 1 0J 170n
+preplace netloc cpu_M12_AXI 1 0 1 0J 30n
+preplace netloc Conn3 1 1 1 N 590
+preplace netloc S_AXI4_1 1 0 1 N 590
+levelinfo -pg 1 -20 150 580
+pagesize -pg 1 -db -bbox -sgen -170 -30 760 710
+"
+}
+

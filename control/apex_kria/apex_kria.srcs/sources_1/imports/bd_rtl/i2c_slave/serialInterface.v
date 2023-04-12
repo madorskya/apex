@@ -109,7 +109,7 @@ reg  [7:0]rxData, next_rxData;
 reg  [1:0]streamSt, next_streamSt;
 reg  [7:0]txData, next_txData;
 reg  next_data_valid;
-reg to_rst;
+reg  to_rst;
 
 // BINARY ENCODED state machine: SISt
 // State codes definitions:
@@ -376,7 +376,7 @@ end
 // Registered outputs logic
 always @ (posedge clk)
 begin
-  if (rst == 1'b1 || to_rst == 1'b1) // adding SDA timeout reset 
+    if (rst == 1'b1 || to_rst == 1'b1) // adding SDA timeout reset 
   begin
     sdaOut <= 1'b1;
     writeEn <= 1'b0;
@@ -404,7 +404,7 @@ begin
   end
 end
 
-	// sda bus shorting protection logic
+// sda bus shorting protection logic
 `define MAX_SDA_0 100000 // 1 ms TO / 10 ns clock period
 	reg [19:0] to_cnt;
 	always @(posedge clk)

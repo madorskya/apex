@@ -1,4 +1,0 @@
-# open_run synth_1 -name synth_1
-disconnect_net -prune -objects [get_pins c2c_mgt/c2c_gth/inst/gen_gtwizard_gthe4_top.c2c_gth_7p8125g_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[*].GTHE4_CHANNEL_PRIM_INST/GTREFCLK0]
-connect_net -hier -net bdw/design_1_i/XG_0/xxv_ethernet_0/inst/i_XG_inst_0_xxv_ethernet_0_0_common_wrapper/XG_inst_0_xxv_ethernet_0_0_gt_gthe4_common_wrapper_i/common_inst/gt_refclk -objects [get_pins c2c_mgt/c2c_gth/inst/gen_gtwizard_gthe4_top.c2c_gth_7p8125g_gtwizard_gthe4_inst/gen_gtwizard_gthe4.gen_channel_container[1].gen_enabled_channel.gthe4_channel_wrapper_inst/channel_inst/gthe4_channel_gen.gen_gthe4_channel_inst[*].GTHE4_CHANNEL_PRIM_INST/GTREFCLK0]
-

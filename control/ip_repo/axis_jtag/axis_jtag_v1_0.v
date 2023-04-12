@@ -24,13 +24,22 @@
       output wire                                  s_axis_tready,
       input  wire [7 : 0]                          s_axis_tkeep,
       input  wire                                  s_axis_tlast,
+      
+      (* X_INTERFACE_INFO = "xilinx.com:interface:jtag:2.0 jtag_0 TCK" *)
       output wire                                  TCK_0,
+      (* X_INTERFACE_INFO = "xilinx.com:interface:jtag:2.0 jtag_0 TMS" *)
       output wire                                  TMS_0,
+      (* X_INTERFACE_INFO = "xilinx.com:interface:jtag:2.0 jtag_0 TDI" *)
       output wire                                  TDI_0,
+      (* X_INTERFACE_INFO = "xilinx.com:interface:jtag:2.0 jtag_0 TDO" *)
       input  wire                                  TDO_0,
+      (* X_INTERFACE_INFO = "xilinx.com:interface:jtag:2.0 jtag_1 TCK" *)
       output wire                                  TCK_1,
+      (* X_INTERFACE_INFO = "xilinx.com:interface:jtag:2.0 jtag_1 TMS" *)
       output wire                                  TMS_1,
+      (* X_INTERFACE_INFO = "xilinx.com:interface:jtag:2.0 jtag_1 TDI" *)
       output wire                                  TDI_1,
+      (* X_INTERFACE_INFO = "xilinx.com:interface:jtag:2.0 jtag_1 TDO" *)
       input  wire                                  TDO_1
    );
    

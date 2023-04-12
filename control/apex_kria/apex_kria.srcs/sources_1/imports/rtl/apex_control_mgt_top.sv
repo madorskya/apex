@@ -30,10 +30,10 @@ module apex_control_mgt_top
     input som240_2_d6,
     output som240_2_a3,
     output som240_2_a4,
-    output som240_2_d9,
-    output som240_2_d10,
-    input som240_2_b9,
-    input som240_2_b10,
+    //output som240_2_d9,
+    //output som240_2_d10,
+    //input som240_2_b9,
+    //input som240_2_b10,
     output som240_2_a51,
     output som240_2_a52,
     input som240_2_a54,
@@ -176,10 +176,10 @@ module apex_control_mgt_top
     assign som240_2_a3 = axi_link1_tx_p; // inverted
     assign som240_2_a4 = axi_link1_tx_n;
     
-    assign som240_2_d9 = axi_link0_tx_p; // inverted
-    assign som240_2_d10 = axi_link0_tx_n;
-    assign axi_link0_rx_p = som240_2_b9; // inverted
-    assign axi_link0_rx_n = som240_2_b10;
+    //assign som240_2_d9 = axi_link0_tx_p; // inverted
+    //assign som240_2_d10 = axi_link0_tx_n;
+    //assign axi_link0_rx_p = som240_2_b9; // inverted
+    //assign axi_link0_rx_n = som240_2_b10;
     
     assign som240_2_a51 = bp_clk_sel[0];
     assign som240_2_a52 = bp_clk_sel[1];
@@ -308,6 +308,8 @@ module apex_control_mgt_top
         .scf_i2c_1_sda_io    (fpga_srv1_sda),
         .scf_i2c_2_scl_io    (qsfp_srv_scl),
         .scf_i2c_2_sda_io    (qsfp_srv_sda),
+        .IIC_0_scl_io        (dcdc_control_scl),
+        .IIC_0_sda_io        (dcdc_control_sda),
         .tx_polarity         (tx_polarity),
         .txdata_bot          (txdata[0]),
         .txdata_top          (txdata[1]),
