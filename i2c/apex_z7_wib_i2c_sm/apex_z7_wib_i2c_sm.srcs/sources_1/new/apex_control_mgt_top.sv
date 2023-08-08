@@ -25,15 +25,15 @@ module apex_control_mgt_top
   output [1:0]en_ipmb_zynq,
   input [7:0]ha,
   input [0:0]hot_swap_sw,
-  inout i2c_10g_scl_io,
-  inout i2c_10g_sda_io,
+  inout bus1_scl_io,
+  inout bus1_sda_io,
   output [2:0]id,
   inout ipmc_scl_0,
   inout ipmc_scl_1,
   inout ipmc_sda_0,
   inout ipmc_sda_1,
-  inout local_i2c_scl_io,
-  inout local_i2c_sda_io,
+  inout bus0_scl_io,
+  inout bus0_sda_io,
   input [0:0]los_10g,
   output mdio_phy_mdc,
   inout mdio_phy_mdio_io,
@@ -47,8 +47,8 @@ module apex_control_mgt_top
   output [3:0]rgmii_td,
   output rgmii_tx_ctl,
   output rgmii_txc,
-  inout scf_i2c_0_scl_io,
-  inout scf_i2c_0_sda_io,
+  inout ptc_scl_io,
+  inout ptc_sda_io,
   inout scf_i2c_1_scl_io,
   inout scf_i2c_1_sda_io,
   inout scf_i2c_2_scl_io,
@@ -78,21 +78,21 @@ module apex_control_mgt_top
   wire i2c_10g_sda_i;
   wire i2c_10g_sda_o;
   wire i2c_10g_sda_t;
-  wire local_i2c_scl_i;
-  wire local_i2c_scl_o;
-  wire local_i2c_scl_t;
-  wire local_i2c_sda_i;
-  wire local_i2c_sda_o;
-  wire local_i2c_sda_t;
+//  wire bus0_scl_i;
+//  wire bus0_scl_o;
+//  wire bus0_scl_t;
+//  wire bus0_sda_i;
+//  wire bus0_sda_o;
+//  wire bus0_sda_t;
   wire mdio_phy_mdio_i;
   wire mdio_phy_mdio_o;
   wire mdio_phy_mdio_t;
-  wire scf_i2c_0_scl_i;
-  wire scf_i2c_0_scl_o;
-  wire scf_i2c_0_scl_t;
-  wire scf_i2c_0_sda_i;
-  wire scf_i2c_0_sda_o;
-  wire scf_i2c_0_sda_t;
+  wire ptc_scl_i;
+  wire ptc_scl_o;
+  wire ptc_scl_t;
+  wire ptc_sda_i;
+  wire ptc_sda_o;
+  wire ptc_sda_t;
   wire scf_i2c_1_scl_i;
   wire scf_i2c_1_scl_o;
   wire scf_i2c_1_scl_t;
@@ -394,109 +394,49 @@ module apex_control_mgt_top
         .usr_clk (usr_clk)// single user clock for tx and rx
     );
             
-    wire scf_i2c_0_sda_t_sel, sda_inh;
-    wire ptc_busy, local_sda_i, bus1_sda_i;
-    assign scf_i2c_0_sda_t = (scf_i2c_0_sda_t_sel & local_sda_i & bus1_sda_i) | (~sda_inh);
-    wire   local_i2c_sda_tb = scf_i2c_0_sda_i | sda_inh;
-    wire bus_select, activate;
-    
-    wire [2:0] slot = 8'h5;
-    wire [9:0] crate_id = 10'h123;
-                
-    IOBUF scf_i2c_0_scl_iobuf
-    (
-        .I  (1'b0), // (scf_i2c_0_scl_o),
-        .IO (scf_i2c_0_scl_io),
-        .O  (scf_i2c_0_scl_i),
-        .T  (1'b1) // (scf_i2c_0_scl_t)
-    );
-    IOBUF scf_i2c_0_sda_iobuf
-    (
-        .I  (1'b0), // (scf_i2c_0_sda_o),
-        .IO (scf_i2c_0_sda_io),
-        .O  (scf_i2c_0_sda_i),
-        .T  (scf_i2c_0_sda_t) // scf_i2c_0_sda_t
-    );
-
-    // bus[0]
-    IOBUF local_i2c_scl_iobuf
-    (
-        .I  (1'b0),
-        .IO (local_i2c_scl_io),
-        .O  (),
-        // clock directly driven by master buffer
-        .T  (scf_i2c_0_scl_i | bus_select | (~activate))
-    );
-    IOBUF local_i2c_sda_iobuf
-    (
-        .I  (1'b0),
-        .IO (local_i2c_sda_io),
-        .O  (local_sda_i),
-        .T  (local_i2c_sda_tb | bus_select | (~activate))
-    );
-    
-    // bus[1]
-    IOBUF i2c_10g_scl_iobuf
-    (
-        .I  (1'b0),
-        .IO (i2c_10g_scl_io),
-        .O  (),
-        .T  (scf_i2c_0_scl_i | (~bus_select) | (~activate))
-    );
-    IOBUF i2c_10g_sda_iobuf
-    (
-        .I  (1'b0),
-        .IO (i2c_10g_sda_io),
-        .O  (bus1_sda_i),
-        .T  (local_i2c_sda_tb | (~bus_select) | (~activate))
-    );
-        
-    wib_i2cSlaveTop wib_i2c_slave
-    (
-        .clk      (axi_clk),
-        .rst      (1'b0),
-        .scl      (scf_i2c_0_scl_i),
-        .sda_i    (scf_i2c_0_sda_i),
-        .sda_t    (scf_i2c_0_sda_t_sel),
-        .reg_0    ({bus_select, activate}),
-        .slot     (slot), // for address
-        .slot_rb  (slot), // for readback
-        .crate_id (crate_id)
-    );            
-    
-    wire clk_10M;
+    wire clk_10M;        
     clk_i2c_ila clk_ila
     (
         .clk_in1  (axi_clk),
         .clk_out1 (clk_10M)
     );
-    
-    i2c_follower flw
+
+    wire ptc_busy;
+
+    ptc_i2c_wormhole ptc_wh
     (
-        .scl     (scf_i2c_0_scl_i),
-        .sda     (scf_i2c_0_sda_i),
-        .sda_t   (scf_i2c_1_sda_t), // master's output, for ILA analysis
-        .sda_inh (sda_inh), // 0 = master->sensor 1 = sensor->master
-        .busy    (ptc_busy),
-        .clk     (clk_10M)
-    );    
+        .ptc_scl_io  (ptc_scl_io ),
+        .ptc_sda_io  (ptc_sda_io ),
+        .bus0_scl_io (bus0_scl_io),
+        .bus0_sda_io (bus0_sda_io),
+        .bus1_scl_io (bus1_scl_io),
+        .bus1_sda_io (bus1_sda_io),
+        
+        .slot        (3'h1       ),
+        .crate_id    (10'h2      ),
+        
+        .ptc_busy    (ptc_busy),
+        
+        .clk_10M     (clk_10M    )
+    
+    );
 
     ptc_i2c_ila ila2
     (
         .clk    (clk_10M),
-        .probe0 (scf_i2c_0_scl_i    ),
-        .probe1 (scf_i2c_0_sda_i    ),
-        .probe2 (scf_i2c_0_sda_t    ),
-        .probe3 (scf_i2c_0_sda_t_sel),
-        .probe4 (sda_inh            ),
-        .probe5 (local_sda_i    ),
-        .probe6 (local_i2c_sda_tb   ),
-        .probe7 (bus1_sda_i    ),
-        .probe8 (bus_select    ),
-        .probe9  ({flw.start, flw.stop}),
-        .probe10 ({flw.read, busy}),
-        .probe11 (flw.bit_cnt),
-        .probe12 (flw.i2c_state)
+        .probe0 (ptc_wh.ptc_scl_i    ),
+        .probe1 (ptc_wh.ptc_sda_i    ),
+        .probe2 (ptc_wh.ptc_sda_t    ),
+        .probe3 (ptc_wh.ptc_sda_t_sel),
+        .probe4 (ptc_wh.sda_inh            ),
+        .probe5 (ptc_wh.bus0_sda_i    ),
+        .probe6 (ptc_wh.activate   ),
+        .probe7 (ptc_wh.bus1_sda_i    ),
+        .probe8 (ptc_wh.bus_select    ),
+        .probe9  ({ptc_wh.flw.start, ptc_wh.flw.stop}),
+        .probe10 ({ptc_wh.flw.read, ptc_busy}),
+        .probe11 (ptc_wh.flw.bit_cnt),
+        .probe12 (ptc_wh.flw.i2c_state)
         
     );
 

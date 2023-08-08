@@ -4,7 +4,6 @@ module i2c_follower
 (
     input scl,
     input sda,
-    input sda_t,
     output reg sda_inh,
     output reg busy,
     input clk
@@ -89,7 +88,7 @@ module i2c_follower
         endcase
     
     
-        // start/stop detection
+        // start/stop detector
         case (start_stop_st)
             IDLE: 
             begin
@@ -124,20 +123,6 @@ module i2c_follower
             end
         endcase
     end
-
-//    ila_i2c ila1
-//    (
-//        .clk    (clk),
-//        .probe0 (bit_cnt),
-//        .probe1 (read),
-//        .probe2 (scld),
-//        .probe3 (sdad),
-//        .probe4 (start),
-//        .probe5 (stop),
-//        .probe6 (i2c_state),
-//        .probe7 (sda_t),
-//        .probe8 (sda_inh)
-//    );
 
 endmodule
 
