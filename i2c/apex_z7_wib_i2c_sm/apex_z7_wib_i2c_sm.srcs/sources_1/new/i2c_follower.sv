@@ -7,15 +7,10 @@ module i2c_follower
     input sda_t,
     output reg sda_inh,
     output reg busy,
-    // enable signals for bus selection 
-    output reg [1:0] scl_en,
-    output reg [1:0] sda_en,
-    
     input clk
 );
 
     reg [3:0] bit_cnt;
-    reg [7:0] clk_cnt;
     enum bit [2:0] 
     {
         IDLE, 
@@ -29,15 +24,14 @@ module i2c_follower
     {
         I2C_IDLE,
         CHIP_ADDR,
-        RDWR_BYTE,
-        I2C_STOP
+        RDWR_BYTE
     } i2c_state;
     
     wire scld, sdad, sclr, sclf, sdar, sdaf;
     i2c_debouncer scl_deb (.I(scl), .O(scld), .R(sclr), .F(sclf), .C(clk));
     i2c_debouncer sda_deb (.I(sda), .O(sdad), .R(sdar), .F(sdaf), .C(clk));
 
-    reg start, stop, read, bus_select;
+    reg start, stop, read;
 
     always @(posedge clk)
     begin
@@ -45,8 +39,8 @@ module i2c_follower
         // state follower
         if (stop) 
         begin
-            i2c_state = I2C_STOP; // if stop detected at any time, abort everything
-            clk_cnt = 0;
+            i2c_state = I2C_IDLE; // if stop detected at any time, abort everything
+            busy = 1'b0;
         end
         if (start) 
         begin
@@ -60,7 +54,7 @@ module i2c_follower
         if (bit_cnt == 4'h8 && sclf) sda_inh = 1'b1;
         if (bit_cnt == 4'h9 && sclf) sda_inh = 1'b0;
         
-        if (sclf) sda_inh |= read; // host is reading, disable TX 
+        sda_inh |= read; // host is reading, disable TX 
             
         case (i2c_state)
             I2C_IDLE:
@@ -68,22 +62,12 @@ module i2c_follower
                 // start/stop logic above will move SM to CHIP_ADDR state
                 sda_inh = 1'b0;
                 read = 1'b0; 
-                scl_en = 2'b11;
-                sda_en = 2'b11;
-                busy = 1'b0;
             end
             
             CHIP_ADDR:
             begin
                 if (sclr) 
                 begin
-                    if (bit_cnt == 4'h1)
-                    begin 
-                        bus_select = sdad; // lock bus_select bit
-                        // disable unselected bus
-                        scl_en [~bus_select] = 1'h0;
-                        sda_en [~bus_select] = 1'h0;
-                    end
                     if (bit_cnt == 4'h7) read = sdad; // lock RD bit
                     if (bit_cnt == 4'h9)
                     begin
@@ -91,16 +75,6 @@ module i2c_follower
                         i2c_state = RDWR_BYTE;
                     end
                     bit_cnt++; // increment bit count on rising scl
-                end
-                if (sclf)
-                begin
-                    // cut out bus selection bit so it does not corrupt the chip address
-                    if (bit_cnt == 4'h1) 
-                        sda_en [bus_select] = 1'h0;
-                    
-                    // enable bus back on the next bit
-                    if (bit_cnt == 4'h2) 
-                        sda_en [bus_select] = 1'h1;
                 end
             end
             
@@ -111,16 +85,6 @@ module i2c_follower
                     if (bit_cnt == 4'h9) bit_cnt = 4'b0; // continue processing more bytes until start/stop comes
                     bit_cnt++; // increment bit count on rising scl
                 end
-            end
-            
-            // stop came from master, generate stop for disabled bus
-            // enabled bus will receive stop from master normally
-            I2C_STOP:
-            begin
-                scl_en = 2'b11;
-                if (clk_cnt >= 8'd100) i2c_state = I2C_IDLE;
-                // sda_en is set to 11 in IDLE state
-                clk_cnt++;
             end
         endcase
     

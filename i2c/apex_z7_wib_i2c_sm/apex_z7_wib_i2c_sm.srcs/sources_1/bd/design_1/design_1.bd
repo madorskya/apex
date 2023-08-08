@@ -154,8 +154,6 @@
         }
       },
       "axis_data_fifo_0": "",
-      "ila_0": "",
-      "system_ila_1": "",
       "util_vector_logic_0": "",
       "util_vector_logic_1": "",
       "util_vector_logic_2": "",
@@ -10059,59 +10057,6 @@
         "xci_path": "ip/design_1_axis_data_fifo_0_0_2/design_1_axis_data_fifo_0_0.xci",
         "inst_hier_path": "axis_data_fifo_0"
       },
-      "ila_0": {
-        "vlnv": "xilinx.com:ip:ila:6.2",
-        "xci_name": "design_1_ila_0_0",
-        "xci_path": "ip/design_1_ila_0_0_3/design_1_ila_0_0.xci",
-        "inst_hier_path": "ila_0",
-        "parameters": {
-          "C_DATA_DEPTH": {
-            "value": "2048"
-          },
-          "C_ENABLE_ILA_AXI_MON": {
-            "value": "false"
-          },
-          "C_INPUT_PIPE_STAGES": {
-            "value": "6"
-          },
-          "C_MONITOR_TYPE": {
-            "value": "Native"
-          },
-          "C_NUM_OF_PROBES": {
-            "value": "12"
-          },
-          "C_PROBE0_WIDTH": {
-            "value": "32"
-          },
-          "C_PROBE10_WIDTH": {
-            "value": "32"
-          },
-          "C_PROBE11_WIDTH": {
-            "value": "32"
-          },
-          "C_PROBE1_WIDTH": {
-            "value": "32"
-          }
-        }
-      },
-      "system_ila_1": {
-        "vlnv": "xilinx.com:ip:system_ila:1.1",
-        "xci_name": "design_1_system_ila_1_0",
-        "xci_path": "ip/design_1_system_ila_1_0/design_1_system_ila_1_0.xci",
-        "inst_hier_path": "system_ila_1",
-        "parameters": {
-          "C_MON_TYPE": {
-            "value": "INTERFACE"
-          }
-        },
-        "interface_ports": {
-          "SLOT_0_AXI": {
-            "mode": "Monitor",
-            "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
-            "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
-          }
-        }
-      },
       "util_vector_logic_0": {
         "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
         "xci_name": "design_1_util_vector_logic_0_0",
@@ -12021,8 +11966,7 @@
       "Conn": {
         "interface_ports": [
           "axi_jtag_0/s_axi",
-          "cpu/M03_AXI",
-          "system_ila_1/SLOT_0_AXI"
+          "cpu/M03_AXI"
         ]
       },
       "S_AXI2_1": {
@@ -12402,15 +12346,13 @@
       "aresetn_bot": {
         "ports": [
           "axisafety_1/comb_aresetn",
-          "axi_chip2chip_0/s_aresetn",
-          "ila_0/probe9"
+          "axi_chip2chip_0/s_aresetn"
         ]
       },
       "aresetn_top": {
         "ports": [
           "axisafety_2/comb_aresetn",
-          "axi_chip2chip_1/s_aresetn",
-          "ila_0/probe8"
+          "axi_chip2chip_1/s_aresetn"
         ]
       },
       "aurora_mmcm_not_locked_0_1": {
@@ -12430,8 +12372,7 @@
           "axi_c2c_phy_clk",
           "reg_bank_0/prbs_clk",
           "axi_chip2chip_0/axi_c2c_phy_clk",
-          "axi_chip2chip_1/axi_c2c_phy_clk",
-          "ila_0/clk"
+          "axi_chip2chip_1/axi_c2c_phy_clk"
         ]
       },
       "axi_chip2chip_0_axi_c2c_aurora_tx_tvalid": {
@@ -12594,8 +12535,7 @@
         "ports": [
           "cpu/peripheral_aresetn",
           "axi_jtag_1/s_axi_aresetn",
-          "axi_jtag_0/s_axi_aresetn",
-          "system_ila_1/resetn"
+          "axi_jtag_0/s_axi_aresetn"
         ]
       },
       "cpu_peripheral_reset": {
@@ -12747,16 +12687,14 @@
         "ports": [
           "axi_chip2chip_0/axi_c2c_link_status_out",
           "link_up_bot",
-          "reg_bank_0/link_stat_bot_14",
-          "ila_0/probe3"
+          "reg_bank_0/link_stat_bot_14"
         ]
       },
       "link_stat_top": {
         "ports": [
           "axi_chip2chip_1/axi_c2c_link_status_out",
           "link_up_top",
-          "reg_bank_0/link_stat_top_12",
-          "ila_0/probe2"
+          "reg_bank_0/link_stat_top_12"
         ]
       },
       "pok_alarm_0_payload_off_alarm": {
@@ -12827,8 +12765,7 @@
           "cpu/FCLK_CLK1",
           "eth1/ref_clk",
           "axi_jtag_1/s_axi_aclk",
-          "axi_jtag_0/s_axi_aclk",
-          "system_ila_1/clk"
+          "axi_jtag_0/s_axi_aclk"
         ]
       },
       "processing_system7_0_FCLK_CLK2": {
@@ -12841,18 +12778,6 @@
         "ports": [
           "cpu/ext_reset_in",
           "eth1/ext_reset_in"
-        ]
-      },
-      "read_fault_bot": {
-        "ports": [
-          "axisafety_1/o_read_fault",
-          "ila_0/probe6"
-        ]
-      },
-      "read_fault_top": {
-        "ports": [
-          "axisafety_2/o_read_fault",
-          "ila_0/probe4"
         ]
       },
       "reg_bank_0_c2c_slave_reset": {
@@ -12934,29 +12859,25 @@
       "rxdata_bot": {
         "ports": [
           "rxdata_bot",
-          "axi_chip2chip_0/axi_c2c_aurora_rx_tdata",
-          "ila_0/probe1"
+          "axi_chip2chip_0/axi_c2c_aurora_rx_tdata"
         ]
       },
       "rxdata_top": {
         "ports": [
           "rxdata_top",
-          "axi_chip2chip_1/axi_c2c_aurora_rx_tdata",
-          "ila_0/probe0"
+          "axi_chip2chip_1/axi_c2c_aurora_rx_tdata"
         ]
       },
       "txdata_bot": {
         "ports": [
           "axi_chip2chip_0/axi_c2c_aurora_tx_tdata",
-          "txdata_bot",
-          "ila_0/probe11"
+          "txdata_bot"
         ]
       },
       "txdata_top": {
         "ports": [
           "axi_chip2chip_1/axi_c2c_aurora_tx_tdata",
-          "txdata_top",
-          "ila_0/probe10"
+          "txdata_top"
         ]
       },
       "util_vector_logic_0_Res": {
@@ -12993,18 +12914,6 @@
         "ports": [
           "util_vector_logic_5/Res",
           "scf_tck_1"
-        ]
-      },
-      "write_fault_bot": {
-        "ports": [
-          "axisafety_1/o_write_fault",
-          "ila_0/probe7"
-        ]
-      },
-      "write_fault_top": {
-        "ports": [
-          "axisafety_2/o_write_fault",
-          "ila_0/probe5"
         ]
       },
       "xlslice_0_Dout": {

@@ -76,8 +76,20 @@ set_property PACKAGE_PIN B7  [get_ports en_ipmb_zynq[1]]; # J1 pin 49
 set_property PACKAGE_PIN A4  [get_ports ready_ipmb_zynq[0]]; # J1 pin 47
 set_property PACKAGE_PIN C5  [get_ports ready_ipmb_zynq[1]]; # J1 pin 57
 
-set_property PACKAGE_PIN C3  [get_ports i2c_10g_scl_io]; # J1 pin 54 i2c_10g_scl_io
-set_property PACKAGE_PIN F5  [get_ports i2c_10g_sda_io]; # J1 pin 56
+#set_property PACKAGE_PIN C3  [get_ports i2c_10g_scl_io]; # J1 pin 54 i2c_10g_scl_io
+#set_property PACKAGE_PIN F5  [get_ports i2c_10g_sda_io]; # J1 pin 56
+
+#set_property PACKAGE_PIN P5  [get_ports local_i2c_scl_io]; # J2 pin 50
+#set_property PACKAGE_PIN P6  [get_ports local_i2c_sda_io]; # J2 pin 48
+
+set_property PACKAGE_PIN P5  [get_ports i2c_10g_scl_io]; # J1 pin 54 i2c_10g_scl_io
+set_property PACKAGE_PIN P6  [get_ports i2c_10g_sda_io]; # J1 pin 56
+
+set_property PACKAGE_PIN C3  [get_ports local_i2c_scl_io]; # J2 pin 50
+set_property PACKAGE_PIN F5  [get_ports local_i2c_sda_io]; # J2 pin 48
+
+set_property IOSTANDARD LVCMOS33 [get_ports local_i2c_*]
+set_property PULLUP true         [get_ports local_i2c_*]
 
 # scl_zynq[1:0] and sda_zynq[1:0] on schematics
 set_property PACKAGE_PIN F6  [get_ports ipmc_scl_0]; # J1 pin 41
@@ -148,13 +160,6 @@ set_property PACKAGE_PIN AB19 [get_ports hot_swap_sw]; # J2 pin 73
 #set_property PACKAGE_PIN R2  [get_ports scl_zynq[2]]; # J2 pin 56
 #set_property PACKAGE_PIN R3  [get_ports sda_zynq[2]]; # J2 pin 54
 
-# local I2C from Elma chip (talking to its slaves)
-# used to access temp sensors
-# sda and scl_zynq[3] in schematics
-set_property PACKAGE_PIN P5  [get_ports local_i2c_scl_io]; # J2 pin 50
-set_property PACKAGE_PIN P6  [get_ports local_i2c_sda_io]; # J2 pin 48
-set_property IOSTANDARD LVCMOS33 [get_ports local_i2c_*]
-set_property PULLUP true         [get_ports local_i2c_*]
 
 # DAC I2C for spoofing Elma chip sensors
 #set_property PACKAGE_PIN W11  [get_ports scl_zynq[4]]; # J2 pin 110

@@ -312,6 +312,24 @@ module apex_control_mgt_top
         .axi_clk  (axi_clk)
     );
         
+    IOBUF i2c_10g_scl_iobuf
+    (
+        .I  (i2c_10g_scl_o),
+        .IO (i2c_10g_scl_io),
+        .O  (i2c_10g_scl_i),
+        .T  (i2c_10g_scl_t)
+    );
+    IOBUF i2c_10g_sda_iobuf
+    (
+        .I  (i2c_10g_sda_o),
+        .IO (i2c_10g_sda_io),
+        .O  (i2c_10g_sda_i),
+        .T  (i2c_10g_sda_t)
+    );
+    
+        
+        
+        
   IOBUF mdio_phy_mdio_iobuf
        (.I(mdio_phy_mdio_o),
         .IO(mdio_phy_mdio_io),
@@ -395,13 +413,11 @@ module apex_control_mgt_top
     );
             
     wire scf_i2c_0_sda_t_sel, sda_inh;
-    wire ptc_busy, local_scl_i, local_sda_i, bus0_scl_i, bus0_sda_i;
+    wire ptc_busy, local_scl_i, local_sda_i;
     assign scf_i2c_0_sda_t = (scf_i2c_0_sda_t_sel & local_sda_i) | (~sda_inh);
     wire   local_i2c_sda_tb = (scf_i2c_0_sda_i & local_i2c_sda_t) | sda_inh;
-    wire [1:0] scl_en;
-    wire [1:0] sda_en;
     
-    // PTC link buffers                
+                
     IOBUF scf_i2c_0_scl_iobuf
     (
         .I  (1'b0), // (scf_i2c_0_scl_o),
@@ -417,35 +433,16 @@ module apex_control_mgt_top
         .T  (scf_i2c_0_sda_t) // scf_i2c_0_sda_t
     );
     // inhibit IIC inputs when PTC is talking, otherwise IIC shuts itself down somehow
-    assign local_i2c_scl_i = (local_scl_i & bus0_scl_i) | ptc_busy;
-    assign local_i2c_sda_i = (local_sda_i & bus0_sda_i) | ptc_busy;
+    assign local_i2c_scl_i = local_scl_i | ptc_busy;
+    assign local_i2c_sda_i = local_sda_i | ptc_busy;
 
-    // sensor bus [0] buffers
-    IOBUF i2c_10g_scl_iobuf
-    (
-        .I  (1'b0),
-        .IO (i2c_10g_scl_io),
-        .O  (bus0_scl_i),
-        .T  (scf_i2c_0_scl_i & local_i2c_scl_t & scl_en[0])
-    );
-    IOBUF i2c_10g_sda_iobuf
-    (
-        .I  (1'b0),
-        .IO (i2c_10g_sda_io),
-        .O  (bus0_sda_i),
-        .T  (local_i2c_sda_tb & sda_en[0])
-    );
-
-    // sensor bus [1] buffers
-    // all chip addresses are remapped by adding 0x20
     IOBUF local_i2c_scl_iobuf
     (
         .I  (1'b0), //(local_i2c_scl_o),
         .IO (local_i2c_scl_io),
         .O  (local_scl_i),
-        // clock directly driven by master buffer and IIC master
-        // scl_en[1] disables clock
-        .T  (scf_i2c_0_scl_i & local_i2c_scl_t & scl_en[1])
+        // clock directly driven by master buffer
+        .T  (scf_i2c_0_scl_i & local_i2c_scl_t)
     );
     IOBUF local_i2c_sda_iobuf
     (
@@ -453,8 +450,7 @@ module apex_control_mgt_top
         .IO (local_i2c_sda_io),
         .O  (local_sda_i),
         // drive sda from master, but inhibit if master is reading
-        // sda_en[1] disables data
-        .T  (local_i2c_sda_tb & sda_en[1])
+        .T  (local_i2c_sda_tb)
     );
     
     wib_i2cSlaveTop wib_i2c_slave
@@ -473,16 +469,14 @@ module apex_control_mgt_top
         .clk_out1 (clk_10M)
     );
     
-    i2c_follower follower
+    i2c_follower flw
     (
-        .scl     (scf_i2c_0_scl_i),
-        .sda     (scf_i2c_0_sda_i),
-        .sda_t   (scf_i2c_1_sda_t), // master's output, for ILA analysis
+        .scl    (scf_i2c_0_scl_i),
+        .sda    (scf_i2c_0_sda_i),
+        .sda_t  (scf_i2c_1_sda_t), // master's output, for ILA analysis
         .sda_inh (sda_inh), // 0 = master->sensor 1 = sensor->master
         .busy    (ptc_busy),
-        .scl_en  (scl_en),
-        .sda_en  (sda_en),
-        .clk     (clk_10M)
+        .clk    (clk_10M)
     );    
 
     ptc_i2c_ila ila2
@@ -497,11 +491,11 @@ module apex_control_mgt_top
         .probe6 (local_i2c_sda_tb   ),
         .probe7 (local_i2c_sda_t    ),
         .probe8 (local_i2c_scl_t    ),
-        .probe9 (scl_en),
-        .probe10 (sda_en),
-        .probe11 (follower.bit_cnt),
-        .probe12 (follower.i2c_state)
+        .probe9  ({flw.start, flw.stop}),
+        .probe10 ({flw.read, busy}),
+        .probe11 (flw.bit_cnt),
+        .probe12 (flw.i2c_state)
+        
     );
-
 
 endmodule
