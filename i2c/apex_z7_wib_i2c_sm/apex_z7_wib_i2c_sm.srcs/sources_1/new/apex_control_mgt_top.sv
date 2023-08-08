@@ -417,6 +417,7 @@ module apex_control_mgt_top
         
         .ptc_busy    (ptc_busy),
         
+        .axi_clk     (axi_clk    ),
         .clk_10M     (clk_10M    )
     
     );

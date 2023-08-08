@@ -13,6 +13,7 @@ module ptc_i2c_wormhole
     
     output ptc_busy,
     
+    input axi_clk,
     input clk_10M
 
 );
