@@ -48,10 +48,7 @@
 module wib_i2cSlave (
   clk,
   rst,
-//  sda,
   scl,
-//  sdaIn,
-//  sdaOut,
     sda_i,
     sda_t,
   myReg0,
@@ -61,15 +58,13 @@ module wib_i2cSlave (
   myReg4,
   myReg5,
   myReg6,
-  myReg7
+  myReg7, 
+  slot
 );
 
 input clk;
 input rst;
-//inout sda;
 input scl;
-//output sdaIn;
-//output sdaOut;
 input  sda_i;
 output sda_t;
 output [7:0] myReg0;
@@ -80,6 +75,7 @@ input [7:0] myReg4;
 input [7:0] myReg5;
 input [7:0] myReg6;
 input [7:0] myReg7;
+input [2:0] slot;
 
 
 // local wires and regs
@@ -207,7 +203,8 @@ wib_serialInterface u_wib_serialInterface (
   .sdaIn(sdaDeb), 
   .sdaOut(sdaOut), 
   .startStopDetState(startStopDetState),
-  .clearStartStopDet(clearStartStopDet) 
+  .clearStartStopDet(clearStartStopDet),
+  .slot (slot) 
 );
 
 

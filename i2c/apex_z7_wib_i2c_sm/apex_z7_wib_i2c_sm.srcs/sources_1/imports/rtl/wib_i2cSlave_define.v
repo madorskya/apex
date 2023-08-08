@@ -19,8 +19,8 @@
 // ------------- modify constants below this line -----------------
 // ----------------------------------------------------------------
 
-// i2c device address
-`define WIB_I2C_ADDRESS 7'h3c
+// i2c device address, high bits. 3 lower bits are replaced with slot number
+`define WIB_I2C_ADDRESS (7'h38 | slot)
 
 // System clock frequency in MHz
 // If you are using a clock frequency below 24MHz, then the macro

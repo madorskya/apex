@@ -400,7 +400,8 @@ module apex_control_mgt_top
     wire   local_i2c_sda_tb = scf_i2c_0_sda_i | sda_inh;
     wire bus_select, activate;
     
-    wire [7:0] slot = 8'ha;
+    wire [2:0] slot = 8'h5;
+    wire [9:0] crate_id = 10'h123;
                 
     IOBUF scf_i2c_0_scl_iobuf
     (
@@ -424,15 +425,14 @@ module apex_control_mgt_top
         .IO (local_i2c_scl_io),
         .O  (),
         // clock directly driven by master buffer
-        .T  (scf_i2c_0_scl_i | bus_select)
+        .T  (scf_i2c_0_scl_i | bus_select | (~activate))
     );
     IOBUF local_i2c_sda_iobuf
     (
         .I  (1'b0),
         .IO (local_i2c_sda_io),
         .O  (local_sda_i),
-        // drive sda from master, but inhibit if master is reading
-        .T  (local_i2c_sda_tb | bus_select)
+        .T  (local_i2c_sda_tb | bus_select | (~activate))
     );
     
     // bus[1]
@@ -441,25 +441,27 @@ module apex_control_mgt_top
         .I  (1'b0),
         .IO (i2c_10g_scl_io),
         .O  (),
-        .T  (scf_i2c_0_scl_i | (~bus_select))
+        .T  (scf_i2c_0_scl_i | (~bus_select) | (~activate))
     );
     IOBUF i2c_10g_sda_iobuf
     (
         .I  (1'b0),
         .IO (i2c_10g_sda_io),
         .O  (bus1_sda_i),
-        .T  (local_i2c_sda_tb | (~bus_select))
+        .T  (local_i2c_sda_tb | (~bus_select) | (~activate))
     );
         
     wib_i2cSlaveTop wib_i2c_slave
     (
-        .clk    (axi_clk),
-        .rst    (1'b0),
-        .scl    (scf_i2c_0_scl_i),
-        .sda_i  (scf_i2c_0_sda_i),
-        .sda_t  (scf_i2c_0_sda_t_sel),
-        .reg_0  ({bus_select, activate}),
-        .slot   (slot)
+        .clk      (axi_clk),
+        .rst      (1'b0),
+        .scl      (scf_i2c_0_scl_i),
+        .sda_i    (scf_i2c_0_sda_i),
+        .sda_t    (scf_i2c_0_sda_t_sel),
+        .reg_0    ({bus_select, activate}),
+        .slot     (slot), // for address
+        .slot_rb  (slot), // for readback
+        .crate_id (crate_id)
     );            
     
     wire clk_10M;
@@ -471,12 +473,12 @@ module apex_control_mgt_top
     
     i2c_follower flw
     (
-        .scl    (scf_i2c_0_scl_i),
-        .sda    (scf_i2c_0_sda_i),
-        .sda_t  (scf_i2c_1_sda_t), // master's output, for ILA analysis
+        .scl     (scf_i2c_0_scl_i),
+        .sda     (scf_i2c_0_sda_i),
+        .sda_t   (scf_i2c_1_sda_t), // master's output, for ILA analysis
         .sda_inh (sda_inh), // 0 = master->sensor 1 = sensor->master
         .busy    (ptc_busy),
-        .clk    (clk_10M)
+        .clk     (clk_10M)
     );    
 
     ptc_i2c_ila ila2

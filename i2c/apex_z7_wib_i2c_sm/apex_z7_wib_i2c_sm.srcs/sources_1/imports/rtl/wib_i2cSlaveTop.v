@@ -55,7 +55,9 @@ module wib_i2cSlaveTop
     sda_t,
     
     reg_0, // {bus_select, activate}
-    slot
+    slot,
+    slot_rb,
+    crate_id
 );
     input clk;
     input rst;
@@ -63,7 +65,9 @@ module wib_i2cSlaveTop
     input  sda_i;
     output sda_t;
     output [7:0] reg_0;
-    input [7:0] slot;
+    input [2:0] slot;
+    input [2:0] slot_rb;
+    input [9:0] crate_id;
     
     
     wib_i2cSlave u_wib_i2cSlave
@@ -77,10 +81,11 @@ module wib_i2cSlaveTop
         .myReg1 (),
         .myReg2 (),
         .myReg3 (),
-        .myReg4 (slot),
-        .myReg5 (8'h34),
-        .myReg6 (8'h56),
-        .myReg7 (8'h78)
+        .myReg4 ({crate_id[4:0], slot_rb}),
+        .myReg5 ({3'h7, crate_id[9:5]}),
+        .myReg6 (8'hbe),
+        .myReg7 (8'hba),
+        .slot   (slot)
     );
 
 

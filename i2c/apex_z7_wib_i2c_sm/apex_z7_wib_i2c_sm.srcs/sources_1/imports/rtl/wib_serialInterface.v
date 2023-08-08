@@ -55,7 +55,7 @@
 `include "timescale.v"
 `include "wib_i2cSlave_define.v"
 
-module wib_serialInterface (clearStartStopDet, clk, dataIn, dataOut, regAddr, rst, scl, sdaIn, sdaOut, startStopDetState, writeEn);
+module wib_serialInterface (clearStartStopDet, clk, dataIn, dataOut, regAddr, rst, scl, sdaIn, sdaOut, startStopDetState, writeEn, slot);
 input   clk;
 input   [7:0]dataIn;
 input   rst;
@@ -67,6 +67,7 @@ output  [7:0]dataOut;
 output  [7:0]regAddr;
 output  sdaOut;
 output  writeEn;
+input [2:0] slot;
 
 reg     clearStartStopDet, next_clearStartStopDet;
 wire    clk;
