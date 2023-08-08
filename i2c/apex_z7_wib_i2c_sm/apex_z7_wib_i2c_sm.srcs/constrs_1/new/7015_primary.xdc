@@ -76,17 +76,17 @@ set_property PACKAGE_PIN B7  [get_ports en_ipmb_zynq[1]]; # J1 pin 49
 set_property PACKAGE_PIN A4  [get_ports ready_ipmb_zynq[0]]; # J1 pin 47
 set_property PACKAGE_PIN C5  [get_ports ready_ipmb_zynq[1]]; # J1 pin 57
 
-#set_property PACKAGE_PIN C3  [get_ports i2c_10g_scl_io]; # J1 pin 54 i2c_10g_scl_io
-#set_property PACKAGE_PIN F5  [get_ports i2c_10g_sda_io]; # J1 pin 56
+set_property PACKAGE_PIN C3  [get_ports i2c_10g_scl_io]; # J1 pin 54 i2c_10g_scl_io
+set_property PACKAGE_PIN F5  [get_ports i2c_10g_sda_io]; # J1 pin 56
 
-#set_property PACKAGE_PIN P5  [get_ports local_i2c_scl_io]; # J2 pin 50
-#set_property PACKAGE_PIN P6  [get_ports local_i2c_sda_io]; # J2 pin 48
+set_property PACKAGE_PIN P5  [get_ports local_i2c_scl_io]; # J2 pin 50
+set_property PACKAGE_PIN P6  [get_ports local_i2c_sda_io]; # J2 pin 48
 
-set_property PACKAGE_PIN P5  [get_ports i2c_10g_scl_io]; # J1 pin 54 i2c_10g_scl_io
-set_property PACKAGE_PIN P6  [get_ports i2c_10g_sda_io]; # J1 pin 56
+#set_property PACKAGE_PIN P5  [get_ports i2c_10g_scl_io]; # J1 pin 54 i2c_10g_scl_io
+#set_property PACKAGE_PIN P6  [get_ports i2c_10g_sda_io]; # J1 pin 56
 
-set_property PACKAGE_PIN C3  [get_ports local_i2c_scl_io]; # J2 pin 50
-set_property PACKAGE_PIN F5  [get_ports local_i2c_sda_io]; # J2 pin 48
+#set_property PACKAGE_PIN C3  [get_ports local_i2c_scl_io]; # J2 pin 50
+#set_property PACKAGE_PIN F5  [get_ports local_i2c_sda_io]; # J2 pin 48
 
 set_property IOSTANDARD LVCMOS33 [get_ports local_i2c_*]
 set_property PULLUP true         [get_ports local_i2c_*]

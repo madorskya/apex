@@ -45,49 +45,43 @@
 `include "wib_i2cSlave_define.v"
 
 
-module wib_i2cSlaveTop (
-  clk,
-  rst,
-//  sda,
-  scl,
-//  sda_in,
-//  sda_out,
-
+module wib_i2cSlaveTop 
+(
+    clk,
+    rst,
+    scl,
+    
     sda_i,
     sda_t,
-
-  myReg0
+    
+    reg_0, // {bus_select, activate}
+    slot
 );
-input clk;
-input rst;
-//inout sda;
-//output sda_in;
-//output sda_out;
-input scl;
-input  sda_i;
-output sda_t;
-output [7:0] myReg0;
-
-
-wib_i2cSlave u_wib_i2cSlave(
-  .clk(clk),
-  .rst(rst),
-//  .sda(sda),
-  .scl(scl),
-//  .sdaIn (sda_in),
-//  .sdaOut (sda_out),
-   .sda_i  (sda_i),
-   .sda_t  (sda_t),
-  .myReg0(myReg0),
-  .myReg1(),
-  .myReg2(),
-  .myReg3(),
-  .myReg4(8'h12),
-  .myReg5(8'h34),
-  .myReg6(8'h56),
-  .myReg7(8'h78)
-
-);
+    input clk;
+    input rst;
+    input scl;
+    input  sda_i;
+    output sda_t;
+    output [7:0] reg_0;
+    input [7:0] slot;
+    
+    
+    wib_i2cSlave u_wib_i2cSlave
+    (
+        .clk    (clk),
+        .rst    (rst),
+        .scl    (scl),
+        .sda_i  (sda_i),
+        .sda_t  (sda_t),
+        .myReg0 (reg_0),
+        .myReg1 (),
+        .myReg2 (),
+        .myReg3 (),
+        .myReg4 (slot),
+        .myReg5 (8'h34),
+        .myReg6 (8'h56),
+        .myReg7 (8'h78)
+    );
 
 
 endmodule

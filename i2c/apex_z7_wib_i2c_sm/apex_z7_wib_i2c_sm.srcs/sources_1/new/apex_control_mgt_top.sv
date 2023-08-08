@@ -312,24 +312,6 @@ module apex_control_mgt_top
         .axi_clk  (axi_clk)
     );
         
-    IOBUF i2c_10g_scl_iobuf
-    (
-        .I  (i2c_10g_scl_o),
-        .IO (i2c_10g_scl_io),
-        .O  (i2c_10g_scl_i),
-        .T  (i2c_10g_scl_t)
-    );
-    IOBUF i2c_10g_sda_iobuf
-    (
-        .I  (i2c_10g_sda_o),
-        .IO (i2c_10g_sda_io),
-        .O  (i2c_10g_sda_i),
-        .T  (i2c_10g_sda_t)
-    );
-    
-        
-        
-        
   IOBUF mdio_phy_mdio_iobuf
        (.I(mdio_phy_mdio_o),
         .IO(mdio_phy_mdio_io),
@@ -413,10 +395,12 @@ module apex_control_mgt_top
     );
             
     wire scf_i2c_0_sda_t_sel, sda_inh;
-    wire ptc_busy, local_scl_i, local_sda_i;
-    assign scf_i2c_0_sda_t = (scf_i2c_0_sda_t_sel & local_sda_i) | (~sda_inh);
-    wire   local_i2c_sda_tb = (scf_i2c_0_sda_i & local_i2c_sda_t) | sda_inh;
+    wire ptc_busy, local_sda_i, bus1_sda_i;
+    assign scf_i2c_0_sda_t = (scf_i2c_0_sda_t_sel & local_sda_i & bus1_sda_i) | (~sda_inh);
+    wire   local_i2c_sda_tb = scf_i2c_0_sda_i | sda_inh;
+    wire bus_select, activate;
     
+    wire [7:0] slot = 8'ha;
                 
     IOBUF scf_i2c_0_scl_iobuf
     (
@@ -432,34 +416,50 @@ module apex_control_mgt_top
         .O  (scf_i2c_0_sda_i),
         .T  (scf_i2c_0_sda_t) // scf_i2c_0_sda_t
     );
-    // inhibit IIC inputs when PTC is talking, otherwise IIC shuts itself down somehow
-    assign local_i2c_scl_i = local_scl_i | ptc_busy;
-    assign local_i2c_sda_i = local_sda_i | ptc_busy;
 
+    // bus[0]
     IOBUF local_i2c_scl_iobuf
     (
-        .I  (1'b0), //(local_i2c_scl_o),
+        .I  (1'b0),
         .IO (local_i2c_scl_io),
-        .O  (local_scl_i),
+        .O  (),
         // clock directly driven by master buffer
-        .T  (scf_i2c_0_scl_i & local_i2c_scl_t)
+        .T  (scf_i2c_0_scl_i | bus_select)
     );
     IOBUF local_i2c_sda_iobuf
     (
-        .I  (1'b0), //(local_i2c_sda_o),
+        .I  (1'b0),
         .IO (local_i2c_sda_io),
         .O  (local_sda_i),
         // drive sda from master, but inhibit if master is reading
-        .T  (local_i2c_sda_tb)
+        .T  (local_i2c_sda_tb | bus_select)
     );
     
+    // bus[1]
+    IOBUF i2c_10g_scl_iobuf
+    (
+        .I  (1'b0),
+        .IO (i2c_10g_scl_io),
+        .O  (),
+        .T  (scf_i2c_0_scl_i | (~bus_select))
+    );
+    IOBUF i2c_10g_sda_iobuf
+    (
+        .I  (1'b0),
+        .IO (i2c_10g_sda_io),
+        .O  (bus1_sda_i),
+        .T  (local_i2c_sda_tb | (~bus_select))
+    );
+        
     wib_i2cSlaveTop wib_i2c_slave
     (
         .clk    (axi_clk),
         .rst    (1'b0),
         .scl    (scf_i2c_0_scl_i),
         .sda_i  (scf_i2c_0_sda_i),
-        .sda_t  (scf_i2c_0_sda_t_sel)
+        .sda_t  (scf_i2c_0_sda_t_sel),
+        .reg_0  ({bus_select, activate}),
+        .slot   (slot)
     );            
     
     wire clk_10M;
@@ -489,8 +489,8 @@ module apex_control_mgt_top
         .probe4 (sda_inh            ),
         .probe5 (local_sda_i    ),
         .probe6 (local_i2c_sda_tb   ),
-        .probe7 (local_i2c_sda_t    ),
-        .probe8 (local_i2c_scl_t    ),
+        .probe7 (bus1_sda_i    ),
+        .probe8 (bus_select    ),
         .probe9  ({flw.start, flw.stop}),
         .probe10 ({flw.read, busy}),
         .probe11 (flw.bit_cnt),
